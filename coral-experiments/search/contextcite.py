@@ -1,3 +1,4 @@
+import numpy as np
 from context_cite import (
     ContextCiter,
     ConceptCriteriaPartitioner,
@@ -21,7 +22,25 @@ def contextcite_search(
     criteria_baseline="empty",
     start_node=None,
     direction="down",
+    prune_threshold=0.0,
 ):
+    """
+    ContextCite-guided lattice search.
+
+    Fits a Lasso surrogate on LLM logit-probs under random criteria ablations.
+    For each lattice node, builds a binary presence/absence mask over all criteria
+    and calls `solver.predict(mask)` to get the surrogate's predicted logit prob
+    for the baseline answer under that subset. Nodes are checked in ascending order
+    of predicted logit (least supported baseline first = most likely CFs first).
+
+    Pruning (optional): if `prune_threshold` is set, nodes whose predicted logit
+    exceeds the threshold are skipped without an LLM call. The predicted logit is
+    in the solver's normalised space (logit_prob / num_output_tokens), so a sensible
+    threshold can be derived from `solver.predict(start_node_mask)` at call time.
+
+    Returns {"found", "key", "ranking", "calls", "pruned_nodes", "attributions",
+             "num_ablations", "response", "solver"}.
+    """
     if start_node is None:
         start_node = list(criteria)
 
@@ -50,20 +69,38 @@ def contextcite_search(
     )
 
     attr = cc.get_attributions(as_dataframe=False, verbose=False)
-    attr_scores = {criteria[i]: float(attr[i]) for i in range(len(criteria))}
+    attr_scores: dict[str, float] = {criteria[i]: float(attr[i]) for i in range(len(criteria))}
+
+    solver = cc.last_fitted_solver  # LassoRegression with .predict(masks)
+    criteria_to_idx = {c: i for i, c in enumerate(criteria)}
+    n_criteria = len(criteria)
+
+    def surrogate_score(subset: list[str]) -> float:
+        mask = np.zeros(n_criteria, dtype=np.float32)
+        for c in subset:
+            if c in criteria_to_idx:
+                mask[criteria_to_idx[c]] = 1.0
+        return float(solver.predict(mask.reshape(1, -1))[0])
 
     calls = 0
+    pruned_nodes = 0
 
     for _layer_size, subsets in iter_search_layers(criteria, start_node, direction):
         layer = []
         for subset in subsets:
-            agg_score = sum(attr_scores.get(c, 0.0) for c in subset)
             key = combo_key(subset)
-            layer.append((key, agg_score))
+            score = surrogate_score(subset)
+            layer.append((key, score, subset))
 
+        # Ascending: lowest predicted logit first = baseline least supported = most likely CF
         layer.sort(key=lambda x: (x[1], x[0]))
 
-        for key, _score in layer:
+        for key, score, subset in layer:
+            # unlikely to be a CF, logit probability is still positive
+            if score > prune_threshold:
+                pruned_nodes += 1
+                continue
+
             calls += 1
             ranking = rankings_by_combo.get(key)
             if ranking is not None and ranking[0] != baseline_top1:
@@ -72,9 +109,11 @@ def contextcite_search(
                     "key": key,
                     "ranking": ranking,
                     "calls": calls,
+                    "pruned_nodes": pruned_nodes,
                     "attributions": attr_scores,
                     "num_ablations": num_ablations,
                     "response": cc.response,
+                    "solver": solver,
                 }
 
     return {
@@ -82,7 +121,9 @@ def contextcite_search(
         "key": None,
         "ranking": None,
         "calls": calls,
+        "pruned_nodes": pruned_nodes,
         "attributions": attr_scores,
         "num_ablations": num_ablations,
         "response": cc.response,
+        "solver": solver,
     }

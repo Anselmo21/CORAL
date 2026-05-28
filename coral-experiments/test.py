@@ -3,18 +3,29 @@ from search.bfs import bfs_search
 import json
 from search.lattice import iter_search_layers
 
-with open("data/base.json") as f:
+DATA_PATH = "data/baseline_lattice_runs_skeleton_llama31_8b_local.json"
+
+with open(DATA_PATH) as f:
     data = json.load(f)
 
 CASES = []
-for row in data["rows"]:
-    for i, run in enumerate(row["baseline_lattice_runs"]):
+if "runs" in data:
+    for i, run in enumerate(data["runs"]):
         CASES.append({
-            "name": f"Q{row['query_id']}_run{i}",
+            "name": f"Q{run['query_id']}_run{i}",
             "criteria": run["criteria_used"],
             "rankings_by_combo": run["rankings_by_combo"],
             "start_node": run["criteria_used"],
         })
+else:
+    for row in data["rows"]:
+        for i, run in enumerate(row["baseline_lattice_runs"]):
+            CASES.append({
+                "name": f"Q{row['query_id']}_run{i}",
+                "criteria": run["criteria_used"],
+                "rankings_by_combo": run["rankings_by_combo"],
+                "start_node": run["criteria_used"],
+            })
 
 def test_bfs(case, search_direction):
     print(f"Case: {case['name']}, Search direction: {search_direction}")
@@ -93,12 +104,12 @@ if __name__ == "__main__":
         print("="*100)
         res_bfs = test_bfs(case, search_direction)
         
-        # print("*"*70)
-        # res_sra = test_sra(case, search_direction)
-        # is_cf_found = res_bfs["size"] == res_sra["size"]
-        # if is_cf_found:
-        #     sra_true_cfs += 1
-        # print(">>> TRUE CF FOUND: ", is_cf_found)
+        print("*"*70)
+        res_sra = test_sra(case, search_direction)
+        is_cf_found = res_bfs["size"] == res_sra["size"]
+        if is_cf_found:
+            sra_true_cfs += 1
+        print(">>> TRUE CF FOUND: ", is_cf_found)
 
         print("*"*70)
         res_era = test_era(case, search_direction)
@@ -108,6 +119,6 @@ if __name__ == "__main__":
         print(">>> TRUE CF FOUND: ", is_cf_found)
         pruned_nodes += res_era["pruned_nodes"]
 
-    # print(f"SRA Total true CFs found: {sra_true_cfs} / {len(CASES)}")
+    print(f"SRA Total true CFs found: {sra_true_cfs} / {len(CASES)}")
     print(f"ERA Total true CFs found: {era_true_cfs} / {len(CASES)}")
     print(f"ERA Total pruned nodes: {pruned_nodes}")
