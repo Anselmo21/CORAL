@@ -20,6 +20,8 @@ def score_margin(scores: dict[str, float], baseline_answer: str) -> float:
 
 def softmax_entropy(scores: dict[str, float], T: float = 1.0) -> float:
     values = list(scores.values())
+    if not values:
+        return 0.0
     scores = np.array(values, dtype=float)
 
     shifted_scores = scores - np.max(scores)
@@ -30,15 +32,38 @@ def softmax_entropy(scores: dict[str, float], T: float = 1.0) -> float:
 
 
 def shannon_entropy(scores: dict[str, float]) -> float:
-    """
-    Calculates Shannon entropy of a dictionary of scores.
-    """
     values = [v for v in scores.values() if v > 0]
     total = sum(values)
     if total == 0:
         return 0.0
     probs = [v / total for v in values]
     return -sum(p * math.log2(p) for p in probs)
+
+
+def renyi_entropy(scores: dict[str, float], alpha: float = 2.0, T: float = 1.0) -> float:
+    values = list(scores.values())
+    if not values:
+        return 0.0
+    arr = np.array(values, dtype=float)
+    shifted = arr - np.max(arr)
+    exp_scores = np.exp(shifted / T)
+    probs = exp_scores / np.sum(exp_scores)
+    if alpha == 1.0:
+        return -float(np.sum(probs * np.log2(probs + 1e-12)))
+    return float((1.0 / (1.0 - alpha)) * np.log2(np.sum(probs ** alpha) + 1e-12))
+
+
+def weighted_entropy(scores: dict[str, float], T: float = 1.0) -> float:
+    values = list(scores.values())
+    if not values:
+        return 0.0
+    arr = np.array(values, dtype=float)
+    shifted = arr - np.max(arr)
+    exp_scores = np.exp(shifted / T)
+    probs = exp_scores / np.sum(exp_scores)
+    sorted_probs = np.sort(probs)[::-1]
+    weights = 1.0 / np.arange(1, len(sorted_probs) + 1)
+    return -float(np.sum(weights * sorted_probs * np.log2(sorted_probs + 1e-12)))
 
 
 def max_jump_cutoff(nodes_with_entropy: list[tuple[str, float]], budget_remaining: int) -> list[str]:

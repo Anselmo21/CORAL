@@ -70,6 +70,8 @@ def _aggregate_with_scores(
 ) -> tuple[list[str], dict[str, float]]:
     _, code_to_answer = _answer_id_maps(answers)
     df = _build_input_df(voter_rankings, answers)
+    if df.empty:
+        return [], {}
     with _silence_stdout():
         agg, _ = aggregator.aggregate(input_df=df)
     ranking = [code_to_answer[item_id] for item_id in agg["ItemID"].tolist()]
@@ -154,8 +156,7 @@ def sra_search(
             key = combo_key(subset)
 
             if key in singleton_rankings:
-                # we already called the LLM for nodes with one criterion
-                pass
+                estimated_ranking = singleton_rankings[key]
             else:
                 # get the rankings for the singleton criteria
                 voter_rankings = {c: singleton_rankings[c] for c in subset}
@@ -311,13 +312,17 @@ def era_search(
     The baseline or "original" answer is the top answer for the start_node.
     Estimates all node rankings by aggregating (k-1)-subsets via PyFlagr rank aggregation algorithms.
 
-    Phase 1 (budget allocation): estimates rankings bottom-up. Uses entropy + max-jump cutoff
-    to select high-uncertainty nodes for ground-truth lookup (1 budget unit each).
+    Downward — Phase 1 (budget allocation): estimates rankings bottom-up (layers 2 → s-1).
+    Uses entropy + max-jump cutoff to select high-uncertainty nodes for ground-truth lookup
+    (1 budget unit each). Phase 2 traverses top-down; known nodes are free CF checks;
+    unknown nodes are pruned if displacement=0 AND low entropy, then sorted by displacement
+    desc, entropy asc.
 
-    Phase 2 (search): traverses layers top-down. Known nodes are checked for free CFs.
-    Unknown nodes with low displacement AND low entropy are skipped (estimate is confident
-    baseline stays on top). Remaining candidates are sorted by displacement descending,
-    then entropy ascending (least certain first).
+    Upward — no pre-committed budget. Phase 1 only pre-loads the s+1 layer for free.
+    Phase 2 traverses bottom-up (s+1 → n); estimates are computed fresh per layer using
+    _get_child_rankings against the current known dict, which grows as Phase 2 evaluates
+    nodes — voter quality compounds upward naturally. All costs counted as calls;
+    budget_used is always 0 for upward search.
 
     The budget only applies to phase 1 where we estimate the rankings.
     The "calls" variable tracks the number of LLM calls made in phase 2.
@@ -346,7 +351,6 @@ def era_search(
         print(f"Baseline: {baseline_ranking}")
 
     answers = list(baseline_ranking)
-    n = len(criteria)
     s = len(start_node)
 
     known = {}
@@ -366,9 +370,14 @@ def era_search(
                 subset = [start_node[i] for i in combo]
                 key = combo_key(subset)
                 voter_rankings = _get_child_rankings(subset, known, estimated_rankings)
+                if not voter_rankings:
+                    continue
 
                 with _silence_stdout():
                     ranking, scores = _aggregate_with_scores(voter_rankings, answers, aggregator)
+
+                if not scores:
+                    continue
 
                 estimated_rankings[key] = ranking
                 entropy_score = entropy_fn(scores)
@@ -381,41 +390,15 @@ def era_search(
                 budget_remaining -= 1
 
     elif direction == "up":
-        # Bottom-up through supersets (layers s+1 → n)
         extra = [c for c in criteria if c not in start_node]
         known[start_key] = rankings_by_combo.get(start_key, [])
 
-        # get the rankings for the nodes in layer s+1 from the LLM
-        # this is to mirror the bottom-up approach where we get the rankings for individual criteria
-        # this is bounded by the number of extra criteria (c)
-        for combo in combinations(range(len(extra)), 1):
-            subset = list(start_node) + [extra[i] for i in combo]
-            key = combo_key(subset)
+        # Pre-load s+1 layer for free — these serve as ground-truth voters for
+        # s+2 estimates computed adaptively during Phase 2.
+        for c in extra:
+            key = combo_key(list(start_node) + [c])
             if key in rankings_by_combo:
                 known[key] = rankings_by_combo[key]
-
-        for layer_size in range(s + 2, n + 1):
-            num_extra = layer_size - s
-            layer_nodes = []
-            for combo in combinations(range(len(extra)), num_extra):
-                subset = list(start_node) + [extra[i] for i in combo]
-                key = combo_key(subset)
-
-                voter_rankings = _get_child_rankings(subset, known, estimated_rankings)
-                if not voter_rankings:
-                    continue
-                with _silence_stdout():
-                    ranking, scores = _aggregate_with_scores(voter_rankings, answers, aggregator)
-                estimated_rankings[key] = ranking
-                entropy_score = entropy_fn(scores)
-                entropies[key] = entropy_score
-                layer_nodes.append((key, entropy_score))
-
-            selected_keys = cutoff_fn(layer_nodes, budget_remaining)
-            for key in selected_keys:
-                if key in rankings_by_combo:
-                    known[key] = rankings_by_combo[key]
-                    budget_remaining -= 1
 
     budget_used = budget - budget_remaining
 
@@ -445,9 +428,28 @@ def era_search(
                     }
                 continue
 
-            ranking = estimated_rankings[key]
+            if direction == "up":
+                # Re-estimate fresh each layer using the current known, which grows
+                # as Phase 2 evaluates nodes — voter quality compounds upward.
+                voter_rankings = _get_child_rankings(subset, known, estimated_rankings)
+                if not voter_rankings:
+                    continue
+                with _silence_stdout():
+                    ranking, scores = _aggregate_with_scores(voter_rankings, answers, aggregator)
+                if not scores:
+                    continue
+                estimated_rankings[key] = ranking
+                entropy_score = entropy_fn(scores)
+                entropies[key] = entropy_score
+            else:
+                if key not in estimated_rankings:
+                    # Node was skipped in Phase 1 (empty voter pool); treat as maximally uncertain.
+                    unknown_nodes.append((subset, key, 0, float("inf")))
+                    continue
+                ranking = estimated_rankings[key]
+                entropy_score = entropies.get(key, 0.0)
+
             displacement = ranking.index(baseline_answer) if baseline_answer in ranking else len(ranking)
-            entropy_score = entropies.get(key, 0.0)
             unknown_nodes.append((subset, key, displacement, entropy_score))
 
         if not unknown_nodes:

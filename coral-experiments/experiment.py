@@ -1,16 +1,16 @@
 import json
 import random
-from collections import defaultdict
+from collections import Counter, defaultdict
 from itertools import combinations
 
 from search.bfs import bfs_search
-from search.lattice import combo_key
+from search.lattice import combo_key, jaccard_keys
 from search.rank import era_search, sra_search
 
 DATA_PATH = "data/baseline_lattice_runs_skeleton_llama31_8b_local.json"
 QUERY_PATH = "data/base-q.json"
 CC_CASES_PATH = "data/cc_cases.json"
-CC_RESULTS_PATH = "data/cc_results.json"
+CC_RESULTS_PATH = "data/cc_results_new.json"
 TARGET_PER_BUCKET = 20
 SEED = 42
 
@@ -57,7 +57,7 @@ def generate_candidates(
 
         elif direction == "up":
             k = n - effective_size
-            if k >= 1 and k < n:
+            if k >= 0 and k < n:
                 for combo in combinations(criteria, k):
                     sublattices.append({
                         "criteria": criteria,
@@ -147,6 +147,7 @@ def score_proxy(
         "proxy_verified": proxy_verified,
         "outcome": outcome,
         "gap": gap,
+        "jaccard": jaccard_keys(bfs_key, proxy_key),
     }
 
 
@@ -171,12 +172,18 @@ def run_experiment(cases: list[dict]) -> list[dict]:
         era_res = era_search(
             criteria, rbc, budget=budget, start_node=start_node, direction=direction
         )
+        era64_res = era_search(
+            criteria, rbc, budget=64, start_node=start_node, direction=direction
+        )
 
         sra_scored = score_proxy(bfs_res, sra_res, rbc, start_node)
         sra_scored["calls"] = sra_res["calls"]
 
         era_scored = score_proxy(bfs_res, era_res, rbc, start_node)
         era_scored["calls"] = era_res["calls"]
+
+        era64_scored = score_proxy(bfs_res, era64_res, rbc, start_node)
+        era64_scored["calls"] = era64_res["calls"]
 
         results.append({
             "query_id": case["query_id"],
@@ -193,6 +200,8 @@ def run_experiment(cases: list[dict]) -> list[dict]:
             "era_budget": budget,
             "era_budget_used": era_res.get("budget_used", 0),
             "era_pruned": era_res.get("pruned_nodes", 0),
+            "era64": era64_scored,
+            "era64_budget_used": era64_res.get("budget_used", 0),
         })
 
     return results
@@ -208,9 +217,7 @@ def print_summary_table(results: list[dict], direction: str, has_cc: bool = Fals
         by_size[r["effective_size"]].append(r)
 
     label = "Down" if direction == "down" else "Up"
-    cc_col = " | {'CC Acc':>12} | {'CC calls':>9}" if has_cc else ""
-    cc_sep = f"-+-{'-' * 12}-+-{'-' * 9}" if has_cc else ""
-    width = 88 + (24 if has_cc else 0)
+    width = 114 + (24 if has_cc else 0)
     print(f"\n{'=' * width}")
     print(f"  {label} Search - Accuracy & Calls by Effective Size")
     print(f"{'=' * width}")
@@ -218,12 +225,16 @@ def print_summary_table(results: list[dict], direction: str, has_cc: bool = Fals
         f"  {'Size':>4} | {'N':>3} | "
         f"{'BFS calls':>9} | "
         f"{'SRA Acc':>12} | {'SRA calls':>9} | "
-        f"{'ERA Acc':>12} | {'ERA calls':>9}"
+        f"{'ERA Acc':>12} | {'ERA calls':>9} | "
+        f"{'ERA64 Acc':>12} | {'ERA64 calls':>11}"
     )
     if has_cc:
         header += f" | {'CC Acc':>12} | {'CC calls':>9}"
     print(header)
-    sep = f"  {'-' * 4}-+-{'-' * 3}-+-{'-' * 9}-+-{'-' * 12}-+-{'-' * 9}-+-{'-' * 12}-+-{'-' * 9}"
+    sep = (
+        f"  {'-' * 4}-+-{'-' * 3}-+-{'-' * 9}-+-{'-' * 12}-+-{'-' * 9}"
+        f"-+-{'-' * 12}-+-{'-' * 9}-+-{'-' * 12}-+-{'-' * 11}"
+    )
     if has_cc:
         sep += f"-+-{'-' * 12}-+-{'-' * 9}"
     print(sep)
@@ -233,14 +244,17 @@ def print_summary_table(results: list[dict], direction: str, has_cc: bool = Fals
         n = len(bucket)
         sra_c = sum(1 for r in bucket if r["sra"]["outcome"] == "correct")
         era_c = sum(1 for r in bucket if r["era"]["outcome"] == "correct")
+        era64_c = sum(1 for r in bucket if r.get("era64", {}).get("outcome") == "correct")
         bfs_avg = sum(r["bfs_calls"] for r in bucket) / n
         sra_avg = sum(r["sra"]["calls"] for r in bucket) / n
         era_avg = sum(r["era"]["calls"] for r in bucket) / n
+        era64_avg = sum(r.get("era64", {}).get("calls", 0) for r in bucket) / n
         line = (
             f"  {size:>4} | {n:>3} | "
             f"{bfs_avg:>9.1f} | "
             f"{sra_c / n:>5.0%} ({sra_c:>2}/{n:<2}) | {sra_avg:>9.1f} | "
-            f"{era_c / n:>5.0%} ({era_c:>2}/{n:<2}) | {era_avg:>9.1f}"
+            f"{era_c / n:>5.0%} ({era_c:>2}/{n:<2}) | {era_avg:>9.1f} | "
+            f"{era64_c / n:>5.0%} ({era64_c:>2}/{n:<2}) | {era64_avg:>11.1f}"
         )
         if has_cc:
             cc_bucket = [r for r in bucket if "cc" in r]
@@ -256,15 +270,18 @@ def print_summary_table(results: list[dict], direction: str, has_cc: bool = Fals
     total = len(dir_results)
     sra_tot = sum(1 for r in dir_results if r["sra"]["outcome"] == "correct")
     era_tot = sum(1 for r in dir_results if r["era"]["outcome"] == "correct")
+    era64_tot = sum(1 for r in dir_results if r.get("era64", {}).get("outcome") == "correct")
     bfs_all = sum(r["bfs_calls"] for r in dir_results) / total
     sra_all = sum(r["sra"]["calls"] for r in dir_results) / total
     era_all = sum(r["era"]["calls"] for r in dir_results) / total
+    era64_all = sum(r.get("era64", {}).get("calls", 0) for r in dir_results) / total
     print(sep)
     totals = (
         f"  {'All':>4} | {total:>3} | "
         f"{bfs_all:>9.1f} | "
         f"{sra_tot / total:>5.0%} ({sra_tot:>2}/{total:<2}) | {sra_all:>9.1f} | "
-        f"{era_tot / total:>5.0%} ({era_tot:>2}/{total:<2}) | {era_all:>9.1f}"
+        f"{era_tot / total:>5.0%} ({era_tot:>2}/{total:<2}) | {era_all:>9.1f} | "
+        f"{era64_tot / total:>5.0%} ({era64_tot:>2}/{total:<2}) | {era64_all:>11.1f}"
     )
     if has_cc:
         cc_all = [r for r in dir_results if "cc" in r]
@@ -277,7 +294,7 @@ def print_summary_table(results: list[dict], direction: str, has_cc: bool = Fals
 
 
 def print_method_detail(results: list[dict], method: str, direction: str) -> None:
-    dir_results = [r for r in results if r["direction"] == direction]
+    dir_results = [r for r in results if r["direction"] == direction and method in r]
     if not dir_results:
         return
 
@@ -303,6 +320,17 @@ def print_method_detail(results: list[dict], method: str, direction: str) -> Non
             avg = sum(gaps) / len(gaps)
             print(f"  Layer gap ({len(wrong)} wrong-layer): mean={avg:.2f} min={min(gaps)} max={max(gaps)}")
 
+    verified = [r for r in dir_results if r[method].get("proxy_verified")]
+    jaccs_v = [r[method]["jaccard"] for r in verified if r[method].get("jaccard") is not None]
+    jaccs_all = [r[method]["jaccard"] for r in dir_results if r[method].get("jaccard") is not None]
+    if jaccs_v or jaccs_all:
+        msg = "  Jaccard(proxy CF, BFS CF):"
+        if jaccs_v:
+            msg += f"  verified mean={sum(jaccs_v) / len(jaccs_v):.3f} (n={len(jaccs_v)})"
+        if jaccs_all:
+            msg += f"  overall mean={sum(jaccs_all) / len(jaccs_all):.3f} (n={len(jaccs_all)})"
+        print(msg)
+
     failures = [r for r in dir_results if r[method]["outcome"] != "correct"]
     if failures:
         print(f"  Failures ({len(failures)}):")
@@ -318,113 +346,278 @@ def print_method_detail(results: list[dict], method: str, direction: str) -> Non
 
 
 def plot_results(results: list[dict], has_cc: bool = False) -> None:
+    import os
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     import numpy as np
+    from plot_style import apply_plot_style
 
-    directions = ["down", "up"]
-    dir_labels = {"down": "Down Search", "up": "Up Search"}
+    apply_plot_style()
 
-    # -- Figure 1: Accuracy line plot --
-    fig1, axes1 = plt.subplots(1, 2, figsize=(14, 5), sharey=True)
-    for ax, direction in zip(axes1, directions):
+    dir_labels = {"down": "Top-Down Search", "up": "Bottom-Up Search"}
+    dir_folders = {"down": "data/top_down", "up": "data/bottom_up"}
+
+    def _save_dual(fig, path: str) -> None:
+        """Save figure with title, then save a copy without the suptitle to notitle/."""
+        fig.savefig(path, dpi=150)
+        notitle_dir = os.path.join(os.path.dirname(path), "notitle")
+        os.makedirs(notitle_dir, exist_ok=True)
+        fig.suptitle("")
+        fig.savefig(os.path.join(notitle_dir, os.path.basename(path)), dpi=150)
+
+    outcome_order = ["correct", "wrong_layer", "not_found"]
+    outcome_colors = {
+        "correct": "#2ca02c",
+        "wrong_layer": "#ff7f0e",
+        "false_positive": "#d62728",
+        "not_found": "#aec7e8",
+    }
+    methods = ["sra", "era", "era64"] + (["cc"] if has_cc else [])
+    method_labels = {"sra": "SRA", "era": "ERA", "era64": "ERA64", "cc": "CC"}
+    bar_colors = {
+        "BFS": "#2ca02c", "SRA": "#d62728", "ERA": "#1f77b4",
+        "ERA Total": "#aec7e8", "ERA64": "#9467bd", "ERA64 Total": "#c5b0d5",
+        "CC": "#ff7f0e", "CC Total": "#ffbb78",
+    }
+
+    for direction in ["down", "up"]:
+        out_dir = dir_folders[direction]
+        os.makedirs(out_dir, exist_ok=True)
+
         dir_results = [r for r in results if r["direction"] == direction]
         by_size: dict[int, list[dict]] = defaultdict(list)
         for r in dir_results:
             by_size[r["effective_size"]].append(r)
-
         sizes = sorted(by_size)
-        sra_acc = [
-            sum(1 for r in by_size[s] if r["sra"]["outcome"] == "correct") / len(by_size[s])
-            for s in sizes
-        ]
-        era_acc = [
-            sum(1 for r in by_size[s] if r["era"]["outcome"] == "correct") / len(by_size[s])
-            for s in sizes
-        ]
 
-        ax.plot(sizes, [a * 100 for a in sra_acc], "o-", label="SRA", color="#d62728", linewidth=2, markersize=7)
-        ax.plot(sizes, [a * 100 for a in era_acc], "s-", label="ERA", color="#1f77b4", linewidth=2, markersize=7)
+        def _acc_ci(outcomes: list[int]) -> tuple[float, float]:
+            n = len(outcomes)
+            p = sum(outcomes) / n
+            return p * 100, 1.96 * np.sqrt(p * (1 - p) / n) * 100
 
+        def _mean_ci(vals: list[float]) -> tuple[float, float]:
+            arr = np.array(vals, dtype=float)
+            n = len(arr)
+            return float(np.mean(arr)), float(1.96 * np.std(arr, ddof=1) / np.sqrt(n))
+
+        # -- Figure 1: Accuracy line plot with 95% CI bands --
+        fig1, ax1 = plt.subplots(figsize=(7, 5))
+
+        def _plot_acc_line(ax, xs, stats, marker, label, color):
+            ys = [v for v, _ in stats]
+            # cis = [c for _, c in stats]
+            ax.plot(xs, ys, f"{marker}-", label=label, color=color, linewidth=2, markersize=7)
+            # ax.errorbar(xs, ys, yerr=cis, fmt=f"{marker}-", label=label, color=color,
+            #             linewidth=2, markersize=7, capsize=4, capthick=1.2, elinewidth=1.2)
+
+        sra_acc_stats = [_acc_ci([1 if r["sra"]["outcome"] == "correct" else 0 for r in by_size[s]]) for s in sizes]
+        era_acc_stats = [_acc_ci([1 if r["era"]["outcome"] == "correct" else 0 for r in by_size[s]]) for s in sizes]
+        # era64_acc_stats = [_acc_ci([1 if r.get("era64", {}).get("outcome") == "correct" else 0 for r in by_size[s]]) for s in sizes]
+        _plot_acc_line(ax1, sizes, sra_acc_stats, "o", "SRA", "#d62728")
+        _plot_acc_line(ax1, sizes, era_acc_stats, "s", "ERA", "#1f77b4")
+        # _plot_acc_line(ax1, sizes, era64_acc_stats, "D", "ERA (64)", "#9467bd")
         if has_cc:
-            cc_acc = []
-            cc_sizes = []
+            cc_sizes, cc_acc_stats = [], []
             for s in sizes:
                 cc_bucket = [r for r in by_size[s] if "cc" in r]
                 if cc_bucket:
                     cc_sizes.append(s)
-                    cc_acc.append(sum(1 for r in cc_bucket if r["cc"]["outcome"] == "correct") / len(cc_bucket) * 100)
+                    cc_acc_stats.append(_acc_ci([1 if r["cc"]["outcome"] == "correct" else 0 for r in cc_bucket]))
             if cc_sizes:
-                ax.plot(cc_sizes, cc_acc, "^-", label="CC", color="#ff7f0e", linewidth=2, markersize=7)
+                _plot_acc_line(ax1, cc_sizes, cc_acc_stats, "^", "CC", "#ff7f0e")
+        ax1.set_xlabel("Number of Criteria")
+        ax1.set_ylabel("Accuracy (%)")
+        ax1.set_title(dir_labels[direction])
+        ax1.set_xticks(sizes)
+        ax1.set_ylim(0, 105)
+        n_acc = 4 if has_cc else 3
+        ax1.legend(ncol=n_acc, loc="lower left")
+        ax1.grid(True, alpha=0.3)
+        fig1.suptitle("Search Accuracy of Pruning Methods", fontweight="bold")
+        fig1.tight_layout()
+        path = f"{out_dir}/accuracy_by_size.png"
+        _save_dual(fig1, path)
+        plt.close(fig1)
+        print(f"Saved {path}")
 
-        ax.set_xlabel("Effective Size")
-        ax.set_ylabel("Accuracy (%)")
-        ax.set_title(dir_labels[direction])
-        ax.set_xticks(sizes)
-        ax.set_ylim(0, 105)
-        ax.legend()
-        ax.grid(True, alpha=0.3)
-
-    fig1.suptitle("Search Accuracy by Effective Lattice Size", fontsize=14, fontweight="bold")
-    fig1.tight_layout()
-    fig1.savefig("data/accuracy_by_size.png", dpi=150)
-    print("Saved data/accuracy_by_size.png")
-
-    # -- Figure 2: Calls bar chart --
-    fig2, axes2 = plt.subplots(1, 2, figsize=(14, 5))
-    n_bars = 5 if has_cc else 4
-    bar_width = 0.8 / n_bars
-    colors = {
-        "BFS": "#2ca02c", "SRA": "#d62728", "ERA": "#1f77b4",
-        "ERA Total": "#aec7e8", "CC": "#ff7f0e",
-    }
-
-    for ax, direction in zip(axes2, directions):
-        dir_results = [r for r in results if r["direction"] == direction]
-        by_size = defaultdict(list)
-        for r in dir_results:
-            by_size[r["effective_size"]].append(r)
-
-        sizes = sorted(by_size)
+        # -- Pre-compute calls means + 95% CIs for Figures 2 and 2b --
+        n_bars = 4 + (2 if has_cc else 0)
+        bar_width = 0.8 / n_bars
         x = np.arange(len(sizes))
 
-        bfs_calls = [sum(r["bfs_calls"] for r in by_size[s]) / len(by_size[s]) for s in sizes]
-        sra_calls = [sum(r["sra"]["calls"] for r in by_size[s]) / len(by_size[s]) for s in sizes]
-        era_calls = [sum(r["era"]["calls"] for r in by_size[s]) / len(by_size[s]) for s in sizes]
-        era_total = [
-            sum(r["era"]["calls"] + r["era_budget_used"] for r in by_size[s]) / len(by_size[s])
-            for s in sizes
-        ]
+        bfs_stats   = [_mean_ci([r["bfs_calls"] for r in by_size[s]]) for s in sizes]
+        sra_stats   = [_mean_ci([r["sra"]["calls"] for r in by_size[s]]) for s in sizes]
+        era_stats   = [_mean_ci([r["era"]["calls"] for r in by_size[s]]) for s in sizes]
+        era_tot_stats = [_mean_ci([r["era"]["calls"] + r["era_budget_used"] for r in by_size[s]]) for s in sizes]
+        era64_stats  = [_mean_ci([r["era64"]["calls"] for r in by_size[s]]) for s in sizes]
+        era64_tot_stats = [_mean_ci([r["era64"]["calls"] + r["era64_budget_used"] for r in by_size[s]]) for s in sizes]
 
-        offset = -(n_bars - 1) / 2
-        ax.bar(x + offset * bar_width, bfs_calls, bar_width, label="BFS", color=colors["BFS"])
-        ax.bar(x + (offset + 1) * bar_width, sra_calls, bar_width, label="SRA", color=colors["SRA"])
-        ax.bar(x + (offset + 2) * bar_width, era_calls, bar_width, label="ERA (search)", color=colors["ERA"])
-        ax.bar(x + (offset + 3) * bar_width, era_total, bar_width, label="ERA (total)", color=colors["ERA Total"], edgecolor=colors["ERA"], linewidth=0.8)
+        bfs_calls,   bfs_ci     = [v for v, _ in bfs_stats],   [c for _, c in bfs_stats]
+        sra_calls,   sra_ci2    = [v for v, _ in sra_stats],   [c for _, c in sra_stats]
+        era_calls,   era_ci2    = [v for v, _ in era_stats],   [c for _, c in era_stats]
+        era_total,   era_tot_ci = [v for v, _ in era_tot_stats], [c for _, c in era_tot_stats]
+        era64_calls, era64_ci2  = [v for v, _ in era64_stats],  [c for _, c in era64_stats]
+        era64_total, era64_tot_ci = [v for v, _ in era64_tot_stats], [c for _, c in era64_tot_stats]
 
+        cc_calls_list, cc_calls_ci, cc_total_list = [], [], []
         if has_cc:
-            cc_calls = []
             for s in sizes:
                 cc_bucket = [r for r in by_size[s] if "cc" in r]
                 if cc_bucket:
-                    cc_calls.append(sum(r["cc"]["calls"] for r in cc_bucket) / len(cc_bucket))
+                    avg, ci = _mean_ci([r["cc"]["calls"] for r in cc_bucket])
+                    cc_calls_list.append(avg)
+                    cc_calls_ci.append(ci)
+                    cc_total_list.append(avg + 64)
                 else:
-                    cc_calls.append(0)
-            ax.bar(x + (offset + 4) * bar_width, cc_calls, bar_width, label="CC", color=colors["CC"])
+                    cc_calls_list.append(0.0)
+                    cc_calls_ci.append(0.0)
+                    cc_total_list.append(0.0)
 
-        ax.set_xlabel("Effective Size")
-        ax.set_ylabel("Average Calls")
-        ax.set_title(dir_labels[direction])
-        ax.set_xticks(x)
-        ax.set_xticklabels(sizes)
-        ax.legend(fontsize=8)
-        ax.grid(True, axis="y", alpha=0.3)
+        def _yerr(means: list[float], cis: list[float]):
+            """Asymmetric yerr array clipped so the lower whisker never goes below 0."""
+            lower = [min(ci, mean) for mean, ci in zip(means, cis)]
+            upper = list(cis)
+            return np.array([lower, upper])
 
-    fig2.suptitle("Average Calls by Effective Lattice Size", fontsize=14, fontweight="bold")
-    fig2.tight_layout()
-    fig2.savefig("data/calls_by_size.png", dpi=150)
-    print("Saved data/calls_by_size.png")
+        # -- Figure 2: Average calls line plot --
+        fig2, ax2 = plt.subplots(figsize=(9, 5))
+        ax2.plot(sizes, bfs_calls, "o-", label="BFS",                  color=bar_colors["BFS"],       linewidth=2, markersize=7)
+        ax2.plot(sizes, sra_calls, "s-", label="SRA",                  color=bar_colors["SRA"],       linewidth=2, markersize=7)
+        ax2.plot(sizes, era_total, "D-", label="ERA", color=bar_colors["ERA"], linewidth=2, markersize=7)
+        if has_cc:
+            ax2.plot(sizes, cc_total_list, "P-", label="CC", color=bar_colors["CC"], linewidth=2, markersize=7)
+        ax2.set_xlabel("Number of Criteria")
+        ax2.set_ylabel("Average Calls")
+        ax2.set_title(dir_labels[direction])
+        ax2.set_xticks(sizes)
+        n_calls = 4 if has_cc else 3
+        ax2.legend(ncol=n_calls, loc="upper left")
+        ax2.grid(True, alpha=0.3)
+        fig2.suptitle("Average LLM Calls to Find First Counterfactual", fontweight="bold")
+        fig2.tight_layout()
+        path = f"{out_dir}/calls_by_size.png"
+        _save_dual(fig2, path)
+        plt.close(fig2)
+        print(f"Saved {path}")
+
+        # -- Figure 2b: Proportion of lattice visited — line plot --
+        scale = [1.0 / (2 ** s) for s in sizes]
+        fig2b, ax2b = plt.subplots(figsize=(9, 5))
+        bfs_n   = [v * sc for v, sc in zip(bfs_calls, scale)]
+        sra_n   = [v * sc for v, sc in zip(sra_calls, scale)]
+        era_t_n = [v * sc for v, sc in zip(era_total, scale)]
+        ax2b.plot(sizes, bfs_n,   "o-", label="BFS",                color=bar_colors["BFS"],       linewidth=2, markersize=7)
+        ax2b.plot(sizes, sra_n,   "s-", label="SRA",                color=bar_colors["SRA"],       linewidth=2, markersize=7)
+        ax2b.plot(sizes, era_t_n, "D-", label="ERA", color=bar_colors["ERA"], linewidth=2, markersize=7)
+        if has_cc:
+            cc_t_n = [v * sc for v, sc in zip(cc_total_list, scale)]
+            ax2b.plot(sizes, cc_t_n, "P-", label="CC", color=bar_colors["CC"], linewidth=2, markersize=7)
+        ax2b.set_ylim(0, 1.0)
+        ax2b.set_xlabel("Number of Criteria")
+        ax2b.set_ylabel("Proportion of Lattice Visited")
+        ax2b.set_title(dir_labels[direction])
+        ax2b.set_xticks(sizes)
+        ax2b.legend(ncol=n_calls, loc="upper right")
+        ax2b.grid(True, alpha=0.3)
+        fig2b.suptitle("Proportion of Lattice Visited by Lattice Size", fontweight="bold")
+        fig2b.tight_layout()
+        path = f"{out_dir}/calls_by_size_normalized.png"
+        _save_dual(fig2b, path)
+        plt.close(fig2b)
+        print(f"Saved {path}")
+
+        # -- Figure 3 helper: draw one outcomes subplot --
+        def _draw_outcomes(ax, method: str) -> None:
+            m_results = [r for r in dir_results if method != "cc" or "cc" in r]
+            m_by_size: dict[int, list[dict]] = defaultdict(list)
+            for r in m_results:
+                m_by_size[r["effective_size"]].append(r)
+            m_sizes = sorted(m_by_size)
+            xm = np.arange(len(m_sizes))
+            bottoms = np.zeros(len(m_sizes))
+            for outcome in outcome_order:
+                totals = np.array([len(m_by_size[s]) for s in m_sizes], dtype=float)
+                counts = np.array([
+                    sum(1 for r in m_by_size[s] if r[method]["outcome"] == outcome)
+                    for s in m_sizes
+                ], dtype=float)
+                proportions = np.where(totals > 0, counts / totals, 0.0)
+                ax.bar(xm, proportions, bottom=bottoms, label=outcome, color=outcome_colors[outcome])
+                bottoms += proportions
+            ax.set_title(f"{method_labels[method]} — {dir_labels[direction]}")
+            ax.set_xticks(xm)
+            ax.set_xticklabels([f"{s}\n(n={len(m_by_size[s])})" for s in m_sizes])
+            ax.set_xlabel("Number of Criteria")
+            ax.set_ylabel("Proportion")
+            ax.set_ylim(0, 1.18)
+            ax.legend(ncol=len(outcome_order), loc="upper right", framealpha=0.9)
+            ax.grid(True, axis="y", alpha=0.3)
+
+        # -- Figure 3a: SRA only --
+        fig3a, ax3a = plt.subplots(figsize=(7, 3.5))
+        _draw_outcomes(ax3a, "sra")
+        fig3a.suptitle("Outcome Breakdown by Method and Effective Size", fontweight="bold")
+        fig3a.tight_layout()
+        path = f"{out_dir}/outcomes_sra.png"
+        _save_dual(fig3a, path)
+        plt.close(fig3a)
+        print(f"Saved {path}")
+
+        # -- Figure 3b: ERA / ERA64 / CC --
+        other_methods = [m for m in methods if m != "sra"]
+        fig3b, axes3b = plt.subplots(len(other_methods), 1, figsize=(7, 3.5 * len(other_methods)), sharey=False)
+        if len(other_methods) == 1:
+            axes3b = [axes3b]
+        for ax, method in zip(axes3b, other_methods):
+            _draw_outcomes(ax, method)
+        fig3b.suptitle("Outcome Breakdown by Method and Effective Size", fontweight="bold")
+        fig3b.tight_layout()
+        path = f"{out_dir}/outcomes_by_size.png"
+        _save_dual(fig3b, path)
+        plt.close(fig3b)
+        print(f"Saved {path}")
+
+        # -- Figure 4: Layer gap distribution (line plot, one per method) --
+        fig4, ax4 = plt.subplots(figsize=(6, 4))
+        method_specs = [
+            ("sra",   "#d62728", "SRA",   "s"),
+            ("era",   "#1f77b4", "ERA",   "D"),
+            ("era64", "#9467bd", "ERA64", "^"),
+        ] + ([("cc", "#ff7f0e", "CC", "P")] if has_cc else [])
+
+        method_gap_counts: list[tuple[str, str, str, str, Counter]] = []
+        max_gap = 0
+        for method, color, label, marker in method_specs:
+            gaps = [
+                r[method]["gap"]
+                for r in dir_results
+                if method in r and r[method]["outcome"] == "wrong_layer" and r[method]["gap"] is not None
+            ]
+            if gaps:
+                counts = Counter(gaps)
+                method_gap_counts.append((method, color, label, marker, counts))
+                max_gap = max(max_gap, max(gaps))
+
+        if method_gap_counts:
+            x = list(range(1, max_gap + 1))
+            for method, color, label, marker, counts in method_gap_counts:
+                y = [counts.get(g, 0) for g in x]
+                n = sum(counts.values())
+                ax4.plot(x, y, f"{marker}-", color=color, label=f"{label} (n={n})",
+                         linewidth=2, markersize=7)
+            ax4.set_xticks(x)
+        ax4.set_xlabel("Layer Gap")
+        ax4.set_ylabel("Count")
+        ax4.set_title(dir_labels[direction])
+        ax4.legend(ncol=len(method_gap_counts) or 1, loc="upper right")
+        ax4.grid(True, alpha=0.3)
+        fig4.suptitle("Layer Gap Distribution (wrong-layer cases only)", fontweight="bold")
+        fig4.tight_layout()
+        path = f"{out_dir}/layer_gaps.png"
+        _save_dual(fig4, path)
+        plt.close(fig4)
+        print(f"Saved {path}")
 
 
 def load_query_data(path: str) -> dict[int, dict]:
@@ -514,7 +707,7 @@ def main() -> None:
     export_cc_cases(all_results, query_lookup)
 
     # Merge CC results if available
-    methods = ["sra", "era"]
+    methods = ["sra", "era", "era64"]
     cc_lookup = load_cc_results()
     if cc_lookup:
         merge_cc_results(all_results, cc_lookup)

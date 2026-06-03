@@ -28,6 +28,7 @@ Each entry in `lattices` must have:
 from collections import Counter, defaultdict
 
 from search.bfs import bfs_search
+from search.lattice import jaccard_keys
 
 
 def _layer_size(key):
@@ -117,6 +118,7 @@ def evaluate(lattices, search_fn):
             "correct"        : is_correct,
             "outcome"        : outcome,
             "gap"            : gap,
+            "jaccard"        : jaccard_keys(bfs_key, proxy_key),
         })
 
     total = len(detail)
@@ -161,6 +163,19 @@ def report(eval_result, title="Search method"):
             c = by_layer[sz]["correct"]
             t = by_layer[sz]["total"]
             print(f"    size {sz}  {c}/{t}  ({c/t:.0%})")
+
+    # ── Jaccard analysis (proxy CF criteria vs BFS CF criteria) ─────────────
+    verified = [r for r in results if r["proxy_verified"]]
+    jaccs_v = [r["jaccard"] for r in verified if r.get("jaccard") is not None]
+    jaccs_all = [r["jaccard"] for r in results if r.get("jaccard") is not None]
+    if jaccs_v or jaccs_all:
+        print(f"\n  Jaccard(proxy CF, BFS CF):")
+        if jaccs_v:
+            avg = sum(jaccs_v) / len(jaccs_v)
+            print(f"    verified mean: {avg:.3f}   min: {min(jaccs_v):.3f}   max: {max(jaccs_v):.3f}   n={len(jaccs_v)}")
+        if jaccs_all:
+            avg = sum(jaccs_all) / len(jaccs_all)
+            print(f"    overall  mean: {avg:.3f}   min: {min(jaccs_all):.3f}   max: {max(jaccs_all):.3f}   n={len(jaccs_all)}")
 
     # ── Layer gap analysis ─────────────────────────────────────────────────
     wrong_layer = [r for r in results if r["outcome"] == "wrong_layer"]
