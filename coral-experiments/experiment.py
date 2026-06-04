@@ -482,7 +482,7 @@ def plot_results(results: list[dict], has_cc: bool = False) -> None:
 
         # -- Figure 2: Average calls line plot --
         fig2, ax2 = plt.subplots(figsize=(9, 5))
-        ax2.plot(sizes, bfs_calls, "o-", label="BFS",                  color=bar_colors["BFS"],       linewidth=2, markersize=7)
+        ax2.plot(sizes, bfs_calls, "o:", label="BFS (baseline)",       color="black",                 linewidth=2, markersize=7)
         ax2.plot(sizes, sra_calls, "s-", label="SRA",                  color=bar_colors["SRA"],       linewidth=2, markersize=7)
         ax2.plot(sizes, era_total, "D-", label="ERA", color=bar_colors["ERA"], linewidth=2, markersize=7)
         if has_cc:
@@ -507,7 +507,7 @@ def plot_results(results: list[dict], has_cc: bool = False) -> None:
         bfs_n   = [v * sc for v, sc in zip(bfs_calls, scale)]
         sra_n   = [v * sc for v, sc in zip(sra_calls, scale)]
         era_t_n = [v * sc for v, sc in zip(era_total, scale)]
-        ax2b.plot(sizes, bfs_n,   "o-", label="BFS",                color=bar_colors["BFS"],       linewidth=2, markersize=7)
+        ax2b.plot(sizes, bfs_n,   "o:", label="BFS (baseline)",     color="black",                 linewidth=2, markersize=7)
         ax2b.plot(sizes, sra_n,   "s-", label="SRA",                color=bar_colors["SRA"],       linewidth=2, markersize=7)
         ax2b.plot(sizes, era_t_n, "D-", label="ERA", color=bar_colors["ERA"], linewidth=2, markersize=7)
         if has_cc:

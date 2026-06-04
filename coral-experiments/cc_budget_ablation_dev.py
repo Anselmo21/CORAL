@@ -12,14 +12,11 @@ Two phases:
     ({qid: {"sources": str}} or {qid: str}).
 
   Phase 2 — GPU run (on the remote box):
-      conda run -n coral python cc_budget_ablation_dev.py --run [--num-ablations-max 256]
-    Sweeps `num_ablations ∈ BUDGETS`, calling contextcite_search per (case, budget).
-    Resumes by case_id × budget; writes data/cc_results_dev.json incrementally.
+      conda run -n coral python cc_budget_ablation_dev.py --run
+    Default: single eval budget `num_ablations=64` (matches ERA64 / contextcite default).
+    Use `--sweep` to run the full ablation grid in BUDGETS (up to `--num-ablations-max`).
+    Resumes by (case_id, budget); writes data/cc_results_dev.json incrementally.
     Cases with empty `sources` are skipped.
-
-Cost warning: 363 cases × 7 budgets = 2541 ContextCite fits. Each fit does
-num_ablations forward passes. Estimate at your own model/GPU before kicking off
-the full sweep; consider trimming BUDGETS or the case list first.
 """
 
 import argparse
@@ -36,20 +33,23 @@ DEV_CASES_PATH = "data/dev.jsonl"
 CC_CASES_DEV_PATH = "data/cc_cases_dev.json"
 CC_RESULTS_DEV_PATH = "data/cc_results_dev.json"
 
-# Mirrors era_budget_ablation.BUDGETS so ERA/CC plots are directly comparable.
+# Default eval budget (aligned with ERA64 and search/contextcite.py default).
+CC_EVAL_NUM_ABLATIONS: int = 64
+
+# Full sweep grid (--sweep only); mirrors era_budget_ablation.BUDGETS.
 BUDGETS: list[int] = [4, 8, 16, 32, 64, 128, 256]
 
 
 # ─────────────────────────── Exporter (local) ────────────────────────────
 
 
-def build_dev_cc_cases(
+def build_manifest_cc_cases(
     lattices_path: str,
     cases_path: str,
     sources_override: dict[int, str] | None = None,
     directions: set[str] | None = None,
 ) -> list[dict]:
-    """Build CC cases from dev.jsonl. Sources come from the per-row `sources`
+    """Build CC cases from a jsonl manifest (dev.jsonl, test.jsonl, …). Sources come from the per-row `sources`
     field; `sources_override` (qid → str) can substitute on a per-qid basis.
 
     `directions` restricts which dev rows are exported (e.g. {"down"} for
@@ -140,13 +140,24 @@ def export_cases(args: argparse.Namespace) -> None:
     if args.down_only:
         directions = {"down"}
 
-    cases = build_dev_cc_cases(
+    cases = build_manifest_cc_cases(
         DEV_LATTICES_PATH, DEV_CASES_PATH, sources_override, directions=directions,
     )
     os.makedirs(os.path.dirname(CC_CASES_DEV_PATH) or ".", exist_ok=True)
     with open(CC_CASES_DEV_PATH, "w") as f:
         json.dump(cases, f, indent=2)
     print(f"Exported {len(cases)} cases to {CC_CASES_DEV_PATH}")
+
+
+def build_dev_cc_cases(
+    lattices_path: str,
+    cases_path: str,
+    sources_override: dict[int, str] | None = None,
+    directions: set[str] | None = None,
+) -> list[dict]:
+    return build_manifest_cc_cases(
+        lattices_path, cases_path, sources_override, directions=directions,
+    )
 
 
 # ────────────────────────── Runner (GPU box) ─────────────────────────────
@@ -203,8 +214,12 @@ def run_sweep(args: argparse.Namespace) -> None:
         cases = json.load(f)
     print(f"Loaded {len(cases)} cases from {CC_CASES_DEV_PATH}")
 
-    budgets = [b for b in BUDGETS if b <= args.num_ablations_max]
-    print(f"Sweep budgets: {budgets}")
+    if args.sweep:
+        budgets = [b for b in BUDGETS if b <= args.num_ablations_max]
+        print(f"Sweep budgets: {budgets}")
+    else:
+        budgets = [args.budget]
+        print(f"Eval budget (num_ablations): {args.budget}")
 
     print(f"Loading model {args.model}...")
     tokenizer = AutoTokenizer.from_pretrained(args.model)
@@ -294,7 +309,11 @@ def main() -> None:
     mode.add_argument("--export", action="store_true",
                       help="Local: build data/cc_cases_dev.json")
     mode.add_argument("--run", action="store_true",
-                      help="GPU box: sweep num_ablations on each case")
+                      help="GPU box: run ContextCite on each case")
+    parser.add_argument("--sweep", action="store_true",
+                        help="Sweep all BUDGETS (default: single --budget only)")
+    parser.add_argument("--budget", type=int, default=CC_EVAL_NUM_ABLATIONS,
+                        help=f"num_ablations for contextcite_search (default {CC_EVAL_NUM_ABLATIONS})")
 
     parser.add_argument("--sources",
                         help="JSON of {query_id: {sources: str}} for the dev queries "
