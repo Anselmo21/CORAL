@@ -356,15 +356,10 @@ def plot_results(results: list[dict], has_cc: bool = False) -> None:
     apply_plot_style()
 
     dir_labels = {"down": "Top-Down Search", "up": "Bottom-Up Search"}
-    dir_folders = {"down": "data/top_down", "up": "data/bottom_up"}
+    dir_folders = {"down": "plots/top_down", "up": "plots/bottom_up"}
 
     def _save_dual(fig, path: str) -> None:
-        """Save figure with title, then save a copy without the suptitle to notitle/."""
         fig.savefig(path, dpi=150)
-        notitle_dir = os.path.join(os.path.dirname(path), "notitle")
-        os.makedirs(notitle_dir, exist_ok=True)
-        fig.suptitle("")
-        fig.savefig(os.path.join(notitle_dir, os.path.basename(path)), dpi=150)
 
     outcome_order = ["correct", "wrong_layer", "not_found"]
     outcome_colors = {
@@ -702,9 +697,12 @@ def main() -> None:
             results = run_experiment(cases)
             all_results.extend(results)
 
-    # Export cases for CC runner
-    query_lookup = load_query_data(QUERY_PATH)
-    export_cc_cases(all_results, query_lookup)
+    # Export cases for CC runner (skipped when the legacy query file is absent)
+    try:
+        query_lookup = load_query_data(QUERY_PATH)
+        export_cc_cases(all_results, query_lookup)
+    except FileNotFoundError:
+        print(f"Skipping CC case export — {QUERY_PATH} not present")
 
     # Merge CC results if available
     methods = ["sra", "era", "era64"]

@@ -15,7 +15,7 @@ from collections import Counter, defaultdict
 
 CC_RESULTS_PATH = "data/cc_results_dev.json"
 CC_EVAL_BUDGET = 64
-OUT_DIR = "data/cc_ablation_study/dev"
+OUT_DIR = "plots/cc_ablation_study/dev"
 
 
 def load_results(path: str) -> list[dict]:
@@ -80,14 +80,10 @@ def plot_eval(results: list[dict], out_dir: str, budget: int) -> None:
 
     apply_plot_style()
     os.makedirs(out_dir, exist_ok=True)
-    notitle_dir = os.path.join(out_dir, "notitle")
-    os.makedirs(notitle_dir, exist_ok=True)
 
     def _save_dual(fig, filename: str) -> None:
         path = os.path.join(out_dir, filename)
         fig.savefig(path, dpi=150)
-        fig.suptitle("")
-        fig.savefig(os.path.join(notitle_dir, filename), dpi=150)
         print(f"Saved {path}")
 
     direction = results[0]["direction"] if results else "down"
@@ -213,14 +209,10 @@ def plot_sweep(results: list[dict], out_dir: str) -> None:
     apply_plot_style()
     sweep_dir = os.path.join(out_dir, "sweep")
     os.makedirs(sweep_dir, exist_ok=True)
-    notitle_dir = os.path.join(sweep_dir, "notitle")
-    os.makedirs(notitle_dir, exist_ok=True)
 
     def _save_dual(fig, filename: str) -> None:
         path = os.path.join(sweep_dir, filename)
         fig.savefig(path, dpi=150)
-        fig.suptitle("")
-        fig.savefig(os.path.join(notitle_dir, filename), dpi=150)
         print(f"Saved {path}")
 
     budgets = sorted({r["budget"] for r in results})

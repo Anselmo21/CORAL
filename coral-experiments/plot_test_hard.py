@@ -19,7 +19,7 @@ from plot_style import apply_plot_style
 
 
 RESULTS_PATH = "data/era_ablation_study/test_hard/test_hard_results.json"
-PLOT_DIR = "data/era_ablation_study/test_hard/plots"
+PLOT_DIR = "plots/era_ablation_study/test_hard"
 
 
 def main() -> None:
@@ -69,14 +69,10 @@ def main() -> None:
     era64_calls = [mean_calls_proxy(bucket[s], "budget_64") for s in sizes]
 
     os.makedirs(PLOT_DIR, exist_ok=True)
-    notitle_dir = os.path.join(PLOT_DIR, "notitle")
-    os.makedirs(notitle_dir, exist_ok=True)
 
     def _save_dual(fig, name: str) -> None:
         path = os.path.join(PLOT_DIR, name)
         fig.savefig(path, dpi=150)
-        fig.suptitle("")
-        fig.savefig(os.path.join(notitle_dir, name), dpi=150)
         print(f"Saved {path}")
 
     colors = {

@@ -125,7 +125,7 @@ def print_summary(results: list[dict], direction: str) -> None:
 
 def plot_results(
     results: list[dict],
-    out_dir: str = "data",
+    out_dir: str = "plots",
     directions: list[str] | None = None,
 ) -> None:
     import matplotlib
@@ -268,6 +268,7 @@ def main() -> None:
         if args.down_only:
             cases = [c for c in cases if c["direction"] == "down"]
         out_dir = "data/entropy_ablation_study/dev"
+        plot_dir = "plots/entropy_ablation_study/dev"
         results_file = os.path.join(out_dir, "entropy_ablation_results.json")
         print(f"Loaded {len(cases)} dev cases from {DEV_CASES_PATH}")
 
@@ -282,7 +283,7 @@ def main() -> None:
             json.dump(all_results, f, indent=2)
         print(f"\nResults saved to {results_file}")
 
-        plot_results(all_results, out_dir=out_dir, directions=directions)
+        plot_results(all_results, out_dir=plot_dir, directions=directions)
         return
 
     rng = random.Random(SEED)

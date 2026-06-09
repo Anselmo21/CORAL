@@ -24,8 +24,9 @@ DEV_CASES_PATH = "data/dev.jsonl"
 TEST_CASES_PATH = "data/test.jsonl"
 
 BUDGETS: list[int] = [4, 8, 16, 32, 64, 128, 256]
-BUDGET_PCTS: list[int] = [10, 20, 30, 40, 50]
+BUDGET_PCTS: list[int] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 OUT_DIR = "data/era_ablation_study"
+PLOT_BASE_DIR = "plots/era_ablation_study"
 
 
 def effective_size(case: dict) -> int:
@@ -270,7 +271,7 @@ def print_summary(
 
 def plot_results(
     results: list[dict],
-    out_dir: str = OUT_DIR,
+    out_dir: str = PLOT_BASE_DIR,
     *,
     mode: str = "absolute",
     specs: list[int] | None = None,
@@ -286,14 +287,10 @@ def plot_results(
     apply_plot_style()
 
     os.makedirs(out_dir, exist_ok=True)
-    notitle_dir = os.path.join(out_dir, "notitle")
-    os.makedirs(notitle_dir, exist_ok=True)
 
     def _save_dual(fig, filename: str) -> None:
         path = os.path.join(out_dir, filename)
         fig.savefig(path, dpi=150)
-        fig.suptitle("")
-        fig.savefig(os.path.join(notitle_dir, filename), dpi=150)
         print(f"Saved {path}")
 
     def _acc_ci(outcomes: list[int]) -> tuple[float, float]:
@@ -496,6 +493,10 @@ def main() -> None:
                         help="Use base.json (real dataset) instead of the skeleton dataset")
     parser.add_argument("--dev", action="store_true",
                         help="Use dev.jsonl cases joined against all_lattices.json")
+    parser.add_argument("--test", action="store_true",
+                        help="Use test.jsonl cases joined against all_lattices.json")
+    parser.add_argument("--top-down", action="store_true",
+                        help="Restrict --dev/--test to top-down manifest rows only")
     parser.add_argument(
         "--pct",
         action="store_true",
@@ -507,9 +508,18 @@ def main() -> None:
     rng = random.Random(SEED)
     mode = "percent" if args.pct else "absolute"
 
-    if args.dev:
-        cases = load_manifest_cases(LATTICES_PATH, DEV_CASES_PATH)
-        subdir = "dev/pct" if args.pct else "dev"
+    if args.dev or args.test:
+        cases_path = TEST_CASES_PATH if args.test else DEV_CASES_PATH
+        split = "test" if args.test else "dev"
+        manifest_directions = ["top-down"] if args.top_down else None
+        cases = load_manifest_cases(
+            LATTICES_PATH, cases_path, manifest_directions=manifest_directions
+        )
+        td_suffix = "_topdown" if args.top_down else ""
+        if args.pct:
+            subdir = f"{split}/pct{td_suffix}"
+        else:
+            subdir = f"{split}{td_suffix}"
         out_dir = os.path.join(OUT_DIR, subdir)
         results_name = (
             "era_budget_pct_ablation_results.json"
@@ -517,13 +527,15 @@ def main() -> None:
             else "era_budget_ablation_results.json"
         )
         results_file = os.path.join(out_dir, results_name)
-        print(f"Loaded {len(cases)} dev cases from {DEV_CASES_PATH}")
+        td_note = " (top-down only)" if args.top_down else ""
+        print(f"Loaded {len(cases)} {split} cases{td_note} from {cases_path}")
         if args.pct:
             print(f"Budget mode: {mode} — {BUDGET_PCTS}")
 
         all_results = run_era_budget_ablation(cases, mode=mode)
 
-        for direction in ["down", "up"]:
+        directions = ["down"] if args.top_down else ["down", "up"]
+        for direction in directions:
             print_summary(all_results, direction, mode=mode)
 
         os.makedirs(out_dir, exist_ok=True)
@@ -531,7 +543,7 @@ def main() -> None:
             json.dump(all_results, f, indent=2)
         print(f"\nResults saved to {results_file}")
 
-        plot_results(all_results, out_dir=out_dir, mode=mode)
+        plot_results(all_results, out_dir=out_dir.replace(OUT_DIR, PLOT_BASE_DIR, 1), mode=mode)
         return
 
     if args.real:
@@ -588,7 +600,7 @@ def main() -> None:
         json.dump(all_results, f, indent=2)
     print(f"\nResults saved to {results_file}")
 
-    plot_results(all_results, out_dir=out_dir, mode=mode)
+    plot_results(all_results, out_dir=out_dir.replace(OUT_DIR, PLOT_BASE_DIR, 1), mode=mode)
 
 
 if __name__ == "__main__":

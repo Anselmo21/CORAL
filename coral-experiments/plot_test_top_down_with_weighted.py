@@ -23,7 +23,7 @@ ERA_WEIGHTED_PATH  = "data/era_ablation_study/test/top_down_weighted_10pct/era_w
 ERA_WEIGHTED64_PATH = "data/era_ablation_study/test/top_down_weighted_64/era_weighted_64_results.json"
 CC64_PATH          = "data/era_ablation_study/test/cc_results_test_topdown.json"
 SRA_PATH           = "data/era_ablation_study/test/top_down_sra/sra_results.json"
-PLOT_DIR           = "data/era_ablation_study/test/comparison/weighted"
+PLOT_DIR           = "plots/era_ablation_study/test/comparison/weighted"
 
 
 def main() -> None:
@@ -109,14 +109,10 @@ def main() -> None:
     cc64_calls    = [mean_calls_cc(cc64_by[s]) for s in sizes]
 
     os.makedirs(PLOT_DIR, exist_ok=True)
-    notitle_dir = os.path.join(PLOT_DIR, "notitle")
-    os.makedirs(notitle_dir, exist_ok=True)
 
     def _save_dual(fig, name: str) -> None:
         path = os.path.join(PLOT_DIR, name)
         fig.savefig(path, dpi=150)
-        fig.suptitle("")
-        fig.savefig(os.path.join(notitle_dir, name), dpi=150)
         print(f"Saved {path}")
 
     colors = {

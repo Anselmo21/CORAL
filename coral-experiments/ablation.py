@@ -1,4 +1,5 @@
 import json
+import os
 from collections import defaultdict
 
 from search.bfs import bfs_search
@@ -186,8 +187,9 @@ def plot_ablation(results: list[dict], budget_pcts: list[int]) -> None:
 
     fig.suptitle("ERA Budget Ablation (base.json, 19 lattices)", fontweight="bold")
     fig.tight_layout()
-    fig.savefig("data/ablation_budget.png", dpi=150)
-    print("Saved data/ablation_budget.png")
+    os.makedirs("plots", exist_ok=True)
+    fig.savefig("plots/ablation_budget.png", dpi=150)
+    print("Saved plots/ablation_budget.png")
 
 
 def main() -> None:

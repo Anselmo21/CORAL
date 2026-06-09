@@ -1,88 +1,69 @@
 from itertools import combinations
 
-import pandas as pd
-import pyflagr.Linear as Linear
-
 from search.heuristics import shannon_entropy, softmax_entropy, max_jump_cutoff, score_margin
 from search.lattice import combo_key, iter_search_layers
 
-import os
-from contextlib import contextmanager
 
-
-@contextmanager
-def _silence_stdout():
-    """Suppress C-level stdout (e.g. pyflagr's progress lines) via fd-level redirect."""
-    fflush = None
-    try:
-        import ctypes
-        fflush = ctypes.cdll.LoadLibrary(None).fflush
-    except Exception:
-        pass
-    devnull_fd = os.open(os.devnull, os.O_WRONLY)
-    saved_fd = os.dup(1)
-    try:
-        if fflush:
-            fflush(None)
-        os.dup2(devnull_fd, 1)
-        yield
-    finally:
-        if fflush:
-            fflush(None)
-        os.dup2(saved_fd, 1)
-        os.close(saved_fd)
-        os.close(devnull_fd)
-
-
-
-def _answer_id_maps(answers: list[str]) -> tuple[dict[str, str], dict[str, str]]:
-    """Map answers to comma-free item codes for pyflagr CSV I/O."""
-    answer_to_code = {ans: f"i{idx}" for idx, ans in enumerate(answers)}
-    code_to_answer = {code: ans for ans, code in answer_to_code.items()}
-    return answer_to_code, code_to_answer
-
-
-def _build_input_df(voter_rankings: dict[str, list[str]], answers: list[str]) -> pd.DataFrame:
-    """
-    Builds a DataFrame for the PyFlagr input.
-    """
-    answer_to_code, _ = _answer_id_maps(answers)
+def _combsum(voter_rankings: dict[str, list[str]], answers: list[str]) -> dict[str, float]:
+    """Sum Borda scores (n - rank) per answer across voters."""
     n = len(answers)
-    rows = []
-    for idx, (_voter_label, ranking) in enumerate(voter_rankings.items()):
-        safe_label = f"v{idx}"
-        for rank, answer in enumerate(ranking):
-            rows.append({
-                "Query": "q",
-                "Voter Name": safe_label,
-                "Item Code": answer_to_code[answer],
-                "Item Rank": rank + 1,
-                "Item Score": n - rank,
-                "Algorithm/Dataset": "sra",
-            })
-    return pd.DataFrame(rows)
+    scores: dict[str, float] = {a: 0.0 for a in answers}
+    for ranking in voter_rankings.values():
+        for rank, ans in enumerate(ranking):
+            if ans in scores:
+                scores[ans] += float(n - rank)
+    return scores
+
+
+def _combmnz(voter_rankings: dict[str, list[str]], answers: list[str]) -> dict[str, float]:
+    """CombMNZ: CombSUM × number of voters that listed each answer."""
+    n = len(answers)
+    sums: dict[str, float] = {a: 0.0 for a in answers}
+    counts: dict[str, int] = {a: 0 for a in answers}
+    for ranking in voter_rankings.values():
+        for rank, ans in enumerate(ranking):
+            if ans in sums:
+                sums[ans] += float(n - rank)
+                counts[ans] += 1
+    return {a: sums[a] * counts[a] for a in answers}
+
+
+def _borda(voter_rankings: dict[str, list[str]], answers: list[str]) -> dict[str, float]:
+    """Borda count. Equivalent to CombSUM when every voter ranks every answer
+    (true for all callers here), kept separate for clarity."""
+    return _combsum(voter_rankings, answers)
+
+
+_AGGREGATORS = {
+    "combsum": _combsum,
+    "combmnz": _combmnz,
+    "borda": _borda,
+}
 
 
 def _aggregate_with_scores(
     voter_rankings: dict[str, list[str]],
     answers: list[str],
-    aggregator,
+    aggregator: str | None = None,
 ) -> tuple[list[str], dict[str, float]]:
-    _, code_to_answer = _answer_id_maps(answers)
-    df = _build_input_df(voter_rankings, answers)
-    if df.empty:
+    """Rank-aggregate voter rankings into a single ranking + per-answer scores.
+
+    `aggregator` is one of "combsum" (default), "combmnz", "borda", or a
+    callable `(voter_rankings, answers) -> dict[answer, score]`. Pure Python —
+    replaces an earlier pyflagr.Linear.CombSUM dependency whose C internals
+    segfaulted intermittently and emitted phantom item codes on tied inputs.
+    """
+    if not voter_rankings:
         return [], {}
-    with _silence_stdout():
-        agg, _ = aggregator.aggregate(input_df=df)
-    ranking = [code_to_answer[item_id] for item_id in agg["ItemID"].tolist()]
-    if "Score" in agg.columns:
-        scores = {
-            code_to_answer[item_id]: float(score)
-            for item_id, score in zip(agg["ItemID"], agg["Score"])
-        }
+    if aggregator is None:
+        fn = _combsum
+    elif isinstance(aggregator, str):
+        fn = _AGGREGATORS[aggregator.lower()]
     else:
-        scores = {ans: float(len(ranking) - 1 - i) for i, ans in enumerate(ranking)}
-    return ranking, scores
+        fn = aggregator
+    scores = fn(voter_rankings, answers)
+    ordered = sorted(scores, key=lambda a: (-scores[a], a))
+    return ordered, scores
 
 
 def _get_child_rankings(subset, known, estimated):
@@ -127,7 +108,7 @@ def sra_search(
     Returns {"found", "key", "size", "estimated_ranking", "calls"}.
     """
     if aggregator is None:
-        aggregator = Linear.CombSUM()
+        aggregator = "combsum"
     if start_node is None:
         start_node = list(criteria)
 
@@ -194,105 +175,6 @@ def sra_search(
     return {"found": False, "key": None, "size": None, "ranking": None, "calls": calls}
 
 
-def sra_search_v2(
-    criteria, rankings_by_combo,
-    aggregator=None,
-    start_node=None,
-    direction="down",
-    top_k=1,
-    verbose=False,
-) -> dict:
-    """
-    SRA v2: symmetric seed layer for both directions.
-
-    Downward: seeds with individual-criterion (singleton) rankings — same as sra_search.
-    Upward: seeds with the s+1 layer (start_node + one extra criterion each). These nodes
-    are pre-loaded for free and used as voters to estimate deeper supersets, mirroring the
-    role singletons play in the downward direction.
-
-    Returns {"found", "key", "size", "ranking", "calls"}.
-    """
-    if aggregator is None:
-        aggregator = Linear.CombSUM()
-    if start_node is None:
-        start_node = list(criteria)
-
-    start_key = combo_key(start_node)
-    baseline_ranking = rankings_by_combo.get(start_key, [])
-    baseline_answer = baseline_ranking[0]
-    answers = list(baseline_ranking)
-
-    # Build the seed layer: singletons for down, s+1 nodes for up.
-    if direction == "down":
-        seed_rankings: dict[str, list[str]] = {
-            c: rankings_by_combo[c] for c in criteria if c in rankings_by_combo
-        }
-    else:
-        extra = [c for c in criteria if c not in start_node]
-        seed_rankings = {}
-        for c in extra:
-            key = combo_key(list(start_node) + [c])
-            if key in rankings_by_combo:
-                seed_rankings[key] = rankings_by_combo[key]
-
-    calls = 0
-
-    if verbose:
-        print(f"Start key: {start_key}")
-        print(f"Baseline: {baseline_ranking}")
-
-    for _layer_size, subsets in iter_search_layers(criteria, start_node, direction):
-        layer = []
-        if verbose:
-            print(f"\nLayer size: {_layer_size}")
-
-        for subset in subsets:
-            key = combo_key(subset)
-
-            if key in seed_rankings:
-                estimated_ranking = seed_rankings[key]
-            elif direction == "down":
-                voter_rankings = {c: seed_rankings[c] for c in subset if c in seed_rankings}
-                estimated_ranking, _ = _aggregate_with_scores(voter_rankings, answers, aggregator)
-            else:
-                # Voters are the s+1 sub-supersets: start_node + each individual extra criterion
-                extra_in_subset = [c for c in subset if c not in start_node]
-                voter_rankings = {
-                    combo_key(list(start_node) + [c]): seed_rankings[combo_key(list(start_node) + [c])]
-                    for c in extra_in_subset
-                    if combo_key(list(start_node) + [c]) in seed_rankings
-                }
-                estimated_ranking, _ = _aggregate_with_scores(voter_rankings, answers, aggregator)
-
-            baseline_rank = (
-                estimated_ranking.index(baseline_answer)
-                if baseline_answer in estimated_ranking
-                else len(estimated_ranking)
-            )
-            layer.append((key, estimated_ranking, baseline_rank))
-
-        layer.sort(key=lambda x: x[2], reverse=True)
-        layer = [node for node in layer if node[2] >= top_k]
-
-        for key, estimated_ranking, baseline_rank in layer:
-            if key not in seed_rankings:
-                calls += 1
-            if verbose:
-                print(f"\t{key}: {baseline_rank}")
-            llm_ranking = rankings_by_combo.get(key)
-            llm_answer = llm_ranking[0]
-            if llm_answer != baseline_answer:
-                return {
-                    "found": True,
-                    "key": key,
-                    "size": len(subset),
-                    "ranking": llm_ranking,
-                    "calls": calls,
-                }
-
-    return {"found": False, "key": None, "size": None, "ranking": None, "calls": calls}
-
-
 def era_search(
     criteria,
     rankings_by_combo,
@@ -330,7 +212,7 @@ def era_search(
     Returns {"found", "key", "size", "ranking", "calls", "budget_used", "pruned_nodes"}.
     """
     if aggregator is None:
-        aggregator = Linear.CombSUM()
+        aggregator = "combsum"
     if entropy_fn is None:
         entropy_fn = softmax_entropy
     if cutoff_fn is None:
@@ -373,8 +255,7 @@ def era_search(
                 if not voter_rankings:
                     continue
 
-                with _silence_stdout():
-                    ranking, scores = _aggregate_with_scores(voter_rankings, answers, aggregator)
+                ranking, scores = _aggregate_with_scores(voter_rankings, answers, aggregator)
 
                 if not scores:
                     continue
@@ -434,8 +315,7 @@ def era_search(
                 voter_rankings = _get_child_rankings(subset, known, estimated_rankings)
                 if not voter_rankings:
                     continue
-                with _silence_stdout():
-                    ranking, scores = _aggregate_with_scores(voter_rankings, answers, aggregator)
+                ranking, scores = _aggregate_with_scores(voter_rankings, answers, aggregator)
                 if not scores:
                     continue
                 estimated_rankings[key] = ranking
@@ -529,7 +409,7 @@ def era_search_v2(
     Returns {"found", "key", "size", "ranking", "calls", "budget_used", "pruned_nodes"}.
     """
     if aggregator is None:
-        aggregator = Linear.CombSUM()
+        aggregator = "combsum"
     if entropy_fn is None:
         entropy_fn = softmax_entropy
     if cutoff_fn is None:
@@ -573,10 +453,9 @@ def era_search_v2(
                 subset = [start_node[i] for i in combo]
                 key = combo_key(subset)
                 voter_rankings = _get_child_rankings(subset, known, estimated_rankings)
-                
-                with _silence_stdout():
-                    ranking, scores = _aggregate_with_scores(voter_rankings, answers, aggregator)
-                
+
+                ranking, scores = _aggregate_with_scores(voter_rankings, answers, aggregator)
+
                 estimated_rankings[key] = ranking
                 entropy_score = entropy_fn(scores)
                 entropies[key] = entropy_score
@@ -612,8 +491,7 @@ def era_search_v2(
                 voter_rankings = _get_child_rankings(subset, known, estimated_rankings)
                 if not voter_rankings:
                     continue
-                with _silence_stdout():
-                    ranking, scores = _aggregate_with_scores(voter_rankings, answers, aggregator)
+                ranking, scores = _aggregate_with_scores(voter_rankings, answers, aggregator)
                 estimated_rankings[key] = ranking
                 entropy_score = entropy_fn(scores)
                 entropies[key] = entropy_score
@@ -654,6 +532,12 @@ def era_search_v2(
                     }
                 continue
 
+            if key not in estimated_rankings:
+                # Outside Phase 1's range (e.g. the empty-set layer for top-down,
+                # or a node whose voter pool was empty); treat as maximally
+                # uncertain so it always survives margin pruning.
+                unknown_nodes.append((subset, key, 0, float("-inf")))
+                continue
             ranking = estimated_rankings[key]
 
             # displacement: position of the baseline answer in the estimated ranking.

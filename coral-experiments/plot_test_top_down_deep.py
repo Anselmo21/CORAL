@@ -25,7 +25,7 @@ ERA64_PATH = "data/era_ablation_study/test/top_down_budget_64/era_budget_ablatio
 ERA10_PATH = "data/era_ablation_study/test/top_down_budget_10pct/era_budget_pct_ablation_results.json"
 CC64_PATH = "data/era_ablation_study/test/cc_results_test_topdown.json"
 SRA_PATH = "data/era_ablation_study/test/top_down_sra/sra_results.json"
-PLOT_DIR = "data/era_ablation_study/test/comparison/deep"
+PLOT_DIR = "plots/era_ablation_study/test/comparison/deep"
 
 DEPTH_THRESHOLD = 3
 
@@ -114,14 +114,10 @@ def main() -> None:
     cc64_calls  = [mean_calls_cc(cc64_by[s]) for s in sizes]
 
     os.makedirs(PLOT_DIR, exist_ok=True)
-    notitle_dir = os.path.join(PLOT_DIR, "notitle")
-    os.makedirs(notitle_dir, exist_ok=True)
 
     def _save_dual(fig, name: str) -> None:
         path = os.path.join(PLOT_DIR, name)
         fig.savefig(path, dpi=150)
-        fig.suptitle("")
-        fig.savefig(os.path.join(notitle_dir, name), dpi=150)
         print(f"Saved {path}")
 
     colors = {
