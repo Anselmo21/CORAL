@@ -1,0 +1,41 @@
+{
+  "case_id": 50,
+  "qid": "51609",
+  "size": 5,
+  "start_node": [
+    "hair health",
+    "application method",
+    "natural ingredients",
+    "ease of use",
+    "skin sensitivity"
+  ],
+  "bfs": {
+    "found": true,
+    "key": "application method, ease of use, natural ingredients",
+    "layer": 3,
+    "calls": 12
+  },
+  "sra": {
+    "proxy_key": "hair health, natural ingredients",
+    "proxy_layer": 2,
+    "proxy_verified": true,
+    "outcome": "wrong_layer",
+    "gap": 1,
+    "jaccard": 0.25,
+    "calls": 1,
+    "budget_used": 0,
+    "pruned_nodes": 0
+  },
+  "era": {
+    "proxy_key": "application method, ease of use, natural ingredients",
+    "proxy_layer": 3,
+    "proxy_verified": true,
+    "outcome": "correct",
+    "gap": 0,
+    "jaccard": 1.0,
+    "calls": 2,
+    "budget_used": 12,
+    "pruned_nodes": 1
+  },
+  "complete": true
+}

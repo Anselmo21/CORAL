@@ -1,0 +1,41 @@
+{
+  "case_id": 57,
+  "qid": "281584",
+  "size": 5,
+  "start_node": [
+    "domestic flights",
+    "international flights",
+    "summer travel",
+    "average savings",
+    "risk of price increase"
+  ],
+  "bfs": {
+    "found": true,
+    "key": "average savings, international flights, summer travel",
+    "layer": 3,
+    "calls": 12
+  },
+  "sra": {
+    "proxy_key": "average savings, international flights",
+    "proxy_layer": 2,
+    "proxy_verified": true,
+    "outcome": "wrong_layer",
+    "gap": 1,
+    "jaccard": 0.6666666666666666,
+    "calls": 2,
+    "budget_used": 0,
+    "pruned_nodes": 0
+  },
+  "era": {
+    "proxy_key": "average savings, international flights, summer travel",
+    "proxy_layer": 3,
+    "proxy_verified": true,
+    "outcome": "correct",
+    "gap": 0,
+    "jaccard": 1.0,
+    "calls": 1,
+    "budget_used": 10,
+    "pruned_nodes": 3
+  },
+  "complete": true
+}

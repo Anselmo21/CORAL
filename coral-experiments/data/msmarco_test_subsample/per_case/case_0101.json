@@ -1,0 +1,44 @@
+{
+  "case_id": 101,
+  "qid": "548857",
+  "size": 8,
+  "start_node": [
+    "medication type",
+    "administration method",
+    "duration of treatment",
+    "condition treated",
+    "effectiveness",
+    "cost",
+    "availability",
+    "veterinary recommendation"
+  ],
+  "bfs": {
+    "found": true,
+    "key": "administration method, duration of treatment, veterinary recommendation",
+    "layer": 3,
+    "calls": 188
+  },
+  "sra": {
+    "proxy_key": "administration method, duration of treatment, veterinary recommendation",
+    "proxy_layer": 3,
+    "proxy_verified": true,
+    "outcome": "correct",
+    "gap": 0,
+    "jaccard": 1.0,
+    "calls": 39,
+    "budget_used": 0,
+    "pruned_nodes": 0
+  },
+  "era": {
+    "proxy_key": "administration method, condition treated, veterinary recommendation",
+    "proxy_layer": 3,
+    "proxy_verified": true,
+    "outcome": "correct",
+    "gap": 0,
+    "jaccard": 0.5,
+    "calls": 44,
+    "budget_used": 16,
+    "pruned_nodes": 162
+  },
+  "complete": true
+}

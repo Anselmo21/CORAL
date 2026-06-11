@@ -5,11 +5,14 @@ ContextCite at a fixed budget (default 64 ablations) on every case that has
 sources and a BFS-found CF. Resumes from data/sonnet_test_subsample/cc_results.json
 if it already exists.
 
-After running, copy cc_results.json back and run plot_sonnet_test_subsample.py
+Pass --pct 10 to use a percent-of-lattice budget (budget = max(1, int(2^k * pct/100)))
+per case. Results are written to cc_results_pct<N>.json instead.
+
+After running, copy cc_results*.json back and run plot_sonnet_test_subsample.py
 to merge CC into the comparison plots.
 
 Usage:
-  conda run -n coral python3 run_cc_sonnet_test.py [--model PATH] [--budget 64] [--batch-size 1]
+  conda run -n coral python3 run_cc_sonnet_test.py [--model PATH] [--budget 64] [--pct 10] [--batch-size 1]
 """
 from __future__ import annotations
 
@@ -50,32 +53,31 @@ def print_summary(results: list[dict], budget: int) -> None:
 
 
 def main() -> None:
+    from load_cc_model import add_model_args, load_model_and_tokenizer
+    from search.contextcite import contextcite_search
+
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model", default="meta-llama/Llama-3.1-8B-Instruct")
+    add_model_args(parser)
     parser.add_argument("--budget", type=int, default=CC_EVAL_NUM_ABLATIONS,
-                        help=f"num_ablations (default {CC_EVAL_NUM_ABLATIONS})")
-    parser.add_argument("--batch-size", type=int, default=1)
+                        help=f"fixed num_ablations (default {CC_EVAL_NUM_ABLATIONS})")
+    parser.add_argument("--pct", type=int, default=None,
+                        help="use percent-of-lattice budget: max(1, int(2^k * pct/100))")
     args = parser.parse_args()
+
+    results_path = (
+        f"data/sonnet_test_subsample/cc_results_pct{args.pct}.json"
+        if args.pct is not None else CC_RESULTS_PATH
+    )
 
     with open(CC_CASES_PATH) as f:
         cases = json.load(f)
     print(f"Loaded {len(cases)} cases from {CC_CASES_PATH}")
 
-    import torch
-    from transformers import AutoModelForCausalLM, AutoTokenizer
-    from search.contextcite import contextcite_search
+    model, tokenizer = load_model_and_tokenizer(args)
 
-    print(f"Loading model {args.model} ...")
-    tokenizer = AutoTokenizer.from_pretrained(args.model)
-    tokenizer.padding_side = "left"
-    model = AutoModelForCausalLM.from_pretrained(
-        args.model, torch_dtype=torch.float16, device_map="auto",
-    )
-    print("Model loaded.")
-
-    os.makedirs(os.path.dirname(CC_RESULTS_PATH), exist_ok=True)
+    os.makedirs(os.path.dirname(results_path), exist_ok=True)
     try:
-        with open(CC_RESULTS_PATH) as f:
+        with open(results_path) as f:
             results: list[dict] = json.load(f)
         done = {r["case_id"] for r in results}
         print(f"Resuming: {len(done)} cases already done")
@@ -105,6 +107,11 @@ def main() -> None:
             f"  [c{cid:>3}] qid={case['query_id']} k={case['effective_size']} ...",
             end=" ", flush=True,
         )
+        k = case["effective_size"]
+        budget = (
+            max(1, int(2 ** k * args.pct / 100))
+            if args.pct is not None else args.budget
+        )
         t0 = time.time()
         try:
             cc_res = contextcite_search(
@@ -115,16 +122,16 @@ def main() -> None:
                 case["plausible_answers"],
                 model,
                 tokenizer,
-                num_ablations=args.budget,
+                num_ablations=budget,
                 batch_size=args.batch_size,
                 start_node=start_node,
                 direction="down",
             )
         except Exception as e:
             print(f"ERROR: {e}")
-            with open(CC_RESULTS_PATH, "w") as f:
+            with open(results_path, "w") as f:
                 json.dump(results, f, indent=2)
-            print(f"Saved {len(results)} rows before crash → {CC_RESULTS_PATH}")
+            print(f"Saved {len(results)} rows before crash → {results_path}")
             raise
         elapsed = time.time() - t0
 
@@ -139,19 +146,20 @@ def main() -> None:
             "bfs_calls": bfs_res["calls"],
             "elapsed": round(elapsed, 2),
             **scored,
+            "budget": budget,
         })
         done.add(cid)
 
         tag = "OK" if scored["outcome"] == "correct" else scored["outcome"].upper()
         print(f"{tag} ({elapsed:.1f}s)")
 
-        with open(CC_RESULTS_PATH, "w") as f:
+        with open(results_path, "w") as f:
             json.dump(results, f, indent=2)
 
     if skipped:
         print(f"Skipped {skipped} cases (no sources or no BFS CF)")
-    print(f"\nDone. {len(results)} results → {CC_RESULTS_PATH}")
-    print_summary(results, args.budget)
+    print(f"\nDone. {len(results)} results → {results_path}")
+    print_summary(results, args.pct if args.pct is not None else args.budget)
 
 
 if __name__ == "__main__":

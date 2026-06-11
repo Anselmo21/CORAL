@@ -28,6 +28,23 @@ CC_ABLATION_RESULTS_PATH = "data/sonnet_test_subsample/cc_ablation_results.json"
 ERA_RESULTS_PATH = "data/sonnet_test_subsample/results.json"
 OUT_DIR = "plots/cc_sonnet_test_ablation"
 
+import argparse as _argparse
+_p = _argparse.ArgumentParser(add_help=False)
+_p.add_argument("--cc-results", default=None)
+_p.add_argument("--era-results", default=None)
+_p.add_argument("--out-dir", default=None)
+_p.add_argument("--no-era", action="store_true")
+_p.add_argument("--no-sra", action="store_true")
+_args, _ = _p.parse_known_args()
+if _args.cc_results:
+    CC_ABLATION_RESULTS_PATH = _args.cc_results
+if _args.era_results:
+    ERA_RESULTS_PATH = _args.era_results
+if _args.out_dir:
+    OUT_DIR = _args.out_dir
+SHOW_ERA = not _args.no_era
+SHOW_SRA = not _args.no_sra
+
 ERA_BUDGET = 16
 REF_COLORS = {"BFS": "black", "SRA": "#d62728", "ERA b=16": "#1f77b4"}
 
@@ -67,6 +84,14 @@ def _cost_cc(rows: list[dict]) -> float:
     return float(np.mean([r["calls"] + r["budget"] for r in rows]))
 
 
+def _get_era_result(r: dict) -> dict:
+    """Return the ERA-b=16 result regardless of whether era is a single result or a budget dict."""
+    era = r.get("era", {})
+    if "outcome" in era:
+        return era  # test schema: single result
+    return era.get("era_fixed_16", {})  # dev schema: keyed by budget
+
+
 def _ref_lines(ax, sizes, era_by_size, ylabel_kind: str) -> None:
     bfs_y = ([100.0] * len(sizes) if ylabel_kind == "accuracy"
              else [float(np.mean([r["bfs"]["calls"] for r in era_by_size[s]])) for s in sizes])
@@ -75,14 +100,16 @@ def _ref_lines(ax, sizes, era_by_size, ylabel_kind: str) -> None:
              else [float(np.mean([r["sra"]["calls"] + r["sra"].get("budget_used", 0)
                                   for r in era_by_size[s] if r.get("sra")]))
                    for s in sizes])
-    era_y = ([100.0 * sum(1 for r in era_by_size[s] if r.get("era", {}).get("outcome") == "correct") / len(era_by_size[s])
+    era_y = ([100.0 * sum(1 for r in era_by_size[s] if _get_era_result(r).get("outcome") == "correct") / len(era_by_size[s])
               for s in sizes] if ylabel_kind == "accuracy"
-             else [float(np.mean([r["era"]["calls"] + r["era"].get("budget_used", 0)
-                                  for r in era_by_size[s] if r.get("era")]))
+             else [float(np.mean([_get_era_result(r)["calls"] + _get_era_result(r).get("budget_used", 0)
+                                  for r in era_by_size[s] if _get_era_result(r)]))
                    for s in sizes])
     ax.plot(sizes, bfs_y,  "o:", color=REF_COLORS["BFS"],     linewidth=2, markersize=7, label="BFS")
-    ax.plot(sizes, sra_y,  "s--", color=REF_COLORS["SRA"],    linewidth=2, markersize=7, label="SRA")
-    ax.plot(sizes, era_y,  "D-",  color=REF_COLORS["ERA b=16"], linewidth=2, markersize=7, label="ERA b=16")
+    if SHOW_SRA:
+        ax.plot(sizes, sra_y,  "s--", color=REF_COLORS["SRA"],    linewidth=2, markersize=7, label="SRA")
+    if SHOW_ERA:
+        ax.plot(sizes, era_y,  "D-",  color=REF_COLORS["ERA b=16"], linewidth=2, markersize=7, label="ERA b=16")
 
 
 def _budget_panel(ax, sizes, cc_by_size, era_by_size, labels_budgets,
@@ -95,35 +122,38 @@ def _budget_panel(ax, sizes, cc_by_size, era_by_size, labels_budgets,
             rows = cc_by_size.get(s, {}).get(label, [])
             y.append(_acc_cc(rows) if ylabel_kind == "accuracy" else _cost_cc(rows))
         color = cmap(0.15 + 0.7 * i / max(1, n - 1))
-        ax.plot(sizes, y, "D-", color=color, linewidth=1.7, markersize=6, label=f"CC {label}")
+        budget_val = _
+        legend_label = f"budget={budget_val}%" if label.startswith("pct_") else f"budget={budget_val}"
+        ax.plot(sizes, y, "D-", color=color, linewidth=1.7, markersize=6, label=legend_label)
 
     _ref_lines(ax, sizes, era_by_size, ylabel_kind)
     ax.set_xlabel("Effective lattice size (k)")
-    ax.set_ylabel("Accuracy (%)" if ylabel_kind == "accuracy" else "Avg cost (calls + budget)")
+    ax.set_ylabel("Accuracy (%)" if ylabel_kind == "accuracy" else "Average LLM Calls")
     if ylabel_kind == "accuracy":
         ax.set_ylim(0, 108)
     ax.set_xticks(sizes)
-    ax.set_title(title)
+    if title:
+        ax.set_title(title)
     ax.grid(True, alpha=0.3)
     ax.legend(loc="best", fontsize=8, ncol=2)
 
 
-def plot_pair(cc: list[dict], era: list[dict], ylabel_kind: str, out_path: str) -> None:
+def plot_budget_type(cc: list[dict], era: list[dict], budget_type: str, out_path: str) -> None:
+    """One file per budget type: [accuracy | cost] side by side."""
     cc_by_size = _by_size_cc(cc)
     era_by_size = _by_size_era(era)
     sizes = sorted(set(cc_by_size) | set(era_by_size))
 
-    fixed_specs = [(f"fixed_{b}", b) for b in BUDGETS_FIXED]
-    pct_specs = [(f"pct_{p}", p) for p in BUDGETS_PCT]
+    if budget_type == "fixed":
+        specs = [(f"fixed_{b}", b) for b in BUDGETS_FIXED]
+        cmap = "Oranges"
+    else:
+        specs = [(f"pct_{p}", p) for p in BUDGETS_PCT]
+        cmap = "Greens"
 
     fig, axes = plt.subplots(1, 2, figsize=(15, 5))
-    _budget_panel(axes[0], sizes, cc_by_size, era_by_size, fixed_specs,
-                  ylabel_kind, f"Fixed CC budgets — {ylabel_kind}", "Oranges")
-    _budget_panel(axes[1], sizes, cc_by_size, era_by_size, pct_specs,
-                  ylabel_kind, f"Percent-of-lattice CC budgets — {ylabel_kind}", "Greens")
-
-    fig.suptitle(f"CC budget ablation vs BFS/SRA/ERA(b={ERA_BUDGET}) — sonnet test sub-lattices",
-                 fontweight="bold")
+    _budget_panel(axes[0], sizes, cc_by_size, era_by_size, specs, "accuracy", "", cmap)
+    _budget_panel(axes[1], sizes, cc_by_size, era_by_size, specs, "cost",     "", cmap)
     fig.tight_layout()
     fig.savefig(out_path, dpi=150)
     plt.close(fig)
@@ -137,9 +167,9 @@ def _heatmap_grid(cc: list[dict], era: list[dict], kind: str) -> tuple[list[str]
 
     row_specs: list[tuple[str, callable]] = []
     for b in BUDGETS_FIXED:
-        row_specs.append((f"CC fixed_{b}", f"fixed_{b}"))
+        row_specs.append((f"budget={b}", f"fixed_{b}"))
     for p in BUDGETS_PCT:
-        row_specs.append((f"CC pct_{p}%", f"pct_{p}"))
+        row_specs.append((f"budget={p}%", f"pct_{p}"))
 
     matrix = np.zeros((len(row_specs), len(sizes)), dtype=float)
     for i, (_, label) in enumerate(row_specs):
@@ -198,8 +228,8 @@ def main() -> None:
     os.makedirs(OUT_DIR, exist_ok=True)
     cc, era = _load()
     print(f"Loaded {len(cc)} CC ablation rows, {len(era)} ERA/BFS/SRA rows.")
-    plot_pair(cc, era, "accuracy", f"{OUT_DIR}/accuracy_by_size.png")
-    plot_pair(cc, era, "cost",     f"{OUT_DIR}/cost_by_size.png")
+    plot_budget_type(cc, era, "fixed", f"{OUT_DIR}/fixed_budgets.png")
+    plot_budget_type(cc, era, "pct",   f"{OUT_DIR}/pct_budgets.png")
     plot_heatmap(cc, era, "accuracy", f"{OUT_DIR}/accuracy_heatmap.png")
     plot_heatmap(cc, era, "cost",     f"{OUT_DIR}/cost_heatmap.png")
 

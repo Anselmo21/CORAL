@@ -64,26 +64,18 @@ def print_summary(results: list[dict]) -> None:
 
 
 def main() -> None:
+    from load_cc_model import add_model_args, load_model_and_tokenizer
+    from search.contextcite import contextcite_search
+
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model", default="meta-llama/Llama-3.1-8B-Instruct")
-    parser.add_argument("--batch-size", type=int, default=1)
+    add_model_args(parser)
     args = parser.parse_args()
 
     with open(CC_CASES_PATH) as f:
         cases = json.load(f)
     print(f"Loaded {len(cases)} cases from {CC_CASES_PATH}")
 
-    import torch
-    from transformers import AutoModelForCausalLM, AutoTokenizer
-    from search.contextcite import contextcite_search
-
-    print(f"Loading model {args.model} ...")
-    tokenizer = AutoTokenizer.from_pretrained(args.model)
-    tokenizer.padding_side = "left"
-    model = AutoModelForCausalLM.from_pretrained(
-        args.model, torch_dtype=torch.float16, device_map="auto",
-    )
-    print("Model loaded.")
+    model, tokenizer = load_model_and_tokenizer(args)
 
     os.makedirs(os.path.dirname(CC_ABLATION_RESULTS_PATH), exist_ok=True)
     try:

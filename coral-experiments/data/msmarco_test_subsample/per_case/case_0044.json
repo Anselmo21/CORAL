@@ -1,0 +1,41 @@
+{
+  "case_id": 44,
+  "qid": "51609",
+  "size": 5,
+  "start_node": [
+    "brand reputation",
+    "natural ingredients",
+    "ease of use",
+    "longevity of color",
+    "desired shade"
+  ],
+  "bfs": {
+    "found": true,
+    "key": "ease of use, longevity of color, natural ingredients",
+    "layer": 3,
+    "calls": 12
+  },
+  "sra": {
+    "proxy_key": "longevity of color, natural ingredients",
+    "proxy_layer": 2,
+    "proxy_verified": true,
+    "outcome": "wrong_layer",
+    "gap": 1,
+    "jaccard": 0.6666666666666666,
+    "calls": 3,
+    "budget_used": 0,
+    "pruned_nodes": 0
+  },
+  "era": {
+    "proxy_key": "ease of use, longevity of color, natural ingredients",
+    "proxy_layer": 3,
+    "proxy_verified": true,
+    "outcome": "correct",
+    "gap": 0,
+    "jaccard": 1.0,
+    "calls": 2,
+    "budget_used": 8,
+    "pruned_nodes": 2
+  },
+  "complete": true
+}

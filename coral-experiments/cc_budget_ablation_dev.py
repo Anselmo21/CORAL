@@ -203,10 +203,7 @@ def score_cc(bfs_res: dict, cc_res: dict, rbc: dict, start_node: list[str]) -> d
 
 
 def run_sweep(args: argparse.Namespace) -> None:
-    # Heavy imports only on --run
-    import torch
-    from transformers import AutoModelForCausalLM, AutoTokenizer
-
+    from load_cc_model import load_model_and_tokenizer
     from search.bfs import bfs_search
     from search.contextcite import contextcite_search
 
@@ -221,12 +218,7 @@ def run_sweep(args: argparse.Namespace) -> None:
         budgets = [args.budget]
         print(f"Eval budget (num_ablations): {args.budget}")
 
-    print(f"Loading model {args.model}...")
-    tokenizer = AutoTokenizer.from_pretrained(args.model)
-    model = AutoModelForCausalLM.from_pretrained(
-        args.model, torch_dtype=torch.float16, device_map="auto",
-    )
-    print("Model loaded.")
+    model, tokenizer = load_model_and_tokenizer(args)
 
     try:
         with open(CC_RESULTS_DEV_PATH) as f:
@@ -320,8 +312,8 @@ def main() -> None:
                              "(used by --export to embed sources in cases)")
     parser.add_argument("--down-only", action="store_true",
                         help="--export: include only top-down dev rows")
-    parser.add_argument("--model", default="meta-llama/Llama-3.1-8B-Instruct")
-    parser.add_argument("--batch-size", type=int, default=1)
+    from load_cc_model import add_model_args
+    add_model_args(parser)
     parser.add_argument("--num-ablations-max", type=int, default=256,
                         help="Cap the budget sweep (skip BUDGETS above this)")
     args = parser.parse_args()

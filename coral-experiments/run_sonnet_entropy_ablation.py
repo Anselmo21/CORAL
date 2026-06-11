@@ -49,6 +49,14 @@ ENTROPY_VARIANTS: list[tuple[str, object]] = [
 
 COLORS = ["#1f77b4", "#2ca02c", "#d62728", "#ff7f0e", "#9467bd"]
 MARKERS = ["s", "o", "^", "D", "v"]
+DISPLAY_NAMES = {
+    "renyi_0.5": "renyi (α=0.5)",
+    "renyi_2":   "renyi (α=2)",
+}
+
+
+def _display(name: str) -> str:
+    return DISPLAY_NAMES.get(name, name)
 
 
 # ---------------------------------------------------------------------------
@@ -150,27 +158,28 @@ def plot_accuracy(results: list[dict], out_dir: str) -> None:
     sizes = sorted(by_size)
     names = [n for n, _ in ENTROPY_VARIANTS]
 
-    fig, ax = plt.subplots(figsize=(9, 5))
+    fig, ax = plt.subplots(figsize=(6, 3.5))
     for i, name in enumerate(names):
         accs = [
             100.0 * sum(1 for r in by_size[s] if r[name]["outcome"] == "correct") / len(by_size[s])
             for s in sizes
         ]
-        ax.plot(sizes, accs, f"{MARKERS[i]}-", label=name, color=COLORS[i],
+        ax.plot(sizes, accs, f"{MARKERS[i]}-", label=_display(name), color=COLORS[i],
                 linewidth=2, markersize=8)
 
-    ax.set_xlabel("Effective lattice size (k)")
+    ax.set_xlabel("Number of Available Criteria")
     ax.set_ylabel("Accuracy (%)")
     ax.set_ylim(0, 108)
     ax.set_xticks(sizes)
     ax.grid(True, alpha=0.3)
-    ax.legend(ncol=len(names), loc="lower center", bbox_to_anchor=(0.5, -0.22), frameon=True)
-    fig.suptitle(f"ERA Accuracy by Entropy Function (budget={BUDGET}, sonnet dev set)",
-                 fontweight="bold")
+    handles, labels = ax.get_legend_handles_labels()
+    # ncol=3 fills column-major; interleave so row1=[shannon,softmax,weighted], row2=[renyi(α=0.5),renyi(α=2)]
+    ordered = [_display(n) for n in ["shannon", "renyi_0.5", "softmax", "renyi_2", "weighted"]]
+    order = [labels.index(n) for n in ordered]
+    ax.legend([handles[i] for i in order], [labels[i] for i in order], ncol=3, loc="lower left")
     fig.tight_layout()
-    fig.subplots_adjust(bottom=0.2)
     path = f"{out_dir}/accuracy_by_size.png"
-    fig.savefig(path, dpi=150, bbox_inches="tight")
+    fig.savefig(path, dpi=150)
     plt.close(fig)
     print(f"Saved {path}")
 
@@ -182,22 +191,24 @@ def plot_calls(results: list[dict], out_dir: str) -> None:
     sizes = sorted(by_size)
     names = [n for n, _ in ENTROPY_VARIANTS]
 
-    fig, ax = plt.subplots(figsize=(9, 5))
+    fig, ax = plt.subplots(figsize=(6, 3.5))
     for i, name in enumerate(names):
         avg_cost = [
             float(np.mean([r[name]["calls"] + r[name]["budget_used"] for r in by_size[s]]))
             for s in sizes
         ]
-        ax.plot(sizes, avg_cost, f"{MARKERS[i]}-", label=name, color=COLORS[i],
+        ax.plot(sizes, avg_cost, f"{MARKERS[i]}-", label=_display(name), color=COLORS[i],
                 linewidth=2, markersize=8)
 
-    ax.set_xlabel("Effective lattice size (k)")
-    ax.set_ylabel("Avg total cost (calls + budget_used)")
+    ax.set_xlabel("Number of Available Criteria")
+    ax.set_ylabel("Average LLM Calls")
     ax.set_xticks(sizes)
-    ax.legend(ncol=len(names), loc="upper left")
+    handles, labels = ax.get_legend_handles_labels()
+    # ncol=3 fills column-major; interleave so row1=[shannon,softmax,weighted], row2=[renyi(α=0.5),renyi(α=2)]
+    ordered = [_display(n) for n in ["shannon", "renyi_0.5", "softmax", "renyi_2", "weighted"]]
+    order = [labels.index(n) for n in ordered]
+    ax.legend([handles[i] for i in order], [labels[i] for i in order], ncol=3, loc="upper left", fontsize=8)
     ax.grid(True, alpha=0.3)
-    fig.suptitle(f"ERA Cost by Entropy Function (budget={BUDGET}, sonnet dev set)",
-                 fontweight="bold")
     fig.tight_layout()
     path = f"{out_dir}/calls_by_size.png"
     fig.savefig(path, dpi=150)
@@ -227,12 +238,10 @@ def plot_outcomes(results: list[dict], out_dir: str) -> None:
         bottoms += np.array(vals, dtype=float)
 
     ax.set_xticks(x)
-    ax.set_xticklabels(names, rotation=15, ha="right")
+    ax.set_xticklabels([_display(n) for n in names], rotation=15, ha="right")
     ax.set_ylabel("Cases")
     ax.legend(ncol=len(outcome_order), loc="upper right")
     ax.grid(True, axis="y", alpha=0.3)
-    fig.suptitle(f"Outcome Breakdown by Entropy Function (budget={BUDGET}, sonnet dev set)",
-                 fontweight="bold")
     fig.tight_layout()
     path = f"{out_dir}/outcomes.png"
     fig.savefig(path, dpi=150)

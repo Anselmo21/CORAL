@@ -1,0 +1,44 @@
+{
+  "case_id": 111,
+  "qid": "281584",
+  "size": 8,
+  "start_node": [
+    "domestic flights",
+    "international flights",
+    "summer travel",
+    "booking window",
+    "average savings",
+    "specific destinations",
+    "airline policies",
+    "historical data"
+  ],
+  "bfs": {
+    "found": true,
+    "key": "average savings, booking window, historical data, international flights, specific destinations",
+    "layer": 5,
+    "calls": 83
+  },
+  "sra": {
+    "proxy_key": "booking window, international flights",
+    "proxy_layer": 2,
+    "proxy_verified": true,
+    "outcome": "wrong_layer",
+    "gap": 3,
+    "jaccard": 0.4,
+    "calls": 2,
+    "budget_used": 0,
+    "pruned_nodes": 0
+  },
+  "era": {
+    "proxy_key": "average savings, booking window, historical data, international flights, specific destinations",
+    "proxy_layer": 5,
+    "proxy_verified": true,
+    "outcome": "correct",
+    "gap": 0,
+    "jaccard": 1.0,
+    "calls": 15,
+    "budget_used": 16,
+    "pruned_nodes": 64
+  },
+  "complete": true
+}

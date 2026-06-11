@@ -1,0 +1,44 @@
+{
+  "case_id": 105,
+  "qid": "441101",
+  "size": 8,
+  "start_node": [
+    "safety ratings",
+    "insurance costs",
+    "reliability",
+    "size",
+    "technology features",
+    "resale value",
+    "user reviews",
+    "driving experience"
+  ],
+  "bfs": {
+    "found": true,
+    "key": "driving experience, insurance costs, resale value, safety ratings, size, technology features",
+    "layer": 6,
+    "calls": 20
+  },
+  "sra": {
+    "proxy_key": "insurance costs, reliability, safety ratings, size",
+    "proxy_layer": 4,
+    "proxy_verified": true,
+    "outcome": "wrong_layer",
+    "gap": 2,
+    "jaccard": 0.42857142857142855,
+    "calls": 1,
+    "budget_used": 0,
+    "pruned_nodes": 0
+  },
+  "era": {
+    "proxy_key": "driving experience, reliability, safety ratings, size, technology features, user reviews",
+    "proxy_layer": 6,
+    "proxy_verified": true,
+    "outcome": "correct",
+    "gap": 0,
+    "jaccard": 0.5,
+    "calls": 5,
+    "budget_used": 16,
+    "pruned_nodes": 20
+  },
+  "complete": true
+}

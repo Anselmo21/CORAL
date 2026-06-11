@@ -9,6 +9,18 @@ from context_cite import (
 from search.lattice import combo_key, iter_search_layers
 
 
+def _make_citer(model, tokenizer, **kwargs):
+    """Return ContextCiter or VLLMContextCiter depending on the model type."""
+    try:
+        from vllm import LLM as _VLLMType
+        if isinstance(model, _VLLMType):
+            from context_cite.vllm_backend import VLLMContextCiter
+            return VLLMContextCiter(model, tokenizer, **kwargs)
+    except ImportError:
+        pass
+    return ContextCiter(model, tokenizer, **kwargs)
+
+
 def contextcite_search(
     criteria,
     rankings_by_combo,
@@ -56,7 +68,7 @@ def contextcite_search(
         answers=list(answers),
     )
 
-    cc = ContextCiter(
+    cc = _make_citer(
         model,
         tokenizer,
         context=partitioner.context,
@@ -182,7 +194,7 @@ def contextcite_search_entropy(
         answers=list(answers),
     )
 
-    cc = ContextCiter(
+    cc = _make_citer(
         model,
         tokenizer,
         context=partitioner.context,

@@ -1,0 +1,43 @@
+{
+  "case_id": 85,
+  "qid": "281584",
+  "size": 7,
+  "start_node": [
+    "domestic flights",
+    "international flights",
+    "summer travel",
+    "booking window",
+    "risk of price increase",
+    "specific destinations",
+    "time of year"
+  ],
+  "bfs": {
+    "found": true,
+    "key": "booking window, international flights, specific destinations, time of year",
+    "layer": 4,
+    "calls": 57
+  },
+  "sra": {
+    "proxy_key": "booking window, international flights",
+    "proxy_layer": 2,
+    "proxy_verified": true,
+    "outcome": "wrong_layer",
+    "gap": 2,
+    "jaccard": 0.5,
+    "calls": 2,
+    "budget_used": 0,
+    "pruned_nodes": 0
+  },
+  "era": {
+    "proxy_key": "booking window, international flights, specific destinations, time of year",
+    "proxy_layer": 4,
+    "proxy_verified": true,
+    "outcome": "correct",
+    "gap": 0,
+    "jaccard": 1.0,
+    "calls": 14,
+    "budget_used": 16,
+    "pruned_nodes": 36
+  },
+  "complete": true
+}

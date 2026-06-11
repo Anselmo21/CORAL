@@ -1,0 +1,42 @@
+{
+  "case_id": 71,
+  "qid": "51971",
+  "size": 6,
+  "start_node": [
+    "duration of action",
+    "onset time",
+    "cost-effectiveness",
+    "patient age",
+    "doctor's recommendation",
+    "FDA approval status"
+  ],
+  "bfs": {
+    "found": true,
+    "key": "doctor's recommendation, duration of action, onset time, patient age",
+    "layer": 4,
+    "calls": 10
+  },
+  "sra": {
+    "proxy_key": "FDA approval status, duration of action, onset time, patient age",
+    "proxy_layer": 4,
+    "proxy_verified": true,
+    "outcome": "correct",
+    "gap": 0,
+    "jaccard": 0.6,
+    "calls": 4,
+    "budget_used": 0,
+    "pruned_nodes": 0
+  },
+  "era": {
+    "proxy_key": "FDA approval status, cost-effectiveness, duration of action, patient age",
+    "proxy_layer": 4,
+    "proxy_verified": true,
+    "outcome": "correct",
+    "gap": 0,
+    "jaccard": 0.3333333333333333,
+    "calls": 3,
+    "budget_used": 16,
+    "pruned_nodes": 1
+  },
+  "complete": true
+}

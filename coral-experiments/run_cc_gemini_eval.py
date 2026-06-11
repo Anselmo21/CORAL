@@ -104,9 +104,7 @@ def print_summary(results: list[dict], budget: int) -> None:
 
 
 def run_eval(args: argparse.Namespace) -> None:
-    import torch
-    from transformers import AutoModelForCausalLM, AutoTokenizer
-
+    from load_cc_model import load_model_and_tokenizer
     from search.contextcite import contextcite_search
 
     budget = args.budget
@@ -116,12 +114,7 @@ def run_eval(args: argparse.Namespace) -> None:
     print(f"Loaded {len(cases)} cases from {cases_path}")
     print(f"Eval budget (num_ablations): {budget}")
 
-    print(f"Loading model {args.model}...")
-    tokenizer = AutoTokenizer.from_pretrained(args.model)
-    model = AutoModelForCausalLM.from_pretrained(
-        args.model, torch_dtype=torch.float16, device_map="auto",
-    )
-    print("Model loaded.")
+    model, tokenizer = load_model_and_tokenizer(args)
 
     os.makedirs(os.path.dirname(CC_RESULTS_GEMINI_PATH) or ".", exist_ok=True)
     try:
@@ -202,8 +195,8 @@ def main() -> None:
                       help="Build data/gemini_eval/cc_cases.json from gemini_datasets.json")
     mode.add_argument("--run", action="store_true",
                       help="Run ContextCite at fixed budget on exported cases (GPU)")
-    parser.add_argument("--model", default="meta-llama/Llama-3.1-8B-Instruct")
-    parser.add_argument("--batch-size", type=int, default=1)
+    from load_cc_model import add_model_args
+    add_model_args(parser)
     parser.add_argument(
         "--budget", type=int, default=CC_EVAL_NUM_ABLATIONS,
         help=f"num_ablations (default {CC_EVAL_NUM_ABLATIONS})",
