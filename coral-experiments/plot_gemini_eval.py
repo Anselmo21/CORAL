@@ -1,10 +1,16 @@
-"""Plots for the gemini-dataset eval — BFS vs SRA vs ERA (budget=16).
+"""Plots for the gemini-dataset eval — BFS vs SRA vs ERA (budget=16) vs CC.
 
-Reads data/gemini_eval/gemini_eval_results.json (produced by run_gemini_eval.py).
+Reads:
+  data/gemini_eval/gemini_eval_results.json         (BFS/SRA/ERA — run_gemini_eval.py)
+  data/gemini_eval/cc_results_gemini_topdown.json   (CC — run_cc_gemini_eval.py, optional)
+
+CC results are merged onto each query result by query_id. CC bars/scatter/columns
+are silently skipped when the file is absent.
+
 Writes PNGs under plots/gemini_eval/:
   * accuracy_and_cost.png   - headline comparison (accuracy bars + avg cost bars w/ 95% CI)
-  * cost_per_query.png      - per-query scatter of ERA b=16 cost vs BFS cost (log-log)
-  * outcomes.png            - stacked outcome breakdown for SRA and ERA b=16
+  * cost_per_query.png      - per-query scatter of proxy cost vs BFS cost (log-log)
+  * outcomes.png            - stacked outcome breakdown for SRA, ERA b=16, CC
 """
 from __future__ import annotations
 
@@ -20,18 +26,39 @@ import numpy as np
 from plot_style import apply_plot_style
 
 RESULTS_PATH = "data/gemini_eval/gemini_eval_results.json"
+CC_RESULTS_PATH = "data/gemini_eval/cc_results_gemini_topdown.json"
 OUT_DIR = "plots/gemini_eval"
 
 # Visual conventions match the rest of the project (see plot_test_top_down.py).
-COLORS = {"BFS": "black", "SRA": "#d62728", "ERA": "#1f77b4"}
+COLORS = {"BFS": "black", "SRA": "#d62728", "ERA": "#1f77b4", "CC": "#2ca02c"}
 ERA_LABEL_KEY = "era_fixed_16"
 ERA_LABEL = "ERA (budget=16)"
+CC_LABEL = "CC (budget=64)"
+# Two-line versions for x-axis ticks so they don't overlap.
+ERA_TICK = "ERA\n(budget=16)"
+CC_TICK = "CC\n(budget=64)"
 
 
 def _load_results() -> list[dict]:
     with open(RESULTS_PATH) as f:
         data = json.load(f)
-    return data["results"]
+    results = data["results"]
+    # Merge CC results by query_id if the CC file exists.
+    try:
+        with open(CC_RESULTS_PATH) as f:
+            cc_rows = json.load(f)
+    except FileNotFoundError:
+        print(f"  (no CC file at {CC_RESULTS_PATH} — CC will be omitted)")
+        return results
+    cc_by_qid = {str(c["query_id"]): c for c in cc_rows}
+    matched = 0
+    for r in results:
+        cc = cc_by_qid.get(str(r["query_id"]))
+        if cc is not None:
+            r["cc"] = cc
+            matched += 1
+    print(f"  merged CC results for {matched}/{len(results)} queries")
+    return results
 
 
 def _method_cost(r: dict, method: str) -> float | None:
@@ -43,6 +70,9 @@ def _method_cost(r: dict, method: str) -> float | None:
     if method == ERA_LABEL_KEY:
         m = r.get("era", {}).get(ERA_LABEL_KEY)
         return None if m is None else m.get("calls", 0) + m.get("budget_used", 0)
+    if method == "cc":
+        m = r.get("cc")
+        return None if m is None else m.get("calls", 0) + m.get("budget", 0)
     raise ValueError(method)
 
 
@@ -55,8 +85,15 @@ def _accuracy(r_list: list[dict], method: str) -> tuple[int, int]:
     if method == "sra":
         sras = [r["sra"] for r in r_list if "sra" in r]
         return sum(1 for m in sras if m["outcome"] == "correct"), len(sras)
+    if method == "cc":
+        ccs = [r["cc"] for r in r_list if "cc" in r]
+        return sum(1 for m in ccs if m["outcome"] == "correct"), len(ccs)
     eras = [r["era"][ERA_LABEL_KEY] for r in r_list if r.get("era", {}).get(ERA_LABEL_KEY)]
     return sum(1 for m in eras if m["outcome"] == "correct"), len(eras)
+
+
+def _has_cc(results: list[dict]) -> bool:
+    return any("cc" in r for r in results)
 
 
 def _mean_ci(vals: list[float]) -> tuple[float, float]:
@@ -73,8 +110,12 @@ def _mean_ci(vals: list[float]) -> tuple[float, float]:
 
 def plot_accuracy_and_cost(results: list[dict], out_dir: str) -> None:
     methods = ["bfs", "sra", ERA_LABEL_KEY]
-    labels = ["BFS", "SRA", ERA_LABEL]
+    labels = ["BFS", "SRA", ERA_TICK]
     colors = [COLORS["BFS"], COLORS["SRA"], COLORS["ERA"]]
+    if _has_cc(results):
+        methods.append("cc")
+        labels.append(CC_TICK)
+        colors.append(COLORS["CC"])
 
     accs = []
     for m in methods:
@@ -88,7 +129,7 @@ def plot_accuracy_and_cost(results: list[dict], out_dir: str) -> None:
         means.append(mean)
         cis.append(ci)
 
-    fig, axes = plt.subplots(1, 2, figsize=(11, 4.5))
+    fig, axes = plt.subplots(1, 2, figsize=(13, 4.5))
     x = np.arange(len(labels))
 
     ax = axes[0]
@@ -125,27 +166,39 @@ def plot_accuracy_and_cost(results: list[dict], out_dir: str) -> None:
 
 
 def plot_cost_per_query(results: list[dict], out_dir: str) -> None:
-    pairs: list[tuple[float, float, float]] = []  # (bfs, era, sra)
+    rows: list[tuple[float, float, float, float]] = []  # (bfs, era, sra, cc)
     for r in results:
         b = _method_cost(r, "bfs")
         e = _method_cost(r, ERA_LABEL_KEY)
         s = _method_cost(r, "sra")
+        c = _method_cost(r, "cc")
         if b is not None and e is not None:
-            pairs.append((b, e, s if s is not None else float("nan")))
-    if not pairs:
+            rows.append((
+                b, e,
+                s if s is not None else float("nan"),
+                c if c is not None else float("nan"),
+            ))
+    if not rows:
         return
-    bfs_x = np.array([p[0] for p in pairs], dtype=float)
-    era_y = np.array([p[1] for p in pairs], dtype=float)
-    sra_y = np.array([p[2] for p in pairs], dtype=float)
+    bfs_x = np.array([p[0] for p in rows], dtype=float)
+    era_y = np.array([p[1] for p in rows], dtype=float)
+    sra_y = np.array([p[2] for p in rows], dtype=float)
+    cc_y = np.array([p[3] for p in rows], dtype=float)
 
     fig, ax = plt.subplots(figsize=(6, 5))
-    lo = max(1.0, min(bfs_x.min(), era_y.min(), np.nanmin(sra_y)))
-    hi = max(bfs_x.max(), era_y.max(), np.nanmax(sra_y)) * 1.2
+    ys = [era_y, sra_y]
+    if _has_cc(results):
+        ys.append(cc_y)
+    lo = max(1.0, min(bfs_x.min(), *(np.nanmin(y) for y in ys)))
+    hi = max(bfs_x.max(), *(np.nanmax(y) for y in ys)) * 1.2
     ax.plot([lo, hi], [lo, hi], "--", color="gray", linewidth=1, label="y = x")
     ax.scatter(bfs_x, era_y, color=COLORS["ERA"], s=40, alpha=0.75,
                edgecolor="black", linewidth=0.5, label=ERA_LABEL)
     ax.scatter(bfs_x, sra_y, color=COLORS["SRA"], s=40, alpha=0.75, marker="s",
                edgecolor="black", linewidth=0.5, label="SRA")
+    if _has_cc(results):
+        ax.scatter(bfs_x, cc_y, color=COLORS["CC"], s=40, alpha=0.75, marker="^",
+                   edgecolor="black", linewidth=0.5, label=CC_LABEL)
 
     ax.set_xscale("log")
     ax.set_yscale("log")
@@ -179,6 +232,8 @@ def plot_outcomes(results: list[dict], out_dir: str) -> None:
     counts[ERA_LABEL] = Counter(
         r["era"][ERA_LABEL_KEY]["outcome"] for r in results if r.get("era", {}).get(ERA_LABEL_KEY)
     )
+    if _has_cc(results):
+        counts[CC_LABEL] = Counter(r["cc"]["outcome"] for r in results if "cc" in r)
 
     fig, ax = plt.subplots(figsize=(7, 4))
     labels = list(counts.keys())

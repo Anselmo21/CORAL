@@ -1,0 +1,40 @@
+{
+  "case_id": 27,
+  "qid": "38",
+  "size": 4,
+  "start_node": [
+    "ability to maintain income during studies",
+    "completion rate and burnout risk",
+    "employer tuition reimbursement availability",
+    "program prestige and outcomes equivalence"
+  ],
+  "bfs": {
+    "found": true,
+    "key": "completion rate and burnout risk, employer tuition reimbursement availability",
+    "layer": 2,
+    "calls": 8
+  },
+  "sra": {
+    "proxy_key": "employer tuition reimbursement availability",
+    "proxy_layer": 1,
+    "proxy_verified": true,
+    "outcome": "wrong_layer",
+    "gap": 1,
+    "jaccard": 0.5,
+    "calls": 0,
+    "budget_used": 0,
+    "pruned_nodes": 0
+  },
+  "era": {
+    "proxy_key": "completion rate and burnout risk, employer tuition reimbursement availability",
+    "proxy_layer": 2,
+    "proxy_verified": true,
+    "outcome": "correct",
+    "gap": 0,
+    "jaccard": 1.0,
+    "calls": 1,
+    "budget_used": 5,
+    "pruned_nodes": 1
+  },
+  "complete": true
+}

@@ -1,0 +1,43 @@
+{
+  "case_id": 81,
+  "qid": "51",
+  "size": 7,
+  "start_node": [
+    "medium-firm firmness for back pain",
+    "sleep trial availability for evaluation",
+    "pressure point relief",
+    "responsiveness for position changes",
+    "price and value",
+    "edge support for getting in and out",
+    "suitability for sleep position (side, back, stomach)"
+  ],
+  "bfs": {
+    "found": true,
+    "key": "pressure point relief, price and value, responsiveness for position changes, sleep trial availability for evaluation",
+    "layer": 4,
+    "calls": 49
+  },
+  "sra": {
+    "proxy_key": "sleep trial availability for evaluation",
+    "proxy_layer": 1,
+    "proxy_verified": true,
+    "outcome": "wrong_layer",
+    "gap": 3,
+    "jaccard": 0.25,
+    "calls": 0,
+    "budget_used": 0,
+    "pruned_nodes": 0
+  },
+  "era": {
+    "proxy_key": "edge support for getting in and out, price and value, responsiveness for position changes, sleep trial availability for evaluation",
+    "proxy_layer": 4,
+    "proxy_verified": true,
+    "outcome": "correct",
+    "gap": 0,
+    "jaccard": 0.6,
+    "calls": 27,
+    "budget_used": 16,
+    "pruned_nodes": 36
+  },
+  "complete": true
+}

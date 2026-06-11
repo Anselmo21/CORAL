@@ -1,0 +1,44 @@
+{
+  "case_id": 110,
+  "qid": "35",
+  "size": 8,
+  "start_node": [
+    "total cost of law school vs paralegal certification",
+    "earnings potential over 20-year career",
+    "certainty of interest in legal practice",
+    "target practice setting (BigLaw vs small firm)",
+    "time investment required",
+    "job market growth for each path",
+    "work-life balance comparison",
+    "ability to test legal work before committing"
+  ],
+  "bfs": {
+    "found": true,
+    "key": "ability to test legal work before committing, certainty of interest in legal practice, job market growth for each path, time investment required",
+    "layer": 4,
+    "calls": 155
+  },
+  "sra": {
+    "proxy_key": "ability to test legal work before committing, certainty of interest in legal practice",
+    "proxy_layer": 2,
+    "proxy_verified": true,
+    "outcome": "wrong_layer",
+    "gap": 2,
+    "jaccard": 0.5,
+    "calls": 3,
+    "budget_used": 0,
+    "pruned_nodes": 0
+  },
+  "era": {
+    "proxy_key": "ability to test legal work before committing, time investment required, total cost of law school vs paralegal certification",
+    "proxy_layer": 3,
+    "proxy_verified": true,
+    "outcome": "wrong_layer",
+    "gap": 1,
+    "jaccard": 0.4,
+    "calls": 39,
+    "budget_used": 16,
+    "pruned_nodes": 123
+  },
+  "complete": true
+}
