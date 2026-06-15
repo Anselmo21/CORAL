@@ -16,6 +16,10 @@ based on the model type.
 from __future__ import annotations
 
 import argparse
+import os
+
+# Must be set before torch/CUDA init (e.g. via contextcite import) and before vLLM starts.
+os.environ.setdefault("VLLM_WORKER_MULTIPROC_METHOD", "spawn")
 
 
 def add_model_args(parser: argparse.ArgumentParser) -> None:

@@ -54,16 +54,20 @@ def _cost(bucket: list[dict], picker) -> float:
 
 
 
+_MARKERS = ["D", "s", "^", "o", "v", "p", "h", "P", "X", "*"]
+_COLORS = plt.colormaps["tab10"].colors
+
+
 def _budget_panel(ax, sizes, by_size, labels_and_pickers, ylabel_kind: str, title: str,
                   cmap_name: str, show_sra: bool = True, show_bfs: bool = True) -> None:
-    cmap = plt.colormaps[cmap_name]
     n = len(labels_and_pickers)
     for i, (label, picker) in enumerate(labels_and_pickers):
         y = [_acc(by_size[s], picker) if ylabel_kind == "accuracy"
              else _cost(by_size[s], picker)
              for s in sizes]
-        color = cmap(0.15 + 0.7 * i / max(1, n - 1))
-        ax.plot(sizes, y, "D-", color=color, linewidth=1.7, markersize=6, label=label)
+        color = _COLORS[i % len(_COLORS)]
+        marker = _MARKERS[i % len(_MARKERS)]
+        ax.plot(sizes, y, f"{marker}-", color=color, linewidth=1.7, markersize=6, label=label)
 
     # BFS reference
     if show_bfs:

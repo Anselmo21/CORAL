@@ -203,6 +203,19 @@ def run_one_case(
         partial["era"] = score_proxy(bfs_for_proxy, era_res, rbc, start_node)
         _checkpoint(case_id, partial)
 
+    if "era_pct10" not in partial:
+        b = max(1, int(2 ** size * 10 / 100))
+        era_pct10_res = era_search(
+            criteria, rbc,
+            budget=b,
+            start_node=start_node,
+            direction="down",
+        )
+        scored = score_proxy(bfs_for_proxy, era_pct10_res, rbc, start_node)
+        scored["budget"] = b
+        partial["era_pct10"] = scored
+        _checkpoint(case_id, partial)
+
     partial["complete"] = True
     _checkpoint(case_id, partial)
     return partial
@@ -232,12 +245,12 @@ def _run_subprocess_single(case_id: int) -> int:
 def _completed_method_count(partial: dict | None) -> int:
     if not partial:
         return 0
-    return sum(k in partial for k in ("bfs", "sra", "era"))
+    return sum(k in partial for k in ("bfs", "sra", "era", "era_pct10"))
 
 
 def run_subprocess_case(case_id: int) -> tuple[dict | None, str]:
     cached = _load_partial(case_id)
-    if cached and cached.get("complete"):
+    if cached and cached.get("complete") and "era_pct10" in cached:
         return cached, "cached"
     last_status = "no-attempts"
     result = cached

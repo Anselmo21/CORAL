@@ -62,7 +62,6 @@ def print_summary(results: list[dict]) -> None:
 
 def main() -> None:
     from load_cc_model import add_model_args, load_model_and_tokenizer
-    from search.contextcite import contextcite_search
 
     parser = argparse.ArgumentParser()
     add_model_args(parser)
@@ -75,6 +74,7 @@ def main() -> None:
     print(f"Loaded {len(cases)} cases from {CC_CASES_PATH}")
 
     model, tokenizer = load_model_and_tokenizer(args)
+    from search.contextcite import contextcite_search
 
     os.makedirs(os.path.dirname(CC_ABLATION_RESULTS_PATH), exist_ok=True)
     try:

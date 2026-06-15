@@ -34,7 +34,7 @@ SPLIT_PATH = f"{OUT_DIR}/split.json"
 CASES_PATH = f"{OUT_DIR}/cases.json"
 RESULTS_PATH = f"{OUT_DIR}/results.json"
 
-SIZES: list[int] = list(range(3, 10))   # 3..9 inclusive
+SIZES: list[int] = list(range(3, 11))   # 3..10 inclusive
 TARGET_PER_SIZE: int = 20
 ERA_BUDGETS_FIXED: list[int] = [4, 8, 16, 32, 64, 128, 256]
 ERA_BUDGETS_PCT: list[int] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]

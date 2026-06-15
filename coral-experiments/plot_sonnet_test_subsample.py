@@ -10,6 +10,8 @@ import json
 import os
 from collections import defaultdict
 
+from search.lattice import hop_distance
+
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -101,9 +103,10 @@ def plot_cost(results: list[dict], cc_by_id: dict[int, dict] | None, out_dir: st
     sizes = sorted(by_size)
 
     methods = [
-        ("BFS",       "black",   "o:", lambda r: {"calls": r["bfs"]["calls"], "budget_used": 0}),
-        ("SRA",       "#d62728", "s--", lambda r: r.get("sra")),
-        ("ERA b=16",  "#1f77b4", "D-",  lambda r: r.get("era")),
+        ("BFS",        "black",   "o:", lambda r: {"calls": r["bfs"]["calls"], "budget_used": 0}),
+        ("SRA",        "#d62728", "s--", lambda r: r.get("sra")),
+        ("ERA b=16",   "#1f77b4", "D-",  lambda r: r.get("era")),
+        ("ERA b=10%",  "#2ca02c", "^-",  lambda r: r.get("era_pct10")),
     ]
     if cc_by_id is not None:
         def _cc_pick(r):
@@ -199,6 +202,48 @@ def plot_outcomes(results: list[dict], cc_by_id: dict[int, dict] | None, out_dir
     print(f"Saved {path}")
 
 
+def plot_cf_distance(results: list[dict], cc_by_id: dict[int, dict] | None, out_dir: str) -> None:
+    by_size = _by_size(results)
+    sizes = sorted(by_size)
+
+    def _avg_hop(bucket: list[dict], proxy_key_fn) -> float:
+        dists = []
+        for r in bucket:
+            bfs_key = r["bfs"].get("key")
+            m = proxy_key_fn(r)
+            if not bfs_key or m is None or m.get("outcome") != "wrong_layer":
+                continue
+            proxy_key = m.get("proxy_key")
+            d = hop_distance(bfs_key, proxy_key)
+            if d is not None:
+                dists.append(d)
+        return float(np.mean(dists)) if dists else float("nan")
+
+    methods = [
+        ("SRA",       "#d62728", "s--", lambda r: r.get("sra")),
+        ("ERA b=16",  "#1f77b4", "D-",  lambda r: r.get("era")),
+    ]
+    if cc_by_id is not None:
+        methods.append(("LSM b=10%", "#ff7f0e", "^-", lambda r: cc_by_id.get(r["case_id"])))
+
+    fig, ax = plt.subplots(figsize=(7, 4))
+    for label, color, style, picker in methods:
+        y = [_avg_hop(by_size[s], picker) for s in sizes]
+        ax.plot(sizes, y, style, label=label, color=color, linewidth=2, markersize=8)
+
+    ax.set_xlabel("Number of Available Criteria")
+    ax.set_ylabel("Avg hop distance from minimal CF")
+    ax.set_xticks(sizes)
+    ax.yaxis.set_major_locator(plt.MultipleLocator(0.5))
+    ax.grid(True, alpha=0.3)
+    ax.legend(loc="upper left", ncol=4)
+    fig.tight_layout()
+    path = f"{out_dir}/cf_distance_by_size.png"
+    fig.savefig(path, dpi=150)
+    plt.close(fig)
+    print(f"Saved {path}")
+
+
 def main() -> None:
     apply_plot_style()
     os.makedirs(OUT_DIR, exist_ok=True)
@@ -213,6 +258,7 @@ def main() -> None:
     plot_accuracy(results, cc_by_id, OUT_DIR)
     plot_cost(results, cc_by_id, OUT_DIR)
     plot_outcomes(results, cc_by_id, OUT_DIR)
+    plot_cf_distance(results, cc_by_id, OUT_DIR)
 
 
 if __name__ == "__main__":
