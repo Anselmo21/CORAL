@@ -24,6 +24,8 @@ RESULTS_PATH = "data/gemini_subsample/gemini_subsample_results.json"
 OUT_DIR = "plots/gemini_subsample"
 
 REF_COLORS = {"BFS": "black", "SRA": "#d62728"}
+_MARKERS = ["D", "s", "^", "o", "v", "p", "h", "P", "X", "*"]
+_COLORS  = plt.colormaps["tab10"].colors
 
 
 def _load() -> dict:
@@ -66,15 +68,15 @@ def _ref_lines(ax, sizes, by_size, ylabel_kind: str) -> None:
 
 
 def _budget_panel(ax, sizes, by_size, labels_and_pickers, ylabel_kind: str, title: str,
-                  cmap_name: str) -> None:
-    cmap = plt.colormaps[cmap_name]
+                  ) -> None:
     for i, (label, picker) in enumerate(labels_and_pickers):
         if ylabel_kind == "accuracy":
             y = [_acc(by_size[s], picker) for s in sizes]
         else:
             y = [_cost(by_size[s], picker) for s in sizes]
-        color = cmap(0.15 + 0.7 * i / max(1, len(labels_and_pickers) - 1))
-        ax.plot(sizes, y, "D-", color=color, linewidth=1.7, markersize=6, label=label)
+        color  = _COLORS[i % len(_COLORS)]
+        marker = _MARKERS[i % len(_MARKERS)]
+        ax.plot(sizes, y, f"{marker}-", color=color, linewidth=1.7, markersize=6, label=label)
 
     _ref_lines(ax, sizes, by_size, ylabel_kind)
 
@@ -111,9 +113,9 @@ def plot_pair(d: dict, ylabel_kind: str, out_path: str) -> None:
 
     fig, axes = plt.subplots(1, 2, figsize=(14, 5))
     _budget_panel(axes[0], sizes, by_size, fixed_specs, ylabel_kind,
-                  f"Fixed ERA budgets — {ylabel_kind}", "Blues")
+                  f"Fixed ERA budgets — {ylabel_kind}")
     _budget_panel(axes[1], sizes, by_size, pct_specs, ylabel_kind,
-                  f"Percent-of-lattice ERA budgets — {ylabel_kind}", "Purples")
+                  f"Percent-of-lattice ERA budgets — {ylabel_kind}")
 
     n_per_size = {s: len(by_size[s]) for s in sizes}
     fig.suptitle(f"BFS vs SRA vs ERA(budget grid) — gemini sub-lattices, "

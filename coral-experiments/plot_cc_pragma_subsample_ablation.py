@@ -34,6 +34,8 @@ BUDGETS_PCT:   list[int] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 ERA_BUDGET:    int       = 16
 
 REF_COLORS = {"BFS": "black", "SRA": "#d62728", f"ERA b={ERA_BUDGET}": "#1f77b4"}
+_MARKERS = ["D", "s", "^", "o", "v", "p", "h", "P", "X", "*"]
+_COLORS  = plt.colormaps["tab10"].colors
 
 
 # ---------------------------------------------------------------------------
@@ -133,20 +135,18 @@ def _budget_panel(
     era_by_size: dict[int, list[dict]],
     specs: list[tuple[str, int]],
     ylabel_kind: str,
-    cmap_name: str,
 ) -> None:
-    cmap = plt.colormaps[cmap_name]
-    n = len(specs)
     for i, (label, budget_val) in enumerate(specs):
         y = [
             _acc_cc(cc_by_size.get(s, {}).get(label, [])) if ylabel_kind == "accuracy"
             else _cost_cc(cc_by_size.get(s, {}).get(label, []))
             for s in sizes
         ]
-        color = cmap(0.15 + 0.7 * i / max(1, n - 1))
+        color  = _COLORS[i % len(_COLORS)]
+        marker = _MARKERS[i % len(_MARKERS)]
         legend_label = (f"CC {budget_val}%" if label.startswith("pct_")
                         else f"CC b={budget_val}")
-        ax.plot(sizes, y, "^-", color=color, linewidth=1.7, markersize=6, label=legend_label)
+        ax.plot(sizes, y, f"{marker}-", color=color, linewidth=1.7, markersize=6, label=legend_label)
 
     _ref_lines(ax, sizes, era_by_size, ylabel_kind)
 
@@ -176,18 +176,16 @@ def plot_budget_type(
     sizes = sorted(set(cc_by_size) | set(era_by_size))
 
     if budget_type == "fixed":
-        specs  = [(f"fixed_{b}", b) for b in BUDGETS_FIXED]
-        cmap   = "Oranges"
-        title  = "Fixed CC budgets"
+        specs = [(f"fixed_{b}", b) for b in BUDGETS_FIXED]
+        title = "Fixed CC budgets"
     else:
-        specs  = [(f"pct_{p}", p) for p in BUDGETS_PCT]
-        cmap   = "Greens"
-        title  = "Percent-of-lattice CC budgets"
+        specs = [(f"pct_{p}", p) for p in BUDGETS_PCT]
+        title = "Percent-of-lattice CC budgets"
 
     fig, axes = plt.subplots(1, 2, figsize=(15, 5))
     fig.suptitle(title, fontweight="bold")
-    _budget_panel(axes[0], sizes, cc_by_size, era_by_size, specs, "accuracy", cmap)
-    _budget_panel(axes[1], sizes, cc_by_size, era_by_size, specs, "cost",     cmap)
+    _budget_panel(axes[0], sizes, cc_by_size, era_by_size, specs, "accuracy")
+    _budget_panel(axes[1], sizes, cc_by_size, era_by_size, specs, "cost")
     fig.tight_layout()
     fig.savefig(out_path, dpi=150)
     plt.close(fig)

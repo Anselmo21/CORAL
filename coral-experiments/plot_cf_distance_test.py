@@ -70,11 +70,11 @@ def main() -> None:
         ("SRA",                    "#d62728", "s", lambda i: (sra[i]["bfs_key"], sra[i]["sra"]["proxy_key"])),
         ("ERA softmax (10%)",      "#1f77b4", "D", lambda i: (era10[i]["bfs_key"], era10[i]["pct_10"]["proxy_key"])),
         ("ERA weighted (10%)",     "#17becf", "D", lambda i: (erawt[i]["bfs_key"], erawt[i]["pct_10"]["proxy_key"])),
-        ("ERA softmax (budget=64)", "#9467bd", "P", lambda i: (era64[i]["bfs_key"], era64[i]["budget_64"]["proxy_key"])),
-        ("ERA weighted (budget=64)", "#8c564b", "P", lambda i: (erawt64[i]["bfs_key"], erawt64[i]["budget_64"]["proxy_key"])),
+        ("ERA softmax (budget=64)", "#9467bd", "D", lambda i: (era64[i]["bfs_key"], era64[i]["budget_64"]["proxy_key"])),
+        ("ERA weighted (budget=64)", "#8c564b", "D", lambda i: (erawt64[i]["bfs_key"], erawt64[i]["budget_64"]["proxy_key"])),
     ]
     if cc64 is not None:
-        methods.append(("CC (budget=64)", "#ff7f0e", "X", lambda i: (cc64[i].get("bfs_key"), cc64[i].get("proxy_key"))))
+        methods.append(("CC (budget=64)", "#ff7f0e", "^", lambda i: (cc64[i].get("bfs_key"), cc64[i].get("proxy_key"))))
 
     # Compute hop distances per (method, case)
     distances: dict[str, list[int | None]] = {m[0]: [] for m in methods}

@@ -2,7 +2,8 @@
 
 Uses the 8 test qids from data/msmarco_subsample/split.json. For each size k in
 3..9, samples 20 sub-lattices with a BFS-found CF and runs BFS / SRA /
-ERA(budget=16). Exports CC-compatible cases to
+ERA(budget=16). Also includes the 8 full k=10 lattices (one per test qid).
+Total: 20*7 + 8 = 148 cases. Exports CC-compatible cases to
 data/msmarco_test_subsample/cc_cases.json so CC can be run on a GPU machine.
 
 Outputs:
@@ -71,6 +72,11 @@ def sample_cases(test_qids: list[str], seed: int = SEED) -> list[dict]:
                     break
         print(f"  size={size}: pool={len(candidates):>6}  accepted={len(accepted):>3}/{TARGET_PER_SIZE}")
         cases.extend(accepted)
+
+    for qid, (criteria, _) in lattices.items():
+        cases.append({"qid": qid, "size": 10, "start_node": criteria})
+    print(f"  size=10: added {len(lattices)} full lattices")
+
     return cases
 
 
@@ -354,7 +360,7 @@ def main() -> None:
         json.dump({
             "data_path": DATA_PATH,
             "test_qids": test_qids,
-            "sizes": SIZES,
+            "sizes": SIZES + [10],
             "target_per_size": TARGET_PER_SIZE,
             "era_budget": ERA_BUDGET,
             "seed": SEED,

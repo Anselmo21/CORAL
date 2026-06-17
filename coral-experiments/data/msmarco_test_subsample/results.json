@@ -17,12 +17,13 @@
     6,
     7,
     8,
-    9
+    9,
+    10
   ],
   "target_per_size": 20,
   "era_budget": 16,
   "seed": 42,
-  "n_cases": 140,
+  "n_cases": 148,
   "n_failed": 0,
   "failed": [],
   "results": [
@@ -5903,6 +5904,374 @@
         "calls": 26,
         "budget_used": 16,
         "pruned_nodes": 417
+      },
+      "complete": true
+    },
+    {
+      "case_id": 140,
+      "qid": "1151965",
+      "size": 10,
+      "start_node": [
+        "sound performance",
+        "comfort level",
+        "price range",
+        "build quality",
+        "wireless capability",
+        "compatibility options",
+        "user reviews",
+        "brand reputation",
+        "microphone quality",
+        "design aesthetics"
+      ],
+      "bfs": {
+        "found": true,
+        "key": "brand reputation, build quality, design aesthetics, microphone quality, price range, sound performance, user reviews",
+        "layer": 7,
+        "calls": 126
+      },
+      "sra": {
+        "proxy_key": "brand reputation, build quality, design aesthetics, microphone quality, price range, sound performance, user reviews",
+        "proxy_layer": 7,
+        "proxy_verified": true,
+        "outcome": "correct",
+        "gap": 0,
+        "jaccard": 1.0,
+        "calls": 43,
+        "budget_used": 0,
+        "pruned_nodes": 0
+      },
+      "era": {
+        "proxy_key": "brand reputation, build quality, microphone quality, price range, sound performance",
+        "proxy_layer": 5,
+        "proxy_verified": true,
+        "outcome": "wrong_layer",
+        "gap": 2,
+        "jaccard": 0.7142857142857143,
+        "calls": 42,
+        "budget_used": 16,
+        "pruned_nodes": 558
+      },
+      "complete": true
+    },
+    {
+      "case_id": 141,
+      "qid": "281584",
+      "size": 10,
+      "start_node": [
+        "domestic flights",
+        "international flights",
+        "summer travel",
+        "booking window",
+        "average savings",
+        "risk of price increase",
+        "specific destinations",
+        "time of year",
+        "airline policies",
+        "historical data"
+      ],
+      "bfs": {
+        "found": true,
+        "key": "average savings, booking window, historical data, international flights, specific destinations",
+        "layer": 5,
+        "calls": 553
+      },
+      "sra": {
+        "proxy_key": "booking window, international flights",
+        "proxy_layer": 2,
+        "proxy_verified": true,
+        "outcome": "wrong_layer",
+        "gap": 3,
+        "jaccard": 0.4,
+        "calls": 2,
+        "budget_used": 0,
+        "pruned_nodes": 0
+      },
+      "era": {
+        "proxy_key": "average savings, booking window, historical data, international flights, specific destinations",
+        "proxy_layer": 5,
+        "proxy_verified": true,
+        "outcome": "correct",
+        "gap": 0,
+        "jaccard": 1.0,
+        "calls": 107,
+        "budget_used": 16,
+        "pruned_nodes": 471
+      },
+      "complete": true
+    },
+    {
+      "case_id": 142,
+      "qid": "441101",
+      "size": 10,
+      "start_node": [
+        "safety ratings",
+        "insurance costs",
+        "reliability",
+        "size",
+        "fuel efficiency",
+        "technology features",
+        "resale value",
+        "user reviews",
+        "age of model",
+        "driving experience"
+      ],
+      "bfs": {
+        "found": true,
+        "key": "driving experience, insurance costs, resale value, safety ratings, size, technology features",
+        "layer": 6,
+        "calls": 223
+      },
+      "sra": {
+        "proxy_key": "insurance costs, reliability, safety ratings, size",
+        "proxy_layer": 4,
+        "proxy_verified": true,
+        "outcome": "wrong_layer",
+        "gap": 2,
+        "jaccard": 0.42857142857142855,
+        "calls": 1,
+        "budget_used": 0,
+        "pruned_nodes": 0
+      },
+      "era": {
+        "proxy_key": "driving experience, reliability, safety ratings, size, technology features, user reviews",
+        "proxy_layer": 6,
+        "proxy_verified": true,
+        "outcome": "correct",
+        "gap": 0,
+        "jaccard": 0.5,
+        "calls": 21,
+        "budget_used": 16,
+        "pruned_nodes": 342
+      },
+      "complete": true
+    },
+    {
+      "case_id": 143,
+      "qid": "51609",
+      "size": 10,
+      "start_node": [
+        "hair health",
+        "color intensity",
+        "application method",
+        "brand reputation",
+        "user reviews",
+        "natural ingredients",
+        "ease of use",
+        "longevity of color",
+        "skin sensitivity",
+        "desired shade"
+      ],
+      "bfs": {
+        "found": true,
+        "key": "desired shade, hair health, longevity of color, natural ingredients",
+        "layer": 4,
+        "calls": 716
+      },
+      "sra": {
+        "proxy_key": "hair health, natural ingredients",
+        "proxy_layer": 2,
+        "proxy_verified": true,
+        "outcome": "wrong_layer",
+        "gap": 2,
+        "jaccard": 0.5,
+        "calls": 1,
+        "budget_used": 0,
+        "pruned_nodes": 0
+      },
+      "era": {
+        "proxy_key": "application method, longevity of color, natural ingredients",
+        "proxy_layer": 3,
+        "proxy_verified": true,
+        "outcome": "wrong_layer",
+        "gap": 1,
+        "jaccard": 0.4,
+        "calls": 72,
+        "budget_used": 16,
+        "pruned_nodes": 868
+      },
+      "complete": true
+    },
+    {
+      "case_id": 144,
+      "qid": "51971",
+      "size": 10,
+      "start_node": [
+        "duration of action",
+        "onset time",
+        "side effects profile",
+        "cost-effectiveness",
+        "safety for long-term use",
+        "specific insomnia type",
+        "patient age",
+        "interaction with other medications",
+        "doctor's recommendation",
+        "FDA approval status"
+      ],
+      "bfs": {
+        "found": true,
+        "key": "FDA approval status, doctor's recommendation, duration of action, interaction with other medications, patient age, specific insomnia type",
+        "layer": 6,
+        "calls": 301
+      },
+      "sra": {
+        "proxy_key": "FDA approval status, doctor's recommendation, duration of action, interaction with other medications, patient age, specific insomnia type",
+        "proxy_layer": 6,
+        "proxy_verified": true,
+        "outcome": "correct",
+        "gap": 0,
+        "jaccard": 1.0,
+        "calls": 110,
+        "budget_used": 0,
+        "pruned_nodes": 0
+      },
+      "era": {
+        "proxy_key": "FDA approval status, doctor's recommendation, duration of action, interaction with other medications, patient age, specific insomnia type",
+        "proxy_layer": 6,
+        "proxy_verified": true,
+        "outcome": "correct",
+        "gap": 0,
+        "jaccard": 1.0,
+        "calls": 138,
+        "budget_used": 16,
+        "pruned_nodes": 108
+      },
+      "complete": true
+    },
+    {
+      "case_id": 145,
+      "qid": "52065",
+      "size": 10,
+      "start_node": [
+        "ingredient formulation",
+        "dermatologist endorsement",
+        "user satisfaction ratings",
+        "skin compatibility",
+        "sun protection factor",
+        "texture and feel",
+        "breakout prevention",
+        "water resistance",
+        "brand reputation",
+        "price point"
+      ],
+      "bfs": {
+        "found": true,
+        "key": "breakout prevention, ingredient formulation, price point, skin compatibility, texture and feel, user satisfaction ratings, water resistance",
+        "layer": 7,
+        "calls": 123
+      },
+      "sra": {
+        "proxy_key": "breakout prevention, ingredient formulation, price point, skin compatibility, sun protection factor, texture and feel, water resistance",
+        "proxy_layer": 7,
+        "proxy_verified": true,
+        "outcome": "correct",
+        "gap": 0,
+        "jaccard": 0.75,
+        "calls": 33,
+        "budget_used": 0,
+        "pruned_nodes": 0
+      },
+      "era": {
+        "proxy_key": "breakout prevention, ingredient formulation, price point, skin compatibility, texture and feel, user satisfaction ratings, water resistance",
+        "proxy_layer": 7,
+        "proxy_verified": true,
+        "outcome": "correct",
+        "gap": 0,
+        "jaccard": 1.0,
+        "calls": 62,
+        "budget_used": 16,
+        "pruned_nodes": 86
+      },
+      "complete": true
+    },
+    {
+      "case_id": 146,
+      "qid": "52347",
+      "size": 10,
+      "start_node": [
+        "fastening method",
+        "drill type",
+        "anchor type",
+        "project type",
+        "surface preparation",
+        "depth of hole",
+        "material compatibility",
+        "insulation needs",
+        "load-bearing requirements",
+        "installation location"
+      ],
+      "bfs": {
+        "found": true,
+        "key": "depth of hole, drill type, fastening method, installation location, insulation needs, load-bearing requirements, material compatibility",
+        "layer": 7,
+        "calls": 111
+      },
+      "sra": {
+        "proxy_key": "fastening method, material compatibility",
+        "proxy_layer": 2,
+        "proxy_verified": true,
+        "outcome": "wrong_layer",
+        "gap": 5,
+        "jaccard": 0.2857142857142857,
+        "calls": 9,
+        "budget_used": 0,
+        "pruned_nodes": 0
+      },
+      "era": {
+        "proxy_key": "depth of hole, fastening method, installation location, insulation needs, load-bearing requirements, material compatibility",
+        "proxy_layer": 6,
+        "proxy_verified": true,
+        "outcome": "wrong_layer",
+        "gap": 1,
+        "jaccard": 0.8571428571428571,
+        "calls": 47,
+        "budget_used": 16,
+        "pruned_nodes": 303
+      },
+      "complete": true
+    },
+    {
+      "case_id": 147,
+      "qid": "548857",
+      "size": 10,
+      "start_node": [
+        "medication type",
+        "administration method",
+        "duration of treatment",
+        "condition treated",
+        "side effects",
+        "prescription status",
+        "effectiveness",
+        "cost",
+        "availability",
+        "veterinary recommendation"
+      ],
+      "bfs": {
+        "found": true,
+        "key": "administration method, medication type, side effects, veterinary recommendation",
+        "layer": 4,
+        "calls": 655
+      },
+      "sra": {
+        "proxy_key": "administration method, medication type, side effects, veterinary recommendation",
+        "proxy_layer": 4,
+        "proxy_verified": true,
+        "outcome": "correct",
+        "gap": 0,
+        "jaccard": 1.0,
+        "calls": 142,
+        "budget_used": 0,
+        "pruned_nodes": 0
+      },
+      "era": {
+        "proxy_key": "administration method, condition treated, side effects, veterinary recommendation",
+        "proxy_layer": 4,
+        "proxy_verified": true,
+        "outcome": "correct",
+        "gap": 0,
+        "jaccard": 0.6,
+        "calls": 199,
+        "budget_used": 16,
+        "pruned_nodes": 595
       },
       "complete": true
     }

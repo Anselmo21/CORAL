@@ -178,8 +178,8 @@ def main() -> None:
     ax1.plot(sizes, bfs_acc, "o:", label="BFS (baseline)", color="black", linewidth=2, markersize=7)
     ax1.plot(sizes, sra_acc, "s-", label="SRA",            color="#d62728", linewidth=2, markersize=7)
     # ax1.plot(sizes, era10_acc, "D-", label="ERA (10% budget)", color="#1f77b4", linewidth=2, markersize=7)
-    ax1.plot(sizes, era64_acc, "P-", label="ERA",  color="#9467bd", linewidth=2, markersize=7)
-    ax1.plot(sizes, cc64_acc, "X-", label="CC",    color="#ff7f0e", linewidth=2, markersize=8)
+    ax1.plot(sizes, era64_acc, "D-", label="ERA",  color="#9467bd", linewidth=2, markersize=7)
+    ax1.plot(sizes, cc64_acc, "^-", label="CC",    color="#ff7f0e", linewidth=2, markersize=8)
     ax1.set_xlabel("Number of Available Criteria")
     ax1.set_ylabel("Average Accuracy")
     ax1.set_xticks(sizes)
@@ -196,8 +196,8 @@ def main() -> None:
     ax2.plot(sizes, bfs_calls, "o:", label="BFS (baseline)", color="black", linewidth=2, markersize=7)
     ax2.plot(sizes, sra_calls, "s-", label="SRA",            color="#d62728", linewidth=2, markersize=7)
     # ax2.plot(sizes, era10_calls, "D-", label="ERA (10% budget)", color="#1f77b4", linewidth=2, markersize=7)
-    ax2.plot(sizes, era64_calls, "P-", label="ERA",  color="#9467bd", linewidth=2, markersize=7)
-    ax2.plot(sizes, cc64_calls, "X-", label="CC",    color="#ff7f0e", linewidth=2, markersize=8)
+    ax2.plot(sizes, era64_calls, "D-", label="ERA",  color="#9467bd", linewidth=2, markersize=7)
+    ax2.plot(sizes, cc64_calls, "^-", label="CC",    color="#ff7f0e", linewidth=2, markersize=8)
     ax2.set_xlabel("Number of Available Criteria")
     ax2.set_ylabel("Average Number of LLM Calls")
     # ax2.set_title("Top-Down Test")
@@ -222,8 +222,8 @@ def main() -> None:
     fig3, ax3 = plt.subplots(figsize=(6, 4))
     ax3.plot(sizes, bfs_calls_norm, "o:", label="BFS (baseline)", color="black", linewidth=2, markersize=7)
     ax3.plot(sizes, sra_calls_norm, "s-", label="SRA", color="#d62728", linewidth=2, markersize=7)
-    ax3.plot(sizes, era64_calls_norm, "P-", label="ERA", color="#9467bd", linewidth=2, markersize=7)
-    ax3.plot(sizes, cc64_calls_norm, "X-", label="CC", color="#ff7f0e", linewidth=2, markersize=8)
+    ax3.plot(sizes, era64_calls_norm, "D-", label="ERA", color="#9467bd", linewidth=2, markersize=7)
+    ax3.plot(sizes, cc64_calls_norm, "^-", label="CC", color="#ff7f0e", linewidth=2, markersize=8)
     ax3.set_xlabel("Number of Available Criteria")
     ax3.set_ylabel("Average LLM Calls / Lattice Size")
     ax3.set_xticks(sizes)
@@ -280,8 +280,8 @@ def main() -> None:
     fig4, ax4 = plt.subplots(figsize=(6, 4))
     # ax4.plot(sizes, bfs_dist, "o:", label="BFS (baseline)", color="black", linewidth=2, markersize=7)
     ax4.plot(sizes, sra_dist, "s-", label="SRA", color="#d62728", linewidth=2, markersize=7)
-    ax4.plot(sizes, era_dist, "P-", label="ERA", color="#9467bd", linewidth=2, markersize=7)
-    ax4.plot(sizes, cc_dist, "X-", label="CC", color="#ff7f0e", linewidth=2, markersize=8)
+    ax4.plot(sizes, era_dist, "D-", label="ERA", color="#9467bd", linewidth=2, markersize=7)
+    ax4.plot(sizes, cc_dist, "^-", label="CC", color="#ff7f0e", linewidth=2, markersize=8)
     ax4.set_xlabel("Number of Available Criteria")
     ax4.set_ylabel("Average Distance to True CF")
     ax4.set_xticks(sizes)
@@ -302,8 +302,8 @@ def main() -> None:
     bins = np.arange(-0.5, max_d + 1.5, 1)
     hist_methods = [
         ("SRA", "#d62728", "s", all_dists["SRA"]),
-        ("ERA", "#9467bd", "P", all_dists["ERA"]),
-        ("CC", "#ff7f0e", "X", all_dists["CC"]),
+        ("ERA", "#9467bd", "D", all_dists["ERA"]),
+        ("CC", "#ff7f0e", "^", all_dists["CC"]),
     ]
     fig5, ax5 = plt.subplots(figsize=(6, 4))
     n_hist = len(hist_methods)

@@ -46,7 +46,7 @@ METHODS = [
 ]
 
 COLORS  = ["black", "#d62728", "#1f77b4", "#2ca02c", "#ff7f0e"]
-MARKERS = ["o",     "s",       "^",       "D",       "P"]
+MARKERS = ["o",     "s",       "D",       "D",       "^"]
 LINES   = [":",     "--",      "-",       "-",       "-"]
 
 
@@ -190,11 +190,10 @@ def plot_results(
         fig, ax = plt.subplots(figsize=(6, 3.5))
 
         for (label, key), color, marker, line in zip(method_keys, COLORS, MARKERS, LINES):
+            if ylabel_kind == "accuracy" and key == "bfs":
+                continue
             if ylabel_kind == "accuracy":
-                if key == "bfs":
-                    y = [100.0] * len(sizes)
-                else:
-                    y = [_acc(by_size[s], key) for s in sizes]
+                y = [_acc(by_size[s], key) for s in sizes]
             else:
                 if key == "bfs":
                     y = [float(np.mean([r["bfs"]["calls"] for r in by_size[s]])) for s in sizes]

@@ -24,6 +24,8 @@ RESULTS_PATH = "data/msmarco_subsample/results.json"
 OUT_DIR = "plots/msmarco_subsample"
 
 REF_COLORS = {"BFS": "black", "SRA": "#d62728"}
+_MARKERS = ["D", "s", "^", "o", "v", "p", "h", "P", "X", "*"]
+_COLORS  = plt.colormaps["tab10"].colors
 
 
 def _load() -> dict:
@@ -53,15 +55,14 @@ def _cost(bucket: list[dict], picker) -> float:
 
 
 def _budget_panel(ax, sizes, by_size, labels_and_pickers, ylabel_kind: str, title: str,
-                  cmap_name: str, show_sra: bool = True, show_bfs: bool = True) -> None:
-    cmap = plt.colormaps[cmap_name]
-    n = len(labels_and_pickers)
+                  show_sra: bool = True, show_bfs: bool = True) -> None:
     for i, (label, picker) in enumerate(labels_and_pickers):
         y = [_acc(by_size[s], picker) if ylabel_kind == "accuracy"
              else _cost(by_size[s], picker)
              for s in sizes]
-        color = cmap(0.15 + 0.7 * i / max(1, n - 1))
-        ax.plot(sizes, y, "D-", color=color, linewidth=1.7, markersize=6, label=label)
+        color  = _COLORS[i % len(_COLORS)]
+        marker = _MARKERS[i % len(_MARKERS)]
+        ax.plot(sizes, y, f"{marker}-", color=color, linewidth=1.7, markersize=6, label=label)
 
     if show_bfs:
         if ylabel_kind == "accuracy":
@@ -112,9 +113,9 @@ def plot_pair(d: dict, ylabel_kind: str, out_path: str) -> None:
 
     fig, axes = plt.subplots(1, 2, figsize=(14, 5))
     _budget_panel(axes[0], sizes, by_size, fixed_specs, ylabel_kind,
-                  f"Fixed ERA budgets — {ylabel_kind}", "Blues", show_sra=show_sra)
+                  f"Fixed ERA budgets — {ylabel_kind}", show_sra=show_sra)
     _budget_panel(axes[1], sizes, by_size, pct_specs, ylabel_kind,
-                  f"Percent-of-lattice ERA budgets — {ylabel_kind}", "Blues",
+                  f"Percent-of-lattice ERA budgets — {ylabel_kind}",
                   show_sra=show_sra)
 
     fig.tight_layout()
@@ -201,13 +202,13 @@ def plot_combined(d: dict, out_dir: str) -> None:
     fixed_specs = [(f"{b}", picker_fixed(b)) for b in fixed_budgets]
     pct_specs = [(f"{p}%", picker_pct(p)) for p in pct_budgets]
 
-    for specs, cmap, name in [
-        (fixed_specs, "Blues", "fixed"),
-        (pct_specs, "Blues", "pct"),
+    for specs, name in [
+        (fixed_specs, "fixed"),
+        (pct_specs, "pct"),
     ]:
         for ylabel_kind in ("accuracy", "cost"):
             fig, ax = plt.subplots(figsize=(8, 3.2))
-            _budget_panel(ax, sizes, by_size, specs, ylabel_kind, "", cmap, show_sra=False,
+            _budget_panel(ax, sizes, by_size, specs, ylabel_kind, "", show_sra=False,
                           show_bfs=(ylabel_kind == "cost"))
             fig.tight_layout()
             out_path = f"{out_dir}/era_{name}_{ylabel_kind}.png"
@@ -216,9 +217,9 @@ def plot_combined(d: dict, out_dir: str) -> None:
             print(f"Saved {out_path}")
 
         fig, axes = plt.subplots(1, 2, figsize=(8, 3.2))
-        _budget_panel(axes[0], sizes, by_size, specs, "accuracy", "", cmap, show_sra=False,
+        _budget_panel(axes[0], sizes, by_size, specs, "accuracy", "", show_sra=False,
                       show_bfs=False)
-        _budget_panel(axes[1], sizes, by_size, specs, "cost", "", cmap, show_sra=False,
+        _budget_panel(axes[1], sizes, by_size, specs, "cost", "", show_sra=False,
                       show_bfs=True)
         fig.tight_layout()
         out_path = f"{out_dir}/era_combined_{name}.png"
@@ -249,13 +250,13 @@ def plot_accuracy_cost_combined(d: dict, out_path: str) -> None:
 
     fig, axes = plt.subplots(2, 2, figsize=(14, 9))
 
-    _budget_panel(axes[0, 0], sizes, by_size, fixed_specs, "accuracy", "", "Blues",
+    _budget_panel(axes[0, 0], sizes, by_size, fixed_specs, "accuracy", "",
                   show_sra=False, show_bfs=True)
-    _budget_panel(axes[0, 1], sizes, by_size, fixed_specs, "cost", "", "Blues",
+    _budget_panel(axes[0, 1], sizes, by_size, fixed_specs, "cost", "",
                   show_sra=True, show_bfs=True)
-    _budget_panel(axes[1, 0], sizes, by_size, pct_specs, "accuracy", "", "Blues",
+    _budget_panel(axes[1, 0], sizes, by_size, pct_specs, "accuracy", "",
                   show_sra=False, show_bfs=True)
-    _budget_panel(axes[1, 1], sizes, by_size, pct_specs, "cost", "", "Blues",
+    _budget_panel(axes[1, 1], sizes, by_size, pct_specs, "cost", "",
                   show_sra=True, show_bfs=True)
 
     fig.tight_layout()

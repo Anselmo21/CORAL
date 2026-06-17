@@ -47,6 +47,8 @@ SHOW_SRA = not _args.no_sra
 
 ERA_BUDGET = 16
 REF_COLORS = {"BFS": "black", "SRA": "#d62728", "ERA b=16": "#1f77b4"}
+_MARKERS = ["D", "s", "^", "o", "v", "p", "h", "P", "X", "*"]
+_COLORS  = plt.colormaps["tab10"].colors
 
 
 def _load() -> tuple[list[dict], list[dict]]:
@@ -93,38 +95,36 @@ def _get_era_result(r: dict) -> dict:
 
 
 def _ref_lines(ax, sizes, era_by_size, ylabel_kind: str) -> None:
-    bfs_y = ([100.0] * len(sizes) if ylabel_kind == "accuracy"
-             else [float(np.mean([r["bfs"]["calls"] for r in era_by_size[s]])) for s in sizes])
-    sra_y = ([100.0 * sum(1 for r in era_by_size[s] if r.get("sra", {}).get("outcome") == "correct") / len(era_by_size[s])
-              for s in sizes] if ylabel_kind == "accuracy"
-             else [float(np.mean([r["sra"]["calls"] + r["sra"].get("budget_used", 0)
-                                  for r in era_by_size[s] if r.get("sra")]))
-                   for s in sizes])
-    era_y = ([100.0 * sum(1 for r in era_by_size[s] if _get_era_result(r).get("outcome") == "correct") / len(era_by_size[s])
-              for s in sizes] if ylabel_kind == "accuracy"
-             else [float(np.mean([_get_era_result(r)["calls"] + _get_era_result(r).get("budget_used", 0)
-                                  for r in era_by_size[s] if _get_era_result(r)]))
-                   for s in sizes])
-    ax.plot(sizes, bfs_y,  "o:", color=REF_COLORS["BFS"],     linewidth=2, markersize=7, label="BFS")
+    if ylabel_kind == "cost":
+        bfs_y = [float(np.mean([r["bfs"]["calls"] for r in era_by_size[s]])) for s in sizes]
+        ax.plot(sizes, bfs_y, "o:", color=REF_COLORS["BFS"], linewidth=2, markersize=7, label="BFS")
     if SHOW_SRA:
-        ax.plot(sizes, sra_y,  "s--", color=REF_COLORS["SRA"],    linewidth=2, markersize=7, label="SRA")
+        sra_y = ([100.0 * sum(1 for r in era_by_size[s] if r.get("sra", {}).get("outcome") == "correct") / len(era_by_size[s])
+                  for s in sizes] if ylabel_kind == "accuracy"
+                 else [float(np.mean([r["sra"]["calls"] + r["sra"].get("budget_used", 0)
+                                      for r in era_by_size[s] if r.get("sra")]))
+                       for s in sizes])
+        ax.plot(sizes, sra_y, "s--", color=REF_COLORS["SRA"], linewidth=2, markersize=7, label="SRA")
     if SHOW_ERA:
-        ax.plot(sizes, era_y,  "D-",  color=REF_COLORS["ERA b=16"], linewidth=2, markersize=7, label="ERA b=16")
+        era_y = ([100.0 * sum(1 for r in era_by_size[s] if _get_era_result(r).get("outcome") == "correct") / len(era_by_size[s])
+                  for s in sizes] if ylabel_kind == "accuracy"
+                 else [float(np.mean([_get_era_result(r)["calls"] + _get_era_result(r).get("budget_used", 0)
+                                      for r in era_by_size[s] if _get_era_result(r)]))
+                       for s in sizes])
+        ax.plot(sizes, era_y, "D-", color=REF_COLORS["ERA b=16"], linewidth=2, markersize=7, label="ERA b=16")
 
 
 def _budget_panel(ax, sizes, cc_by_size, era_by_size, labels_budgets,
-                  ylabel_kind: str, title: str, cmap_name: str) -> None:
-    cmap = plt.colormaps[cmap_name]
-    n = len(labels_budgets)
-    for i, (label, _) in enumerate(labels_budgets):
+                  ylabel_kind: str, title: str) -> None:
+    for i, (label, budget_val) in enumerate(labels_budgets):
         y = []
         for s in sizes:
             rows = cc_by_size.get(s, {}).get(label, [])
             y.append(_acc_cc(rows) if ylabel_kind == "accuracy" else _cost_cc(rows))
-        color = cmap(0.15 + 0.7 * i / max(1, n - 1))
-        budget_val = _
-        legend_label = f"budget={budget_val}%" if label.startswith("pct_") else f"budget={budget_val}"
-        ax.plot(sizes, y, "D-", color=color, linewidth=1.7, markersize=6, label=legend_label)
+        color  = _COLORS[i % len(_COLORS)]
+        marker = _MARKERS[i % len(_MARKERS)]
+        legend_label = f"{budget_val}%" if label.startswith("pct_") else str(budget_val)
+        ax.plot(sizes, y, f"{marker}-", color=color, linewidth=1.7, markersize=6, label=legend_label)
 
     _ref_lines(ax, sizes, era_by_size, ylabel_kind)
     ax.set_xlabel("Effective lattice size (k)")
@@ -146,14 +146,12 @@ def plot_budget_type(cc: list[dict], era: list[dict], budget_type: str, out_path
 
     if budget_type == "fixed":
         specs = [(f"fixed_{b}", b) for b in BUDGETS_FIXED]
-        cmap = "Oranges"
     else:
         specs = [(f"pct_{p}", p) for p in BUDGETS_PCT]
-        cmap = "Greens"
 
-    fig, axes = plt.subplots(1, 2, figsize=(15, 5))
-    _budget_panel(axes[0], sizes, cc_by_size, era_by_size, specs, "accuracy", "", cmap)
-    _budget_panel(axes[1], sizes, cc_by_size, era_by_size, specs, "cost",     "", cmap)
+    fig, axes = plt.subplots(1, 2, figsize=(8, 3.2))
+    _budget_panel(axes[0], sizes, cc_by_size, era_by_size, specs, "accuracy", "")
+    _budget_panel(axes[1], sizes, cc_by_size, era_by_size, specs, "cost",     "")
     fig.tight_layout()
     fig.savefig(out_path, dpi=150)
     plt.close(fig)

@@ -173,9 +173,9 @@ def plot_accuracy(results: list[dict], out_dir: str) -> None:
     ax.set_xticks(sizes)
     ax.grid(True, alpha=0.3)
     handles, labels = ax.get_legend_handles_labels()
-    ordered = [_display(n) for n in ["shannon", "renyi_0.5", "softmax", "renyi_2", "weighted"]]
+    ordered = [_display(n) for n in ["shannon", "softmax", "renyi_0.5", "renyi_2", "weighted"]]
     order = [labels.index(n) for n in ordered]
-    ax.legend([handles[i] for i in order], [labels[i] for i in order], ncol=3, loc="lower left")
+    ax.legend([handles[i] for i in order], [labels[i] for i in order], ncol=2, loc="lower left")
     fig.tight_layout()
     path = f"{out_dir}/accuracy_by_size.png"
     fig.savefig(path, dpi=150)
@@ -203,12 +203,62 @@ def plot_calls(results: list[dict], out_dir: str) -> None:
     ax.set_ylabel("Average LLM Calls")
     ax.set_xticks(sizes)
     handles, labels = ax.get_legend_handles_labels()
-    ordered = [_display(n) for n in ["shannon", "renyi_0.5", "softmax", "renyi_2", "weighted"]]
+    ordered = [_display(n) for n in ["shannon", "softmax", "renyi_0.5", "renyi_2", "weighted"]]
     order = [labels.index(n) for n in ordered]
-    ax.legend([handles[i] for i in order], [labels[i] for i in order], ncol=3, loc="upper left", fontsize=8)
+    ax.legend([handles[i] for i in order], [labels[i] for i in order], ncol=2, loc="upper left", fontsize=8)
     ax.grid(True, alpha=0.3)
     fig.tight_layout()
     path = f"{out_dir}/calls_by_size.png"
+    fig.savefig(path, dpi=150)
+    plt.close(fig)
+    print(f"Saved {path}")
+
+
+def plot_combined(results: list[dict], out_dir: str) -> None:
+    by_size: dict[int, list[dict]] = defaultdict(list)
+    for r in results:
+        by_size[r["size"]].append(r)
+    sizes = sorted(by_size)
+    names = [n for n, _ in ENTROPY_VARIANTS]
+    ordered = [_display(n) for n in ["shannon", "softmax", "renyi_0.5", "renyi_2", "weighted"]]
+
+    fig, (ax_acc, ax_cost) = plt.subplots(1, 2, figsize=(9, 4))
+
+    for i, name in enumerate(names):
+        accs = [
+            100.0 * sum(1 for r in by_size[s] if r[name]["outcome"] == "correct") / len(by_size[s])
+            for s in sizes
+        ]
+        ax_acc.plot(sizes, accs, f"{MARKERS[i]}-", label=_display(name), color=COLORS[i],
+                    linewidth=2, markersize=8)
+
+    ax_acc.set_xlabel("Number of Available Criteria")
+    ax_acc.set_ylabel("Accuracy (%)")
+    ax_acc.set_ylim(0, 108)
+    ax_acc.set_xticks(sizes)
+    ax_acc.grid(True, alpha=0.3)
+    handles, labels = ax_acc.get_legend_handles_labels()
+    order = [labels.index(n) for n in ordered]
+    ax_acc.legend([handles[i] for i in order], [labels[i] for i in order], ncol=2, loc="lower left", fontsize=8)
+
+    for i, name in enumerate(names):
+        avg_cost = [
+            float(np.mean([r[name]["calls"] + r[name]["budget_used"] for r in by_size[s]]))
+            for s in sizes
+        ]
+        ax_cost.plot(sizes, avg_cost, f"{MARKERS[i]}-", label=_display(name), color=COLORS[i],
+                     linewidth=2, markersize=8)
+
+    ax_cost.set_xlabel("Number of Available Criteria")
+    ax_cost.set_ylabel("Average LLM Calls")
+    ax_cost.set_xticks(sizes)
+    ax_cost.grid(True, alpha=0.3)
+    handles, labels = ax_cost.get_legend_handles_labels()
+    order = [labels.index(n) for n in ordered]
+    ax_cost.legend([handles[i] for i in order], [labels[i] for i in order], ncol=2, loc="upper left", fontsize=8)
+
+    fig.tight_layout()
+    path = f"{out_dir}/accuracy_cost_combined.png"
     fig.savefig(path, dpi=150)
     plt.close(fig)
     print(f"Saved {path}")
@@ -281,6 +331,7 @@ def main() -> None:
     plot_accuracy(results, PLOT_DIR)
     plot_calls(results, PLOT_DIR)
     plot_outcomes(results, PLOT_DIR)
+    plot_combined(results, PLOT_DIR)
 
 
 if __name__ == "__main__":

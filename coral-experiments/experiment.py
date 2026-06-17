@@ -481,7 +481,7 @@ def plot_results(results: list[dict], has_cc: bool = False) -> None:
         ax2.plot(sizes, sra_calls, "s-", label="SRA",                  color=bar_colors["SRA"],       linewidth=2, markersize=7)
         ax2.plot(sizes, era_total, "D-", label="ERA", color=bar_colors["ERA"], linewidth=2, markersize=7)
         if has_cc:
-            ax2.plot(sizes, cc_total_list, "P-", label="CC", color=bar_colors["CC"], linewidth=2, markersize=7)
+            ax2.plot(sizes, cc_total_list, "^-", label="CC", color=bar_colors["CC"], linewidth=2, markersize=7)
         ax2.set_xlabel("Number of Criteria")
         ax2.set_ylabel("Average Calls")
         ax2.set_title(dir_labels[direction])
@@ -507,7 +507,7 @@ def plot_results(results: list[dict], has_cc: bool = False) -> None:
         ax2b.plot(sizes, era_t_n, "D-", label="ERA", color=bar_colors["ERA"], linewidth=2, markersize=7)
         if has_cc:
             cc_t_n = [v * sc for v, sc in zip(cc_total_list, scale)]
-            ax2b.plot(sizes, cc_t_n, "P-", label="CC", color=bar_colors["CC"], linewidth=2, markersize=7)
+            ax2b.plot(sizes, cc_t_n, "^-", label="CC", color=bar_colors["CC"], linewidth=2, markersize=7)
         ax2b.set_ylim(0, 1.0)
         ax2b.set_xlabel("Number of Criteria")
         ax2b.set_ylabel("Proportion of Lattice Visited")
@@ -578,8 +578,8 @@ def plot_results(results: list[dict], has_cc: bool = False) -> None:
         method_specs = [
             ("sra",   "#d62728", "SRA",   "s"),
             ("era",   "#1f77b4", "ERA",   "D"),
-            ("era64", "#9467bd", "ERA64", "^"),
-        ] + ([("cc", "#ff7f0e", "CC", "P")] if has_cc else [])
+            ("era64", "#9467bd", "ERA64", "D"),
+        ] + ([("cc", "#ff7f0e", "CC", "^")] if has_cc else [])
 
         method_gap_counts: list[tuple[str, str, str, str, Counter]] = []
         max_gap = 0

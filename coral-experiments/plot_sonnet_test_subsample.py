@@ -67,22 +67,15 @@ def plot_accuracy(results: list[dict], cc_by_id: dict[int, dict] | None, out_dir
     sizes = sorted(by_size)
 
     methods = [
-        ("BFS",       "black",   "o:", lambda r: {"outcome": "correct", "calls": r["bfs"]["calls"], "budget_used": 0}),
         ("SRA",       "#d62728", "s--", lambda r: r.get("sra")),
         ("ERA b=16",  "#1f77b4", "D-",  lambda r: r.get("era")),
     ]
     if cc_by_id is not None:
-        def _cc_pick(r):
-            cc = cc_by_id.get(r["case_id"])
-            return cc
-        methods.append(("LSM b=10%", "#ff7f0e", "^-", _cc_pick))
+        methods.append(("LSM b=10%", "#ff7f0e", "^-", lambda r: cc_by_id.get(r["case_id"])))
 
     fig, ax = plt.subplots(figsize=(7, 4))
     for label, color, style, picker in methods:
-        if label == "BFS":
-            y = [100.0] * len(sizes)
-        else:
-            y = [_acc(by_size[s], picker) for s in sizes]
+        y = [_acc(by_size[s], picker) for s in sizes]
         ax.plot(sizes, y, style, label=label, color=color, linewidth=2, markersize=8)
 
     ax.set_xlabel("Number of Available Criteria")

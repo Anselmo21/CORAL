@@ -9,6 +9,8 @@ Writes plots/cc_sonnet_dev_ablation/:
   combined_pct.png     — pct budgets:   accuracy | avg LLM calls
   accuracy_heatmap.png — rows = CC budget configs, cols = sizes
   cost_heatmap.png     — same for cost
+
+CLI: conda run -n coral python3 plot_cc_sonnet_dev_ablation.py
 """
 from __future__ import annotations
 
@@ -17,6 +19,7 @@ import os
 from collections import defaultdict
 
 import matplotlib
+import matplotlib.axes
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
@@ -24,11 +27,13 @@ import numpy as np
 from plot_style import apply_plot_style
 from run_cc_sonnet_test_ablation import BUDGETS_FIXED, BUDGETS_PCT
 
-CC_RESULTS_PATH = "data/sonnet_subsample/cc_ablation_results.json"
+CC_RESULTS_PATH  = "data/sonnet_subsample/cc_ablation_results.json"
 ERA_RESULTS_PATH = "data/sonnet_subsample/results.json"
-OUT_DIR = "plots/cc_sonnet_dev_ablation"
+OUT_DIR          = "plots/cc_sonnet_dev_ablation"
 
 REF_COLORS = {"BFS": "black", "ERA b=16": "#1f77b4"}
+_COLORS    = plt.colormaps["tab10"].colors
+_MARKERS   = ["D", "s", "^", "o", "v", "p", "h", "P", "X", "*"]
 
 
 def _load() -> tuple[list[dict], list[dict]]:
@@ -66,27 +71,26 @@ def _cost(rows: list[dict]) -> float:
 
 
 def _budget_panel(
-    ax,
+    ax: matplotlib.axes.Axes,
     sizes: list[int],
-    cc_by_size: dict,
-    era_by_size: dict,
+    cc_by_size: dict[int, dict[str, list[dict]]],
+    era_by_size: dict[int, list[dict]],
     labels: list[str],
     ylabel_kind: str,
-    cmap_name: str,
 ) -> None:
-    cmap = plt.colormaps[cmap_name]
-    n = len(labels)
     for i, label in enumerate(labels):
-        y = []
-        for s in sizes:
-            rows = cc_by_size.get(s, {}).get(label, [])
-            y.append(_acc(rows) if ylabel_kind == "accuracy" else _cost(rows))
-        color = cmap(0.15 + 0.7 * i / max(1, n - 1))
-        ax.plot(sizes, y, "D-", color=color, linewidth=1.7, markersize=6,
-                label=label.replace("fixed_", "").replace("pct_", "") + ("%" if "pct_" in label else ""))
+        y = [
+            _acc(cc_by_size.get(s, {}).get(label, [])) if ylabel_kind == "accuracy"
+            else _cost(cc_by_size.get(s, {}).get(label, []))
+            for s in sizes
+        ]
+        legend_label = (label.replace("fixed_", "").replace("pct_", "")
+                        + ("%" if "pct_" in label else ""))
+        ax.plot(sizes, y, f"{_MARKERS[i % len(_MARKERS)]}-",
+                color=_COLORS[i % len(_COLORS)],
+                linewidth=1.7, markersize=6, label=legend_label)
 
-    # BFS reference (cost only)
-    if ylabel_kind != "accuracy":
+    if ylabel_kind == "cost":
         bfs_y = [float(np.mean([r["bfs"]["calls"] for r in era_by_size[s]])) for s in sizes]
         ax.plot(sizes, bfs_y, "o:", color=REF_COLORS["BFS"], linewidth=2, markersize=7,
                 label="BFS (baseline)")
@@ -103,20 +107,17 @@ def _budget_panel(
 
 
 def plot_combined(cc: list[dict], era: list[dict], out_dir: str) -> None:
-    cc_by_size = _by_size_cc(cc)
+    cc_by_size  = _by_size_cc(cc)
     era_by_size = _by_size_era(era)
     sizes = sorted(set(cc_by_size) | set(era_by_size))
 
     fixed_labels = [f"fixed_{b}" for b in BUDGETS_FIXED]
-    pct_labels = [f"pct_{p}" for p in BUDGETS_PCT]
+    pct_labels   = [f"pct_{p}"   for p in BUDGETS_PCT]
 
-    for labels, cmap, name in [
-        (fixed_labels, "Purples", "fixed"),
-        (pct_labels, "Purples", "pct"),
-    ]:
+    for labels, name in [(fixed_labels, "fixed"), (pct_labels, "pct")]:
         fig, axes = plt.subplots(1, 2, figsize=(8, 3.2))
-        _budget_panel(axes[0], sizes, cc_by_size, era_by_size, labels, "accuracy", cmap)
-        _budget_panel(axes[1], sizes, cc_by_size, era_by_size, labels, "cost", cmap)
+        _budget_panel(axes[0], sizes, cc_by_size, era_by_size, labels, "accuracy")
+        _budget_panel(axes[1], sizes, cc_by_size, era_by_size, labels, "cost")
         fig.tight_layout()
         out_path = f"{out_dir}/combined_{name}.png"
         fig.savefig(out_path, dpi=150)
@@ -124,12 +125,12 @@ def plot_combined(cc: list[dict], era: list[dict], out_dir: str) -> None:
         print(f"Saved {out_path}")
 
 
-def _heatmap_grid(cc: list[dict], era: list[dict], kind: str) -> tuple[list[str], list[int], np.ndarray]:
-    cc_by_size = _by_size_cc(cc)
+def plot_heatmap(cc: list[dict], era: list[dict], kind: str, out_path: str) -> None:
+    cc_by_size  = _by_size_cc(cc)
     era_by_size = _by_size_era(era)
     sizes = sorted(set(cc_by_size) | set(era_by_size))
 
-    row_labels = [f"{b}" for b in BUDGETS_FIXED] + [f"{p}%" for p in BUDGETS_PCT]
+    row_labels = [f"{b}"  for b in BUDGETS_FIXED] + [f"{p}%" for p in BUDGETS_PCT]
     raw_labels = [f"fixed_{b}" for b in BUDGETS_FIXED] + [f"pct_{p}" for p in BUDGETS_PCT]
 
     matrix = np.full((len(raw_labels), len(sizes)), float("nan"))
@@ -138,21 +139,15 @@ def _heatmap_grid(cc: list[dict], era: list[dict], kind: str) -> tuple[list[str]
             rows = cc_by_size.get(s, {}).get(label, [])
             matrix[i, j] = _acc(rows) if kind == "accuracy" else _cost(rows)
 
-    return row_labels, sizes, matrix
-
-
-def plot_heatmap(cc: list[dict], era: list[dict], kind: str, out_path: str) -> None:
-    labels, sizes, matrix = _heatmap_grid(cc, era, kind)
-
-    fig, ax = plt.subplots(figsize=(9, 7))
+    fig, ax = plt.subplots(figsize=(10, 7))
     cmap_name = "RdYlGn" if kind == "accuracy" else "YlOrRd"
     vmin, vmax = (0.0, 100.0) if kind == "accuracy" else (None, None)
     im = ax.imshow(matrix, aspect="auto", cmap=cmap_name, vmin=vmin, vmax=vmax)
 
     ax.set_xticks(range(len(sizes)))
     ax.set_xticklabels([str(s) for s in sizes])
-    ax.set_yticks(range(len(labels)))
-    ax.set_yticklabels(labels, fontsize=9)
+    ax.set_yticks(range(len(row_labels)))
+    ax.set_yticklabels(row_labels, fontsize=9)
     ax.set_xlabel("Number of Available Criteria")
 
     for i in range(matrix.shape[0]):
@@ -166,8 +161,7 @@ def plot_heatmap(cc: list[dict], era: list[dict], kind: str, out_path: str) -> N
                                      (kind == "cost" and v < 0.6 * np.nanmax(matrix))
                                   else "white")
 
-    cbar_label = "Accuracy (%)" if kind == "accuracy" else "Average LLM Calls"
-    fig.colorbar(im, ax=ax).set_label(cbar_label)
+    fig.colorbar(im, ax=ax).set_label("Accuracy (%)" if kind == "accuracy" else "Average LLM Calls")
     fig.tight_layout()
     fig.savefig(out_path, dpi=150)
     plt.close(fig)
@@ -178,10 +172,10 @@ def main() -> None:
     apply_plot_style()
     os.makedirs(OUT_DIR, exist_ok=True)
     cc, era = _load()
-    print(f"Loaded {len(cc)} CC ablation rows, {len(era)} ERA rows.")
+    print(f"Loaded {len(cc)} CC rows, {len(era)} ERA rows")
     plot_combined(cc, era, OUT_DIR)
     plot_heatmap(cc, era, "accuracy", f"{OUT_DIR}/accuracy_heatmap.png")
-    plot_heatmap(cc, era, "cost", f"{OUT_DIR}/cost_heatmap.png")
+    plot_heatmap(cc, era, "cost",     f"{OUT_DIR}/cost_heatmap.png")
 
 
 if __name__ == "__main__":
