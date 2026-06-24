@@ -1,7 +1,8 @@
-"""Entropy function ablation on the sonnet pragma sub-lattice dev set.
+"""Entropy function ablation on the sonnet pragma sub-lattice set.
 
-Reuses the 148 dev cases from data/sonnet_pragma/cases_dev.json and runs ERA
-with a fixed budget=16 for each of the 5 entropy variants:
+Reuses the cases sampled by scripts.pragma.sonnet.run_subsample
+(data/sonnet_pragma/cases.json) and runs ERA at the selected
+pct_10 budget (max(1, int(0.10 * 2**size))) for each of the 5 entropy variants:
   softmax, shannon, renyi(α=0.5), renyi(α=2), weighted
 
 Outputs:
@@ -25,9 +26,8 @@ import numpy as np
 from scripts.shared.plot_style import apply_plot_style
 from scripts.pragma.sonnet.run_subsample import (
     DATASET_PATH,
-    SPLIT_PATH,
+    _load_all_qids,
     _load_pragma_lattices,
-    _load_split,
     score_proxy,
 )
 from search.bfs import bfs_search
@@ -39,12 +39,12 @@ from search.heuristics import (
 )
 from search.rank import era_search
 
-CASES_PATH   = "data/sonnet_pragma/cases_dev.json"
+CASES_PATH   = "data/sonnet_pragma/cases.json"
 OUT_DIR      = "data/sonnet_pragma_entropy_ablation"
 RESULTS_PATH = f"{OUT_DIR}/results.json"
 PLOT_DIR     = "plots/sonnet_pragma_entropy_ablation"
 
-BUDGET: int = 16
+BUDGET_PCT: int = 10  # percent of 2^size per case
 
 ENTROPY_VARIANTS: list[tuple[str, object]] = [
     ("softmax",   softmax_entropy),
@@ -93,10 +93,14 @@ def run_ablation(
             "bfs_calls": bfs_res["calls"],
         }
 
+        budget = max(1, int(2**size * BUDGET_PCT / 100))
+        row["budget"] = budget
+        row["budget_pct"] = BUDGET_PCT
+
         for name, entropy_fn in ENTROPY_VARIANTS:
             res = era_search(
                 criteria, rbc,
-                budget=BUDGET,
+                budget=budget,
                 entropy_fn=entropy_fn,
                 start_node=start_node,
                 direction="down",
@@ -127,7 +131,7 @@ def print_summary(results: list[dict]) -> None:
     sep = f"  {'-'*4}-+-{'-'*3}-+" + f"-{'-'*(col_w-2)}-+" * len(names)
 
     print(f"\n{'=' * (30 + col_w * len(names))}")
-    print(f"  ERA Entropy Ablation (budget={BUDGET}) — pragma sub-lattices — {len(results)} cases")
+    print(f"  ERA Entropy Ablation (budget=pct_{BUDGET_PCT}) — pragma sub-lattices — {len(results)} cases")
     print(f"{'=' * (30 + col_w * len(names))}")
 
     header = f"  {'Size':>4} | {'N':>3} |"
@@ -314,13 +318,13 @@ def main() -> None:
 
     with open(CASES_PATH) as f:
         cases: list[dict] = json.load(f)
-    print(f"Loaded {len(cases)} dev cases from {CASES_PATH}")
+    print(f"Loaded {len(cases)} cases from {CASES_PATH}")
 
-    dev_qids, _ = _load_split()
-    lattices = _load_pragma_lattices(DATASET_PATH, set(dev_qids))
-    print(f"Loaded {len(lattices)} dev lattices")
+    qids = _load_all_qids()
+    lattices = _load_pragma_lattices(qids)
+    print(f"Loaded {len(lattices)} lattices")
 
-    print(f"\nRunning ERA (budget={BUDGET}) × {len(ENTROPY_VARIANTS)} entropy variants ...")
+    print(f"\nRunning ERA (budget=pct_{BUDGET_PCT}) × {len(ENTROPY_VARIANTS)} entropy variants ...")
     results = run_ablation(cases, lattices)
 
     print_summary(results)
@@ -328,7 +332,7 @@ def main() -> None:
     os.makedirs(OUT_DIR, exist_ok=True)
     with open(RESULTS_PATH, "w") as f:
         json.dump({
-            "budget":           BUDGET,
+            "budget_pct":       BUDGET_PCT,
             "entropy_variants": [n for n, _ in ENTROPY_VARIANTS],
             "n_cases":          len(results),
             "results":          results,

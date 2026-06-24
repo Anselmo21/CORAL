@@ -1,22 +1,22 @@
 """Sub-lattice ERA budget ablation sweep on the Sonnet pragma dataset.
 
-Uses the existing 8/8 dev/test split from data/sonnet_pragma/split.json.
-For each split, samples 20 sub-lattices per effective size k in 3..9 that:
+Iterates every record in data/sonnet-pragma-dataset.json (no split). For each
+effective size k in 3..9 samples 20 sub-lattices that:
   (a) have a BFS-found CF, AND
   (b) the CF requires removal of ≥2 pragmas (BFS CF layer ≤ k-2)
+Also appends every full k=10 lattice as a size-10 case.
 
-Runs BFS / SRA / ERA(fixed-budget grid) / ERA(percent-of-lattice grid) on
-each dev case with incremental per-case checkpointing.
+Runs BFS / SRA / ERA(fixed-budget grid) / ERA(percent-of-lattice grid) on each
+case with incremental per-case checkpointing.
 
 Outputs:
-  data/sonnet_pragma/cases_dev.json             — sampled dev cases
-  data/sonnet_pragma/cases_test.json            — sampled test cases
-  data/sonnet_pragma/per_case/case_<i>.json     — per-case results (resumable)
-  data/sonnet_pragma/results.json               — aggregate results
+  data/sonnet_pragma/cases.json                — sampled cases (full set)
+  data/sonnet_pragma/per_case/case_<i>.json    — per-case results (resumable)
+  data/sonnet_pragma/results.json              — aggregate results
 
 CLI:
-  conda run -n coral python3 run_sonnet_pragma_subsample.py
-  conda run -n coral python3 run_sonnet_pragma_subsample.py --resample
+  conda run -n coral python3 -m scripts.pragma.sonnet.run_subsample
+  conda run -n coral python3 -m scripts.pragma.sonnet.run_subsample --resample
 """
 from __future__ import annotations
 
@@ -32,32 +32,46 @@ from search.lattice import combo_key, jaccard_keys
 from search.rank import era_search, sra_search
 
 DATASET_PATH = "data/sonnet-pragma-dataset.json"
-SPLIT_PATH   = "data/sonnet_pragma/split.json"
 OUT_DIR      = "data/sonnet_pragma"
+CASES_PATH   = f"{OUT_DIR}/cases.json"
+RESULTS_PATH = f"{OUT_DIR}/results.json"
 
-SIZES: list[int] = list(range(3, 11))        # 3..10
-TARGET_PER_SIZE: int = 20
+SIZES: list[int]          = list(range(3, 10))   # 3..9 sub-lattice sampling
+TARGET_PER_SIZE: int      = 20
 ERA_BUDGETS_FIXED: list[int] = [4, 8, 16, 32, 64, 128, 256]
 ERA_BUDGETS_PCT:  list[int]  = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
-SEED: int = 42
-MIN_PRAGMAS_REMOVED: int = 2   # CF must require removal of ≥ this many pragmas
+SEED: int                 = 42
+MIN_PRAGMAS_REMOVED: int  = 2
 
 
 # ---------------------------------------------------------------------------
 # Data loading
 # ---------------------------------------------------------------------------
 
+def _load_dataset() -> list[dict]:
+    with open(DATASET_PATH) as f:
+        return json.load(f)
+
+
+def _load_all_qids() -> list[str]:
+    """Return every non-halted qid in the dataset, sorted for determinism."""
+    data = _load_dataset()
+    qids = [str(r["id"]) for r in data if not r.get("halted")]
+    return sorted(qids, key=lambda q: int(q) if q.isdigit() else q)
+
+
 def _load_pragma_lattices(
-    dataset_path: str,
-    qids: set[str],
+    qids: set[str] | list[str] | None = None,
 ) -> dict[str, tuple[list[str], dict[str, list[str]]]]:
-    """Return {qid: (criteria, rankings_by_combo)} for the requested qids."""
-    with open(dataset_path) as f:
-        data = json.load(f)
+    """Return {qid: (criteria, rankings_by_combo)}. If qids is None, load all."""
+    data = _load_dataset()
     out: dict[str, tuple[list[str], dict[str, list[str]]]] = {}
+    qid_set = set(qids) if qids is not None else None
     for rec in data:
+        if rec.get("halted"):
+            continue
         qid = str(rec["id"])
-        if qid not in qids:
+        if qid_set is not None and qid not in qid_set:
             continue
         cfg = rec["lattice"]["config"]
         criteria: list[str] = cfg["criteria"]
@@ -67,12 +81,6 @@ def _load_pragma_lattices(
             continue
         out[qid] = (criteria, rbc)
     return out
-
-
-def _load_split() -> tuple[list[str], list[str]]:
-    with open(SPLIT_PATH) as f:
-        s = json.load(f)
-    return s["dev"], s["test"]
 
 
 # ---------------------------------------------------------------------------
@@ -102,12 +110,11 @@ def _qualifies(
     criteria: list[str],
     start_node: list[str],
 ) -> bool:
-    """BFS finds a CF that requires removal of ≥ MIN_PRAGMAS_REMOVED pragmas."""
     res = bfs_search(criteria, rbc, start_node=start_node, direction="down")
     if not res["found"]:
         return False
     k = len(start_node)
-    cf_layer = res["size"]  # number of pragmas in the CF node
+    cf_layer = res["size"]
     pragmas_removed = k - cf_layer
     return pragmas_removed >= MIN_PRAGMAS_REMOVED
 
@@ -115,7 +122,6 @@ def _qualifies(
 def sample_cases(
     lattices: dict[str, tuple[list[str], dict[str, list[str]]]],
     seed: int = SEED,
-    label: str = "",
 ) -> list[dict]:
     rng = random.Random(seed)
     cases: list[dict] = []
@@ -132,9 +138,13 @@ def sample_cases(
                 accepted.append(cand)
                 if len(accepted) >= TARGET_PER_SIZE:
                     break
-        tag = f" [{label}]" if label else ""
-        print(f"  size={size}{tag}: pool={len(candidates):>5}  accepted={len(accepted):>3}/{TARGET_PER_SIZE}")
+        print(f"  size={size}: pool={len(candidates):>5}  accepted={len(accepted):>3}/{TARGET_PER_SIZE}")
         cases.extend(accepted)
+
+    for qid, (criteria, _) in sorted(lattices.items()):
+        cases.append({"qid": qid, "size": 10, "start_node": criteria})
+    print(f"  size=10: added {len(lattices)} full lattices")
+
     return cases
 
 
@@ -181,6 +191,7 @@ def score_proxy(
         "jaccard": jaccard_keys(bfs_key, proxy_key),
         "calls": proxy_result.get("calls", 0),
         "budget_used": proxy_result.get("budget_used", 0),
+        "pruned_nodes": proxy_result.get("pruned_nodes", 0),
     }
 
 
@@ -274,13 +285,10 @@ def print_summary(results: list[dict]) -> None:
     for r in results:
         by_size[r["size"]].append(r)
 
-    era_labels = (
-        [f"era_fixed_{b}" for b in ERA_BUDGETS_FIXED]
-        + [f"era_pct_{p}" for p in ERA_BUDGETS_PCT]
-    )
+    era_labels = [f"era_fixed_{b}" for b in ERA_BUDGETS_FIXED[:4]]
 
     print(f"\n{'='*60}")
-    print(f"  Pragma sub-lattice sweep — {len(results)} cases")
+    print(f"  SONNET pragma sub-lattice sweep — {len(results)} cases (full set)")
     print(f"{'='*60}")
     for size in sorted(by_size):
         bucket = by_size[size]
@@ -288,7 +296,7 @@ def print_summary(results: list[dict]) -> None:
         bfs_calls = sum(r["bfs"]["calls"] for r in bucket) / n
         sra_acc = 100 * sum(1 for r in bucket if r["sra"]["outcome"] == "correct") / n
         print(f"\n  k={size}  n={n}  BFS avg_calls={bfs_calls:.0f}  SRA acc={sra_acc:.0f}%")
-        for label in era_labels[:4]:  # just first few for brevity
+        for label in era_labels:
             acc = 100 * sum(1 for r in bucket if r["era"][label]["outcome"] == "correct") / n
             print(f"    {label}: {acc:.0f}%")
 
@@ -303,58 +311,39 @@ def main() -> None:
                         help="Re-roll sampled cases (clears per-case cache)")
     args = parser.parse_args()
 
-    dev_qids, test_qids = _load_split()
-    print(f"Split: {len(dev_qids)} dev, {len(test_qids)} test")
+    qids = _load_all_qids()
+    print(f"Qids ({len(qids)}): {qids}")
+    lattices = _load_pragma_lattices(qids)
+    print(f"Loaded {len(lattices)} pragma lattices")
 
-    dev_lattices  = _load_pragma_lattices(DATASET_PATH, set(dev_qids))
-    test_lattices = _load_pragma_lattices(DATASET_PATH, set(test_qids))
-    print(f"Loaded {len(dev_lattices)} dev lattices, {len(test_lattices)} test lattices")
-
-    cases_dev_path  = f"{OUT_DIR}/cases_dev.json"
-    cases_test_path = f"{OUT_DIR}/cases_test.json"
     os.makedirs(OUT_DIR, exist_ok=True)
 
-    # Sample dev cases
-    if args.resample or not os.path.exists(cases_dev_path):
-        print("\nSampling dev cases ...")
-        cases_dev = sample_cases(dev_lattices, seed=SEED, label="dev")
-        with open(cases_dev_path, "w") as f:
-            json.dump(cases_dev, f, indent=2)
-        print(f"Saved {len(cases_dev)} dev cases → {cases_dev_path}")
+    if args.resample or not os.path.exists(CASES_PATH):
+        print("\nSampling cases ...")
+        cases = sample_cases(lattices, seed=SEED)
+        with open(CASES_PATH, "w") as f:
+            json.dump(cases, f, indent=2)
+        print(f"Saved {len(cases)} cases → {CASES_PATH}")
     else:
-        with open(cases_dev_path) as f:
-            cases_dev = json.load(f)
-        print(f"Loaded {len(cases_dev)} existing dev cases from {cases_dev_path}")
+        with open(CASES_PATH) as f:
+            cases = json.load(f)
+        print(f"Loaded {len(cases)} existing cases from {CASES_PATH}")
 
-    # Sample test cases
-    if args.resample or not os.path.exists(cases_test_path):
-        print("\nSampling test cases ...")
-        cases_test = sample_cases(test_lattices, seed=SEED + 1, label="test")
-        with open(cases_test_path, "w") as f:
-            json.dump(cases_test, f, indent=2)
-        print(f"Saved {len(cases_test)} test cases → {cases_test_path}")
-    else:
-        with open(cases_test_path) as f:
-            cases_test = json.load(f)
-        print(f"Loaded {len(cases_test)} existing test cases from {cases_test_path}")
-
-    # Run BFS/SRA/ERA on dev cases
-    print(f"\nRunning BFS/SRA/ERA on {len(cases_dev)} dev cases ...")
+    print(f"\nRunning BFS/SRA/ERA on {len(cases)} cases ...")
     results: list[dict] = []
-    for i, case in enumerate(cases_dev):
+    for i, case in enumerate(cases):
         qid = case["qid"]
-        criteria, rbc = dev_lattices[qid]
-        print(f"  [{i+1:>3}/{len(cases_dev)}] qid={qid} k={case['size']} ...", end=" ", flush=True)
+        criteria, rbc = lattices[qid]
+        print(f"  [{i+1:>3}/{len(cases)}] qid={qid} k={case['size']} ...", end=" ", flush=True)
         result = run_one_case(i, case, criteria, rbc)
         results.append(result)
         bfs_layer = result["bfs"]["layer"]
         sra_ok = "OK" if result["sra"]["outcome"] == "correct" else result["sra"]["outcome"]
         print(f"BFS_layer={bfs_layer} SRA={sra_ok}")
 
-    results_path = f"{OUT_DIR}/results.json"
-    with open(results_path, "w") as f:
+    with open(RESULTS_PATH, "w") as f:
         json.dump(results, f, indent=2)
-    print(f"\nResults → {results_path}")
+    print(f"\nResults → {RESULTS_PATH}")
     print_summary(results)
 
 

@@ -18,20 +18,28 @@ def score_margin(scores: dict[str, float], baseline_answer: str) -> float:
     return baseline_score - best_other
 
 
-def softmax_entropy(scores: dict[str, float], T: float = 1.0) -> float:
+def softmax_entropy(
+    scores: dict[str, float],
+    T: float = 1.0,
+    num_voters: int | None = None,
+) -> float:
     values = list(scores.values())
     if not values:
         return 0.0
-    scores = np.array(values, dtype=float)
-
-    shifted_scores = scores - np.max(scores)
+    arr = np.array(values, dtype=float)
+    if num_voters and num_voters > 0:
+        arr = arr / num_voters
+    shifted_scores = arr - np.max(arr)
     exp_scores = np.exp(shifted_scores / T)
     probabilities = exp_scores / np.sum(exp_scores)
     entropy = -np.sum(probabilities * np.log2(probabilities + 1e-12))
     return entropy
 
 
-def shannon_entropy(scores: dict[str, float]) -> float:
+def shannon_entropy(
+    scores: dict[str, float],
+    num_voters: int | None = None,
+) -> float:
     values = [v for v in scores.values() if v > 0]
     total = sum(values)
     if total == 0:
@@ -40,11 +48,18 @@ def shannon_entropy(scores: dict[str, float]) -> float:
     return -sum(p * math.log2(p) for p in probs)
 
 
-def renyi_entropy(scores: dict[str, float], alpha: float = 2.0, T: float = 1.0) -> float:
+def renyi_entropy(
+    scores: dict[str, float],
+    alpha: float = 2.0,
+    T: float = 1.0,
+    num_voters: int | None = None,
+) -> float:
     values = list(scores.values())
     if not values:
         return 0.0
     arr = np.array(values, dtype=float)
+    if num_voters and num_voters > 0:
+        arr = arr / num_voters
     shifted = arr - np.max(arr)
     exp_scores = np.exp(shifted / T)
     probs = exp_scores / np.sum(exp_scores)
@@ -53,11 +68,17 @@ def renyi_entropy(scores: dict[str, float], alpha: float = 2.0, T: float = 1.0) 
     return float((1.0 / (1.0 - alpha)) * np.log2(np.sum(probs ** alpha) + 1e-12))
 
 
-def weighted_entropy(scores: dict[str, float], T: float = 1.0) -> float:
+def weighted_entropy(
+    scores: dict[str, float],
+    T: float = 1.0,
+    num_voters: int | None = None,
+) -> float:
     values = list(scores.values())
     if not values:
         return 0.0
     arr = np.array(values, dtype=float)
+    if num_voters and num_voters > 0:
+        arr = arr / num_voters
     shifted = arr - np.max(arr)
     exp_scores = np.exp(shifted / T)
     probs = exp_scores / np.sum(exp_scores)

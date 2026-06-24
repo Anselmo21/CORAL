@@ -1,203 +1,220 @@
 {
   "case_id": 118,
-  "qid": "40",
+  "qid": "36",
   "size": 8,
   "start_node": [
-    "(Temporal): 2021",
-    "(Temporal): 2022\u20132023",
-    "(Geographic): USA",
-    "(Geographic): UK",
-    "(Perspective): industry pragmatist",
-    "(Trustworthiness): workforce data platform",
-    "(Trustworthiness): AI research lab",
-    "(Trustworthiness): business publication"
+    "(Temporal): 2021\u20132023",
+    "(Geographic): Global",
+    "(Perspective): portfolio-first self-taught advocate",
+    "(Perspective): formal degree advocate",
+    "(Trustworthiness): UX industry research organization",
+    "(Trustworthiness): workforce data report",
+    "(Trustworthiness): user forum",
+    "(Trustworthiness): design firm"
   ],
   "bfs": {
     "found": true,
-    "key": "(Geographic): UK, (Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2021, (Temporal): 2022\u20132023",
-    "layer": 5,
-    "calls": 37
+    "key": "(Geographic): Global, (Perspective): portfolio-first self-taught advocate",
+    "layer": 2,
+    "calls": 226
   },
   "sra": {
-    "proxy_key": "(Perspective): industry pragmatist, (Temporal): 2022\u20132023",
+    "proxy_key": "(Geographic): Global, (Perspective): portfolio-first self-taught advocate",
     "proxy_layer": 2,
     "proxy_verified": true,
-    "outcome": "wrong_layer",
-    "gap": 3,
-    "jaccard": 0.4,
-    "calls": 2,
+    "outcome": "correct",
+    "gap": 0,
+    "jaccard": 1.0,
+    "calls": 3,
     "budget_used": 0
   },
   "era": {
     "era_fixed_4": {
-      "proxy_key": "(Geographic): UK, (Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): workforce data platform",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Global, (Perspective): portfolio-first self-taught advocate",
+      "proxy_layer": 2,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.6666666666666666,
-      "calls": 8,
-      "budget_used": 4
+      "jaccard": 1.0,
+      "calls": 121,
+      "budget_used": 4,
+      "pruned_nodes": 114
     },
     "era_fixed_8": {
-      "proxy_key": "(Geographic): UK, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): business publication, (Trustworthiness): workforce data platform",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Global, (Perspective): portfolio-first self-taught advocate",
+      "proxy_layer": 2,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.42857142857142855,
-      "calls": 4,
-      "budget_used": 8
+      "jaccard": 1.0,
+      "calls": 89,
+      "budget_used": 8,
+      "pruned_nodes": 145
     },
     "era_fixed_16": {
-      "proxy_key": "(Geographic): UK, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): business publication, (Trustworthiness): workforce data platform",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Global, (Perspective): portfolio-first self-taught advocate",
+      "proxy_layer": 2,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.42857142857142855,
-      "calls": 4,
-      "budget_used": 16
+      "jaccard": 1.0,
+      "calls": 161,
+      "budget_used": 16,
+      "pruned_nodes": 54
     },
     "era_fixed_32": {
-      "proxy_key": "(Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): AI research lab, (Trustworthiness): workforce data platform",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Global, (Perspective): portfolio-first self-taught advocate",
+      "proxy_layer": 2,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.42857142857142855,
-      "calls": 5,
-      "budget_used": 29
+      "jaccard": 1.0,
+      "calls": 194,
+      "budget_used": 32,
+      "pruned_nodes": 5
     },
     "era_fixed_64": {
-      "proxy_key": "(Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): AI research lab, (Trustworthiness): workforce data platform",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Global, (Perspective): portfolio-first self-taught advocate",
+      "proxy_layer": 2,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.42857142857142855,
-      "calls": 5,
-      "budget_used": 29
+      "jaccard": 1.0,
+      "calls": 162,
+      "budget_used": 64,
+      "pruned_nodes": 5
     },
     "era_fixed_128": {
-      "proxy_key": "(Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): AI research lab, (Trustworthiness): workforce data platform",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Global, (Perspective): portfolio-first self-taught advocate",
+      "proxy_layer": 2,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.42857142857142855,
-      "calls": 5,
-      "budget_used": 29
+      "jaccard": 1.0,
+      "calls": 99,
+      "budget_used": 128,
+      "pruned_nodes": 4
     },
     "era_fixed_256": {
-      "proxy_key": "(Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): AI research lab, (Trustworthiness): workforce data platform",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Global, (Perspective): portfolio-first self-taught advocate",
+      "proxy_layer": 2,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.42857142857142855,
-      "calls": 5,
-      "budget_used": 29
+      "jaccard": 1.0,
+      "calls": 53,
+      "budget_used": 177,
+      "pruned_nodes": 1
     },
     "era_pct_10": {
-      "proxy_key": "(Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): AI research lab, (Trustworthiness): workforce data platform",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Global, (Perspective): portfolio-first self-taught advocate",
+      "proxy_layer": 2,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.42857142857142855,
-      "calls": 3,
-      "budget_used": 25
+      "jaccard": 1.0,
+      "calls": 201,
+      "budget_used": 25,
+      "pruned_nodes": 5
     },
     "era_pct_20": {
-      "proxy_key": "(Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): AI research lab, (Trustworthiness): workforce data platform",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Global, (Perspective): portfolio-first self-taught advocate",
+      "proxy_layer": 2,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.42857142857142855,
-      "calls": 5,
-      "budget_used": 29
+      "jaccard": 1.0,
+      "calls": 175,
+      "budget_used": 51,
+      "pruned_nodes": 5
     },
     "era_pct_30": {
-      "proxy_key": "(Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): AI research lab, (Trustworthiness): workforce data platform",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Global, (Perspective): portfolio-first self-taught advocate",
+      "proxy_layer": 2,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.42857142857142855,
-      "calls": 5,
-      "budget_used": 29
+      "jaccard": 1.0,
+      "calls": 150,
+      "budget_used": 76,
+      "pruned_nodes": 5
     },
     "era_pct_40": {
-      "proxy_key": "(Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): AI research lab, (Trustworthiness): workforce data platform",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Global, (Perspective): portfolio-first self-taught advocate",
+      "proxy_layer": 2,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.42857142857142855,
-      "calls": 5,
-      "budget_used": 29
+      "jaccard": 1.0,
+      "calls": 125,
+      "budget_used": 102,
+      "pruned_nodes": 4
     },
     "era_pct_50": {
-      "proxy_key": "(Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): AI research lab, (Trustworthiness): workforce data platform",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Global, (Perspective): portfolio-first self-taught advocate",
+      "proxy_layer": 2,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.42857142857142855,
-      "calls": 5,
-      "budget_used": 29
+      "jaccard": 1.0,
+      "calls": 99,
+      "budget_used": 128,
+      "pruned_nodes": 4
     },
     "era_pct_60": {
-      "proxy_key": "(Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): AI research lab, (Trustworthiness): workforce data platform",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Global, (Perspective): portfolio-first self-taught advocate",
+      "proxy_layer": 2,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.42857142857142855,
-      "calls": 5,
-      "budget_used": 29
+      "jaccard": 1.0,
+      "calls": 75,
+      "budget_used": 153,
+      "pruned_nodes": 3
     },
     "era_pct_70": {
-      "proxy_key": "(Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): AI research lab, (Trustworthiness): workforce data platform",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Global, (Perspective): portfolio-first self-taught advocate",
+      "proxy_layer": 2,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.42857142857142855,
-      "calls": 5,
-      "budget_used": 29
+      "jaccard": 1.0,
+      "calls": 53,
+      "budget_used": 177,
+      "pruned_nodes": 1
     },
     "era_pct_80": {
-      "proxy_key": "(Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): AI research lab, (Trustworthiness): workforce data platform",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Global, (Perspective): portfolio-first self-taught advocate",
+      "proxy_layer": 2,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.42857142857142855,
-      "calls": 5,
-      "budget_used": 29
+      "jaccard": 1.0,
+      "calls": 53,
+      "budget_used": 177,
+      "pruned_nodes": 1
     },
     "era_pct_90": {
-      "proxy_key": "(Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): AI research lab, (Trustworthiness): workforce data platform",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Global, (Perspective): portfolio-first self-taught advocate",
+      "proxy_layer": 2,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.42857142857142855,
-      "calls": 5,
-      "budget_used": 29
+      "jaccard": 1.0,
+      "calls": 53,
+      "budget_used": 177,
+      "pruned_nodes": 1
     },
     "era_pct_100": {
-      "proxy_key": "(Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): AI research lab, (Trustworthiness): workforce data platform",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Global, (Perspective): portfolio-first self-taught advocate",
+      "proxy_layer": 2,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.42857142857142855,
-      "calls": 5,
-      "budget_used": 29
+      "jaccard": 1.0,
+      "calls": 53,
+      "budget_used": 177,
+      "pruned_nodes": 1
     }
   }
 }

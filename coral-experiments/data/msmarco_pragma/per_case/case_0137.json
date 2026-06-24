@@ -1,204 +1,221 @@
 {
   "case_id": 137,
-  "qid": "52329",
+  "qid": "51718",
   "size": 9,
   "start_node": [
     "(Temporal): 2023",
-    "(Geographic): Global",
-    "(Trustworthiness): clinical practice guideline",
-    "(Perspective): pharmaceutical intervention advocate",
-    "(Perspective): lifestyle modification advocate",
+    "(Trustworthiness): professional beauty publication",
+    "(Perspective): professional esthetician",
     "(Temporal): 2021\u20132022",
-    "(Geographic): USA",
-    "(Perspective): patient self-advocacy",
-    "(Trustworthiness): user forum"
+    "(Geographic): Europe",
+    "(Trustworthiness): user forum",
+    "(Perspective): DIY skincare enthusiast",
+    "(Temporal): 2019\u20132020",
+    "(Geographic): Global"
   ],
   "bfs": {
     "found": true,
-    "key": "(Perspective): lifestyle modification advocate",
-    "layer": 1,
-    "calls": 506
+    "key": "(Geographic): Europe, (Perspective): DIY skincare enthusiast, (Temporal): 2021\u20132022, (Temporal): 2023",
+    "layer": 4,
+    "calls": 293
   },
   "sra": {
-    "proxy_key": "(Perspective): lifestyle modification advocate",
+    "proxy_key": "(Perspective): DIY skincare enthusiast",
     "proxy_layer": 1,
     "proxy_verified": true,
-    "outcome": "correct",
-    "gap": 0,
-    "jaccard": 1.0,
-    "calls": 36,
+    "outcome": "wrong_layer",
+    "gap": 3,
+    "jaccard": 0.25,
+    "calls": 0,
     "budget_used": 0
   },
   "era": {
     "era_fixed_4": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "(Geographic): Europe, (Geographic): Global, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 118,
-      "budget_used": 4
+      "jaccard": 0.6,
+      "calls": 176,
+      "budget_used": 4,
+      "pruned_nodes": 159
     },
     "era_fixed_8": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "(Geographic): Europe, (Geographic): Global, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 486,
-      "budget_used": 8
+      "jaccard": 0.6,
+      "calls": 188,
+      "budget_used": 8,
+      "pruned_nodes": 147
     },
     "era_fixed_16": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "(Geographic): Global, (Perspective): DIY skincare enthusiast, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 478,
-      "budget_used": 16
+      "jaccard": 0.6,
+      "calls": 88,
+      "budget_used": 16,
+      "pruned_nodes": 167
     },
     "era_fixed_32": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "(Perspective): DIY skincare enthusiast, (Temporal): 2019\u20132020, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 462,
-      "budget_used": 32
+      "jaccard": 0.6,
+      "calls": 70,
+      "budget_used": 32,
+      "pruned_nodes": 171
     },
     "era_fixed_64": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "(Perspective): DIY skincare enthusiast, (Temporal): 2019\u20132020, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 430,
-      "budget_used": 64
+      "jaccard": 0.6,
+      "calls": 40,
+      "budget_used": 64,
+      "pruned_nodes": 169
     },
     "era_fixed_128": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "(Perspective): DIY skincare enthusiast, (Temporal): 2019\u20132020, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 367,
-      "budget_used": 128
+      "jaccard": 0.6,
+      "calls": 39,
+      "budget_used": 104,
+      "pruned_nodes": 130
     },
     "era_fixed_256": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "(Perspective): DIY skincare enthusiast, (Temporal): 2019\u20132020, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 240,
-      "budget_used": 256
+      "jaccard": 0.6,
+      "calls": 39,
+      "budget_used": 104,
+      "pruned_nodes": 130
     },
     "era_pct_10": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "(Perspective): DIY skincare enthusiast, (Temporal): 2019\u20132020, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 443,
-      "budget_used": 51
+      "jaccard": 0.6,
+      "calls": 51,
+      "budget_used": 51,
+      "pruned_nodes": 171
     },
     "era_pct_20": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "(Perspective): DIY skincare enthusiast, (Temporal): 2019\u20132020, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 393,
-      "budget_used": 102
+      "jaccard": 0.6,
+      "calls": 38,
+      "budget_used": 102,
+      "pruned_nodes": 133
     },
     "era_pct_30": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "(Perspective): DIY skincare enthusiast, (Temporal): 2019\u20132020, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 342,
-      "budget_used": 153
+      "jaccard": 0.6,
+      "calls": 39,
+      "budget_used": 104,
+      "pruned_nodes": 130
     },
     "era_pct_40": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "(Perspective): DIY skincare enthusiast, (Temporal): 2019\u20132020, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 291,
-      "budget_used": 204
+      "jaccard": 0.6,
+      "calls": 39,
+      "budget_used": 104,
+      "pruned_nodes": 130
     },
     "era_pct_50": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "(Perspective): DIY skincare enthusiast, (Temporal): 2019\u20132020, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 240,
-      "budget_used": 256
+      "jaccard": 0.6,
+      "calls": 39,
+      "budget_used": 104,
+      "pruned_nodes": 130
     },
     "era_pct_60": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "(Perspective): DIY skincare enthusiast, (Temporal): 2019\u20132020, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 189,
-      "budget_used": 307
+      "jaccard": 0.6,
+      "calls": 39,
+      "budget_used": 104,
+      "pruned_nodes": 130
     },
     "era_pct_70": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "(Perspective): DIY skincare enthusiast, (Temporal): 2019\u20132020, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 139,
-      "budget_used": 358
+      "jaccard": 0.6,
+      "calls": 39,
+      "budget_used": 104,
+      "pruned_nodes": 130
     },
     "era_pct_80": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "(Perspective): DIY skincare enthusiast, (Temporal): 2019\u20132020, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 88,
-      "budget_used": 409
+      "jaccard": 0.6,
+      "calls": 39,
+      "budget_used": 104,
+      "pruned_nodes": 130
     },
     "era_pct_90": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "(Perspective): DIY skincare enthusiast, (Temporal): 2019\u20132020, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
+      "jaccard": 0.6,
       "calls": 39,
-      "budget_used": 460
+      "budget_used": 104,
+      "pruned_nodes": 130
     },
     "era_pct_100": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "(Perspective): DIY skincare enthusiast, (Temporal): 2019\u20132020, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 33,
-      "budget_used": 467
+      "jaccard": 0.6,
+      "calls": 39,
+      "budget_used": 104,
+      "pruned_nodes": 130
     }
   }
 }

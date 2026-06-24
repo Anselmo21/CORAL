@@ -1,202 +1,219 @@
 {
   "case_id": 93,
-  "qid": "45",
+  "qid": "40",
   "size": 7,
   "start_node": [
     "(Temporal): 2021",
     "(Temporal): 2022\u20132023",
-    "(Geographic): USA",
-    "(Geographic): Global",
-    "(Perspective): price-conscious",
-    "(Perspective): longevity-focused",
-    "(Trustworthiness): tech journalism"
+    "(Geographic): UK",
+    "(Perspective): research-track advocate",
+    "(Perspective): industry pragmatist",
+    "(Trustworthiness): workforce data platform",
+    "(Trustworthiness): user forum"
   ],
   "bfs": {
     "found": true,
-    "key": "(Geographic): Global, (Perspective): longevity-focused, (Temporal): 2021",
-    "layer": 3,
-    "calls": 74
+    "key": "(Geographic): UK, (Perspective): industry pragmatist, (Temporal): 2021, (Trustworthiness): user forum, (Trustworthiness): workforce data platform",
+    "layer": 5,
+    "calls": 21
   },
   "sra": {
-    "proxy_key": null,
-    "proxy_layer": null,
-    "proxy_verified": false,
-    "outcome": "not_found",
-    "gap": null,
-    "jaccard": null,
-    "calls": 0,
+    "proxy_key": "(Perspective): industry pragmatist, (Temporal): 2022\u20132023",
+    "proxy_layer": 2,
+    "proxy_verified": true,
+    "outcome": "wrong_layer",
+    "gap": 3,
+    "jaccard": 0.16666666666666666,
+    "calls": 2,
     "budget_used": 0
   },
   "era": {
     "era_fixed_4": {
-      "proxy_key": "(Geographic): Global, (Perspective): longevity-focused, (Temporal): 2021",
-      "proxy_layer": 3,
+      "proxy_key": "(Geographic): UK, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): user forum, (Trustworthiness): workforce data platform",
+      "proxy_layer": 5,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 38,
-      "budget_used": 4
+      "jaccard": 0.6666666666666666,
+      "calls": 3,
+      "budget_used": 4,
+      "pruned_nodes": 17
     },
     "era_fixed_8": {
-      "proxy_key": "(Geographic): Global, (Perspective): longevity-focused, (Temporal): 2021",
-      "proxy_layer": 3,
+      "proxy_key": "(Geographic): UK, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): user forum, (Trustworthiness): workforce data platform",
+      "proxy_layer": 5,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 38,
-      "budget_used": 8
+      "jaccard": 0.6666666666666666,
+      "calls": 3,
+      "budget_used": 8,
+      "pruned_nodes": 17
     },
     "era_fixed_16": {
-      "proxy_key": "(Geographic): Global, (Perspective): longevity-focused, (Temporal): 2021",
-      "proxy_layer": 3,
+      "proxy_key": "(Geographic): UK, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): user forum, (Trustworthiness): workforce data platform",
+      "proxy_layer": 5,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 38,
-      "budget_used": 16
+      "jaccard": 0.6666666666666666,
+      "calls": 3,
+      "budget_used": 16,
+      "pruned_nodes": 17
     },
     "era_fixed_32": {
-      "proxy_key": "(Geographic): Global, (Perspective): longevity-focused, (Temporal): 2021",
-      "proxy_layer": 3,
+      "proxy_key": "(Geographic): UK, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): user forum, (Trustworthiness): workforce data platform",
+      "proxy_layer": 5,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 27,
-      "budget_used": 32
+      "jaccard": 0.6666666666666666,
+      "calls": 3,
+      "budget_used": 32,
+      "pruned_nodes": 15
     },
     "era_fixed_64": {
-      "proxy_key": "(Geographic): Global, (Perspective): longevity-focused, (Temporal): 2021",
-      "proxy_layer": 3,
+      "proxy_key": "(Geographic): UK, (Perspective): industry pragmatist, (Temporal): 2021, (Trustworthiness): user forum, (Trustworthiness): workforce data platform",
+      "proxy_layer": 5,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 32,
-      "budget_used": 59
+      "calls": 3,
+      "budget_used": 52,
+      "pruned_nodes": 1
     },
     "era_fixed_128": {
-      "proxy_key": "(Geographic): Global, (Perspective): longevity-focused, (Temporal): 2021",
-      "proxy_layer": 3,
+      "proxy_key": "(Geographic): UK, (Perspective): industry pragmatist, (Temporal): 2021, (Trustworthiness): user forum, (Trustworthiness): workforce data platform",
+      "proxy_layer": 5,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 32,
-      "budget_used": 59
+      "calls": 3,
+      "budget_used": 52,
+      "pruned_nodes": 1
     },
     "era_fixed_256": {
-      "proxy_key": "(Geographic): Global, (Perspective): longevity-focused, (Temporal): 2021",
-      "proxy_layer": 3,
+      "proxy_key": "(Geographic): UK, (Perspective): industry pragmatist, (Temporal): 2021, (Trustworthiness): user forum, (Trustworthiness): workforce data platform",
+      "proxy_layer": 5,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 32,
-      "budget_used": 59
+      "calls": 3,
+      "budget_used": 52,
+      "pruned_nodes": 1
     },
     "era_pct_10": {
-      "proxy_key": "(Geographic): Global, (Perspective): longevity-focused, (Temporal): 2021",
-      "proxy_layer": 3,
+      "proxy_key": "(Geographic): UK, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): user forum, (Trustworthiness): workforce data platform",
+      "proxy_layer": 5,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 38,
-      "budget_used": 12
+      "jaccard": 0.6666666666666666,
+      "calls": 3,
+      "budget_used": 12,
+      "pruned_nodes": 17
     },
     "era_pct_20": {
-      "proxy_key": "(Geographic): Global, (Perspective): longevity-focused, (Temporal): 2021",
-      "proxy_layer": 3,
+      "proxy_key": "(Geographic): UK, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): user forum, (Trustworthiness): workforce data platform",
+      "proxy_layer": 5,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 63,
-      "budget_used": 25
+      "jaccard": 0.6666666666666666,
+      "calls": 3,
+      "budget_used": 25,
+      "pruned_nodes": 15
     },
     "era_pct_30": {
-      "proxy_key": "(Geographic): Global, (Perspective): longevity-focused, (Temporal): 2021",
-      "proxy_layer": 3,
+      "proxy_key": "(Geographic): UK, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): user forum, (Trustworthiness): workforce data platform",
+      "proxy_layer": 5,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 51,
-      "budget_used": 38
+      "jaccard": 0.6666666666666666,
+      "calls": 3,
+      "budget_used": 38,
+      "pruned_nodes": 15
     },
     "era_pct_40": {
-      "proxy_key": "(Geographic): Global, (Perspective): longevity-focused, (Temporal): 2021",
-      "proxy_layer": 3,
+      "proxy_key": "(Geographic): UK, (Perspective): industry pragmatist, (Temporal): 2021, (Trustworthiness): user forum, (Trustworthiness): workforce data platform",
+      "proxy_layer": 5,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 38,
-      "budget_used": 51
+      "calls": 1,
+      "budget_used": 51,
+      "pruned_nodes": 4
     },
     "era_pct_50": {
-      "proxy_key": "(Geographic): Global, (Perspective): longevity-focused, (Temporal): 2021",
-      "proxy_layer": 3,
+      "proxy_key": "(Geographic): UK, (Perspective): industry pragmatist, (Temporal): 2021, (Trustworthiness): user forum, (Trustworthiness): workforce data platform",
+      "proxy_layer": 5,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 32,
-      "budget_used": 59
+      "calls": 3,
+      "budget_used": 52,
+      "pruned_nodes": 1
     },
     "era_pct_60": {
-      "proxy_key": "(Geographic): Global, (Perspective): longevity-focused, (Temporal): 2021",
-      "proxy_layer": 3,
+      "proxy_key": "(Geographic): UK, (Perspective): industry pragmatist, (Temporal): 2021, (Trustworthiness): user forum, (Trustworthiness): workforce data platform",
+      "proxy_layer": 5,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 32,
-      "budget_used": 59
+      "calls": 3,
+      "budget_used": 52,
+      "pruned_nodes": 1
     },
     "era_pct_70": {
-      "proxy_key": "(Geographic): Global, (Perspective): longevity-focused, (Temporal): 2021",
-      "proxy_layer": 3,
+      "proxy_key": "(Geographic): UK, (Perspective): industry pragmatist, (Temporal): 2021, (Trustworthiness): user forum, (Trustworthiness): workforce data platform",
+      "proxy_layer": 5,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 32,
-      "budget_used": 59
+      "calls": 3,
+      "budget_used": 52,
+      "pruned_nodes": 1
     },
     "era_pct_80": {
-      "proxy_key": "(Geographic): Global, (Perspective): longevity-focused, (Temporal): 2021",
-      "proxy_layer": 3,
+      "proxy_key": "(Geographic): UK, (Perspective): industry pragmatist, (Temporal): 2021, (Trustworthiness): user forum, (Trustworthiness): workforce data platform",
+      "proxy_layer": 5,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 32,
-      "budget_used": 59
+      "calls": 3,
+      "budget_used": 52,
+      "pruned_nodes": 1
     },
     "era_pct_90": {
-      "proxy_key": "(Geographic): Global, (Perspective): longevity-focused, (Temporal): 2021",
-      "proxy_layer": 3,
+      "proxy_key": "(Geographic): UK, (Perspective): industry pragmatist, (Temporal): 2021, (Trustworthiness): user forum, (Trustworthiness): workforce data platform",
+      "proxy_layer": 5,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 32,
-      "budget_used": 59
+      "calls": 3,
+      "budget_used": 52,
+      "pruned_nodes": 1
     },
     "era_pct_100": {
-      "proxy_key": "(Geographic): Global, (Perspective): longevity-focused, (Temporal): 2021",
-      "proxy_layer": 3,
+      "proxy_key": "(Geographic): UK, (Perspective): industry pragmatist, (Temporal): 2021, (Trustworthiness): user forum, (Trustworthiness): workforce data platform",
+      "proxy_layer": 5,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 32,
-      "budget_used": 59
+      "calls": 3,
+      "budget_used": 52,
+      "pruned_nodes": 1
     }
   }
 }

@@ -1,204 +1,221 @@
 {
   "case_id": 130,
-  "qid": "40",
+  "qid": "37",
   "size": 9,
   "start_node": [
-    "(Temporal): 2021",
-    "(Temporal): 2022\u20132023",
-    "(Geographic): USA",
+    "(Temporal): 2023 only",
+    "(Temporal): 2021\u20132023",
+    "(Geographic): Canada",
     "(Geographic): UK",
-    "(Perspective): research-track advocate",
-    "(Perspective): industry pragmatist",
-    "(Trustworthiness): AI research lab",
-    "(Trustworthiness): business publication",
-    "(Trustworthiness): user forum"
+    "(Geographic): Australia",
+    "(Perspective): Canada-only reapplicant",
+    "(Trustworthiness): medical training authority",
+    "(Trustworthiness): medical education journalism",
+    "(Trustworthiness): pre-med community"
   ],
   "bfs": {
     "found": true,
-    "key": "(Geographic): UK, (Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2021, (Temporal): 2022\u20132023",
-    "layer": 5,
-    "calls": 131
+    "key": "(Geographic): Canada, (Perspective): Canada-only reapplicant, (Temporal): 2023 only, (Trustworthiness): medical education journalism, (Trustworthiness): medical training authority, (Trustworthiness): pre-med community",
+    "layer": 6,
+    "calls": 95
   },
   "sra": {
-    "proxy_key": "(Perspective): industry pragmatist, (Temporal): 2022\u20132023",
-    "proxy_layer": 2,
+    "proxy_key": "(Geographic): Canada, (Perspective): Canada-only reapplicant, (Temporal): 2023 only, (Trustworthiness): medical education journalism",
+    "proxy_layer": 4,
     "proxy_verified": true,
     "outcome": "wrong_layer",
-    "gap": 3,
-    "jaccard": 0.4,
-    "calls": 2,
+    "gap": 2,
+    "jaccard": 0.6666666666666666,
+    "calls": 5,
     "budget_used": 0
   },
   "era": {
     "era_fixed_4": {
-      "proxy_key": "(Geographic): UK, (Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): business publication",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Canada, (Perspective): Canada-only reapplicant, (Temporal): 2023 only, (Trustworthiness): medical education journalism, (Trustworthiness): medical training authority, (Trustworthiness): pre-med community",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.6666666666666666,
-      "calls": 32,
-      "budget_used": 4
+      "jaccard": 1.0,
+      "calls": 39,
+      "budget_used": 4,
+      "pruned_nodes": 65
     },
     "era_fixed_8": {
-      "proxy_key": "(Geographic): UK, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): business publication, (Trustworthiness): user forum",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Canada, (Perspective): Canada-only reapplicant, (Temporal): 2023 only, (Trustworthiness): medical education journalism, (Trustworthiness): medical training authority, (Trustworthiness): pre-med community",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.42857142857142855,
-      "calls": 6,
-      "budget_used": 8
+      "jaccard": 1.0,
+      "calls": 31,
+      "budget_used": 8,
+      "pruned_nodes": 78
     },
     "era_fixed_16": {
-      "proxy_key": "(Geographic): UK, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): business publication, (Trustworthiness): user forum",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Canada, (Perspective): Canada-only reapplicant, (Temporal): 2023 only, (Trustworthiness): medical education journalism, (Trustworthiness): medical training authority, (Trustworthiness): pre-med community",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.42857142857142855,
-      "calls": 6,
-      "budget_used": 16
+      "jaccard": 1.0,
+      "calls": 47,
+      "budget_used": 16,
+      "pruned_nodes": 82
     },
     "era_fixed_32": {
-      "proxy_key": "(Geographic): UK, (Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2022\u20132023, (Trustworthiness): business publication",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Canada, (Perspective): Canada-only reapplicant, (Temporal): 2023 only, (Trustworthiness): medical education journalism, (Trustworthiness): medical training authority, (Trustworthiness): pre-med community",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.6666666666666666,
-      "calls": 6,
-      "budget_used": 32
+      "jaccard": 1.0,
+      "calls": 17,
+      "budget_used": 32,
+      "pruned_nodes": 91
     },
     "era_fixed_64": {
-      "proxy_key": "(Geographic): UK, (Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2021, (Temporal): 2022\u20132023",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Canada, (Perspective): Canada-only reapplicant, (Temporal): 2023 only, (Trustworthiness): medical education journalism, (Trustworthiness): medical training authority, (Trustworthiness): pre-med community",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 21,
-      "budget_used": 58
+      "calls": 50,
+      "budget_used": 64,
+      "pruned_nodes": 79
     },
     "era_fixed_128": {
-      "proxy_key": "(Geographic): UK, (Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2021, (Temporal): 2022\u20132023",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Canada, (Perspective): Canada-only reapplicant, (Temporal): 2023 only, (Trustworthiness): medical education journalism, (Trustworthiness): medical training authority, (Trustworthiness): pre-med community",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 21,
-      "budget_used": 58
+      "calls": 40,
+      "budget_used": 128,
+      "pruned_nodes": 2
     },
     "era_fixed_256": {
-      "proxy_key": "(Geographic): UK, (Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2021, (Temporal): 2022\u20132023",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Canada, (Perspective): Canada-only reapplicant, (Temporal): 2023 only, (Trustworthiness): medical education journalism, (Trustworthiness): medical training authority, (Trustworthiness): pre-med community",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 21,
-      "budget_used": 58
+      "calls": 33,
+      "budget_used": 136,
+      "pruned_nodes": 1
     },
     "era_pct_10": {
-      "proxy_key": "(Geographic): UK, (Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2021, (Temporal): 2022\u20132023",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Canada, (Perspective): Canada-only reapplicant, (Temporal): 2023 only, (Trustworthiness): medical education journalism, (Trustworthiness): medical training authority, (Trustworthiness): pre-med community",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 16,
-      "budget_used": 51
+      "calls": 50,
+      "budget_used": 51,
+      "pruned_nodes": 79
     },
     "era_pct_20": {
-      "proxy_key": "(Geographic): UK, (Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2021, (Temporal): 2022\u20132023",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Canada, (Perspective): Canada-only reapplicant, (Temporal): 2023 only, (Trustworthiness): medical education journalism, (Trustworthiness): medical training authority, (Trustworthiness): pre-med community",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 21,
-      "budget_used": 58
+      "calls": 15,
+      "budget_used": 102,
+      "pruned_nodes": 97
     },
     "era_pct_30": {
-      "proxy_key": "(Geographic): UK, (Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2021, (Temporal): 2022\u20132023",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Canada, (Perspective): Canada-only reapplicant, (Temporal): 2023 only, (Trustworthiness): medical education journalism, (Trustworthiness): medical training authority, (Trustworthiness): pre-med community",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 21,
-      "budget_used": 58
+      "calls": 33,
+      "budget_used": 136,
+      "pruned_nodes": 1
     },
     "era_pct_40": {
-      "proxy_key": "(Geographic): UK, (Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2021, (Temporal): 2022\u20132023",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Canada, (Perspective): Canada-only reapplicant, (Temporal): 2023 only, (Trustworthiness): medical education journalism, (Trustworthiness): medical training authority, (Trustworthiness): pre-med community",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 21,
-      "budget_used": 58
+      "calls": 33,
+      "budget_used": 136,
+      "pruned_nodes": 1
     },
     "era_pct_50": {
-      "proxy_key": "(Geographic): UK, (Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2021, (Temporal): 2022\u20132023",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Canada, (Perspective): Canada-only reapplicant, (Temporal): 2023 only, (Trustworthiness): medical education journalism, (Trustworthiness): medical training authority, (Trustworthiness): pre-med community",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 21,
-      "budget_used": 58
+      "calls": 33,
+      "budget_used": 136,
+      "pruned_nodes": 1
     },
     "era_pct_60": {
-      "proxy_key": "(Geographic): UK, (Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2021, (Temporal): 2022\u20132023",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Canada, (Perspective): Canada-only reapplicant, (Temporal): 2023 only, (Trustworthiness): medical education journalism, (Trustworthiness): medical training authority, (Trustworthiness): pre-med community",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 21,
-      "budget_used": 58
+      "calls": 33,
+      "budget_used": 136,
+      "pruned_nodes": 1
     },
     "era_pct_70": {
-      "proxy_key": "(Geographic): UK, (Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2021, (Temporal): 2022\u20132023",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Canada, (Perspective): Canada-only reapplicant, (Temporal): 2023 only, (Trustworthiness): medical education journalism, (Trustworthiness): medical training authority, (Trustworthiness): pre-med community",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 21,
-      "budget_used": 58
+      "calls": 33,
+      "budget_used": 136,
+      "pruned_nodes": 1
     },
     "era_pct_80": {
-      "proxy_key": "(Geographic): UK, (Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2021, (Temporal): 2022\u20132023",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Canada, (Perspective): Canada-only reapplicant, (Temporal): 2023 only, (Trustworthiness): medical education journalism, (Trustworthiness): medical training authority, (Trustworthiness): pre-med community",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 21,
-      "budget_used": 58
+      "calls": 33,
+      "budget_used": 136,
+      "pruned_nodes": 1
     },
     "era_pct_90": {
-      "proxy_key": "(Geographic): UK, (Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2021, (Temporal): 2022\u20132023",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Canada, (Perspective): Canada-only reapplicant, (Temporal): 2023 only, (Trustworthiness): medical education journalism, (Trustworthiness): medical training authority, (Trustworthiness): pre-med community",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 21,
-      "budget_used": 58
+      "calls": 33,
+      "budget_used": 136,
+      "pruned_nodes": 1
     },
     "era_pct_100": {
-      "proxy_key": "(Geographic): UK, (Geographic): USA, (Perspective): industry pragmatist, (Temporal): 2021, (Temporal): 2022\u20132023",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Canada, (Perspective): Canada-only reapplicant, (Temporal): 2023 only, (Trustworthiness): medical education journalism, (Trustworthiness): medical training authority, (Trustworthiness): pre-med community",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 21,
-      "budget_used": 58
+      "calls": 33,
+      "budget_used": 136,
+      "pruned_nodes": 1
     }
   }
 }

@@ -1,7 +1,8 @@
-"""Entropy function ablation on the MSMARCO pragma sub-lattice dev set.
+"""Entropy function ablation on the MSMARCO pragma sub-lattice set.
 
-Reuses the 144 cases from data/msmarco_pragma/cases_dev.json and runs ERA
-with a fixed budget=32 for each of the 5 entropy variants:
+Reuses the cases sampled by scripts.pragma.msmarco.run_subsample
+(data/msmarco_pragma/cases.json) and runs ERA at the selected
+pct_10 budget (max(1, int(0.10 * 2**size))) for each of the 5 entropy variants:
   softmax, shannon, renyi(α=0.5), renyi(α=2), weighted
 
 Outputs:
@@ -23,7 +24,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from scripts.shared.plot_style import apply_plot_style
-from scripts.msmarco.run_subsample import score_proxy
+from scripts.pragma.msmarco.run_subsample import score_proxy
 from search.bfs import bfs_search
 from search.heuristics import (
     renyi_entropy,
@@ -34,12 +35,12 @@ from search.heuristics import (
 from search.rank import era_search
 
 DATASET_PATH = "data/msmarco-pragma-final8-with-lattices.json"
-CASES_PATH   = "data/msmarco_pragma/cases_dev.json"
+CASES_PATH   = "data/msmarco_pragma/cases.json"
 OUT_DIR      = "data/msmarco_pragma_entropy_ablation"
 RESULTS_PATH = f"{OUT_DIR}/results.json"
 PLOT_DIR     = "plots/msmarco_pragma_entropy_ablation"
 
-BUDGET: int = 32
+BUDGET_PCT: int = 10  # percent of 2^size per case
 
 ENTROPY_VARIANTS: list[tuple[str, object]] = [
     ("softmax",   softmax_entropy),
@@ -100,10 +101,14 @@ def run_ablation(
             "bfs_calls": bfs_res["calls"],
         }
 
+        budget = max(1, int(2**size * BUDGET_PCT / 100))
+        row["budget"] = budget
+        row["budget_pct"] = BUDGET_PCT
+
         for name, entropy_fn in ENTROPY_VARIANTS:
             res = era_search(
                 criteria, rbc,
-                budget=BUDGET,
+                budget=budget,
                 entropy_fn=entropy_fn,
                 start_node=start_node,
                 direction="down",
@@ -134,7 +139,7 @@ def print_summary(results: list[dict]) -> None:
     sep = f"  {'-'*4}-+-{'-'*3}-+" + f"-{'-'*(col_w-2)}-+" * len(names)
 
     print(f"\n{'=' * (30 + col_w * len(names))}")
-    print(f"  ERA Entropy Ablation — MSMARCO pragma (budget={BUDGET}) — {len(results)} cases")
+    print(f"  ERA Entropy Ablation — MSMARCO pragma (budget=pct_{BUDGET_PCT}) — {len(results)} cases")
     print(f"{'=' * (30 + col_w * len(names))}")
 
     header = f"  {'Size':>4} | {'N':>3} |"
@@ -342,7 +347,7 @@ def main() -> None:
     lattices = _load_lattices()
     print(f"Loaded {len(lattices)} pragma lattices")
 
-    print(f"\nRunning ERA (budget={BUDGET}) × {len(ENTROPY_VARIANTS)} entropy variants …")
+    print(f"\nRunning ERA (budget=pct_{BUDGET_PCT}) × {len(ENTROPY_VARIANTS)} entropy variants …")
     results = run_ablation(cases, lattices)
 
     print_summary(results)
@@ -350,7 +355,7 @@ def main() -> None:
     os.makedirs(OUT_DIR, exist_ok=True)
     with open(RESULTS_PATH, "w") as f:
         json.dump({
-            "budget": BUDGET,
+            "budget_pct": BUDGET_PCT,
             "entropy_variants": [n for n, _ in ENTROPY_VARIANTS],
             "n_cases": len(results),
             "results": results,

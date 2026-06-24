@@ -1,203 +1,220 @@
 {
   "case_id": 118,
-  "qid": "51894",
+  "qid": "51821",
   "size": 8,
   "start_node": [
-    "(Temporal): 2023",
-    "(Trustworthiness): peer-reviewed nutrition journal",
-    "(Perspective): plant-based diet advocate",
-    "(Perspective): dairy-inclusive nutritionist",
+    "(Geographic): USA",
+    "(Trustworthiness): user forum",
+    "(Perspective): professional print quality advocate",
+    "(Perspective): DIY hobbyist",
     "(Temporal): 2021\u20132022",
     "(Geographic): Global",
-    "(Trustworthiness): user forum",
-    "(Trustworthiness): academic dietitian resource"
+    "(Trustworthiness): printing industry publication",
+    "(Perspective): budget-conscious printer"
   ],
   "bfs": {
     "found": true,
-    "key": "(Geographic): Global, (Perspective): dairy-inclusive nutritionist, (Temporal): 2021\u20132022",
-    "layer": 3,
-    "calls": 209
+    "key": "(Trustworthiness): user forum",
+    "layer": 1,
+    "calls": 248
   },
   "sra": {
-    "proxy_key": "(Perspective): dairy-inclusive nutritionist",
+    "proxy_key": "(Trustworthiness): user forum",
     "proxy_layer": 1,
     "proxy_verified": true,
-    "outcome": "wrong_layer",
-    "gap": 2,
-    "jaccard": 0.3333333333333333,
-    "calls": 0,
+    "outcome": "correct",
+    "gap": 0,
+    "jaccard": 1.0,
+    "calls": 99,
     "budget_used": 0
   },
   "era": {
     "era_fixed_4": {
-      "proxy_key": "(Perspective): dairy-inclusive nutritionist, (Trustworthiness): academic dietitian resource",
-      "proxy_layer": 2,
+      "proxy_key": "(Trustworthiness): user forum",
+      "proxy_layer": 1,
       "proxy_verified": true,
-      "outcome": "wrong_layer",
-      "gap": 1,
-      "jaccard": 0.25,
-      "calls": 161,
-      "budget_used": 4
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 153,
+      "budget_used": 4,
+      "pruned_nodes": 89
     },
     "era_fixed_8": {
-      "proxy_key": "(Geographic): Global, (Perspective): dairy-inclusive nutritionist, (Trustworthiness): academic dietitian resource",
-      "proxy_layer": 3,
+      "proxy_key": "(Trustworthiness): user forum",
+      "proxy_layer": 1,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.5,
-      "calls": 33,
-      "budget_used": 8
+      "jaccard": 1.0,
+      "calls": 108,
+      "budget_used": 8,
+      "pruned_nodes": 130
     },
     "era_fixed_16": {
-      "proxy_key": "(Geographic): Global, (Perspective): dairy-inclusive nutritionist, (Trustworthiness): academic dietitian resource",
-      "proxy_layer": 3,
+      "proxy_key": "(Trustworthiness): user forum",
+      "proxy_layer": 1,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.5,
-      "calls": 91,
-      "budget_used": 16
+      "jaccard": 1.0,
+      "calls": 64,
+      "budget_used": 16,
+      "pruned_nodes": 166
     },
     "era_fixed_32": {
-      "proxy_key": "(Geographic): Global, (Perspective): dairy-inclusive nutritionist, (Trustworthiness): academic dietitian resource",
-      "proxy_layer": 3,
+      "proxy_key": "(Trustworthiness): user forum",
+      "proxy_layer": 1,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.5,
-      "calls": 75,
-      "budget_used": 32
+      "jaccard": 1.0,
+      "calls": 208,
+      "budget_used": 32,
+      "pruned_nodes": 6
     },
     "era_fixed_64": {
-      "proxy_key": "(Geographic): Global, (Perspective): dairy-inclusive nutritionist, (Trustworthiness): academic dietitian resource",
-      "proxy_layer": 3,
+      "proxy_key": "(Trustworthiness): user forum",
+      "proxy_layer": 1,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.5,
-      "calls": 45,
-      "budget_used": 64
+      "jaccard": 1.0,
+      "calls": 176,
+      "budget_used": 64,
+      "pruned_nodes": 6
     },
     "era_fixed_128": {
-      "proxy_key": "(Geographic): Global, (Perspective): dairy-inclusive nutritionist, (Trustworthiness): academic dietitian resource",
-      "proxy_layer": 3,
+      "proxy_key": "(Trustworthiness): user forum",
+      "proxy_layer": 1,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.5,
-      "calls": 45,
-      "budget_used": 108
+      "jaccard": 1.0,
+      "calls": 111,
+      "budget_used": 128,
+      "pruned_nodes": 7
     },
     "era_fixed_256": {
-      "proxy_key": "(Geographic): Global, (Perspective): dairy-inclusive nutritionist, (Trustworthiness): academic dietitian resource",
-      "proxy_layer": 3,
+      "proxy_key": "(Trustworthiness): user forum",
+      "proxy_layer": 1,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.5,
-      "calls": 45,
-      "budget_used": 108
+      "jaccard": 1.0,
+      "calls": 69,
+      "budget_used": 174,
+      "pruned_nodes": 3
     },
     "era_pct_10": {
-      "proxy_key": "(Geographic): Global, (Perspective): dairy-inclusive nutritionist, (Trustworthiness): academic dietitian resource",
-      "proxy_layer": 3,
+      "proxy_key": "(Trustworthiness): user forum",
+      "proxy_layer": 1,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.5,
-      "calls": 82,
-      "budget_used": 25
+      "jaccard": 1.0,
+      "calls": 215,
+      "budget_used": 25,
+      "pruned_nodes": 6
     },
     "era_pct_20": {
-      "proxy_key": "(Geographic): Global, (Perspective): dairy-inclusive nutritionist, (Trustworthiness): academic dietitian resource",
-      "proxy_layer": 3,
+      "proxy_key": "(Trustworthiness): user forum",
+      "proxy_layer": 1,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.5,
-      "calls": 60,
-      "budget_used": 51
+      "jaccard": 1.0,
+      "calls": 189,
+      "budget_used": 51,
+      "pruned_nodes": 6
     },
     "era_pct_30": {
-      "proxy_key": "(Geographic): Global, (Perspective): dairy-inclusive nutritionist, (Trustworthiness): academic dietitian resource",
-      "proxy_layer": 3,
+      "proxy_key": "(Trustworthiness): user forum",
+      "proxy_layer": 1,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.5,
-      "calls": 32,
-      "budget_used": 76
+      "jaccard": 1.0,
+      "calls": 164,
+      "budget_used": 76,
+      "pruned_nodes": 6
     },
     "era_pct_40": {
-      "proxy_key": "(Geographic): Global, (Perspective): dairy-inclusive nutritionist, (Trustworthiness): academic dietitian resource",
-      "proxy_layer": 3,
+      "proxy_key": "(Trustworthiness): user forum",
+      "proxy_layer": 1,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.5,
-      "calls": 30,
-      "budget_used": 102
+      "jaccard": 1.0,
+      "calls": 139,
+      "budget_used": 102,
+      "pruned_nodes": 5
     },
     "era_pct_50": {
-      "proxy_key": "(Geographic): Global, (Perspective): dairy-inclusive nutritionist, (Trustworthiness): academic dietitian resource",
-      "proxy_layer": 3,
+      "proxy_key": "(Trustworthiness): user forum",
+      "proxy_layer": 1,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.5,
-      "calls": 45,
-      "budget_used": 108
+      "jaccard": 1.0,
+      "calls": 111,
+      "budget_used": 128,
+      "pruned_nodes": 7
     },
     "era_pct_60": {
-      "proxy_key": "(Geographic): Global, (Perspective): dairy-inclusive nutritionist, (Trustworthiness): academic dietitian resource",
-      "proxy_layer": 3,
+      "proxy_key": "(Trustworthiness): user forum",
+      "proxy_layer": 1,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.5,
-      "calls": 45,
-      "budget_used": 108
+      "jaccard": 1.0,
+      "calls": 87,
+      "budget_used": 153,
+      "pruned_nodes": 6
     },
     "era_pct_70": {
-      "proxy_key": "(Geographic): Global, (Perspective): dairy-inclusive nutritionist, (Trustworthiness): academic dietitian resource",
-      "proxy_layer": 3,
+      "proxy_key": "(Trustworthiness): user forum",
+      "proxy_layer": 1,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.5,
-      "calls": 45,
-      "budget_used": 108
+      "jaccard": 1.0,
+      "calls": 69,
+      "budget_used": 174,
+      "pruned_nodes": 3
     },
     "era_pct_80": {
-      "proxy_key": "(Geographic): Global, (Perspective): dairy-inclusive nutritionist, (Trustworthiness): academic dietitian resource",
-      "proxy_layer": 3,
+      "proxy_key": "(Trustworthiness): user forum",
+      "proxy_layer": 1,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.5,
-      "calls": 45,
-      "budget_used": 108
+      "jaccard": 1.0,
+      "calls": 69,
+      "budget_used": 174,
+      "pruned_nodes": 3
     },
     "era_pct_90": {
-      "proxy_key": "(Geographic): Global, (Perspective): dairy-inclusive nutritionist, (Trustworthiness): academic dietitian resource",
-      "proxy_layer": 3,
+      "proxy_key": "(Trustworthiness): user forum",
+      "proxy_layer": 1,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.5,
-      "calls": 45,
-      "budget_used": 108
+      "jaccard": 1.0,
+      "calls": 69,
+      "budget_used": 174,
+      "pruned_nodes": 3
     },
     "era_pct_100": {
-      "proxy_key": "(Geographic): Global, (Perspective): dairy-inclusive nutritionist, (Trustworthiness): academic dietitian resource",
-      "proxy_layer": 3,
+      "proxy_key": "(Trustworthiness): user forum",
+      "proxy_layer": 1,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.5,
-      "calls": 45,
-      "budget_used": 108
+      "jaccard": 1.0,
+      "calls": 69,
+      "budget_used": 174,
+      "pruned_nodes": 3
     }
   }
 }

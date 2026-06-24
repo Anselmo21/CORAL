@@ -1,14 +1,17 @@
 """Sub-lattice ERA budget ablation sweep on data/sonnet_dataset.json.
 
-Splits 16 queries 8/8 into dev/test (SEED=42), then for the dev set samples
-20 sub-lattices per effective size k in 3..9 that contain a BFS-found CF.
-Runs BFS / SRA / ERA(fixed-budget grid) / ERA(percent-of-lattice grid) on
-each case with subprocess isolation + incremental checkpointing so crashes
-are resumable.
+Iterates every non-halted qid (no dev/test split). For each effective size
+k in 3..9 samples 20 sub-lattices that contain a BFS-found CF, and adds the
+full k=10 lattice for every qid. Runs BFS / SRA / ERA(fixed-budget grid) /
+ERA(percent-of-lattice grid) on each case with subprocess isolation +
+incremental checkpointing so crashes are resumable.
+
+Also writes a CC-ready export of the same case set so the CC runner can
+operate on the identical lattice slices.
 
 Outputs:
-  data/sonnet_subsample/split.json             — dev/test query-id split
   data/sonnet_subsample/cases.json             — sampled (qid, size, start_node) cases
+  data/sonnet_subsample/cc_cases.json          — CC-ready export (sub-lattice rbc + sources)
   data/sonnet_subsample/per_case/case_<i>.json — per-case results (resumable)
   data/sonnet_subsample/results.json           — aggregate results
 """
@@ -30,11 +33,11 @@ from search.rank import era_search, sra_search
 
 DATA_PATH = "data/sonnet_dataset.json"
 OUT_DIR = "data/sonnet_subsample"
-SPLIT_PATH = f"{OUT_DIR}/split.json"
 CASES_PATH = f"{OUT_DIR}/cases.json"
+CC_CASES_PATH = f"{OUT_DIR}/cc_cases.json"
 RESULTS_PATH = f"{OUT_DIR}/results.json"
 
-SIZES: list[int] = list(range(3, 11))   # 3..10 inclusive
+SIZES: list[int] = list(range(3, 10))   # 3..9 sub-lattices; k=10 added separately
 TARGET_PER_SIZE: int = 20
 ERA_BUDGETS_FIXED: list[int] = [4, 8, 16, 32, 64, 128, 256]
 ERA_BUDGETS_PCT: list[int] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
@@ -47,36 +50,11 @@ MAX_RETRIES_PER_CASE: int = 8
 # Data loading
 # ---------------------------------------------------------------------------
 
-def _make_split(seed: int = SEED) -> tuple[list[str], list[str]]:
-    """Return (dev_qids, test_qids) — stable 8/8 split of the 16 queries."""
-    with open(DATA_PATH) as f:
-        data = json.load(f)
-    qids = sorted(qid for qid in data if qid != "_meta")
-    rng = random.Random(seed)
-    shuffled = qids[:]
-    rng.shuffle(shuffled)
-    return shuffled[:8], shuffled[8:]
-
-
-def _load_split() -> tuple[list[str], list[str]]:
-    if os.path.exists(SPLIT_PATH):
-        with open(SPLIT_PATH) as f:
-            s = json.load(f)
-        return s["dev"], s["test"]
-    dev, test = _make_split()
-    os.makedirs(OUT_DIR, exist_ok=True)
-    with open(SPLIT_PATH, "w") as f:
-        json.dump({"dev": dev, "test": test, "seed": SEED}, f, indent=2)
-    print(f"Saved split → {SPLIT_PATH}")
-    return dev, test
-
-
 def _parse_combo_key(raw_key: str, sorted_criteria: list[str]) -> list[str]:
     """Parse a raw combo key back to a list of criteria.
 
     Handles criterion names that contain ', ' (e.g. 'side, back, stomach') by
-    scanning sorted criteria greedily left-to-right, matching exact prefixes
-    rather than splitting on every ', '.
+    scanning sorted criteria greedily left-to-right.
     """
     if not raw_key:
         return []
@@ -108,6 +86,19 @@ def _normalize_lattice(q: dict) -> tuple[list[str], dict[str, list[str]]] | None
     return criteria, rbc
 
 
+def _load_all_qids() -> list[str]:
+    """Return every non-halted qid from the dataset, sorted for determinism."""
+    with open(DATA_PATH) as f:
+        data = json.load(f)
+    qids = []
+    for qid, q in data.items():
+        if qid == "_meta":
+            continue
+        if isinstance(q, dict) and not q.get("halted"):
+            qids.append(qid)
+    return sorted(qids, key=lambda q: int(q) if q.isdigit() else q)
+
+
 def _load_lattices(qids: list[str]) -> dict[str, tuple[list[str], dict[str, list[str]]]]:
     with open(DATA_PATH) as f:
         data = json.load(f)
@@ -131,10 +122,10 @@ def _has_cf(rbc: dict[str, list[str]], criteria: list[str], start_node: list[str
     return bfs_search(criteria, rbc, start_node=start_node, direction="down")["found"]
 
 
-def sample_cases(dev_qids: list[str], seed: int = SEED) -> list[dict]:
+def sample_cases(qids: list[str], seed: int = SEED) -> list[dict]:
     rng = random.Random(seed)
-    lattices = _load_lattices(dev_qids)
-    print(f"Loaded {len(lattices)} dev lattices.")
+    lattices = _load_lattices(qids)
+    print(f"Loaded {len(lattices)} lattices.")
 
     cases: list[dict] = []
     for size in SIZES:
@@ -152,7 +143,70 @@ def sample_cases(dev_qids: list[str], seed: int = SEED) -> list[dict]:
                     break
         print(f"  size={size}: pool={len(candidates):>6}  accepted={len(accepted):>3}/{TARGET_PER_SIZE}")
         cases.extend(accepted)
+
+    for qid, (criteria, _) in lattices.items():
+        cases.append({"qid": qid, "size": 10, "start_node": criteria})
+    print(f"  size=10: added {len(lattices)} full lattices")
+
     return cases
+
+
+# ---------------------------------------------------------------------------
+# CC export
+# ---------------------------------------------------------------------------
+
+def _sublattice_rbc(
+    rbc: dict[str, list[str]],
+    start_node: list[str],
+    full_criteria: list[str],
+) -> dict[str, list[str]]:
+    """Return rbc restricted to subsets of start_node (sonnet greedy parser)."""
+    start_set = set(start_node)
+    sorted_full = sorted(full_criteria)
+    out: dict[str, list[str]] = {}
+    for k, v in rbc.items():
+        if not k:
+            out[k] = v
+            continue
+        parts = _parse_combo_key(k, sorted_full)
+        if parts and set(parts) <= start_set:
+            out[k] = v
+    return out
+
+
+def export_cc_cases(
+    cases: list[dict],
+    lattices: dict[str, tuple[list[str], dict[str, list[str]]]],
+) -> list[dict]:
+    with open(DATA_PATH) as f:
+        data = json.load(f)
+
+    cc_cases: list[dict] = []
+    for case_id, case in enumerate(cases):
+        qid = case["qid"]
+        start_node = case["start_node"]
+        criteria, rbc = lattices[qid]
+        q = data[qid]
+
+        bfs_res = bfs_search(criteria, rbc, start_node=start_node, direction="down")
+        if not bfs_res["found"]:
+            continue
+
+        sub_rbc = _sublattice_rbc(rbc, start_node, criteria)
+        cc_cases.append({
+            "case_id": case_id,
+            "query_id": qid,
+            "query": q["question"],
+            "sources": q.get("sources") or "",
+            "plausible_answers": list(q.get("plausible_answers") or []),
+            "criteria": start_node,
+            "start_node": start_node,
+            "direction": "down",
+            "effective_size": len(start_node),
+            "k": len(start_node),
+            "rankings_by_combo": sub_rbc,
+        })
+    return cc_cases
 
 
 # ---------------------------------------------------------------------------
@@ -296,8 +350,7 @@ def _run_subprocess_single(case_id: int) -> int:
         print(f"case_id={case_id} out of range", file=sys.stderr)
         return 2
     case = cases[case_id]
-    dev_qids, _ = _load_split()
-    lattices = _load_lattices(dev_qids)
+    lattices = _load_lattices([case["qid"]])
     if case["qid"] not in lattices:
         print(f"qid={case['qid']} not loadable", file=sys.stderr)
         return 2
@@ -326,7 +379,7 @@ def run_subprocess_case(case_id: int) -> tuple[dict | None, str]:
     result = cached
     for attempt in range(1, MAX_RETRIES_PER_CASE + 1):
         prior_methods = _completed_method_count(_load_partial(case_id))
-        cmd = [sys.executable, __file__, "--single-case", str(case_id)]
+        cmd = [sys.executable, "-m", "scripts.sonnet.run_subsample", "--single-case", str(case_id)]
         proc = subprocess.run(cmd, capture_output=True, text=True)
         result = _load_partial(case_id)
         result_methods = _completed_method_count(result)
@@ -354,16 +407,14 @@ def print_summary(results: list[dict]) -> None:
     for r in results:
         by_size[r["size"]].append(r)
 
-    era_labels = [era_label("fixed", b) for b in ERA_BUDGETS_FIXED] + \
-                 [era_label("pct", p) for p in ERA_BUDGETS_PCT]
-
+    all_sizes = sorted(set(SIZES + [10]))
     print(f"\n{'=' * 110}")
-    print(f"  SONNET SUB-LATTICE SWEEP — {len(results)} cases across sizes {SIZES}")
+    print(f"  SONNET SUB-LATTICE SWEEP — {len(results)} cases across sizes {all_sizes}")
     print(f"  ERA fixed budgets: {ERA_BUDGETS_FIXED}")
     print(f"  ERA percent budgets: {ERA_BUDGETS_PCT}")
     print(f"{'=' * 110}\n")
 
-    def fmt_method(bucket: list[dict], pick: callable) -> str:
+    def fmt_method(bucket: list[dict], pick) -> str:
         ms = [pick(r) for r in bucket if pick(r) is not None]
         if not ms:
             return f"{'—':>14} | {'—':>9}"
@@ -404,12 +455,11 @@ def main() -> None:
     os.makedirs(OUT_DIR, exist_ok=True)
     os.makedirs(f"{OUT_DIR}/per_case", exist_ok=True)
 
-    dev_qids, test_qids = _load_split()
-    print(f"Dev  ({len(dev_qids)}): {dev_qids}")
-    print(f"Test ({len(test_qids)}): {test_qids}")
+    qids = _load_all_qids()
+    print(f"Qids ({len(qids)}): {qids}")
 
     if args.resample or not os.path.exists(CASES_PATH):
-        cases = sample_cases(dev_qids)
+        cases = sample_cases(qids)
         with open(CASES_PATH, "w") as f:
             json.dump(cases, f, indent=2)
         print(f"Sampled {len(cases)} cases → {CASES_PATH}")
@@ -417,6 +467,12 @@ def main() -> None:
         with open(CASES_PATH) as f:
             cases = json.load(f)
         print(f"Loaded {len(cases)} cached cases from {CASES_PATH}")
+
+    lattices = _load_lattices(qids)
+    cc_cases = export_cc_cases(cases, lattices)
+    with open(CC_CASES_PATH, "w") as f:
+        json.dump(cc_cases, f, indent=2)
+    print(f"Exported {len(cc_cases)} CC cases → {CC_CASES_PATH}")
 
     results: list[dict] = []
     failed: list[tuple[int, str]] = []
@@ -441,9 +497,8 @@ def main() -> None:
     with open(RESULTS_PATH, "w") as f:
         json.dump({
             "data_path": DATA_PATH,
-            "dev_qids": dev_qids,
-            "test_qids": test_qids,
-            "sizes": SIZES,
+            "qids": qids,
+            "sizes": sorted(set(SIZES + [10])),
             "target_per_size": TARGET_PER_SIZE,
             "era_budgets_fixed": ERA_BUDGETS_FIXED,
             "era_budgets_pct": ERA_BUDGETS_PCT,

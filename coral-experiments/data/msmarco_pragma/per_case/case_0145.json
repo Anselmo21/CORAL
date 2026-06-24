@@ -1,0 +1,222 @@
+{
+  "case_id": 145,
+  "qid": "51957",
+  "size": 10,
+  "start_node": [
+    "(Temporal): 2023",
+    "(Geographic): mainland Spain",
+    "(Trustworthiness): travel journalism",
+    "(Perspective): budget-first backpacker",
+    "(Temporal): 2021\u20132022",
+    "(Geographic): southern Spain",
+    "(Trustworthiness): user forum",
+    "(Perspective): cultural immersion traveler",
+    "(Geographic): northern Spain",
+    "(Temporal): 2019\u20132020"
+  ],
+  "bfs": {
+    "found": true,
+    "key": "(Geographic): mainland Spain, (Geographic): northern Spain, (Geographic): southern Spain, (Perspective): budget-first backpacker, (Perspective): cultural immersion traveler, (Temporal): 2023, (Trustworthiness): travel journalism, (Trustworthiness): user forum",
+    "layer": 8,
+    "calls": 21
+  },
+  "sra": {
+    "proxy_key": "(Geographic): northern Spain, (Geographic): southern Spain, (Perspective): budget-first backpacker, (Temporal): 2019\u20132020, (Temporal): 2023",
+    "proxy_layer": 5,
+    "proxy_verified": true,
+    "outcome": "wrong_layer",
+    "gap": 3,
+    "jaccard": 0.4444444444444444,
+    "calls": 1,
+    "budget_used": 0
+  },
+  "era": {
+    "era_fixed_4": {
+      "proxy_key": "(Geographic): mainland Spain, (Geographic): southern Spain, (Perspective): budget-first backpacker, (Perspective): cultural immersion traveler, (Temporal): 2019\u20132020, (Temporal): 2023, (Trustworthiness): travel journalism, (Trustworthiness): user forum",
+      "proxy_layer": 8,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.7777777777777778,
+      "calls": 6,
+      "budget_used": 4,
+      "pruned_nodes": 45
+    },
+    "era_fixed_8": {
+      "proxy_key": "(Geographic): mainland Spain, (Geographic): northern Spain, (Geographic): southern Spain, (Perspective): budget-first backpacker, (Perspective): cultural immersion traveler, (Temporal): 2023, (Trustworthiness): travel journalism, (Trustworthiness): user forum",
+      "proxy_layer": 8,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 16,
+      "budget_used": 8,
+      "pruned_nodes": 17
+    },
+    "era_fixed_16": {
+      "proxy_key": "(Geographic): mainland Spain, (Geographic): northern Spain, (Geographic): southern Spain, (Perspective): budget-first backpacker, (Perspective): cultural immersion traveler, (Temporal): 2021\u20132022, (Temporal): 2023, (Trustworthiness): user forum",
+      "proxy_layer": 8,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.7777777777777778,
+      "calls": 5,
+      "budget_used": 16,
+      "pruned_nodes": 38
+    },
+    "era_fixed_32": {
+      "proxy_key": "(Geographic): mainland Spain, (Geographic): northern Spain, (Geographic): southern Spain, (Perspective): budget-first backpacker, (Perspective): cultural immersion traveler, (Temporal): 2019\u20132020, (Temporal): 2023, (Trustworthiness): user forum",
+      "proxy_layer": 8,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.7777777777777778,
+      "calls": 6,
+      "budget_used": 32,
+      "pruned_nodes": 38
+    },
+    "era_fixed_64": {
+      "proxy_key": "(Geographic): mainland Spain, (Geographic): northern Spain, (Geographic): southern Spain, (Perspective): budget-first backpacker, (Perspective): cultural immersion traveler, (Temporal): 2019\u20132020, (Temporal): 2021\u20132022, (Trustworthiness): user forum",
+      "proxy_layer": 8,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.6,
+      "calls": 5,
+      "budget_used": 64,
+      "pruned_nodes": 40
+    },
+    "era_fixed_128": {
+      "proxy_key": "(Geographic): mainland Spain, (Geographic): southern Spain, (Perspective): budget-first backpacker, (Perspective): cultural immersion traveler, (Temporal): 2019\u20132020, (Temporal): 2021\u20132022, (Temporal): 2023, (Trustworthiness): user forum",
+      "proxy_layer": 8,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.6,
+      "calls": 5,
+      "budget_used": 128,
+      "pruned_nodes": 26
+    },
+    "era_fixed_256": {
+      "proxy_key": "(Geographic): mainland Spain, (Geographic): southern Spain, (Perspective): budget-first backpacker, (Perspective): cultural immersion traveler, (Temporal): 2019\u20132020, (Temporal): 2021\u20132022, (Temporal): 2023, (Trustworthiness): user forum",
+      "proxy_layer": 8,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.6,
+      "calls": 6,
+      "budget_used": 256,
+      "pruned_nodes": 25
+    },
+    "era_pct_10": {
+      "proxy_key": "(Geographic): mainland Spain, (Geographic): northern Spain, (Geographic): southern Spain, (Perspective): budget-first backpacker, (Perspective): cultural immersion traveler, (Temporal): 2019\u20132020, (Temporal): 2023, (Trustworthiness): user forum",
+      "proxy_layer": 8,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.7777777777777778,
+      "calls": 4,
+      "budget_used": 102,
+      "pruned_nodes": 33
+    },
+    "era_pct_20": {
+      "proxy_key": "(Geographic): mainland Spain, (Geographic): southern Spain, (Perspective): budget-first backpacker, (Perspective): cultural immersion traveler, (Temporal): 2019\u20132020, (Temporal): 2023, (Trustworthiness): travel journalism, (Trustworthiness): user forum",
+      "proxy_layer": 8,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.7777777777777778,
+      "calls": 9,
+      "budget_used": 204,
+      "pruned_nodes": 20
+    },
+    "era_pct_30": {
+      "proxy_key": "(Geographic): mainland Spain, (Geographic): southern Spain, (Perspective): budget-first backpacker, (Perspective): cultural immersion traveler, (Temporal): 2019\u20132020, (Temporal): 2021\u20132022, (Temporal): 2023, (Trustworthiness): user forum",
+      "proxy_layer": 8,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.6,
+      "calls": 10,
+      "budget_used": 307,
+      "pruned_nodes": 16
+    },
+    "era_pct_40": {
+      "proxy_key": "(Geographic): mainland Spain, (Geographic): southern Spain, (Perspective): budget-first backpacker, (Perspective): cultural immersion traveler, (Temporal): 2019\u20132020, (Temporal): 2023, (Trustworthiness): travel journalism, (Trustworthiness): user forum",
+      "proxy_layer": 8,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.7777777777777778,
+      "calls": 9,
+      "budget_used": 409,
+      "pruned_nodes": 14
+    },
+    "era_pct_50": {
+      "proxy_key": "(Geographic): northern Spain, (Geographic): southern Spain, (Perspective): budget-first backpacker, (Perspective): cultural immersion traveler, (Temporal): 2019\u20132020, (Temporal): 2023, (Trustworthiness): travel journalism, (Trustworthiness): user forum",
+      "proxy_layer": 8,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.7777777777777778,
+      "calls": 10,
+      "budget_used": 512,
+      "pruned_nodes": 9
+    },
+    "era_pct_60": {
+      "proxy_key": "(Geographic): mainland Spain, (Geographic): northern Spain, (Geographic): southern Spain, (Perspective): budget-first backpacker, (Perspective): cultural immersion traveler, (Temporal): 2023, (Trustworthiness): travel journalism, (Trustworthiness): user forum",
+      "proxy_layer": 8,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 6,
+      "budget_used": 607,
+      "pruned_nodes": 2
+    },
+    "era_pct_70": {
+      "proxy_key": "(Geographic): mainland Spain, (Geographic): northern Spain, (Geographic): southern Spain, (Perspective): budget-first backpacker, (Perspective): cultural immersion traveler, (Temporal): 2023, (Trustworthiness): travel journalism, (Trustworthiness): user forum",
+      "proxy_layer": 8,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 6,
+      "budget_used": 607,
+      "pruned_nodes": 2
+    },
+    "era_pct_80": {
+      "proxy_key": "(Geographic): mainland Spain, (Geographic): northern Spain, (Geographic): southern Spain, (Perspective): budget-first backpacker, (Perspective): cultural immersion traveler, (Temporal): 2023, (Trustworthiness): travel journalism, (Trustworthiness): user forum",
+      "proxy_layer": 8,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 6,
+      "budget_used": 607,
+      "pruned_nodes": 2
+    },
+    "era_pct_90": {
+      "proxy_key": "(Geographic): mainland Spain, (Geographic): northern Spain, (Geographic): southern Spain, (Perspective): budget-first backpacker, (Perspective): cultural immersion traveler, (Temporal): 2023, (Trustworthiness): travel journalism, (Trustworthiness): user forum",
+      "proxy_layer": 8,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 6,
+      "budget_used": 607,
+      "pruned_nodes": 2
+    },
+    "era_pct_100": {
+      "proxy_key": "(Geographic): mainland Spain, (Geographic): northern Spain, (Geographic): southern Spain, (Perspective): budget-first backpacker, (Perspective): cultural immersion traveler, (Temporal): 2023, (Trustworthiness): travel journalism, (Trustworthiness): user forum",
+      "proxy_layer": 8,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 6,
+      "budget_used": 607,
+      "pruned_nodes": 2
+    }
+  }
+}

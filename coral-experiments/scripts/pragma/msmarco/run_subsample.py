@@ -1,25 +1,22 @@
 """Sub-lattice BFS/SRA/ERA budget ablation sweep on the MSMARCO pragma dataset.
 
-Splits 8 lattices 4/4 dev/test (SEED=42, saved to data/msmarco_pragma/split.json).
-For each split, samples 20 sub-lattices per effective size k in 3..9 that:
+Iterates every record in data/msmarco-pragma-final8-with-lattices.json (no split).
+For each effective size k in 3..9 samples 20 sub-lattices that:
   (a) have a BFS-found CF, AND
-  (b) the CF requires removal of ≥2 pragmas (BFS CF layer ≤ k-2)
-Also appends the 4 full k=10 lattices from the split as size-10 cases.
-Total per split: 20*7 + 4 = 144 cases.
+  (b) require removal of ≥2 pragmas (BFS CF layer ≤ k-2)
+Also appends every full k=10 lattice as a size-10 case.
 
-Runs BFS / SRA / ERA(fixed-budget grid) / ERA(percent-of-lattice grid) on
-each dev case with incremental per-case checkpointing.
+Runs BFS / SRA / ERA(fixed-budget grid) / ERA(percent-of-lattice grid) on each
+case with incremental per-case checkpointing.
 
 Outputs:
-  data/msmarco_pragma/split.json
-  data/msmarco_pragma/cases_dev.json    — 144 dev cases
-  data/msmarco_pragma/cases_test.json   — 144 test cases
-  data/msmarco_pragma/per_case/case_<i>.json
-  data/msmarco_pragma/results.json
+  data/msmarco_pragma/cases.json                — sampled cases (full set)
+  data/msmarco_pragma/per_case/case_<i>.json    — per-case results (resumable)
+  data/msmarco_pragma/results.json              — aggregate results
 
 CLI:
-  conda run -n coral python3 run_msmarco_pragma_subsample.py
-  conda run -n coral python3 run_msmarco_pragma_subsample.py --resample
+  conda run -n coral python3 -m scripts.pragma.msmarco.run_subsample
+  conda run -n coral python3 -m scripts.pragma.msmarco.run_subsample --resample
 """
 from __future__ import annotations
 
@@ -35,8 +32,9 @@ from search.lattice import combo_key, jaccard_keys
 from search.rank import era_search, sra_search
 
 DATASET_PATH = "data/msmarco-pragma-final8-with-lattices.json"
-SPLIT_PATH   = "data/msmarco_pragma/split.json"
 OUT_DIR      = "data/msmarco_pragma"
+CASES_PATH   = f"{OUT_DIR}/cases.json"
+RESULTS_PATH = f"{OUT_DIR}/results.json"
 
 SIZES: list[int]          = list(range(3, 10))   # 3..9 for sub-lattice sampling
 TARGET_PER_SIZE: int      = 20
@@ -55,15 +53,23 @@ def _load_dataset() -> list[dict]:
         return json.load(f)
 
 
+def _load_all_qids() -> list[str]:
+    """Return every qid in the dataset, sorted for determinism."""
+    data = _load_dataset()
+    qids = [str(r["query_id"]) for r in data]
+    return sorted(qids, key=lambda q: int(q) if q.isdigit() else q)
+
+
 def _load_lattices(
-    qids: set[str],
+    qids: set[str] | list[str] | None = None,
 ) -> dict[str, tuple[list[str], dict[str, list[str]]]]:
-    """Return {qid: (criteria, rankings_by_combo)} for the given qids."""
+    """Return {qid: (criteria, rankings_by_combo)}. If qids is None, load all."""
     data = _load_dataset()
     out: dict[str, tuple[list[str], dict[str, list[str]]]] = {}
+    qid_set = set(qids) if qids is not None else None
     for rec in data:
         qid = str(rec["query_id"])
-        if qid not in qids:
+        if qid_set is not None and qid not in qid_set:
             continue
         criteria: list[str] = rec["lattice"]["config"]["criteria"]
         rbc: dict[str, list[str]] = rec["lattice"]["answers"]
@@ -72,26 +78,6 @@ def _load_lattices(
             continue
         out[qid] = (criteria, rbc)
     return out
-
-
-def _load_split() -> tuple[list[str], list[str]]:
-    with open(SPLIT_PATH) as f:
-        s = json.load(f)
-    return s["dev"], s["test"]
-
-
-def _make_split() -> tuple[list[str], list[str]]:
-    data = _load_dataset()
-    qids = [str(r["query_id"]) for r in data]
-    rng  = random.Random(SEED)
-    rng.shuffle(qids)
-    dev  = qids[:4]
-    test = qids[4:]
-    os.makedirs(OUT_DIR, exist_ok=True)
-    with open(SPLIT_PATH, "w") as f:
-        json.dump({"dev": dev, "test": test, "seed": SEED}, f, indent=2)
-    print(f"Split: dev={dev}  test={test}")
-    return dev, test
 
 
 # ---------------------------------------------------------------------------
@@ -117,12 +103,10 @@ def _qualifies(
 def sample_cases(
     lattices: dict[str, tuple[list[str], dict[str, list[str]]]],
     seed: int = SEED,
-    label: str = "",
 ) -> list[dict]:
     rng   = random.Random(seed)
     cases: list[dict] = []
 
-    # Sub-lattice cases: sizes 3..9
     for size in SIZES:
         candidates: list[dict] = []
         for qid, (criteria, _) in lattices.items():
@@ -136,14 +120,12 @@ def sample_cases(
                 accepted.append(cand)
                 if len(accepted) >= TARGET_PER_SIZE:
                     break
-        tag = f" [{label}]" if label else ""
-        print(f"  size={size}{tag}: pool={len(candidates):>5}  accepted={len(accepted):>3}/{TARGET_PER_SIZE}")
+        print(f"  size={size}: pool={len(candidates):>5}  accepted={len(accepted):>3}/{TARGET_PER_SIZE}")
         cases.extend(accepted)
 
-    # Full k=10 lattices from this split
     for qid, (criteria, _) in sorted(lattices.items()):
         cases.append({"qid": qid, "size": 10, "start_node": criteria})
-    print(f"  size=10 [{label}]: added {len(lattices)} full lattices")
+    print(f"  size=10: added {len(lattices)} full lattices")
 
     return cases
 
@@ -195,6 +177,7 @@ def score_proxy(
         "jaccard":        jaccard_keys(bfs_key, proxy_key),
         "calls":          proxy_result.get("calls", 0),
         "budget_used":    proxy_result.get("budget_used", 0),
+        "pruned_nodes":   proxy_result.get("pruned_nodes", 0),
     }
 
 
@@ -289,12 +272,10 @@ def print_summary(results: list[dict]) -> None:
     for r in results:
         by_size[r["size"]].append(r)
 
-    era_labels = (
-        [f"era_fixed_{b}" for b in ERA_BUDGETS_FIXED[:4]]
-    )
+    era_labels = [f"era_fixed_{b}" for b in ERA_BUDGETS_FIXED[:4]]
 
     print(f"\n{'='*60}")
-    print(f"  MSMARCO pragma sub-lattice sweep — {len(results)} dev cases")
+    print(f"  MSMARCO pragma sub-lattice sweep — {len(results)} cases (full set)")
     print(f"{'='*60}")
     for size in sorted(by_size):
         bucket = by_size[size]
@@ -317,62 +298,39 @@ def main() -> None:
                         help="Re-roll sampled cases (clears per-case cache)")
     args = parser.parse_args()
 
-    # Split
-    if not os.path.exists(SPLIT_PATH) or args.resample:
-        dev_qids, test_qids = _make_split()
-    else:
-        dev_qids, test_qids = _load_split()
-        print(f"Loaded split: dev={dev_qids}  test={test_qids}")
-
-    dev_lattices  = _load_lattices(set(dev_qids))
-    test_lattices = _load_lattices(set(test_qids))
-    print(f"Dev lattices: {len(dev_lattices)}  Test lattices: {len(test_lattices)}")
+    qids = _load_all_qids()
+    print(f"Qids ({len(qids)}): {qids}")
+    lattices = _load_lattices(qids)
+    print(f"Lattices loaded: {len(lattices)}")
 
     os.makedirs(OUT_DIR, exist_ok=True)
-    cases_dev_path  = f"{OUT_DIR}/cases_dev.json"
-    cases_test_path = f"{OUT_DIR}/cases_test.json"
 
-    # Sample dev cases
-    if args.resample or not os.path.exists(cases_dev_path):
-        print("\nSampling dev cases ...")
-        cases_dev = sample_cases(dev_lattices, seed=SEED, label="dev")
-        with open(cases_dev_path, "w") as f:
-            json.dump(cases_dev, f, indent=2)
-        print(f"Saved {len(cases_dev)} dev cases → {cases_dev_path}")
+    if args.resample or not os.path.exists(CASES_PATH):
+        print("\nSampling cases ...")
+        cases = sample_cases(lattices, seed=SEED)
+        with open(CASES_PATH, "w") as f:
+            json.dump(cases, f, indent=2)
+        print(f"Saved {len(cases)} cases → {CASES_PATH}")
     else:
-        with open(cases_dev_path) as f:
-            cases_dev = json.load(f)
-        print(f"Loaded {len(cases_dev)} existing dev cases")
+        with open(CASES_PATH) as f:
+            cases = json.load(f)
+        print(f"Loaded {len(cases)} existing cases")
 
-    # Sample test cases
-    if args.resample or not os.path.exists(cases_test_path):
-        print("\nSampling test cases ...")
-        cases_test = sample_cases(test_lattices, seed=SEED + 1, label="test")
-        with open(cases_test_path, "w") as f:
-            json.dump(cases_test, f, indent=2)
-        print(f"Saved {len(cases_test)} test cases → {cases_test_path}")
-    else:
-        with open(cases_test_path) as f:
-            cases_test = json.load(f)
-        print(f"Loaded {len(cases_test)} existing test cases")
-
-    # Run BFS/SRA/ERA on dev cases
-    print(f"\nRunning BFS/SRA/ERA on {len(cases_dev)} dev cases ...")
+    print(f"\nRunning BFS/SRA/ERA on {len(cases)} cases ...")
     results: list[dict] = []
-    for i, case in enumerate(cases_dev):
+    for i, case in enumerate(cases):
         qid = case["qid"]
-        criteria, rbc = dev_lattices[qid]
-        print(f"  [{i+1:>3}/{len(cases_dev)}] qid={qid} k={case['size']} ...", end=" ", flush=True)
+        criteria, rbc = lattices[qid]
+        print(f"  [{i+1:>3}/{len(cases)}] qid={qid} k={case['size']} ...", end=" ", flush=True)
         result = run_one_case(i, case, criteria, rbc)
         results.append(result)
         bfs_layer = result["bfs"]["layer"]
         sra_ok = "OK" if result["sra"]["outcome"] == "correct" else result["sra"]["outcome"]
         print(f"BFS_layer={bfs_layer} SRA={sra_ok}")
 
-    results_path = f"{OUT_DIR}/results.json"
-    with open(results_path, "w") as f:
+    with open(RESULTS_PATH, "w") as f:
         json.dump(results, f, indent=2)
-    print(f"\nResults → {results_path}")
+    print(f"\nResults → {RESULTS_PATH}")
     print_summary(results)
 
 

@@ -1,0 +1,223 @@
+{
+  "case_id": 155,
+  "qid": "8",
+  "size": 10,
+  "start_node": [
+    "(Temporal): 2023 only",
+    "(Temporal): 2021\u20132023",
+    "(Geographic): USA",
+    "(Perspective): match-first then IRA",
+    "(Perspective): high earner 401k maxer",
+    "(Perspective): fee-sensitive optimizer",
+    "(Trustworthiness): investment research",
+    "(Trustworthiness): consumer financial advisory",
+    "(Trustworthiness): user forum",
+    "(Trustworthiness): financial institution"
+  ],
+  "bfs": {
+    "found": true,
+    "key": "(Perspective): fee-sensitive optimizer, (Perspective): match-first then IRA, (Temporal): 2021\u20132023, (Temporal): 2023 only, (Trustworthiness): consumer financial advisory, (Trustworthiness): investment research, (Trustworthiness): user forum",
+    "layer": 7,
+    "calls": 101
+  },
+  "sra": {
+    "proxy_key": "(Geographic): USA, (Perspective): fee-sensitive optimizer, (Perspective): match-first then IRA, (Temporal): 2023 only, (Trustworthiness): user forum",
+    "proxy_layer": 5,
+    "proxy_verified": true,
+    "outcome": "wrong_layer",
+    "gap": 2,
+    "jaccard": 0.5,
+    "calls": 2,
+    "budget_used": 0,
+    "pruned_nodes": 0
+  },
+  "era": {
+    "era_fixed_4": {
+      "proxy_key": "(Perspective): fee-sensitive optimizer, (Perspective): match-first then IRA, (Temporal): 2021\u20132023, (Temporal): 2023 only, (Trustworthiness): consumer financial advisory, (Trustworthiness): investment research, (Trustworthiness): user forum",
+      "proxy_layer": 7,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 61,
+      "budget_used": 4,
+      "pruned_nodes": 66
+    },
+    "era_fixed_8": {
+      "proxy_key": "(Perspective): fee-sensitive optimizer, (Perspective): match-first then IRA, (Temporal): 2021\u20132023, (Temporal): 2023 only, (Trustworthiness): consumer financial advisory, (Trustworthiness): investment research, (Trustworthiness): user forum",
+      "proxy_layer": 7,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 61,
+      "budget_used": 8,
+      "pruned_nodes": 66
+    },
+    "era_fixed_16": {
+      "proxy_key": "(Perspective): fee-sensitive optimizer, (Perspective): match-first then IRA, (Temporal): 2021\u20132023, (Temporal): 2023 only, (Trustworthiness): consumer financial advisory, (Trustworthiness): investment research, (Trustworthiness): user forum",
+      "proxy_layer": 7,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 61,
+      "budget_used": 16,
+      "pruned_nodes": 66
+    },
+    "era_fixed_32": {
+      "proxy_key": "(Perspective): fee-sensitive optimizer, (Perspective): match-first then IRA, (Temporal): 2021\u20132023, (Temporal): 2023 only, (Trustworthiness): financial institution, (Trustworthiness): investment research, (Trustworthiness): user forum",
+      "proxy_layer": 7,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.75,
+      "calls": 10,
+      "budget_used": 32,
+      "pruned_nodes": 154
+    },
+    "era_fixed_64": {
+      "proxy_key": "(Perspective): fee-sensitive optimizer, (Perspective): match-first then IRA, (Temporal): 2021\u20132023, (Temporal): 2023 only, (Trustworthiness): financial institution, (Trustworthiness): investment research, (Trustworthiness): user forum",
+      "proxy_layer": 7,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.75,
+      "calls": 10,
+      "budget_used": 64,
+      "pruned_nodes": 154
+    },
+    "era_fixed_128": {
+      "proxy_key": "(Perspective): fee-sensitive optimizer, (Perspective): match-first then IRA, (Temporal): 2021\u20132023, (Temporal): 2023 only, (Trustworthiness): financial institution, (Trustworthiness): investment research, (Trustworthiness): user forum",
+      "proxy_layer": 7,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.75,
+      "calls": 14,
+      "budget_used": 98,
+      "pruned_nodes": 148
+    },
+    "era_fixed_256": {
+      "proxy_key": "(Perspective): fee-sensitive optimizer, (Perspective): match-first then IRA, (Temporal): 2021\u20132023, (Temporal): 2023 only, (Trustworthiness): financial institution, (Trustworthiness): investment research, (Trustworthiness): user forum",
+      "proxy_layer": 7,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.75,
+      "calls": 14,
+      "budget_used": 98,
+      "pruned_nodes": 148
+    },
+    "era_pct_10": {
+      "proxy_key": "(Perspective): fee-sensitive optimizer, (Perspective): match-first then IRA, (Temporal): 2021\u20132023, (Temporal): 2023 only, (Trustworthiness): financial institution, (Trustworthiness): investment research, (Trustworthiness): user forum",
+      "proxy_layer": 7,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.75,
+      "calls": 14,
+      "budget_used": 98,
+      "pruned_nodes": 148
+    },
+    "era_pct_20": {
+      "proxy_key": "(Perspective): fee-sensitive optimizer, (Perspective): match-first then IRA, (Temporal): 2021\u20132023, (Temporal): 2023 only, (Trustworthiness): financial institution, (Trustworthiness): investment research, (Trustworthiness): user forum",
+      "proxy_layer": 7,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.75,
+      "calls": 14,
+      "budget_used": 98,
+      "pruned_nodes": 148
+    },
+    "era_pct_30": {
+      "proxy_key": "(Perspective): fee-sensitive optimizer, (Perspective): match-first then IRA, (Temporal): 2021\u20132023, (Temporal): 2023 only, (Trustworthiness): financial institution, (Trustworthiness): investment research, (Trustworthiness): user forum",
+      "proxy_layer": 7,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.75,
+      "calls": 14,
+      "budget_used": 98,
+      "pruned_nodes": 148
+    },
+    "era_pct_40": {
+      "proxy_key": "(Perspective): fee-sensitive optimizer, (Perspective): match-first then IRA, (Temporal): 2021\u20132023, (Temporal): 2023 only, (Trustworthiness): financial institution, (Trustworthiness): investment research, (Trustworthiness): user forum",
+      "proxy_layer": 7,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.75,
+      "calls": 14,
+      "budget_used": 98,
+      "pruned_nodes": 148
+    },
+    "era_pct_50": {
+      "proxy_key": "(Perspective): fee-sensitive optimizer, (Perspective): match-first then IRA, (Temporal): 2021\u20132023, (Temporal): 2023 only, (Trustworthiness): financial institution, (Trustworthiness): investment research, (Trustworthiness): user forum",
+      "proxy_layer": 7,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.75,
+      "calls": 14,
+      "budget_used": 98,
+      "pruned_nodes": 148
+    },
+    "era_pct_60": {
+      "proxy_key": "(Perspective): fee-sensitive optimizer, (Perspective): match-first then IRA, (Temporal): 2021\u20132023, (Temporal): 2023 only, (Trustworthiness): financial institution, (Trustworthiness): investment research, (Trustworthiness): user forum",
+      "proxy_layer": 7,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.75,
+      "calls": 14,
+      "budget_used": 98,
+      "pruned_nodes": 148
+    },
+    "era_pct_70": {
+      "proxy_key": "(Perspective): fee-sensitive optimizer, (Perspective): match-first then IRA, (Temporal): 2021\u20132023, (Temporal): 2023 only, (Trustworthiness): financial institution, (Trustworthiness): investment research, (Trustworthiness): user forum",
+      "proxy_layer": 7,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.75,
+      "calls": 14,
+      "budget_used": 98,
+      "pruned_nodes": 148
+    },
+    "era_pct_80": {
+      "proxy_key": "(Perspective): fee-sensitive optimizer, (Perspective): match-first then IRA, (Temporal): 2021\u20132023, (Temporal): 2023 only, (Trustworthiness): financial institution, (Trustworthiness): investment research, (Trustworthiness): user forum",
+      "proxy_layer": 7,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.75,
+      "calls": 14,
+      "budget_used": 98,
+      "pruned_nodes": 148
+    },
+    "era_pct_90": {
+      "proxy_key": "(Perspective): fee-sensitive optimizer, (Perspective): match-first then IRA, (Temporal): 2021\u20132023, (Temporal): 2023 only, (Trustworthiness): financial institution, (Trustworthiness): investment research, (Trustworthiness): user forum",
+      "proxy_layer": 7,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.75,
+      "calls": 14,
+      "budget_used": 98,
+      "pruned_nodes": 148
+    },
+    "era_pct_100": {
+      "proxy_key": "(Perspective): fee-sensitive optimizer, (Perspective): match-first then IRA, (Temporal): 2021\u20132023, (Temporal): 2023 only, (Trustworthiness): financial institution, (Trustworthiness): investment research, (Trustworthiness): user forum",
+      "proxy_layer": 7,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.75,
+      "calls": 14,
+      "budget_used": 98,
+      "pruned_nodes": 148
+    }
+  }
+}

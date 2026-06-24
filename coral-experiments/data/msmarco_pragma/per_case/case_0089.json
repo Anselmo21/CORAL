@@ -1,202 +1,219 @@
 {
   "case_id": 89,
-  "qid": "51957",
+  "qid": "51718",
   "size": 7,
   "start_node": [
-    "(Temporal): 2023",
-    "(Trustworthiness): travel journalism",
-    "(Perspective): budget-first backpacker",
+    "(Geographic): USA",
+    "(Trustworthiness): professional beauty publication",
+    "(Perspective): professional esthetician",
     "(Temporal): 2021\u20132022",
-    "(Perspective): cultural immersion traveler",
-    "(Geographic): northern Spain",
-    "(Temporal): 2019\u20132020"
+    "(Geographic): Europe",
+    "(Perspective): DIY skincare enthusiast",
+    "(Geographic): Global"
   ],
   "bfs": {
     "found": true,
-    "key": "(Geographic): northern Spain, (Perspective): budget-first backpacker, (Temporal): 2023, (Trustworthiness): travel journalism",
+    "key": "(Geographic): Global, (Geographic): USA, (Perspective): DIY skincare enthusiast, (Perspective): professional esthetician",
     "layer": 4,
-    "calls": 31
+    "calls": 44
   },
   "sra": {
-    "proxy_key": "(Geographic): northern Spain, (Perspective): budget-first backpacker, (Temporal): 2019\u20132020",
-    "proxy_layer": 3,
+    "proxy_key": "(Perspective): DIY skincare enthusiast",
+    "proxy_layer": 1,
     "proxy_verified": true,
     "outcome": "wrong_layer",
-    "gap": 1,
-    "jaccard": 0.4,
-    "calls": 1,
+    "gap": 3,
+    "jaccard": 0.25,
+    "calls": 0,
     "budget_used": 0
   },
   "era": {
     "era_fixed_4": {
-      "proxy_key": "(Geographic): northern Spain, (Perspective): budget-first backpacker, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_key": "(Geographic): Global, (Geographic): USA, (Perspective): DIY skincare enthusiast, (Perspective): professional esthetician",
       "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.6,
-      "calls": 6,
-      "budget_used": 4
+      "jaccard": 1.0,
+      "calls": 34,
+      "budget_used": 4,
+      "pruned_nodes": 21
     },
     "era_fixed_8": {
-      "proxy_key": "(Geographic): northern Spain, (Perspective): budget-first backpacker, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_key": "(Geographic): Global, (Geographic): USA, (Perspective): DIY skincare enthusiast, (Temporal): 2021\u20132022",
       "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 0.6,
-      "calls": 11,
-      "budget_used": 8
+      "calls": 7,
+      "budget_used": 8,
+      "pruned_nodes": 21
     },
     "era_fixed_16": {
-      "proxy_key": "(Geographic): northern Spain, (Perspective): budget-first backpacker, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_key": "(Geographic): Global, (Geographic): USA, (Perspective): DIY skincare enthusiast, (Temporal): 2021\u20132022",
       "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 0.6,
-      "calls": 14,
-      "budget_used": 16
+      "calls": 9,
+      "budget_used": 13,
+      "pruned_nodes": 17
     },
     "era_fixed_32": {
-      "proxy_key": "(Geographic): northern Spain, (Perspective): budget-first backpacker, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_key": "(Geographic): Global, (Geographic): USA, (Perspective): DIY skincare enthusiast, (Temporal): 2021\u20132022",
       "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 0.6,
       "calls": 9,
-      "budget_used": 28
+      "budget_used": 13,
+      "pruned_nodes": 17
     },
     "era_fixed_64": {
-      "proxy_key": "(Geographic): northern Spain, (Perspective): budget-first backpacker, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_key": "(Geographic): Global, (Geographic): USA, (Perspective): DIY skincare enthusiast, (Temporal): 2021\u20132022",
       "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 0.6,
       "calls": 9,
-      "budget_used": 28
+      "budget_used": 13,
+      "pruned_nodes": 17
     },
     "era_fixed_128": {
-      "proxy_key": "(Geographic): northern Spain, (Perspective): budget-first backpacker, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_key": "(Geographic): Global, (Geographic): USA, (Perspective): DIY skincare enthusiast, (Temporal): 2021\u20132022",
       "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 0.6,
       "calls": 9,
-      "budget_used": 28
+      "budget_used": 13,
+      "pruned_nodes": 17
     },
     "era_fixed_256": {
-      "proxy_key": "(Geographic): northern Spain, (Perspective): budget-first backpacker, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_key": "(Geographic): Global, (Geographic): USA, (Perspective): DIY skincare enthusiast, (Temporal): 2021\u20132022",
       "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 0.6,
       "calls": 9,
-      "budget_used": 28
+      "budget_used": 13,
+      "pruned_nodes": 17
     },
     "era_pct_10": {
-      "proxy_key": "(Geographic): northern Spain, (Perspective): cultural immersion traveler, (Temporal): 2023",
-      "proxy_layer": 3,
+      "proxy_key": "(Geographic): Global, (Geographic): USA, (Perspective): DIY skincare enthusiast, (Temporal): 2021\u20132022",
+      "proxy_layer": 4,
       "proxy_verified": true,
-      "outcome": "wrong_layer",
-      "gap": 1,
-      "jaccard": 0.4,
-      "calls": 9,
-      "budget_used": 12
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.6,
+      "calls": 5,
+      "budget_used": 12,
+      "pruned_nodes": 22
     },
     "era_pct_20": {
-      "proxy_key": "(Geographic): northern Spain, (Perspective): budget-first backpacker, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_key": "(Geographic): Global, (Geographic): USA, (Perspective): DIY skincare enthusiast, (Temporal): 2021\u20132022",
       "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 0.6,
-      "calls": 11,
-      "budget_used": 25
+      "calls": 9,
+      "budget_used": 13,
+      "pruned_nodes": 17
     },
     "era_pct_30": {
-      "proxy_key": "(Geographic): northern Spain, (Perspective): budget-first backpacker, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_key": "(Geographic): Global, (Geographic): USA, (Perspective): DIY skincare enthusiast, (Temporal): 2021\u20132022",
       "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 0.6,
       "calls": 9,
-      "budget_used": 28
+      "budget_used": 13,
+      "pruned_nodes": 17
     },
     "era_pct_40": {
-      "proxy_key": "(Geographic): northern Spain, (Perspective): budget-first backpacker, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_key": "(Geographic): Global, (Geographic): USA, (Perspective): DIY skincare enthusiast, (Temporal): 2021\u20132022",
       "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 0.6,
       "calls": 9,
-      "budget_used": 28
+      "budget_used": 13,
+      "pruned_nodes": 17
     },
     "era_pct_50": {
-      "proxy_key": "(Geographic): northern Spain, (Perspective): budget-first backpacker, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_key": "(Geographic): Global, (Geographic): USA, (Perspective): DIY skincare enthusiast, (Temporal): 2021\u20132022",
       "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 0.6,
       "calls": 9,
-      "budget_used": 28
+      "budget_used": 13,
+      "pruned_nodes": 17
     },
     "era_pct_60": {
-      "proxy_key": "(Geographic): northern Spain, (Perspective): budget-first backpacker, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_key": "(Geographic): Global, (Geographic): USA, (Perspective): DIY skincare enthusiast, (Temporal): 2021\u20132022",
       "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 0.6,
       "calls": 9,
-      "budget_used": 28
+      "budget_used": 13,
+      "pruned_nodes": 17
     },
     "era_pct_70": {
-      "proxy_key": "(Geographic): northern Spain, (Perspective): budget-first backpacker, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_key": "(Geographic): Global, (Geographic): USA, (Perspective): DIY skincare enthusiast, (Temporal): 2021\u20132022",
       "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 0.6,
       "calls": 9,
-      "budget_used": 28
+      "budget_used": 13,
+      "pruned_nodes": 17
     },
     "era_pct_80": {
-      "proxy_key": "(Geographic): northern Spain, (Perspective): budget-first backpacker, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_key": "(Geographic): Global, (Geographic): USA, (Perspective): DIY skincare enthusiast, (Temporal): 2021\u20132022",
       "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 0.6,
       "calls": 9,
-      "budget_used": 28
+      "budget_used": 13,
+      "pruned_nodes": 17
     },
     "era_pct_90": {
-      "proxy_key": "(Geographic): northern Spain, (Perspective): budget-first backpacker, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_key": "(Geographic): Global, (Geographic): USA, (Perspective): DIY skincare enthusiast, (Temporal): 2021\u20132022",
       "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 0.6,
       "calls": 9,
-      "budget_used": 28
+      "budget_used": 13,
+      "pruned_nodes": 17
     },
     "era_pct_100": {
-      "proxy_key": "(Geographic): northern Spain, (Perspective): budget-first backpacker, (Temporal): 2021\u20132022, (Temporal): 2023",
+      "proxy_key": "(Geographic): Global, (Geographic): USA, (Perspective): DIY skincare enthusiast, (Temporal): 2021\u20132022",
       "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 0.6,
       "calls": 9,
-      "budget_used": 28
+      "budget_used": 13,
+      "pruned_nodes": 17
     }
   }
 }
