@@ -6,9 +6,9 @@ omitted if their column is missing from paper_results.json (so this can run
 before CC has merged in).
 
 Outputs:
-    final_plots/<dataset>/{accuracy,cost,hop}_by_size.png
-    final_plots/<dataset>/combined.png        (3 panels in one figure)
-    final_plots/headline_acc_vs_cost.png      (aggregate per dataset, all methods)
+    plots/<dataset>/{accuracy,cost,hop}_by_size.png
+    plots/<dataset>/combined.png        (3 panels in one figure)
+    plots/headline_acc_vs_cost.png      (aggregate per dataset, all methods)
 
 Usage:
     conda run -n coral python3 -m scripts.shared.plot_paper_results
@@ -42,7 +42,7 @@ METHODS = [
     ("cc_pct10",  "LSM (b=10%)",  "P",  "-",  "#98df8a", 2.0, False),
 ]
 
-OUT_BASE = "final_plots"
+OUT_BASE = "plots"
 
 
 def _load(dataset: str) -> list[dict]:

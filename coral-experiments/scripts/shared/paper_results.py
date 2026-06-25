@@ -30,9 +30,9 @@ from search.rank import era_search
 
 DATASETS = [
     # (data dir, module path, label, propagate_scores)
-    ("msmarco_criteria",        "scripts.msmarco.run_subsample",          "MSMARCO criteria",       False),
-    ("sonnet_criteria",         "scripts.sonnet.run_subsample",           "Sonnet criteria",        False),
-    ("msmarco_pragma", "scripts.pragma.msmarco_regen.run_subsample", "MSMARCO pragma (regen)", True),
+    ("msmarco_criteria",        "scripts.criteria.msmarco.run_subsample",          "MSMARCO criteria",       False),
+    ("sonnet_criteria",         "scripts.criteria.sonnet.run_subsample",           "Sonnet criteria",        False),
+    ("msmarco_pragma", "scripts.pragma.msmarco.run_subsample", "MSMARCO pragma (regen)", True),
     ("sonnet_pragma",            "scripts.pragma.sonnet.run_subsample",    "Sonnet pragma",          True),
 ]
 

@@ -40,7 +40,7 @@ export VLLM_USE_FLASHINFER_SAMPLER=0
 declare -A EXPORTS=(
   [data/msmarco_criteria/cc_cases.json]="(already built by run_subsample.py)"
   [data/sonnet_criteria/cc_cases.json]="(already built by run_subsample.py)"
-  [data/msmarco_pragma/cc_cases.json]="python3 -m scripts.pragma.msmarco_regen.run_cc_full --export"
+  [data/msmarco_pragma/cc_cases.json]="python3 -m scripts.pragma.msmarco.run_cc_full --export"
   [data/sonnet_pragma/cc_cases.json]="python3 -m scripts.pragma.sonnet.run_cc_ablation --export"
 )
 
@@ -63,12 +63,12 @@ done
 
 # format: "<module>|<needs --run: 0|1>|<budget flag>"
 JOBS=(
-  "scripts.msmarco.run_cc_full|0|--budget 16"
-  "scripts.msmarco.run_cc_full|0|--pct 10"
-  "scripts.sonnet.run_cc_full|0|--budget 16"
-  "scripts.sonnet.run_cc_full|0|--pct 10"
-  "scripts.pragma.msmarco_regen.run_cc_full|1|--budget 16"
-  "scripts.pragma.msmarco_regen.run_cc_full|1|--pct 10"
+  "scripts.criteria.msmarco.run_cc_full|0|--budget 16"
+  "scripts.criteria.msmarco.run_cc_full|0|--pct 10"
+  "scripts.criteria.sonnet.run_cc_full|0|--budget 16"
+  "scripts.criteria.sonnet.run_cc_full|0|--pct 10"
+  "scripts.pragma.msmarco.run_cc_full|1|--budget 16"
+  "scripts.pragma.msmarco.run_cc_full|1|--pct 10"
   "scripts.pragma.sonnet.run_cc_full|0|--budget 16"
   "scripts.pragma.sonnet.run_cc_full|0|--pct 10"
 )

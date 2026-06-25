@@ -18,11 +18,11 @@ python -m scripts.shared.paper_results
 python -m scripts.shared.merge_cc_paper
 python -m scripts.shared.plot_paper_results
 
-# Output lands in final_plots/.
+# Output lands in plots/.
 ```
 
 If you only want to skim the results without running anything, the paper
-plots are already on disk under `final_plots/`.
+plots are already on disk under `plots/`.
 
 ## Repository layout
 
@@ -31,7 +31,7 @@ search/                  core algorithms (BFS, SRA, ERA, ContextCite)
 metric.py                shared accuracy / hop-distance metric
 scripts/                 per-dataset pipelines + the cross-dataset paper pipeline
 data/                    raw lattice sources + processed outputs (see below)
-final_plots/             the paper's headline plots
+plots/             the paper's headline plots
 ```
 
 ### `data/`
@@ -57,9 +57,9 @@ truth for the headline table.
 ### `scripts/`
 
 ```
-scripts/msmarco/                    MSMARCO criteria pipeline
-scripts/sonnet/                     Sonnet criteria pipeline
-scripts/pragma/msmarco_regen/       MSMARCO pragma pipeline
+scripts/criteria/msmarco/           MSMARCO criteria pipeline
+scripts/criteria/sonnet/            Sonnet criteria pipeline
+scripts/pragma/msmarco/             MSMARCO pragma pipeline
 scripts/pragma/sonnet/              Sonnet pragma pipeline
 scripts/shared/                     cross-dataset paper pipeline + helpers
 ```
@@ -69,23 +69,25 @@ Each per-dataset folder has the same shape:
 | Script                       | Purpose                                              |
 | ---------------------------- | ---------------------------------------------------- |
 | `run_subsample.py`           | Sample sub-lattices, run BFS / SRA / ERA budget sweep |
-| `plot_subsample.py`          | Per-dataset accuracy / cost vs k                     |
 | `run_entropy_ablation.py`    | Compare 5 entropy variants at pct_10                 |
 | `run_cc_full.py`             | ContextCite at one budget (b=16 or pct_10) — GPU     |
 | `run_cc_ablation.py`         | ContextCite over the full budget grid — GPU          |
-| `plot_cc_ablation.py`        | Per-dataset CC budget ablation plot                  |
+
+Plotting is shared: `scripts/shared/plot_subsample.py --dataset <X>` and
+`scripts/shared/plot_cc_ablation.py --dataset <X>` cover all 4 datasets
+uniformly (use `--all` to do all four in one shot).
 
 ### `scripts/shared/`
 
 The paper pipeline — four steps that consume the four per-dataset
-`results.json` files and produce `final_plots/`:
+`results.json` files and produce `plots/`:
 
 | Step | Script                       | What it does                                              |
 | ---- | ---------------------------- | --------------------------------------------------------- |
 | 1    | `paper_results.py`           | Refresh ERA at b=16 + pct_10, copy BFS/SRA, write paper_results.json |
 | 2    | `run_cc_paper_parallel.sh`   | GPU launcher: 8 CC runs (4 datasets × 2 budgets) across N GPUs |
 | 3    | `merge_cc_paper.py`          | Merge CC columns from disk into paper_results.json        |
-| 4    | `plot_paper_results.py`      | Write final_plots/ — 4 per-dataset 3-panel figures + a cross-dataset headline |
+| 4    | `plot_paper_results.py`      | Write plots/ — 4 per-dataset 3-panel figures + a cross-dataset headline |
 
 Plus `plot_style.py`, `load_cc_model.py`, `cc_budget_ablation_dev.py`
 (provides `score_cc()`).
@@ -95,9 +97,9 @@ Plus `plot_style.py`, `load_cc_model.py`, `cc_budget_ablation_dev.py`
 ```bash
 # 1. Generate cases.json + results.json (BFS + SRA + ERA budget sweep) per dataset.
 #    This is the slow step — minutes per dataset on CPU.
-python -m scripts.msmarco.run_subsample
-python -m scripts.sonnet.run_subsample
-python -m scripts.pragma.msmarco_regen.run_subsample
+python -m scripts.criteria.msmarco.run_subsample
+python -m scripts.criteria.sonnet.run_subsample
+python -m scripts.pragma.msmarco.run_subsample
 python -m scripts.pragma.sonnet.run_subsample
 
 # 2. Refresh the paper table with current ERA heuristics.
@@ -124,4 +126,4 @@ ERA(b=16) Pareto-dominates the other proxies on every dataset:
 | MSMARCO pragma    | 95.96    | 94.9% / 63.69        | 90.0% / 102.13        |
 | Sonnet pragma     | 80.52    | 96.8% / 62.83        | 92.3% / 92.74         |
 
-See `final_plots/headline_acc_vs_cost.png` and `final_plots/<X>/combined.png`.
+See `plots/headline_acc_vs_cost.png` and `plots/<X>/combined.png`.
