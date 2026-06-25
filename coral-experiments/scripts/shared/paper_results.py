@@ -29,10 +29,11 @@ from search.lattice import hop_distance
 from search.rank import era_search
 
 DATASETS = [
-    ("msmarco_subsample",        "scripts.msmarco.run_subsample",          "MSMARCO criteria"),
-    ("sonnet_subsample",         "scripts.sonnet.run_subsample",           "Sonnet criteria"),
-    ("16_lattices_cf_layer2to8", "scripts.pragma.msmarco_regen.run_subsample", "MSMARCO pragma (regen)"),
-    ("sonnet_pragma",            "scripts.pragma.sonnet.run_subsample",    "Sonnet pragma"),
+    # (data dir, module path, label, propagate_scores)
+    ("msmarco_subsample",        "scripts.msmarco.run_subsample",          "MSMARCO criteria",       False),
+    ("sonnet_subsample",         "scripts.sonnet.run_subsample",           "Sonnet criteria",        False),
+    ("16_lattices_cf_layer2to8", "scripts.pragma.msmarco_regen.run_subsample", "MSMARCO pragma (regen)", True),
+    ("sonnet_pragma",            "scripts.pragma.sonnet.run_subsample",    "Sonnet pragma",          True),
 ]
 
 
@@ -52,7 +53,7 @@ def _load_lattices(mod):
     raise RuntimeError(f"No loader on {mod.__name__}")
 
 
-def rerun_dataset(name: str, modpath: str) -> list[dict]:
+def rerun_dataset(name: str, modpath: str, propagate_scores: bool = False) -> list[dict]:
     cases_path   = f"data/{name}/cases.json"
     results_path = f"data/{name}/results.json"
 
@@ -95,12 +96,14 @@ def rerun_dataset(name: str, modpath: str) -> list[dict]:
         }
 
         # ERA b=16
-        r16 = era_search(criteria, rbc, budget=16, start_node=start, direction="down")
+        r16 = era_search(criteria, rbc, budget=16, start_node=start, direction="down",
+                         propagate_scores=propagate_scores)
         row["era_b16"] = score_proxy(bfs_for_proxy, r16, rbc, start)
 
         # ERA pct_10
         budget = max(1, int(2**size * 10 / 100))
-        rp = era_search(criteria, rbc, budget=budget, start_node=start, direction="down")
+        rp = era_search(criteria, rbc, budget=budget, start_node=start, direction="down",
+                        propagate_scores=propagate_scores)
         row["era_pct10"] = score_proxy(bfs_for_proxy, rp, rbc, start)
 
         # Hop distance from BFS's CF to each method's CF
@@ -148,9 +151,10 @@ def summarize(rows: list[dict]) -> str:
 
 
 def main():
-    for name, modpath, nice in DATASETS:
-        print(f"\n{'='*70}\n  {nice}   (data/{name}/)\n{'='*70}")
-        rows = rerun_dataset(name, modpath)
+    for name, modpath, nice, propagate in DATASETS:
+        flag = "  [propagate_scores=ON]" if propagate else ""
+        print(f"\n{'='*70}\n  {nice}   (data/{name}/){flag}\n{'='*70}")
+        rows = rerun_dataset(name, modpath, propagate_scores=propagate)
         out_path = f"data/{name}/paper_results.json"
         with open(out_path, "w") as f:
             json.dump(rows, f, indent=2)

@@ -80,6 +80,66 @@ def _get_child_rankings(subset, known, estimated):
     return voter_rankings
 
 
+def _ranking_to_score_vector(
+    ranking: list[str],
+    answers: list[str],
+) -> dict[str, float]:
+    """Borda score vector from a ranking: answer at rank r gets n - r points."""
+    n = len(answers)
+    sv: dict[str, float] = {a: 0.0 for a in answers}
+    for rank, ans in enumerate(ranking):
+        if ans in sv:
+            sv[ans] = float(n - rank)
+    return sv
+
+
+def _get_child_score_vectors(
+    subset: list[str],
+    known: dict[str, list[str]],
+    estimated_scores: dict[str, dict[str, float]],
+    answers: list[str],
+) -> dict[str, dict[str, float]]:
+    """Voter score vectors for size-(|subset|-1) children of ``subset``.
+
+    Known children → derive Borda from their ranking. Estimated children →
+    return the previously-aggregated score vector, preserving magnitudes from
+    below instead of collapsing back to ranks at each layer.
+    """
+    out: dict[str, dict[str, float]] = {}
+    for i in range(len(subset)):
+        child = subset[:i] + subset[i + 1:]
+        if not child:
+            continue
+        child_key = combo_key(child)
+        if child_key in known:
+            out[child_key] = _ranking_to_score_vector(known[child_key], answers)
+        elif child_key in estimated_scores:
+            out[child_key] = estimated_scores[child_key]
+    return out
+
+
+def _aggregate_score_vectors(
+    voter_scores: dict[str, dict[str, float]],
+    answers: list[str],
+) -> tuple[list[str], dict[str, float]]:
+    """Entry-wise sum of voter score vectors, then max-normalize to keep
+    magnitudes bounded across the cascade (otherwise softmax saturates and
+    every layer's entropy collapses again, defeating score propagation).
+    Returns (ranking, normalized aggregate scores in [0, 1]).
+    """
+    if not voter_scores:
+        return [], {}
+    agg: dict[str, float] = {a: 0.0 for a in answers}
+    for sv in voter_scores.values():
+        for a in answers:
+            agg[a] += sv.get(a, 0.0)
+    max_abs = max((abs(v) for v in agg.values()), default=0.0)
+    if max_abs > 0:
+        agg = {a: v / max_abs for a, v in agg.items()}
+    ordered = sorted(agg, key=lambda a: (-agg[a], a))
+    return ordered, agg
+
+
 def _era_phase1_down(
     start_node: list[str],
     rankings_by_combo: dict[str, list[str]],
@@ -91,6 +151,8 @@ def _era_phase1_down(
     aggregator: str,
     entropy_fn,
     cutoff_fn,
+    propagate_scores: bool = False,
+    estimated_scores: dict[str, dict[str, float]] | None = None,
 ) -> tuple[int, list[str]]:
     """ERA downward Phase-1 budget allocation (single source of truth).
 
@@ -99,29 +161,42 @@ def _era_phase1_down(
     looking up the highest-uncertainty nodes selected by ``cutoff_fn``.
 
     Mutates ``known`` / ``estimated_rankings`` / ``entropies`` in place.
-    Returns ``(budget_remaining, looked_up_keys)`` where ``looked_up_keys`` is
-    the ordered list of ground-truth lookups charged against the budget.
-    Used by both ``era_search`` and the Phase-1 monotonicity audit so the audit
-    always exercises the real implementation.
+    When ``propagate_scores=True``, voters contribute their full score vectors
+    (not just ranks) so magnitude information survives the cascade — fixes the
+    rank-extraction collapse that homogenizes pragma estimates. The caller must
+    pass an ``estimated_scores`` dict for the algorithm to populate.
     """
     s = len(start_node)
     looked_up: list[str] = []
+    if propagate_scores and estimated_scores is None:
+        estimated_scores = {}
+
     for layer_size in range(2, s):
         layer_nodes: list[tuple[str, float]] = []
         for combo in combinations(range(s), layer_size):
             subset = [start_node[i] for i in combo]
             key = combo_key(subset)
-            voter_rankings = _get_child_rankings(subset, known, estimated_rankings)
-            if not voter_rankings:
-                continue
 
-            ranking, scores = _aggregate_with_scores(voter_rankings, answers, aggregator)
+            if propagate_scores:
+                voter_scores = _get_child_score_vectors(subset, known, estimated_scores, answers)
+                if not voter_scores:
+                    continue
+                ranking, scores = _aggregate_score_vectors(voter_scores, answers)
+                n_voters = len(voter_scores)
+            else:
+                voter_rankings = _get_child_rankings(subset, known, estimated_rankings)
+                if not voter_rankings:
+                    continue
+                ranking, scores = _aggregate_with_scores(voter_rankings, answers, aggregator)
+                n_voters = len(voter_rankings)
 
             if not scores:
                 continue
 
             estimated_rankings[key] = ranking
-            entropy_score = entropy_fn(scores, num_voters=len(voter_rankings))
+            if propagate_scores:
+                estimated_scores[key] = scores
+            entropy_score = entropy_fn(scores, num_voters=n_voters)
             entropies[key] = entropy_score
             layer_nodes.append((key, entropy_score))
 
@@ -249,6 +324,7 @@ def era_search(
     start_node=None,
     direction="down",
     verbose=False,
+    propagate_scores: bool = False,
 ):
     """
     Entropy-Rank Aggregation (ERA) search algorithm.
@@ -305,6 +381,7 @@ def era_search(
 
     known = {}
     estimated_rankings = {}
+    estimated_scores: dict[str, dict[str, float]] = {}
     entropies: dict[str, float] = {}
 
     for c in criteria:
@@ -326,6 +403,8 @@ def era_search(
             aggregator,
             entropy_fn,
             cutoff_fn,
+            propagate_scores=propagate_scores,
+            estimated_scores=estimated_scores if propagate_scores else None,
         )
 
     elif direction == "up":
@@ -370,14 +449,24 @@ def era_search(
             if direction == "up":
                 # Re-estimate fresh each layer using the current known, which grows
                 # as Phase 2 evaluates nodes — voter quality compounds upward.
-                voter_rankings = _get_child_rankings(subset, known, estimated_rankings)
-                if not voter_rankings:
-                    continue
-                ranking, scores = _aggregate_with_scores(voter_rankings, answers, aggregator)
+                if propagate_scores:
+                    voter_scores = _get_child_score_vectors(subset, known, estimated_scores, answers)
+                    if not voter_scores:
+                        continue
+                    ranking, scores = _aggregate_score_vectors(voter_scores, answers)
+                    n_voters = len(voter_scores)
+                else:
+                    voter_rankings = _get_child_rankings(subset, known, estimated_rankings)
+                    if not voter_rankings:
+                        continue
+                    ranking, scores = _aggregate_with_scores(voter_rankings, answers, aggregator)
+                    n_voters = len(voter_rankings)
                 if not scores:
                     continue
                 estimated_rankings[key] = ranking
-                entropy_score = entropy_fn(scores, num_voters=len(voter_rankings))
+                if propagate_scores:
+                    estimated_scores[key] = scores
+                entropy_score = entropy_fn(scores, num_voters=n_voters)
                 entropies[key] = entropy_score
             else:
                 if key not in estimated_rankings:
