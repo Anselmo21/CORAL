@@ -199,8 +199,8 @@ def audit_dataset(
 
 def main() -> None:
     datasets = [
-        ("MSMARCO criteria", "data/msmarco_subsample/cases.json", msmarco_lattices(msmarco_qids())),
-        ("Sonnet criteria", "data/sonnet_subsample/cases.json", sonnet_lattices(sonnet_qids())),
+        ("MSMARCO criteria", "data/msmarco_criteria/cases.json", msmarco_lattices(msmarco_qids())),
+        ("Sonnet criteria", "data/sonnet_criteria/cases.json", sonnet_lattices(sonnet_qids())),
         ("MSMARCO pragmas", "data/msmarco_pragma/cases.json", msmarco_pragma_lattices(msmarco_pragma_qids())),
         ("Sonnet pragmas", "data/sonnet_pragma/cases.json", sonnet_pragma_lattices(sonnet_pragma_qids())),
     ]

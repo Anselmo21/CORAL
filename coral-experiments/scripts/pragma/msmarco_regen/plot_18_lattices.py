@@ -16,9 +16,9 @@ import numpy as np
 
 from scripts.shared.plot_style import apply_plot_style
 
-DATASET_PATH = "data/18_lattices_cf_layer2to8.json"
-RESULTS_PATH = "data/16_lattices_cf_layer2to8/results.json"
-OUT_DIR      = "plots/16_lattices_cf_layer2to8"
+DATASET_PATH = "data/sources/msmarco_pragma.json"
+RESULTS_PATH = "data/msmarco_pragma/results.json"
+OUT_DIR      = "plots/msmarco_pragma"
 
 ERA_PCT_LABEL  = "era_pct_10"
 ERA_B16_LABEL  = "era_fixed_16"

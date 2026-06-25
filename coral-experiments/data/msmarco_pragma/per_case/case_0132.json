@@ -1,221 +1,222 @@
 {
   "case_id": 132,
-  "qid": "51894",
+  "qid": "51580",
   "size": 9,
   "start_node": [
-    "(Temporal): 2023",
-    "(Geographic): USA",
-    "(Trustworthiness): peer-reviewed nutrition journal",
-    "(Perspective): plant-based diet advocate",
-    "(Perspective): dairy-inclusive nutritionist",
-    "(Temporal): 2021\u20132022",
-    "(Trustworthiness): user forum",
-    "(Perspective): general health consumer",
-    "(Trustworthiness): academic dietitian resource"
+    "trustworthiness: psychiatry clinical practice guideline",
+    "trustworthiness: peer-reviewed pharmacology literature",
+    "trustworthiness: patient mental-health forum",
+    "trustworthiness: wellness / lifestyle publication",
+    "perspective: low-energy depression patient",
+    "perspective: anxious patient",
+    "perspective: patient avoiding pharmacologic intervention",
+    "perspective: patient with comorbid weight concerns",
+    "perspective: pregnant patient"
   ],
   "bfs": {
     "found": true,
-    "key": "(Geographic): USA, (Perspective): dairy-inclusive nutritionist, (Temporal): 2021\u20132022, (Trustworthiness): academic dietitian resource, (Trustworthiness): user forum",
-    "layer": 5,
-    "calls": 231
+    "key": "perspective: low-energy depression patient, perspective: patient avoiding pharmacologic intervention, perspective: pregnant patient, trustworthiness: patient mental-health forum, trustworthiness: peer-reviewed pharmacology literature, trustworthiness: psychiatry clinical practice guideline",
+    "layer": 6,
+    "calls": 60
   },
   "sra": {
-    "proxy_key": "(Geographic): USA, (Perspective): dairy-inclusive nutritionist",
-    "proxy_layer": 2,
+    "proxy_key": "perspective: low-energy depression patient, perspective: patient avoiding pharmacologic intervention, perspective: pregnant patient, trustworthiness: patient mental-health forum, trustworthiness: peer-reviewed pharmacology literature, trustworthiness: psychiatry clinical practice guideline",
+    "proxy_layer": 6,
     "proxy_verified": true,
-    "outcome": "wrong_layer",
-    "gap": 3,
-    "jaccard": 0.4,
-    "calls": 1,
-    "budget_used": 0
+    "outcome": "correct",
+    "gap": 0,
+    "jaccard": 1.0,
+    "calls": 50,
+    "budget_used": 0,
+    "pruned_nodes": 0
   },
   "era": {
     "era_fixed_4": {
-      "proxy_key": "(Geographic): USA, (Perspective): dairy-inclusive nutritionist, (Temporal): 2021\u20132022, (Trustworthiness): academic dietitian resource, (Trustworthiness): user forum",
-      "proxy_layer": 5,
+      "proxy_key": "perspective: patient avoiding pharmacologic intervention, perspective: patient with comorbid weight concerns, perspective: pregnant patient, trustworthiness: patient mental-health forum, trustworthiness: peer-reviewed pharmacology literature, trustworthiness: psychiatry clinical practice guideline",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 1.0,
-      "calls": 91,
+      "jaccard": 0.7142857142857143,
+      "calls": 46,
       "budget_used": 4,
-      "pruned_nodes": 106
+      "pruned_nodes": 0
     },
     "era_fixed_8": {
-      "proxy_key": "(Geographic): USA, (Perspective): dairy-inclusive nutritionist, (Temporal): 2021\u20132022, (Trustworthiness): academic dietitian resource, (Trustworthiness): user forum",
-      "proxy_layer": 5,
+      "proxy_key": "perspective: low-energy depression patient, perspective: patient avoiding pharmacologic intervention, perspective: pregnant patient, trustworthiness: patient mental-health forum, trustworthiness: peer-reviewed pharmacology literature, trustworthiness: psychiatry clinical practice guideline",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 131,
+      "calls": 60,
       "budget_used": 8,
-      "pruned_nodes": 106
+      "pruned_nodes": 0
     },
     "era_fixed_16": {
-      "proxy_key": "(Geographic): USA, (Perspective): dairy-inclusive nutritionist, (Temporal): 2021\u20132022, (Trustworthiness): academic dietitian resource, (Trustworthiness): user forum",
-      "proxy_layer": 5,
+      "proxy_key": "perspective: low-energy depression patient, perspective: patient avoiding pharmacologic intervention, perspective: pregnant patient, trustworthiness: patient mental-health forum, trustworthiness: peer-reviewed pharmacology literature, trustworthiness: psychiatry clinical practice guideline",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 131,
+      "calls": 60,
       "budget_used": 16,
-      "pruned_nodes": 106
+      "pruned_nodes": 0
     },
     "era_fixed_32": {
-      "proxy_key": "(Geographic): USA, (Perspective): dairy-inclusive nutritionist, (Temporal): 2021\u20132022, (Trustworthiness): academic dietitian resource, (Trustworthiness): user forum",
-      "proxy_layer": 5,
+      "proxy_key": "perspective: low-energy depression patient, perspective: patient avoiding pharmacologic intervention, perspective: pregnant patient, trustworthiness: patient mental-health forum, trustworthiness: peer-reviewed pharmacology literature, trustworthiness: psychiatry clinical practice guideline",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 47,
+      "calls": 60,
       "budget_used": 32,
-      "pruned_nodes": 195
+      "pruned_nodes": 2
     },
     "era_fixed_64": {
-      "proxy_key": "(Geographic): USA, (Perspective): dairy-inclusive nutritionist, (Temporal): 2021\u20132022, (Trustworthiness): academic dietitian resource, (Trustworthiness): user forum",
-      "proxy_layer": 5,
+      "proxy_key": "perspective: low-energy depression patient, perspective: patient avoiding pharmacologic intervention, perspective: pregnant patient, trustworthiness: patient mental-health forum, trustworthiness: peer-reviewed pharmacology literature, trustworthiness: psychiatry clinical practice guideline",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 64,
+      "calls": 60,
       "budget_used": 64,
-      "pruned_nodes": 189
+      "pruned_nodes": 0
     },
     "era_fixed_128": {
-      "proxy_key": "(Geographic): USA, (Perspective): dairy-inclusive nutritionist, (Temporal): 2021\u20132022, (Trustworthiness): academic dietitian resource, (Trustworthiness): user forum",
-      "proxy_layer": 5,
+      "proxy_key": "perspective: low-energy depression patient, perspective: patient avoiding pharmacologic intervention, perspective: pregnant patient, trustworthiness: patient mental-health forum, trustworthiness: peer-reviewed pharmacology literature, trustworthiness: psychiatry clinical practice guideline",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 29,
+      "calls": 53,
       "budget_used": 128,
-      "pruned_nodes": 100
+      "pruned_nodes": 5
     },
     "era_fixed_256": {
-      "proxy_key": "(Geographic): USA, (Perspective): dairy-inclusive nutritionist, (Temporal): 2021\u20132022, (Trustworthiness): academic dietitian resource, (Trustworthiness): user forum",
-      "proxy_layer": 5,
+      "proxy_key": "perspective: low-energy depression patient, perspective: patient avoiding pharmacologic intervention, perspective: pregnant patient, trustworthiness: patient mental-health forum, trustworthiness: peer-reviewed pharmacology literature, trustworthiness: psychiatry clinical practice guideline",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 50,
-      "budget_used": 165,
-      "pruned_nodes": 50
+      "calls": 28,
+      "budget_used": 176,
+      "pruned_nodes": 0
     },
     "era_pct_10": {
-      "proxy_key": "(Geographic): USA, (Perspective): dairy-inclusive nutritionist, (Temporal): 2021\u20132022, (Trustworthiness): academic dietitian resource, (Trustworthiness): user forum",
-      "proxy_layer": 5,
+      "proxy_key": "perspective: low-energy depression patient, perspective: patient avoiding pharmacologic intervention, perspective: pregnant patient, trustworthiness: patient mental-health forum, trustworthiness: peer-reviewed pharmacology literature, trustworthiness: psychiatry clinical practice guideline",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 37,
+      "calls": 59,
       "budget_used": 51,
-      "pruned_nodes": 200
+      "pruned_nodes": 2
     },
     "era_pct_20": {
-      "proxy_key": "(Geographic): USA, (Perspective): dairy-inclusive nutritionist, (Temporal): 2021\u20132022, (Trustworthiness): academic dietitian resource, (Trustworthiness): user forum",
-      "proxy_layer": 5,
+      "proxy_key": "perspective: low-energy depression patient, perspective: patient avoiding pharmacologic intervention, perspective: pregnant patient, trustworthiness: patient mental-health forum, trustworthiness: peer-reviewed pharmacology literature, trustworthiness: psychiatry clinical practice guideline",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 30,
+      "calls": 54,
       "budget_used": 102,
-      "pruned_nodes": 179
+      "pruned_nodes": 2
     },
     "era_pct_30": {
-      "proxy_key": "(Geographic): USA, (Perspective): dairy-inclusive nutritionist, (Temporal): 2021\u20132022, (Trustworthiness): academic dietitian resource, (Trustworthiness): user forum",
-      "proxy_layer": 5,
+      "proxy_key": "perspective: low-energy depression patient, perspective: patient avoiding pharmacologic intervention, perspective: pregnant patient, trustworthiness: patient mental-health forum, trustworthiness: peer-reviewed pharmacology literature, trustworthiness: psychiatry clinical practice guideline",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 48,
+      "calls": 49,
       "budget_used": 153,
-      "pruned_nodes": 64
+      "pruned_nodes": 2
     },
     "era_pct_40": {
-      "proxy_key": "(Geographic): USA, (Perspective): dairy-inclusive nutritionist, (Temporal): 2021\u20132022, (Trustworthiness): academic dietitian resource, (Trustworthiness): user forum",
-      "proxy_layer": 5,
+      "proxy_key": "perspective: low-energy depression patient, perspective: patient avoiding pharmacologic intervention, perspective: pregnant patient, trustworthiness: patient mental-health forum, trustworthiness: peer-reviewed pharmacology literature, trustworthiness: psychiatry clinical practice guideline",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 50,
-      "budget_used": 165,
-      "pruned_nodes": 50
+      "calls": 28,
+      "budget_used": 176,
+      "pruned_nodes": 0
     },
     "era_pct_50": {
-      "proxy_key": "(Geographic): USA, (Perspective): dairy-inclusive nutritionist, (Temporal): 2021\u20132022, (Trustworthiness): academic dietitian resource, (Trustworthiness): user forum",
-      "proxy_layer": 5,
+      "proxy_key": "perspective: low-energy depression patient, perspective: patient avoiding pharmacologic intervention, perspective: pregnant patient, trustworthiness: patient mental-health forum, trustworthiness: peer-reviewed pharmacology literature, trustworthiness: psychiatry clinical practice guideline",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 50,
-      "budget_used": 165,
-      "pruned_nodes": 50
+      "calls": 28,
+      "budget_used": 176,
+      "pruned_nodes": 0
     },
     "era_pct_60": {
-      "proxy_key": "(Geographic): USA, (Perspective): dairy-inclusive nutritionist, (Temporal): 2021\u20132022, (Trustworthiness): academic dietitian resource, (Trustworthiness): user forum",
-      "proxy_layer": 5,
+      "proxy_key": "perspective: low-energy depression patient, perspective: patient avoiding pharmacologic intervention, perspective: pregnant patient, trustworthiness: patient mental-health forum, trustworthiness: peer-reviewed pharmacology literature, trustworthiness: psychiatry clinical practice guideline",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 50,
-      "budget_used": 165,
-      "pruned_nodes": 50
+      "calls": 28,
+      "budget_used": 176,
+      "pruned_nodes": 0
     },
     "era_pct_70": {
-      "proxy_key": "(Geographic): USA, (Perspective): dairy-inclusive nutritionist, (Temporal): 2021\u20132022, (Trustworthiness): academic dietitian resource, (Trustworthiness): user forum",
-      "proxy_layer": 5,
+      "proxy_key": "perspective: low-energy depression patient, perspective: patient avoiding pharmacologic intervention, perspective: pregnant patient, trustworthiness: patient mental-health forum, trustworthiness: peer-reviewed pharmacology literature, trustworthiness: psychiatry clinical practice guideline",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 50,
-      "budget_used": 165,
-      "pruned_nodes": 50
+      "calls": 28,
+      "budget_used": 176,
+      "pruned_nodes": 0
     },
     "era_pct_80": {
-      "proxy_key": "(Geographic): USA, (Perspective): dairy-inclusive nutritionist, (Temporal): 2021\u20132022, (Trustworthiness): academic dietitian resource, (Trustworthiness): user forum",
-      "proxy_layer": 5,
+      "proxy_key": "perspective: low-energy depression patient, perspective: patient avoiding pharmacologic intervention, perspective: pregnant patient, trustworthiness: patient mental-health forum, trustworthiness: peer-reviewed pharmacology literature, trustworthiness: psychiatry clinical practice guideline",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 50,
-      "budget_used": 165,
-      "pruned_nodes": 50
+      "calls": 28,
+      "budget_used": 176,
+      "pruned_nodes": 0
     },
     "era_pct_90": {
-      "proxy_key": "(Geographic): USA, (Perspective): dairy-inclusive nutritionist, (Temporal): 2021\u20132022, (Trustworthiness): academic dietitian resource, (Trustworthiness): user forum",
-      "proxy_layer": 5,
+      "proxy_key": "perspective: low-energy depression patient, perspective: patient avoiding pharmacologic intervention, perspective: pregnant patient, trustworthiness: patient mental-health forum, trustworthiness: peer-reviewed pharmacology literature, trustworthiness: psychiatry clinical practice guideline",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 50,
-      "budget_used": 165,
-      "pruned_nodes": 50
+      "calls": 28,
+      "budget_used": 176,
+      "pruned_nodes": 0
     },
     "era_pct_100": {
-      "proxy_key": "(Geographic): USA, (Perspective): dairy-inclusive nutritionist, (Temporal): 2021\u20132022, (Trustworthiness): academic dietitian resource, (Trustworthiness): user forum",
-      "proxy_layer": 5,
+      "proxy_key": "perspective: low-energy depression patient, perspective: patient avoiding pharmacologic intervention, perspective: pregnant patient, trustworthiness: patient mental-health forum, trustworthiness: peer-reviewed pharmacology literature, trustworthiness: psychiatry clinical practice guideline",
+      "proxy_layer": 6,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 50,
-      "budget_used": 165,
-      "pruned_nodes": 50
+      "calls": 28,
+      "budget_used": 176,
+      "pruned_nodes": 0
     }
   }
 }

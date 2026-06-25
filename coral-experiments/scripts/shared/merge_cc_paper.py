@@ -22,9 +22,9 @@ import numpy as np
 from search.lattice import hop_distance
 
 DATASETS = [
-    ("msmarco_subsample",        "MSMARCO criteria"),
-    ("sonnet_subsample",         "Sonnet criteria"),
-    ("16_lattices_cf_layer2to8", "MSMARCO pragma (regen)"),
+    ("msmarco_criteria",        "MSMARCO criteria"),
+    ("sonnet_criteria",         "Sonnet criteria"),
+    ("msmarco_pragma", "MSMARCO pragma (regen)"),
     ("sonnet_pragma",            "Sonnet pragma"),
 ]
 

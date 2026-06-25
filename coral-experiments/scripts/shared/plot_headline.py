@@ -5,8 +5,8 @@ one PNG with two panels (accuracy | avg LLM calls).
 
 CLI:
   conda run -n coral python3 -m scripts.shared.plot_headline \\
-    --results data/msmarco_subsample/results.json \\
-    --out plots/msmarco_subsample/headline.png \\
+    --results data/msmarco_criteria/results.json \\
+    --out plots/msmarco_criteria/headline.png \\
     --title "MSMARCO (criteria)"
 """
 from __future__ import annotations

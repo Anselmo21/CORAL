@@ -1,221 +1,222 @@
 {
   "case_id": 123,
-  "qid": "441101",
+  "qid": "51928",
   "size": 9,
   "start_node": [
-    "(Geographic): USA",
-    "(Trustworthiness): consumer automotive publication",
-    "(Perspective): safety-first parent",
-    "(Temporal): 2021\u20132023",
-    "(Trustworthiness): safety rating organization",
-    "(Perspective): performance-conscious teen",
-    "(Geographic): North America",
-    "(Trustworthiness): insurance industry report",
-    "(Perspective): insurance cost advocate"
+    "trustworthiness: CDC vaginal infections guidance",
+    "trustworthiness: OB-GYN clinical practice guideline",
+    "trustworthiness: consumer health platform",
+    "trustworthiness: patient health forum",
+    "trustworthiness: pharmacist-curated drug guide",
+    "perspective: pregnant patient",
+    "perspective: first-time yeast sufferer",
+    "perspective: recurrent yeast infections patient",
+    "perspective: severe-symptom patient"
   ],
   "bfs": {
     "found": true,
-    "key": "(Geographic): North America, (Perspective): insurance cost advocate, (Perspective): performance-conscious teen, (Perspective): safety-first parent, (Temporal): 2021\u20132023, (Trustworthiness): consumer automotive publication, (Trustworthiness): safety rating organization",
+    "key": "perspective: first-time yeast sufferer, perspective: pregnant patient, perspective: severe-symptom patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: OB-GYN clinical practice guideline, trustworthiness: patient health forum, trustworthiness: pharmacist-curated drug guide",
     "layer": 7,
-    "calls": 39
+    "calls": 26
   },
   "sra": {
-    "proxy_key": "(Geographic): North America, (Perspective): insurance cost advocate, (Perspective): performance-conscious teen, (Perspective): safety-first parent, (Temporal): 2021\u20132023, (Trustworthiness): consumer automotive publication, (Trustworthiness): safety rating organization",
-    "proxy_layer": 7,
+    "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: consumer health platform",
+    "proxy_layer": 4,
     "proxy_verified": true,
-    "outcome": "correct",
-    "gap": 0,
-    "jaccard": 1.0,
-    "calls": 39,
-    "budget_used": 0
+    "outcome": "wrong_layer",
+    "gap": 3,
+    "jaccard": 0.375,
+    "calls": 2,
+    "budget_used": 0,
+    "pruned_nodes": 0
   },
   "era": {
     "era_fixed_4": {
-      "proxy_key": "(Geographic): North America, (Perspective): insurance cost advocate, (Perspective): performance-conscious teen, (Perspective): safety-first parent, (Temporal): 2021\u20132023, (Trustworthiness): consumer automotive publication, (Trustworthiness): safety rating organization",
-      "proxy_layer": 7,
+      "proxy_key": "perspective: pregnant patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: OB-GYN clinical practice guideline, trustworthiness: consumer health platform, trustworthiness: patient health forum, trustworthiness: pharmacist-curated drug guide",
+      "proxy_layer": 6,
       "proxy_verified": true,
-      "outcome": "correct",
-      "gap": 0,
-      "jaccard": 1.0,
-      "calls": 29,
+      "outcome": "wrong_layer",
+      "gap": 1,
+      "jaccard": 0.625,
+      "calls": 19,
       "budget_used": 4,
-      "pruned_nodes": 0
+      "pruned_nodes": 77
     },
     "era_fixed_8": {
-      "proxy_key": "(Geographic): North America, (Perspective): insurance cost advocate, (Perspective): performance-conscious teen, (Perspective): safety-first parent, (Temporal): 2021\u20132023, (Trustworthiness): consumer automotive publication, (Trustworthiness): safety rating organization",
-      "proxy_layer": 7,
-      "proxy_verified": true,
-      "outcome": "correct",
-      "gap": 0,
-      "jaccard": 1.0,
-      "calls": 28,
-      "budget_used": 8,
-      "pruned_nodes": 0
-    },
-    "era_fixed_16": {
-      "proxy_key": "(Geographic): North America, (Perspective): insurance cost advocate, (Perspective): performance-conscious teen, (Perspective): safety-first parent, (Temporal): 2021\u20132023, (Trustworthiness): consumer automotive publication, (Trustworthiness): safety rating organization",
-      "proxy_layer": 7,
-      "proxy_verified": true,
-      "outcome": "correct",
-      "gap": 0,
-      "jaccard": 1.0,
-      "calls": 37,
-      "budget_used": 16,
-      "pruned_nodes": 0
-    },
-    "era_fixed_32": {
-      "proxy_key": "(Geographic): North America, (Perspective): insurance cost advocate, (Perspective): performance-conscious teen, (Perspective): safety-first parent, (Temporal): 2021\u20132023, (Trustworthiness): consumer automotive publication, (Trustworthiness): safety rating organization",
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, perspective: severe-symptom patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: OB-GYN clinical practice guideline, trustworthiness: patient health forum, trustworthiness: pharmacist-curated drug guide",
       "proxy_layer": 7,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
       "calls": 27,
+      "budget_used": 8,
+      "pruned_nodes": 9
+    },
+    "era_fixed_16": {
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, perspective: severe-symptom patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: OB-GYN clinical practice guideline, trustworthiness: patient health forum, trustworthiness: pharmacist-curated drug guide",
+      "proxy_layer": 7,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 25,
+      "budget_used": 16,
+      "pruned_nodes": 2
+    },
+    "era_fixed_32": {
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, perspective: severe-symptom patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: OB-GYN clinical practice guideline, trustworthiness: patient health forum, trustworthiness: pharmacist-curated drug guide",
+      "proxy_layer": 7,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 25,
       "budget_used": 32,
-      "pruned_nodes": 0
+      "pruned_nodes": 2
     },
     "era_fixed_64": {
-      "proxy_key": "(Geographic): North America, (Perspective): insurance cost advocate, (Perspective): performance-conscious teen, (Perspective): safety-first parent, (Temporal): 2021\u20132023, (Trustworthiness): consumer automotive publication, (Trustworthiness): safety rating organization",
-      "proxy_layer": 7,
+      "proxy_key": "perspective: pregnant patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: OB-GYN clinical practice guideline, trustworthiness: consumer health platform, trustworthiness: patient health forum, trustworthiness: pharmacist-curated drug guide",
+      "proxy_layer": 6,
       "proxy_verified": true,
-      "outcome": "correct",
-      "gap": 0,
-      "jaccard": 1.0,
-      "calls": 20,
+      "outcome": "wrong_layer",
+      "gap": 1,
+      "jaccard": 0.625,
+      "calls": 10,
       "budget_used": 64,
-      "pruned_nodes": 0
+      "pruned_nodes": 35
     },
     "era_fixed_128": {
-      "proxy_key": "(Geographic): North America, (Perspective): insurance cost advocate, (Perspective): performance-conscious teen, (Perspective): safety-first parent, (Temporal): 2021\u20132023, (Trustworthiness): consumer automotive publication, (Trustworthiness): safety rating organization",
-      "proxy_layer": 7,
+      "proxy_key": "perspective: pregnant patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: OB-GYN clinical practice guideline, trustworthiness: consumer health platform, trustworthiness: patient health forum, trustworthiness: pharmacist-curated drug guide",
+      "proxy_layer": 6,
       "proxy_verified": true,
-      "outcome": "correct",
-      "gap": 0,
-      "jaccard": 1.0,
-      "calls": 7,
+      "outcome": "wrong_layer",
+      "gap": 1,
+      "jaccard": 0.625,
+      "calls": 4,
       "budget_used": 128,
-      "pruned_nodes": 0
+      "pruned_nodes": 40
     },
     "era_fixed_256": {
-      "proxy_key": "(Geographic): North America, (Perspective): insurance cost advocate, (Perspective): performance-conscious teen, (Perspective): safety-first parent, (Temporal): 2021\u20132023, (Trustworthiness): consumer automotive publication, (Trustworthiness): safety rating organization",
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, perspective: severe-symptom patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: OB-GYN clinical practice guideline, trustworthiness: patient health forum, trustworthiness: pharmacist-curated drug guide",
       "proxy_layer": 7,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 7,
-      "budget_used": 128,
-      "pruned_nodes": 0
+      "calls": 3,
+      "budget_used": 138,
+      "pruned_nodes": 30
     },
     "era_pct_10": {
-      "proxy_key": "(Geographic): North America, (Perspective): insurance cost advocate, (Perspective): performance-conscious teen, (Perspective): safety-first parent, (Temporal): 2021\u20132023, (Trustworthiness): consumer automotive publication, (Trustworthiness): safety rating organization",
-      "proxy_layer": 7,
+      "proxy_key": "perspective: pregnant patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: OB-GYN clinical practice guideline, trustworthiness: consumer health platform, trustworthiness: patient health forum, trustworthiness: pharmacist-curated drug guide",
+      "proxy_layer": 6,
       "proxy_verified": true,
-      "outcome": "correct",
-      "gap": 0,
-      "jaccard": 1.0,
-      "calls": 21,
+      "outcome": "wrong_layer",
+      "gap": 1,
+      "jaccard": 0.625,
+      "calls": 11,
       "budget_used": 51,
-      "pruned_nodes": 0
+      "pruned_nodes": 34
     },
     "era_pct_20": {
-      "proxy_key": "(Geographic): North America, (Perspective): insurance cost advocate, (Perspective): performance-conscious teen, (Perspective): safety-first parent, (Temporal): 2021\u20132023, (Trustworthiness): consumer automotive publication, (Trustworthiness): safety rating organization",
-      "proxy_layer": 7,
+      "proxy_key": "perspective: pregnant patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: OB-GYN clinical practice guideline, trustworthiness: consumer health platform, trustworthiness: patient health forum, trustworthiness: pharmacist-curated drug guide",
+      "proxy_layer": 6,
       "proxy_verified": true,
-      "outcome": "correct",
-      "gap": 0,
-      "jaccard": 1.0,
-      "calls": 20,
+      "outcome": "wrong_layer",
+      "gap": 1,
+      "jaccard": 0.625,
+      "calls": 5,
       "budget_used": 102,
-      "pruned_nodes": 25
+      "pruned_nodes": 40
     },
     "era_pct_30": {
-      "proxy_key": "(Geographic): North America, (Perspective): insurance cost advocate, (Perspective): performance-conscious teen, (Perspective): safety-first parent, (Temporal): 2021\u20132023, (Trustworthiness): consumer automotive publication, (Trustworthiness): safety rating organization",
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, perspective: severe-symptom patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: OB-GYN clinical practice guideline, trustworthiness: patient health forum, trustworthiness: pharmacist-curated drug guide",
       "proxy_layer": 7,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 7,
-      "budget_used": 128,
-      "pruned_nodes": 0
+      "calls": 3,
+      "budget_used": 138,
+      "pruned_nodes": 30
     },
     "era_pct_40": {
-      "proxy_key": "(Geographic): North America, (Perspective): insurance cost advocate, (Perspective): performance-conscious teen, (Perspective): safety-first parent, (Temporal): 2021\u20132023, (Trustworthiness): consumer automotive publication, (Trustworthiness): safety rating organization",
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, perspective: severe-symptom patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: OB-GYN clinical practice guideline, trustworthiness: patient health forum, trustworthiness: pharmacist-curated drug guide",
       "proxy_layer": 7,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 7,
-      "budget_used": 128,
-      "pruned_nodes": 0
+      "calls": 3,
+      "budget_used": 138,
+      "pruned_nodes": 30
     },
     "era_pct_50": {
-      "proxy_key": "(Geographic): North America, (Perspective): insurance cost advocate, (Perspective): performance-conscious teen, (Perspective): safety-first parent, (Temporal): 2021\u20132023, (Trustworthiness): consumer automotive publication, (Trustworthiness): safety rating organization",
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, perspective: severe-symptom patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: OB-GYN clinical practice guideline, trustworthiness: patient health forum, trustworthiness: pharmacist-curated drug guide",
       "proxy_layer": 7,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 7,
-      "budget_used": 128,
-      "pruned_nodes": 0
+      "calls": 3,
+      "budget_used": 138,
+      "pruned_nodes": 30
     },
     "era_pct_60": {
-      "proxy_key": "(Geographic): North America, (Perspective): insurance cost advocate, (Perspective): performance-conscious teen, (Perspective): safety-first parent, (Temporal): 2021\u20132023, (Trustworthiness): consumer automotive publication, (Trustworthiness): safety rating organization",
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, perspective: severe-symptom patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: OB-GYN clinical practice guideline, trustworthiness: patient health forum, trustworthiness: pharmacist-curated drug guide",
       "proxy_layer": 7,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 7,
-      "budget_used": 128,
-      "pruned_nodes": 0
+      "calls": 3,
+      "budget_used": 138,
+      "pruned_nodes": 30
     },
     "era_pct_70": {
-      "proxy_key": "(Geographic): North America, (Perspective): insurance cost advocate, (Perspective): performance-conscious teen, (Perspective): safety-first parent, (Temporal): 2021\u20132023, (Trustworthiness): consumer automotive publication, (Trustworthiness): safety rating organization",
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, perspective: severe-symptom patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: OB-GYN clinical practice guideline, trustworthiness: patient health forum, trustworthiness: pharmacist-curated drug guide",
       "proxy_layer": 7,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 7,
-      "budget_used": 128,
-      "pruned_nodes": 0
+      "calls": 3,
+      "budget_used": 138,
+      "pruned_nodes": 30
     },
     "era_pct_80": {
-      "proxy_key": "(Geographic): North America, (Perspective): insurance cost advocate, (Perspective): performance-conscious teen, (Perspective): safety-first parent, (Temporal): 2021\u20132023, (Trustworthiness): consumer automotive publication, (Trustworthiness): safety rating organization",
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, perspective: severe-symptom patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: OB-GYN clinical practice guideline, trustworthiness: patient health forum, trustworthiness: pharmacist-curated drug guide",
       "proxy_layer": 7,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 7,
-      "budget_used": 128,
-      "pruned_nodes": 0
+      "calls": 3,
+      "budget_used": 138,
+      "pruned_nodes": 30
     },
     "era_pct_90": {
-      "proxy_key": "(Geographic): North America, (Perspective): insurance cost advocate, (Perspective): performance-conscious teen, (Perspective): safety-first parent, (Temporal): 2021\u20132023, (Trustworthiness): consumer automotive publication, (Trustworthiness): safety rating organization",
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, perspective: severe-symptom patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: OB-GYN clinical practice guideline, trustworthiness: patient health forum, trustworthiness: pharmacist-curated drug guide",
       "proxy_layer": 7,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 7,
-      "budget_used": 128,
-      "pruned_nodes": 0
+      "calls": 3,
+      "budget_used": 138,
+      "pruned_nodes": 30
     },
     "era_pct_100": {
-      "proxy_key": "(Geographic): North America, (Perspective): insurance cost advocate, (Perspective): performance-conscious teen, (Perspective): safety-first parent, (Temporal): 2021\u20132023, (Trustworthiness): consumer automotive publication, (Trustworthiness): safety rating organization",
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, perspective: severe-symptom patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: OB-GYN clinical practice guideline, trustworthiness: patient health forum, trustworthiness: pharmacist-curated drug guide",
       "proxy_layer": 7,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 7,
-      "budget_used": 128,
-      "pruned_nodes": 0
+      "calls": 3,
+      "budget_used": 138,
+      "pruned_nodes": 30
     }
   }
 }

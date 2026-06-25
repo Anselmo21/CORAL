@@ -1,4 +1,4 @@
-"""Sub-lattice ERA budget ablation sweep on data/sonnet_dataset.json.
+"""Sub-lattice ERA budget ablation sweep on data/sources/sonnet_criteria.json.
 
 Iterates every non-halted qid (no dev/test split). For each effective size
 k in 3..9 samples 20 sub-lattices that contain a BFS-found CF, and adds the
@@ -10,10 +10,10 @@ Also writes a CC-ready export of the same case set so the CC runner can
 operate on the identical lattice slices.
 
 Outputs:
-  data/sonnet_subsample/cases.json             — sampled (qid, size, start_node) cases
-  data/sonnet_subsample/cc_cases.json          — CC-ready export (sub-lattice rbc + sources)
-  data/sonnet_subsample/per_case/case_<i>.json — per-case results (resumable)
-  data/sonnet_subsample/results.json           — aggregate results
+  data/sonnet_criteria/cases.json             — sampled (qid, size, start_node) cases
+  data/sonnet_criteria/cc_cases.json          — CC-ready export (sub-lattice rbc + sources)
+  data/sonnet_criteria/per_case/case_<i>.json — per-case results (resumable)
+  data/sonnet_criteria/results.json           — aggregate results
 """
 
 from __future__ import annotations
@@ -31,8 +31,8 @@ from search.bfs import bfs_search
 from search.lattice import combo_key, jaccard_keys
 from search.rank import era_search, sra_search
 
-DATA_PATH = "data/sonnet_dataset.json"
-OUT_DIR = "data/sonnet_subsample"
+DATA_PATH = "data/sources/sonnet_criteria.json"
+OUT_DIR = "data/sonnet_criteria"
 CASES_PATH = f"{OUT_DIR}/cases.json"
 CC_CASES_PATH = f"{OUT_DIR}/cc_cases.json"
 RESULTS_PATH = f"{OUT_DIR}/results.json"

@@ -1,8 +1,8 @@
 """4×4 grid Hasse diagrams for all 16 lattices in each of the two datasets.
 
 Outputs:
-  plots/hasse_msmarco_grid.png  — 16 MSMARCO lattices (data/msmarco_dataset.json)
-  plots/hasse_sonnet_grid.png   — 16 Sonnet lattices  (data/sonnet_dataset.json)
+  plots/hasse_msmarco_grid.png  — 16 MSMARCO lattices (data/sources/msmarco_criteria.json)
+  plots/hasse_sonnet_grid.png   — 16 Sonnet lattices  (data/sources/sonnet_criteria.json)
 
 Each cell: nodes colored by top-1 answer, BFS CF marked with a red star.
 Covering edges are omitted at this scale (1024 nodes per cell, 16 cells).
@@ -26,8 +26,8 @@ from search.bfs import bfs_search
 from search.lattice import combo_key
 
 OUT_DIR = "plots"
-MSMARCO_PATH = "data/msmarco_dataset.json"
-SONNET_PATH = "data/sonnet_dataset.json"
+MSMARCO_PATH = "data/sources/msmarco_criteria.json"
+SONNET_PATH = "data/sources/sonnet_criteria.json"
 
 GRID_ROWS, GRID_COLS = 4, 4
 CELL_W, CELL_H = 4.5, 6.5  # inches per cell

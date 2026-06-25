@@ -1,6 +1,6 @@
 """Sub-lattice BFS / SRA / ERA budget sweep on the 18-lattice MSMARCO regen.
 
-Source: data/18_lattices_cf_layer2to8.json
+Source: data/sources/msmarco_pragma.json
   - 18 Llama-3.1-8B-Instruct lattices, regenerated with Claude-Opus-curated
     plausible_answers + pragmas, filtered to first_cf_layer ∈ [2, 8].
   - Each lattice has 10 pragmas, 1024 combos, rankings keyed by `combo_key`
@@ -28,7 +28,7 @@ from search.bfs import bfs_search
 from search.lattice import combo_key, jaccard_keys
 from search.rank import era_search, sra_search
 
-DATASET_PATH = "data/18_lattices_cf_layer2to8.json"
+DATASET_PATH = "data/sources/msmarco_pragma.json"
 OUT_DIR      = "data/18_lattices_cf_layer2to8"
 CASES_PATH   = f"{OUT_DIR}/cases.json"
 RESULTS_PATH = f"{OUT_DIR}/results.json"

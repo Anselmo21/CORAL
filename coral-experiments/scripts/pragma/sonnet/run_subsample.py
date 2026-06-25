@@ -1,6 +1,6 @@
 """Sub-lattice ERA budget ablation sweep on the Sonnet pragma dataset.
 
-Iterates every record in data/sonnet-pragma-dataset.json (no split). For each
+Iterates every record in data/sources/sonnet_pragma.json (no split). For each
 effective size k in 3..9 samples 20 sub-lattices that:
   (a) have a BFS-found CF, AND
   (b) the CF requires removal of ≥2 pragmas (BFS CF layer ≤ k-2)
@@ -31,7 +31,7 @@ from search.bfs import bfs_search
 from search.lattice import combo_key, jaccard_keys
 from search.rank import era_search, sra_search
 
-DATASET_PATH = "data/sonnet-pragma-dataset.json"
+DATASET_PATH = "data/sources/sonnet_pragma.json"
 OUT_DIR      = "data/sonnet_pragma"
 CASES_PATH   = f"{OUT_DIR}/cases.json"
 RESULTS_PATH = f"{OUT_DIR}/results.json"

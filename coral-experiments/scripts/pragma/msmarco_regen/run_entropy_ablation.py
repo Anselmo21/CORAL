@@ -35,7 +35,7 @@ from search.heuristics import (
 )
 from search.rank import era_search
 
-CASES_PATH   = "data/16_lattices_cf_layer2to8/cases.json"
+CASES_PATH   = "data/msmarco_pragma/cases.json"
 OUT_DIR      = "data/16_lattices_entropy_ablation"
 RESULTS_PATH = f"{OUT_DIR}/results.json"
 PLOT_DIR     = "plots/16_lattices_entropy_ablation"

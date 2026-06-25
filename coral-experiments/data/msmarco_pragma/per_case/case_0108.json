@@ -1,220 +1,221 @@
 {
   "case_id": 108,
-  "qid": "52329",
+  "qid": "52108",
   "size": 8,
   "start_node": [
-    "(Temporal): 2023",
-    "(Trustworthiness): clinical practice guideline",
-    "(Perspective): pharmaceutical intervention advocate",
-    "(Perspective): lifestyle modification advocate",
-    "(Temporal): 2021\u20132022",
-    "(Trustworthiness): peer-reviewed endocrinology journal",
-    "(Perspective): patient self-advocacy",
-    "(Trustworthiness): user forum"
+    "trustworthiness: dermatology clinical practice",
+    "trustworthiness: AAP / pediatric guidance",
+    "trustworthiness: Mayo Clinic patient guidance",
+    "trustworthiness: aromatherapy / alternative remedies publication",
+    "perspective: parent of sunburned child",
+    "perspective: DIY enthusiast",
+    "perspective: severe (blistering) sunburn patient",
+    "perspective: aromatherapy enthusiast"
   ],
   "bfs": {
     "found": true,
-    "key": "(Perspective): lifestyle modification advocate",
-    "layer": 1,
-    "calls": 250
+    "key": "perspective: aromatherapy enthusiast, perspective: severe (blistering) sunburn patient, trustworthiness: aromatherapy / alternative remedies publication",
+    "layer": 3,
+    "calls": 214
   },
   "sra": {
-    "proxy_key": "(Perspective): lifestyle modification advocate",
-    "proxy_layer": 1,
+    "proxy_key": "perspective: aromatherapy enthusiast, perspective: severe (blistering) sunburn patient, trustworthiness: aromatherapy / alternative remedies publication",
+    "proxy_layer": 3,
     "proxy_verified": true,
     "outcome": "correct",
     "gap": 0,
     "jaccard": 1.0,
-    "calls": 28,
-    "budget_used": 0
+    "calls": 7,
+    "budget_used": 0,
+    "pruned_nodes": 0
   },
   "era": {
     "era_fixed_4": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "perspective: aromatherapy enthusiast, perspective: severe (blistering) sunburn patient, trustworthiness: aromatherapy / alternative remedies publication",
+      "proxy_layer": 3,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 37,
+      "budget_used": 4,
+      "pruned_nodes": 168
+    },
+    "era_fixed_8": {
+      "proxy_key": "perspective: aromatherapy enthusiast, perspective: severe (blistering) sunburn patient, trustworthiness: aromatherapy / alternative remedies publication",
+      "proxy_layer": 3,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 37,
+      "budget_used": 8,
+      "pruned_nodes": 168
+    },
+    "era_fixed_16": {
+      "proxy_key": "perspective: aromatherapy enthusiast, perspective: severe (blistering) sunburn patient, trustworthiness: aromatherapy / alternative remedies publication",
+      "proxy_layer": 3,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 80,
+      "budget_used": 16,
+      "pruned_nodes": 134
+    },
+    "era_fixed_32": {
+      "proxy_key": "perspective: aromatherapy enthusiast, perspective: severe (blistering) sunburn patient, trustworthiness: aromatherapy / alternative remedies publication",
+      "proxy_layer": 3,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
       "calls": 69,
-      "budget_used": 4,
-      "pruned_nodes": 173
-    },
-    "era_fixed_8": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
-      "proxy_verified": true,
-      "outcome": "correct",
-      "gap": 0,
-      "jaccard": 1.0,
-      "calls": 232,
-      "budget_used": 8,
-      "pruned_nodes": 6
-    },
-    "era_fixed_16": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
-      "proxy_verified": true,
-      "outcome": "correct",
-      "gap": 0,
-      "jaccard": 1.0,
-      "calls": 224,
-      "budget_used": 16,
-      "pruned_nodes": 6
-    },
-    "era_fixed_32": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
-      "proxy_verified": true,
-      "outcome": "correct",
-      "gap": 0,
-      "jaccard": 1.0,
-      "calls": 208,
       "budget_used": 32,
-      "pruned_nodes": 6
+      "pruned_nodes": 79
     },
     "era_fixed_64": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "perspective: aromatherapy enthusiast, perspective: severe (blistering) sunburn patient, trustworthiness: aromatherapy / alternative remedies publication",
+      "proxy_layer": 3,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 177,
+      "calls": 71,
       "budget_used": 64,
-      "pruned_nodes": 5
+      "pruned_nodes": 45
     },
     "era_fixed_128": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "perspective: aromatherapy enthusiast, perspective: severe (blistering) sunburn patient, trustworthiness: aromatherapy / alternative remedies publication",
+      "proxy_layer": 3,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 113,
-      "budget_used": 128,
-      "pruned_nodes": 5
+      "calls": 57,
+      "budget_used": 81,
+      "pruned_nodes": 42
     },
     "era_fixed_256": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "perspective: aromatherapy enthusiast, perspective: severe (blistering) sunburn patient, trustworthiness: aromatherapy / alternative remedies publication",
+      "proxy_layer": 3,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 25,
-      "budget_used": 220,
-      "pruned_nodes": 1
+      "calls": 57,
+      "budget_used": 81,
+      "pruned_nodes": 42
     },
     "era_pct_10": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "perspective: aromatherapy enthusiast, perspective: severe (blistering) sunburn patient, trustworthiness: aromatherapy / alternative remedies publication",
+      "proxy_layer": 3,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 215,
+      "calls": 72,
       "budget_used": 25,
-      "pruned_nodes": 6
+      "pruned_nodes": 83
     },
     "era_pct_20": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "perspective: aromatherapy enthusiast, perspective: severe (blistering) sunburn patient, trustworthiness: aromatherapy / alternative remedies publication",
+      "proxy_layer": 3,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 189,
+      "calls": 84,
       "budget_used": 51,
-      "pruned_nodes": 6
+      "pruned_nodes": 45
     },
     "era_pct_30": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "perspective: aromatherapy enthusiast, perspective: severe (blistering) sunburn patient, trustworthiness: aromatherapy / alternative remedies publication",
+      "proxy_layer": 3,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 165,
+      "calls": 61,
       "budget_used": 76,
-      "pruned_nodes": 5
+      "pruned_nodes": 43
     },
     "era_pct_40": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "perspective: aromatherapy enthusiast, perspective: severe (blistering) sunburn patient, trustworthiness: aromatherapy / alternative remedies publication",
+      "proxy_layer": 3,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 139,
-      "budget_used": 102,
-      "pruned_nodes": 5
+      "calls": 57,
+      "budget_used": 81,
+      "pruned_nodes": 42
     },
     "era_pct_50": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "perspective: aromatherapy enthusiast, perspective: severe (blistering) sunburn patient, trustworthiness: aromatherapy / alternative remedies publication",
+      "proxy_layer": 3,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 113,
-      "budget_used": 128,
-      "pruned_nodes": 5
+      "calls": 57,
+      "budget_used": 81,
+      "pruned_nodes": 42
     },
     "era_pct_60": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "perspective: aromatherapy enthusiast, perspective: severe (blistering) sunburn patient, trustworthiness: aromatherapy / alternative remedies publication",
+      "proxy_layer": 3,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 89,
-      "budget_used": 153,
-      "pruned_nodes": 4
+      "calls": 57,
+      "budget_used": 81,
+      "pruned_nodes": 42
     },
     "era_pct_70": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "perspective: aromatherapy enthusiast, perspective: severe (blistering) sunburn patient, trustworthiness: aromatherapy / alternative remedies publication",
+      "proxy_layer": 3,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 63,
-      "budget_used": 179,
-      "pruned_nodes": 4
+      "calls": 57,
+      "budget_used": 81,
+      "pruned_nodes": 42
     },
     "era_pct_80": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "perspective: aromatherapy enthusiast, perspective: severe (blistering) sunburn patient, trustworthiness: aromatherapy / alternative remedies publication",
+      "proxy_layer": 3,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 39,
-      "budget_used": 204,
-      "pruned_nodes": 3
+      "calls": 57,
+      "budget_used": 81,
+      "pruned_nodes": 42
     },
     "era_pct_90": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "perspective: aromatherapy enthusiast, perspective: severe (blistering) sunburn patient, trustworthiness: aromatherapy / alternative remedies publication",
+      "proxy_layer": 3,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 25,
-      "budget_used": 220,
-      "pruned_nodes": 1
+      "calls": 57,
+      "budget_used": 81,
+      "pruned_nodes": 42
     },
     "era_pct_100": {
-      "proxy_key": "(Perspective): lifestyle modification advocate",
-      "proxy_layer": 1,
+      "proxy_key": "perspective: aromatherapy enthusiast, perspective: severe (blistering) sunburn patient, trustworthiness: aromatherapy / alternative remedies publication",
+      "proxy_layer": 3,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 25,
-      "budget_used": 220,
-      "pruned_nodes": 1
+      "calls": 57,
+      "budget_used": 81,
+      "pruned_nodes": 42
     }
   }
 }

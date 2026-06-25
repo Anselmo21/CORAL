@@ -25,7 +25,7 @@ from collections import defaultdict
 from scripts.shared.cc_budget_ablation_dev import score_cc
 from search.bfs import bfs_search
 
-DATASET_PATH  = "data/sonnet-pragma-dataset.json"
+DATASET_PATH  = "data/sources/sonnet_pragma.json"
 CASES_PATH    = "data/sonnet_pragma/cases.json"
 CC_CASES_PATH = "data/sonnet_pragma/cc_cases.json"
 OUT_PATH      = "data/sonnet_pragma/cc_ablation_results.json"

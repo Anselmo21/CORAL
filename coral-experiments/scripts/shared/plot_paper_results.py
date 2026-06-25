@@ -27,9 +27,9 @@ import numpy as np
 from scripts.shared.plot_style import apply_plot_style
 
 DATASETS = [
-    ("msmarco_subsample",        "msmarco_criteria", "MSMARCO criteria"),
-    ("sonnet_subsample",         "sonnet_criteria",  "Sonnet criteria"),
-    ("16_lattices_cf_layer2to8", "msmarco_pragma",   "MSMARCO pragma"),
+    ("msmarco_criteria",        "msmarco_criteria", "MSMARCO criteria"),
+    ("sonnet_criteria",         "sonnet_criteria",  "Sonnet criteria"),
+    ("msmarco_pragma", "msmarco_pragma",   "MSMARCO pragma"),
     ("sonnet_pragma",            "sonnet_pragma",    "Sonnet pragma"),
 ]
 
@@ -162,8 +162,8 @@ def plot_headline() -> None:
     """One scatter per method: x = avg cost across all cases, y = accuracy.
     One marker per (dataset, method)."""
     fig, ax = plt.subplots(figsize=(8, 3.8))
-    dataset_markers = {"msmarco_subsample": "o", "sonnet_subsample": "s",
-                       "16_lattices_cf_layer2to8": "^", "sonnet_pragma": "D"}
+    dataset_markers = {"msmarco_criteria": "o", "sonnet_criteria": "s",
+                       "msmarco_pragma": "^", "sonnet_pragma": "D"}
 
     for ds, _out, nice in DATASETS:
         rows = _load(ds)

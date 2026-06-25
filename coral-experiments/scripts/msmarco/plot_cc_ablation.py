@@ -1,10 +1,10 @@
 """Plot CC budget ablation vs BFS / SRA / ERA(pct_10) — MSMARCO full set.
 
 Reads:
-  data/msmarco_subsample/cc_ablation_results.json  (CC sweep over sizes 3-10)
-  data/msmarco_subsample/results.json              (BFS/SRA/ERA references)
+  data/msmarco_criteria/cc_ablation_results.json  (CC sweep over sizes 3-10)
+  data/msmarco_criteria/results.json              (BFS/SRA/ERA references)
 
-Writes plots/msmarco_subsample/:
+Writes plots/msmarco_criteria/:
   cc_fixed_budgets.png    — fixed CC budgets vs refs (accuracy | cost)
   cc_pct_budgets.png      — pct CC budgets vs refs
   cc_accuracy_heatmap.png — accuracy heatmap, rows = CC configs, cols = sizes
@@ -23,9 +23,9 @@ import numpy as np
 
 from scripts.shared.plot_style import apply_plot_style
 
-CC_RESULTS_PATH  = "data/msmarco_subsample/cc_ablation_results.json"
-ERA_RESULTS_PATH = "data/msmarco_subsample/results.json"
-OUT_DIR          = "plots/msmarco_subsample"
+CC_RESULTS_PATH  = "data/msmarco_criteria/cc_ablation_results.json"
+ERA_RESULTS_PATH = "data/msmarco_criteria/results.json"
+OUT_DIR          = "plots/msmarco_criteria"
 
 BUDGETS_FIXED: list[int] = [4, 8, 16, 32, 64, 128, 256]
 BUDGETS_PCT:   list[int] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]

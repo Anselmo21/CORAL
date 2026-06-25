@@ -14,8 +14,8 @@ from scripts.shared.plot_style import apply_plot_style
 
 
 DATASETS: dict[str, tuple[str, str]] = {
-    "msmarco":        ("data/msmarco_subsample/results.json", "dict"),
-    "sonnet":         ("data/sonnet_subsample/results.json",  "dict"),
+    "msmarco":        ("data/msmarco_criteria/results.json", "dict"),
+    "sonnet":         ("data/sonnet_criteria/results.json",  "dict"),
     "msmarco_pragma": ("data/msmarco_pragma/results.json",    "list"),
     "sonnet_pragma":  ("data/sonnet_pragma/results.json",     "list"),
 }

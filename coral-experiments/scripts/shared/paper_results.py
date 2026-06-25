@@ -8,9 +8,9 @@ compute hop distance from BFS's CF for every method, and emit:
     stdout                             (per-dataset table: accuracy, cost, hop)
 
 Datasets:
-    msmarco_subsample           = MSMARCO criteria
-    sonnet_subsample            = Sonnet criteria
-    16_lattices_cf_layer2to8    = MSMARCO pragma (regen)
+    msmarco_criteria           = MSMARCO criteria
+    sonnet_criteria            = Sonnet criteria
+    msmarco_pragma    = MSMARCO pragma (regen)
     sonnet_pragma               = Sonnet pragma
 
 Usage:
@@ -30,9 +30,9 @@ from search.rank import era_search
 
 DATASETS = [
     # (data dir, module path, label, propagate_scores)
-    ("msmarco_subsample",        "scripts.msmarco.run_subsample",          "MSMARCO criteria",       False),
-    ("sonnet_subsample",         "scripts.sonnet.run_subsample",           "Sonnet criteria",        False),
-    ("16_lattices_cf_layer2to8", "scripts.pragma.msmarco_regen.run_subsample", "MSMARCO pragma (regen)", True),
+    ("msmarco_criteria",        "scripts.msmarco.run_subsample",          "MSMARCO criteria",       False),
+    ("sonnet_criteria",         "scripts.sonnet.run_subsample",           "Sonnet criteria",        False),
+    ("msmarco_pragma", "scripts.pragma.msmarco_regen.run_subsample", "MSMARCO pragma (regen)", True),
     ("sonnet_pragma",            "scripts.pragma.sonnet.run_subsample",    "Sonnet pragma",          True),
 ]
 

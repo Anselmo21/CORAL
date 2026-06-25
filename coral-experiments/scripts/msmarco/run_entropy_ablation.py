@@ -1,7 +1,7 @@
 """Entropy function ablation on the MSMARCO sub-lattice set.
 
 Reuses the cases sampled by scripts.msmarco.run_subsample
-(data/msmarco_subsample/cases.json) and runs ERA at the selected
+(data/msmarco_criteria/cases.json) and runs ERA at the selected
 pct_10 budget (max(1, int(0.10 * 2**size))) for each of the 5 entropy variants:
   softmax, shannon, renyi(α=0.5), renyi(α=2), weighted
 
@@ -32,7 +32,7 @@ from search.heuristics import (
 )
 from search.rank import era_search
 
-CASES_PATH = "data/msmarco_subsample/cases.json"
+CASES_PATH = "data/msmarco_criteria/cases.json"
 OUT_DIR = "data/msmarco_entropy_ablation"
 RESULTS_PATH = f"{OUT_DIR}/results.json"
 PLOT_DIR = "plots/msmarco_entropy_ablation"

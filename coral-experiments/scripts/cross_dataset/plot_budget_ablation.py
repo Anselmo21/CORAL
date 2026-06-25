@@ -29,8 +29,8 @@ import numpy as np
 from scripts.shared.plot_style import apply_plot_style
 
 DATASETS: list[tuple[str, str, str]] = [
-    ("msmarco_criteria", "MSMARCO criteria", "data/msmarco_subsample/results.json"),
-    ("sonnet_criteria",  "Sonnet criteria",  "data/sonnet_subsample/results.json"),
+    ("msmarco_criteria", "MSMARCO criteria", "data/msmarco_criteria/results.json"),
+    ("sonnet_criteria",  "Sonnet criteria",  "data/sonnet_criteria/results.json"),
     ("msmarco_pragma",   "MSMARCO pragma",   "data/msmarco_pragma/results.json"),
     ("sonnet_pragma",    "Sonnet pragma",    "data/sonnet_pragma/results.json"),
 ]

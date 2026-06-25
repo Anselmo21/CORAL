@@ -4,8 +4,8 @@ Sweeps the same budget grid as the ERA ablation:
   Fixed:   [4, 8, 16, 32, 64, 128, 256]
   Percent: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]% of 2^k
 
-Reads  data/sonnet_subsample/cc_cases.json (exported by run_subsample.py).
-Writes data/sonnet_subsample/cc_ablation_results.json
+Reads  data/sonnet_criteria/cc_cases.json (exported by run_subsample.py).
+Writes data/sonnet_criteria/cc_ablation_results.json
        with resume on (case_id, budget_label).
 
 CLI: conda run -n coral python3 -m scripts.sonnet.run_cc_ablation [--vllm] [--pct 10]
@@ -21,8 +21,8 @@ from collections import defaultdict
 from scripts.shared.cc_budget_ablation_dev import score_cc
 from search.bfs import bfs_search
 
-CC_CASES_PATH = "data/sonnet_subsample/cc_cases.json"
-CC_ABLATION_RESULTS_PATH = "data/sonnet_subsample/cc_ablation_results.json"
+CC_CASES_PATH = "data/sonnet_criteria/cc_cases.json"
+CC_ABLATION_RESULTS_PATH = "data/sonnet_criteria/cc_ablation_results.json"
 
 BUDGETS_FIXED: list[int] = [4, 8, 16, 32, 64, 128, 256]
 BUDGETS_PCT: list[int] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]

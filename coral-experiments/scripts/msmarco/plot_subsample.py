@@ -1,7 +1,7 @@
 """Plot BFS / SRA / ERA(budget grid) by effective lattice size — MSMARCO sub-lattices.
 
-Reads data/msmarco_subsample/results.json (produced by run_msmarco_subsample.py).
-Writes PNGs under plots/msmarco_subsample/:
+Reads data/msmarco_criteria/results.json (produced by run_msmarco_criteria.py).
+Writes PNGs under plots/msmarco_criteria/:
   accuracy_by_size.png   — accuracy vs size for every ERA config (fixed + pct panels)
   cost_by_size.png       — avg total cost vs size for every ERA config
   accuracy_heatmap.png   — accuracy heatmap, rows = ERA configs, cols = sizes
@@ -20,8 +20,8 @@ import numpy as np
 
 from scripts.shared.plot_style import apply_plot_style
 
-RESULTS_PATH = "data/msmarco_subsample/results.json"
-OUT_DIR = "plots/msmarco_subsample"
+RESULTS_PATH = "data/msmarco_criteria/results.json"
+OUT_DIR = "plots/msmarco_criteria"
 
 REF_COLORS = {"BFS": "black", "SRA": "#d62728"}
 _MARKERS = ["D", "s", "^", "o", "v", "p", "h", "P", "X", "*"]
