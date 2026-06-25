@@ -1,0 +1,24 @@
+name: coral
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.13
+  - ipykernel
+  - pip
+  - pip:
+    # Core (required for the BFS / SRA / ERA pipeline + all plotting)
+    - numpy
+    - matplotlib
+
+    # ContextCite (CC) search — only needed if you want to run / re-run CC.
+    # Heavy: pulls in torch + transformers + vllm.
+    # Uncomment if needed:
+    # - torch
+    # - transformers
+    # - vllm
+    #
+    # context-cite is the search adapter; install it from a local checkout:
+    #   pip install -e /path/to/concept-cite
+    # because the published version on PyPI lags the API used here.
