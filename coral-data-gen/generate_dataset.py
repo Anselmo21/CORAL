@@ -1,0 +1,708 @@
+# used to generate the datasets for the experiments
+#
+# Requirements:
+#   pip install openai
+#   Set OPENAI_API_KEY environment variable or pass api_key parameter
+
+
+import json
+import os
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+try:
+    from openai import OpenAI
+except ImportError:
+    OpenAI = None  # type: ignore
+
+from combinatorics import generate_combinations
+from ranking_utils import combo_key_from_items
+
+
+def create_llm_client(
+    provider: str,
+    model: Optional[str] = None,
+    api_key: Optional[str] = None,
+    local_device: str = "auto",
+    local_dtype: str = "auto",
+) -> Any:
+    """Build an LLM client for the chosen provider. Build once, reuse across queries."""
+    if provider == "openai":
+        if OpenAI is None:
+            raise SystemExit("pip install openai")
+        api_key = api_key or os.getenv("OPENAI_API_KEY")
+        if not api_key:
+            raise ValueError("Set OPENAI_API_KEY or pass api_key=")
+        return OpenAI(api_key=api_key)
+    if provider == "vllm":
+        try:
+            from vllm import LLM
+        except ImportError as exc:
+            raise SystemExit("pip install vllm") from exc
+        if not model:
+            raise ValueError("model is required for provider='vllm'")
+        print(f"Loading vLLM model '{model}' (dtype={local_dtype})...")
+        client = LLM(model=model, dtype=local_dtype, enable_prefix_caching=True)
+        print("Model loaded.")
+        return client
+    if provider == "local":
+        try:
+            from transformers import pipeline as hf_pipeline
+        except ImportError as exc:
+            raise SystemExit("pip install transformers torch accelerate") from exc
+        if not model:
+            raise ValueError("model is required for provider='local' (e.g. meta-llama/Llama-3.1-8B-Instruct)")
+        print(f"Loading local model '{model}' (device_map={local_device}, torch_dtype={local_dtype})...")
+        client = hf_pipeline(
+            "text-generation",
+            model=model,
+            device_map=local_device,
+            torch_dtype=local_dtype,
+        )
+        # Llama 3 (and other open chat models) ship without a pad token, which
+        # blocks batched generation. Set pad → eos so batching works.
+        try:
+            tok = client.tokenizer
+            if getattr(tok, "pad_token_id", None) is None:
+                eos = getattr(tok, "eos_token_id", None) or getattr(client.model.config, "eos_token_id", None)
+                if isinstance(eos, list):
+                    eos = eos[0]
+                if eos is not None:
+                    tok.pad_token_id = eos
+                    # Use left padding for decoder-only models so attention masks line up correctly.
+                    tok.padding_side = "left"
+                    print(f"  Set tokenizer.pad_token_id = {eos} (eos), padding_side='left' for batched gen.")
+        except Exception as e:
+            print(f"  Warning: could not set pad token automatically: {e}")
+        print("Model loaded.")
+        return client
+    raise ValueError(f"Unknown provider: {provider}")
+
+
+def _invoke_chat_completion(
+    *,
+    client: Any,
+    provider: str,
+    model: str,
+    messages: List[Dict[str, str]],
+    temperature: float,
+    max_tokens: int,
+) -> str:
+    """Provider-agnostic chat completion. Returns the assistant message content as a string."""
+    if provider == "openai":
+        resp = client.chat.completions.create(
+            model=model,
+            messages=messages,
+            temperature=temperature,
+            max_tokens=max_tokens,
+        )
+        return resp.choices[0].message.content or ""
+    if provider == "vllm":
+        from vllm import SamplingParams
+        sp = SamplingParams(temperature=temperature, max_tokens=max_tokens)
+        outputs = client.chat([messages], sampling_params=sp, use_tqdm=False)
+        return (outputs[0].outputs[0].text or "").strip()
+    if provider == "local":
+        do_sample = temperature > 0
+        result = client(
+            messages,
+            max_new_tokens=max_tokens,
+            do_sample=do_sample,
+            temperature=temperature if do_sample else None,
+        )
+        generated = result[0]["generated_text"]
+        # transformers pipeline returns the conversation when given a messages list;
+        # the last entry is the assistant turn.
+        if isinstance(generated, list):
+            return (generated[-1].get("content") or "").strip()
+        return str(generated).strip()
+    raise ValueError(f"Unknown provider: {provider}")
+
+
+def _invoke_chat_completion_batch(
+    *,
+    client: Any,
+    provider: str,
+    model: str,
+    messages_list: List[List[Dict[str, str]]],
+    temperature: float,
+    max_tokens: int,
+    batch_size: int,
+) -> List[str]:
+    """Batched chat completion. For provider='local' uses transformers pipeline's native
+    GPU batching. For provider='openai' falls back to sequential calls (no batching).
+    Returns a list of response strings, same length and order as messages_list.
+    """
+    if not messages_list:
+        return []
+    if provider == "vllm":
+        from vllm import SamplingParams
+        sp = SamplingParams(temperature=temperature, max_tokens=max_tokens)
+        outputs = client.chat(messages_list, sampling_params=sp, use_tqdm=False)
+        return [(o.outputs[0].text or "").strip() for o in outputs]
+    if provider == "local":
+        do_sample = temperature > 0
+        results = client(
+            messages_list,
+            batch_size=batch_size,
+            max_new_tokens=max_tokens,
+            do_sample=do_sample,
+            temperature=temperature if do_sample else None,
+        )
+        local_texts: List[str] = []
+        for r in results:
+            # Pipeline output for batched chat input is per-input. Some versions wrap
+            # the per-input result in a one-element list — normalize both cases.
+            if isinstance(r, list):
+                r = r[0] if r else {}
+            generated = r.get("generated_text") if isinstance(r, dict) else None
+            if isinstance(generated, list):
+                local_texts.append((generated[-1].get("content") or "").strip())
+            elif generated is not None:
+                local_texts.append(str(generated).strip())
+            else:
+                local_texts.append("")
+        return local_texts
+    # OpenAI / fallback: sequential
+    return [
+        _invoke_chat_completion(
+            client=client, provider=provider, model=model,
+            messages=m, temperature=temperature, max_tokens=max_tokens,
+        )
+        for m in messages_list
+    ]
+
+
+def _iter_batches(
+    to_process: List[tuple],
+    provider: str,
+    batch_size: int,
+    fill_missing: bool,
+):
+    """Yield batches of (i, combo, combo_key) tuples.
+
+    vLLM: two phases — empty-set + singletons first (so the halt check can fire
+    between phases), then all higher-order combos in one shot.  ThreadPoolExecutor
+    caps concurrency inside _invoke_chat_completion_batch, so a large phase is safe.
+    fill_missing skips the two-phase split since there is no halt check.
+
+    Other providers: fixed-size chunks as before.
+    """
+    if provider == "vllm":
+        if fill_missing:
+            if to_process:
+                yield to_process
+        else:
+            phase1 = [(i, c, k) for i, c, k in to_process if len(c) <= 1]
+            phase2 = [(i, c, k) for i, c, k in to_process if len(c) > 1]
+            if phase1:
+                yield phase1
+            if phase2:
+                yield phase2
+    else:
+        bs = max(1, batch_size)
+        idx = 0
+        while idx < len(to_process):
+            yield to_process[idx:idx + bs]
+            idx += bs
+
+
+def generate_all_criteria_combinations(criteria: List[str]) -> List[List[str]]:
+    """
+    Generate all combinations of criteria, including the empty set.
+    
+    Args:
+        criteria: List of criteria strings
+        
+    Returns:
+        List of all combinations (each is a list of criteria)
+    """
+    all_combos = []
+    # Include empty set (size 0)
+    all_combos.append([])
+    # Include all sizes from 1 to len(criteria)
+    for size in range(1, len(criteria) + 1):
+        all_combos.extend(generate_combinations(criteria, size))
+    return all_combos
+
+
+def _strip_code_fences(text: str) -> str:
+    text = (text or "").strip()
+    if not text.startswith("```"):
+        return text
+    lines = text.split("\n")
+    inner = "\n".join(lines[1:-1]) if len(lines) > 2 else text
+    inner = inner.strip()
+    if inner.startswith("json"):
+        inner = inner[4:].strip()
+    return inner
+
+
+def create_full_ranking_prompt(
+    question: str,
+    criteria: List[str],
+    sources: str,
+    options: List[str],
+) -> str:
+    """Prompt that asks for a full permutation of OPTIONS as a JSON array.
+
+    Format is intentionally identical to msmarco/extract_baseline_lattice.py so
+    Llama-3.1-8B and other models see exactly the same instructions across the
+    two pipelines.
+    """
+    criteria_text = (
+        f"{', '.join(criteria)}."
+        if criteria
+        else "None specified."
+    )
+    options_json = json.dumps(options, ensure_ascii=False)
+    prompt = f"""
+    You are an answering machine.
+    Rank the options based on the following question using the following sources and question criteria, if provided.
+    Weigh all criteria equally when ranking the options.
+    The options are not provided in any order of importance, consider them all when answering the question.
+    The answer ranked first is the best answer to the question and should be placed at the beginning of the list.
+
+    Return a JSON array of exactly {len(options)} strings — one per option, no more, no less.
+    Every string must be copied verbatim from OPTIONS (character-for-character). Do not paraphrase, shorten, or invent new options.
+    Do not include any explanation or additional text, just the JSON array.
+
+    QUESTION:\n
+    {question}
+
+    SOURCES:\n
+    {sources}
+
+    CRITERIA:\n
+    {criteria_text}
+
+    OPTIONS (copy these {len(options)} strings verbatim into your output array):\n
+    {options_json}
+
+    ANSWER (JSON array of exactly {len(options)} strings, copied verbatim from OPTIONS):\n"""
+    return prompt
+
+
+def create_full_ranking_prompt_pragmas(
+    question: str,
+    pragmas: List[str],
+    sources: str,
+    options: List[str],
+) -> str:
+    """Pragma-mode ranking prompt.
+
+    Frames pragmas as *source criteria* — filters on which sources to weight
+    more heavily — rather than as answer-ranking criteria. Output format stays
+    a verbatim JSON-array permutation of OPTIONS so downstream parsing
+    (parse_full_ranking, bfs_eval, package_18_lattices) is unchanged.
+    """
+    prompt_pragma = " AND ".join(pragmas) if pragmas else "NO SOURCE CRITERIA"
+    options_json = json.dumps(options, ensure_ascii=False)
+    prompt = f"""
+    You are an answering machine.
+    Rank the options to the following question using only the following sources.
+    Heavily prioritize sources that match the provided source directives when answering the question.
+    Source directives can be temporal (e.g., specific year or date range), geographic (e.g., a location or region), trustworthy (e.g., official, expert, user-generated), or perspective (e.g., neutral, opinionated).
+    If no source directives are provided, all sources will be considered equally.
+    The options are not provided in any order of importance, consider them all when answering the question.
+    The answer ranked first is the best answer to the question and should be placed at the beginning of the list.
+
+    Return a JSON array of exactly {len(options)} strings — one per option, no more, no less.
+    Every string must be copied verbatim from OPTIONS (character-for-character). Do not paraphrase, shorten, or invent new options.
+    Do not include any explanation or additional text, just the JSON array.
+
+    QUESTION:\n
+    {question}
+
+    SOURCES:\n
+    {sources}
+
+    SOURCE DIRECTIVES:\n
+    {prompt_pragma}
+
+    OPTIONS (copy these {len(options)} strings verbatim into your output array):\n
+    {options_json}
+
+    ANSWER (JSON array of exactly {len(options)} strings, copied verbatim from OPTIONS):\n"""
+    return prompt
+
+
+def build_retry_prompt(base_prompt: str, previous_response: str, reason: str) -> str:
+    prev = (previous_response or "").strip()
+    return (
+        f"{base_prompt}\n\n"
+        "Your previous answer was invalid.\n"
+        f"Reason: {reason}\n"
+        "Previous answer:\n"
+        f"{prev}\n\n"
+        "Now return a corrected answer that strictly follows all output rules.\n"
+        "Return ONLY the JSON array."
+    )
+
+
+def parse_full_ranking(response: str, expected: List[str]) -> Optional[List[str]]:
+    """Return a permutation of `expected` parsed from the model output, or None."""
+    response = _strip_code_fences(response)
+
+    # HF chat models occasionally wrap arrays as "( [...])" or drop the final "]".
+    repaired = response.strip()
+    if repaired.startswith("(") and repaired.endswith(")"):
+        inner = repaired[1:-1].strip()
+        if inner.startswith("["):
+            repaired = inner
+    if repaired.startswith("[") and not repaired.endswith("]"):
+        repaired = repaired + "]"
+
+    try:
+        items = json.loads(repaired)
+    except json.JSONDecodeError:
+        return None
+    if not isinstance(items, list):
+        return None
+    ranked = [str(x).strip() for x in items]
+    exp_set = set(expected)
+    if len(ranked) != len(expected) or set(ranked) != exp_set:
+        return None
+    if len(ranked) != len(set(ranked)):
+        return None
+    return ranked
+
+
+def _single_line_preview(text: str, max_chars: int = 400) -> str:
+    s = " ".join((text or "").split())
+    return s if len(s) <= max_chars else s[: max_chars - 1] + "…"
+
+
+def _parse_fail_reason(response: str, expected: List[str]) -> str:
+    """Return a short human-readable reason why parse_full_ranking returned None."""
+    text = _strip_code_fences(response).strip()
+    repaired = text
+    if repaired.startswith("(") and repaired.endswith(")"):
+        inner = repaired[1:-1].strip()
+        if inner.startswith("["):
+            repaired = inner
+    if repaired.startswith("[") and not repaired.endswith("]"):
+        repaired = repaired + "]"
+    try:
+        items = json.loads(repaired)
+    except json.JSONDecodeError as e:
+        return f"json_error: {e}"
+    if not isinstance(items, list):
+        return f"not_a_list: got {type(items).__name__}"
+    ranked = [str(x).strip() for x in items]
+    if len(ranked) != len(expected):
+        return f"wrong_count: got {len(ranked)}, expected {len(expected)}"
+    extra = set(ranked) - set(expected)
+    missing = set(expected) - set(ranked)
+    if extra or missing:
+        extra_preview = [_single_line_preview(s, 60) for s in extra]
+        missing_preview = [_single_line_preview(s, 60) for s in missing]
+        return f"string_mismatch: extra={extra_preview} missing={missing_preview}"
+    if len(ranked) != len(set(ranked)):
+        return "duplicates in output"
+    return "unknown"
+
+
+def generate_dataset(
+    config_path: Optional[str] = None,
+    dataset_name: Optional[str] = None,
+    question: Optional[str] = None,
+    criteria: Optional[List[str]] = None,
+    plausible_answers: Optional[List[str]] = None,
+    sources: Optional[str] = None,
+    output_dir: str = "datasets",
+    model: str = "gpt-4o-mini",
+    mode: str = "criteria",
+    provider: str = "openai",
+    client: Any = None,
+    local_device: str = "auto",
+    local_dtype: str = "auto",
+    max_tokens: int = 4096,
+    temperature: float = 1.0,
+    api_key: Optional[str] = None,
+    max_retries: int = 3,
+    fill_missing: bool = False,
+    batch_size: int = 1,
+) -> Dict[str, List[str]]:
+    """
+    Generate a dataset by prompting an LLM for each criteria/pragma combination.
+
+    Prompt depends on mode:
+      - 'criteria': create_full_ranking_prompt — identical to msmarco/extract_baseline_lattice.py.
+      - 'pragmas':  create_full_ranking_prompt_pragmas — frames atoms as "source criteria"
+                    (filters on which sources to weight) rather than answer-ranking criteria.
+    Both return a JSON-array permutation of OPTIONS so parsing is shared.
+
+    Halts after the singleton layer if every singleton produced the same top-1 answer.
+
+    Args:
+        config_path: Path to existing config.json file (alternative to providing params directly)
+        dataset_name: Name of the dataset
+        question: The main question to answer
+        criteria: List of criteria (or pragma atoms when mode='pragmas') to consider
+        plausible_answers: Candidate answer strings to rank for this question. Required.
+        sources: Source information/context for the LLM
+        output_dir: Directory to save the dataset
+        model: Model id — OpenAI name (gpt-4o-mini) or HF hub id (meta-llama/Llama-3.1-8B-Instruct)
+        mode: 'criteria' or 'pragmas' — recorded in config.json for downstream tracking
+        provider: 'openai' or 'local'
+        client: Pre-built client; build once and reuse across many queries (important for local models)
+        local_device / local_dtype: forwarded to transformers pipeline when provider='local'
+        max_tokens, temperature: forwarded to the LLM
+        api_key: OpenAI API key (if not provided, uses OPENAI_API_KEY env var)
+        max_retries: Number of times to retry each combo on parse failure
+
+    Returns:
+        Dictionary mapping criteria combinations to ranked lists (each is a
+        permutation of plausible_answers).
+    """
+    # Load config if provided
+    if config_path:
+        with open(config_path, 'r') as f:
+            config = json.load(f)
+        dataset_name = config.get("name", dataset_name)
+        question = config.get("question", question)
+        criteria = config.get("criteria", criteria)
+        sources = config.get("sources", sources)
+        plausible_answers = config.get("plausible_answers", plausible_answers)
+        mode = config.get("mode", mode)
+
+    if not all([dataset_name, question, criteria, sources, plausible_answers]):
+        raise ValueError("Must provide either config_path or all of: dataset_name, question, criteria, plausible_answers, sources")
+    if mode not in ("criteria", "pragmas"):
+        raise ValueError(f"mode must be 'criteria' or 'pragmas', got {mode!r}")
+
+    # Build the LLM client (or reuse one passed in — important for local Llama
+    # so we don't reload the 8B weights for every query).
+    if client is None:
+        client = create_llm_client(
+            provider=provider,
+            model=model,
+            api_key=api_key,
+            local_device=local_device,
+            local_dtype=local_dtype,
+        )
+
+    # Generate all combinations
+    all_combos = generate_all_criteria_combinations(criteria)
+
+    # If filling gaps in an existing run, load what's already done so we can
+    # skip those combos and merge the new results.
+    answers_dict: Dict[str, List[str]] = {}
+    if fill_missing:
+        existing_path = Path(output_dir) / dataset_name / "answers.json"
+        if existing_path.exists():
+            try:
+                answers_dict = json.loads(existing_path.read_text())
+                print(f"Loaded {len(answers_dict)} existing combos; will only call LLM for missing ones.")
+            except Exception as e:
+                print(f"Could not load existing answers.json ({e}); starting fresh.")
+
+    missing_count = sum(
+        1 for combo in all_combos
+        if (combo_key_from_items(combo) if combo else "") not in answers_dict
+    )
+    if fill_missing:
+        print(f"Lattice size: {len(all_combos)}; missing: {missing_count}; will run {missing_count} LLM calls.")
+    else:
+        print(f"Generating rankings for {len(all_combos)} {mode} combinations...")
+
+    singleton_top1s: List[str] = []
+    halted_reason: Optional[str] = None
+
+    system_msg = (
+        "You are a helpful assistant that ranks items as JSON arrays. "
+        "Follow formatting instructions exactly."
+    )
+
+    # Build the list of combos that actually need LLM calls (skip already-done ones in fill_missing).
+    to_process: List[tuple] = []
+    for i, combo in enumerate(all_combos, 1):
+        combo_key = combo_key_from_items(combo) if combo else ""
+        if fill_missing and combo_key in answers_dict:
+            continue
+        to_process.append((i, combo, combo_key))
+
+    bs = max(1, batch_size)
+    if bs > 1 and provider == "local":
+        print(f"Batching enabled: batch_size={bs} (local pipeline)")
+    elif provider == "vllm":
+        print(f"vLLM: up to {bs} concurrent requests per phase (server-side continuous batching)")
+
+    done_count = 0
+    for batch in _iter_batches(to_process, provider, bs, fill_missing):
+        # Halt check: fires at the start of phase 2 (or any chunk whose first combo
+        # has size > 1) once all singletons agreed on the same top-1 answer.
+        if not fill_missing and halted_reason is None and batch:
+            next_combo = batch[0][1]
+            if (
+                len(next_combo) > 1
+                and len(singleton_top1s) == len(criteria)
+                and len(set(singleton_top1s)) == 1
+            ):
+                halted_reason = (
+                    f"all {len(criteria)} singletons produced the same top-1 answer: "
+                    f"'{singleton_top1s[0]}'"
+                )
+                print(f"\n⚠ Halting lattice: {halted_reason}")
+                print(f"  Skipping {len(to_process) - done_count} remaining combinations.")
+                break
+
+        # Build prompts and messages for the batch
+        base_prompts: List[str] = []
+        messages_list: List[List[Dict[str, str]]] = []
+        prompt_builder = (
+            create_full_ranking_prompt_pragmas if mode == "pragmas"
+            else create_full_ranking_prompt
+        )
+        for (_, combo, _) in batch:
+            bp = prompt_builder(question, combo, sources, plausible_answers)
+            base_prompts.append(bp)
+            messages_list.append([
+                {"role": "system", "content": system_msg},
+                {"role": "user", "content": bp},
+            ])
+
+        # Initial batched call
+        try:
+            response_texts = _invoke_chat_completion_batch(
+                client=client,
+                provider=provider,
+                model=model,
+                messages_list=messages_list,
+                temperature=temperature,
+                max_tokens=max_tokens,
+                batch_size=bs,
+            )
+        except Exception as e:
+            print(f"  ⚠ batch call failed ({e}); falling back to sequential for this batch")
+            response_texts = []
+            for m in messages_list:
+                try:
+                    response_texts.append(_invoke_chat_completion(
+                        client=client, provider=provider, model=model,
+                        messages=m, temperature=temperature, max_tokens=max_tokens,
+                    ))
+                except Exception as e2:
+                    print(f"    sequential fallback also failed: {e2}")
+                    response_texts.append("")
+
+        # Parse each response; retry failures individually
+        for (i, combo, combo_key), base_prompt, text in zip(batch, base_prompts, response_texts):
+            display_key = combo_key if combo_key else "(no criteria)"
+            print(f"[{i}/{len(all_combos)}] '{display_key}'")
+
+            parsed = parse_full_ranking(text, plausible_answers)
+            last_text = text
+            attempts_used = 1
+            while parsed is None and attempts_used < max_retries:
+                attempts_used += 1
+                try:
+                    rp = build_retry_prompt(
+                        base_prompt, last_text,
+                        "Not a strict JSON permutation of OPTIONS.",
+                    )
+                    last_text = _invoke_chat_completion(
+                        client=client, provider=provider, model=model,
+                        messages=[
+                            {"role": "system", "content": system_msg},
+                            {"role": "user", "content": rp},
+                        ],
+                        temperature=temperature, max_tokens=max_tokens,
+                    )
+                    parsed = parse_full_ranking(last_text, plausible_answers)
+                    if parsed is None:
+                        print(f"  ⚠ retry {attempts_used}/{max_retries} parse_fail")
+                except Exception as e:
+                    print(f"  ⚠ retry {attempts_used}/{max_retries} error: {e}")
+
+            if parsed is not None:
+                if attempts_used > 1:
+                    print(f"  ✓ Ranked (after {attempts_used} attempts): {parsed[:3]}{' …' if len(parsed) > 3 else ''}")
+                else:
+                    print(f"  ✓ Ranked: {parsed[:3]}{' …' if len(parsed) > 3 else ''}")
+                answers_dict[combo_key] = parsed
+                if len(combo) == 1:
+                    singleton_top1s.append(parsed[0].strip().lower())
+            else:
+                reason = _parse_fail_reason(last_text, plausible_answers)
+                print(f"  ✗ parse_fail after {max_retries} attempts [{reason}]. Last: "
+                      f"{_single_line_preview(last_text)!r}")
+
+        done_count += len(batch)
+
+    # Save results
+    dataset_dir = os.path.join(output_dir, dataset_name)
+    os.makedirs(dataset_dir, exist_ok=True)
+
+    # Save answers.json
+    answers_path = os.path.join(dataset_dir, "answers.json")
+    with open(answers_path, 'w') as f:
+        json.dump(answers_dict, f, indent=2)
+    print(f"\nSaved answers to {answers_path}")
+
+    # Save/update config.json. In fill_missing mode, preserve halted state
+    # from the original run (we don't re-evaluate it).
+    out_config_path = os.path.join(dataset_dir, "config.json")
+    halted_flag = halted_reason is not None
+    halted_reason_out = halted_reason
+    if fill_missing and Path(out_config_path).exists():
+        try:
+            prev = json.loads(Path(out_config_path).read_text())
+            halted_flag = bool(prev.get("halted", halted_flag))
+            halted_reason_out = prev.get("halted_reason", halted_reason_out)
+        except Exception:
+            pass
+    config_out = {
+        "name": dataset_name,
+        "question": question,
+        "mode": mode,
+        "criteria": criteria,
+        "plausible_answers": plausible_answers,
+        "sources": sources,
+        "halted": halted_flag,
+        "halted_reason": halted_reason_out,
+        "combos_total": len(all_combos),
+        "combos_run": len(answers_dict),
+    }
+    with open(out_config_path, 'w') as f:
+        json.dump(config_out, f, indent=2)
+    print(f"Saved config to {out_config_path}")
+
+    return answers_dict
+
+
+if __name__ == "__main__":
+    # Example usage
+    import sys
+    
+    sources = """
+    SOURCE 1
+    Metrolink Light Rail: The Commuter Gold Standard [City Transit Authority / Urban Mobility Report 2026]:
+    The Metrolink Light Rail remains the gold standard for high-density accessibility, providing direct core-access for thousands of passengers. It features a high-efficiency electric drivetrain that delivers up to 18 hours of continuous operation on a single grid-charge. The New Gen cars feature 10-car configurations making them 2x faster for peak-hour clearance than older bus models. Its AI-driven dispatch system is 3x faster at route optimization than previous manual signaling, supporting 'Smart Hub' features like real-time arrival sync and dynamic load balancing. However, the fixed-rail architecture means route expansions are permanent and require significant lead time, offering limited flexibility compared to road-based transit.
+
+    SOURCE 2
+    Solar-Bus BRT: The Sustainable Versatility Standard [Green Mobility Blog / TechTransit 2026]:
+    The Solar-Bus Rapid Transit (BRT) is a premier 'Sustainable' fleet, powered by Snapdragon-integrated solar arrays on every roof. Its standout feature is a dedicated modular chassis, outperforming the Light Rail in long-term longevity and repairability due to its interchangeable parts and 45-minute battery swap capability. It matches the Light Rail's efficiency with up to 22 hours of peak operational range using local regenerative braking. It features a 120Hz digital route-mapping interface on every window, though solar-reliant fleets can still face occasional operational issues in niche northern climates during winter months.
+
+    SOURCE 3
+    Community Bike-Share: The Budget Powerhouse [Municipal Finance / Citizen Transport 2026]:
+    For cities on a tight budget, the Community Bike-Share program offers a wide-reaching network of 16 docking stations for as low as $699 per unit investment. While the frame build quality uses more recycled aluminum than premium carbon rivals, it provides a 'marathon range' through a purely mechanical or hybrid pedal-assist system. It is marketed as a reliable, mid-range workhorse for municipalities that prioritize decentralized cost-efficiency and immediate deployment over high-end aesthetic infrastructure projects.
+    """
+
+    generate_dataset(
+        dataset_name="transit",
+        question="What is the best transit system for a city?",
+        criteria=[
+            "accessibility",
+            "longevity",
+            "cost efficiency",
+            "operational range",
+            "deployment speed",
+        ],
+        plausible_answers=["Light Rail", "Solar-Bus BRT", "Community Bike-Share"],
+        sources=sources,
+        top_k=3,
+        model="gpt-4o-mini",
+        include_confidence=False,
+    )
