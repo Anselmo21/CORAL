@@ -1,4 +1,4 @@
-"""Sub-lattice ERA budget ablation sweep on data/sources/msmarco_criteria.json.
+"""Sub-lattice ERA budget ablation sweep on data/msmarco_criteria.json.
 
 Iterates every non-halted qid (no dev/test split). For each effective size
 k in 3..9 samples 20 sub-lattices that contain a BFS-found CF, and adds the
@@ -10,10 +10,10 @@ Also writes a CC-ready export of the same case set so the CC runner can
 operate on the identical lattice slices.
 
 Outputs:
-  data/msmarco_criteria/cases.json             — sampled (qid, size, start_node) cases
-  data/msmarco_criteria/cc_cases.json          — CC-ready export (sub-lattice rbc + sources)
-  data/msmarco_criteria/per_case/case_<i>.json — per-case results (resumable)
-  data/msmarco_criteria/results.json           — aggregate results
+  logged_results/msmarco_criteria/cases.json             — sampled (qid, size, start_node) cases
+  logged_results/msmarco_criteria/cc_cases.json          — CC-ready export (sub-lattice rbc + sources)
+  logged_results/msmarco_criteria/per_case/case_<i>.json — per-case results (resumable)
+  logged_results/msmarco_criteria/results.json           — aggregate results
 """
 
 from __future__ import annotations
@@ -21,27 +21,23 @@ from __future__ import annotations
 import argparse
 import json
 import os
-import random
 import subprocess
 import sys
 from collections import defaultdict
-from itertools import combinations
 
+from scripts.shared.sampling import SEED, SIZES, TARGET_PER_SIZE, sample_cases
 from search.bfs import bfs_search
 from search.lattice import combo_key, jaccard_keys
 from search.rank import era_search, sra_search
 
-DATA_PATH = "data/sources/msmarco_criteria.json"
-OUT_DIR = "data/msmarco_criteria"
+DATA_PATH = "data/msmarco_criteria.json"
+OUT_DIR = "logged_results/msmarco_criteria"
 CASES_PATH = f"{OUT_DIR}/cases.json"
 CC_CASES_PATH = f"{OUT_DIR}/cc_cases.json"
 RESULTS_PATH = f"{OUT_DIR}/results.json"
 
-SIZES: list[int] = list(range(3, 10))   # 3..9 sub-lattices; k=10 added separately
-TARGET_PER_SIZE: int = 20
 ERA_BUDGETS_FIXED: list[int] = [4, 8, 16, 32, 64, 128, 256]
 ERA_BUDGETS_PCT: list[int] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
-SEED: int = 42
 
 MAX_RETRIES_PER_CASE: int = 8
 
@@ -73,43 +69,6 @@ def _load_lattices(qids: list[str]) -> dict[str, tuple[list[str], dict[str, list
             continue
         out[qid] = (criteria, rbc)
     return out
-
-
-# ---------------------------------------------------------------------------
-# Case sampling
-# ---------------------------------------------------------------------------
-
-def _has_cf(rbc: dict[str, list[str]], criteria: list[str], start_node: list[str]) -> bool:
-    return bfs_search(criteria, rbc, start_node=start_node, direction="down")["found"]
-
-
-def sample_cases(qids: list[str], seed: int = SEED) -> list[dict]:
-    rng = random.Random(seed)
-    lattices = _load_lattices(qids)
-    print(f"Loaded {len(lattices)} lattices.")
-
-    cases: list[dict] = []
-    for size in SIZES:
-        candidates: list[dict] = []
-        for qid, (criteria, _) in lattices.items():
-            for combo in combinations(criteria, size):
-                candidates.append({"qid": qid, "size": size, "start_node": list(combo)})
-        rng.shuffle(candidates)
-        accepted: list[dict] = []
-        for cand in candidates:
-            criteria, rbc = lattices[cand["qid"]]
-            if _has_cf(rbc, criteria, cand["start_node"]):
-                accepted.append(cand)
-                if len(accepted) >= TARGET_PER_SIZE:
-                    break
-        print(f"  size={size}: pool={len(candidates):>6}  accepted={len(accepted):>3}/{TARGET_PER_SIZE}")
-        cases.extend(accepted)
-
-    for qid, (criteria, _) in lattices.items():
-        cases.append({"qid": qid, "size": 10, "start_node": criteria})
-    print(f"  size=10: added {len(lattices)} full lattices")
-
-    return cases
 
 
 # ---------------------------------------------------------------------------
@@ -278,7 +237,8 @@ def run_one_case(case_id: int, case: dict, criteria: list[str], rbc: dict[str, l
         label = era_label("fixed", b)
         if label in partial["era"]:
             continue
-        res = era_search(criteria, rbc, budget=b, start_node=start_node, direction="down")
+        res = era_search(criteria, rbc, budget=b, start_node=start_node, direction="down",
+                         propagate_scores=True)
         partial["era"][label] = score_proxy(bfs_for_proxy, res, rbc, start_node)
         _checkpoint(case_id, partial)
 
@@ -287,7 +247,8 @@ def run_one_case(case_id: int, case: dict, criteria: list[str], rbc: dict[str, l
         if label in partial["era"]:
             continue
         b = max(1, int(2**size * pct / 100))
-        res = era_search(criteria, rbc, budget=b, start_node=start_node, direction="down")
+        res = era_search(criteria, rbc, budget=b, start_node=start_node, direction="down",
+                         propagate_scores=True)
         scored = score_proxy(bfs_for_proxy, res, rbc, start_node)
         scored["budget"] = b
         scored["budget_pct"] = pct
@@ -417,9 +378,11 @@ def main() -> None:
 
     qids = _load_all_qids()
     print(f"Qids ({len(qids)}): {qids}")
+    lattices = _load_lattices(qids)
+    print(f"Loaded {len(lattices)} lattices.")
 
     if args.resample or not os.path.exists(CASES_PATH):
-        cases = sample_cases(qids)
+        cases = sample_cases(lattices)
         with open(CASES_PATH, "w") as f:
             json.dump(cases, f, indent=2)
         print(f"Sampled {len(cases)} cases → {CASES_PATH}")
@@ -428,7 +391,6 @@ def main() -> None:
             cases = json.load(f)
         print(f"Loaded {len(cases)} cached cases from {CASES_PATH}")
 
-    lattices = _load_lattices(qids)
     cc_cases = export_cc_cases(cases, lattices)
     with open(CC_CASES_PATH, "w") as f:
         json.dump(cc_cases, f, indent=2)

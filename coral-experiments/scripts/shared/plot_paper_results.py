@@ -6,9 +6,7 @@ omitted if their column is missing from paper_results.json (so this can run
 before CC has merged in).
 
 Outputs:
-    plots/<dataset>/{accuracy,cost,hop}_by_size.png
     plots/<dataset>/combined.png        (3 panels in one figure)
-    plots/headline_acc_vs_cost.png      (aggregate per dataset, all methods)
 
 Usage:
     conda run -n coral python3 -m scripts.shared.plot_paper_results
@@ -46,7 +44,7 @@ OUT_BASE = "plots"
 
 
 def _load(dataset: str) -> list[dict]:
-    with open(f"data/{dataset}/paper_results.json") as f:
+    with open(f"logged_results/{dataset}/paper_results.json") as f:
         return json.load(f)
 
 
@@ -134,73 +132,6 @@ def plot_dataset(name: str, out_name: str, nice: str) -> None:
     plt.close(fig)
     print(f"  → {out}")
 
-    for kind, ylabel in [("acc", "Accuracy (%)"),
-                         ("cost", "Avg Cost (LLM Calls)"),
-                         ("hop",  "Avg. Hop Distance to BFS CF")]:
-        fig, ax = plt.subplots(figsize=(7.5, 3))
-        for col, lab, mk, ls, color, lw, is_bfs in available:
-            if is_bfs and kind in ("acc", "hop"):
-                continue
-            xs, ys = _series(rows_by, col, kind, is_bfs)
-            if xs:
-                ax.plot(xs, ys, marker=mk, linestyle=ls, color=color, linewidth=lw,
-                        markersize=7, label=lab)
-        ax.set_xlabel(xlabel)
-        ax.set_ylabel(ylabel)
-        ax.set_xticks(sorted(rows_by.keys()))
-        ax.grid(True, alpha=0.3)
-        if kind == "acc":
-            ax.set_ylim(0, 108)
-        ax.legend(loc="upper left", fontsize=8, frameon=True)
-        fig.tight_layout()
-        out = f"{out_dir}/{kind}_by_size.png"
-        fig.savefig(out, dpi=150, bbox_inches="tight")
-        plt.close(fig)
-
-
-def plot_headline() -> None:
-    """One scatter per method: x = avg cost across all cases, y = accuracy.
-    One marker per (dataset, method)."""
-    fig, ax = plt.subplots(figsize=(8, 3.8))
-    dataset_markers = {"msmarco_criteria": "o", "sonnet_criteria": "s",
-                       "msmarco_pragma": "^", "sonnet_pragma": "D"}
-
-    for ds, _out, nice in DATASETS:
-        rows = _load(ds)
-        for col, lab, _mk, _ls, color, _lw, is_bfs in METHODS:
-            if not _has_method(rows, col):
-                continue
-            cells = [r.get(col) for r in rows]
-            cells = [c for c in cells if c is not None]
-            if not cells:
-                continue
-            if is_bfs:
-                acc = 100.0
-                cost = float(np.mean([c["calls"] for c in cells]))
-            else:
-                acc = 100.0 * sum(1 for c in cells if c.get("outcome") == "correct") / len(cells)
-                cost = float(np.mean([c["calls"] + c.get("budget_used", 0) for c in cells]))
-            ax.scatter(cost, acc, marker=dataset_markers[ds], color=color, s=90,
-                       edgecolors="black", linewidths=0.5, zorder=3)
-
-    for col, lab, _mk, _ls, color, _lw, is_bfs in METHODS:
-        ax.scatter([], [], marker="o", color=color, s=80, label=lab)
-    for ds, _out, nice in DATASETS:
-        ax.scatter([], [], marker=dataset_markers[ds], color="gray",
-                   edgecolors="black", s=80, label=nice)
-
-    ax.set_xlabel("Avg cost (LLM calls + budget)")
-    ax.set_ylabel("Accuracy (%)")
-    ax.set_ylim(0, 108)
-    ax.legend(loc="lower right", fontsize=7, ncol=2)
-    ax.grid(True, alpha=0.3)
-    fig.tight_layout()
-    os.makedirs(OUT_BASE, exist_ok=True)
-    out = f"{OUT_BASE}/headline_acc_vs_cost.png"
-    fig.savefig(out, dpi=150)
-    plt.close(fig)
-    print(f"\n→ {out}")
-
 
 def main() -> None:
     apply_plot_style()
@@ -208,7 +139,6 @@ def main() -> None:
     for name, out_name, nice in DATASETS:
         print(f"\n[{nice}]")
         plot_dataset(name, out_name, nice)
-    plot_headline()
 
 
 if __name__ == "__main__":

@@ -1,0 +1,221 @@
+{
+  "case_id": 100,
+  "qid": "52412",
+  "size": 8,
+  "start_node": [
+    "trustworthiness: peer-reviewed cannabis research",
+    "trustworthiness: medical marijuana clinical practice",
+    "trustworthiness: state cannabis program guidelines",
+    "trustworthiness: dispensary strain catalog",
+    "perspective: nighttime sleep-focused patient",
+    "perspective: psychoactive-averse patient",
+    "perspective: severe muscle pain patient",
+    "perspective: cannabis-naive patient"
+  ],
+  "bfs": {
+    "found": true,
+    "key": "perspective: nighttime sleep-focused patient, perspective: severe muscle pain patient, trustworthiness: dispensary strain catalog, trustworthiness: medical marijuana clinical practice, trustworthiness: peer-reviewed cannabis research, trustworthiness: state cannabis program guidelines",
+    "layer": 6,
+    "calls": 10
+  },
+  "sra": {
+    "proxy_key": "perspective: nighttime sleep-focused patient, perspective: severe muscle pain patient, trustworthiness: medical marijuana clinical practice, trustworthiness: peer-reviewed cannabis research",
+    "proxy_layer": 4,
+    "proxy_verified": true,
+    "outcome": "wrong_layer",
+    "gap": 2,
+    "jaccard": 0.6666666666666666,
+    "calls": 1,
+    "budget_used": 0,
+    "pruned_nodes": 0
+  },
+  "era": {
+    "era_fixed_4": {
+      "proxy_key": "perspective: nighttime sleep-focused patient, perspective: severe muscle pain patient, trustworthiness: dispensary strain catalog, trustworthiness: peer-reviewed cannabis research, trustworthiness: state cannabis program guidelines",
+      "proxy_layer": 5,
+      "proxy_verified": true,
+      "outcome": "wrong_layer",
+      "gap": 1,
+      "jaccard": 0.8333333333333334,
+      "calls": 23,
+      "budget_used": 4,
+      "pruned_nodes": 43
+    },
+    "era_fixed_8": {
+      "proxy_key": "perspective: cannabis-naive patient, perspective: nighttime sleep-focused patient, perspective: severe muscle pain patient, trustworthiness: dispensary strain catalog, trustworthiness: peer-reviewed cannabis research",
+      "proxy_layer": 5,
+      "proxy_verified": true,
+      "outcome": "wrong_layer",
+      "gap": 1,
+      "jaccard": 0.5714285714285714,
+      "calls": 14,
+      "budget_used": 8,
+      "pruned_nodes": 66
+    },
+    "era_fixed_16": {
+      "proxy_key": "perspective: nighttime sleep-focused patient, perspective: severe muscle pain patient, trustworthiness: dispensary strain catalog, trustworthiness: medical marijuana clinical practice, trustworthiness: peer-reviewed cannabis research, trustworthiness: state cannabis program guidelines",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 9,
+      "budget_used": 16,
+      "pruned_nodes": 2
+    },
+    "era_fixed_32": {
+      "proxy_key": "perspective: nighttime sleep-focused patient, perspective: severe muscle pain patient, trustworthiness: dispensary strain catalog, trustworthiness: medical marijuana clinical practice, trustworthiness: peer-reviewed cannabis research, trustworthiness: state cannabis program guidelines",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 9,
+      "budget_used": 32,
+      "pruned_nodes": 2
+    },
+    "era_fixed_64": {
+      "proxy_key": "perspective: nighttime sleep-focused patient, perspective: severe muscle pain patient, trustworthiness: dispensary strain catalog, trustworthiness: medical marijuana clinical practice, trustworthiness: peer-reviewed cannabis research, trustworthiness: state cannabis program guidelines",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 3,
+      "budget_used": 64,
+      "pruned_nodes": 25
+    },
+    "era_fixed_128": {
+      "proxy_key": "perspective: nighttime sleep-focused patient, perspective: severe muscle pain patient, trustworthiness: dispensary strain catalog, trustworthiness: medical marijuana clinical practice, trustworthiness: peer-reviewed cannabis research, trustworthiness: state cannabis program guidelines",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 2,
+      "budget_used": 128,
+      "pruned_nodes": 6
+    },
+    "era_fixed_256": {
+      "proxy_key": "perspective: nighttime sleep-focused patient, perspective: severe muscle pain patient, trustworthiness: dispensary strain catalog, trustworthiness: medical marijuana clinical practice, trustworthiness: peer-reviewed cannabis research, trustworthiness: state cannabis program guidelines",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 5,
+      "budget_used": 131,
+      "pruned_nodes": 1
+    },
+    "era_pct_10": {
+      "proxy_key": "perspective: nighttime sleep-focused patient, perspective: severe muscle pain patient, trustworthiness: dispensary strain catalog, trustworthiness: medical marijuana clinical practice, trustworthiness: peer-reviewed cannabis research, trustworthiness: state cannabis program guidelines",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 9,
+      "budget_used": 25,
+      "pruned_nodes": 2
+    },
+    "era_pct_20": {
+      "proxy_key": "perspective: nighttime sleep-focused patient, perspective: severe muscle pain patient, trustworthiness: dispensary strain catalog, trustworthiness: medical marijuana clinical practice, trustworthiness: peer-reviewed cannabis research, trustworthiness: state cannabis program guidelines",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 8,
+      "budget_used": 51,
+      "pruned_nodes": 26
+    },
+    "era_pct_30": {
+      "proxy_key": "perspective: nighttime sleep-focused patient, perspective: severe muscle pain patient, trustworthiness: dispensary strain catalog, trustworthiness: medical marijuana clinical practice, trustworthiness: peer-reviewed cannabis research, trustworthiness: state cannabis program guidelines",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 9,
+      "budget_used": 76,
+      "pruned_nodes": 2
+    },
+    "era_pct_40": {
+      "proxy_key": "perspective: nighttime sleep-focused patient, perspective: severe muscle pain patient, trustworthiness: dispensary strain catalog, trustworthiness: medical marijuana clinical practice, trustworthiness: peer-reviewed cannabis research, trustworthiness: state cannabis program guidelines",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 9,
+      "budget_used": 102,
+      "pruned_nodes": 2
+    },
+    "era_pct_50": {
+      "proxy_key": "perspective: nighttime sleep-focused patient, perspective: severe muscle pain patient, trustworthiness: dispensary strain catalog, trustworthiness: medical marijuana clinical practice, trustworthiness: peer-reviewed cannabis research, trustworthiness: state cannabis program guidelines",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 2,
+      "budget_used": 128,
+      "pruned_nodes": 6
+    },
+    "era_pct_60": {
+      "proxy_key": "perspective: nighttime sleep-focused patient, perspective: severe muscle pain patient, trustworthiness: dispensary strain catalog, trustworthiness: medical marijuana clinical practice, trustworthiness: peer-reviewed cannabis research, trustworthiness: state cannabis program guidelines",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 5,
+      "budget_used": 131,
+      "pruned_nodes": 1
+    },
+    "era_pct_70": {
+      "proxy_key": "perspective: nighttime sleep-focused patient, perspective: severe muscle pain patient, trustworthiness: dispensary strain catalog, trustworthiness: medical marijuana clinical practice, trustworthiness: peer-reviewed cannabis research, trustworthiness: state cannabis program guidelines",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 5,
+      "budget_used": 131,
+      "pruned_nodes": 1
+    },
+    "era_pct_80": {
+      "proxy_key": "perspective: nighttime sleep-focused patient, perspective: severe muscle pain patient, trustworthiness: dispensary strain catalog, trustworthiness: medical marijuana clinical practice, trustworthiness: peer-reviewed cannabis research, trustworthiness: state cannabis program guidelines",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 5,
+      "budget_used": 131,
+      "pruned_nodes": 1
+    },
+    "era_pct_90": {
+      "proxy_key": "perspective: nighttime sleep-focused patient, perspective: severe muscle pain patient, trustworthiness: dispensary strain catalog, trustworthiness: medical marijuana clinical practice, trustworthiness: peer-reviewed cannabis research, trustworthiness: state cannabis program guidelines",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 5,
+      "budget_used": 131,
+      "pruned_nodes": 1
+    },
+    "era_pct_100": {
+      "proxy_key": "perspective: nighttime sleep-focused patient, perspective: severe muscle pain patient, trustworthiness: dispensary strain catalog, trustworthiness: medical marijuana clinical practice, trustworthiness: peer-reviewed cannabis research, trustworthiness: state cannabis program guidelines",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 5,
+      "budget_used": 131,
+      "pruned_nodes": 1
+    }
+  }
+}

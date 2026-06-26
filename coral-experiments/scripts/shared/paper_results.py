@@ -4,7 +4,7 @@ For each of the 4 main datasets, refresh ERA(b=16) + ERA(pct_10) under the
 current normalized softmax_entropy, copy BFS + SRA from existing results,
 compute hop distance from BFS's CF for every method, and emit:
 
-    data/<dataset>/paper_results.json   (per-case rows: bfs/sra/era_b16/era_pct10)
+    logged_results/<dataset>/paper_results.json   (per-case rows: bfs/sra/era_b16/era_pct10)
     stdout                             (per-dataset table: accuracy, cost, hop)
 
 Datasets:
@@ -29,12 +29,15 @@ from search.lattice import hop_distance
 from search.rank import era_search
 
 DATASETS = [
-    # (data dir, module path, label, propagate_scores)
-    ("msmarco_criteria",        "scripts.criteria.msmarco.run_subsample",          "MSMARCO criteria",       False),
-    ("sonnet_criteria",         "scripts.criteria.sonnet.run_subsample",           "Sonnet criteria",        False),
-    ("msmarco_pragma", "scripts.pragma.msmarco.run_subsample", "MSMARCO pragma (regen)", True),
-    ("sonnet_pragma",            "scripts.pragma.sonnet.run_subsample",    "Sonnet pragma",          True),
+    # (data dir, module path, label)
+    ("msmarco_criteria", "scripts.criteria.msmarco.run_subsample", "MSMARCO criteria"),
+    ("sonnet_criteria",  "scripts.criteria.sonnet.run_subsample",  "Sonnet criteria"),
+    ("msmarco_pragma",   "scripts.pragma.msmarco.run_subsample",   "MSMARCO pragma"),
+    ("sonnet_pragma",    "scripts.pragma.sonnet.run_subsample",    "Sonnet pragma"),
 ]
+
+# One setting applied across all four datasets — no per-dataset flag.
+PROPAGATE_SCORES = True
 
 
 def _load_results(path: str) -> list[dict]:
@@ -53,9 +56,9 @@ def _load_lattices(mod):
     raise RuntimeError(f"No loader on {mod.__name__}")
 
 
-def rerun_dataset(name: str, modpath: str, propagate_scores: bool = False) -> list[dict]:
-    cases_path   = f"data/{name}/cases.json"
-    results_path = f"data/{name}/results.json"
+def rerun_dataset(name: str, modpath: str, propagate_scores: bool = PROPAGATE_SCORES) -> list[dict]:
+    cases_path   = f"logged_results/{name}/cases.json"
+    results_path = f"logged_results/{name}/results.json"
 
     with open(cases_path) as f:
         cases = json.load(f)
@@ -151,11 +154,11 @@ def summarize(rows: list[dict]) -> str:
 
 
 def main():
-    for name, modpath, nice, propagate in DATASETS:
-        flag = "  [propagate_scores=ON]" if propagate else ""
-        print(f"\n{'='*70}\n  {nice}   (data/{name}/){flag}\n{'='*70}")
-        rows = rerun_dataset(name, modpath, propagate_scores=propagate)
-        out_path = f"data/{name}/paper_results.json"
+    flag = "  [propagate_scores=ON]" if PROPAGATE_SCORES else ""
+    for name, modpath, nice in DATASETS:
+        print(f"\n{'='*70}\n  {nice}   (logged_results/{name}/){flag}\n{'='*70}")
+        rows = rerun_dataset(name, modpath, propagate_scores=PROPAGATE_SCORES)
+        out_path = f"logged_results/{name}/paper_results.json"
         with open(out_path, "w") as f:
             json.dump(rows, f, indent=2)
         print(f"\n  → {out_path}  ({len(rows)} rows)\n")

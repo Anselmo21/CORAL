@@ -1,7 +1,7 @@
 """Merge CC (b=16, pct_10) results into paper_results.json for each dataset.
 
 After CC has been run on a GPU machine, copy the cc_results_*.json files back to
-data/<dataset>/ and then run this script to update paper_results.json with
+logged_results/<dataset>/ and then run this script to update paper_results.json with
 cc_b16 / cc_pct10 columns, recompute the per-dataset table, and print the final
 6-method summary.
 
@@ -30,12 +30,12 @@ DATASETS = [
 
 
 def _load_paper(name: str) -> list[dict]:
-    with open(f"data/{name}/paper_results.json") as f:
+    with open(f"logged_results/{name}/paper_results.json") as f:
         return json.load(f)
 
 
 def _load_cc(name: str, config_label: str) -> dict[int, dict] | None:
-    path = f"data/{name}/cc_results_{config_label}.json"
+    path = f"logged_results/{name}/cc_results_{config_label}.json"
     if not os.path.exists(path):
         return None
     with open(path) as f:
@@ -67,7 +67,7 @@ def merge_dataset(name: str) -> list[dict]:
             entry["hop_to_bfs"] = hop_distance(entry["proxy_key"], bfs_key)
             r[col] = entry
 
-    with open(f"data/{name}/paper_results.json", "w") as f:
+    with open(f"logged_results/{name}/paper_results.json", "w") as f:
         json.dump(rows, f, indent=2)
     return rows
 
@@ -106,7 +106,7 @@ def summarize(rows: list[dict]) -> str:
 
 def main():
     for name, nice in DATASETS:
-        print(f"\n{'='*70}\n  {nice}   (data/{name}/)\n{'='*70}")
+        print(f"\n{'='*70}\n  {nice}   (logged_results/{name}/)\n{'='*70}")
         rows = merge_dataset(name)
         print(summarize(rows))
 

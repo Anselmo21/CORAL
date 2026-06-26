@@ -1,9 +1,9 @@
 """CC (LSM) on the 16-lattice MSMARCO pragma regen cases at one budget config.
 
 Two modes:
-    --export        builds  data/msmarco_pragma/cc_cases.json
+    --export        builds  logged_results/msmarco_pragma/cc_cases.json
     --run --vllm    runs CC on cc_cases.json at the chosen budget,
-                    writes data/msmarco_pragma/cc_results_<config>.json
+                    writes logged_results/msmarco_pragma/cc_results_<config>.json
 
 Budget config (mutually exclusive):
     --pct 10        per-case budget = max(1, int(2**k * 10/100))   (default)
@@ -23,13 +23,17 @@ import json
 import os
 import time
 
-from scripts.pragma.msmarco.run_subsample import _load_dataset
 from scripts.shared.cc_budget_ablation_dev import score_cc
 from search.bfs import bfs_search
 
-DATASET_PATH    = "data/sources/msmarco_pragma.json"
-CASES_PATH      = "data/msmarco_pragma/cases.json"
-CC_CASES_PATH   = "data/msmarco_pragma/cc_cases.json"
+DATASET_PATH    = "data/msmarco_pragma.json"
+CASES_PATH      = "logged_results/msmarco_pragma/cases.json"
+CC_CASES_PATH   = "logged_results/msmarco_pragma/cc_cases.json"
+
+
+def _load_dataset() -> dict:
+    with open(DATASET_PATH) as f:
+        return json.load(f)
 
 
 def _restrict_rbc(rbc: dict[str, list[str]], start_node: list[str]) -> dict[str, list[str]]:
@@ -82,7 +86,7 @@ def run(args: argparse.Namespace) -> None:
         config_label = f"budget_{args.budget}"
     else:
         config_label = f"pct_{args.pct}"
-    out_path = f"data/msmarco_pragma/cc_results_{config_label}.json"
+    out_path = f"logged_results/msmarco_pragma/cc_results_{config_label}.json"
 
     with open(CC_CASES_PATH) as f:
         cases = json.load(f)

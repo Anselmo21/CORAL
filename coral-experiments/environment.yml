@@ -19,6 +19,7 @@ dependencies:
     # - transformers
     # - vllm
     #
-    # context-cite is the search adapter; install it from a local checkout:
-    #   pip install -e /path/to/concept-cite
-    # because the published version on PyPI lags the API used here.
+    # context-cite is vendored in ./concept-cite (fork of MadryLab/context-cite
+    # with VLLMContextCiter + ConceptCriteriaPartitioner additions). The PyPI
+    # version lags the API used here. Install in editable mode:
+    # - -e ./concept-cite

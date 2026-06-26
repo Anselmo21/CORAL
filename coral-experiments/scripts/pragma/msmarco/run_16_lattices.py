@@ -1,8 +1,9 @@
 """Sub-lattice BFS / SRA / ERA budget sweep on the 16-lattice MSMARCO regen.
 
 Same sampling logic as scripts.pragma.msmarco.run_subsample (uniform
-shuffle + first-fit, MIN_PRAGMAS_REMOVED=2, TARGET_PER_SIZE=20, k=10 always
-included one-per-qid), but drops two qids first:
+shuffle + first-fit via scripts.shared.sampling: MIN_REMOVED=2,
+TARGET_PER_SIZE=20, k=10 always included one-per-qid), but drops two
+qids first:
 
   EXCLUDE_QIDS = {"480543", "51587"}
 
@@ -10,9 +11,9 @@ leaving 16 lattices. (52412 kept from the original 3-qid exclusion because it
 has the highest k=10 BFS cost of the three.)
 
 Outputs:
-  data/msmarco_pragma/cases.json
-  data/msmarco_pragma/per_case/case_<i>.json
-  data/msmarco_pragma/results.json
+  logged_results/msmarco_pragma/cases.json
+  logged_results/msmarco_pragma/per_case/case_<i>.json
+  logged_results/msmarco_pragma/results.json
 """
 from __future__ import annotations
 
@@ -30,7 +31,7 @@ import scripts.pragma.msmarco.run_subsample as base
 
 EXCLUDE_QIDS: set[str] = {"480543", "51587"}
 
-OUT_DIR      = "data/msmarco_pragma"
+OUT_DIR      = "logged_results/msmarco_pragma"
 CASES_PATH   = f"{OUT_DIR}/cases.json"
 RESULTS_PATH = f"{OUT_DIR}/results.json"
 

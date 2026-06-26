@@ -2,7 +2,7 @@
 # Launch all 8 CC runs (4 datasets × 2 budget configs) across 3 GPUs.
 #
 # Each job pins CUDA_VISIBLE_DEVICES to one GPU and writes to a unique
-# data/<dataset>/cc_results_<config>.json file. The runners checkpoint after
+# logged_results/<dataset>/cc_results_<config>.json file. The runners checkpoint after
 # every case, so killing & restarting is safe (it will resume).
 #
 # Each dataset must have cc_cases.json on disk first. If anything is missing,
@@ -38,10 +38,10 @@ export VLLM_USE_FLASHINFER_SAMPLER=0
 # ---------------------------------------------------------------------------
 
 declare -A EXPORTS=(
-  [data/msmarco_criteria/cc_cases.json]="(already built by run_subsample.py)"
-  [data/sonnet_criteria/cc_cases.json]="(already built by run_subsample.py)"
-  [data/msmarco_pragma/cc_cases.json]="python3 -m scripts.pragma.msmarco.run_cc_full --export"
-  [data/sonnet_pragma/cc_cases.json]="python3 -m scripts.pragma.sonnet.run_cc_ablation --export"
+  [logged_results/msmarco_criteria/cc_cases.json]="(already built by run_subsample.py)"
+  [logged_results/sonnet_criteria/cc_cases.json]="(already built by run_subsample.py)"
+  [logged_results/msmarco_pragma/cc_cases.json]="python3 -m scripts.pragma.msmarco.run_cc_full --export"
+  [logged_results/sonnet_pragma/cc_cases.json]="python3 -m scripts.pragma.sonnet.run_cc_ablation --export"
 )
 
 for path in "${!EXPORTS[@]}"; do
@@ -93,8 +93,11 @@ launch_job() {
   fi
 
   echo "  [GPU $gpu] $mod ${run_flag[*]} --vllm $flag  →  $log"
-  CUDA_VISIBLE_DEVICES=$gpu \
-    conda run -n "$CONDA_ENV" python3 -m $mod "${run_flag[@]}" --vllm $flag \
+  # --no-capture-output + PYTHONUNBUFFERED: conda run otherwise holds all stdout
+  # until the job exits, leaving log files at 0 bytes while GPUs are busy.
+  CUDA_VISIBLE_DEVICES=$gpu PYTHONUNBUFFERED=1 \
+    conda run --no-capture-output -n "$CONDA_ENV" \
+      python3 -m $mod "${run_flag[@]}" --vllm $flag \
       > "$log" 2>&1 &
   PID_BY_GPU[$gpu]=$!
 }

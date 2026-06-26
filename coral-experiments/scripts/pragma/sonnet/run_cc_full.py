@@ -1,7 +1,7 @@
 """CC (LSM) on the SONNET pragma sub-lattice cases at the selected budget (GPU).
 
-Reads  data/sonnet_pragma/cc_cases.json (exported by run_cc_ablation.py --export).
-Writes data/sonnet_pragma/cc_results.json with resume on case_id.
+Reads  logged_results/sonnet_pragma/cc_cases.json (exported by run_cc_ablation.py --export).
+Writes logged_results/sonnet_pragma/cc_results.json with resume on case_id.
 
 Default budget = pct_10 (max(1, int(0.10 * 2**k)) per case). Override with --pct.
 
@@ -20,8 +20,8 @@ import time
 from scripts.shared.cc_budget_ablation_dev import score_cc
 from search.bfs import bfs_search
 
-CC_CASES_PATH = "data/sonnet_pragma/cc_cases.json"
-RESULTS_DIR   = "data/sonnet_pragma"
+CC_CASES_PATH = "logged_results/sonnet_pragma/cc_cases.json"
+RESULTS_DIR   = "logged_results/sonnet_pragma"
 
 
 def main() -> None:

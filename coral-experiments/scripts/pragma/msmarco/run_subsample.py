@@ -1,6 +1,6 @@
 """Sub-lattice BFS / SRA / ERA budget sweep on the 18-lattice MSMARCO regen.
 
-Source: data/sources/msmarco_pragma.json
+Source: data/msmarco_pragma.json
   - 18 Llama-3.1-8B-Instruct lattices, regenerated with Claude-Opus-curated
     plausible_answers + pragmas, filtered to first_cf_layer ∈ [2, 8].
   - Each lattice has 10 pragmas, 1024 combos, rankings keyed by `combo_key`
@@ -11,34 +11,29 @@ sample 20 sub-lattices whose BFS-found CF requires ≥2 pragmas removed, plus th
 full k=10 lattice for every qid. Sweeps fixed [4..256] + pct [10..100]% budgets.
 
 Outputs:
-  data/18_lattices_cf_layer2to8/cases.json
-  data/18_lattices_cf_layer2to8/per_case/case_<i>.json
-  data/18_lattices_cf_layer2to8/results.json
+  logged_results/18_lattices_cf_layer2to8/cases.json
+  logged_results/18_lattices_cf_layer2to8/per_case/case_<i>.json
+  logged_results/18_lattices_cf_layer2to8/results.json
 """
 from __future__ import annotations
 
 import argparse
 import json
 import os
-import random
 from collections import defaultdict
-from itertools import combinations
 
+from scripts.shared.sampling import SEED, SIZES, TARGET_PER_SIZE, sample_cases
 from search.bfs import bfs_search
 from search.lattice import combo_key, jaccard_keys
 from search.rank import era_search, sra_search
 
-DATASET_PATH = "data/sources/msmarco_pragma.json"
-OUT_DIR      = "data/18_lattices_cf_layer2to8"
+DATASET_PATH = "data/msmarco_pragma.json"
+OUT_DIR      = "logged_results/18_lattices_cf_layer2to8"
 CASES_PATH   = f"{OUT_DIR}/cases.json"
 RESULTS_PATH = f"{OUT_DIR}/results.json"
 
-SIZES: list[int]              = list(range(3, 10))   # 3..9; k=10 added separately
-TARGET_PER_SIZE: int          = 20
 ERA_BUDGETS_FIXED: list[int]  = [4, 8, 16, 32, 64, 128, 256]
 ERA_BUDGETS_PCT:  list[int]   = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
-SEED: int                     = 42
-MIN_PRAGMAS_REMOVED: int      = 2
 
 
 # ---------------------------------------------------------------------------
@@ -74,51 +69,6 @@ def _load_lattices(
             continue
         out[qid] = (criteria, rbc)
     return out
-
-
-# ---------------------------------------------------------------------------
-# Sampling
-# ---------------------------------------------------------------------------
-
-def _qualifies(
-    rbc: dict[str, list[str]],
-    criteria: list[str],
-    start_node: list[str],
-) -> bool:
-    res = bfs_search(criteria, rbc, start_node=start_node, direction="down")
-    if not res["found"]:
-        return False
-    pragmas_removed = len(start_node) - res["size"]
-    return pragmas_removed >= MIN_PRAGMAS_REMOVED
-
-
-def sample_cases(
-    lattices: dict[str, tuple[list[str], dict[str, list[str]]]],
-    seed: int = SEED,
-) -> list[dict]:
-    rng = random.Random(seed)
-    cases: list[dict] = []
-
-    for size in SIZES:
-        candidates: list[dict] = []
-        for qid, (crit, _) in lattices.items():
-            for combo in combinations(crit, size):
-                candidates.append({"qid": qid, "size": size, "start_node": list(combo)})
-        rng.shuffle(candidates)
-        accepted: list[dict] = []
-        for cand in candidates:
-            crit, rbc = lattices[cand["qid"]]
-            if _qualifies(rbc, crit, cand["start_node"]):
-                accepted.append(cand)
-                if len(accepted) >= TARGET_PER_SIZE:
-                    break
-        print(f"  size={size}: pool={len(candidates):>6}  accepted={len(accepted):>3}/{TARGET_PER_SIZE}")
-        cases.extend(accepted)
-
-    for qid, (crit, _) in sorted(lattices.items()):
-        cases.append({"qid": qid, "size": 10, "start_node": list(crit)})
-    print(f"  size=10: added {len(lattices)} full lattices")
-    return cases
 
 
 # ---------------------------------------------------------------------------
@@ -232,7 +182,8 @@ def run_one_case(
         label = f"era_fixed_{b}"
         if label in partial["era"]:
             continue
-        res = era_search(criteria, rbc, budget=b, start_node=start_node, direction="down")
+        res = era_search(criteria, rbc, budget=b, start_node=start_node, direction="down",
+                         propagate_scores=True)
         partial["era"][label] = score_proxy(bfs_for_proxy, res, rbc, start_node)
         _checkpoint(case_id, partial)
 
@@ -241,7 +192,8 @@ def run_one_case(
         if label in partial["era"]:
             continue
         budget = max(1, int(2**size * p / 100))
-        res = era_search(criteria, rbc, budget=budget, start_node=start_node, direction="down")
+        res = era_search(criteria, rbc, budget=budget, start_node=start_node, direction="down",
+                         propagate_scores=True)
         partial["era"][label] = score_proxy(bfs_for_proxy, res, rbc, start_node)
         _checkpoint(case_id, partial)
 

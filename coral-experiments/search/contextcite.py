@@ -1,6 +1,7 @@
 import numpy as np
 from context_cite import (
     ContextCiter,
+    VLLMContextCiter,
     ConceptCriteriaPartitioner,
     CONCEPT_CRITERIA_PROMPT_TEMPLATE,
 )
@@ -9,14 +10,11 @@ from search.lattice import combo_key, iter_search_layers
 
 
 def _make_citer(model, tokenizer, **kwargs):
-    """Return ContextCiter or VLLMContextCiter depending on the model type."""
-    try:
-        from vllm import LLM as _VLLMType
-        if isinstance(model, _VLLMType):
-            from context_cite.vllm_backend import VLLMContextCiter
+    """Return VLLMContextCiter if model is a vllm LLM, else ContextCiter."""
+    if VLLMContextCiter is not None:
+        from vllm import LLM
+        if isinstance(model, LLM):
             return VLLMContextCiter(model, tokenizer, **kwargs)
-    except ImportError:
-        pass
     return ContextCiter(model, tokenizer, **kwargs)
 
 
@@ -39,19 +37,17 @@ def contextcite_search(
     """
     ContextCite-guided lattice search.
 
-    Fits a Lasso surrogate on LLM logit-probs under random criteria ablations.
+    Fits a Lasso linear model on LLM logit-probs under random criteria ablations.
     For each lattice node, builds a binary presence/absence mask over all criteria
     and calls `solver.predict(mask)` to get the surrogate's predicted logit prob
     for the baseline answer under that subset. Nodes are checked in ascending order
     of predicted logit (least supported baseline first = most likely CFs first).
 
-    Pruning (optional): if `prune_threshold` is set, nodes whose predicted logit
-    exceeds the threshold are skipped without an LLM call. The predicted logit is
-    in the solver's normalised space (logit_prob / num_output_tokens), so a sensible
-    threshold can be derived from `solver.predict(start_node_mask)` at call time.
-
-    Returns {"found", "key", "ranking", "calls", "pruned_nodes", "attributions",
-             "num_ablations", "response", "solver"}.
+    Pruning: nodes whose predicted logit exceeds the threshold are skipped without 
+    an LLM call. By default, the threshold is set to 0, which is equivalent to
+    a probability of 50% for generating the baseline answer. 
+    This means that by pruning, we are only evaluating nodes that are likely to be CFs
+    (below 50% prob that we'll generate the baseline answer).
     """
     if start_node is None:
         start_node = list(criteria)

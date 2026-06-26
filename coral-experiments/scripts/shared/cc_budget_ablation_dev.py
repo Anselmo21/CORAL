@@ -4,7 +4,7 @@ Two phases:
 
   Phase 1 — Local export (run on this machine):
       conda run -n coral python cc_budget_ablation_dev.py --export
-    Produces  data/cc_cases_dev.json  containing per-case
+    Produces  logged_results/cc_cases_dev.json  containing per-case
     {case_id, query_id, query, sources, criteria, fixed_criteria, toggleable_criteria,
      start_node, direction, effective_size, effective_rbc} for every dev.jsonl row.
     Sources are read from the `sources` field of each dev.jsonl row. To override
@@ -15,7 +15,7 @@ Two phases:
       conda run -n coral python cc_budget_ablation_dev.py --run
     Default: single eval budget `num_ablations=64` (matches ERA64 / contextcite default).
     Use `--sweep` to run the full ablation grid in BUDGETS (up to `--num-ablations-max`).
-    Resumes by (case_id, budget); writes data/cc_results_dev.json incrementally.
+    Resumes by (case_id, budget); writes logged_results/cc_results_dev.json incrementally.
     Cases with empty `sources` are skipped.
 """
 
@@ -28,10 +28,10 @@ from itertools import combinations
 from search.lattice import combo_key
 
 
-DEV_LATTICES_PATH = "data/all_lattices.json"
-DEV_CASES_PATH = "data/dev.jsonl"
-CC_CASES_DEV_PATH = "data/cc_cases_dev.json"
-CC_RESULTS_DEV_PATH = "data/cc_results_dev.json"
+DEV_LATTICES_PATH = "logged_results/all_lattices.json"
+DEV_CASES_PATH = "logged_results/dev.jsonl"
+CC_CASES_DEV_PATH = "logged_results/cc_cases_dev.json"
+CC_RESULTS_DEV_PATH = "logged_results/cc_results_dev.json"
 
 # Default eval budget (aligned with ERA64 and search/contextcite.py default).
 CC_EVAL_NUM_ABLATIONS: int = 64
@@ -299,7 +299,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--export", action="store_true",
-                      help="Local: build data/cc_cases_dev.json")
+                      help="Local: build logged_results/cc_cases_dev.json")
     mode.add_argument("--run", action="store_true",
                       help="GPU box: run ContextCite on each case")
     parser.add_argument("--sweep", action="store_true",

@@ -1,6 +1,6 @@
 """Sub-lattice ERA budget ablation sweep on the Sonnet pragma dataset.
 
-Iterates every record in data/sources/sonnet_pragma.json (no split). For each
+Iterates every record in data/sonnet_pragma.json (no split). For each
 effective size k in 3..9 samples 20 sub-lattices that:
   (a) have a BFS-found CF, AND
   (b) the CF requires removal of ≥2 pragmas (BFS CF layer ≤ k-2)
@@ -10,9 +10,9 @@ Runs BFS / SRA / ERA(fixed-budget grid) / ERA(percent-of-lattice grid) on each
 case with incremental per-case checkpointing.
 
 Outputs:
-  data/sonnet_pragma/cases.json                — sampled cases (full set)
-  data/sonnet_pragma/per_case/case_<i>.json    — per-case results (resumable)
-  data/sonnet_pragma/results.json              — aggregate results
+  logged_results/sonnet_pragma/cases.json                — sampled cases (full set)
+  logged_results/sonnet_pragma/per_case/case_<i>.json    — per-case results (resumable)
+  logged_results/sonnet_pragma/results.json              — aggregate results
 
 CLI:
   conda run -n coral python3 -m scripts.pragma.sonnet.run_subsample
@@ -23,25 +23,20 @@ from __future__ import annotations
 import argparse
 import json
 import os
-import random
 from collections import defaultdict
-from itertools import combinations
 
+from scripts.shared.sampling import SEED, SIZES, TARGET_PER_SIZE, sample_cases
 from search.bfs import bfs_search
 from search.lattice import combo_key, jaccard_keys
 from search.rank import era_search, sra_search
 
-DATASET_PATH = "data/sources/sonnet_pragma.json"
-OUT_DIR      = "data/sonnet_pragma"
+DATASET_PATH = "data/sonnet_pragma.json"
+OUT_DIR      = "logged_results/sonnet_pragma"
 CASES_PATH   = f"{OUT_DIR}/cases.json"
 RESULTS_PATH = f"{OUT_DIR}/results.json"
 
-SIZES: list[int]          = list(range(3, 10))   # 3..9 sub-lattice sampling
-TARGET_PER_SIZE: int      = 20
 ERA_BUDGETS_FIXED: list[int] = [4, 8, 16, 32, 64, 128, 256]
 ERA_BUDGETS_PCT:  list[int]  = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
-SEED: int                 = 42
-MIN_PRAGMAS_REMOVED: int  = 2
 
 
 # ---------------------------------------------------------------------------
@@ -99,53 +94,6 @@ def _restrict_rbc(
         if all(p in pragma_set for p in parts):
             out[key] = ranking
     return out
-
-
-# ---------------------------------------------------------------------------
-# Case sampling
-# ---------------------------------------------------------------------------
-
-def _qualifies(
-    rbc: dict[str, list[str]],
-    criteria: list[str],
-    start_node: list[str],
-) -> bool:
-    res = bfs_search(criteria, rbc, start_node=start_node, direction="down")
-    if not res["found"]:
-        return False
-    k = len(start_node)
-    cf_layer = res["size"]
-    pragmas_removed = k - cf_layer
-    return pragmas_removed >= MIN_PRAGMAS_REMOVED
-
-
-def sample_cases(
-    lattices: dict[str, tuple[list[str], dict[str, list[str]]]],
-    seed: int = SEED,
-) -> list[dict]:
-    rng = random.Random(seed)
-    cases: list[dict] = []
-    for size in SIZES:
-        candidates: list[dict] = []
-        for qid, (criteria, _) in lattices.items():
-            for combo in combinations(criteria, size):
-                candidates.append({"qid": qid, "size": size, "start_node": list(combo)})
-        rng.shuffle(candidates)
-        accepted: list[dict] = []
-        for cand in candidates:
-            criteria, rbc = lattices[cand["qid"]]
-            if _qualifies(rbc, criteria, cand["start_node"]):
-                accepted.append(cand)
-                if len(accepted) >= TARGET_PER_SIZE:
-                    break
-        print(f"  size={size}: pool={len(candidates):>5}  accepted={len(accepted):>3}/{TARGET_PER_SIZE}")
-        cases.extend(accepted)
-
-    for qid, (criteria, _) in sorted(lattices.items()):
-        cases.append({"qid": qid, "size": 10, "start_node": criteria})
-    print(f"  size=10: added {len(lattices)} full lattices")
-
-    return cases
 
 
 # ---------------------------------------------------------------------------
@@ -259,7 +207,8 @@ def run_one_case(
         label = f"era_fixed_{b}"
         if label in partial["era"]:
             continue
-        res = era_search(criteria, rbc, budget=b, start_node=start_node, direction="down")
+        res = era_search(criteria, rbc, budget=b, start_node=start_node, direction="down",
+                         propagate_scores=True)
         partial["era"][label] = score_proxy(bfs_for_proxy, res, rbc, start_node)
         _checkpoint(case_id, partial)
 
@@ -268,7 +217,8 @@ def run_one_case(
         if label in partial["era"]:
             continue
         budget = max(1, int(2**size * p / 100))
-        res = era_search(criteria, rbc, budget=budget, start_node=start_node, direction="down")
+        res = era_search(criteria, rbc, budget=budget, start_node=start_node, direction="down",
+                         propagate_scores=True)
         partial["era"][label] = score_proxy(bfs_for_proxy, res, rbc, start_node)
         _checkpoint(case_id, partial)
 
