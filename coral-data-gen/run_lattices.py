@@ -115,9 +115,13 @@ def main() -> None:
     ap.add_argument("--temperature", type=float, default=1.0)
     ap.add_argument("--max-tokens", type=int, default=4096)
     ap.add_argument("--batch-size", type=int, default=1)
+    ap.add_argument("--tensor-parallel-size", type=int, default=1,
+                    help="Number of GPUs to shard the vLLM model across (vllm provider only)")
     ap.add_argument("--max-retries", type=int, default=3)
     ap.add_argument("--fill-missing", action="store_true",
                     help="Resume per-combo within each row (not just per-row)")
+    ap.add_argument("--tqdm", action="store_true",
+                    help="Show vLLM tqdm progress during inference (vllm provider only)")
     ap.add_argument("--force", action="store_true",
                     help="Re-run even if a row's lattice is already complete")
     args = ap.parse_args()
@@ -135,7 +139,11 @@ def main() -> None:
     output_root.mkdir(parents=True, exist_ok=True)
 
     # Build the LLM client once and reuse — critical for local/vllm.
-    client = create_llm_client(provider=args.provider, model=args.model)
+    client = create_llm_client(
+        provider=args.provider,
+        model=args.model,
+        tensor_parallel_size=args.tensor_parallel_size,
+    )
 
     skipped = completed = failed = 0
     for i, row in enumerate(rows, 1):
@@ -177,6 +185,7 @@ def main() -> None:
                 max_retries=args.max_retries,
                 fill_missing=args.fill_missing,
                 batch_size=args.batch_size,
+                use_tqdm=args.tqdm,
             )
             completed += 1
         except Exception as exc:

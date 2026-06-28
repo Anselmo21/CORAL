@@ -45,7 +45,7 @@ python run_lattices.py \
     --mode pragmas \
     --run-name sonnet-pragmas-vllm \
     --provider vllm --model Qwen/Qwen3-8B \
-    --batch-size 32
+    --tensor-parallel-size 2
 ```
 
 `--mode criteria` uses each row's `criteria` field as the 10 atoms; `--mode

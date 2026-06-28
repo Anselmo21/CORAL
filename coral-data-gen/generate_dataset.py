@@ -4,6 +4,22 @@
 #   pip install openai
 #   Set OPENAI_API_KEY environment variable or pass api_key parameter
 
+'''
+example run using Qwen3-32B model with 2 GPUs:
+
+export CUDA_VISIBLE_DEVICES=1,2
+export HF_HOME=/disk/0/data0/katherine/hf_cache
+
+python run_lattices.py \
+    --source datasets/sonnet-dataset.json \
+    --mode pragmas \
+    --run-name sonnet-pragmas-qwen3-32b \
+    --provider vllm \
+    --model Qwen/Qwen3-32B \
+    --temperature 0.7 \
+    --tensor-parallel-size 2
+
+'''
 
 import json
 import os
@@ -25,6 +41,7 @@ def create_llm_client(
     api_key: Optional[str] = None,
     local_device: str = "auto",
     local_dtype: str = "auto",
+    tensor_parallel_size: int = 1,
 ) -> Any:
     """Build an LLM client for the chosen provider. Build once, reuse across queries."""
     if provider == "openai":
@@ -41,8 +58,13 @@ def create_llm_client(
             raise SystemExit("pip install vllm") from exc
         if not model:
             raise ValueError("model is required for provider='vllm'")
-        print(f"Loading vLLM model '{model}' (dtype={local_dtype})...")
-        client = LLM(model=model, dtype=local_dtype, enable_prefix_caching=True)
+        print(f"Loading vLLM model '{model}' (dtype={local_dtype}, tensor_parallel_size={tensor_parallel_size})...")
+        client = LLM(
+            model=model,
+            dtype=local_dtype,
+            enable_prefix_caching=True,
+            tensor_parallel_size=tensor_parallel_size,
+        )
         print("Model loaded.")
         return client
     if provider == "local":
@@ -87,6 +109,7 @@ def _invoke_chat_completion(
     messages: List[Dict[str, str]],
     temperature: float,
     max_tokens: int,
+    use_tqdm: bool = False,
 ) -> str:
     """Provider-agnostic chat completion. Returns the assistant message content as a string."""
     if provider == "openai":
@@ -99,8 +122,22 @@ def _invoke_chat_completion(
         return resp.choices[0].message.content or ""
     if provider == "vllm":
         from vllm import SamplingParams
-        sp = SamplingParams(temperature=temperature, max_tokens=max_tokens)
-        outputs = client.chat([messages], sampling_params=sp, use_tqdm=False)
+        # Qwen3 non-thinking recommended sampling: top_p=0.8, top_k=20, min_p=0.
+        sp = SamplingParams(
+            temperature=temperature,
+            max_tokens=max_tokens,
+            top_p=0.8,
+            top_k=20,
+            min_p=0.0,
+        )
+        # Qwen3 (and other hybrid-reasoning models) emit <think> traces unless the
+        # chat template is told to disable thinking. Unknown templates ignore this kwarg.
+        outputs = client.chat(
+            [messages],
+            sampling_params=sp,
+            use_tqdm=use_tqdm,
+            chat_template_kwargs={"enable_thinking": False},
+        )
         return (outputs[0].outputs[0].text or "").strip()
     if provider == "local":
         do_sample = temperature > 0
@@ -128,6 +165,7 @@ def _invoke_chat_completion_batch(
     temperature: float,
     max_tokens: int,
     batch_size: int,
+    use_tqdm: bool = False,
 ) -> List[str]:
     """Batched chat completion. For provider='local' uses transformers pipeline's native
     GPU batching. For provider='openai' falls back to sequential calls (no batching).
@@ -137,8 +175,20 @@ def _invoke_chat_completion_batch(
         return []
     if provider == "vllm":
         from vllm import SamplingParams
-        sp = SamplingParams(temperature=temperature, max_tokens=max_tokens)
-        outputs = client.chat(messages_list, sampling_params=sp, use_tqdm=False)
+        # Qwen3 non-thinking recommended sampling: top_p=0.8, top_k=20, min_p=0.
+        sp = SamplingParams(
+            temperature=temperature,
+            max_tokens=max_tokens,
+            top_p=0.8,
+            top_k=20,
+            min_p=0.0,
+        )
+        outputs = client.chat(
+            messages_list,
+            sampling_params=sp,
+            use_tqdm=use_tqdm,
+            chat_template_kwargs={"enable_thinking": False},
+        )
         return [(o.outputs[0].text or "").strip() for o in outputs]
     if provider == "local":
         do_sample = temperature > 0
@@ -179,14 +229,16 @@ def _iter_batches(
     batch_size: int,
     fill_missing: bool,
 ):
-    """Yield batches of (i, combo, combo_key) tuples.
+    """
+    Yield batches of (i, combo, combo_key) tuples.
 
     vLLM: two phases — empty-set + singletons first (so the halt check can fire
-    between phases), then all higher-order combos in one shot.  ThreadPoolExecutor
-    caps concurrency inside _invoke_chat_completion_batch, so a large phase is safe.
+    between phases), then all higher-order combos in one shot. Each phase is handed
+    to vLLM in a single client.chat call; vLLM's own continuous-batching scheduler
+    decides concurrency from available GPU/KV-cache memory, so batch_size is ignored.
     fill_missing skips the two-phase split since there is no halt check.
 
-    Other providers: fixed-size chunks as before.
+    Other providers: fixed-size chunks of batch_size.
     """
     if provider == "vllm":
         if fill_missing:
@@ -255,7 +307,8 @@ def create_full_ranking_prompt(
         if criteria
         else "None specified."
     )
-    options_json = json.dumps(options, ensure_ascii=False)
+    n = len(options)
+    options_block = "\n".join(f"{idx}. {opt}" for idx, opt in enumerate(options))
     prompt = f"""
     You are an answering machine.
     Rank the options based on the following question using the following sources and question criteria, if provided.
@@ -263,8 +316,9 @@ def create_full_ranking_prompt(
     The options are not provided in any order of importance, consider them all when answering the question.
     The answer ranked first is the best answer to the question and should be placed at the beginning of the list.
 
-    Return a JSON array of exactly {len(options)} strings — one per option, no more, no less.
-    Every string must be copied verbatim from OPTIONS (character-for-character). Do not paraphrase, shorten, or invent new options.
+    Return a JSON array of exactly {n} integers — the 0-based indices of the options from OPTIONS, ordered best answer first.
+    The array must be a permutation of the indices 0 to {n - 1}: include every index exactly once, with no duplicates and none missing.
+    Output only the index numbers, not the option text.
     Do not include any explanation or additional text, just the JSON array.
 
     QUESTION:\n
@@ -276,10 +330,10 @@ def create_full_ranking_prompt(
     CRITERIA:\n
     {criteria_text}
 
-    OPTIONS (copy these {len(options)} strings verbatim into your output array):\n
-    {options_json}
+    OPTIONS (rank these {n} options by their index number):\n
+    {options_block}
 
-    ANSWER (JSON array of exactly {len(options)} strings, copied verbatim from OPTIONS):\n"""
+    ANSWER (JSON array of exactly {n} integers, a permutation of 0 to {n - 1}, best answer first):\n"""
     return prompt
 
 
@@ -297,7 +351,8 @@ def create_full_ranking_prompt_pragmas(
     (parse_full_ranking, bfs_eval, package_18_lattices) is unchanged.
     """
     prompt_pragma = " AND ".join(pragmas) if pragmas else "NO SOURCE CRITERIA"
-    options_json = json.dumps(options, ensure_ascii=False)
+    n = len(options)
+    options_block = "\n".join(f"{idx}. {opt}" for idx, opt in enumerate(options))
     prompt = f"""
     You are an answering machine.
     Rank the options to the following question using only the following sources.
@@ -307,8 +362,9 @@ def create_full_ranking_prompt_pragmas(
     The options are not provided in any order of importance, consider them all when answering the question.
     The answer ranked first is the best answer to the question and should be placed at the beginning of the list.
 
-    Return a JSON array of exactly {len(options)} strings — one per option, no more, no less.
-    Every string must be copied verbatim from OPTIONS (character-for-character). Do not paraphrase, shorten, or invent new options.
+    Return a JSON array of exactly {n} integers — the 0-based indices of the options from OPTIONS, ordered best answer first.
+    The array must be a permutation of the indices 0 to {n - 1}: include every index exactly once, with no duplicates and none missing.
+    Output only the index numbers, not the option text.
     Do not include any explanation or additional text, just the JSON array.
 
     QUESTION:\n
@@ -320,10 +376,10 @@ def create_full_ranking_prompt_pragmas(
     SOURCE DIRECTIVES:\n
     {prompt_pragma}
 
-    OPTIONS (copy these {len(options)} strings verbatim into your output array):\n
-    {options_json}
+    OPTIONS (rank these {n} options by their index number):\n
+    {options_block}
 
-    ANSWER (JSON array of exactly {len(options)} strings, copied verbatim from OPTIONS):\n"""
+    ANSWER (JSON array of exactly {n} integers, a permutation of 0 to {n - 1}, best answer first):\n"""
     return prompt
 
 
@@ -340,28 +396,59 @@ def build_retry_prompt(base_prompt: str, previous_response: str, reason: str) ->
     )
 
 
-def parse_full_ranking(response: str, expected: List[str]) -> Optional[List[str]]:
-    """Return a permutation of `expected` parsed from the model output, or None."""
-    response = _strip_code_fences(response)
-
-    # HF chat models occasionally wrap arrays as "( [...])" or drop the final "]".
-    repaired = response.strip()
+def _repair_json_array(response: str) -> str:
+    """Strip fences and patch the common malformations chat models emit around
+    JSON arrays (wrapping parens, a missing trailing bracket)."""
+    repaired = _strip_code_fences(response).strip()
     if repaired.startswith("(") and repaired.endswith(")"):
         inner = repaired[1:-1].strip()
         if inner.startswith("["):
             repaired = inner
     if repaired.startswith("[") and not repaired.endswith("]"):
         repaired = repaired + "]"
+    return repaired
 
+
+def _as_index(x: Any) -> Optional[int]:
+    """Coerce a JSON scalar to an int index, or None if it isn't one.
+    Rejects bools (which are int subclasses) so True/False can't sneak in."""
+    if isinstance(x, bool):
+        return None
+    if isinstance(x, int):
+        return x
+    if isinstance(x, str) and x.strip().lstrip("-").isdigit():
+        return int(x.strip())
+    return None
+
+
+def parse_full_ranking(response: str, expected: List[str]) -> Optional[List[str]]:
+    """Return a permutation of `expected` parsed from the model output, or None.
+
+    Primary format is a JSON array of 0-based indices into `expected`
+    (e.g. [2, 0, 1]). For robustness we also accept the legacy verbatim-string
+    array. Either way the return value is a permutation of `expected` strings,
+    so downstream consumers of answers.json are unchanged.
+    """
+    repaired = _repair_json_array(response)
     try:
         items = json.loads(repaired)
     except json.JSONDecodeError:
         return None
     if not isinstance(items, list):
         return None
+
+    n = len(expected)
+
+    # Primary: array of indices into `expected`.
+    indices = [_as_index(x) for x in items]
+    if all(idx is not None for idx in indices):
+        if len(indices) == n and sorted(indices) == list(range(n)):
+            return [expected[idx] for idx in indices]
+        return None
+
+    # Fallback: legacy verbatim-string permutation.
     ranked = [str(x).strip() for x in items]
-    exp_set = set(expected)
-    if len(ranked) != len(expected) or set(ranked) != exp_set:
+    if len(ranked) != n or set(ranked) != set(expected):
         return None
     if len(ranked) != len(set(ranked)):
         return None
@@ -375,23 +462,35 @@ def _single_line_preview(text: str, max_chars: int = 400) -> str:
 
 def _parse_fail_reason(response: str, expected: List[str]) -> str:
     """Return a short human-readable reason why parse_full_ranking returned None."""
-    text = _strip_code_fences(response).strip()
-    repaired = text
-    if repaired.startswith("(") and repaired.endswith(")"):
-        inner = repaired[1:-1].strip()
-        if inner.startswith("["):
-            repaired = inner
-    if repaired.startswith("[") and not repaired.endswith("]"):
-        repaired = repaired + "]"
+    repaired = _repair_json_array(response)
     try:
         items = json.loads(repaired)
     except json.JSONDecodeError as e:
         return f"json_error: {e}"
     if not isinstance(items, list):
         return f"not_a_list: got {type(items).__name__}"
+
+    n = len(expected)
+
+    # Index-format diagnostics (the format we now ask for).
+    indices = [_as_index(x) for x in items]
+    if all(idx is not None for idx in indices):
+        if len(indices) != n:
+            return f"wrong_count: got {len(indices)} indices, expected {n}"
+        out_of_range = sorted({idx for idx in indices if idx < 0 or idx >= n})
+        if out_of_range:
+            return f"index_out_of_range: {out_of_range} (valid 0..{n - 1})"
+        if len(set(indices)) != len(indices):
+            return f"duplicate_indices: {sorted(indices)}"
+        missing = sorted(set(range(n)) - set(indices))
+        if missing:
+            return f"missing_indices: {missing}"
+        return "unknown"
+
+    # Legacy verbatim-string diagnostics.
     ranked = [str(x).strip() for x in items]
-    if len(ranked) != len(expected):
-        return f"wrong_count: got {len(ranked)}, expected {len(expected)}"
+    if len(ranked) != n:
+        return f"wrong_count: got {len(ranked)}, expected {n}"
     extra = set(ranked) - set(expected)
     missing = set(expected) - set(ranked)
     if extra or missing:
@@ -423,6 +522,7 @@ def generate_dataset(
     max_retries: int = 3,
     fill_missing: bool = False,
     batch_size: int = 1,
+    use_tqdm: bool = False,
 ) -> Dict[str, List[str]]:
     """
     Generate a dataset by prompting an LLM for each criteria/pragma combination.
@@ -527,7 +627,7 @@ def generate_dataset(
     if bs > 1 and provider == "local":
         print(f"Batching enabled: batch_size={bs} (local pipeline)")
     elif provider == "vllm":
-        print(f"vLLM: up to {bs} concurrent requests per phase (server-side continuous batching)")
+        print("vLLM: each phase submitted in one call; vLLM schedules its own continuous batching (batch_size is ignored)")
 
     done_count = 0
     for batch in _iter_batches(to_process, provider, bs, fill_missing):
@@ -563,6 +663,8 @@ def generate_dataset(
                 {"role": "user", "content": bp},
             ])
 
+        if use_tqdm and provider == "vllm":
+            print(f"vLLM inference: {len(messages_list)} prompts...")
         # Initial batched call
         try:
             response_texts = _invoke_chat_completion_batch(
@@ -573,6 +675,7 @@ def generate_dataset(
                 temperature=temperature,
                 max_tokens=max_tokens,
                 batch_size=bs,
+                use_tqdm=use_tqdm,
             )
         except Exception as e:
             print(f"  ⚠ batch call failed ({e}); falling back to sequential for this batch")
@@ -582,6 +685,7 @@ def generate_dataset(
                     response_texts.append(_invoke_chat_completion(
                         client=client, provider=provider, model=model,
                         messages=m, temperature=temperature, max_tokens=max_tokens,
+                        use_tqdm=use_tqdm,
                     ))
                 except Exception as e2:
                     print(f"    sequential fallback also failed: {e2}")
@@ -600,7 +704,7 @@ def generate_dataset(
                 try:
                     rp = build_retry_prompt(
                         base_prompt, last_text,
-                        "Not a strict JSON permutation of OPTIONS.",
+                        "Not a strict JSON array permutation of the option indices 0..N-1.",
                     )
                     last_text = _invoke_chat_completion(
                         client=client, provider=provider, model=model,
@@ -609,6 +713,7 @@ def generate_dataset(
                             {"role": "user", "content": rp},
                         ],
                         temperature=temperature, max_tokens=max_tokens,
+                        use_tqdm=use_tqdm,
                     )
                     parsed = parse_full_ranking(last_text, plausible_answers)
                     if parsed is None:

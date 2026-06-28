@@ -1,0 +1,27 @@
+{
+  "name": "sonnet-criteria-qwen3-32b/58",
+  "question": "I need to back up my home files and photos. Should I use a NAS or just pay for cloud storage?",
+  "mode": "criteria",
+  "criteria": [
+    "upfront cost vs recurring monthly cost",
+    "offsite protection from physical disaster",
+    "storage capacity for large data volumes",
+    "data access speed for local files",
+    "setup and maintenance complexity",
+    "vendor lock-in and service continuity risk",
+    "total cost over 5-year ownership",
+    "remote access from outside home network",
+    "privacy and control over personal data",
+    "automatic and passive backup operation"
+  ],
+  "plausible_answers": [
+    "Answer A (Cloud Storage Default): Use cloud storage (Backblaze, Google One, iCloud) \u2014 for most home users, the zero-maintenance automatic offsite protection at $3\u201312/month is vastly simpler than NAS ownership and protects against local disasters.",
+    "Answer B (NAS for Large Data): Buy a Synology NAS if you have 10TB+ of data \u2014 the one-time hardware cost beats cloud subscription costs over 5 years, and local speeds make backup and restore dramatically faster for large libraries.",
+    "Answer C (NAS Plus Cloud for 3-2-1): Combine a NAS for local backups with Backblaze B2 for offsite cloud replication \u2014 this implements the proper 3-2-1 backup strategy and is the only approach that protects against both local hardware failure and physical disaster."
+  ],
+  "sources": "Source 1 (2023, Wirecutter, USA): For most home users, cloud storage (Backblaze, iCloud, Google One) is the recommended approach \u2014 no upfront hardware cost, automatic offsite protection, and no maintenance, at $3\u201312/month.\n\nSource 2 (2022, Ars Technica, USA): A NAS (Synology, QNAP) with 2-bay RAID provides local backup speeds, large storage capacity, and a one-time cost that beats cloud storage subscriptions for households with 10TB+ of data over a 5-year period.\n\nSource 3 (2023, Reddit r/homelab, Global): Community recommends the 3-2-1 backup rule: 3 copies, 2 media types, 1 offsite \u2014 a NAS alone is not a complete backup solution; pairing NAS with cloud backup (Backblaze B2) provides both speed and offsite protection.\n\nSource 4 (2022, Consumer Reports, USA): Cloud storage is vulnerable to subscription price increases, account hacks, and service discontinuation \u2014 local NAS storage remains under your control and is not subject to vendor risk, making it preferred for irreplaceable data.\n\nSource 5 (2021, Synology, Taiwan): Modern NAS systems offer cloud synchronization, automatic photo management, and remote access \u2014 the 'cloud-like' experience of modern NAS makes setup complexity the primary barrier rather than feature parity.",
+  "halted": false,
+  "halted_reason": null,
+  "combos_total": 1024,
+  "combos_run": 1024
+}
