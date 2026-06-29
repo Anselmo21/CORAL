@@ -87,7 +87,7 @@ def score_proxy(
     bfs_layer = bfs_result["size"]
     proxy_key = proxy_result.get("key")
     proxy_layer = proxy_result.get("size")
-    if proxy_key:
+    if proxy_key is not None:
         ranking = rbc.get(proxy_key, [])
         proxy_verified = bool(ranking) and ranking[0] != baseline_top1
     else:

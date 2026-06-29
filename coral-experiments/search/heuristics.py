@@ -21,41 +21,22 @@ def score_margin(scores: dict[str, float], original_answer: str) -> float:
     return original_score - best_other
 
 
-def softmax_entropy(
-    scores: dict[str, float],
-    T: float = 1.0,
-    num_voters: int | None = None,
-    normalize_spread: bool = True,
-) -> float:
-    '''
-    Computes the softmax entropy of the scores.
-    First applies a shift to the scores to ensure they are all positive.
-    Then applies a softmax function to the scores to get the probabilities.
-    Then computes the entropy of the probabilities using the Shannon entropy formula.
+def softmax_entropy(scores: dict[str, float], T: float = 1.0, **_) -> float:
+    """Softmax entropy of an aggregated score vector.
 
-    The temperature parameter T controls the sharpness of the softmax function.
-    A higher temperature results in a more uniform distribution of probabilities.
-    A lower temperature results in a more peaked distribution of probabilities.
-    '''
+    Shifts by the max before softmax (numerically stable, scale-invariant to
+    the top answer). Does NOT range-normalize: the gap between the top answer
+    and runners-up is preserved, so near-ties produce high entropy and clear
+    winners produce low entropy.
+    """
     values = list(scores.values())
     if not values:
         return 0.0
-
-    if normalize_spread:
-        v_min, v_max = min(values), max(values)
-        if v_max>v_min:
-            values = [v / (v_max - v_min) for v in values]
-        shifted_scores = values - np.max(values)
-    else:
-        arr = np.array(values, dtype=float)
-        if num_voters and num_voters > 0:
-            arr = arr / num_voters
-        shifted_scores = arr - np.max(arr)
-
-    exp_scores = np.exp(shifted_scores / T)
+    arr = np.array(values, dtype=float)
+    shifted = arr - arr.max()
+    exp_scores = np.exp(shifted / T)
     probabilities = exp_scores / np.sum(exp_scores)
-    entropy = -np.sum(probabilities * np.log2(probabilities + 1e-12))
-    return entropy
+    return float(-np.sum(probabilities * np.log2(probabilities + 1e-12)))
 
 
 def shannon_entropy(
@@ -63,10 +44,12 @@ def shannon_entropy(
     num_voters: int | None = None,
 ) -> float:
     values = [v for v in scores.values() if v > 0]
+    # values = [scores.get(k, 0) for k in scores.keys()]
     total = sum(values)
     if total == 0:
         return 0.0
     probs = [v / total for v in values]
+    # print(f"probs: {probs}")
     return -sum(p * math.log2(p) for p in probs)
 
 def voter_disagreement_entropy(voter_rankings, answers):
@@ -165,6 +148,43 @@ def kneedle_cutoff(nodes_with_entropy: list[tuple[str, float]],
     ys = [x[1] for x in sorted_nodes]
     xs = range(len(sorted_nodes))
     kl = KneeLocator(xs, ys, S=S, curve=curve, direction=direction)
-    cut = kl.elbow if kl.elbow is not None else len(sorted_nodes) - 1
+    # Fallback to 0 (top node only) when no knee found; selecting all nodes would
+    # over-spend the budget on a flat curve.
+    cut = kl.elbow if kl.elbow is not None else 0
 
     return [k for k, _ in sorted_nodes[:cut + 1][:budget_remaining]]
+
+
+# ---------------------------------------------------------------------------
+# Score normalization functions (applied to aggregated scores before entropy)
+# ---------------------------------------------------------------------------
+
+def norm_minmax(scores: dict[str, float]) -> dict[str, float]:
+    values = list(scores.values())
+    lo, hi = min(values), max(values)
+    if hi == lo:
+        return {k: 0.0 for k in scores}
+    return {k: (v - lo) / (hi - lo) for k, v in scores.items()}
+
+
+def norm_zscore(scores: dict[str, float]) -> dict[str, float]:
+    values = np.array(list(scores.values()), dtype=float)
+    mu, sigma = values.mean(), values.std()
+    if sigma == 0:
+        return {k: 0.0 for k in scores}
+    keys = list(scores)
+    return {keys[i]: float((values[i] - mu) / sigma) for i in range(len(keys))}
+
+
+def norm_rank(scores: dict[str, float]) -> dict[str, float]:
+    """Discard magnitudes; assign 1/rank weights (rank-1 gets 1.0)."""
+    ordered = sorted(scores, key=lambda k: -scores[k])
+    return {k: 1.0 / (rank + 1) for rank, k in enumerate(ordered)}
+
+
+def norm_softmax(scores: dict[str, float]) -> dict[str, float]:
+    values = np.array(list(scores.values()), dtype=float)
+    shifted = values - values.max()
+    exp_v = np.exp(shifted)
+    probs = exp_v / exp_v.sum()
+    return dict(zip(scores.keys(), probs.tolist()))

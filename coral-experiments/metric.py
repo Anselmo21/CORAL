@@ -33,6 +33,8 @@ from search.lattice import jaccard_keys
 
 def _layer_size(key):
     """Criteria count encoded in a rankings_by_combo key ('a, b, c' → 3)."""
+    if key is None:
+        return 0
     return len(key.split(", ")) if key else 0
 
 
@@ -81,8 +83,8 @@ def evaluate(lattices, search_fn):
         # ── Proxy method ──────────────────────────────────────────────────────
         proxy_result   = search_fn(criteria, rbc, start_node=start_node)
         proxy_key      = proxy_result.get("key")
-        proxy_sz       = _layer_size(proxy_key) if proxy_key else 0
-        proxy_verified = _is_real_cf(proxy_key, rbc, baseline_top1) if proxy_key else False
+        proxy_sz       = _layer_size(proxy_key) if proxy_key is not None else 0
+        proxy_verified = _is_real_cf(proxy_key, rbc, baseline_top1) if proxy_key is not None else False
 
         # ── Scoring ───────────────────────────────────────────────────────────
         if not proxy_result.get("found") or proxy_key is None:
