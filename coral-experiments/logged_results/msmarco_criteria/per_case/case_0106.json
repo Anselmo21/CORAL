@@ -31,59 +31,59 @@
   },
   "era": {
     "era_fixed_4": {
-      "proxy_key": "cost-effectiveness, duration of action, interaction with other medications, side effects profile",
+      "proxy_key": "cost-effectiveness, duration of action, side effects profile, specific insomnia type",
       "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.3333333333333333,
-      "calls": 98,
+      "jaccard": 0.6,
+      "calls": 73,
       "budget_used": 4,
-      "pruned_nodes": 0
+      "pruned_nodes": 28
     },
     "era_fixed_8": {
-      "proxy_key": "cost-effectiveness, duration of action, interaction with other medications, side effects profile",
+      "proxy_key": "cost-effectiveness, duration of action, side effects profile, specific insomnia type",
       "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.3333333333333333,
-      "calls": 98,
+      "jaccard": 0.6,
+      "calls": 91,
       "budget_used": 8,
-      "pruned_nodes": 0
+      "pruned_nodes": 31
     },
     "era_fixed_16": {
-      "proxy_key": "cost-effectiveness, duration of action, interaction with other medications, side effects profile",
-      "proxy_layer": 4,
-      "proxy_verified": true,
-      "outcome": "correct",
-      "gap": 0,
-      "jaccard": 0.3333333333333333,
-      "calls": 91,
-      "budget_used": 16,
-      "pruned_nodes": 4
-    },
-    "era_fixed_32": {
       "proxy_key": "duration of action, interaction with other medications, safety for long-term use, specific insomnia type",
       "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 0.3333333333333333,
-      "calls": 95,
-      "budget_used": 32,
-      "pruned_nodes": 1
+      "calls": 75,
+      "budget_used": 16,
+      "pruned_nodes": 27
     },
-    "era_fixed_64": {
-      "proxy_key": "FDA approval status, duration of action, onset time, side effects profile",
+    "era_fixed_32": {
+      "proxy_key": "cost-effectiveness, duration of action, side effects profile, specific insomnia type",
       "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
       "jaccard": 0.6,
-      "calls": 95,
+      "calls": 73,
+      "budget_used": 32,
+      "pruned_nodes": 25
+    },
+    "era_fixed_64": {
+      "proxy_key": "duration of action, onset time, side effects profile, specific insomnia type",
+      "proxy_layer": 4,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 1.0,
+      "calls": 71,
       "budget_used": 64,
-      "pruned_nodes": 7
+      "pruned_nodes": 23
     },
     "era_fixed_128": {
       "proxy_key": "duration of action, onset time, side effects profile, specific insomnia type",
@@ -92,9 +92,9 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 80,
+      "calls": 83,
       "budget_used": 128,
-      "pruned_nodes": 4
+      "pruned_nodes": 9
     },
     "era_fixed_256": {
       "proxy_key": "duration of action, onset time, side effects profile, specific insomnia type",
@@ -103,20 +103,20 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 10,
-      "budget_used": 199,
-      "pruned_nodes": 3
+      "calls": 6,
+      "budget_used": 216,
+      "pruned_nodes": 2
     },
     "era_pct_10": {
-      "proxy_key": "cost-effectiveness, duration of action, interaction with other medications, side effects profile",
+      "proxy_key": "cost-effectiveness, duration of action, side effects profile, specific insomnia type",
       "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.3333333333333333,
-      "calls": 95,
+      "jaccard": 0.6,
+      "calls": 89,
       "budget_used": 25,
-      "pruned_nodes": 15,
+      "pruned_nodes": 12,
       "budget": 25,
       "budget_pct": 10
     },
@@ -127,19 +127,19 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 0.6,
-      "calls": 97,
+      "calls": 71,
       "budget_used": 51,
-      "pruned_nodes": 3,
+      "pruned_nodes": 24,
       "budget": 51,
       "budget_pct": 20
     },
     "era_pct_30": {
-      "proxy_key": "FDA approval status, duration of action, onset time, side effects profile",
+      "proxy_key": "duration of action, onset time, side effects profile, specific insomnia type",
       "proxy_layer": 4,
       "proxy_verified": true,
       "outcome": "correct",
       "gap": 0,
-      "jaccard": 0.6,
+      "jaccard": 1.0,
       "calls": 91,
       "budget_used": 76,
       "pruned_nodes": 1,
@@ -153,9 +153,9 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 88,
+      "calls": 63,
       "budget_used": 102,
-      "pruned_nodes": 4,
+      "pruned_nodes": 29,
       "budget": 102,
       "budget_pct": 40
     },
@@ -166,9 +166,9 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 80,
+      "calls": 83,
       "budget_used": 128,
-      "pruned_nodes": 4,
+      "pruned_nodes": 9,
       "budget": 128,
       "budget_pct": 50
     },
@@ -179,9 +179,9 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 52,
+      "calls": 62,
       "budget_used": 153,
-      "pruned_nodes": 7,
+      "pruned_nodes": 9,
       "budget": 153,
       "budget_pct": 60
     },
@@ -192,9 +192,9 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 21,
+      "calls": 39,
       "budget_used": 179,
-      "pruned_nodes": 12,
+      "pruned_nodes": 6,
       "budget": 179,
       "budget_pct": 70
     },
@@ -205,9 +205,9 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 10,
-      "budget_used": 199,
-      "pruned_nodes": 3,
+      "calls": 16,
+      "budget_used": 204,
+      "pruned_nodes": 4,
       "budget": 204,
       "budget_pct": 80
     },
@@ -218,9 +218,9 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 10,
-      "budget_used": 199,
-      "pruned_nodes": 3,
+      "calls": 6,
+      "budget_used": 216,
+      "pruned_nodes": 2,
       "budget": 230,
       "budget_pct": 90
     },
@@ -231,9 +231,9 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 10,
-      "budget_used": 199,
-      "pruned_nodes": 3,
+      "calls": 6,
+      "budget_used": 216,
+      "pruned_nodes": 2,
       "budget": 256,
       "budget_pct": 100
     }

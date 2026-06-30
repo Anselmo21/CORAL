@@ -170,7 +170,7 @@ def score_cc(bfs_res: dict, cc_res: dict, rbc: dict, start_node: list[str]) -> d
     baseline_top1 = (rbc.get(start_key) or [""])[0]
 
     proxy_key = cc_res.get("key")
-    proxy_layer = len(proxy_key.split(", ")) if proxy_key else None
+    proxy_layer = None if proxy_key is None else (len(proxy_key.split(", ")) if proxy_key else 0)
 
     if not cc_res.get("found") or proxy_key is None:
         outcome = "not_found"

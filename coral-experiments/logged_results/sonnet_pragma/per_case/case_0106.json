@@ -31,15 +31,15 @@
   },
   "era": {
     "era_fixed_4": {
-      "proxy_key": "(Geographic): Canada, (Geographic): Global, (Geographic): USA, (Perspective): battery-first, (Temporal): 2022\u20132023",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Canada, (Geographic): Global, (Geographic): USA, (Perspective): battery-first",
+      "proxy_layer": 4,
       "proxy_verified": true,
-      "outcome": "correct",
-      "gap": 0,
-      "jaccard": 1.0,
-      "calls": 35,
+      "outcome": "wrong_layer",
+      "gap": 1,
+      "jaccard": 0.8,
+      "calls": 47,
       "budget_used": 4,
-      "pruned_nodes": 3
+      "pruned_nodes": 47
     },
     "era_fixed_8": {
       "proxy_key": "(Geographic): Canada, (Geographic): Global, (Geographic): USA, (Perspective): battery-first, (Temporal): 2022\u20132023",
@@ -50,7 +50,7 @@
       "jaccard": 1.0,
       "calls": 35,
       "budget_used": 8,
-      "pruned_nodes": 8
+      "pruned_nodes": 3
     },
     "era_fixed_16": {
       "proxy_key": "(Geographic): Canada, (Geographic): Global, (Geographic): USA, (Perspective): battery-first, (Temporal): 2022\u20132023",
@@ -59,9 +59,9 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 35,
+      "calls": 86,
       "budget_used": 16,
-      "pruned_nodes": 8
+      "pruned_nodes": 4
     },
     "era_fixed_32": {
       "proxy_key": "(Geographic): Canada, (Geographic): Global, (Geographic): USA, (Perspective): battery-first, (Temporal): 2022\u20132023",
@@ -70,20 +70,20 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 37,
+      "calls": 34,
       "budget_used": 32,
-      "pruned_nodes": 3
+      "pruned_nodes": 54
     },
     "era_fixed_64": {
-      "proxy_key": "(Geographic): Canada, (Geographic): Global, (Geographic): USA, (Perspective): battery-first, (Temporal): 2022\u20132023",
-      "proxy_layer": 5,
+      "proxy_key": "(Geographic): Canada, (Geographic): Global, (Perspective): battery-first, (Temporal): 2022\u20132023",
+      "proxy_layer": 4,
       "proxy_verified": true,
-      "outcome": "correct",
-      "gap": 0,
-      "jaccard": 1.0,
-      "calls": 35,
+      "outcome": "wrong_layer",
+      "gap": 1,
+      "jaccard": 0.8,
+      "calls": 15,
       "budget_used": 64,
-      "pruned_nodes": 3
+      "pruned_nodes": 141
     },
     "era_fixed_128": {
       "proxy_key": "(Geographic): Canada, (Geographic): Global, (Geographic): USA, (Perspective): battery-first, (Temporal): 2022\u20132023",
@@ -92,7 +92,7 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 28,
+      "calls": 27,
       "budget_used": 128,
       "pruned_nodes": 2
     },
@@ -103,9 +103,9 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 2,
-      "budget_used": 156,
-      "pruned_nodes": 0
+      "calls": 27,
+      "budget_used": 129,
+      "pruned_nodes": 1
     },
     "era_pct_10": {
       "proxy_key": "(Geographic): Canada, (Geographic): Global, (Geographic): USA, (Perspective): battery-first, (Temporal): 2022\u20132023",
@@ -114,9 +114,9 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 30,
+      "calls": 35,
       "budget_used": 25,
-      "pruned_nodes": 8
+      "pruned_nodes": 51
     },
     "era_pct_20": {
       "proxy_key": "(Geographic): Canada, (Geographic): Global, (Geographic): USA, (Perspective): battery-first, (Temporal): 2022\u20132023",
@@ -125,9 +125,9 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 35,
+      "calls": 29,
       "budget_used": 51,
-      "pruned_nodes": 3
+      "pruned_nodes": 63
     },
     "era_pct_30": {
       "proxy_key": "(Geographic): Canada, (Geographic): Global, (Geographic): USA, (Perspective): battery-first, (Temporal): 2022\u20132023",
@@ -136,9 +136,9 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 34,
+      "calls": 2,
       "budget_used": 76,
-      "pruned_nodes": 2
+      "pruned_nodes": 34
     },
     "era_pct_40": {
       "proxy_key": "(Geographic): Canada, (Geographic): Global, (Geographic): USA, (Perspective): battery-first, (Temporal): 2022\u20132023",
@@ -147,9 +147,9 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 34,
+      "calls": 29,
       "budget_used": 102,
-      "pruned_nodes": 2
+      "pruned_nodes": 7
     },
     "era_pct_50": {
       "proxy_key": "(Geographic): Canada, (Geographic): Global, (Geographic): USA, (Perspective): battery-first, (Temporal): 2022\u20132023",
@@ -158,7 +158,7 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 28,
+      "calls": 27,
       "budget_used": 128,
       "pruned_nodes": 2
     },
@@ -169,8 +169,8 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 4,
-      "budget_used": 153,
+      "calls": 27,
+      "budget_used": 129,
       "pruned_nodes": 1
     },
     "era_pct_70": {
@@ -180,9 +180,9 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 2,
-      "budget_used": 156,
-      "pruned_nodes": 0
+      "calls": 27,
+      "budget_used": 129,
+      "pruned_nodes": 1
     },
     "era_pct_80": {
       "proxy_key": "(Geographic): Canada, (Geographic): Global, (Geographic): USA, (Perspective): battery-first, (Temporal): 2022\u20132023",
@@ -191,9 +191,9 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 2,
-      "budget_used": 156,
-      "pruned_nodes": 0
+      "calls": 27,
+      "budget_used": 129,
+      "pruned_nodes": 1
     },
     "era_pct_90": {
       "proxy_key": "(Geographic): Canada, (Geographic): Global, (Geographic): USA, (Perspective): battery-first, (Temporal): 2022\u20132023",
@@ -202,9 +202,9 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 2,
-      "budget_used": 156,
-      "pruned_nodes": 0
+      "calls": 27,
+      "budget_used": 129,
+      "pruned_nodes": 1
     },
     "era_pct_100": {
       "proxy_key": "(Geographic): Canada, (Geographic): Global, (Geographic): USA, (Perspective): battery-first, (Temporal): 2022\u20132023",
@@ -213,9 +213,9 @@
       "outcome": "correct",
       "gap": 0,
       "jaccard": 1.0,
-      "calls": 2,
-      "budget_used": 156,
-      "pruned_nodes": 0
+      "calls": 27,
+      "budget_used": 129,
+      "pruned_nodes": 1
     }
   }
 }
