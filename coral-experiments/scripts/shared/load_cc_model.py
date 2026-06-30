@@ -32,6 +32,10 @@ def add_model_args(parser: argparse.ArgumentParser) -> None:
         "--batch-size", type=int, default=8,
         help="HF batch size for ablations (ignored with --vllm)",
     )
+    parser.add_argument(
+        "--tensor-parallel-size", type=int, default=1,
+        help="GPUs to shard the vLLM model across (vllm backend only)",
+    )
 
 
 def load_model_and_tokenizer(args: argparse.Namespace) -> tuple:
@@ -41,7 +45,8 @@ def load_model_and_tokenizer(args: argparse.Namespace) -> tuple:
             multiprocessing.set_start_method("spawn", force=True)
         from vllm import LLM
         print(f"Loading model via vLLM: {args.model} ...")
-        model = LLM(model=args.model, dtype="float16")
+        model = LLM(model=args.model, dtype="float16",
+                    tensor_parallel_size=args.tensor_parallel_size)
         tokenizer = model.get_tokenizer()
     else:
         import torch
