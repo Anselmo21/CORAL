@@ -74,11 +74,12 @@ MAX_LATTICES: int | None = None
 # Data loading
 # ---------------------------------------------------------------------------
 
-def _load_lattices() -> dict[str, tuple[list[str], dict[str, list[str]]]]:
-    """Load and filter Qwen3 lattices: exclude halted, missing start key,
-    and full-size BFS CF outside [2, 8]. If MAX_LATTICES is set and the pool
-    exceeds it, keep the top MAX_LATTICES by ERA b=16 performance (correct
-    first, then by cost reduction vs BFS)."""
+def _load_lattices(qid_filter: set[str] | None = None) -> dict[str, tuple[list[str], dict[str, list[str]]]]:
+    """Load and filter Qwen3 lattices: exclude halted, missing start key, and
+    cases where fewer than 2 concepts must be removed to reach the CF (i.e.
+    CF size > n-2). When qid_filter is set, restrict to exactly those QIDs.
+    If MAX_LATTICES is set and the pool exceeds it, keep the top MAX_LATTICES
+    by ERA b=16 performance (correct first, then by cost reduction vs BFS)."""
     with open(DATA_PATH) as f:
         data = json.load(f)
     out: dict[str, tuple[list[str], dict[str, list[str]]]] = {}
@@ -86,6 +87,8 @@ def _load_lattices() -> dict[str, tuple[list[str], dict[str, list[str]]]]:
     skipped_halted = skipped_no_key = skipped_cf = 0
     for qid, q in data.items():
         if qid == "_meta":
+            continue
+        if qid_filter is not None and qid not in qid_filter:
             continue
         if q.get("halted"):
             skipped_halted += 1
@@ -96,7 +99,8 @@ def _load_lattices() -> dict[str, tuple[list[str], dict[str, list[str]]]]:
             skipped_no_key += 1
             continue
         bfs = bfs_search(criteria, rbc, start_node=criteria)
-        if not bfs["found"] or not (2 <= bfs["size"] <= 8):
+        n = len(criteria)
+        if not bfs["found"] or bfs["size"] > n - 2:
             skipped_cf += 1
             continue
         out[qid] = (criteria, rbc)
@@ -441,6 +445,8 @@ def main() -> None:
     )
     parser.add_argument("--single-case", type=int, help="Run one case in subprocess mode.")
     parser.add_argument("--resample", action="store_true", help="Re-sample cases even if cases.json exists.")
+    parser.add_argument("--qid-filter", nargs="+", metavar="QID",
+                        help="Restrict lattice pool to these QIDs exactly (bypasses CF range filter).")
     args = parser.parse_args()
 
     DATASET_NAME = args.dataset
@@ -452,11 +458,13 @@ def main() -> None:
     if args.single_case is not None:
         sys.exit(_run_subprocess_single(args.single_case))
 
+    qid_filter = set(args.qid_filter) if args.qid_filter else None
+
     os.makedirs(OUT_DIR, exist_ok=True)
     os.makedirs(f"{OUT_DIR}/per_case", exist_ok=True)
 
     print(f"Loading {DATASET_NAME} from {DATA_PATH} ...")
-    lattices = _load_lattices()
+    lattices = _load_lattices(qid_filter=qid_filter)
     qids = sorted(lattices)
     print(f"Qids ({len(qids)}): {qids}")
 

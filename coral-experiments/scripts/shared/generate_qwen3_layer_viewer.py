@@ -370,6 +370,24 @@ function renderBarChart(c, allColors, hasOther) {
   </svg>`;
 }
 
+function filteredCases() {
+  return DATA[activeDs].cases.filter(
+    c => activeSize === null || c.size === activeSize);
+}
+
+document.addEventListener("keydown", e => {
+  if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+  const cases = filteredCases();
+  if (!cases.length) return;
+  const idx = activeCase === null ? -1 : cases.findIndex(c => c.case_id === activeCase);
+  let next;
+  if (e.key === "ArrowLeft")  next = idx <= 0 ? cases.length - 1 : idx - 1;
+  if (e.key === "ArrowRight") next = idx >= cases.length - 1 ? 0 : idx + 1;
+  selectCase(cases[next].case_id);
+  const items = document.querySelectorAll(".citem");
+  if (items[next]) items[next].scrollIntoView({block:"nearest"});
+});
+
 init();
 </script>
 </body>
