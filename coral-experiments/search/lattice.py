@@ -9,6 +9,46 @@ def combo_key(criteria_subset):
     return ", ".join(sorted(criteria_subset))
 
 
+def parse_combo_key(raw_key: str, sorted_criteria: list[str]) -> list[str]:
+    """Parse a raw combo key back to a list of criteria.
+
+    Handles names that contain ', ' (e.g. 'side, back, stomach') by scanning
+    sorted criteria greedily left-to-right.
+    """
+    if not raw_key:
+        return []
+    result: list[str] = []
+    remaining = raw_key
+    for c in sorted_criteria:
+        if remaining == c:
+            result.append(c)
+            remaining = ""
+            break
+        if remaining.startswith(c + ", "):
+            result.append(c)
+            remaining = remaining[len(c) + 2 :]
+    return result if not remaining else []
+
+
+def restrict_rbc(
+    rbc: dict[str, list[str]],
+    start_node: list[str],
+    full_criteria: list[str],
+) -> dict[str, list[str]]:
+    """Return rbc restricted to subsets of start_node."""
+    start_set = set(start_node)
+    sorted_full = sorted(full_criteria)
+    out: dict[str, list[str]] = {}
+    for k, v in rbc.items():
+        if not k:
+            out[k] = v
+            continue
+        parts = parse_combo_key(k, sorted_full)
+        if parts and set(parts) <= start_set:
+            out[k] = v
+    return out
+
+
 def _key_to_set(key: str | None) -> set[str]:
     if not key:
         return set()

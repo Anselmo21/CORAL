@@ -17,14 +17,14 @@ from pathlib import Path
 
 import scripts.criteria.msmarco.run_subsample as base
 import scripts.qwen3_32b.run_subsample as qmod
-from scripts.criteria.msmarco.run_subsample import score_proxy, run_one_case, _sublattice_rbc
+from scripts.criteria.msmarco.run_subsample import score_proxy, run_one_case
 from scripts.shared.sampling import sample_cases, SEED
 from scripts.shared.paper_results import rerun_dataset
 from scripts.shared.merge_cc_paper import merge_dataset
 from scripts.shared.plot_paper_results import plot_dataset
 from scripts.shared.plot_style import apply_plot_style
 from search.bfs import bfs_search
-from search.lattice import combo_key
+from search.lattice import combo_key, restrict_rbc
 
 WORKSPACE = Path(__file__).resolve().parents[3]
 QWEN_DIR = WORKSPACE / "coral-data-gen" / "datasets" / "qwen3-32b"
@@ -94,7 +94,7 @@ def _export_cc_cases(cases, raw):
             "direction": "down",
             "effective_size": len(start),
             "k": len(start),
-            "rankings_by_combo": _sublattice_rbc(rbc, start),
+            "rankings_by_combo": restrict_rbc(rbc, start, crit),
         })
     return cc
 

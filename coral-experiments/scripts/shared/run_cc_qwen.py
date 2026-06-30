@@ -31,6 +31,7 @@ def main() -> None:
 
     parser = argparse.ArgumentParser()
     add_model_args(parser)
+    parser.set_defaults(model="Qwen/Qwen3-32B")
     parser.add_argument(
         "--dataset", required=True, choices=DATASETS,
         help="Which Qwen3-32B dataset to run CC on.",
@@ -41,13 +42,14 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    out_dir        = f"logged_results/qwen3_{args.dataset}"
-    cc_cases_path  = f"{out_dir}/cc_cases.json"
+    out_dir         = f"logged_results/qwen3_{args.dataset}"
+    cc_cases_path   = f"{out_dir}/cc_cases.json"
     cc_results_path = f"{out_dir}/cc_results_budget_{args.budget}.json"
 
     with open(cc_cases_path) as f:
         cases = json.load(f)
     print(f"Loaded {len(cases)} cases from {cc_cases_path}")
+    print(f"Model:  {args.model}")
     print(f"Budget: {args.budget}  →  {cc_results_path}")
 
     model, tokenizer = load_model_and_tokenizer(args)

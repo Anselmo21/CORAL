@@ -27,7 +27,7 @@ from collections import defaultdict
 
 from scripts.shared.sampling import SEED, SIZES, TARGET_PER_SIZE, sample_cases
 from search.bfs import bfs_search
-from search.lattice import combo_key, jaccard_keys
+from search.lattice import combo_key, jaccard_keys, restrict_rbc
 from search.rank import era_search, sra_search
 
 DATA_PATH = "data/msmarco_criteria.json"
@@ -75,23 +75,6 @@ def _load_lattices(qids: list[str]) -> dict[str, tuple[list[str], dict[str, list
 # CC export
 # ---------------------------------------------------------------------------
 
-def _sublattice_rbc(
-    rbc: dict[str, list[str]],
-    start_node: list[str],
-) -> dict[str, list[str]]:
-    """Return rbc restricted to subsets of start_node."""
-    start_set = set(start_node)
-    out: dict[str, list[str]] = {}
-    for k, v in rbc.items():
-        if not k:
-            out[k] = v
-            continue
-        parts = [p.strip() for p in k.split(", ")]
-        if set(parts) <= start_set:
-            out[k] = v
-    return out
-
-
 def export_cc_cases(
     cases: list[dict],
     lattices: dict[str, tuple[list[str], dict[str, list[str]]]],
@@ -111,7 +94,7 @@ def export_cc_cases(
         if not bfs_res["found"]:
             continue
 
-        sub_rbc = _sublattice_rbc(rbc, start_node)
+        sub_rbc = restrict_rbc(rbc, start_node, criteria)
         cc_cases.append({
             "case_id": case_id,
             "query_id": qid,

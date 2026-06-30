@@ -27,7 +27,7 @@ from collections import defaultdict
 
 from scripts.shared.sampling import SEED, SIZES, TARGET_PER_SIZE, sample_cases
 from search.bfs import bfs_search
-from search.lattice import combo_key, jaccard_keys
+from search.lattice import combo_key, jaccard_keys, parse_combo_key, restrict_rbc
 from search.rank import era_search, sra_search
 
 DATA_PATH = "data/sonnet_criteria.json"
@@ -46,27 +46,6 @@ MAX_RETRIES_PER_CASE: int = 8
 # Data loading
 # ---------------------------------------------------------------------------
 
-def _parse_combo_key(raw_key: str, sorted_criteria: list[str]) -> list[str]:
-    """Parse a raw combo key back to a list of criteria.
-
-    Handles criterion names that contain ', ' (e.g. 'side, back, stomach') by
-    scanning sorted criteria greedily left-to-right.
-    """
-    if not raw_key:
-        return []
-    result = []
-    remaining = raw_key
-    for c in sorted_criteria:
-        if remaining == c:
-            result.append(c)
-            remaining = ""
-            break
-        if remaining.startswith(c + ", "):
-            result.append(c)
-            remaining = remaining[len(c) + 2:]
-    return result if not remaining else []
-
-
 def _normalize_lattice(q: dict) -> tuple[list[str], dict[str, list[str]]] | None:
     if q.get("halted"):
         return None
@@ -75,7 +54,7 @@ def _normalize_lattice(q: dict) -> tuple[list[str], dict[str, list[str]]] | None
     sorted_crit = sorted(criteria)
     rbc: dict[str, list[str]] = {}
     for k, v in raw.items():
-        parts = _parse_combo_key(k, sorted_crit)
+        parts = parse_combo_key(k, sorted_crit)
         rbc[combo_key(parts)] = v
     if combo_key(criteria) not in rbc:
         return None
@@ -114,25 +93,6 @@ def _load_lattices(qids: list[str]) -> dict[str, tuple[list[str], dict[str, list
 # CC export
 # ---------------------------------------------------------------------------
 
-def _sublattice_rbc(
-    rbc: dict[str, list[str]],
-    start_node: list[str],
-    full_criteria: list[str],
-) -> dict[str, list[str]]:
-    """Return rbc restricted to subsets of start_node (sonnet greedy parser)."""
-    start_set = set(start_node)
-    sorted_full = sorted(full_criteria)
-    out: dict[str, list[str]] = {}
-    for k, v in rbc.items():
-        if not k:
-            out[k] = v
-            continue
-        parts = _parse_combo_key(k, sorted_full)
-        if parts and set(parts) <= start_set:
-            out[k] = v
-    return out
-
-
 def export_cc_cases(
     cases: list[dict],
     lattices: dict[str, tuple[list[str], dict[str, list[str]]]],
@@ -151,7 +111,7 @@ def export_cc_cases(
         if not bfs_res["found"]:
             continue
 
-        sub_rbc = _sublattice_rbc(rbc, start_node, criteria)
+        sub_rbc = restrict_rbc(rbc, start_node, criteria)
         cc_cases.append({
             "case_id": case_id,
             "query_id": qid,
