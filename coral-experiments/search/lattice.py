@@ -55,17 +55,18 @@ def _key_to_set(key: str | None) -> set[str]:
     return {c.strip() for c in key.split(",") if c.strip()}
 
 
-def hop_distance(key_a: str | None, key_b: str | None) -> int | None:
+def hop_distance(key_a: str | None, key_b: str | None, _crit=None) -> int | None:
     """Symmetric-difference size |A △ B| between two combo keys (Hasse hops).
 
-    Returns None when either key is missing.
+    Returns None when either key is missing. The optional third argument is
+    accepted for caller compatibility and ignored.
     """
     if key_a is None or key_b is None:
         return None
     return len(_key_to_set(key_a) ^ _key_to_set(key_b))
 
 
-def jaccard_keys(key_a: str | None, key_b: str | None) -> float | None:
+def jaccard_keys(key_a: str | None, key_b: str | None, _crit=None) -> float | None:
     """Jaccard similarity between the criteria sets encoded in two combo keys.
 
     Returns None when either key is missing/empty — those cases have no

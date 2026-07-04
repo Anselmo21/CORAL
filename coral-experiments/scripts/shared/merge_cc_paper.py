@@ -64,7 +64,7 @@ def merge_dataset(name: str) -> list[dict]:
                 "proxy_key":   cc.get("proxy_key"),
                 "proxy_layer": cc.get("proxy_layer"),
             }
-            entry["hop_to_bfs"] = hop_distance(entry["proxy_key"], bfs_key)
+            entry["hop_to_bfs"] = hop_distance(entry["proxy_key"], bfs_key, sorted(r["start_node"]))
             r[col] = entry
 
     with open(f"logged_results/{name}/paper_results.json", "w") as f:

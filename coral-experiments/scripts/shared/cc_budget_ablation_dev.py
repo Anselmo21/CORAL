@@ -198,7 +198,7 @@ def score_cc(bfs_res: dict, cc_res: dict, rbc: dict, start_node: list[str]) -> d
         "outcome": outcome,
         "gap": gap,
         "calls": cc_res["calls"],
-        "jaccard": jaccard_keys(bfs_res.get("key"), proxy_key),
+        "jaccard": jaccard_keys(bfs_res.get("key"), proxy_key, sorted(start_node)),
     }
 
 

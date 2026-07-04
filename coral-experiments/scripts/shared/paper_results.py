@@ -111,10 +111,11 @@ def rerun_dataset(name: str, modpath: str, propagate_scores: bool = PROPAGATE_SC
 
         # Hop distance from BFS's CF to each method's CF
         bfs_key = prior["bfs"].get("key")
+        sorted_crit = sorted(criteria)
         for col in ("sra", "era_b16", "era_pct10"):
             cell = row[col]
             method_key = cell.get("proxy_key") or cell.get("key") if isinstance(cell, dict) else None
-            row[col]["hop_to_bfs"] = hop_distance(method_key, bfs_key)
+            row[col]["hop_to_bfs"] = hop_distance(method_key, bfs_key, sorted_crit)
         row["bfs"]["hop_to_bfs"] = 0   # by definition
 
         new_rows.append(row)

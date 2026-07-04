@@ -77,7 +77,7 @@ def _run_era(criteria, rbc, budget, entropy_fn, start, bfs_for_proxy, bfs_key, s
     res = era_search(criteria, rbc, budget=budget, entropy_fn=entropy_fn,
                      start_node=start, direction="down")
     cell = score_proxy(bfs_for_proxy, res, rbc, start)
-    cell["hop_to_bfs"] = hop_distance(cell.get("proxy_key"), bfs_key)
+    cell["hop_to_bfs"] = hop_distance(cell.get("proxy_key"), bfs_key, sorted(criteria))
     return cell
 
 

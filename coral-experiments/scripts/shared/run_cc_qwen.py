@@ -1,7 +1,10 @@
 """ContextCite (LSM) runner for all four Qwen3-32B subsampled datasets.
 
-Reads  logged_results/qwen3_<dataset>/cc_cases.json
-Writes logged_results/qwen3_<dataset>/cc_results_budget_<N>.json  (resumable)
+Reads  logged_results/<dataset-root>/<dataset>/cc_cases.json
+Writes logged_results/<dataset-root>/<dataset>/cc_results_budget_<N>.json  (resumable)
+
+Default --dataset-root is 'qwen3-32b-temp0' (matches scripts.qwen3_32b.run_subsample
+after the temp=0 relattice + 16-qid allowlist).
 
 Usage (GPU machine):
     CUDA_VISIBLE_DEVICES=0 VLLM_USE_FLASHINFER_SAMPLER=0 \\
@@ -40,9 +43,14 @@ def main() -> None:
         "--budget", type=int, required=True,
         help="Fixed number of CC ablations per case.",
     )
+    parser.add_argument(
+        "--dataset-root", default="qwen3-32b-temp0",
+        help="logged_results/<dataset-root>/<dataset>/ prefix. "
+             "Default 'qwen3-32b-temp0' matches scripts.qwen3_32b.run_subsample.",
+    )
     args = parser.parse_args()
 
-    out_dir         = f"logged_results/qwen3_{args.dataset}"
+    out_dir         = f"logged_results/{args.dataset_root}/{args.dataset}"
     cc_cases_path   = f"{out_dir}/cc_cases.json"
     cc_results_path = f"{out_dir}/cc_results_budget_{args.budget}.json"
 

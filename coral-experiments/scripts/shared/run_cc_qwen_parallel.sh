@@ -15,10 +15,12 @@
 #   BUDGETS              — space-separated budgets (default "4 8 16")
 #   TENSOR_PARALLEL_SIZE — GPUs per job (default 2; must divide 64 attn heads)
 #   CONDA_ENV            — conda env name (default "coral")
+#   DATASET_ROOT         — logged_results/<root>/<dataset>/ prefix (default "qwen3-32b-temp0")
 #
 # Examples:
 #   BUDGETS="16" bash scripts/shared/run_cc_qwen_parallel.sh
 #   GPU_IDS="0 1 2 3" BUDGETS="16" bash scripts/shared/run_cc_qwen_parallel.sh
+#   DATASET_ROOT=qwen3-32b bash scripts/shared/run_cc_qwen_parallel.sh   # old temp=0.7 tree
 #   CUDA_VISIBLE_DEVICES=0,1 ... --tensor-parallel-size 2  # 2 concurrent jobs on 4 GPUs
 
 set -euo pipefail
@@ -37,6 +39,7 @@ fi
 GPU_IDS="${GPU_IDS:-0 1 2 3}"
 BUDGETS="${BUDGETS:-4 8 16}"
 TENSOR_PARALLEL_SIZE="${TENSOR_PARALLEL_SIZE:-2}"
+DATASET_ROOT="${DATASET_ROOT:-qwen3-32b-temp0}"
 read -ra GPU_ARR <<< "$GPU_IDS"
 read -ra BUDGET_ARR <<< "$BUDGETS"
 export VLLM_USE_FLASHINFER_SAMPLER=0
@@ -60,9 +63,9 @@ done
 
 DATASETS=(msmarco_criteria msmarco_pragma sonnet_criteria sonnet_pragma)
 for ds in "${DATASETS[@]}"; do
-  path="logged_results/qwen3_${ds}/cc_cases.json"
+  path="logged_results/${DATASET_ROOT}/${ds}/cc_cases.json"
   if [[ ! -f "$path" ]]; then
-    echo "ERROR: $path missing — run run_qwen3_subsample.py --dataset $ds first"
+    echo "ERROR: $path missing — run scripts.qwen3_32b.run_subsample first"
     exit 1
   fi
 done
@@ -75,7 +78,7 @@ for ds in "${DATASETS[@]}"; do
 done
 
 echo "Launching ${#JOBS[@]} jobs across ${#WORKERS[@]} worker slot(s): ${WORKERS[*]}"
-echo "Budgets: ${BUDGET_ARR[*]}  tensor_parallel_size=${TENSOR_PARALLEL_SIZE}"
+echo "Dataset root: logged_results/${DATASET_ROOT}/  Budgets: ${BUDGET_ARR[*]}  tensor_parallel_size=${TENSOR_PARALLEL_SIZE}"
 mkdir -p logs/cc_qwen
 
 declare -A PID_BY_WORKER=()
@@ -94,6 +97,7 @@ launch_job() {
       python3 -m scripts.shared.run_cc_qwen \
         --dataset "$ds" --budget "$budget" --vllm \
         --tensor-parallel-size "$TENSOR_PARALLEL_SIZE" \
+        --dataset-root "$DATASET_ROOT" \
       > "$log" 2>&1 &
   PID_BY_WORKER[$worker_idx]=$!
 }
@@ -122,4 +126,4 @@ done
 
 echo ""
 echo "All ${#JOBS[@]} CC runs complete."
-echo "Results written to logged_results/qwen3_<dataset>/cc_results_budget_<N>.json"
+echo "Results written to logged_results/${DATASET_ROOT}/<dataset>/cc_results_budget_<N>.json"

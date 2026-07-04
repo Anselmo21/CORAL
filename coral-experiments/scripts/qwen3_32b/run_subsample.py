@@ -27,14 +27,30 @@ from search.bfs import bfs_search
 from search.lattice import combo_key, restrict_rbc
 
 WORKSPACE = Path(__file__).resolve().parents[3]
-QWEN_DIR = WORKSPACE / "coral-data-gen" / "datasets" / "qwen3-32b"
+QWEN_DIR = WORKSPACE / "coral-data-gen" / "datasets" / "qwen3-32b-temp0"
+OUT_PREFIX = "qwen3-32b-temp0"
+
+# Hand-picked 16 qids per dataset — ranked by mean ERA cost savings across
+# b=4/8/16 on the full k=10 lattice. msmarco_pragma swaps 51718 (all-budget
+# degenerate) for 51730 (next non-degenerate qid).
+QID_ALLOWLIST: dict[str, list[str]] = {
+    "msmarco_criteria": ["51691", "51705", "51734", "51811", "51816", "51845",
+                         "51928", "51957", "51971", "52066", "52328", "52329",
+                         "52412", "52416", "393179", "514495"],
+    "msmarco_pragma":   ["51603", "51717", "51730", "51785", "51821", "51891",
+                         "51923", "52008", "52040", "52280", "52328", "52329",
+                         "393179", "441101", "480543", "514495"],
+    "sonnet_criteria":  ["0", "3", "12", "14", "18", "19", "28", "29",
+                         "31", "37", "39", "44", "46", "47", "50", "54"],
+    "sonnet_pragma":    ["2", "7", "12", "13", "15", "18", "19", "25",
+                         "28", "30", "34", "36", "41", "51", "52", "56"],
+}
 
 DATASETS = [
-    ("msmarco_criteria", ["msmarco-criteria-qwen3-32.json",
-                          "msmarco-criteria-qwen3-32b-missing.json"], "Qwen MSMARCO criteria"),
-    ("msmarco_pragma",   ["msmarco-pragmas-qwen3-32b.json"], "Qwen MSMARCO pragma"),
-    ("sonnet_criteria",  ["sonnet-criteria-qwen3-32b.json"], "Qwen Sonnet criteria"),
-    ("sonnet_pragma",    ["sonnet-pragmas-qwen3-32b.json"], "Qwen Sonnet pragma"),
+    ("msmarco_criteria", ["msmarco-criteria-qwen3-32b-temp0.json"], "Qwen MSMARCO criteria"),
+    ("msmarco_pragma",   ["msmarco-pragmas-qwen3-32b-temp0.json"], "Qwen MSMARCO pragma"),
+    ("sonnet_criteria",  ["sonnet-criteria-qwen3-32b-temp0.json"], "Qwen Sonnet criteria"),
+    ("sonnet_pragma",    ["sonnet-pragmas-qwen3-32b-temp0.json"], "Qwen Sonnet pragma"),
 ]
 
 # Set per dataset before the loaders run.
@@ -60,9 +76,16 @@ def _searchable(lat: dict) -> bool:
     return bool(crit) and combo_key(crit) in (lat.get("raw_answers") or {})
 
 
-def _load_all_qids() -> list[str]:
+def _load_all_qids(allowlist: list[str] | None = None) -> list[str]:
     qids = [q for q, lat in _read_all().items() if _searchable(lat)]
-    return sorted(qids, key=lambda q: int(q) if q.isdigit() else q)
+    qids.sort(key=lambda q: int(q) if q.isdigit() else q)
+    if allowlist is not None:
+        allow = set(allowlist)
+        missing = allow - set(qids)
+        if missing:
+            raise RuntimeError(f"allowlist qids missing from lattice or halted: {sorted(missing)}")
+        qids = [q for q in qids if q in allow]
+    return qids
 
 
 def _load_lattices(qids):
@@ -108,12 +131,12 @@ def _patch_paths(out_dir: str) -> None:
 def _run_one_dataset(name: str, files: list[str]) -> None:
     global DATASET_FILES
     DATASET_FILES = files
-    out_dir = f"logged_results/qwen3-32b/{name}"
+    out_dir = f"logged_results/{OUT_PREFIX}/{name}"
     os.makedirs(f"{out_dir}/per_case", exist_ok=True)
     _patch_paths(out_dir)
 
     raw = _read_all()
-    lattices = _load_lattices(_load_all_qids())
+    lattices = _load_lattices(_load_all_qids(QID_ALLOWLIST.get(name)))
     print(f"  searchable lattices: {len(lattices)}")
 
     cases = sample_cases(lattices, seed=SEED)
@@ -135,14 +158,14 @@ def main() -> None:
 
     for name, files, nice in DATASETS:
         qmod.DATASET_FILES = files
-        rows = rerun_dataset(f"qwen3-32b/{name}", "scripts.qwen3_32b.run_subsample")
-        with open(f"logged_results/qwen3-32b/{name}/paper_results.json", "w") as f:
+        rows = rerun_dataset(f"{OUT_PREFIX}/{name}", "scripts.qwen3_32b.run_subsample")
+        with open(f"logged_results/{OUT_PREFIX}/{name}/paper_results.json", "w") as f:
             json.dump(rows, f, indent=2)
-        merge_dataset(f"qwen3-32b/{name}")  # folds in CC columns once cc_results exist
+        merge_dataset(f"{OUT_PREFIX}/{name}")  # folds in CC columns once cc_results exist
 
     apply_plot_style()
     for name, files, nice in DATASETS:
-        plot_dataset(f"qwen3-32b/{name}", f"qwen3-32b/{name}", nice)
+        plot_dataset(f"{OUT_PREFIX}/{name}", f"{OUT_PREFIX}/{name}", nice)
 
 
 if __name__ == "__main__":

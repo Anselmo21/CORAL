@@ -168,7 +168,7 @@ def score_proxy(
         "proxy_verified": proxy_verified,
         "outcome": outcome,
         "gap": gap,
-        "jaccard": jaccard_keys(bfs_key, proxy_key),
+        "jaccard": jaccard_keys(bfs_key, proxy_key, sorted(start_node)),
         "calls": proxy_result.get("calls", 0),
         "budget_used": proxy_result.get("budget_used", 0),
         "pruned_nodes": proxy_result.get("pruned_nodes", 0),
