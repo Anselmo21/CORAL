@@ -1,0 +1,246 @@
+{
+  "query_id": 52348,
+  "query": "best way to quit caffeine",
+  "mode": "criteria",
+  "atoms": [
+    "withdrawal symptoms",
+    "detox method",
+    "support systems",
+    "caffeine alternatives",
+    "gradual reduction",
+    "commitment level",
+    "time frame",
+    "health considerations",
+    "personal motivation",
+    "environmental triggers"
+  ],
+  "plausible_answers": [
+    "Gradual taper using progressive decaf mixing over 4-5 weeks",
+    "Cold turkey scheduled on a weekend / holiday with pain relievers on hand",
+    "Substitute with caffeine-free alternatives plus a quit-buddy / accountability partner"
+  ],
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.0,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best way to quit caffeine",
+        "description": "best way to quit caffeine"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "avoid withdrawal symptoms",
+        "description": "avoid withdrawal symptoms"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "choose a suitable detox method",
+        "description": "choose a suitable detox method"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "build a support system",
+        "description": "build a support system"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "consider alternatives to caffeine",
+        "description": "consider alternatives to caffeine"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "criterion",
+        "label": "withdrawal symptoms",
+        "description": "withdrawal symptoms"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "criterion",
+        "label": "detox method",
+        "description": "detox method"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "criterion",
+        "label": "support systems",
+        "description": "support systems"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "criterion",
+        "label": "caffeine alternatives",
+        "description": "caffeine alternatives"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "criterion",
+        "label": "gradual reduction",
+        "description": "gradual reduction"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "criterion",
+        "label": "commitment level",
+        "description": "commitment level"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "criterion",
+        "label": "time frame",
+        "description": "time frame"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "criterion",
+        "label": "health considerations",
+        "description": "health considerations"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "criterion",
+        "label": "personal motivation",
+        "description": "personal motivation"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "criterion",
+        "label": "environmental triggers",
+        "description": "environmental triggers"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Gradual taper using progressive decaf mixing over 4-5 weeks",
+        "description": "Gradual taper using progressive decaf mixing over 4-5 weeks"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Cold turkey scheduled on a weekend / holiday with pain relievers on hand",
+        "description": "Cold turkey scheduled on a weekend / holiday with pain relievers on hand"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Substitute with caffeine-free alternatives plus a quit-buddy / accountability partner",
+        "description": "Substitute with caffeine-free alternatives plus a quit-buddy / accountability partner"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c4"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

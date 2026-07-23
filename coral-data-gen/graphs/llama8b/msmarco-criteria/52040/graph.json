@@ -1,0 +1,244 @@
+{
+  "query_id": 52040,
+  "query": "best skin care for redness",
+  "mode": "criteria",
+  "atoms": [
+    "skin condition type",
+    "ingredient sensitivity",
+    "product formulation",
+    "application method",
+    "sun protection",
+    "targeted treatment",
+    "skin type compatibility",
+    "brand reputation",
+    "price range",
+    "user experience"
+  ],
+  "plausible_answers": [
+    "Murad Redness Therapy 3-part system",
+    "A caffeine-based anti-redness serum",
+    "Build-your-own minimalist routine"
+  ],
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.0,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best skin care for redness",
+        "description": "best skin care for redness"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "what are the key factors to consider when choosing skin care for rosacea?",
+        "description": "what are the key factors to consider when choosing skin care for rosacea?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "how can I identify the best products for my skin type and condition?",
+        "description": "how can I identify the best products for my skin type and condition?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "criterion",
+        "label": "skin condition type",
+        "description": "skin condition type"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "criterion",
+        "label": "ingredient sensitivity",
+        "description": "ingredient sensitivity"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "criterion",
+        "label": "product formulation",
+        "description": "product formulation"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "criterion",
+        "label": "application method",
+        "description": "application method"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "criterion",
+        "label": "sun protection",
+        "description": "sun protection"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "criterion",
+        "label": "targeted treatment",
+        "description": "targeted treatment"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "criterion",
+        "label": "skin type compatibility",
+        "description": "skin type compatibility"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "criterion",
+        "label": "brand reputation",
+        "description": "brand reputation"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "criterion",
+        "label": "price range",
+        "description": "price range"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "criterion",
+        "label": "user experience",
+        "description": "user experience"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Murad Redness Therapy 3-part system",
+        "description": "Murad Redness Therapy 3-part system"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "A caffeine-based anti-redness serum",
+        "description": "A caffeine-based anti-redness serum"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Build-your-own minimalist routine",
+        "description": "Build-your-own minimalist routine"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

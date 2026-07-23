@@ -1,0 +1,314 @@
+{
+  "query_id": 51790,
+  "query": "What is the best gas loyalty points card in Canada?",
+  "mode": "criteria",
+  "atoms": [
+    "points earn rate",
+    "redemption flexibility",
+    "annual fee",
+    "gas station partner coverage",
+    "sign-up bonus",
+    "expiration policy",
+    "mobile app quality",
+    "extra perks",
+    "foreign transaction fee",
+    "credit requirements"
+  ],
+  "plausible_answers": [
+    "Esso Extra",
+    "Petro-Points (Petro-Canada)",
+    "RBC Royal Bank Esso Visa",
+    "CIBC Costco Gas Mastercard"
+  ],
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.0,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best gas loyalty points card in Canada?",
+        "description": "Identify the most beneficial gas loyalty points card in Canada based on key evaluation criteria."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "How much can you earn in points or rewards?",
+        "description": "Evaluate the earning potential of each card based on spending habits and points per litre or dollar."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the redemption options and flexibility?",
+        "description": "Assess the variety and value of rewards available for points earned."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the financial and usage costs?",
+        "description": "Analyze the cost of using the card, including annual fees, foreign transaction fees, and credit requirements."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "How accessible and convenient is the program?",
+        "description": "Evaluate the ease of use, including gas station coverage, mobile app quality, and expiration policies."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "criterion",
+        "label": "points earn rate",
+        "description": "The rate at which points or rewards are earned per litre or dollar spent."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "criterion",
+        "label": "redemption flexibility",
+        "description": "The variety and value of rewards available for points."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "criterion",
+        "label": "annual fee",
+        "description": "The cost of maintaining the card per year."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "criterion",
+        "label": "gas station partner coverage",
+        "description": "The number and geographic spread of gas stations where the card can be used."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "criterion",
+        "label": "sign-up bonus",
+        "description": "The initial reward or points offered for signing up."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "criterion",
+        "label": "expiration policy",
+        "description": "How long points remain valid before expiring."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "criterion",
+        "label": "mobile app quality",
+        "description": "The usability and features of the program's mobile app."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "criterion",
+        "label": "extra perks",
+        "description": "Additional benefits such as car washes, gift certificates, or other rewards."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "criterion",
+        "label": "foreign transaction fee",
+        "description": "The fee charged for using the card outside of Canada."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "criterion",
+        "label": "credit requirements",
+        "description": "The credit score or financial background needed to qualify for the card."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Esso Extra",
+        "description": "Esso's loyalty program offering points per litre and rewards."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Petro-Points (Petro-Canada)",
+        "description": "Petro-Canada's loyalty program with points and gas rewards."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "RBC Royal Bank Esso Visa",
+        "description": "A credit card offering Esso rewards and points."
+      },
+      {
+        "id": "a4",
+        "layer": "4",
+        "type": "answer",
+        "label": "CIBC Costco Gas Mastercard",
+        "description": "A credit card offering gas rewards and points."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "sq4",
+        "target": "c4"
+      },
+      {
+        "source": "sq4",
+        "target": "c6"
+      },
+      {
+        "source": "sq4",
+        "target": "c7"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a4"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a4"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a4"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a4"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a4"
+      }
+    ]
+  }
+}

@@ -1,0 +1,251 @@
+{
+  "query_id": 393179,
+  "query": "in Ontario what is the best gasoline for your vehicle",
+  "mode": "criteria",
+  "atoms": [
+    "fuel grade requirements",
+    "detergent standards",
+    "octane rating",
+    "brand reputation",
+    "environmental impact",
+    "price comparison",
+    "availability in Ontario",
+    "engine performance",
+    "consumer reviews",
+    "refinery source"
+  ],
+  "plausible_answers": [
+    "Top Tier Detergent Gasoline (Shell V-Power, Esso, Chevron)",
+    "Petro-Canada Ultra 94\u2122",
+    "Regular 87-octane unleaded at any reputable station"
+  ],
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.0,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "in Ontario what is the best gasoline for your vehicle",
+        "description": ""
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "what are the fuel grade requirements for vehicles in Ontario",
+        "description": ""
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "what are the detergent standards for gasoline in Ontario",
+        "description": ""
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "what are the key factors to consider when choosing a gasoline in Ontario",
+        "description": ""
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "criterion",
+        "label": "fuel grade requirements",
+        "description": ""
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "criterion",
+        "label": "detergent standards",
+        "description": ""
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "criterion",
+        "label": "octane rating",
+        "description": ""
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "criterion",
+        "label": "brand reputation",
+        "description": ""
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "criterion",
+        "label": "environmental impact",
+        "description": ""
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "criterion",
+        "label": "price comparison",
+        "description": ""
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "criterion",
+        "label": "availability in Ontario",
+        "description": ""
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "criterion",
+        "label": "engine performance",
+        "description": ""
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "criterion",
+        "label": "consumer reviews",
+        "description": ""
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "criterion",
+        "label": "refinery source",
+        "description": ""
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Top Tier Detergent Gasoline (Shell V-Power, Esso, Chevron)",
+        "description": ""
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Petro-Canada Ultra 94\u2122",
+        "description": ""
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Regular 87-octane unleaded at any reputable station",
+        "description": ""
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      }
+    ]
+  }
+}

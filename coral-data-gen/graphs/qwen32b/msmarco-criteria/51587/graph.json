@@ -1,0 +1,271 @@
+{
+  "query_id": 51587,
+  "query": "What is the best area to stay in Lake Garda, Italy?",
+  "mode": "criteria",
+  "atoms": [
+    "lakefront access",
+    "restaurant variety",
+    "nightlife options",
+    "family-friendliness",
+    "public transport links",
+    "accommodation price",
+    "scenic views",
+    "water sports availability",
+    "historic charm",
+    "distance to major attractions"
+  ],
+  "plausible_answers": [
+    "South lakeshore (Sirmione, Peschiera, Desenzano)",
+    "North lakeshore (Riva del Garda, Torbole)",
+    "East lakeshore (Bardolino, Garda, Torri del Benaco)"
+  ],
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.0,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best area to stay in Lake Garda, Italy?",
+        "description": "Identifying the optimal area to stay in Lake Garda based on various travel preferences and practical considerations."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which areas offer the best access to water sports and scenic views?",
+        "description": "Evaluating regions with strong water sports infrastructure and visually appealing landscapes."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which areas are most convenient for public transport and proximity to major attractions?",
+        "description": "Assessing regions with good transportation links and accessibility to key sights."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which areas provide the best mix of historic charm and family-friendly amenities?",
+        "description": "Identifying regions that balance cultural appeal with family suitability."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "criterion",
+        "label": "lakefront access",
+        "description": "Proximity to the lake for easy access to water-based activities and scenic relaxation."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "criterion",
+        "label": "restaurant variety",
+        "description": "Availability of diverse dining options, including local and international cuisine."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "criterion",
+        "label": "nightlife options",
+        "description": "Presence of bars, clubs, and entertainment venues for evening activities."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "criterion",
+        "label": "family-friendliness",
+        "description": "Suitability for families, including amenities like playgrounds, kid-friendly restaurants, and safe environments."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "criterion",
+        "label": "public transport links",
+        "description": "Accessibility via buses, trains, or other public transport to and from the area."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "criterion",
+        "label": "accommodation price",
+        "description": "Cost of staying in the area, including a range of budget and luxury options."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "criterion",
+        "label": "scenic views",
+        "description": "Aesthetic appeal of the surroundings, including lake vistas and natural landscapes."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "criterion",
+        "label": "water sports availability",
+        "description": "Access to water sports such as windsurfing, kayaking, and sailing."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "criterion",
+        "label": "historic charm",
+        "description": "Presence of historical architecture, cultural sites, and traditional ambiance."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "criterion",
+        "label": "distance to major attractions",
+        "description": "Proximity to key tourist sites, museums, and landmarks."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "South lakeshore (Sirmione, Peschiera, Desenzano)",
+        "description": "Popular for its lively atmosphere, historic sites, and accessibility."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "North lakeshore (Riva del Garda, Torbole)",
+        "description": "Favored for windsurfing, panoramic views, and cooler climate."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "East lakeshore (Bardolino, Garda, Torri del Benaco)",
+        "description": "Offers a mix of natural beauty, vineyards, and quieter, scenic stays."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      }
+    ]
+  }
+}

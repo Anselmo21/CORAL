@@ -1,0 +1,250 @@
+{
+  "query_id": 51580,
+  "query": "What is the best antidepressant for energy and mood?",
+  "mode": "criteria",
+  "atoms": [
+    "mood improvement efficacy",
+    "energy-boosting effect",
+    "side effect profile",
+    "time to onset",
+    "withdrawal difficulty",
+    "drug interactions",
+    "dosing convenience",
+    "sedation potential",
+    "weight impact",
+    "cost and insurance coverage"
+  ],
+  "plausible_answers": [
+    "Bupropion (Wellbutrin)",
+    "SSRI (Prozac, Zoloft)",
+    "Natural supplements (St John's Wort, SAM-e, Omega-3, B vitamins) + exercise"
+  ],
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.0,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best antidepressant for energy and mood?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the most effective antidepressants for energy and mood?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the antidepressants that do not cause weight gain?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the antidepressants that can help with mood improvement?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "criterion",
+        "label": "mood improvement efficacy"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "criterion",
+        "label": "energy-boosting effect"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "criterion",
+        "label": "side effect profile"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "criterion",
+        "label": "time to onset"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "criterion",
+        "label": "withdrawal difficulty"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "criterion",
+        "label": "drug interactions"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "criterion",
+        "label": "dosing convenience"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "criterion",
+        "label": "sedation potential"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "criterion",
+        "label": "weight impact"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "criterion",
+        "label": "cost and insurance coverage"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Bupropion (Wellbutrin)"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "SSRI (Prozac, Zoloft)"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Natural supplements (St John's Wort, SAM-e, Omega-3, B vitamins) + exercise"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      }
+    ]
+  }
+}

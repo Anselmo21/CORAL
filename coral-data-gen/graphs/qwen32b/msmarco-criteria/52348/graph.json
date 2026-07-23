@@ -1,0 +1,247 @@
+{
+  "query_id": 52348,
+  "query": "best way to quit caffeine",
+  "mode": "criteria",
+  "atoms": [
+    "withdrawal symptoms",
+    "detox method",
+    "support systems",
+    "caffeine alternatives",
+    "gradual reduction",
+    "commitment level",
+    "time frame",
+    "health considerations",
+    "personal motivation",
+    "environmental triggers"
+  ],
+  "plausible_answers": [
+    "Gradual taper using progressive decaf mixing over 4-5 weeks",
+    "Cold turkey scheduled on a weekend / holiday with pain relievers on hand",
+    "Substitute with caffeine-free alternatives plus a quit-buddy / accountability partner"
+  ],
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.0,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best way to quit caffeine",
+        "description": "What is the best way to quit caffeine?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the most effective methods for quitting caffeine?",
+        "description": "Identifying the most effective strategies for quitting caffeine."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What factors influence the success of quitting caffeine?",
+        "description": "Understanding the factors that contribute to successful caffeine cessation."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the key considerations for managing withdrawal symptoms?",
+        "description": "Evaluating the key aspects of managing caffeine withdrawal."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "criterion",
+        "label": "withdrawal symptoms",
+        "description": "The severity and management of withdrawal symptoms."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "criterion",
+        "label": "detox method",
+        "description": "The approach used to detox from caffeine."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "criterion",
+        "label": "support systems",
+        "description": "The availability and strength of social or emotional support."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "criterion",
+        "label": "caffeine alternatives",
+        "description": "The use of substitutes to replace caffeine."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "criterion",
+        "label": "gradual reduction",
+        "description": "The use of a step-by-step reduction in caffeine intake."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "criterion",
+        "label": "commitment level",
+        "description": "The level of personal commitment to quitting caffeine."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "criterion",
+        "label": "time frame",
+        "description": "The duration or timeline of the quitting process."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "criterion",
+        "label": "health considerations",
+        "description": "The impact of quitting on physical and mental health."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "criterion",
+        "label": "personal motivation",
+        "description": "The individual's motivation to quit caffeine."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "criterion",
+        "label": "environmental triggers",
+        "description": "The presence of environmental factors that encourage caffeine use."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Gradual taper using progressive decaf mixing over 4-5 weeks",
+        "description": "A method of gradually reducing caffeine intake by mixing decaf with regular over several weeks."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Cold turkey scheduled on a weekend / holiday with pain relievers on hand",
+        "description": "A method of quitting caffeine abruptly, planned for a weekend or holiday with preparation for withdrawal symptoms."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Substitute with caffeine-free alternatives plus a quit-buddy / accountability partner",
+        "description": "Replacing caffeine with alternatives and having a support system to help maintain abstinence."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

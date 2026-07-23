@@ -1,0 +1,263 @@
+{
+  "query_id": 51730,
+  "query": "Which type of exercise best protects aging joints?",
+  "mode": "criteria",
+  "atoms": [
+    "low-impact intensity",
+    "range-of-motion benefit",
+    "muscle-strengthening effect",
+    "accessibility for beginners",
+    "equipment requirements",
+    "cardiovascular benefit",
+    "joint stress level",
+    "balance training",
+    "flexibility improvement",
+    "sustainability over time"
+  ],
+  "plausible_answers": [
+    "Low-impact aerobic exercise (walking, swimming, cycling)",
+    "Strength training with bands or light weights",
+    "Range-of-motion / flexibility work (yoga, tai chi, dancing)"
+  ],
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.0,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Which type of exercise best protects aging joints?",
+        "description": "Identify the most effective type of exercise for protecting aging joints."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the key benefits of different types of exercise for aging joints?",
+        "description": "Evaluate the benefits of various exercises in terms of joint protection."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the accessibility and sustainability factors of different exercises?",
+        "description": "Assess how easy and sustainable each type of exercise is for aging individuals."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the joint stress and injury risks of different exercises?",
+        "description": "Analyze the level of joint stress and injury risk associated with each exercise type."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "criterion",
+        "label": "low-impact intensity",
+        "description": "Measures how gentle the exercise is on the joints."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "criterion",
+        "label": "range-of-motion benefit",
+        "description": "Evaluates the extent to which the exercise improves joint flexibility and movement."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "criterion",
+        "label": "muscle-strengthening effect",
+        "description": "Assesses how well the exercise strengthens the muscles around the joints."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "criterion",
+        "label": "accessibility for beginners",
+        "description": "Determines how easy it is for beginners to start and perform the exercise."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "criterion",
+        "label": "equipment requirements",
+        "description": "Evaluates the need for special equipment or facilities."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "criterion",
+        "label": "cardiovascular benefit",
+        "description": "Measures the impact of the exercise on heart and lung health."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "criterion",
+        "label": "joint stress level",
+        "description": "Assesses the degree of stress or strain the exercise places on the joints."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "criterion",
+        "label": "balance training",
+        "description": "Evaluates the extent to which the exercise improves balance and coordination."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "criterion",
+        "label": "flexibility improvement",
+        "description": "Measures how well the exercise enhances joint flexibility."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "criterion",
+        "label": "sustainability over time",
+        "description": "Assesses how long the exercise can be maintained without causing harm."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Low-impact aerobic exercise (walking, swimming, cycling)",
+        "description": "Aerobic exercises that are gentle on the joints."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Strength training with bands or light weights",
+        "description": "Exercises that build muscle strength to support joints."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Range-of-motion / flexibility work (yoga, tai chi, dancing)",
+        "description": "Exercises that improve joint flexibility and range of motion."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

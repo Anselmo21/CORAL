@@ -1,0 +1,247 @@
+{
+  "query_id": 51957,
+  "query": "best places in spain to see for backpackers",
+  "mode": "criteria",
+  "atoms": [
+    "cultural experiences",
+    "affordability",
+    "nightlife options",
+    "natural attractions",
+    "historical significance",
+    "local cuisine",
+    "transportation access",
+    "backpacker community",
+    "seasonal events",
+    "safety for travelers"
+  ],
+  "plausible_answers": [
+    "Barcelona",
+    "Madrid + Granada",
+    "Basque Country (Bilbao)"
+  ],
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.0,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best places in spain to see for backpackers",
+        "description": ""
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "best cities for backpackers",
+        "description": ""
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "best cultural experiences",
+        "description": ""
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "best places for nightlife",
+        "description": ""
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "criterion",
+        "label": "cultural experiences",
+        "description": ""
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "criterion",
+        "label": "affordability",
+        "description": ""
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "criterion",
+        "label": "nightlife options",
+        "description": ""
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "criterion",
+        "label": "natural attractions",
+        "description": ""
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "criterion",
+        "label": "historical significance",
+        "description": ""
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "criterion",
+        "label": "local cuisine",
+        "description": ""
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "criterion",
+        "label": "transportation access",
+        "description": ""
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "criterion",
+        "label": "backpacker community",
+        "description": ""
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "criterion",
+        "label": "seasonal events",
+        "description": ""
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "criterion",
+        "label": "safety for travelers",
+        "description": ""
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Barcelona",
+        "description": ""
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Madrid + Granada",
+        "description": ""
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Basque Country (Bilbao)",
+        "description": ""
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

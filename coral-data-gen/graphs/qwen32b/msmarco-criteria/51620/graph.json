@@ -1,0 +1,235 @@
+{
+  "query_id": 51620,
+  "query": "What is the best bronzer for older skin?",
+  "mode": "criteria",
+  "atoms": [
+    "finish type",
+    "shade range",
+    "blendability",
+    "longevity",
+    "skincare ingredients",
+    "SPF protection",
+    "price",
+    "brand reputation",
+    "applicator type",
+    "fragrance-free formulation"
+  ],
+  "plausible_answers": [
+    "Guerlain Terracotta Bronzing Powder",
+    "Smashbox Bronze Lights in Sunkissed",
+    "Hourglass Superficial Waterproof Bronzer"
+  ],
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.0,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best bronzer for older skin?",
+        "description": "Identifying the best bronzer for mature skin types."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What finish type is best for mature skin?",
+        "description": "Determining the ideal finish type for mature skin to avoid emphasizing fine lines."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What shade range is most flattering for mature skin?",
+        "description": "Identifying the most natural and flattering shade range for mature skin tones."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What formulation features are most beneficial for mature skin?",
+        "description": "Evaluating formulation features like skincare ingredients and blendability for mature skin."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "criterion",
+        "label": "finish type",
+        "description": "Whether the bronzer has a matte or shimmery finish."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "criterion",
+        "label": "shade range",
+        "description": "The range of shades available to match mature skin tones."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "criterion",
+        "label": "blendability",
+        "description": "How well the bronzer blends into the skin without caking or emphasizing lines."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "criterion",
+        "label": "longevity",
+        "description": "How long the bronzer lasts on the skin without fading or oxidizing."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "criterion",
+        "label": "skincare ingredients",
+        "description": "Whether the bronzer contains nourishing or beneficial skincare ingredients."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "criterion",
+        "label": "SPF protection",
+        "description": "Whether the bronzer includes SPF for added sun protection."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "criterion",
+        "label": "price",
+        "description": "The cost of the bronzer and its value for money."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "criterion",
+        "label": "brand reputation",
+        "description": "The reputation of the brand for quality and effectiveness."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "criterion",
+        "label": "applicator type",
+        "description": "The type of applicator included for ease of application."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "criterion",
+        "label": "fragrance-free formulation",
+        "description": "Whether the bronzer is free of fragrances to avoid irritation."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Guerlain Terracotta Bronzing Powder",
+        "description": "A highly moisturizing and blendable bronzer suitable for mature skin."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Smashbox Bronze Lights in Sunkissed",
+        "description": "A sheer, shimmer-free bronzer with nourishing ingredients for fair to mature skin."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Hourglass Superficial Waterproof Bronzer",
+        "description": "A waterproof bronzer that blends seamlessly for a natural bronze effect."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      }
+    ]
+  }
+}

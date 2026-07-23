@@ -1,0 +1,247 @@
+{
+  "query_id": 52420,
+  "query": "best zinc brand for acne",
+  "mode": "criteria",
+  "atoms": [
+    "form of zinc",
+    "dosage recommendation",
+    "additional ingredients",
+    "absorption efficiency",
+    "target demographic",
+    "brand reputation",
+    "price point",
+    "user reviews",
+    "clinical evidence",
+    "availability"
+  ],
+  "plausible_answers": [
+    "Zinc ascorbate supplement",
+    "Oral zinc gluconate at the trial-validated 200 mg/day dose (~30 mg elemental zinc)",
+    "Multivitamin with high-potency zinc plus Vitamins A / B6 / C / E"
+  ],
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.0,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best zinc brand for acne",
+        "description": "best zinc brand for acne"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "effective form of zinc",
+        "description": "effective form of zinc"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "recommended dosage",
+        "description": "recommended dosage"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "best zinc brand",
+        "description": "best zinc brand"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "criterion",
+        "label": "form of zinc",
+        "description": "form of zinc"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "criterion",
+        "label": "dosage recommendation",
+        "description": "dosage recommendation"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "criterion",
+        "label": "additional ingredients",
+        "description": "additional ingredients"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "criterion",
+        "label": "absorption efficiency",
+        "description": "absorption efficiency"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "criterion",
+        "label": "target demographic",
+        "description": "target demographic"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "criterion",
+        "label": "brand reputation",
+        "description": "brand reputation"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "criterion",
+        "label": "price point",
+        "description": "price point"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "criterion",
+        "label": "user reviews",
+        "description": "user reviews"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "criterion",
+        "label": "clinical evidence",
+        "description": "clinical evidence"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "criterion",
+        "label": "availability",
+        "description": "availability"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Zinc ascorbate supplement",
+        "description": "Zinc ascorbate supplement"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Oral zinc gluconate at the trial-validated 200 mg/day dose (~30 mg elemental zinc)",
+        "description": "Oral zinc gluconate at the trial-validated 200 mg/day dose (~30 mg elemental zinc)"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Multivitamin with high-potency zinc plus Vitamins A / B6 / C / E",
+        "description": "Multivitamin with high-potency zinc plus Vitamins A / B6 / C / E"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

@@ -1,0 +1,275 @@
+{
+  "query_id": 52040,
+  "query": "best skin care for redness",
+  "mode": "criteria",
+  "atoms": [
+    "skin condition type",
+    "ingredient sensitivity",
+    "product formulation",
+    "application method",
+    "sun protection",
+    "targeted treatment",
+    "skin type compatibility",
+    "brand reputation",
+    "price range",
+    "user experience"
+  ],
+  "plausible_answers": [
+    "Murad Redness Therapy 3-part system",
+    "A caffeine-based anti-redness serum",
+    "Build-your-own minimalist routine"
+  ],
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.0,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best skin care for redness",
+        "description": "What is the best skin care approach for managing redness, particularly for those with rosacea?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the key ingredients to avoid or include for redness?",
+        "description": "Identifying ingredients that either exacerbate or help reduce redness in sensitive skin."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the most effective product formulations for redness?",
+        "description": "Evaluating the types of products (cleansers, serums, moisturizers) that are most effective for redness."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the best application and usage practices for redness care?",
+        "description": "Understanding how to properly apply and use skincare products to manage redness effectively."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "criterion",
+        "label": "skin condition type",
+        "description": "The specific type of skin condition (e.g., rosacea, sensitive skin) that the product is designed for."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "criterion",
+        "label": "ingredient sensitivity",
+        "description": "Whether the product contains ingredients that are known to irritate sensitive or redness-prone skin."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "criterion",
+        "label": "product formulation",
+        "description": "The type of formulation (e.g., gel, cream, serum) and its effectiveness for redness."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "criterion",
+        "label": "application method",
+        "description": "How the product is applied and whether the method supports redness reduction."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "criterion",
+        "label": "sun protection",
+        "description": "Whether the product includes or supports sun protection, which is essential for redness-prone skin."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "criterion",
+        "label": "targeted treatment",
+        "description": "Whether the product is specifically formulated to target redness and irritation."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "criterion",
+        "label": "skin type compatibility",
+        "description": "Whether the product is suitable for the user's specific skin type (e.g., sensitive, oily)."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "criterion",
+        "label": "brand reputation",
+        "description": "The reputation of the brand for producing effective and safe products for redness-prone skin."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "criterion",
+        "label": "price range",
+        "description": "The cost of the product and whether it is considered affordable or premium."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "criterion",
+        "label": "user experience",
+        "description": "The overall user experience, including ease of use and effectiveness as reported by users."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Murad Redness Therapy 3-part system",
+        "description": "A complete skincare system designed for sensitive skin prone to redness and irritation."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "A caffeine-based anti-redness serum",
+        "description": "A serum containing caffeine to help reduce visible redness and soothe irritation."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Build-your-own minimalist routine",
+        "description": "A personalized routine using non-irritating, targeted products to manage redness."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      }
+    ]
+  }
+}

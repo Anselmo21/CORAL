@@ -1,0 +1,44 @@
+{
+  "_meta": {
+    "version": 1,
+    "description": "Lattices where at least one size-2 pair of singleton subsets (one concept kept each) produces a Borda-aggregated top-1 tie. Bundled from llama31-8b dataset (halted lattices excluded).",
+    "generated_at": "2026-07-07T01:56:02.880451+00:00",
+    "model": "llama31-8b",
+    "aggregation": "Borda over 2 singletons; each answer scores (M-1-rank) per singleton, summed",
+    "singleton_definition": "subset at layer n-1 (one concept kept); n derived from max removal-set size in raw_answers",
+    "tie_definition": "top-1 Borda score shared by 2 or more answers",
+    "counts_per_source": {
+      "msmarco-criteria": {
+        "lattices": 0,
+        "tying_pairs_2way": 0,
+        "tying_pairs_3way": 0
+      },
+      "msmarco-pragmas": {
+        "lattices": 0,
+        "tying_pairs_2way": 0,
+        "tying_pairs_3way": 0
+      },
+      "sonnet-criteria": {
+        "lattices": 0,
+        "tying_pairs_2way": 0,
+        "tying_pairs_3way": 0
+      },
+      "sonnet-pragmas": {
+        "lattices": 0,
+        "tying_pairs_2way": 0,
+        "tying_pairs_3way": 0
+      }
+    },
+    "per_source_totals_analyzed": {
+      "msmarco-criteria": 16,
+      "msmarco-pragmas": 18,
+      "sonnet-criteria": 16,
+      "sonnet-pragmas": 15
+    },
+    "grand_total_lattices": 0
+  },
+  "msmarco-criteria": {},
+  "msmarco-pragmas": {},
+  "sonnet-criteria": {},
+  "sonnet-pragmas": {}
+}
