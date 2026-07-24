@@ -25,6 +25,7 @@ import time
 
 from scripts.shared.cc_budget_ablation_dev import score_cc
 from search.bfs import bfs_search
+from search.lattice import restrict_rbc
 
 DATASET_PATH    = "data/msmarco_pragma.json"
 CASES_PATH      = "logged_results/msmarco_pragma/cases.json"
@@ -34,16 +35,6 @@ CC_CASES_PATH   = "logged_results/msmarco_pragma/cc_cases.json"
 def _load_dataset() -> dict:
     with open(DATASET_PATH) as f:
         return json.load(f)
-
-
-def _restrict_rbc(rbc: dict[str, list[str]], start_node: list[str]) -> dict[str, list[str]]:
-    pragma_set = set(start_node)
-    out: dict[str, list[str]] = {}
-    for key, ranking in rbc.items():
-        parts = [p for p in key.split(", ") if p] if key else []
-        if all(p in pragma_set for p in parts):
-            out[key] = ranking
-    return out
 
 
 def export_cases() -> None:
@@ -59,7 +50,7 @@ def export_cases() -> None:
         if rec is None:
             continue
         start_node: list[str] = case["start_node"]
-        sub_rbc = _restrict_rbc(rec["rankings"], start_node)
+        sub_rbc = restrict_rbc(rec["rankings"], start_node, rec["criteria"])
         cc_cases.append({
             "case_id":           cid,
             "query_id":          qid,

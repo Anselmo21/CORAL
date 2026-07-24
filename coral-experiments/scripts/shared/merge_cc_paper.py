@@ -1,9 +1,9 @@
-"""Merge CC (b=16, pct_10) results into paper_results.json for each dataset.
+"""Merge LSM (b=4, b=8) results into paper_results.json for each dataset.
 
-After CC has been run on a GPU machine, copy the cc_results_*.json files back to
+After LSM has been run on a GPU machine, copy the cc_results_*.json files back to
 logged_results/<dataset>/ and then run this script to update paper_results.json with
-cc_b16 / cc_pct10 columns, recompute the per-dataset table, and print the final
-6-method summary.
+cc_b4 / cc_b8 columns, recompute the per-dataset table, and print the final
+summary.
 
 If a dataset is missing one or both CC files, the merge silently omits that
 column for that dataset (table prints "—").
@@ -45,13 +45,13 @@ def _load_cc(name: str, config_label: str) -> dict[int, dict] | None:
 
 def merge_dataset(name: str) -> list[dict]:
     rows = _load_paper(name)
-    cc_b16   = _load_cc(name, "budget_16")
-    cc_pct10 = _load_cc(name, "pct_10")
+    cc_b4 = _load_cc(name, "budget_4")
+    cc_b8 = _load_cc(name, "budget_8")
 
     for r in rows:
         bfs_key = r["bfs"].get("key")
         cid = r.get("case_id")
-        for col, lookup in [("cc_b16", cc_b16), ("cc_pct10", cc_pct10)]:
+        for col, lookup in [("cc_b4", cc_b4), ("cc_b8", cc_b8)]:
             if lookup is None:
                 continue
             cc = lookup.get(cid)
@@ -64,7 +64,7 @@ def merge_dataset(name: str) -> list[dict]:
                 "proxy_key":   cc.get("proxy_key"),
                 "proxy_layer": cc.get("proxy_layer"),
             }
-            entry["hop_to_bfs"] = hop_distance(entry["proxy_key"], bfs_key, sorted(r["start_node"]))
+            entry["hop_to_bfs"] = hop_distance(entry["proxy_key"], bfs_key, r.get("start_node"))
             r[col] = entry
 
     with open(f"logged_results/{name}/paper_results.json", "w") as f:
@@ -76,10 +76,10 @@ def summarize(rows: list[dict]) -> str:
     methods = [
         ("BFS (oracle)",  "bfs",       True),
         ("SRA",           "sra",       False),
-        ("ERA (b=16)",    "era_b16",   False),
-        ("ERA (pct_10)",  "era_pct10", False),
-        ("CC (b=16)",     "cc_b16",    False),
-        ("CC (pct_10)",   "cc_pct10",  False),
+        ("ERA (b=4)",     "era_b4",    False),
+        ("ERA (b=8)",     "era_b8",    False),
+        ("LSM (b=4)",     "cc_b4",     False),
+        ("LSM (b=8)",     "cc_b8",     False),
     ]
     lines = []
     lines.append(f"  {'method':<14} | {'N':>4} | {'acc':>7} | {'cost':>8} | {'hop μ':>7} | {'hop med':>7}")
