@@ -55,25 +55,37 @@ def _key_to_set(key: str | None) -> set[str]:
     return {c.strip() for c in key.split(",") if c.strip()}
 
 
-def hop_distance(key_a: str | None, key_b: str | None, _crit=None) -> int | None:
+def _key_sets(key_a: str, key_b: str, concepts) -> tuple[set[str], set[str]]:
+    """Concept sets for two combo keys.
+
+    Pass the known concept list to keep comma-bearing concepts intact.
+    """
+    if concepts is not None:
+        cs = sorted(concepts)
+        a = set(parse_combo_key(key_a, cs)) if key_a else set()
+        b = set(parse_combo_key(key_b, cs)) if key_b else set()
+        return a, b
+    return _key_to_set(key_a), _key_to_set(key_b)
+
+
+def hop_distance(key_a: str | None, key_b: str | None, concepts=None) -> int | None:
     """Symmetric-difference size |A △ B| between two combo keys (Hasse hops).
 
-    Returns None when either key is missing. The optional third argument is
-    accepted for caller compatibility and ignored.
+    Returns None when either key is missing.
     """
     if key_a is None or key_b is None:
         return None
-    return len(_key_to_set(key_a) ^ _key_to_set(key_b))
+    a, b = _key_sets(key_a, key_b, concepts)
+    return len(a ^ b)
 
 
-def jaccard_keys(key_a: str | None, key_b: str | None, _crit=None) -> float | None:
+def jaccard_keys(key_a: str | None, key_b: str | None, concepts=None) -> float | None:
     """Jaccard similarity between the criteria sets encoded in two combo keys.
 
     Returns None when either key is missing/empty — those cases have no
     meaningful CF to compare and should be excluded from aggregate stats.
     """
-    a = _key_to_set(key_a)
-    b = _key_to_set(key_b)
+    a, b = _key_sets(key_a or "", key_b or "", concepts)
     if not a or not b:
         return None
     return len(a & b) / len(a | b)
