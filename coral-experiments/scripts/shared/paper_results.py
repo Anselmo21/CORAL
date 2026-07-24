@@ -1,10 +1,10 @@
 """Paper-results pipeline (Phase A — no GPU).
 
-For each of the 4 main datasets, refresh ERA(b=16) + ERA(pct_10) under the
+For each of the 4 main datasets, refresh ERA at budgets 4 and 8 under the
 current normalized softmax_entropy, copy BFS + SRA from existing results,
 compute hop distance from BFS's CF for every method, and emit:
 
-    logged_results/<dataset>/paper_results.json   (per-case rows: bfs/sra/era_b16/era_pct10)
+    logged_results/<dataset>/paper_results.json   (per-case rows: bfs/sra/era_b4/era_b8)
     stdout                             (per-dataset table: accuracy, cost, hop)
 
 Datasets:
@@ -38,6 +38,8 @@ DATASETS = [
 
 # One setting applied across all four datasets — no per-dataset flag.
 PROPAGATE_SCORES = True
+
+ERA_BUDGETS = (4, 8)
 
 
 def _load_results(path: str) -> list[dict]:
@@ -98,24 +100,17 @@ def rerun_dataset(name: str, modpath: str, propagate_scores: bool = PROPAGATE_SC
             "sra":       prior["sra"],
         }
 
-        # ERA b=16
-        r16 = era_search(criteria, rbc, budget=16, start_node=start, direction="down",
-                         propagate_scores=propagate_scores)
-        row["era_b16"] = score_proxy(bfs_for_proxy, r16, rbc, start)
-
-        # ERA pct_10
-        budget = max(1, int(2**size * 10 / 100))
-        rp = era_search(criteria, rbc, budget=budget, start_node=start, direction="down",
-                        propagate_scores=propagate_scores)
-        row["era_pct10"] = score_proxy(bfs_for_proxy, rp, rbc, start)
+        for b in ERA_BUDGETS:
+            rb = era_search(criteria, rbc, budget=b, start_node=start, direction="down",
+                            propagate_scores=propagate_scores)
+            row[f"era_b{b}"] = score_proxy(bfs_for_proxy, rb, rbc, start)
 
         # Hop distance from BFS's CF to each method's CF
         bfs_key = prior["bfs"].get("key")
-        sorted_crit = sorted(criteria)
-        for col in ("sra", "era_b16", "era_pct10"):
+        for col in ("sra", *(f"era_b{b}" for b in ERA_BUDGETS)):
             cell = row[col]
-            method_key = cell.get("proxy_key") or cell.get("key") if isinstance(cell, dict) else None
-            row[col]["hop_to_bfs"] = hop_distance(method_key, bfs_key, sorted_crit)
+            method_key = cell.get("proxy_key", cell.get("key")) if isinstance(cell, dict) else None
+            row[col]["hop_to_bfs"] = hop_distance(method_key, bfs_key, start)
         row["bfs"]["hop_to_bfs"] = 0   # by definition
 
         new_rows.append(row)
@@ -129,8 +124,8 @@ def summarize(rows: list[dict]) -> str:
     methods = [
         ("BFS (oracle)",  "bfs",       True),
         ("SRA",           "sra",       False),
-        ("ERA (b=16)",    "era_b16",   False),
-        ("ERA (pct_10)",  "era_pct10", False),
+        ("ERA (b=4)",     "era_b4",    False),
+        ("ERA (b=8)",     "era_b8",    False),
     ]
     lines = []
     lines.append(f"  {'method':<14} | {'N':>4} | {'acc':>7} | {'cost':>8} | {'hop μ':>7} | {'hop med':>7}")

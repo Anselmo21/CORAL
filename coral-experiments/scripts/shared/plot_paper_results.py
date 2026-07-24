@@ -32,12 +32,12 @@ DATASETS = [
 ]
 
 METHODS = [
-    ("bfs",       "BFS",          "o",  "--", "black",   2.0, True),
-    ("sra",       "SRA",          "s",  "-",  "#d62728", 1.6, False),
-    ("era_b16",   "ERA (b=16)",   "v",  "-",  "#1f77b4", 2.0, False),
-    ("era_pct10", "ERA (b=10%)",  "D",  "-",  "#7fbfff", 2.0, False),
-    ("cc_b16",    "LSM (b=16)",   "^",  "-",  "#2ca02c", 2.0, False),
-    ("cc_pct10",  "LSM (b=10%)",  "P",  "-",  "#98df8a", 2.0, False),
+    ("bfs",     "BFS",        "o",  "--", "black",   2.0, True),
+    ("sra",     "SRA",        "s",  "-",  "#d62728", 1.6, False),
+    ("cc_b4",   "LSM (b=4)",  "^",  "-",  "#2ca02c", 2.0, False),
+    ("cc_b8",   "LSM (b=8)",  "P",  "-",  "#98df8a", 2.0, False),
+    ("era_b4",  "ERA (b=4)",  "X",  "-",  "#9467bd", 2.0, False),
+    ("era_b8",  "ERA (b=8)",  "D",  "-",  "#c5b0d5", 2.0, False),
 ]
 
 OUT_BASE = "plots"
@@ -78,6 +78,19 @@ def _metric(cells: list[dict], kind: str, is_bfs: bool) -> float | None:
     raise ValueError(kind)
 
 
+def _hop_stats(rows_by_size: dict[int, list[dict]], col: str):
+    """Per-size mean and std of hop_to_bfs for the bar panel."""
+    xs, means, stds = [], [], []
+    for size, bucket in rows_by_size.items():
+        hops = [r[col].get("hop_to_bfs") for r in bucket if r.get(col)]
+        hops = [h for h in hops if h is not None]
+        if hops:
+            xs.append(size)
+            means.append(float(np.mean(hops)))
+            stds.append(float(np.std(hops)))
+    return xs, means, stds
+
+
 def _series(rows_by_size: dict[int, list[dict]], col: str, kind: str, is_bfs: bool):
     xs, ys = [], []
     for size, bucket in rows_by_size.items():
@@ -108,14 +121,26 @@ def plot_dataset(name: str, out_name: str, nice: str) -> None:
     ]
     handles_by_label: dict[str, object] = {}
     for ylabel, kind, ax in titles:
-        for col, lab, mk, ls, color, lw, is_bfs in available:
-            if is_bfs and kind in ("acc", "hop"):
-                continue
-            xs, ys = _series(rows_by, col, kind, is_bfs)
-            if xs:
-                line, = ax.plot(xs, ys, marker=mk, linestyle=ls, color=color, linewidth=lw,
-                                markersize=7, label=lab)
-                handles_by_label.setdefault(lab, line)
+        if kind == "hop":
+            bar_methods = [m for m in available if not m[6]]
+            width = 0.8 / len(bar_methods)
+            for j, (col, lab, mk, ls, color, lw, is_bfs) in enumerate(bar_methods):
+                xs, means, stds = _hop_stats(rows_by, col)
+                if xs:
+                    pos = [x + (j - (len(bar_methods) - 1) / 2) * width for x in xs]
+                    yerr = [[min(m, s) for m, s in zip(means, stds)], stds]
+                    bars = ax.bar(pos, means, width=width, yerr=yerr, color=color,
+                                  error_kw={"elinewidth": 0.8, "capsize": 2}, label=lab)
+                    handles_by_label.setdefault(lab, bars)
+        else:
+            for col, lab, mk, ls, color, lw, is_bfs in available:
+                if is_bfs and kind == "acc":
+                    continue
+                xs, ys = _series(rows_by, col, kind, is_bfs)
+                if xs:
+                    line, = ax.plot(xs, ys, marker=mk, linestyle=ls, color=color, linewidth=lw,
+                                    markersize=7, label=lab)
+                    handles_by_label.setdefault(lab, line)
         ax.set_xlabel(xlabel)
         ax.set_ylabel(ylabel)
         ax.set_xticks(sorted(rows_by.keys()))

@@ -12,6 +12,11 @@ dependencies:
     - numpy
     - matplotlib
 
+    # Rank aggregation (search/flagr.py). On Apple Silicon rebuild the
+    # dylib from https://github.com/lakritidis/FLAGR (x86_64-only wheel).
+    - pyflagr
+    - pandas
+
     # ContextCite (CC) search — only needed if you want to run / re-run CC.
     # Heavy: pulls in torch + transformers + vllm.
     # Uncomment if needed:
