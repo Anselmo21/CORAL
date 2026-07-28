@@ -1,0 +1,257 @@
+{
+  "query_id": 52416,
+  "query": "best workouts to do in conjunction with a pro hormone",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: peer-reviewed exercise physiology journal",
+    "trustworthiness: bodybuilding community forum",
+    "trustworthiness: endocrinologist warning",
+    "trustworthiness: prohormone product documentation",
+    "trustworthiness: supplement industry publication",
+    "perspective: powerlifter",
+    "perspective: bodybuilder",
+    "perspective: first-time prohormone user",
+    "perspective: recreational gym-goer",
+    "perspective: advanced cycling-experienced user"
+  ],
+  "plausible_answers": [
+    "Heavy compound lifts (squat, deadlift, bench, OHP, row) in the 4-8 rep range on a 4-6 day split",
+    "High-volume hypertrophy work (8-12 reps, 15-20 sets per muscle / week)",
+    "Conservative training paired with on-cycle support and recovery emphasis"
+  ],
+  "baseline_answer": "Conservative training paired with on-cycle support and recovery emphasis",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best workouts to do in conjunction with a pro hormone",
+        "description": "What are the best workouts to do in conjunction with a prohormone?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What types of workouts are generally recommended for safe and effective prohormone use?",
+        "description": "General workout recommendations for prohormone users."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What workout approaches are emphasized by different user perspectives?",
+        "description": "Workout advice from different user perspectives (e.g., bodybuilder vs. first-time user)."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What workout guidance is provided by prohormone product documentation and expert warnings?",
+        "description": "Workout guidance from product documentation and expert sources."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed exercise physiology journal",
+        "description": "Sources from peer-reviewed journals on exercise physiology."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: bodybuilding community forum",
+        "description": "Sources from bodybuilding community forums."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: endocrinologist warning",
+        "description": "Sources from endocrinologists warning about prohormone risks."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: prohormone product documentation",
+        "description": "Official documentation from prohormone product manufacturers."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: supplement industry publication",
+        "description": "Sources from supplement industry publications."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: powerlifter",
+        "description": "Perspective from powerlifting communities."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: bodybuilder",
+        "description": "Perspective from bodybuilding communities."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: first-time prohormone user",
+        "description": "Perspective from first-time prohormone users."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: recreational gym-goer",
+        "description": "Perspective from recreational gym-goers."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: advanced cycling-experienced user",
+        "description": "Perspective from experienced prohormone users."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Heavy compound lifts (squat, deadlift, bench, OHP, row) in the 4-8 rep range on a 4-6 day split",
+        "description": "Focus on heavy compound movements for strength and size."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "High-volume hypertrophy work (8-12 reps, 15-20 sets per muscle / week)",
+        "description": "High volume training for muscle growth."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Conservative training paired with on-cycle support and recovery emphasis",
+        "description": "Low-intensity training with a focus on health and recovery."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      }
+    ]
+  }
+}

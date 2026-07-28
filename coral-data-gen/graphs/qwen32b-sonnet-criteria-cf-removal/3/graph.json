@@ -1,0 +1,293 @@
+{
+  "query_id": 3,
+  "query": "I live in Toronto and can afford either a mortgage or rent on a similar place. Should I buy or rent?",
+  "mode": "criteria",
+  "atoms": [
+    "long-term wealth accumulation",
+    "monthly cash flow optimization",
+    "flexibility and mobility",
+    "forced savings discipline",
+    "protection from rent increases",
+    "investment of down payment capital",
+    "job and income stability",
+    "short-term financial risk tolerance",
+    "community and lifestyle stability",
+    "exposure to real estate appreciation"
+  ],
+  "plausible_answers": [
+    "Answer A (Rent and Invest Default): Rent in Toronto and invest your down payment capital in a diversified portfolio \u2014 the city's extreme price-to-rent ratio means buying only makes financial sense with a 7+ year horizon and strong income stability.",
+    "Answer B (Buy for Long-Term Equity): Buy if you have a stable career, plan to stay 10+ years, and value forced savings \u2014 Toronto homeowners with long horizons have historically built substantial wealth despite high entry costs.",
+    "Answer C (Rent for Flexibility): Rent indefinitely if your career or personal situation may require relocation \u2014 the optionality and liquidity of renting outweighs real estate upside when mobility has value."
+  ],
+  "baseline_answer": "Answer A (Rent and Invest Default): Rent in Toronto and invest your down payment capital in a diversified portfolio \u2014 the city's extreme price-to-rent ratio means buying only makes financial sense with a 7+ year horizon and strong income stability.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Should I buy or rent in Toronto?",
+        "description": "I live in Toronto and can afford either a mortgage or rent on a similar place. Should I buy or rent?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the long-term financial implications of buying vs. renting?",
+        "description": "Evaluating long-term financial outcomes, including wealth accumulation and investment of capital."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the short-term and lifestyle considerations?",
+        "description": "Evaluating mobility, risk tolerance, and lifestyle stability."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What about protection from future rent increases?",
+        "description": "Evaluating the risk of rising rent for renters."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "long-term wealth accumulation",
+        "description": "The potential to build wealth through property ownership over time."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "monthly cash flow optimization",
+        "description": "Prioritizing low monthly expenses for better liquidity."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "flexibility and mobility",
+        "description": "The ability to move or change location without penalty."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "forced savings discipline",
+        "description": "Owning a home forces consistent savings through mortgage payments."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "protection from rent increases",
+        "description": "Avoiding the risk of rising rental costs over time."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "investment of down payment capital",
+        "description": "The opportunity cost of using a down payment elsewhere."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "job and income stability",
+        "description": "Having a stable income to support long-term mortgage payments."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "short-term financial risk tolerance",
+        "description": "Ability to handle short-term price volatility or interest rate hikes."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "community and lifestyle stability",
+        "description": "Preference for a stable living environment and sense of community."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "exposure to real estate appreciation",
+        "description": "Potential for property value to increase over time."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Rent and Invest Default)",
+        "description": "Rent in Toronto and invest your down payment capital in a diversified portfolio \u2014 the city's extreme price-to-rent ratio means buying only makes financial sense with a 7+ year horizon and strong income stability."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Buy for Long-Term Equity)",
+        "description": "Buy if you have a stable career, plan to stay 10+ years, and value forced savings \u2014 Toronto homeowners with long horizons have historically built substantial wealth despite high entry costs."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Rent for Flexibility)",
+        "description": "Rent indefinitely if your career or personal situation may require relocation \u2014 the optionality and liquidity of renting outweighs real estate upside when mobility has value."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      }
+    ]
+  }
+}

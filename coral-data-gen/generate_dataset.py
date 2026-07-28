@@ -39,18 +39,29 @@ def create_llm_client(
     provider: str,
     model: Optional[str] = None,
     api_key: Optional[str] = None,
+    base_url: Optional[str] = None,
     local_device: str = "auto",
     local_dtype: str = "auto",
     tensor_parallel_size: int = 1,
 ) -> Any:
-    """Build an LLM client for the chosen provider. Build once, reuse across queries."""
+    """Build an LLM client for the chosen provider. Build once, reuse across queries.
+
+    For provider='openai', pass base_url to hit any OpenAI-compatible endpoint
+    (Ollama, LM Studio, llama.cpp server, vLLM --served). Falls back to
+    OPENAI_BASE_URL env var, else the official OpenAI API. When base_url is set
+    a real API key is usually unnecessary; a placeholder is used if none is given.
+    """
     if provider == "openai":
         if OpenAI is None:
             raise SystemExit("pip install openai")
+        base_url = base_url or os.getenv("OPENAI_BASE_URL")
         api_key = api_key or os.getenv("OPENAI_API_KEY")
         if not api_key:
-            raise ValueError("Set OPENAI_API_KEY or pass api_key=")
-        return OpenAI(api_key=api_key)
+            if base_url:
+                api_key = "not-needed"  # local servers typically ignore auth
+            else:
+                raise ValueError("Set OPENAI_API_KEY or pass api_key=")
+        return OpenAI(api_key=api_key, base_url=base_url) if base_url else OpenAI(api_key=api_key)
     if provider == "vllm":
         try:
             from vllm import LLM

@@ -1,0 +1,352 @@
+{
+  "query_id": 51928,
+  "query": "best over the counter meds for female yeast infection",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: CDC vaginal infections guidance",
+    "trustworthiness: peer-reviewed gynecology journal",
+    "trustworthiness: OB-GYN clinical practice guideline",
+    "trustworthiness: consumer health platform",
+    "trustworthiness: patient health forum",
+    "trustworthiness: pharmacist-curated drug guide",
+    "perspective: pregnant patient",
+    "perspective: first-time yeast sufferer",
+    "perspective: recurrent yeast infections patient",
+    "perspective: severe-symptom patient"
+  ],
+  "plausible_answers": [
+    "7-day miconazole (Monistat-7) regimen",
+    "3-day clotrimazole (Lotrimin / Mycelex) treatment",
+    "1-day high-dose miconazole"
+  ],
+  "baseline_answer": "7-day miconazole (Monistat-7) regimen",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best over the counter meds for female yeast infection",
+        "description": "Which over-the-counter medication is most effective for treating a female yeast infection?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which over-the-counter antifungal is most effective for mild to moderate yeast infections?",
+        "description": "Identify the best OTC treatment for common, non-severe yeast infections."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which over-the-counter treatment is most suitable for pregnant patients?",
+        "description": "Identify the safest OTC treatment for yeast infections during pregnancy."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which treatment is best for first-time yeast infection sufferers?",
+        "description": "Identify the best OTC treatment for women experiencing their first yeast infection."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which treatment is best for patients with severe symptoms or recurrent infections?",
+        "description": "Identify the best OTC treatment for women with severe or recurring yeast infections."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: CDC vaginal infections guidance",
+        "description": "Sources filtered by CDC guidelines on vaginal infections."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed gynecology journal",
+        "description": "Sources filtered by peer-reviewed gynecology research."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: OB-GYN clinical practice guideline",
+        "description": "Sources filtered by OB-GYN clinical practice guidelines."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: consumer health platform",
+        "description": "Sources filtered by reputable consumer health platforms."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: patient health forum",
+        "description": "Sources filtered by patient-reported experiences from health forums."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: pharmacist-curated drug guide",
+        "description": "Sources filtered by pharmacist-curated drug information."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: pregnant patient",
+        "description": "Sources filtered by relevance to pregnant patients."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: first-time yeast sufferer",
+        "description": "Sources filtered by relevance to first-time yeast infection sufferers."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: recurrent yeast infections patient",
+        "description": "Sources filtered by relevance to patients with recurrent yeast infections."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: severe-symptom patient",
+        "description": "Sources filtered by relevance to patients with severe yeast infection symptoms."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "7-day miconazole (Monistat-7) regimen",
+        "description": "7-day miconazole (Monistat-7) is the most effective OTC treatment for yeast infections."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "3-day clotrimazole (Lotrimin / Mycelex) treatment",
+        "description": "3-day clotrimazole (Lotrimin / Mycelex) is a suitable OTC treatment for yeast infections."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "1-day high-dose miconazole",
+        "description": "1-day high-dose miconazole is a convenient OTC treatment for yeast infections."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq4",
+        "target": "c1"
+      },
+      {
+        "source": "sq4",
+        "target": "c3"
+      },
+      {
+        "source": "sq4",
+        "target": "c4"
+      },
+      {
+        "source": "sq4",
+        "target": "c6"
+      },
+      {
+        "source": "sq4",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      }
+    ]
+  }
+}

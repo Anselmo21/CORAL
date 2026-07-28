@@ -1,0 +1,289 @@
+{
+  "query_id": 51693,
+  "query": "What is the best diet to improve thyroid function?",
+  "mode": "criteria",
+  "atoms": [
+    "iodine content",
+    "selenium content",
+    "anti-inflammatory profile",
+    "gluten avoidance",
+    "processed food avoidance",
+    "omega-3 inclusion",
+    "zinc levels",
+    "goitrogen avoidance",
+    "carbohydrate balance",
+    "micronutrient density"
+  ],
+  "plausible_answers": [
+    "High-iodine seafood-rich diet",
+    "Whole-foods anti-inflammatory elimination diet",
+    "Supplement-supported regimen"
+  ],
+  "baseline_answer": "Whole-foods anti-inflammatory elimination diet",
+  "baseline_index": 1,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best diet to improve thyroid function?",
+        "description": "Evaluating the most effective dietary approach to support thyroid health."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What dietary components support thyroid hormone production and regulation?",
+        "description": "Nutrients like iodine, selenium, zinc, omega-3s, and micronutrient density are important for thyroid hormone synthesis and function."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What dietary patterns reduce inflammation and avoid thyroid antagonists?",
+        "description": "Anti-inflammatory foods and elimination of gluten, processed foods, and goitrogens are key to reducing thyroid inflammation and interference."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What dietary strategies ensure proper nutrient balance and metabolic function?",
+        "description": "Balancing carbohydrates and ensuring micronutrient density supports overall metabolic and thyroid health."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "iodine content",
+        "description": "Iodine is essential for thyroid hormone production."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "selenium content",
+        "description": "Selenium supports thyroid hormone conversion and protects the gland from oxidative damage."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "anti-inflammatory profile",
+        "description": "An anti-inflammatory diet reduces thyroid inflammation and autoimmune response."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "gluten avoidance",
+        "description": "Gluten can trigger immune responses in individuals with thyroid conditions like Hashimoto\u2019s."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "processed food avoidance",
+        "description": "Processed foods often contain additives and inflammatory ingredients that can impair thyroid function."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "omega-3 inclusion",
+        "description": "Omega-3 fatty acids reduce inflammation and support metabolic health."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "zinc levels",
+        "description": "Zinc is necessary for thyroid hormone production and conversion."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "goitrogen avoidance",
+        "description": "Goitrogens can interfere with iodine uptake and thyroid hormone production."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "carbohydrate balance",
+        "description": "Balanced carbohydrate intake supports metabolic function and energy levels."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "micronutrient density",
+        "description": "Dense micronutrient intake supports overall thyroid and immune health."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "High-iodine seafood-rich diet",
+        "description": "A diet emphasizing iodine-rich seafood to support thyroid hormone production."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Whole-foods anti-inflammatory elimination diet",
+        "description": "A diet focused on whole, anti-inflammatory foods while eliminating gluten and processed foods."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Supplement-supported regimen",
+        "description": "A regimen emphasizing nutrient supplementation (iodine, selenium, zinc, etc.) to support thyroid function."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

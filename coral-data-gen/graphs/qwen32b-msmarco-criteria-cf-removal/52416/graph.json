@@ -1,0 +1,324 @@
+{
+  "query_id": 52416,
+  "query": "best workouts to do in conjunction with a pro hormone",
+  "mode": "criteria",
+  "atoms": [
+    "workout intensity",
+    "muscle group focus",
+    "training frequency",
+    "recovery time",
+    "dietary considerations",
+    "supplement compatibility",
+    "goal orientation",
+    "exercise variety",
+    "injury history",
+    "experience level"
+  ],
+  "plausible_answers": [
+    "Heavy compound lifts (squat, deadlift, bench, OHP, row) in the 4-8 rep range on a 4-6 day split",
+    "High-volume hypertrophy work (8-12 reps, 15-20 sets per muscle / week)",
+    "Conservative training paired with on-cycle support and recovery emphasis"
+  ],
+  "baseline_answer": "Conservative training paired with on-cycle support and recovery emphasis",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best workouts to do in conjunction with a prohormone",
+        "description": "What are the best workouts to do in conjunction with a prohormone, considering health, safety, and effectiveness?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Workout intensity and volume characteristics",
+        "description": "What are the intensity, frequency, and volume characteristics of the workout?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "User goals and experience",
+        "description": "How does the workout align with the user's goals and experience level?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "External factors",
+        "description": "What external factors must be considered when choosing a workout?"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Safety and health implications",
+        "description": "What are the safety and health implications of the workout?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "workout intensity",
+        "description": "How intense is the workout in terms of load and effort?"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "muscle group focus",
+        "description": "Which muscle groups are emphasized in the workout?"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "training frequency",
+        "description": "How often is the workout performed per week?"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "recovery time",
+        "description": "How much recovery time is needed between workouts?"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "dietary considerations",
+        "description": "What dietary factors must be considered to support the workout?"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "supplement compatibility",
+        "description": "How compatible is the workout with prohormone and on-cycle support supplements?"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "goal orientation",
+        "description": "What is the primary goal of the workout (strength, size, etc.)?"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "exercise variety",
+        "description": "How varied are the exercises used in the workout?"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "injury history",
+        "description": "Does the workout account for the user's injury history?"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "experience level",
+        "description": "Is the workout appropriate for the user's experience level?"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Heavy compound lifts (squat, deadlift, bench, OHP, row) in the 4-8 rep range on a 4-6 day split",
+        "description": "High-intensity compound lifts with a moderate rep range and high frequency."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "High-volume hypertrophy work (8-12 reps, 15-20 sets per muscle / week)",
+        "description": "High-volume training focused on muscle hypertrophy with moderate to high rep ranges."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Conservative training paired with on-cycle support and recovery emphasis",
+        "description": "Low-intensity, moderate-volume training with a focus on recovery and on-cycle support."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq4",
+        "target": "c2"
+      },
+      {
+        "source": "sq4",
+        "target": "c4"
+      },
+      {
+        "source": "sq4",
+        "target": "c6"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

@@ -1,0 +1,253 @@
+{
+  "query_id": 51691,
+  "query": "What is the best diet for reducing PMS symptoms?",
+  "mode": "criteria",
+  "atoms": [
+    "magnesium content",
+    "vitamin B levels",
+    "calcium intake",
+    "fiber content",
+    "anti-inflammatory foods",
+    "sugar reduction",
+    "caffeine reduction",
+    "omega-3 inclusion",
+    "hydration support",
+    "ease of adherence"
+  ],
+  "plausible_answers": [
+    "Mediterranean-style diet",
+    "Dairy-free / Cycle Diet",
+    "Anti-inflammatory elimination diet"
+  ],
+  "baseline_answer": "Dairy-free / Cycle Diet",
+  "baseline_index": 1,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 3,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best diet for reducing PMS symptoms?",
+        "description": "Identify the most effective dietary approach for reducing PMS symptoms."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What nutrients are most effective for reducing mood swings and hormonal imbalances?",
+        "description": "Focus on nutrients that directly impact mood and hormonal stability."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What dietary restrictions or additions reduce inflammation and physical symptoms like cramps and bloating?",
+        "description": "Focus on food types that reduce inflammation and physical discomfort."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What dietary patterns are easiest to maintain long-term while still reducing PMS symptoms?",
+        "description": "Focus on the practicality and sustainability of the diet."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "magnesium content",
+        "description": "Magnesium helps regulate mood and reduce cramps."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "vitamin B levels",
+        "description": "Vitamin B supports mood and dopamine production."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "calcium intake",
+        "description": "Calcium helps reduce cramps and mood swings."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "fiber content",
+        "description": "Fiber supports digestion and blood sugar stability."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "anti-inflammatory foods",
+        "description": "Foods that reduce inflammation and cramps."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "sugar reduction",
+        "description": "Reducing sugar helps stabilize mood and energy."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "caffeine reduction",
+        "description": "Caffeine can worsen irritability and anxiety."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "omega-3 inclusion",
+        "description": "Omega-3s reduce inflammation and cramps."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "hydration support",
+        "description": "Hydration helps reduce bloating and fatigue."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "ease of adherence",
+        "description": "The diet should be practical and sustainable."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Mediterranean-style diet",
+        "description": "Balanced, rich in fruits, vegetables, and healthy fats."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Dairy-free / Cycle Diet",
+        "description": "Structured diet avoiding problematic foods like dairy and low-carb diets."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Anti-inflammatory elimination diet",
+        "description": "Focuses on removing inflammatory foods and adding anti-inflammatory ones."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      }
+    ]
+  }
+}

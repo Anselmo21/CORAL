@@ -1,0 +1,285 @@
+{
+  "query_id": 52348,
+  "query": "best way to quit caffeine",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: addiction medicine clinical guidance",
+    "trustworthiness: peer-reviewed neurology / withdrawal research",
+    "trustworthiness: behavioral psychology",
+    "trustworthiness: wellness blog",
+    "trustworthiness: pharmacist advice",
+    "perspective: high-dose daily coffee drinker",
+    "perspective: occasional moderate user",
+    "perspective: pregnant woman quitting caffeine",
+    "perspective: busy worker who can't take time off",
+    "perspective: social / habit-driven drinker"
+  ],
+  "plausible_answers": [
+    "Gradual taper using progressive decaf mixing over 4-5 weeks",
+    "Cold turkey scheduled on a weekend / holiday with pain relievers on hand",
+    "Substitute with caffeine-free alternatives plus a quit-buddy / accountability partner"
+  ],
+  "baseline_answer": "Gradual taper using progressive decaf mixing over 4-5 weeks",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best way to quit caffeine",
+        "description": "What is the most effective method to quit caffeine based on medical, behavioral, and lifestyle considerations?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the medically and behaviorally supported methods for quitting caffeine?",
+        "description": "Includes trustworthiness-based directives such as addiction medicine, neurology, and behavioral psychology."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What quitting methods are feasible for people with specific lifestyles or dependencies?",
+        "description": "Includes perspective-based directives such as high-dose users, busy workers, and social/habit-driven drinkers."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Are there alternative or complementary strategies to quitting caffeine?",
+        "description": "Includes trustworthiness (wellness blog) and perspective (pregnant woman) directives."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: addiction medicine clinical guidance",
+        "description": "Prioritizes evidence from addiction medicine guidelines."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed neurology / withdrawal research",
+        "description": "Prioritizes peer-reviewed studies on caffeine withdrawal."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: behavioral psychology",
+        "description": "Prioritizes behavioral strategies for habit change."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: wellness blog",
+        "description": "Prioritizes informal but accessible lifestyle advice."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: pharmacist advice",
+        "description": "Prioritizes guidance from healthcare professionals on caffeine intake."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: high-dose daily coffee drinker",
+        "description": "Prioritizes methods suitable for heavy caffeine users."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: occasional moderate user",
+        "description": "Prioritizes methods suitable for light caffeine users."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: pregnant woman quitting caffeine",
+        "description": "Prioritizes methods suitable for pregnant women."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: busy worker who can't take time off",
+        "description": "Prioritizes methods that fit into a busy schedule."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: social / habit-driven drinker",
+        "description": "Prioritizes methods for people who drink for social or habit reasons."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Gradual taper using progressive decaf mixing over 4-5 weeks",
+        "description": "A structured and medically supported method to reduce caffeine intake."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Cold turkey scheduled on a weekend / holiday with pain relievers on hand",
+        "description": "A quick, high-intensity method to stop caffeine immediately."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Substitute with caffeine-free alternatives plus a quit-buddy / accountability partner",
+        "description": "A lifestyle-based method using social support and alternatives to caffeine."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

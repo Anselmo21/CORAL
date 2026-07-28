@@ -1,0 +1,292 @@
+{
+  "query_id": 548857,
+  "query": "what  is  the best  pain  medication  for horses",
+  "mode": "criteria",
+  "atoms": [
+    "medication type",
+    "administration method",
+    "duration of treatment",
+    "condition treated",
+    "side effects",
+    "prescription status",
+    "effectiveness",
+    "cost",
+    "availability",
+    "veterinary recommendation"
+  ],
+  "plausible_answers": [
+    "Phenylbutazone (Bute)",
+    "Multi-drug regimen (NSAID + DMSO topical, or NSAID + opioid)",
+    "Targeted route \u2014 epidural injection for severe hind-end lameness, or transdermal patch"
+  ],
+  "baseline_answer": "Multi-drug regimen (NSAID + DMSO topical, or NSAID + opioid)",
+  "baseline_index": 1,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best pain medication for horses?",
+        "description": "Identify the most effective and recommended pain medication for horses based on various criteria."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best medication type for managing pain in horses?",
+        "description": "Evaluate different types of medications for equine pain management."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which administration method is most effective for horse pain relief?",
+        "description": "Assess the most effective ways to administer pain medication to horses."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the most suitable duration of treatment for chronic or severe pain?",
+        "description": "Determine the best treatment duration for long-term or severe pain in horses."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What conditions are best treated by each medication option?",
+        "description": "Analyze which conditions are best addressed by each type of medication."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "medication type",
+        "description": "The type of drug used for pain management (e.g., NSAID, opioid, topical)."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "administration method",
+        "description": "How the medication is delivered (e.g., oral, injectable, topical)."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "duration of treatment",
+        "description": "Whether the treatment is short-term or long-term."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "condition treated",
+        "description": "The specific pain-related condition being addressed (e.g., arthritis, lameness)."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "side effects",
+        "description": "Potential adverse effects of the medication."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "prescription status",
+        "description": "Whether the medication requires a prescription."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "effectiveness",
+        "description": "How well the medication alleviates pain."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost",
+        "description": "The monetary cost of the treatment."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "availability",
+        "description": "How accessible the medication is to horse owners."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "veterinary recommendation",
+        "description": "Whether the medication is recommended by equine veterinarians."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Phenylbutazone (Bute)",
+        "description": "A commonly prescribed NSAID for short-term pain relief in horses."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Multi-drug regimen (NSAID + DMSO topical, or NSAID + opioid)",
+        "description": "Combination therapy for severe or chronic pain in horses."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Targeted route \u2014 epidural injection for severe hind-end lameness, or transdermal patch",
+        "description": "Specialized pain relief for specific conditions or severe lameness."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq4",
+        "target": "c4"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      }
+    ]
+  }
+}

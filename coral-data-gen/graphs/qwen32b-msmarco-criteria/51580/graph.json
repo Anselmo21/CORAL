@@ -1,0 +1,233 @@
+{
+  "query_id": 51580,
+  "query": "What is the best antidepressant for energy and mood?",
+  "mode": "criteria",
+  "atoms": [
+    "mood improvement efficacy",
+    "energy-boosting effect",
+    "side effect profile",
+    "time to onset",
+    "withdrawal difficulty",
+    "drug interactions",
+    "dosing convenience",
+    "sedation potential",
+    "weight impact",
+    "cost and insurance coverage"
+  ],
+  "plausible_answers": [
+    "Bupropion (Wellbutrin)",
+    "SSRI (Prozac, Zoloft)",
+    "Natural supplements (St John's Wort, SAM-e, Omega-3, B vitamins) + exercise"
+  ],
+  "baseline_answer": "Bupropion (Wellbutrin)",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best antidepressant for energy and mood?",
+        "description": "Asks for the most effective treatment for both energy and mood symptoms."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Efficacy and energy-boosting potential",
+        "description": "What is the effectiveness in improving mood and boosting energy?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Side effects and tolerability",
+        "description": "What are the side effects and how well is the treatment tolerated?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Lifestyle and non-pharmacological factors",
+        "description": "What are the non-drug considerations such as cost, diet, and exercise?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "mood improvement efficacy",
+        "description": "Effectiveness in treating low mood and depression."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "energy-boosting effect",
+        "description": "Ability to increase energy and reduce fatigue."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "side effect profile",
+        "description": "Frequency and severity of side effects."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "time to onset",
+        "description": "How quickly the treatment starts to work."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "withdrawal difficulty",
+        "description": "Difficulty in stopping the medication."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "drug interactions",
+        "description": "Potential for interactions with other medications."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "dosing convenience",
+        "description": "Ease and frequency of dosing."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "sedation potential",
+        "description": "Likelihood of causing drowsiness or fatigue."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "weight impact",
+        "description": "Effect on body weight (gain or loss)."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost and insurance coverage",
+        "description": "Affordability and availability through insurance."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Bupropion (Wellbutrin)",
+        "description": "Antidepressant with energy-boosting effects and weight loss potential."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "SSRI (Prozac, Zoloft)",
+        "description": "Common antidepressants with good tolerability and mood improvement."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Natural supplements (St John's Wort, SAM-e, Omega-3, B vitamins) + exercise",
+        "description": "Non-pharmacological approach with mood and energy benefits."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      }
+    ]
+  }
+}

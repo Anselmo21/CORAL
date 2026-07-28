@@ -1,0 +1,297 @@
+{
+  "query_id": 441101,
+  "query": "list of the best suv cars for teens",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: IIHS Top Safety Pick rankings",
+    "trustworthiness: NHTSA 5-star safety ratings",
+    "trustworthiness: CarInsurance.com used-car list",
+    "trustworthiness: Consumer Reports reliability",
+    "trustworthiness: parent automotive forum",
+    "perspective: budget-conscious parent",
+    "perspective: safety-first parent",
+    "perspective: winter / snow-region parent",
+    "perspective: insurance-cost-conscious parent",
+    "perspective: urban / suburban driver"
+  ],
+  "plausible_answers": [
+    "New compact SUV (2015 Mazda CX-5, Subaru Forester, or Mitsubishi Outlander AWD)",
+    "New midsize SUV (2015 Toyota Highlander)",
+    "Used 2009-model-year SUV at ~$15,000"
+  ],
+  "baseline_answer": "New compact SUV (2015 Mazda CX-5, Subaru Forester, or Mitsubishi Outlander AWD)",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "list of the best suv cars for teens",
+        "description": "What are the best SUVs for teen drivers, considering safety, cost, and practicality?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which SUVs are the most safety-rated and reliable?",
+        "description": "Identifies SUVs with top safety and reliability ratings."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which SUVs are most practical and budget-friendly for parents?",
+        "description": "Identifies SUVs that are affordable and practical for parents."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which SUVs are suitable for specific driving conditions or environments?",
+        "description": "Identifies SUVs based on environmental or regional driving needs."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: IIHS Top Safety Pick rankings",
+        "description": "Prioritizes SUVs with the highest IIHS safety rankings."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: NHTSA 5-star safety ratings",
+        "description": "Prioritizes SUVs with NHTSA\u2019s top safety ratings."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: CarInsurance.com used-car list",
+        "description": "Prioritizes SUVs from CarInsurance.com\u2019s list of safe used cars."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Consumer Reports reliability",
+        "description": "Prioritizes SUVs with high reliability ratings from Consumer Reports."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: parent automotive forum",
+        "description": "Prioritizes SUVs recommended by parent communities and forums."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: budget-conscious parent",
+        "description": "Prioritizes SUVs that are cost-effective for parents."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: safety-first parent",
+        "description": "Prioritizes SUVs with the highest safety ratings."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: winter / snow-region parent",
+        "description": "Prioritizes SUVs suitable for driving in snow or winter conditions."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: insurance-cost-conscious parent",
+        "description": "Prioritizes SUVs with low insurance costs for teens."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: urban / suburban driver",
+        "description": "Prioritizes SUVs suitable for urban or suburban driving."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "New compact SUV (2015 Mazda CX-5, Subaru Forester, or Mitsubishi Outlander AWD)",
+        "description": "Top safety-rated 2015 compact SUVs for teens."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "New midsize SUV (2015 Toyota Highlander)",
+        "description": "Top safety-rated 2015 midsize SUV for teens."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Used 2009-model-year SUV at ~$15,000",
+        "description": "Affordable used SUV for teens."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      }
+    ]
+  }
+}

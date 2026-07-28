@@ -1,0 +1,286 @@
+{
+  "query_id": 52412,
+  "query": "best weed for fibromyalgia",
+  "mode": "criteria",
+  "atoms": [
+    "cannabinoid profile",
+    "strain type",
+    "method of consumption",
+    "dosage recommendations",
+    "side effects",
+    "patient testimonials",
+    "legal status",
+    "onset time",
+    "duration of effects",
+    "treatment goals"
+  ],
+  "plausible_answers": [
+    "A high-THC indica strain for nighttime muscle pain and stiffness",
+    "A balanced THC/CBD hybrid strain for daytime pain management without overwhelming sedation",
+    "A high-CBD, low-THC strain for pain, anxiety, and sleep relief without strong psychoactive effects or additional fatigue"
+  ],
+  "baseline_answer": "A high-THC indica strain for nighttime muscle pain and stiffness",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best weed for fibromyalgia",
+        "description": "What is the best cannabis strain for managing fibromyalgia symptoms?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "pharmacological and physiological factors",
+        "description": "Factors like cannabinoid profile, strain type, and side effects that affect strain choice for fibromyalgia."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "non-pharmacological and contextual factors",
+        "description": "Factors like patient testimonials, legal status, and treatment goals that influence strain choice."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "cannabinoid profile",
+        "description": "The ratio and type of cannabinoids (e.g., THC, CBD) in the strain."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "strain type",
+        "description": "Whether the strain is indica, sativa, or a hybrid."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "method of consumption",
+        "description": "How the cannabis is ingested (e.g., smoked, vaporized, edible)."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "dosage recommendations",
+        "description": "How much of the strain should be consumed for effective symptom relief."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "side effects",
+        "description": "Potential adverse effects of the strain."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "patient testimonials",
+        "description": "Reports from patients about the effectiveness of the strain."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "legal status",
+        "description": "Whether the strain is legal in the user\u2019s jurisdiction."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "onset time",
+        "description": "How quickly the effects of the strain are felt."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "duration of effects",
+        "description": "How long the effects of the strain last."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "treatment goals",
+        "description": "The desired outcome of using the strain (e.g., pain relief, sleep aid)."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "A high-THC indica strain for nighttime muscle pain and stiffness",
+        "description": "Best for nighttime use, with strong sedative and pain-relieving effects."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "A balanced THC/CBD hybrid strain for daytime pain management without overwhelming sedation",
+        "description": "Balances pain relief with alertness, suitable for daytime use."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "A high-CBD, low-THC strain for pain, anxiety, and sleep relief without strong psychoactive effects or additional fatigue",
+        "description": "Provides relief without psychoactive effects, ideal for anxiety and sleep."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      }
+    ]
+  }
+}

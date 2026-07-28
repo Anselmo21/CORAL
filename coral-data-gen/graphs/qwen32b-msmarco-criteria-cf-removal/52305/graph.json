@@ -1,0 +1,265 @@
+{
+  "query_id": 52305,
+  "query": "best way to get rid of ivy",
+  "mode": "criteria",
+  "atoms": [
+    "method effectiveness",
+    "safety of ingredients",
+    "environmental impact",
+    "cost of materials",
+    "time required",
+    "ease of application",
+    "long-term results",
+    "plant type targeted",
+    "availability of tools",
+    "user experience"
+  ],
+  "plausible_answers": [
+    "Manual pulling with hand tools (snipper, ladder, saw, shovel)",
+    "Natural spray: white vinegar OR salt + soap + water solution",
+    "Glyphosate (Roundup) or triclopyr (Brush-B-Gon) herbicide applied to leaves"
+  ],
+  "baseline_answer": "Natural spray: white vinegar OR salt + soap + water solution",
+  "baseline_index": 1,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best way to get rid of ivy",
+        "description": "What is the best way to get rid of ivy, considering effectiveness, safety, and other factors?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "How effective and long-lasting is the method?",
+        "description": "Assess the effectiveness and long-term results of each ivy removal method."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "How safe, environmentally friendly, and cost-effective is the method?",
+        "description": "Evaluate the safety of ingredients, environmental impact, and cost of materials for each method."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "How easy is the method to apply, and what is the required time and experience?",
+        "description": "Assess the time required, ease of application, and availability of tools for each method."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "method effectiveness",
+        "description": "How well does the method eliminate ivy?"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "safety of ingredients",
+        "description": "Are the ingredients used safe for humans and pets?"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "environmental impact",
+        "description": "How does the method affect the surrounding ecosystem?"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost of materials",
+        "description": "What is the monetary cost of the method?"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "time required",
+        "description": "How long does the method take to show results?"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "ease of application",
+        "description": "How simple is the method to apply?"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "long-term results",
+        "description": "How likely is the ivy to regrow after treatment?"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "plant type targeted",
+        "description": "Which types of ivy is the method effective on?"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "availability of tools",
+        "description": "How accessible are the tools needed for the method?"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "user experience",
+        "description": "How pleasant or unpleasant is the experience of using the method?"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Manual pulling with hand tools (snipper, ladder, saw, shovel)",
+        "description": "Physically remove ivy using hand tools."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Natural spray: white vinegar OR salt + soap + water solution",
+        "description": "Use non-toxic natural sprays to kill ivy."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Glyphosate (Roundup) or triclopyr (Brush-B-Gon) herbicide applied to leaves",
+        "description": "Apply chemical herbicides to ivy leaves."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      }
+    ]
+  }
+}

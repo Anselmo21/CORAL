@@ -1,0 +1,297 @@
+{
+  "query_id": 51717,
+  "query": "What is the best engineering college in Wisconsin?",
+  "mode": "criteria",
+  "atoms": [
+    "program reputation",
+    "tuition cost",
+    "faculty research output",
+    "student-to-faculty ratio",
+    "graduation rate",
+    "post-grad employment rate",
+    "campus facilities",
+    "internship opportunities",
+    "location and campus life",
+    "accreditation"
+  ],
+  "plausible_answers": [
+    "University of Wisconsin-Madison",
+    "Milwaukee School of Engineering (MSOE)",
+    "University of Wisconsin-Milwaukee"
+  ],
+  "baseline_answer": "University of Wisconsin-Madison",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best engineering college in Wisconsin?",
+        "description": "Evaluating the best engineering college in Wisconsin based on academic, financial, and career criteria."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Academic Quality and Reputation",
+        "description": "Evaluates the academic strength, research, and institutional reputation of the engineering program."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Student Experience and Resources",
+        "description": "Evaluates student support, campus infrastructure, and learning environment."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Cost and Career Outcomes",
+        "description": "Evaluates financial considerations and post-graduation success."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "program reputation",
+        "description": "Reputation of the engineering program among peers and employers."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "tuition cost",
+        "description": "Annual tuition cost for engineering programs."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "faculty research output",
+        "description": "Research productivity and quality of the engineering faculty."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "student-to-faculty ratio",
+        "description": "Ratio of students to engineering faculty."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "graduation rate",
+        "description": "Percentage of engineering students who graduate on time."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "post-grad employment rate",
+        "description": "Percentage of engineering graduates employed within a year of graduation."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "campus facilities",
+        "description": "Quality and availability of engineering labs and equipment."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "internship opportunities",
+        "description": "Availability of internships for engineering students."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "location and campus life",
+        "description": "Quality of campus life and location for engineering students."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "accreditation",
+        "description": "Whether the engineering program is ABET-accredited."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "University of Wisconsin-Madison",
+        "description": "Largest engineering school in Wisconsin with strong reputation and research output."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Milwaukee School of Engineering (MSOE)",
+        "description": "Smaller school with strong internship and student-to-faculty ratio."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "University of Wisconsin-Milwaukee",
+        "description": "Offers a solid engineering program with good graduation rate and campus life."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      }
+    ]
+  }
+}

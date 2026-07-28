@@ -1,0 +1,309 @@
+{
+  "query_id": 52066,
+  "query": "best sunscreen for kids with peanut allergies",
+  "mode": "pragmas",
+  "atoms": [
+    "geographic: Canada",
+    "geographic: USA",
+    "trustworthiness: allergy / peanut-free product database",
+    "trustworthiness: EWG cosmetics database",
+    "trustworthiness: pediatric dermatology guideline",
+    "trustworthiness: parent peanut-allergy forum",
+    "trustworthiness: manufacturer product documentation",
+    "perspective: child with severe peanut allergy",
+    "perspective: parent of eczema-prone child",
+    "perspective: parent doing direct manufacturer verification"
+  ],
+  "plausible_answers": [
+    "OMBRELLE for kids by L'Oreal",
+    "A mineral (zinc oxide / titanium dioxide) children's sunscreen",
+    "A chemical sunscreen verified peanut-free by direct manufacturer-contact workflow"
+  ],
+  "baseline_answer": "OMBRELLE for kids by L'Oreal",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best sunscreen for kids with peanut allergies",
+        "description": "What is the best sunscreen for kids with peanut allergies?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which geographic region is the source relevant to?",
+        "description": "Determine if the information pertains to Canada or the USA."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which sources are most trustworthy in evaluating allergy safety?",
+        "description": "Identify reliable sources such as manufacturer documentation, forums, and databases."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which perspectives should be considered in evaluating the product?",
+        "description": "Consider the child's allergy severity, parent experience with eczema, and verification practices."
+      },
+      {
+        "id": "1",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: Canada",
+        "description": "Focus on sources relevant to Canada."
+      },
+      {
+        "id": "2",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: USA",
+        "description": "Focus on sources relevant to the USA."
+      },
+      {
+        "id": "3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: allergy / peanut-free product database",
+        "description": "Use databases that track peanut-free products."
+      },
+      {
+        "id": "4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: EWG cosmetics database",
+        "description": "Use the Environmental Working Guide (EWG) for safety ratings."
+      },
+      {
+        "id": "5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: pediatric dermatology guideline",
+        "description": "Use guidelines from pediatric dermatology experts."
+      },
+      {
+        "id": "6",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: parent peanut-allergy forum",
+        "description": "Use insights from forums for parents of children with peanut allergies."
+      },
+      {
+        "id": "7",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: manufacturer product documentation",
+        "description": "Use product labels and manufacturer claims."
+      },
+      {
+        "id": "8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: child with severe peanut allergy",
+        "description": "Consider the needs of a child with a severe peanut allergy."
+      },
+      {
+        "id": "9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: parent of eczema-prone child",
+        "description": "Consider the needs of a parent with a child who has eczema."
+      },
+      {
+        "id": "10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: parent doing direct manufacturer verification",
+        "description": "Consider the verification practices of parents who contact manufacturers directly."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "OMBRELLE for kids by L'Oreal",
+        "description": "A sunscreen explicitly labeled peanut-free in Canada."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "A mineral (zinc oxide / titanium dioxide) children's sunscreen",
+        "description": "A broad category of sunscreens that are generally considered safe for allergies."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "A chemical sunscreen verified peanut-free by direct manufacturer-contact workflow",
+        "description": "A sunscreen verified through direct communication with the manufacturer."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "1"
+      },
+      {
+        "source": "sq1",
+        "target": "2"
+      },
+      {
+        "source": "sq2",
+        "target": "3"
+      },
+      {
+        "source": "sq2",
+        "target": "4"
+      },
+      {
+        "source": "sq2",
+        "target": "5"
+      },
+      {
+        "source": "sq2",
+        "target": "6"
+      },
+      {
+        "source": "sq2",
+        "target": "7"
+      },
+      {
+        "source": "sq3",
+        "target": "8"
+      },
+      {
+        "source": "sq3",
+        "target": "9"
+      },
+      {
+        "source": "sq3",
+        "target": "10"
+      },
+      {
+        "source": "1",
+        "target": "a1"
+      },
+      {
+        "source": "2",
+        "target": "a1"
+      },
+      {
+        "source": "3",
+        "target": "a1"
+      },
+      {
+        "source": "4",
+        "target": "a1"
+      },
+      {
+        "source": "5",
+        "target": "a1"
+      },
+      {
+        "source": "6",
+        "target": "a1"
+      },
+      {
+        "source": "7",
+        "target": "a1"
+      },
+      {
+        "source": "8",
+        "target": "a1"
+      },
+      {
+        "source": "9",
+        "target": "a1"
+      },
+      {
+        "source": "10",
+        "target": "a1"
+      },
+      {
+        "source": "1",
+        "target": "a2"
+      },
+      {
+        "source": "2",
+        "target": "a2"
+      },
+      {
+        "source": "3",
+        "target": "a2"
+      },
+      {
+        "source": "4",
+        "target": "a2"
+      },
+      {
+        "source": "5",
+        "target": "a2"
+      },
+      {
+        "source": "6",
+        "target": "a2"
+      },
+      {
+        "source": "8",
+        "target": "a2"
+      },
+      {
+        "source": "9",
+        "target": "a2"
+      },
+      {
+        "source": "10",
+        "target": "a2"
+      },
+      {
+        "source": "2",
+        "target": "a3"
+      },
+      {
+        "source": "3",
+        "target": "a3"
+      },
+      {
+        "source": "4",
+        "target": "a3"
+      },
+      {
+        "source": "5",
+        "target": "a3"
+      },
+      {
+        "source": "6",
+        "target": "a3"
+      },
+      {
+        "source": "8",
+        "target": "a3"
+      },
+      {
+        "source": "9",
+        "target": "a3"
+      }
+    ]
+  }
+}

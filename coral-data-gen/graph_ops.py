@@ -276,7 +276,6 @@ def validate_graph(
 
     Warnings (soft):
       - Orphan Layer 2 (no children) or Layer 3 (no parent, or no child answer).
-      - Extra Layer 3 nodes beyond expected_atoms (prompt allows up to 2 extras).
       - Duplicate labels within a layer.
     """
     errors: List[str] = []
@@ -347,13 +346,31 @@ def validate_graph(
             warnings.append(f"Layer 3 node {c['id']!r} not connected to any Layer 4 answer")
 
     # Layer 4 support count
+    supporter_sets: Dict[str, frozenset] = {}
     for a in l4:
         supports = {s for s in edges_to.get(a["id"], []) if s in l3_ids}
+        supporter_sets[a["id"]] = frozenset(supports)
         if len(supports) < min_supports_per_answer:
             errors.append(
                 f"answer {a['id']!r} ({a.get('label','')!r}) has {len(supports)} "
                 f"Layer 3 supports; need ≥ {min_supports_per_answer}"
             )
+
+    # Differentiation: no two answers may share the identical supporter set.
+    # This kills downstream analysis (S(a1)==S(a2) means there's no way for the
+    # graph to explain why one is preferred over the other) — flag as ERROR.
+    seen: Dict[frozenset, str] = {}
+    for aid, sset in supporter_sets.items():
+        if not sset:
+            continue
+        if sset in seen:
+            errors.append(
+                f"answers {seen[sset]!r} and {aid!r} share the same "
+                f"supporter set ({sorted(sset)!r}); every answer must have "
+                f"a distinct supporter set"
+            )
+        else:
+            seen[sset] = aid
 
     # Duplicate labels within a layer (warn)
     for layer_name, nodes in (("L2", l2), ("L3", l3), ("L4", l4)):
@@ -381,10 +398,10 @@ def validate_graph(
         if missing_atoms:
             errors.append(f"missing expected atoms in Layer 3: {missing_atoms}")
         extra = len(l3) - len(expected_atoms)
-        if extra > 2:
-            warnings.append(
+        if extra > 0:
+            errors.append(
                 f"Layer 3 has {extra} extra nodes beyond {len(expected_atoms)} expected "
-                f"atoms (prompt allows up to 2)"
+                f"atoms (prompt requires exactly the seeded set)"
             )
 
     # Expected answers (verbatim per prompt — exact match required)
@@ -448,6 +465,170 @@ def pretty_print(graph: Graph) -> str:
 
 
 # ------------------------------------------------------------------ #
+# Visualization                                                      #
+# ------------------------------------------------------------------ #
+
+_LAYER_COLORS = {
+    "1": "#f5c8c8",  # question — pink
+    "2": "#f8e2b0",  # sub-questions — amber
+    "3": "#c8e6c9",  # criteria — green
+    "4": "#bbdefb",  # answers — blue
+}
+
+
+def _wrap(text: str, width: int = 24) -> str:
+    """Cheap word-wrap for graphviz labels."""
+    words, lines, cur = text.split(), [], ""
+    for w in words:
+        if len(cur) + len(w) + 1 > width and cur:
+            lines.append(cur)
+            cur = w
+        else:
+            cur = (cur + " " + w).strip()
+    if cur:
+        lines.append(cur)
+    return "\\n".join(lines)
+
+
+def to_dot(graph: Graph, *, highlight_answer: Optional[str] = None) -> str:
+    """Graphviz DOT source for the graph. Layers stacked top-to-bottom.
+    If highlight_answer is set, that Layer 4 node and its supporting Layer 3
+    nodes/edges are drawn thicker.
+    """
+    supporters: Set[str] = set()
+    if highlight_answer:
+        for e in graph.edges:
+            if e.get("target") == highlight_answer:
+                supporters.add(e.get("source", ""))
+
+    lines = [
+        'digraph GoT {',
+        '  rankdir=TB;',
+        '  node [shape=box, style="filled,rounded", fontname="Helvetica", fontsize=10];',
+        '  edge [color="#888888", arrowsize=0.6];',
+        '',
+    ]
+
+    for layer in ("1", "2", "3", "4"):
+        nodes = graph.by_layer(layer)
+        if not nodes:
+            continue
+        lines.append(f'  {{ rank=same;')
+        for n in nodes:
+            nid = n["id"]
+            label = _wrap(str(n.get("label", nid)))
+            fill = _LAYER_COLORS.get(layer, "#eeeeee")
+            attrs = [f'label="{label}"', f'fillcolor="{fill}"']
+            if highlight_answer and nid == highlight_answer:
+                # The A* itself — repaint red so it dominates.
+                attrs = [
+                    f'label="{label}"',
+                    'fillcolor="#ef5350"',   # red fill
+                    'fontcolor="white"',
+                    'fontname="Helvetica-Bold"',
+                    'penwidth=4',
+                    'color="#b71c1c"',       # dark red border
+                ]
+            elif highlight_answer and nid in supporters:
+                # Supporting criteria — tint fill + thick red border.
+                attrs = [
+                    f'label="{label}"',
+                    'fillcolor="#ffcdd2"',   # light red tint
+                    'fontname="Helvetica-Bold"',
+                    'penwidth=3',
+                    'color="#b71c1c"',
+                ]
+            lines.append(f'    "{nid}" [{", ".join(attrs)}];')
+        lines.append('  }')
+
+    lines.append("")
+    for e in graph.edges:
+        s, t = e.get("source"), e.get("target")
+        attrs = []
+        if highlight_answer and t == highlight_answer and s in supporters:
+            attrs.append('color="#b71c1c"')
+            attrs.append('penwidth=3')
+        attr_str = f' [{", ".join(attrs)}]' if attrs else ""
+        lines.append(f'  "{s}" -> "{t}"{attr_str};')
+
+    lines.append("}")
+    return "\n".join(lines)
+
+
+def to_mermaid(graph: Graph, *, highlight_answer: Optional[str] = None) -> str:
+    """Mermaid flowchart source (renders in GitHub markdown, VSCode, etc).
+    Top-to-bottom layout.
+    """
+    supporters: Set[str] = set()
+    if highlight_answer:
+        for e in graph.edges:
+            if e.get("target") == highlight_answer:
+                supporters.add(e.get("source", ""))
+
+    def esc(s: str) -> str:
+        return (s or "").replace('"', "'").replace("[", "(").replace("]", ")")
+
+    lines = ["flowchart TB"]
+    for n in graph.nodes_by_id.values():
+        nid = n["id"]
+        label = esc(str(n.get("label", nid)))
+        # Shape by layer: question (rounded), subq (stadium), criterion (rect), answer (subroutine)
+        layer = str(n.get("layer", ""))
+        if layer == "1":
+            lines.append(f'    {nid}(["{label}"])')
+        elif layer == "2":
+            lines.append(f'    {nid}(("{label}"))')
+        elif layer == "3":
+            lines.append(f'    {nid}["{label}"]')
+        else:
+            lines.append(f'    {nid}[["{label}"]]')
+
+    for e in graph.edges:
+        s, t = e.get("source"), e.get("target")
+        arrow = "==>" if highlight_answer and t == highlight_answer and s in supporters else "-->"
+        lines.append(f'    {s} {arrow} {t}')
+
+    # Class-based colouring
+    lines.append("    classDef l1 fill:#f5c8c8,stroke:#333;")
+    lines.append("    classDef l2 fill:#f8e2b0,stroke:#333;")
+    lines.append("    classDef l3 fill:#c8e6c9,stroke:#333;")
+    lines.append("    classDef l4 fill:#bbdefb,stroke:#333;")
+    for layer_num, cls in (("1", "l1"), ("2", "l2"), ("3", "l3"), ("4", "l4")):
+        ids = [n["id"] for n in graph.by_layer(layer_num)]
+        if ids:
+            lines.append(f"    class {','.join(ids)} {cls};")
+    if highlight_answer:
+        hl = [highlight_answer] + sorted(supporters)
+        lines.append("    classDef hi stroke:#d32f2f,stroke-width:3px;")
+        lines.append(f"    class {','.join(hl)} hi;")
+
+    return "\n".join(lines)
+
+
+def render_dot(dot_source: str, out_path: Path, fmt: str = "png") -> Path:
+    """Shell out to graphviz `dot` to render DOT source to png/svg/pdf.
+    Requires graphviz installed (`brew install graphviz` / `apt install graphviz`).
+    Returns the output path.
+    """
+    import shutil
+    import subprocess
+    if not shutil.which("dot"):
+        raise RuntimeError(
+            "graphviz `dot` not found on PATH. Install with "
+            "`brew install graphviz` (macOS) or `apt install graphviz` (Debian)."
+        )
+    out_path = Path(out_path)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    result = subprocess.run(
+        ["dot", f"-T{fmt}", "-o", str(out_path)],
+        input=dot_source, capture_output=True, text=True, check=False,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(f"dot failed: {result.stderr}")
+    return out_path
+
+
+# ------------------------------------------------------------------ #
 # CLI                                                                #
 # ------------------------------------------------------------------ #
 
@@ -473,7 +654,30 @@ def _cli() -> None:
                     help="Also print the pretty-rendered graph")
     ap.add_argument("--validate", action="store_true",
                     help="Validate the graph (use --graph or --run-dir); skip pipeline")
+    ap.add_argument("--dot", action="store_true",
+                    help="Print Graphviz DOT source for --graph")
+    ap.add_argument("--mermaid", action="store_true",
+                    help="Print Mermaid flowchart source for --graph")
+    ap.add_argument("--render", type=Path, default=None,
+                    help="Render --graph to an image file (png/svg/pdf inferred from suffix)")
+    ap.add_argument("--highlight", default=None,
+                    help="Answer node id to highlight (e.g. 'a1') in --dot/--mermaid/--render")
     args = ap.parse_args()
+
+    if args.dot or args.mermaid or args.render is not None:
+        if not args.graph:
+            raise SystemExit("--dot / --mermaid / --render requires --graph")
+        g = load_graph(args.graph)
+        hl = args.highlight
+        if args.dot:
+            print(to_dot(g, highlight_answer=hl))
+        if args.mermaid:
+            print(to_mermaid(g, highlight_answer=hl))
+        if args.render is not None:
+            fmt = args.render.suffix.lstrip(".") or "png"
+            out = render_dot(to_dot(g, highlight_answer=hl), args.render, fmt=fmt)
+            print(f"wrote {out}")
+        return
 
     if args.validate:
         if args.run_dir:

@@ -1,0 +1,313 @@
+{
+  "query_id": 514495,
+  "query": "the best way to get rid of squarrels",
+  "mode": "criteria",
+  "atoms": [
+    "method of removal",
+    "location of squirrels",
+    "type of bait",
+    "seasonal timing",
+    "squirrel age",
+    "safety of method",
+    "effectiveness of traps",
+    "environmental impact",
+    "cost of solution",
+    "ease of implementation"
+  ],
+  "plausible_answers": [
+    "Exclusion: seal entry points around the house / attic",
+    "Live or kill trapping with corn / peanut butter bait, timed for just after hibernation",
+    "Repellents: mothballs, homemade water-based spray, or the Squirrel Evictor product"
+  ],
+  "baseline_answer": "Exclusion: seal entry points around the house / attic",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "the best way to get rid of squirrels",
+        "description": "What is the best way to remove squirrels from a property, considering multiple factors like method, location, and safety?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the most effective method for removing squirrels?",
+        "description": "Evaluating the effectiveness, safety, and long-term results of different removal methods."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best timing and bait for trapping squirrels?",
+        "description": "Considering seasonal timing and bait types for trapping squirrels effectively."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best location-specific strategy for squirrel removal?",
+        "description": "Evaluating the best methods based on squirrel location, age, and implementation ease."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "method of removal",
+        "description": "The primary approach used to remove squirrels, such as exclusion, trapping, or repellents."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "location of squirrels",
+        "description": "Where the squirrels are located, such as in the attic, garden, or basement."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "type of bait",
+        "description": "The kind of bait used in traps, such as peanut butter or corn."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "seasonal timing",
+        "description": "The time of year when the method is most effective, such as right after hibernation."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "squirrel age",
+        "description": "Whether the squirrels are adults or babies, affecting the effectiveness of certain methods."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "safety of method",
+        "description": "How safe the method is for humans, pets, and the environment."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "effectiveness of traps",
+        "description": "How well traps work in capturing or removing squirrels."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "environmental impact",
+        "description": "The ecological consequences of the method used."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost of solution",
+        "description": "The monetary cost associated with implementing the method."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "ease of implementation",
+        "description": "How simple or difficult the method is to set up and maintain."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Exclusion: seal entry points around the house / attic",
+        "description": "Physically block squirrels from entering the house or attic to prevent infestation."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Live or kill trapping with corn / peanut butter bait, timed for just after hibernation",
+        "description": "Use traps with bait and set them after hibernation for maximum effectiveness."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Repellents: mothballs, homemade water-based spray, or the Squirrel Evictor product",
+        "description": "Use odors or products to deter squirrels from entering or staying in an area."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

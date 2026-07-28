@@ -1,0 +1,245 @@
+{
+  "query_id": 4,
+  "query": "Should I open a Roth IRA or a traditional IRA? I'm 28 making $72,000 a year.",
+  "mode": "criteria",
+  "atoms": [
+    "tax-free retirement income",
+    "immediate tax deduction benefit",
+    "long-term compounding advantage",
+    "expected retirement tax bracket",
+    "current marginal tax rate optimization",
+    "flexibility of withdrawal rules",
+    "protection from future tax rate increases",
+    "state income tax considerations",
+    "estate planning benefits",
+    "simplicity of contribution rules"
+  ],
+  "plausible_answers": [
+    "Answer A (Roth Default): Open a Roth IRA \u2014 at 28 with decades of compounding ahead, tax-free growth almost always beats the immediate deduction, especially if your income is likely to rise.",
+    "Answer B (Traditional for Current Deduction): Choose a traditional IRA if you're in a high tax bracket now and expect meaningfully lower income in retirement \u2014 the immediate 22% deduction deployed into additional investments can outperform Roth over time.",
+    "Answer C (Both via Backdoor): Contribute to a traditional IRA for the current deduction then immediately convert to Roth (backdoor Roth) to capture both benefits while income limits allow."
+  ],
+  "baseline_answer": "Answer A (Roth Default): Open a Roth IRA \u2014 at 28 with decades of compounding ahead, tax-free growth almost always beats the immediate deduction, especially if your income is likely to rise.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Should I open a Roth IRA or a traditional IRA? I'm 28 making $72,000 a year.",
+        "description": "A decision about retirement account type for a 28-year-old with $72k income."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the long-term tax implications of each option?",
+        "description": "Assesses tax-free growth, compounding, and future tax rate risk."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the immediate financial benefits of each option?",
+        "description": "Evaluates upfront tax deductions and current tax bracket impact."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the flexibility and planning considerations?",
+        "description": "Looks at withdrawal rules and contribution simplicity."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "tax-free retirement income",
+        "description": "Benefit of Roth IRA where withdrawals in retirement are tax-free."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "immediate tax deduction benefit",
+        "description": "Benefit of traditional IRA where contributions reduce current taxable income."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "long-term compounding advantage",
+        "description": "Benefit of tax-free growth over decades."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "expected retirement tax bracket",
+        "description": "Whether future tax rates will be higher or lower than current."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "current marginal tax rate optimization",
+        "description": "Maximizing tax savings at the current 22% federal bracket."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "flexibility of withdrawal rules",
+        "description": "Roth allows penalty-free withdrawals of contributions at any time."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "protection from future tax rate increases",
+        "description": "Roth locks in current tax rates, avoiding potential future increases."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "state income tax considerations",
+        "description": "Traditional IRA may provide state tax benefits in high-tax states."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "estate planning benefits",
+        "description": "Roth allows tax-free inheritance for heirs."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "simplicity of contribution rules",
+        "description": "Roth has straightforward income limits; traditional may allow more flexibility in some cases."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Roth Default): Open a Roth IRA \u2014 at 28 with decades of compounding ahead, tax-free growth almost always beats the immediate deduction, especially if your income is likely to rise.",
+        "description": "Roth IRA is the top choice for long-term tax-free growth."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Traditional for Current Deduction): Choose a traditional IRA if you're in a high tax bracket now and expect meaningfully lower income in retirement \u2014 the immediate 22% deduction deployed into additional investments can outperform Roth over time.",
+        "description": "Traditional IRA is better if retirement tax rates are expected to drop."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Both via Backdoor): Contribute to a traditional IRA for the current deduction then immediately convert to Roth (backdoor Roth) to capture both benefits while income limits allow.",
+        "description": "Hybrid approach to maximize both immediate and long-term benefits."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

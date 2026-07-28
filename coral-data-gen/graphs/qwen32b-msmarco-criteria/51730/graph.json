@@ -1,0 +1,245 @@
+{
+  "query_id": 51730,
+  "query": "Which type of exercise best protects aging joints?",
+  "mode": "criteria",
+  "atoms": [
+    "low-impact intensity",
+    "range-of-motion benefit",
+    "muscle-strengthening effect",
+    "accessibility for beginners",
+    "equipment requirements",
+    "cardiovascular benefit",
+    "joint stress level",
+    "balance training",
+    "flexibility improvement",
+    "sustainability over time"
+  ],
+  "plausible_answers": [
+    "Low-impact aerobic exercise (walking, swimming, cycling)",
+    "Strength training with bands or light weights",
+    "Range-of-motion / flexibility work (yoga, tai chi, dancing)"
+  ],
+  "baseline_answer": "Low-impact aerobic exercise (walking, swimming, cycling)",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 3,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Which type of exercise best protects aging joints?",
+        "description": "Evaluating the most effective exercise type for maintaining joint health in aging individuals."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What types of exercise reduce joint stress and promote joint mobility?",
+        "description": "Evaluating exercises that minimize joint impact and enhance joint movement."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What types of exercise build muscle to support aging joints?",
+        "description": "Evaluating exercises that strengthen muscles around the joints for better support."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What types of exercise are sustainable and accessible for long-term joint health?",
+        "description": "Evaluating exercises that are easy to maintain over time and suitable for beginners."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "low-impact intensity",
+        "description": "Exercises that do not place excessive force on the joints."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "range-of-motion benefit",
+        "description": "Exercises that maintain or improve the range of motion in joints."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "muscle-strengthening effect",
+        "description": "Exercises that increase muscle strength to support joints."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "accessibility for beginners",
+        "description": "Exercises that are easy to start and perform without advanced skills."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "equipment requirements",
+        "description": "Whether the exercise requires specialized equipment or can be done with minimal tools."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "cardiovascular benefit",
+        "description": "Exercises that improve heart and lung function."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "joint stress level",
+        "description": "How much the exercise stresses the joints during performance."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "balance training",
+        "description": "Exercises that improve balance and coordination."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "flexibility improvement",
+        "description": "Exercises that increase joint and muscle flexibility."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "sustainability over time",
+        "description": "How well the exercise can be continued over the long term."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Low-impact aerobic exercise (walking, swimming, cycling)",
+        "description": "Exercises that are gentle on the joints and promote overall fitness."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Strength training with bands or light weights",
+        "description": "Exercises that build muscle to support and protect the joints."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Range-of-motion / flexibility work (yoga, tai chi, dancing)",
+        "description": "Exercises that improve joint flexibility and mobility."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      }
+    ]
+  }
+}

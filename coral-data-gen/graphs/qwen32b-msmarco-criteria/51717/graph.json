@@ -1,0 +1,256 @@
+{
+  "query_id": 51717,
+  "query": "What is the best engineering college in Wisconsin?",
+  "mode": "criteria",
+  "atoms": [
+    "program reputation",
+    "tuition cost",
+    "faculty research output",
+    "student-to-faculty ratio",
+    "graduation rate",
+    "post-grad employment rate",
+    "campus facilities",
+    "internship opportunities",
+    "location and campus life",
+    "accreditation"
+  ],
+  "plausible_answers": [
+    "University of Wisconsin-Madison",
+    "Milwaukee School of Engineering (MSOE)",
+    "University of Wisconsin-Milwaukee"
+  ],
+  "baseline_answer": "University of Wisconsin-Madison",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best engineering college in Wisconsin?",
+        "description": "Identifying the top engineering college in Wisconsin based on key evaluation criteria."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Academic and program quality",
+        "description": "Evaluates the strength of the engineering program and faculty."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Cost and student experience",
+        "description": "Considers financial and personal aspects of the student experience."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Career outcomes",
+        "description": "Assesses post-graduation success and employment prospects."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Campus and location",
+        "description": "Evaluates the campus environment and geographic appeal."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "program reputation",
+        "description": "The prestige and recognition of the engineering program."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "tuition cost",
+        "description": "The annual cost of attending the engineering school."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "faculty research output",
+        "description": "The volume and impact of research conducted by faculty."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "student-to-faculty ratio",
+        "description": "The number of students per faculty member."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "graduation rate",
+        "description": "The percentage of students who graduate on time."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "post-grad employment rate",
+        "description": "The percentage of graduates employed in engineering roles."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "campus facilities",
+        "description": "Quality and availability of campus infrastructure."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "internship opportunities",
+        "description": "Availability of paid or unpaid internships for students."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "location and campus life",
+        "description": "Geographic appeal and social environment of the campus."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "accreditation",
+        "description": "Whether the program is accredited by a recognized body."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "University of Wisconsin-Madison",
+        "description": "Top-ranked engineering school in Wisconsin."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Milwaukee School of Engineering (MSOE)",
+        "description": "Well-regarded for affordability and internships."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "University of Wisconsin-Milwaukee",
+        "description": "Offers a strong urban campus experience."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq4",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      }
+    ]
+  }
+}

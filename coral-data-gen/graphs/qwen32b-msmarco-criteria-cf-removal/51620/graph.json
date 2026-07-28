@@ -1,0 +1,328 @@
+{
+  "query_id": 51620,
+  "query": "What is the best bronzer for older skin?",
+  "mode": "criteria",
+  "atoms": [
+    "finish type",
+    "shade range",
+    "blendability",
+    "longevity",
+    "skincare ingredients",
+    "SPF protection",
+    "price",
+    "brand reputation",
+    "applicator type",
+    "fragrance-free formulation"
+  ],
+  "plausible_answers": [
+    "Guerlain Terracotta Bronzing Powder",
+    "Smashbox Bronze Lights in Sunkissed",
+    "Hourglass Superficial Waterproof Bronzer"
+  ],
+  "baseline_answer": "Guerlain Terracotta Bronzing Powder",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best bronzer for older skin?",
+        "description": "Seeking the most suitable bronzer for mature skin types."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What type of finish is best for mature skin?",
+        "description": "Evaluates the finish (matte vs. shimmer) and how well it blends into mature skin."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What shade and formulation suit fair or mature skin?",
+        "description": "Evaluates the shade range, presence of skincare ingredients, and whether it's fragrance-free."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "How long does the bronzer last and how is its application?",
+        "description": "Evaluates longevity, water resistance, and applicator type."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the brand and cost considerations?",
+        "description": "Evaluates brand reputation, price, and SPF protection."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "finish type",
+        "description": "Whether the bronzer has a matte or shimmer finish."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "shade range",
+        "description": "How well the bronzer matches or complements the user's skin tone."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "blendability",
+        "description": "How easily the bronzer blends into the skin without streaking or caking."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "longevity",
+        "description": "How long the bronzer lasts on the skin before fading."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "skincare ingredients",
+        "description": "Whether the bronzer contains nourishing or moisturizing ingredients."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "SPF protection",
+        "description": "Whether the bronzer includes sun protection."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "price",
+        "description": "The cost of the bronzer."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "brand reputation",
+        "description": "The trustworthiness and popularity of the brand."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "applicator type",
+        "description": "The type of tool used to apply the bronzer (e.g., brush, sponge)."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "fragrance-free formulation",
+        "description": "Whether the product is free of added fragrance, which is important for sensitive skin."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Guerlain Terracotta Bronzing Powder",
+        "description": "Moisturizing, blends well, and is recommended for mature skin."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Smashbox Bronze Lights in Sunkissed",
+        "description": "Sheer, suitable for fair skin, but lacks longevity and is not waterproof."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Hourglass Superficial Waterproof Bronzer",
+        "description": "Waterproof and blends well, but lacks skincare ingredients and SPF."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c6"
+      },
+      {
+        "source": "sq4",
+        "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c8"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

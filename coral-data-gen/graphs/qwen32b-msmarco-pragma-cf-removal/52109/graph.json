@@ -1,0 +1,328 @@
+{
+  "query_id": 52109,
+  "query": "best thing for impotence",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: clinical practice guideline",
+    "trustworthiness: peer-reviewed urology journal",
+    "trustworthiness: evidence-based medicine review",
+    "trustworthiness: mental health professional",
+    "trustworthiness: wellness / lifestyle publication",
+    "perspective: man with confirmed vascular / metabolic cause",
+    "perspective: man with stress / anxiety / relationship cause",
+    "perspective: older man with chronic ED",
+    "perspective: patient avoiding medications",
+    "perspective: young man with situational ED"
+  ],
+  "plausible_answers": [
+    "A PDE5 inhibitor (Viagra, Cialis, or Levitra) for direct pharmacologic restoration of erectile function",
+    "Treat the underlying condition + lifestyle change (cardiovascular fitness, weight, glucose control)",
+    "Psychological treatment: sensate focus and counseling for stress / anxiety / relationship-driven cases"
+  ],
+  "baseline_answer": "Treat the underlying condition + lifestyle change (cardiovascular fitness, weight, glucose control)",
+  "baseline_index": 1,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best thing for impotence",
+        "description": "What is the best treatment for erectile dysfunction (impotence)?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best treatment for physical or metabolic causes of ED?",
+        "description": "Physical and metabolic causes such as cardiovascular disease or diabetes."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best treatment for psychological or situational causes of ED?",
+        "description": "Psychological causes such as stress, anxiety, or relationship issues."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best treatment for patients avoiding medication or with chronic ED?",
+        "description": "Patients who avoid medication or have long-standing ED."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best treatment for vascular/metabolic vs. stress/anxiety causes?",
+        "description": "Comparing treatment approaches for physical vs. psychological causes."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: clinical practice guideline",
+        "description": "Sources based on clinical practice guidelines."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed urology journal",
+        "description": "Sources from peer-reviewed urology journals."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: evidence-based medicine review",
+        "description": "Sources based on evidence-based medicine reviews."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: mental health professional",
+        "description": "Sources from mental health professionals."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: wellness / lifestyle publication",
+        "description": "Sources from wellness or lifestyle publications."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: man with confirmed vascular / metabolic cause",
+        "description": "Perspective of a man with confirmed vascular or metabolic ED."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: man with stress / anxiety / relationship cause",
+        "description": "Perspective of a man with stress, anxiety, or relationship-related ED."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: older man with chronic ED",
+        "description": "Perspective of an older man with chronic ED."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: patient avoiding medications",
+        "description": "Perspective of a patient avoiding medications."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: young man with situational ED",
+        "description": "Perspective of a young man with situational ED."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "A PDE5 inhibitor (Viagra, Cialis, or Levitra) for direct pharmacologic restoration of erectile function",
+        "description": "Use of PDE5 inhibitors to directly improve erectile function."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Treat the underlying condition + lifestyle change (cardiovascular fitness, weight, glucose control)",
+        "description": "Address root causes and improve lifestyle for long-term improvement."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Psychological treatment: sensate focus and counseling for stress / anxiety / relationship-driven cases",
+        "description": "Counseling and psychological interventions for non-physical causes."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c1"
+      },
+      {
+        "source": "sq4",
+        "target": "c2"
+      },
+      {
+        "source": "sq4",
+        "target": "c3"
+      },
+      {
+        "source": "sq4",
+        "target": "c4"
+      },
+      {
+        "source": "sq4",
+        "target": "c6"
+      },
+      {
+        "source": "sq4",
+        "target": "c7"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

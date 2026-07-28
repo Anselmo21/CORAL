@@ -1,0 +1,328 @@
+{
+  "query_id": 51730,
+  "query": "Which type of exercise best protects aging joints?",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: physical therapist clinical guidance",
+    "trustworthiness: peer-reviewed sports medicine journal",
+    "trustworthiness: Arthritis Foundation guideline",
+    "trustworthiness: Mayo Clinic patient education",
+    "trustworthiness: fitness magazine",
+    "perspective: person with existing knee injury",
+    "perspective: person with rheumatoid arthritis",
+    "perspective: sedentary beginner",
+    "perspective: very active older adult",
+    "perspective: balance / fall-prevention focus"
+  ],
+  "plausible_answers": [
+    "Low-impact aerobic exercise (walking, swimming, cycling)",
+    "Strength training with bands or light weights",
+    "Range-of-motion / flexibility work (yoga, tai chi, dancing)"
+  ],
+  "baseline_answer": "Low-impact aerobic exercise (walking, swimming, cycling)",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Which type of exercise best protects aging joints?",
+        "description": "Which type of exercise best protects aging joints?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "General recommendation for aging joints",
+        "description": "What is the most recommended type of exercise for protecting aging joints in general?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Recommendation for people with joint issues",
+        "description": "What is the most recommended type of exercise for people with pre-existing joint issues or arthritis?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Recommendation for joint mobility",
+        "description": "What is the most recommended type of exercise for improving joint mobility and flexibility?"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Recommendation for sedentary older adults",
+        "description": "What is the most recommended type of exercise for older adults who are new to exercise?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: physical therapist clinical guidance",
+        "description": "Filter sources based on clinical guidance from physical therapists."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed sports medicine journal",
+        "description": "Filter sources based on peer-reviewed sports medicine journals."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Arthritis Foundation guideline",
+        "description": "Filter sources based on Arthritis Foundation guidelines."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Mayo Clinic patient education",
+        "description": "Filter sources based on Mayo Clinic patient education materials."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: fitness magazine",
+        "description": "Filter sources based on fitness magazines."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: person with existing knee injury",
+        "description": "Filter sources based on the perspective of someone with a knee injury."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: person with rheumatoid arthritis",
+        "description": "Filter sources based on the perspective of someone with rheumatoid arthritis."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: sedentary beginner",
+        "description": "Filter sources based on the perspective of a sedentary beginner."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: very active older adult",
+        "description": "Filter sources based on the perspective of a very active older adult."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: balance / fall-prevention focus",
+        "description": "Filter sources based on a balance and fall-prevention focus."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Low-impact aerobic exercise (walking, swimming, cycling)",
+        "description": "Low-impact aerobic exercise (walking, swimming, cycling)"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Strength training with bands or light weights",
+        "description": "Strength training with bands or light weights"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Range-of-motion / flexibility work (yoga, tai chi, dancing)",
+        "description": "Range-of-motion / flexibility work (yoga, tai chi, dancing)"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq4",
+        "target": "c5"
+      },
+      {
+        "source": "sq4",
+        "target": "c8"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      }
+    ]
+  }
+}

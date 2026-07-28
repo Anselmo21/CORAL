@@ -1,0 +1,288 @@
+{
+  "query_id": 51843,
+  "query": "What is the best laptop for under $1000?",
+  "mode": "criteria",
+  "atoms": [
+    "processor performance",
+    "RAM size",
+    "storage type",
+    "screen resolution",
+    "battery life",
+    "build quality",
+    "weight",
+    "port selection",
+    "graphics performance",
+    "brand support"
+  ],
+  "plausible_answers": [
+    "A premium ultrabook (Dell XPS 13, ASUS Zenbook, or MacBook Air)",
+    "A 15\" gaming laptop with dedicated GPU (Acer Aspire / Lenovo IdeaPad Gaming)",
+    "A mainstream 15\" Dell or ASUS Vivobook touchscreen with large screen + ample RAM"
+  ],
+  "baseline_answer": "A mainstream 15\" Dell or ASUS Vivobook touchscreen with large screen + ample RAM",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best laptop for under $1000?",
+        "description": "What is the best laptop under $1000?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Performance (processor, RAM, graphics)",
+        "description": "Criteria related to computing power and performance"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Portability and design (screen size, weight, build quality)",
+        "description": "Criteria related to physical form and usability"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Practical features (storage, port selection, battery life)",
+        "description": "Criteria related to real-world usage and convenience"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Brand and support (brand support)",
+        "description": "Criteria related to brand reputation and customer service"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "processor performance",
+        "description": "Speed and efficiency of the CPU"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "RAM size",
+        "description": "Amount of system memory"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "storage type",
+        "description": "Type and capacity of storage (HDD/SSD)"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "screen resolution",
+        "description": "Clarity and detail of the display"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "battery life",
+        "description": "Duration of use on a single charge"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "build quality",
+        "description": "Durability and construction materials"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "weight",
+        "description": "How heavy the laptop is"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "port selection",
+        "description": "Variety and availability of ports"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "graphics performance",
+        "description": "Power and capability of the GPU"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "brand support",
+        "description": "Customer service and brand reputation"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "A premium ultrabook (Dell XPS 13, ASUS Zenbook, or MacBook Air)",
+        "description": ""
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "A 15\" gaming laptop with dedicated GPU (Acer Aspire / Lenovo IdeaPad Gaming)",
+        "description": ""
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "A mainstream 15\" Dell or ASUS Vivobook touchscreen with large screen + ample RAM",
+        "description": ""
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

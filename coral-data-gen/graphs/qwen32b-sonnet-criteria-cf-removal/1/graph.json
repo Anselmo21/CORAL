@@ -1,0 +1,280 @@
+{
+  "query_id": 1,
+  "query": "I just graduated with $34,000 in student loans at 6.8% interest. Should I aggressively pay them off or start investing in my Roth IRA and 401k?",
+  "mode": "criteria",
+  "atoms": [
+    "guaranteed return on debt payoff",
+    "long-term tax-free compounding",
+    "employer match capture",
+    "market return potential",
+    "psychological debt-free peace of mind",
+    "tax-advantaged account access",
+    "low financial risk tolerance",
+    "loan forgiveness eligibility",
+    "early career wealth accumulation",
+    "flexibility for life changes"
+  ],
+  "plausible_answers": [
+    "Answer A (Invest-First Default): Capture the full 401k employer match, contribute to a Roth IRA, then make minimum loan payments \u2014 the expected market return exceeds 6.8% and tax-advantaged space lost now can never be recovered.",
+    "Answer B (Debt-First Aggressive): Pay off the student loans completely before investing beyond the employer match \u2014 the guaranteed 6.8% return is hard to beat risk-adjusted and eliminates monthly cash flow pressure.",
+    "Answer C (IDR and Invest): Enroll in income-driven repayment to minimize monthly loan payments and redirect cash aggressively into tax-advantaged accounts, betting on eventual forgiveness."
+  ],
+  "baseline_answer": "Answer B (Debt-First Aggressive): Pay off the student loans completely before investing beyond the employer match \u2014 the guaranteed 6.8% return is hard to beat risk-adjusted and eliminates monthly cash flow pressure.",
+  "baseline_index": 1,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Should I aggressively pay off $34,000 in 6.8% student loans or start investing in my Roth IRA and 401k?",
+        "description": "Graduate with $34k in student loans at 6.8% interest. Weigh between aggressive debt payoff and investing in tax-advantaged accounts."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the financial return and risk implications of paying off the loan versus investing?",
+        "description": "Compare the guaranteed return of debt payoff against the potential return of investing."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the long-term tax and compounding advantages of investing early?",
+        "description": "Evaluate the benefits of tax-free compounding and early retirement account contributions."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the employer match and debt forgiveness considerations?",
+        "description": "Consider the value of employer match and potential loan forgiveness programs."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the psychological and lifestyle benefits of each approach?",
+        "description": "Assess the mental and lifestyle tradeoffs of debt-free peace of mind versus financial flexibility."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "guaranteed return on debt payoff",
+        "description": "Paying off the 6.8% loan provides a guaranteed return equal to the interest rate."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "long-term tax-free compounding",
+        "description": "Roth IRA and 401k contributions grow tax-free over time, especially when started early."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "employer match capture",
+        "description": "Matching contributions in a 401k are essentially free money."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "market return potential",
+        "description": "Historically, the stock market has returned ~10% annually before inflation."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "psychological debt-free peace of mind",
+        "description": "Eliminating debt can reduce stress and increase financial confidence."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "tax-advantaged account access",
+        "description": "Roth IRA and 401k offer tax benefits not available in regular accounts."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "low financial risk tolerance",
+        "description": "Some people prefer the certainty of debt repayment over market volatility."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "loan forgiveness eligibility",
+        "description": "Federal programs may forgive student loans under certain conditions."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "early career wealth accumulation",
+        "description": "Starting investments in your 20s allows more time for compounding."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "flexibility for life changes",
+        "description": "Keeping more liquidity can help with unexpected expenses or opportunities."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Invest-First Default): Capture the full 401k employer match, contribute to a Roth IRA, then make minimum loan payments \u2014 the expected market return exceeds 6.8% and tax-advantaged space lost now can never be recovered.",
+        "description": "Prioritize employer match and Roth IRA contributions before making more than minimum loan payments."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Debt-First Aggressive): Pay off the student loans completely before investing beyond the employer match \u2014 the guaranteed 6.8% return is hard to beat risk-adjusted and eliminates monthly cash flow pressure.",
+        "description": "Aggressively pay off the 6.8% loan first, then invest beyond the employer match."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (IDR and Invest): Enroll in income-driven repayment to minimize monthly loan payments and redirect cash aggressively into tax-advantaged accounts, betting on eventual forgiveness.",
+        "description": "Use income-driven repayment to minimize payments and invest aggressively, hoping for loan forgiveness."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq4",
+        "target": "c5"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

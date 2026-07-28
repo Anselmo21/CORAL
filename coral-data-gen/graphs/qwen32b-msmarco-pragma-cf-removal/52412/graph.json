@@ -1,0 +1,368 @@
+{
+  "query_id": 52412,
+  "query": "best weed for fibromyalgia",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: peer-reviewed cannabis research",
+    "trustworthiness: medical marijuana clinical practice",
+    "trustworthiness: patient cannabis forum",
+    "trustworthiness: state cannabis program guidelines",
+    "trustworthiness: dispensary strain catalog",
+    "perspective: nighttime sleep-focused patient",
+    "perspective: daytime pain-management patient",
+    "perspective: psychoactive-averse patient",
+    "perspective: severe muscle pain patient",
+    "perspective: cannabis-naive patient"
+  ],
+  "plausible_answers": [
+    "A high-THC indica strain for nighttime muscle pain and stiffness",
+    "A balanced THC/CBD hybrid strain for daytime pain management without overwhelming sedation",
+    "A high-CBD, low-THC strain for pain, anxiety, and sleep relief without strong psychoactive effects or additional fatigue"
+  ],
+  "baseline_answer": "A high-THC indica strain for nighttime muscle pain and stiffness",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best weed for fibromyalgia",
+        "description": "What is the best type of cannabis for treating fibromyalgia symptoms?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the most effective cannabis type for managing fibromyalgia symptoms in general?",
+        "description": "General effectiveness of cannabis for fibromyalgia symptoms."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best cannabis type for nighttime pain and muscle stiffness?",
+        "description": "Cannabis for nighttime use and muscle pain."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best cannabis type for daytime pain without sedation or psychoactive effects?",
+        "description": "Cannabis for daytime use and non-psychoactive relief."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best cannabis type for patients who are new to cannabis or avoid psychoactive effects?",
+        "description": "Cannabis for cannabis-naive or psychoactive-averse patients."
+      },
+      {
+        "id": "1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed cannabis research",
+        "description": "Cannabis research from peer-reviewed scientific journals."
+      },
+      {
+        "id": "2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: medical marijuana clinical practice",
+        "description": "Medical marijuana as used in clinical settings."
+      },
+      {
+        "id": "3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: patient cannabis forum",
+        "description": "Cannabis experiences from patient forums and testimonials."
+      },
+      {
+        "id": "4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: state cannabis program guidelines",
+        "description": "Guidelines from state-level cannabis programs."
+      },
+      {
+        "id": "5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: dispensary strain catalog",
+        "description": "Cannabis strain information from dispensary catalogs."
+      },
+      {
+        "id": "6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: nighttime sleep-focused patient",
+        "description": "Patient perspective focused on sleep and nighttime use."
+      },
+      {
+        "id": "7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: daytime pain-management patient",
+        "description": "Patient perspective focused on daytime pain relief."
+      },
+      {
+        "id": "8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: psychoactive-averse patient",
+        "description": "Patient perspective avoiding strong psychoactive effects."
+      },
+      {
+        "id": "9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: severe muscle pain patient",
+        "description": "Patient perspective with severe muscle pain."
+      },
+      {
+        "id": "10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: cannabis-naive patient",
+        "description": "Patient perspective with little or no cannabis experience."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "A high-THC indica strain for nighttime muscle pain and stiffness",
+        "description": "Recommended for nighttime use due to sedative and muscle-relaxing effects."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "A balanced THC/CBD hybrid strain for daytime pain management without overwhelming sedation",
+        "description": "Balanced for daytime use, with pain relief and minimal sedation."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "A high-CBD, low-THC strain for pain, anxiety, and sleep relief without strong psychoactive effects or additional fatigue",
+        "description": "CBD-dominant for pain and anxiety without psychoactive effects."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "1"
+      },
+      {
+        "source": "sq1",
+        "target": "2"
+      },
+      {
+        "source": "sq1",
+        "target": "3"
+      },
+      {
+        "source": "sq1",
+        "target": "4"
+      },
+      {
+        "source": "sq1",
+        "target": "5"
+      },
+      {
+        "source": "sq1",
+        "target": "10"
+      },
+      {
+        "source": "sq2",
+        "target": "1"
+      },
+      {
+        "source": "sq2",
+        "target": "2"
+      },
+      {
+        "source": "sq2",
+        "target": "3"
+      },
+      {
+        "source": "sq2",
+        "target": "4"
+      },
+      {
+        "source": "sq2",
+        "target": "6"
+      },
+      {
+        "source": "sq2",
+        "target": "8"
+      },
+      {
+        "source": "sq2",
+        "target": "9"
+      },
+      {
+        "source": "sq3",
+        "target": "2"
+      },
+      {
+        "source": "sq3",
+        "target": "3"
+      },
+      {
+        "source": "sq3",
+        "target": "4"
+      },
+      {
+        "source": "sq3",
+        "target": "7"
+      },
+      {
+        "source": "sq3",
+        "target": "8"
+      },
+      {
+        "source": "sq4",
+        "target": "3"
+      },
+      {
+        "source": "sq4",
+        "target": "4"
+      },
+      {
+        "source": "sq4",
+        "target": "5"
+      },
+      {
+        "source": "sq4",
+        "target": "8"
+      },
+      {
+        "source": "sq4",
+        "target": "10"
+      },
+      {
+        "source": "1",
+        "target": "a1"
+      },
+      {
+        "source": "2",
+        "target": "a1"
+      },
+      {
+        "source": "3",
+        "target": "a1"
+      },
+      {
+        "source": "4",
+        "target": "a1"
+      },
+      {
+        "source": "5",
+        "target": "a1"
+      },
+      {
+        "source": "6",
+        "target": "a1"
+      },
+      {
+        "source": "7",
+        "target": "a1"
+      },
+      {
+        "source": "8",
+        "target": "a1"
+      },
+      {
+        "source": "9",
+        "target": "a1"
+      },
+      {
+        "source": "10",
+        "target": "a1"
+      },
+      {
+        "source": "1",
+        "target": "a2"
+      },
+      {
+        "source": "2",
+        "target": "a2"
+      },
+      {
+        "source": "3",
+        "target": "a2"
+      },
+      {
+        "source": "4",
+        "target": "a2"
+      },
+      {
+        "source": "5",
+        "target": "a2"
+      },
+      {
+        "source": "7",
+        "target": "a2"
+      },
+      {
+        "source": "8",
+        "target": "a2"
+      },
+      {
+        "source": "10",
+        "target": "a2"
+      },
+      {
+        "source": "2",
+        "target": "a3"
+      },
+      {
+        "source": "3",
+        "target": "a3"
+      },
+      {
+        "source": "4",
+        "target": "a3"
+      },
+      {
+        "source": "5",
+        "target": "a3"
+      },
+      {
+        "source": "7",
+        "target": "a3"
+      },
+      {
+        "source": "8",
+        "target": "a3"
+      },
+      {
+        "source": "10",
+        "target": "a3"
+      }
+    ]
+  }
+}

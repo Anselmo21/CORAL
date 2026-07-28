@@ -1,0 +1,304 @@
+{
+  "query_id": 393179,
+  "query": "in Ontario what is the best gasoline for your vehicle",
+  "mode": "criteria",
+  "atoms": [
+    "fuel grade requirements",
+    "detergent standards",
+    "octane rating",
+    "brand reputation",
+    "environmental impact",
+    "price comparison",
+    "availability in Ontario",
+    "engine performance",
+    "consumer reviews",
+    "refinery source"
+  ],
+  "plausible_answers": [
+    "Top Tier Detergent Gasoline (Shell V-Power, Esso, Chevron)",
+    "Petro-Canada Ultra 94\u2122",
+    "Regular 87-octane unleaded at any reputable station"
+  ],
+  "baseline_answer": "Top Tier Detergent Gasoline (Shell V-Power, Esso, Chevron)",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "In Ontario what is the best gasoline for your vehicle",
+        "description": "What is the best gasoline to use in Ontario based on vehicle compatibility, performance, and standards?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the fuel requirements for vehicles in Ontario?",
+        "description": "What octane levels and fuel types are required or recommended for vehicles in Ontario?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the detergent and additive standards for gasoline in Ontario?",
+        "description": "What standards of detergents and additives are present in Ontario gasoline brands?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the environmental and economic considerations of gasoline in Ontario?",
+        "description": "What are the environmental and cost-related impacts of different gasoline types in Ontario?"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the availability and source of gasoline in Ontario?",
+        "description": "What gasoline brands and grades are available in Ontario and where do they come from?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "fuel grade requirements",
+        "description": "The minimum or recommended fuel grade (e.g., regular, premium) for a vehicle."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "detergent standards",
+        "description": "The level of detergent additives in the fuel, which affects engine cleanliness."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "octane rating",
+        "description": "The fuel's resistance to knocking, measured by octane number."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "brand reputation",
+        "description": "The perceived reliability and performance of the fuel brand."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "environmental impact",
+        "description": "The environmental consequences of using a particular fuel type."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "price comparison",
+        "description": "The relative cost of different gasoline types."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "availability in Ontario",
+        "description": "How widely a fuel type is available in Ontario."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "engine performance",
+        "description": "The impact of the fuel on engine performance and longevity."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "consumer reviews",
+        "description": "What users report about the performance and benefits of a fuel type."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "refinery source",
+        "description": "The origin of the gasoline, which may affect quality and additives."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Top Tier Detergent Gasoline (Shell V-Power, Esso, Chevron)",
+        "description": "High detergent content and endorsed by major automakers for engine performance."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Petro-Canada Ultra 94\u2122",
+        "description": "High octane fuel available in Ontario, but not Top Tier."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Regular 87-octane unleaded at any reputable station",
+        "description": "Lowest octane and detergent level, suitable for most standard vehicles."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq4",
+        "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

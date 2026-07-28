@@ -1,0 +1,305 @@
+{
+  "query_id": 51957,
+  "query": "best places in spain to see for backpackers",
+  "mode": "pragmas",
+  "atoms": [
+    "geographic: northern Spain",
+    "geographic: southern Spain (Andalusia)",
+    "geographic: Catalonia",
+    "geographic: eastern Spain",
+    "trustworthiness: Lonely Planet author picks",
+    "trustworthiness: travel blogger / backpacker forum",
+    "trustworthiness: hostel network listings",
+    "perspective: party-first backpacker",
+    "perspective: culture / history-first traveler",
+    "perspective: off-the-beaten-path backpacker"
+  ],
+  "plausible_answers": [
+    "Barcelona",
+    "Madrid + Granada",
+    "Basque Country (Bilbao)"
+  ],
+  "baseline_answer": "Barcelona",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best places in spain to see for backpackers",
+        "description": "Identify the top backpacker destinations in Spain."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which regions in Spain are most recommended for backpackers?",
+        "description": "Determine the most popular or recommended regions for backpackers in Spain."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which sources are most reliable for identifying top backpacker spots in Spain?",
+        "description": "Assess the trustworthiness of sources for recommending backpacker locations."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which traveler perspectives should be prioritized when selecting the best places for backpackers?",
+        "description": "Determine which traveler preferences (e.g., party-first, culture-first) are most relevant."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: northern Spain",
+        "description": "Focus on regions in northern Spain."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: southern Spain (Andalusia)",
+        "description": "Focus on regions in southern Spain, particularly Andalusia."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: Catalonia",
+        "description": "Focus on regions in Catalonia."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: eastern Spain",
+        "description": "Focus on regions in eastern Spain."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Lonely Planet author picks",
+        "description": "Prioritize recommendations from Lonely Planet authors."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: travel blogger / backpacker forum",
+        "description": "Prioritize recommendations from travel bloggers and backpacker forums."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: hostel network listings",
+        "description": "Prioritize locations with hostel network coverage."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: party-first backpacker",
+        "description": "Prioritize locations with a strong party or nightlife scene."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: culture / history-first traveler",
+        "description": "Prioritize locations with rich cultural or historical value."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: off-the-beaten-path backpacker",
+        "description": "Prioritize less crowded, less mainstream locations."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Barcelona",
+        "description": "Barcelona is the top pick when all filters are applied."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Madrid + Granada",
+        "description": "Madrid and Granada become top picks when Catalonia and party-first filters are removed."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Basque Country (Bilbao)",
+        "description": "The Basque Country becomes top when Catalonia, Lonely Planet, and party-first filters are removed."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

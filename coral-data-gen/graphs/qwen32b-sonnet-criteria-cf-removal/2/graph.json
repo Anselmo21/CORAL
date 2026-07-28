@@ -1,0 +1,297 @@
+{
+  "query_id": 2,
+  "query": "I'm 34 with two kids and a mortgage. Should I get whole life or term life insurance?",
+  "mode": "criteria",
+  "atoms": [
+    "lowest monthly premium cost",
+    "maximum death benefit per dollar",
+    "simplicity of product",
+    "coverage during peak financial obligation years",
+    "cash value accumulation",
+    "tax-sheltered wealth building",
+    "estate planning utility",
+    "lifetime coverage guarantee",
+    "suitability for average income earners",
+    "flexibility to cancel without loss"
+  ],
+  "plausible_answers": [
+    "Answer A (Term Life Default): Get a 20-year term policy worth 10\u201312x your income \u2014 it's dramatically cheaper than whole life, covers your mortgage and children's dependency years, and you invest the premium difference separately.",
+    "Answer B (Whole Life for Permanence): If you've maxed your 401k and Roth IRA and have estate planning needs, a whole life policy provides lifetime coverage, tax-sheltered cash value growth, and a tool for wealth transfer.",
+    "Answer C (Whole Life for Special Circumstances): Whole life is justified if you have a special-needs dependent requiring lifetime financial support, where a permanent guaranteed death benefit outweighs the premium cost."
+  ],
+  "baseline_answer": "Answer A (Term Life Default): Get a 20-year term policy worth 10\u201312x your income \u2014 it's dramatically cheaper than whole life, covers your mortgage and children's dependency years, and you invest the premium difference separately.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Should I get whole life or term life insurance?",
+        "description": "34 years old, two kids, and a mortgage."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Cost and Affordability",
+        "description": "Evaluates the monthly cost, death benefit efficiency, and suitability for average income earners."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Coverage and Duration",
+        "description": "Evaluates how well the policy covers peak financial years and whether it provides lifetime coverage."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Long-Term Financial Tools",
+        "description": "Evaluates cash value, tax-sheltered growth, and estate planning utility."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "lowest monthly premium cost",
+        "description": ""
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "maximum death benefit per dollar",
+        "description": ""
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "simplicity of product",
+        "description": ""
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "coverage during peak financial obligation years",
+        "description": ""
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "cash value accumulation",
+        "description": ""
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "tax-sheltered wealth building",
+        "description": ""
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "estate planning utility",
+        "description": ""
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "lifetime coverage guarantee",
+        "description": ""
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "suitability for average income earners",
+        "description": ""
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "flexibility to cancel without loss",
+        "description": ""
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Term Life Default)",
+        "description": "Get a 20-year term policy worth 10\u201312x your income \u2014 it's dramatically cheaper than whole life, covers your mortgage and children's dependency years, and you invest the premium difference separately."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Whole Life for Permanence)",
+        "description": "If you've maxed your 401k and Roth IRA and have estate planning needs, a whole life policy provides lifetime coverage, tax-sheltered cash value growth, and a tool for wealth transfer."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Whole Life for Special Circumstances)",
+        "description": "Whole life is justified if you have a special-needs dependent requiring lifetime financial support, where a permanent guaranteed death benefit outweighs the premium cost."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

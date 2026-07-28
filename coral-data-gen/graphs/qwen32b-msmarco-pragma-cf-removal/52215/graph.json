@@ -1,0 +1,293 @@
+{
+  "query_id": 52215,
+  "query": "best type of paint to paint over rust",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: paint industry technical manual",
+    "trustworthiness: peer-reviewed coatings journal",
+    "trustworthiness: DIY home improvement guide",
+    "trustworthiness: product manufacturer documentation",
+    "trustworthiness: consumer paint reviews",
+    "perspective: weekend DIY homeowner",
+    "perspective: professional auto-body painter",
+    "perspective: industrial maintenance crew",
+    "perspective: restoration hobbyist",
+    "perspective: budget-conscious painter"
+  ],
+  "plausible_answers": [
+    "Brush-applied rust-inhibiting primer (zinc chromate or iron oxide) followed by a finish coat",
+    "Rustoleum (consumer brand) spray or brush-on",
+    "Direct-over-rust anti-rust enamel like Krylon Rust Protector or Rust Tough Enamel"
+  ],
+  "baseline_answer": "Brush-applied rust-inhibiting primer (zinc chromate or iron oxide) followed by a finish coat",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best type of paint to paint over rust",
+        "description": "What is the best type of paint to use when painting over rust?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "industry-recommended paint for rust",
+        "description": "What is the best type of paint over rust from a technical or industry-recommended perspective?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "practical paint for rust from user perspective",
+        "description": "What is the best type of paint over rust from a practical, hands-on user perspective?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "professional paint for rust",
+        "description": "What is the best type of paint over rust from a professional or high-volume application perspective?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: paint industry technical manual",
+        "description": "Sources from the paint industry technical manuals"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed coatings journal",
+        "description": "Sources from peer-reviewed coatings journals"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: DIY home improvement guide",
+        "description": "Sources from DIY home improvement guides"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: product manufacturer documentation",
+        "description": "Sources from product manufacturer documentation"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: consumer paint reviews",
+        "description": "Sources from consumer paint reviews"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: weekend DIY homeowner",
+        "description": "Sources from the perspective of weekend DIY homeowners"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: professional auto-body painter",
+        "description": "Sources from the perspective of professional auto-body painters"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: industrial maintenance crew",
+        "description": "Sources from the perspective of industrial maintenance crews"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: restoration hobbyist",
+        "description": "Sources from the perspective of restoration hobbyists"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: budget-conscious painter",
+        "description": "Sources from the perspective of budget-conscious painters"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Brush-applied rust-inhibiting primer (zinc chromate or iron oxide) followed by a finish coat",
+        "description": "Apply a brush-applied rust-inhibiting primer followed by a finish coat."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Rustoleum (consumer brand) spray or brush-on",
+        "description": "Use Rustoleum, a consumer brand available in spray or brush-on form."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Direct-over-rust anti-rust enamel like Krylon Rust Protector or Rust Tough Enamel",
+        "description": "Use direct-over-rust anti-rust enamel such as Krylon Rust Protector or Rust Tough Enamel."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

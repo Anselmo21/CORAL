@@ -1,0 +1,325 @@
+{
+  "query_id": 51691,
+  "query": "What is the best diet for reducing PMS symptoms?",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: registered dietitian guidance",
+    "trustworthiness: peer-reviewed gynecology / nutrition journal",
+    "trustworthiness: integrative medicine source",
+    "trustworthiness: women's health magazine",
+    "trustworthiness: wellness blog",
+    "perspective: PMS sufferer with severe cramps",
+    "perspective: PMS sufferer with mood / fatigue dominant symptoms",
+    "perspective: PMDD diagnosed patient",
+    "perspective: lactose-intolerant / dairy-averse woman",
+    "perspective: vegan / plant-forward woman"
+  ],
+  "plausible_answers": [
+    "Mediterranean-style diet",
+    "Dairy-free / Cycle Diet",
+    "Anti-inflammatory elimination diet"
+  ],
+  "baseline_answer": "Dairy-free / Cycle Diet",
+  "baseline_index": 1,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best diet for reducing PMS symptoms?",
+        "description": "Which dietary strategy is most effective for reducing PMS symptoms based on source trustworthiness and symptom-specific perspectives?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which dietary strategies are recommended by trustworthy sources?",
+        "description": "Focus on dietary strategies supported by trusted sources such as dietitians, peer-reviewed journals, and reputable health magazines."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which dietary strategies align with the perspective of specific PMS symptoms or conditions?",
+        "description": "Focus on dietary strategies tailored to symptom profiles such as cramps, mood/fatigue, or PMDD."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which dietary strategies are most supported by both trustworthiness and symptom-specific perspectives?",
+        "description": "Combine both trusted sources and symptom-specific perspectives to determine the most broadly supported dietary strategy."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: registered dietitian guidance",
+        "description": "Prioritize sources that provide guidance from registered dietitians."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed gynecology / nutrition journal",
+        "description": "Prioritize sources from peer-reviewed gynecology or nutrition journals."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: integrative medicine source",
+        "description": "Prioritize sources from integrative medicine platforms."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: women's health magazine",
+        "description": "Prioritize sources from women's health magazines."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: wellness blog",
+        "description": "Prioritize sources from wellness blogs."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: PMS sufferer with severe cramps",
+        "description": "Prioritize sources that address PMS with severe cramps."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: PMS sufferer with mood / fatigue dominant symptoms",
+        "description": "Prioritize sources that address PMS with mood and fatigue symptoms."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: PMDD diagnosed patient",
+        "description": "Prioritize sources that address PMDD."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: lactose-intolerant / dairy-averse woman",
+        "description": "Prioritize sources for lactose-intolerant or dairy-averse women."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: vegan / plant-forward woman",
+        "description": "Prioritize sources for vegan or plant-forward women."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Mediterranean-style diet",
+        "description": "A diet rich in fruits, vegetables, whole grains, and healthy fats."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Dairy-free / Cycle Diet",
+        "description": "A structured, dairy-free diet focused on hormone balance and PMS symptom management."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Anti-inflammatory elimination diet",
+        "description": "A diet that eliminates inflammatory foods and emphasizes omega-3s."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      }
+    ]
+  }
+}

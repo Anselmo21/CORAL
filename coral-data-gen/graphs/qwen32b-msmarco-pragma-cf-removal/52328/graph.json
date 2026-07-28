@@ -1,0 +1,286 @@
+{
+  "query_id": 52328,
+  "query": "best way to lose weight for a child",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: AAP / pediatric clinical guideline",
+    "trustworthiness: peer-reviewed pediatric nutrition journal",
+    "trustworthiness: registered dietitian guidance",
+    "trustworthiness: choosemyplate.gov",
+    "trustworthiness: commercial weight loss program",
+    "trustworthiness: parent / mom blog",
+    "perspective: parent of mildly overweight child",
+    "perspective: parent of obese child with health risk",
+    "perspective: pediatrician-led case",
+    "perspective: family-engaged household"
+  ],
+  "plausible_answers": [
+    "Whole-family lifestyle change with the choosemyplate.gov plate method (half fruits/veggies, quarter lean protein, quarter whole grains) plus aerobic exercise",
+    "Pediatrician-led monitoring with attainable goals (1-4 lb/month), a food diary, and biweekly weight checks",
+    "A formal multi-disciplinary weight loss program for children whose home efforts fail"
+  ],
+  "baseline_answer": "Whole-family lifestyle change with the choosemyplate.gov plate method (half fruits/veggies, quarter lean protein, quarter whole grains) plus aerobic exercise",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best way to lose weight for a child",
+        "description": "What is the best way to lose weight for a child?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Trustworthy guidance sources",
+        "description": "Which sources are most trustworthy for child weight loss?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Appropriate perspective",
+        "description": "Which perspective is most relevant for determining the best approach?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "1. trustworthiness: AAP / pediatric clinical guideline",
+        "description": "Filter for American Academy of Pediatrics or pediatric clinical guidelines."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "2. trustworthiness: peer-reviewed pediatric nutrition journal",
+        "description": "Filter for peer-reviewed pediatric nutrition journals."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "3. trustworthiness: registered dietitian guidance",
+        "description": "Filter for guidance from registered dietitians."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "4. trustworthiness: choosemyplate.gov",
+        "description": "Filter for guidance from choosemyplate.gov."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "5. trustworthiness: commercial weight loss program",
+        "description": "Filter for commercial weight loss programs."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "6. trustworthiness: parent / mom blog",
+        "description": "Filter for parent or mom blog sources."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "7. perspective: parent of mildly overweight child",
+        "description": "Filter for the perspective of a parent of a mildly overweight child."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "8. perspective: parent of obese child with health risk",
+        "description": "Filter for the perspective of a parent of an obese child with health risks."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "9. perspective: pediatrician-led case",
+        "description": "Filter for pediatrician-led case perspectives."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "10. perspective: family-engaged household",
+        "description": "Filter for family-engaged household perspectives."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Whole-family lifestyle change with the choosemyplate.gov plate method (half fruits/veggies, quarter lean protein, quarter whole grains) plus aerobic exercise",
+        "description": "A1: Whole-family lifestyle change with plate method and aerobic exercise."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Pediatrician-led monitoring with attainable goals (1-4 lb/month), a food diary, and biweekly weight checks",
+        "description": "A2: Pediatrician-led monitoring with small goals and food diary."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "A formal multi-disciplinary weight loss program for children whose home efforts fail",
+        "description": "A3: Formal multi-disciplinary program for children whose home efforts fail."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      }
+    ]
+  }
+}

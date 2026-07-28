@@ -1,0 +1,297 @@
+{
+  "query_id": 440640,
+  "query": "list of best to worst states for education",
+  "mode": "criteria",
+  "atoms": [
+    "funding levels",
+    "student performance",
+    "teacher qualifications",
+    "graduation rates",
+    "educational resources",
+    "state policies",
+    "demographic factors",
+    "standardized testing",
+    "parental involvement",
+    "school infrastructure"
+  ],
+  "plausible_answers": [
+    "WalletHub composite ranking (MA, NJ, VT, NH, CT top; Nevada, Louisiana, Mississippi bottom) \u2014 broad multi-metric blend for general readership",
+    "Annie E. Casey Foundation Kids Count ranking \u2014 child-welfare-focused metric weighting outcomes for kids",
+    "Education Week Quality Counts state grade ranking \u2014 academic-policy-depth ranking used by researchers and policymakers"
+  ],
+  "baseline_answer": "Education Week Quality Counts state grade ranking \u2014 academic-policy-depth ranking used by researchers and policymakers",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "list of best to worst states for education",
+        "description": "What is the ranking of U.S. states from best to worst in terms of education quality?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What metrics reflect the overall quality and funding of a state's education system?",
+        "description": "Funding and infrastructure are core indicators of a state's investment in education."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What metrics reflect the outcomes and performance of students and teachers?",
+        "description": "Performance and qualifications are key to evaluating educational effectiveness."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What metrics reflect the broader social and environmental context influencing education?",
+        "description": "Demographics and parental engagement shape educational outcomes indirectly."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "funding levels",
+        "description": "Amount of money allocated to schools per student."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "student performance",
+        "description": "Academic outcomes such as test scores and rankings."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "teacher qualifications",
+        "description": "Credentials, experience, and training of educators."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "graduation rates",
+        "description": "Percentage of students graduating on time."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "educational resources",
+        "description": "Availability of materials, technology, and learning tools."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "state policies",
+        "description": "Laws and regulations affecting education quality."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "demographic factors",
+        "description": "Population characteristics like race, income, and language."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "standardized testing",
+        "description": "Use and outcomes of standardized assessments."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "parental involvement",
+        "description": "Level of engagement from parents in education."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "school infrastructure",
+        "description": "Quality of school buildings and facilities."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "WalletHub composite ranking (MA, NJ, VT, NH, CT top; Nevada, Louisiana, Mississippi bottom)",
+        "description": "Broad multi-metric blend for general readership"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Annie E. Casey Foundation Kids Count ranking",
+        "description": "Child-welfare-focused metric weighting outcomes for kids"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Education Week Quality Counts state grade ranking",
+        "description": "Academic-policy-depth ranking used by researchers and policymakers"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      }
+    ]
+  }
+}

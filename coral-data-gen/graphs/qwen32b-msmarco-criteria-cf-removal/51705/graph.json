@@ -1,0 +1,301 @@
+{
+  "query_id": 51705,
+  "query": "Which dog breed helps most with anxiety and depression?",
+  "mode": "criteria",
+  "atoms": [
+    "affectionate temperament",
+    "energy level",
+    "trainability",
+    "grooming needs",
+    "size",
+    "exercise requirements",
+    "hypoallergenic coat",
+    "lifespan",
+    "child-friendliness",
+    "apartment adaptability"
+  ],
+  "plausible_answers": [
+    "Labrador Retriever or Golden Retriever",
+    "A small companion breed (Cavalier King Charles Spaniel, Bichon Frise, Cockapoo)",
+    "A trained psychiatric service dog (Standard Poodle / German Shepherd)"
+  ],
+  "baseline_answer": "A trained psychiatric service dog (Standard Poodle / German Shepherd)",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Which dog breed helps most with anxiety and depression?",
+        "description": "Which dog breed is most effective in alleviating symptoms of anxiety and depression?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "How well does the breed provide emotional and mental health support?",
+        "description": "Evaluate the breed's temperament, trainability, and suitability for emotional support."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "How practical is the breed for daily life and living conditions?",
+        "description": "Evaluate the breed's size, grooming, and adaptability to living environments."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "How well does the breed interact with others in the household?",
+        "description": "Evaluate the breed's friendliness with children and other pets."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "affectionate temperament",
+        "description": "The breed's natural tendency to be loving and emotionally supportive."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "energy level",
+        "description": "The breed's general activity level and energy requirements."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "trainability",
+        "description": "How easily the breed can be trained for specific tasks or behaviors."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "grooming needs",
+        "description": "The amount of grooming and maintenance required for the breed."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "size",
+        "description": "The physical size of the breed and how it fits into living spaces."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "exercise requirements",
+        "description": "The amount of daily physical activity the breed needs."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "hypoallergenic coat",
+        "description": "Whether the breed has a coat that is less likely to cause allergic reactions."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "lifespan",
+        "description": "The average length of the breed's life."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "child-friendliness",
+        "description": "How well the breed interacts with and is suited for children."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "apartment adaptability",
+        "description": "How well the breed adapts to living in an apartment or small space."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Labrador Retriever or Golden Retriever",
+        "description": "Popular for emotional support due to their friendly and affectionate nature."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "A small companion breed (Cavalier King Charles Spaniel, Bichon Frise, Cockapoo)",
+        "description": "Small, affectionate breeds ideal for apartment living and companionship."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "A trained psychiatric service dog (Standard Poodle / German Shepherd)",
+        "description": "Highly trained dogs bred for mental health assistance and adaptability."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

@@ -1,0 +1,301 @@
+{
+  "query_id": 52109,
+  "query": "best thing for impotence",
+  "mode": "criteria",
+  "atoms": [
+    "treatment type",
+    "underlying causes",
+    "age group",
+    "side effects",
+    "effectiveness",
+    "natural remedies",
+    "psychological factors",
+    "duration of use",
+    "cost",
+    "availability"
+  ],
+  "plausible_answers": [
+    "A PDE5 inhibitor (Viagra, Cialis, or Levitra) for direct pharmacologic restoration of erectile function",
+    "Treat the underlying condition + lifestyle change (cardiovascular fitness, weight, glucose control)",
+    "Psychological treatment: sensate focus and counseling for stress / anxiety / relationship-driven cases"
+  ],
+  "baseline_answer": "Treat the underlying condition + lifestyle change (cardiovascular fitness, weight, glucose control)",
+  "baseline_index": 1,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best thing for impotence",
+        "description": "What is the best treatment or approach for erectile dysfunction (impotence)?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the key factors that determine the best treatment for erectile dysfunction?",
+        "description": "Factors like treatment type, underlying causes, age group, and psychological factors influence treatment choice."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the practical considerations in choosing a treatment?",
+        "description": "Considerations such as side effects, effectiveness, cost, and availability affect treatment decision-making."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the alternative or complementary approaches?",
+        "description": "Natural remedies and psychological treatments can complement or replace traditional medical approaches."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "treatment type",
+        "description": "Type of treatment, such as medication, lifestyle change, or psychological therapy."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "underlying causes",
+        "description": "Conditions like diabetes, heart disease, or psychological stress that contribute to ED."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "age group",
+        "description": "The age of the individual, which can affect treatment effectiveness and side effect profile."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "side effects",
+        "description": "Unwanted effects of treatment, such as headaches or dizziness."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "effectiveness",
+        "description": "How well the treatment works in restoring or maintaining erectile function."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "natural remedies",
+        "description": "Non-pharmacological or herbal approaches to treating ED."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "psychological factors",
+        "description": "Stress, anxiety, or relationship issues that may contribute to ED."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "duration of use",
+        "description": "How long the treatment must be used for sustained results."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost",
+        "description": "The financial burden or affordability of the treatment."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "availability",
+        "description": "How accessible the treatment is, including prescription requirements or over-the-counter status."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "A PDE5 inhibitor (Viagra, Cialis, or Levitra) for direct pharmacologic restoration of erectile function",
+        "description": "Pharmacologic treatment with PDE5 inhibitors to directly restore erectile function."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Treat the underlying condition + lifestyle change (cardiovascular fitness, weight, glucose control)",
+        "description": "Address root causes of ED through treatment and lifestyle modifications."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Psychological treatment: sensate focus and counseling for stress / anxiety / relationship-driven cases",
+        "description": "Psychological interventions for ED caused by mental health or relationship issues."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      }
+    ]
+  }
+}

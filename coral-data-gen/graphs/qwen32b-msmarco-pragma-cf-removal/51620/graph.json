@@ -1,0 +1,313 @@
+{
+  "query_id": 51620,
+  "query": "What is the best bronzer for older skin?",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: professional makeup artist endorsement",
+    "trustworthiness: beauty editor review",
+    "trustworthiness: Sephora customer forum",
+    "trustworthiness: dermatology-recommended brand list",
+    "trustworthiness: EWG cosmetics database",
+    "perspective: dry mature skin",
+    "perspective: oily mature skin",
+    "perspective: fair complexion mature user",
+    "perspective: warm / peach undertones user",
+    "perspective: shimmer-averse user"
+  ],
+  "plausible_answers": [
+    "Guerlain Terracotta Bronzing Powder",
+    "Smashbox Bronze Lights in Sunkissed",
+    "Hourglass Superficial Waterproof Bronzer"
+  ],
+  "baseline_answer": "Guerlain Terracotta Bronzing Powder",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best bronzer for older skin?",
+        "description": "Seeking a bronzer suitable for mature skin types, considering texture, formulation, and skin tone."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Best bronzer for mature skin in terms of professional recommendation and formulation",
+        "description": "Evaluating bronzer recommendations from professionals and product formulation."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Best bronzer for mature skin with specific skin tone and texture preferences",
+        "description": "Evaluating suitability based on skin tone, undertones, and texture preference."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Best bronzer for mature skin with concerns about sensitivity and ingredient safety",
+        "description": "Evaluating sensitivity and ingredient-related safety for mature skin."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: professional makeup artist endorsement",
+        "description": "Sources endorsed by professional makeup artists."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: beauty editor review",
+        "description": "Sources based on beauty editor reviews."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Sephora customer forum",
+        "description": "Sources from Sephora customer forums."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: dermatology-recommended brand list",
+        "description": "Sources from dermatology-recommended brand lists."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: EWG cosmetics database",
+        "description": "Sources from the Environmental Working Group cosmetics database."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: dry mature skin",
+        "description": "Sources focusing on dry mature skin."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: oily mature skin",
+        "description": "Sources focusing on oily mature skin."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: fair complexion mature user",
+        "description": "Sources for fair complexion mature users."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: warm / peach undertones user",
+        "description": "Sources for users with warm or peach undertones."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: shimmer-averse user",
+        "description": "Sources for users who avoid shimmer."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Guerlain Terracotta Bronzing Powder",
+        "description": "Moisturizing, blends well, avoids caking in fine lines."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Smashbox Bronze Lights in Sunkissed",
+        "description": "Sheer, gentle on sensitive skin, complements fair complexions."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Hourglass Superficial Waterproof Bronzer",
+        "description": "Seamlessly blends, creates a natural bronze color."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}
