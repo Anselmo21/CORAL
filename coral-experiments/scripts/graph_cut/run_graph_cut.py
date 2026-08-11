@@ -1,4 +1,4 @@
-"""Load the qwen3-32b graphs and lattices the graph_cut search runs on."""
+"""Sweep graph_cut_search against ERA over the Phase-1 budget, on qwen3-32b."""
 from __future__ import annotations
 
 import json
@@ -6,11 +6,13 @@ import os
 import re
 from pathlib import Path
 
+from scripts.criteria.msmarco.run_subsample import score_proxy
 from search.bfs import bfs_search
+from search.graph_cut import graph_cut_search
 from search.lattice import combo_key, restrict_rbc
+from search.rank import era_search
 
-
-REPO = Path(__file__).resolve().parents[1]
+REPO = Path(__file__).resolve().parents[2]
 DATA_GEN = Path(os.environ.get("CORAL_DATA_GEN", REPO.parent / "coral-data-gen"))
 LOGGED = REPO / "logged_results" / "qwen3-32b-temp0"
 RESULTS = REPO / "results"
@@ -25,7 +27,11 @@ DATASETS = [
     ("sonnet criteria", "sonnet_criteria",
      "datasets/qwen3-32b-temp0/sonnet-criteria-qwen3-32b-temp0.json",
      "graphs/qwen32b-sonnet-criteria-cf-removal"),
+    ("sonnet pragma", "sonnet_pragma",
+     "datasets/qwen3-32b-temp0/sonnet-pragmas-qwen3-32b-temp0.json",
+     "graphs/qwen32b-sonnet-pragma-cf-removal"),
 ]
+BUDGETS = (0, 2, 4, 8, 16)
 
 
 def read_json(rel):
@@ -35,11 +41,21 @@ def read_json(rel):
 def graph_supports(graphs_dir, qid, concepts, answers):
     """{answer -> supporting concepts} from the graph's Layer-3 to Layer-4 edges."""
     def match(lab, pool):
-        """Some graphs number their labels ('1. trustworthiness: ...'); strip it."""
+        """Some graphs number their labels ('1. trustworthiness: ...'); others keep
+        only the answer's title ('Answer A (Rent and Invest Default)'), and others
+        just the title's parenthetical ('Rent and Invest Default'). Strip the
+        number, then take a prefix match, then a parenthetical match, each only
+        when exactly one candidate qualifies."""
         if lab in pool:
             return lab
         stripped = re.sub(r"^\s*\d+[.)]\s*", "", lab)
-        return stripped if stripped in pool else None
+        if stripped in pool:
+            return stripped
+        hits = [p for p in pool if p.startswith(stripped)]
+        if len(hits) == 1:
+            return hits[0]
+        hits = [p for p in pool if f"({stripped})" in p]
+        return hits[0] if len(hits) == 1 else None
 
     try:
         data = read_json(f"{graphs_dir}/{qid}/graph.json")
@@ -96,3 +112,38 @@ def summarize(cells, n):
         outcomes[c["outcome"]] = outcomes.get(c["outcome"], 0) + 1
     return {"accuracy_pct": round(100 * correct / n, 1),
             "mean_calls": round(calls / n, 2), "outcomes": outcomes}
+
+
+def main():
+    out = {}
+    for label, dataset_dir, lattice_rel, graphs_rel in DATASETS:
+        rows = load_cases(dataset_dir, lattice_rel, graphs_rel)
+        n = len(rows)
+        out[label] = {"n": n, "sweep": {}}
+        print(f"\n{label} (n={n})")
+        for b in BUDGETS:
+            cells = {}
+            for name, run in (
+                ("era", lambda r: era_search(r["criteria"], r["rbc"], budget=b,
+                                             start_node=r["start"],
+                                             direction="down")),
+                ("graph_cut", lambda r: graph_cut_search(
+                    r["criteria"], r["rbc"], r["supports"], budget=b,
+                    start_node=r["start"])),
+            ):
+                cells[name] = summarize(
+                    [score_proxy(r["bfs"], run(r), r["rbc"], r["start"])
+                     for r in rows], n)
+            out[label]["sweep"][b] = cells
+            e, g = cells["era"], cells["graph_cut"]
+            print(f"  b={b:<2} ERA {e['accuracy_pct']:>5}% @ {e['mean_calls']:>6}"
+                  f"   graph_cut {g['accuracy_pct']:>5}% @ {g['mean_calls']:>6}")
+
+    RESULTS.mkdir(exist_ok=True)
+    dest = RESULTS / "graph_cut.json"
+    dest.write_text(json.dumps(out, indent=2), encoding="utf-8")
+    print(f"\nwrote {dest}")
+
+
+if __name__ == "__main__":
+    main()

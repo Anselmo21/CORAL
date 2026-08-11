@@ -44,14 +44,18 @@ def _aggregate(voters, answers, weights):
 
 
 def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
-                     tier=True, pool=True, flip_boost=True, perm_rng=None):
+                     tier=True, pool=True, flip_boost=True, graph_first=False,
+                     entropy_cut=True, perm_rng=None):
     """Top-down counterfactual search with the graph guiding Phase 2.
 
     tier=False, pool=False, flip_boost=False reduces to era_search(direction=
     'down', propagate_scores=True). flip_boost weights a measured voter that
     already flipped by the node's voter count; it is an ERA-native change kept
-    separable from the graph. perm_rng permutes the graph's concept labels for
-    attribution controls.
+    separable from the graph. graph_first probes the graph's tier ahead of the
+    displaced nodes instead of behind them. entropy_cut=False keeps every node
+    in the layer as a candidate, so nothing is pruned for low entropy and the
+    layer stop is the only thing left skipping work. perm_rng permutes the
+    graph's concept labels for attribution controls.
     """
     baseline_ranking = rbc.get(combo_key(start_node), [])
     if not baseline_ranking:
@@ -121,8 +125,9 @@ def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
         if not unknown:
             continue
 
-        high = set(max_jump_cutoff([(k, e) for _, k, _, e, _, _ in unknown],
-                                   len(unknown)))
+        high = (set(max_jump_cutoff([(k, e) for _, k, _, e, _, _ in unknown],
+                                    len(unknown)))
+                if entropy_cut else {u[1] for u in unknown})
         cands, rescued = [], []
         for u in unknown:
             if u[2] >= 1 or u[1] in high:
@@ -146,7 +151,7 @@ def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
                                              len(uncertain)))
                 claims_left = len(claims)
             uncertain.sort(key=lambda u: (u[1] not in claims, -u[4], u[5], u[3]))
-            ordered = displaced + uncertain
+            ordered = uncertain + displaced if graph_first else displaced + uncertain
 
         cut = pool_done = False
         for subset, key, disp, _ent, g, _margin in ordered + rescued:
