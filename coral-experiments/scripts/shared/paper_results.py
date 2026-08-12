@@ -9,9 +9,9 @@ compute hop distance from BFS's CF for every method, and emit:
 
 Datasets:
     msmarco_criteria           = MSMARCO criteria
-    sonnet_criteria            = Sonnet criteria
+    curated_criteria            = Curated criteria
     msmarco_pragma    = MSMARCO pragma (regen)
-    sonnet_pragma               = Sonnet pragma
+    curated_pragma               = Curated pragma
 
 Usage:
     conda run -n coral python3 -m scripts.shared.paper_results
@@ -31,9 +31,9 @@ from search.rank import era_search
 DATASETS = [
     # (data dir, module path, label)
     ("msmarco_criteria", "scripts.criteria.msmarco.run_subsample", "MSMARCO criteria"),
-    ("sonnet_criteria",  "scripts.criteria.sonnet.run_subsample",  "Sonnet criteria"),
+    ("curated_criteria",  "scripts.criteria.curated.run_subsample",  "Curated criteria"),
     ("msmarco_pragma",   "scripts.pragma.msmarco.run_subsample",   "MSMARCO pragma"),
-    ("sonnet_pragma",    "scripts.pragma.sonnet.run_subsample",    "Sonnet pragma"),
+    ("curated_pragma",    "scripts.pragma.curated.run_subsample",    "Curated pragma"),
 ]
 
 # One setting applied across all four datasets — no per-dataset flag.

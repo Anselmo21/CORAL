@@ -36,15 +36,15 @@ from search.rank import mra_search
 LLAMA_DATASETS = [
     ("msmarco_criteria", "scripts.criteria.msmarco.run_subsample", "MSMARCO criteria", "Criteria"),
     ("msmarco_pragma",   "scripts.pragma.msmarco.run_subsample",   "MSMARCO pragma",   "Pragmas"),
-    ("sonnet_criteria",  "scripts.criteria.sonnet.run_subsample",  "Sonnet criteria",  "Criteria"),
-    ("sonnet_pragma",    "scripts.pragma.sonnet.run_subsample",    "Sonnet pragma",    "Pragmas"),
+    ("curated_criteria",  "scripts.criteria.curated.run_subsample",  "Curated criteria",  "Criteria"),
+    ("curated_pragma",    "scripts.pragma.curated.run_subsample",    "Curated pragma",    "Pragmas"),
 ]
 
 QWEN3_DATASETS = [
     ("msmarco_criteria", "data/qwen3-32b/msmarco-criteria-qwen3-32.json",  "Qwen3 MSMARCO criteria", "Criteria"),
     ("msmarco_pragma",   "data/qwen3-32b/msmarco-pragmas-qwen3-32b.json",  "Qwen3 MSMARCO pragma",   "Pragmas"),
-    ("sonnet_criteria",  "data/qwen3-32b/sonnet-criteria-qwen3-32b.json",  "Qwen3 Sonnet criteria",  "Criteria"),
-    ("sonnet_pragma",    "data/qwen3-32b/sonnet-pragmas-qwen3-32b.json",   "Qwen3 Sonnet pragma",    "Pragmas"),
+    ("curated_criteria",  "data/qwen3-32b/curated-criteria-qwen3-32b.json",  "Qwen3 Curated criteria",  "Criteria"),
+    ("curated_pragma",    "data/qwen3-32b/curated-pragmas-qwen3-32b.json",   "Qwen3 Curated pragma",    "Pragmas"),
 ]
 
 BUDGETS = [2, 4, 8, 16, 32, 64]

@@ -28,8 +28,8 @@ from scripts.shared.plot_style import apply_plot_style
 DATASETS = [
     ("msmarco_criteria", "MSMARCO criteria", "Criteria"),
     ("msmarco_pragma",   "MSMARCO pragma",   "Pragmas"),
-    ("sonnet_criteria",  "Sonnet criteria",  "Criteria"),
-    ("sonnet_pragma",    "Sonnet pragma",    "Pragmas"),
+    ("curated_criteria",  "Curated criteria",  "Criteria"),
+    ("curated_pragma",    "Curated pragma",    "Pragmas"),
 ]
 
 VARIANTS = ["softmax", "shannon", "weighted", "renyi_0.5", "renyi_2"]

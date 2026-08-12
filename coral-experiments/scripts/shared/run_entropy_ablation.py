@@ -45,9 +45,9 @@ from search.rank import era_search
 # (dataset dir, run_subsample module path, x-axis lattice-dim label)
 DATASETS: list[tuple[str, str, str]] = [
     ("msmarco_criteria", "scripts.criteria.msmarco.run_subsample", "Criteria"),
-    ("sonnet_criteria",  "scripts.criteria.sonnet.run_subsample",  "Criteria"),
+    ("curated_criteria",  "scripts.criteria.curated.run_subsample",  "Criteria"),
     ("msmarco_pragma",   "scripts.pragma.msmarco.run_subsample",   "Pragmas"),
-    ("sonnet_pragma",    "scripts.pragma.sonnet.run_subsample",    "Pragmas"),
+    ("curated_pragma",    "scripts.pragma.curated.run_subsample",    "Pragmas"),
 ]
 
 BUDGET_PCT: int = 10

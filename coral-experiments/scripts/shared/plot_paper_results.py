@@ -26,9 +26,9 @@ from scripts.shared.plot_style import apply_plot_style
 
 DATASETS = [
     ("msmarco_criteria",        "msmarco_criteria", "MSMARCO criteria"),
-    ("sonnet_criteria",         "sonnet_criteria",  "Sonnet criteria"),
+    ("curated_criteria",         "curated_criteria",  "Curated criteria"),
     ("msmarco_pragma", "msmarco_pragma",   "MSMARCO pragma"),
-    ("sonnet_pragma",            "sonnet_pragma",    "Sonnet pragma"),
+    ("curated_pragma",            "curated_pragma",    "Curated pragma"),
 ]
 
 METHODS = [

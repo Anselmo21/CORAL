@@ -28,9 +28,9 @@ from search.rank import era_search
 
 DATASETS = [
     ("msmarco_criteria", "scripts.criteria.msmarco.run_subsample", "MSMARCO Criteria"),
-    ("sonnet_criteria",  "scripts.criteria.sonnet.run_subsample",  "Sonnet Criteria"),
+    ("curated_criteria",  "scripts.criteria.curated.run_subsample",  "Curated Criteria"),
     ("msmarco_pragma",   "scripts.pragma.msmarco.run_subsample",   "MSMARCO Pragma"),
-    ("sonnet_pragma",    "scripts.pragma.sonnet.run_subsample",    "Sonnet Pragma"),
+    ("curated_pragma",    "scripts.pragma.curated.run_subsample",    "Curated Pragma"),
 ]
 
 # Sequential colormaps: light→dark = low→high budget.

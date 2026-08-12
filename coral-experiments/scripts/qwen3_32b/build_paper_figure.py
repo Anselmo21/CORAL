@@ -20,9 +20,9 @@ from scripts.shared.plot_style import apply_plot_style
 DATASETS = [
     ("qwen3_msmarco_criteria", ["msmarco-criteria-qwen3-32.json",
                                 "msmarco-criteria-qwen3-32b-missing.json"], "Qwen MSMARCO criteria"),
-    ("qwen3_sonnet_criteria",  ["sonnet-criteria-qwen3-32b.json"], "Qwen Sonnet criteria"),
+    ("qwen3_curated_criteria",  ["curated-criteria-qwen3-32b.json"], "Qwen Curated criteria"),
     ("qwen3_msmarco_pragma",   ["msmarco-pragmas-qwen3-32b.json"], "Qwen MSMARCO pragma"),
-    ("qwen3_sonnet_pragma",    ["sonnet-pragmas-qwen3-32b.json"], "Qwen Sonnet pragma"),
+    ("qwen3_curated_pragma",    ["curated-pragmas-qwen3-32b.json"], "Qwen Curated pragma"),
 ]
 
 ERA_BUDGETS = (4, 8)

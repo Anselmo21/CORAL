@@ -36,6 +36,26 @@ def add_model_args(parser: argparse.ArgumentParser) -> None:
         "--tensor-parallel-size", type=int, default=1,
         help="GPUs to shard the vLLM model across (vllm backend only)",
     )
+    parser.add_argument(
+        "--max-model-len", type=int, default=None,
+        help="Cap the model's context length (vllm backend only). Models with "
+             "huge default contexts (e.g. 262k) demand KV cache sized for one "
+             "max-length request; CC prompts are a few thousand tokens, so "
+             "16384 is ample and frees most of that reservation.",
+    )
+    parser.add_argument(
+        "--max-num-seqs", type=int, default=None,
+        help="Cap concurrent sequences (vllm backend only). Hybrid/Mamba "
+             "models need one Mamba cache block per sequence, and vLLM's "
+             "default of 256 can exceed the available blocks. CC submits at "
+             "most budget+1 prompts at once, so 64 is more than enough.",
+    )
+    parser.add_argument(
+        "--gpu-memory-utilization", type=float, default=0.85,
+        help="Fraction of GPU memory vLLM may reserve (vllm backend only). "
+             "Prompt-logprob scoring needs a few hundred MB of headroom per "
+             "chunk, so keep this below vLLM's 0.90 default on <=48GB cards.",
+    )
 
 
 def load_model_and_tokenizer(args: argparse.Namespace) -> tuple:
@@ -45,8 +65,15 @@ def load_model_and_tokenizer(args: argparse.Namespace) -> tuple:
             multiprocessing.set_start_method("spawn", force=True)
         from vllm import LLM
         print(f"Loading model via vLLM: {args.model} ...")
+        extra = {}
+        if args.max_model_len is not None:
+            extra["max_model_len"] = args.max_model_len
+        if args.max_num_seqs is not None:
+            extra["max_num_seqs"] = args.max_num_seqs
         model = LLM(model=args.model, dtype="float16",
-                    tensor_parallel_size=args.tensor_parallel_size)
+                    tensor_parallel_size=args.tensor_parallel_size,
+                    gpu_memory_utilization=args.gpu_memory_utilization,
+                    **extra)
         tokenizer = model.get_tokenizer()
     else:
         import torch

@@ -18,8 +18,8 @@ from search.lattice import combo_key
 DATASETS = [
     ("msmarco_criteria", "data/qwen3-32b/msmarco-criteria-qwen3-32.json",   "MSMARCO Criteria"),
     ("msmarco_pragma",   "data/qwen3-32b/msmarco-pragmas-qwen3-32b.json",    "MSMARCO Pragma"),
-    ("sonnet_criteria",  "data/qwen3-32b/sonnet-criteria-qwen3-32b.json",    "Sonnet Criteria"),
-    ("sonnet_pragma",    "data/qwen3-32b/sonnet-pragmas-qwen3-32b.json",     "Sonnet Pragma"),
+    ("curated_criteria",  "data/qwen3-32b/curated-criteria-qwen3-32b.json",    "Curated Criteria"),
+    ("curated_pragma",    "data/qwen3-32b/curated-pragmas-qwen3-32b.json",     "Curated Pragma"),
 ]
 
 OUT_PATH = "artifacts/qwen3_layer_viewer.html"

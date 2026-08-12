@@ -43,14 +43,14 @@ read -ra GPU_ARR <<< "$GPU_IDS"
 read -ra BUDGET_ARR <<< "$BUDGETS"
 export VLLM_USE_FLASHINFER_SAMPLER=0
 
-DATASETS=(msmarco_criteria msmarco_pragma sonnet_criteria sonnet_pragma)
+DATASETS=(msmarco_criteria msmarco_pragma curated_criteria curated_pragma)
 
 # dataset → python module
 declare -A MODULE=(
   [msmarco_criteria]=scripts.criteria.msmarco.run_cc_full
-  [sonnet_criteria]=scripts.criteria.sonnet.run_cc_full
+  [curated_criteria]=scripts.criteria.curated.run_cc_full
   [msmarco_pragma]=scripts.pragma.msmarco.run_cc_full
-  [sonnet_pragma]=scripts.pragma.sonnet.run_cc_full
+  [curated_pragma]=scripts.pragma.curated.run_cc_full
 )
 
 # dataset → needs --run flag (pragma msmarco only)
@@ -61,9 +61,9 @@ declare -A NEEDS_RUN=(
 # dataset → export command when cc_cases.json is missing
 declare -A EXPORTS=(
   [msmarco_criteria]="(already built by run_subsample.py)"
-  [sonnet_criteria]="(already built by run_subsample.py)"
+  [curated_criteria]="(already built by run_subsample.py)"
   [msmarco_pragma]="python3 -m scripts.pragma.msmarco.run_cc_full --export"
-  [sonnet_pragma]="python3 -m scripts.pragma.sonnet.run_cc_ablation --export"
+  [curated_pragma]="python3 -m scripts.pragma.curated.run_cc_ablation --export"
 )
 
 # ---------------------------------------------------------------------------

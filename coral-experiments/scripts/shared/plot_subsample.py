@@ -24,7 +24,7 @@ import numpy as np
 
 from scripts.shared.plot_style import apply_plot_style
 
-DATASETS = ["msmarco_criteria", "sonnet_criteria", "msmarco_pragma", "sonnet_pragma"]
+DATASETS = ["msmarco_criteria", "curated_criteria", "msmarco_pragma", "curated_pragma"]
 
 ERA_BUDGETS_FIXED: list[int] = [4, 8, 16, 32, 64, 128, 256]
 ERA_BUDGETS_PCT:   list[int] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]

@@ -13,7 +13,7 @@ import json
 import time
 from pathlib import Path
 
-from scripts.criteria.sonnet.run_subsample import score_proxy
+from scripts.criteria.curated.run_subsample import score_proxy
 from search.bfs import bfs_search
 from search.flagr import make_era_aggregator, make_sra_aggregator
 from search.lattice import combo_key, hop_distance, parse_combo_key
@@ -22,12 +22,12 @@ from search.rank import era_search, sra_search
 DATASETS = {
     "msmarco_criteria":       "data/llama31-8b/msmarco-criteria-lattices.json",
     "msmarco_pragma":         "data/llama31-8b/msmarco-pragmas-lattices.json",
-    "sonnet_criteria":        "data/llama31-8b/sonnet-criteria-lattices.json",
-    "sonnet_pragma":          "data/llama31-8b/sonnet-pragmas-lattices.json",
+    "curated_criteria":        "data/llama31-8b/curated-criteria-lattices.json",
+    "curated_pragma":          "data/llama31-8b/curated-pragmas-lattices.json",
     "qwen3_msmarco_criteria": "data/qwen3-32b/msmarco-criteria-lattices.json",
     "qwen3_msmarco_pragma":   "data/qwen3-32b/msmarco-pragmas-lattices.json",
-    "qwen3_sonnet_criteria":  "data/qwen3-32b/sonnet-criteria-lattices.json",
-    "qwen3_sonnet_pragma":    "data/qwen3-32b/sonnet-pragmas-lattices.json",
+    "qwen3_curated_criteria":  "data/qwen3-32b/curated-criteria-lattices.json",
+    "qwen3_curated_pragma":    "data/qwen3-32b/curated-pragmas-lattices.json",
 }
 
 SRA_METHODS = ["borda", "combsum", "combmnz", "condorcet", "copeland",

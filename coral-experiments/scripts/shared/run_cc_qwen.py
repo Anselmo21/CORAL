@@ -24,8 +24,8 @@ from search.bfs import bfs_search
 DATASETS = [
     "msmarco_criteria",
     "msmarco_pragma",
-    "sonnet_criteria",
-    "sonnet_pragma",
+    "curated_criteria",
+    "curated_pragma",
 ]
 
 

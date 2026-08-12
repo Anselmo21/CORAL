@@ -22,9 +22,9 @@ from search.heuristics import softmax_entropy, max_jump_cutoff
 
 FILES = [
     ("msmarco_criteria", "data/qwen3-32b/msmarco-criteria-qwen3-32.json",  "MSMARCO Criteria"),
-    ("sonnet_criteria",  "data/qwen3-32b/sonnet-criteria-qwen3-32b.json",   "Sonnet Criteria"),
+    ("curated_criteria",  "data/qwen3-32b/curated-criteria-qwen3-32b.json",   "Curated Criteria"),
     ("msmarco_pragma",   "data/qwen3-32b/msmarco-pragmas-qwen3-32b.json",   "MSMARCO Pragma"),
-    ("sonnet_pragma",    "data/qwen3-32b/sonnet-pragmas-qwen3-32b.json",    "Sonnet Pragma"),
+    ("curated_pragma",    "data/qwen3-32b/curated-pragmas-qwen3-32b.json",    "Curated Pragma"),
 ]
 
 MIN_REMOVED = 2

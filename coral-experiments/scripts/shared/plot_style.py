@@ -41,12 +41,9 @@ def draw_hop_bars(ax, sizes, method_data, handles_by_label, bar_width_total: flo
     method_data: list of (label, color, {size -> list[float]}). Methods with no
     values at any size are skipped silently.
     """
-    methods = [m for m in method_data if any(m[2].get(s) for s in sizes)]
-    if not methods:
-        return
-    n = len(methods)
+    n = len(method_data)
     width = bar_width_total / n
-    for i, (lab, color, per_size) in enumerate(methods):
+    for i, (lab, color, per_size) in enumerate(method_data):
         xs, means, lo_err, hi_err = [], [], [], []
         for s in sizes:
             m, lo, hi = bootstrap_ci_mean(per_size.get(s, []))

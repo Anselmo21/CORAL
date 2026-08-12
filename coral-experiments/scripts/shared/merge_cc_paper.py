@@ -23,9 +23,9 @@ from search.lattice import hop_distance
 
 DATASETS = [
     ("msmarco_criteria",        "MSMARCO criteria"),
-    ("sonnet_criteria",         "Sonnet criteria"),
+    ("curated_criteria",         "Curated criteria"),
     ("msmarco_pragma", "MSMARCO pragma (regen)"),
-    ("sonnet_pragma",            "Sonnet pragma"),
+    ("curated_pragma",            "Curated pragma"),
 ]
 
 

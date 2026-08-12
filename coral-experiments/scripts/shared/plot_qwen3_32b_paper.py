@@ -27,8 +27,8 @@ from scripts.shared.plot_style import apply_plot_style, draw_hop_bars
 DATASETS = [
     ("msmarco_criteria", "data/qwen3-32b/msmarco-criteria-qwen3-32.json",  "Qwen MSMARCO criteria"),
     ("msmarco_pragma",   "data/qwen3-32b/msmarco-pragmas-qwen3-32b.json",  "Qwen MSMARCO pragma"),
-    ("sonnet_criteria",  "data/qwen3-32b/sonnet-criteria-qwen3-32b.json",  "Qwen Sonnet criteria"),
-    ("sonnet_pragma",    "data/qwen3-32b/sonnet-pragmas-qwen3-32b.json",   "Qwen Sonnet pragma"),
+    ("curated_criteria",  "data/qwen3-32b/curated-criteria-qwen3-32b.json",  "Qwen Curated criteria"),
+    ("curated_pragma",    "data/qwen3-32b/curated-pragmas-qwen3-32b.json",   "Qwen Curated pragma"),
 ]
 
 NEW_METHODS = [
@@ -55,7 +55,7 @@ LSM_METHODS = [
     (16, "LSM (b=16)", "D", "-", "#ff7f0e", 2.0),
 ]
 
-LSM_DATASETS = {"msmarco_criteria", "msmarco_pragma", "sonnet_criteria", "sonnet_pragma"}
+LSM_DATASETS = {"msmarco_criteria", "msmarco_pragma", "curated_criteria", "curated_pragma"}
 
 
 def _load_lattices(data_path: str) -> dict[str, tuple[list, dict]]:

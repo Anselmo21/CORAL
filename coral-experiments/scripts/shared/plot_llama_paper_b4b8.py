@@ -25,8 +25,8 @@ from scripts.shared.plot_style import apply_plot_style, draw_hop_bars
 DATASETS = [
     ("msmarco_criteria", "scripts.criteria.msmarco.run_subsample", "MSMARCO criteria"),
     ("msmarco_pragma",   "scripts.pragma.msmarco.run_subsample",   "MSMARCO pragma"),
-    ("sonnet_criteria",  "scripts.criteria.sonnet.run_subsample",  "Sonnet criteria"),
-    ("sonnet_pragma",    "scripts.pragma.sonnet.run_subsample",    "Sonnet pragma"),
+    ("curated_criteria",  "scripts.criteria.curated.run_subsample",  "Curated criteria"),
+    ("curated_pragma",    "scripts.pragma.curated.run_subsample",    "Curated pragma"),
 ]
 
 NEW_METHODS = [

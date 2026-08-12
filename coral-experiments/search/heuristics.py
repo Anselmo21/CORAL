@@ -182,9 +182,164 @@ def norm_rank(scores: dict[str, float]) -> dict[str, float]:
     return {k: 1.0 / (rank + 1) for rank, k in enumerate(ordered)}
 
 
+def voter_disagreement(scores: dict[str, float], voter_scores=None, **_) -> float:
+    """Per-answer variance across voter score vectors, then Shannon H.
+    Falls back to shannon_entropy on aggregated scores if no voters passed."""
+    if voter_scores is None or len(voter_scores) < 2:
+        return shannon_entropy(scores)
+    answers = list(scores.keys())
+    n = len(answers)
+    mat = np.array([[vs.get(a, 0.0) for a in answers] for vs in voter_scores.values()])
+    variances = mat.var(axis=0)
+    total = variances.sum()
+    if total == 0:
+        return 0.0
+    probs = variances / total
+    return -np.sum(probs * np.log2(probs + 1e-12))
+
+
+def top1_vote_fraction(scores: dict[str, float], voter_scores=None, **_) -> float:
+    """Fraction of child voters that disagree on who is top-1.
+    0 = all agree (low uncertainty), 1 = max disagreement."""
+    if voter_scores is None or len(voter_scores) < 2:
+        vals = sorted(scores.values(), reverse=True)
+        if len(vals) < 2 or vals[0] == 0:
+            return 0.0
+        return 1.0 - (vals[0] - vals[1]) / vals[0]
+    top1s = []
+    for vs in voter_scores.values():
+        best = max(vs, key=lambda a: (vs.get(a, 0.0), a))
+        top1s.append(best)
+    from collections import Counter
+    counts = Counter(top1s)
+    majority = counts.most_common(1)[0][1]
+    return 1.0 - majority / len(top1s)
+
+
+def score_gap_inv(scores: dict[str, float], **_) -> float:
+    """Inverted gap between top-1 and top-2 aggregated scores.
+    Large return = small gap = high uncertainty."""
+    vals = sorted(scores.values(), reverse=True)
+    if len(vals) < 2:
+        return 0.0
+    gap = vals[0] - vals[1]
+    return 1.0 / (gap + 1e-8)
+
+
 def norm_softmax(scores: dict[str, float]) -> dict[str, float]:
     values = np.array(list(scores.values()), dtype=float)
     shifted = values - values.max()
     exp_v = np.exp(shifted)
     probs = exp_v / exp_v.sum()
     return dict(zip(scores.keys(), probs.tolist()))
+
+
+# ---------------------------------------------------------------------------
+# CRA informativeness functions (voter-disagreement family)
+#
+# All accept (scores, voter_scores=None, **_) and return a float where
+# higher = more informative = more worth spending budget on.
+# ---------------------------------------------------------------------------
+
+def cra_top1_disagreement(
+    scores: dict[str, float],
+    voter_scores: dict[str, dict[str, float]] | None = None,
+    **_,
+) -> float:
+    """Fraction of child voters whose top-1 differs from the aggregate top-1.
+
+    0 = all voters agree with aggregate → low information value.
+    1 = every voter disagrees → maximum uncertainty about the decision.
+    """
+    if voter_scores is None or len(voter_scores) < 2:
+        vals = sorted(scores.values(), reverse=True)
+        if len(vals) < 2 or vals[0] == 0:
+            return 0.0
+        return 1.0 - (vals[0] - vals[1]) / (vals[0] + 1e-12)
+
+    agg_top1 = max(scores, key=lambda a: (scores[a], a))
+    n_disagree = 0
+    for vs in voter_scores.values():
+        voter_top1 = max(vs, key=lambda a: (vs.get(a, 0.0), a))
+        if voter_top1 != agg_top1:
+            n_disagree += 1
+    return n_disagree / len(voter_scores)
+
+
+def cra_score_variance(
+    scores: dict[str, float],
+    voter_scores: dict[str, dict[str, float]] | None = None,
+    **_,
+) -> float:
+    """Mean per-answer score variance across voters.
+
+    High variance = voters strongly disagree about individual answer quality.
+    """
+    if voter_scores is None or len(voter_scores) < 2:
+        return 0.0
+    answers = list(scores.keys())
+    mat = np.array([[vs.get(a, 0.0) for a in answers] for vs in voter_scores.values()])
+    return float(mat.var(axis=0).mean())
+
+
+def cra_kendall_tau(
+    scores: dict[str, float],
+    voter_scores: dict[str, dict[str, float]] | None = None,
+    **_,
+) -> float:
+    """Mean pairwise Kendall tau distance across voter rankings.
+
+    Normalized to [0, 1]. Higher = more disagreement in pairwise ordering.
+    """
+    if voter_scores is None or len(voter_scores) < 2:
+        return 0.0
+    answers = list(scores.keys())
+    n_ans = len(answers)
+    if n_ans < 2:
+        return 0.0
+    n_pairs = n_ans * (n_ans - 1) // 2
+
+    rankings: list[list[int]] = []
+    for vs in voter_scores.values():
+        ordered = sorted(range(n_ans), key=lambda i: (-vs.get(answers[i], 0.0), answers[i]))
+        rank_vec = [0] * n_ans
+        for r, idx in enumerate(ordered):
+            rank_vec[idx] = r
+        rankings.append(rank_vec)
+
+    total_tau = 0.0
+    count = 0
+    for i in range(len(rankings)):
+        for j in range(i + 1, len(rankings)):
+            discordant = 0
+            for a in range(n_ans):
+                for b in range(a + 1, n_ans):
+                    if (rankings[i][a] - rankings[i][b]) * (rankings[j][a] - rankings[j][b]) < 0:
+                        discordant += 1
+            total_tau += discordant / n_pairs
+            count += 1
+    return total_tau / count if count > 0 else 0.0
+
+
+def cra_distance_to_aggregate(
+    scores: dict[str, float],
+    voter_scores: dict[str, dict[str, float]] | None = None,
+    **_,
+) -> float:
+    """Mean L2 distance from each voter's score vector to the aggregate.
+
+    High distance = voters are far from consensus.
+    """
+    if voter_scores is None or len(voter_scores) < 2:
+        return 0.0
+    answers = list(scores.keys())
+    agg = np.array([scores.get(a, 0.0) for a in answers])
+    if np.linalg.norm(agg) > 0:
+        agg = agg / np.linalg.norm(agg)
+    total = 0.0
+    for vs in voter_scores.values():
+        v = np.array([vs.get(a, 0.0) for a in answers])
+        if np.linalg.norm(v) > 0:
+            v = v / np.linalg.norm(v)
+        total += float(np.linalg.norm(v - agg))
+    return total / len(voter_scores)

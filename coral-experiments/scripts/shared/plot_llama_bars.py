@@ -23,8 +23,8 @@ from scripts.shared.plot_style import apply_plot_style
 DATASETS = [
     ("msmarco_criteria", "MSMARCO\ncriteria"),
     ("msmarco_pragma",   "MSMARCO\npragma"),
-    ("sonnet_criteria",  "Sonnet\ncriteria"),
-    ("sonnet_pragma",    "Sonnet\npragma"),
+    ("curated_criteria",  "Curated\ncriteria"),
+    ("curated_pragma",    "Curated\npragma"),
 ]
 
 METHODS = [
