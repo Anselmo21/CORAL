@@ -103,6 +103,13 @@ def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
     budget_used = budget - budget_remaining
 
     calls = pruned = 0
+    skipped = []
+
+    def probe(key):
+        nonlocal calls
+        calls += 1
+        return rbc.get(key)
+
     for _size, subsets in iter_search_layers(criteria, start_node, "down"):
         unknown = []
         for subset in subsets:
@@ -136,6 +143,8 @@ def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
                 rescued.append(u)
             else:
                 pruned += 1
+                skipped.append({"key": u[1], "subset": u[0],
+                                "size": len(u[0]), "ent": u[3]})
         pool_bar = float(np.median([u[4] for u in rescued])) if rescued else 0.0
         rescued.sort(key=lambda u: -u[4])
 
@@ -158,12 +167,15 @@ def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
             is_pool = disp < 1 and key not in high
             if cut and not is_pool and disp < 1 and key not in claims:
                 pruned += 1
+                skipped.append({"key": key, "subset": subset,
+                                "size": len(subset), "ent": _ent})
                 continue
             if pool_done and is_pool:
                 pruned += 1
+                skipped.append({"key": key, "subset": subset,
+                                "size": len(subset), "ent": _ent})
                 continue
-            calls += 1
-            truth = rbc.get(key)
+            truth = probe(key)
             if truth:
                 known[key] = truth
                 if truth[0] != baseline:
