@@ -21,7 +21,10 @@ VARIANTS = (("full", {}),
             ("no flip", {"flip_boost": False}),
             ("graph 1st", {"graph_first": True}),
             ("no entropy", {"entropy_cut": False}),
-            ("entropy only", {"tier": False, "pool": False}))
+            ("entropy only", {"tier": False, "pool": False}),
+            ("recheck", {"recheck": True}),
+            ("recheck parents", {"recheck": "parents"}),
+            ("recheck entropy", {"recheck": "entropy"}))
 
 
 def main():
@@ -58,9 +61,7 @@ def main():
             block["sweep"][b] = cells
             row = "  ".join(f"{k} {cells[k]['accuracy_pct']:>5}% @ "
                             f"{cells[k]['mean_calls']:>6}"
-                            for k in ("era", "full", "no tier", "no rescue",
-                                      "no flip", "graph 1st", "no entropy",
-                                      "entropy only"))
+                            for k in cells)
             print(f"  b={b:<2} {row}")
         out[label] = block
 

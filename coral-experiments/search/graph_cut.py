@@ -12,6 +12,7 @@ that tier comes back holding the baseline, the rest of the layer is skipped.
 When contrast is flat across a layer there is no tier and nothing gets skipped,
 so a graph with nothing to say falls back to plain ERA on its own.
 """
+# TODO: Coordinate with Katherine about budget positioning in the paper
 from __future__ import annotations
 
 from itertools import combinations
@@ -43,9 +44,55 @@ def _aggregate(voters, answers, weights):
     return sorted(agg, key=lambda a: (-agg[a], a)), agg
 
 
+def _recheck_above(skipped, found_subset, baseline, probe, recheck):
+    """Give the nodes skipped one layer above a find a second look.
+
+    Those nodes drop fewer concepts than the find so a counterfactual among
+    them is the better answer. Two kinds earn the probe. A parent keeps every
+    concept the find keeps and holds one more. A node from the high entropy
+    group left its layer the least settled. Setting recheck to parents or to
+    entropy takes only that kind and anything else takes both. Parents go
+    first and the rest follow in entropy order. Returns the first
+    counterfactual it turns up and None when they all hold the baseline.
+    """
+    above = [d for d in skipped if d["size"] == len(found_subset) + 1]
+    if not above:
+        return None
+    present = set(found_subset)
+    parents = {d["key"] for d in above if present < set(d["subset"])}
+    unsettled = set(max_jump_cutoff([(d["key"], d["ent"]) for d in above],
+                                    len(above)))
+    if recheck == "parents":
+        picks = [d for d in above if d["key"] in parents]
+    elif recheck == "entropy":
+        picks = [d for d in above if d["key"] in unsettled]
+    else:
+        picks = [d for d in above if d["key"] in parents or d["key"] in unsettled]
+    picks.sort(key=lambda d: (d["key"] not in parents, -d["ent"]))
+    for d in picks:
+        truth = probe(d["key"])
+        if truth and truth[0] != baseline:
+            return d["key"], d["subset"], truth
+    return None
+
+
+def _reopen_skipped(skipped, baseline, probe):
+    """Probe the skipped nodes once the descent has come up empty.
+
+    Nothing flipped so every skip is now suspect. The largest subsets dropped
+    the fewest concepts so they go first and the first hit is the most minimal
+    counterfactual still on the table. Returns None when none of them flip.
+    """
+    for d in sorted(skipped, key=lambda d: -d["size"]):
+        truth = probe(d["key"])
+        if truth and truth[0] != baseline:
+            return d["key"], d["subset"], truth
+    return None
+
+
 def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
                      tier=True, pool=True, flip_boost=True, graph_first=False,
-                     entropy_cut=True, perm_rng=None):
+                     entropy_cut=True, recheck=False, perm_rng=None):
     """Top-down counterfactual search with the graph guiding Phase 2.
 
     tier=False, pool=False, flip_boost=False reduces to era_search(direction=
@@ -54,8 +101,13 @@ def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
     separable from the graph. graph_first probes the graph's tier ahead of the
     displaced nodes instead of behind them. entropy_cut=False keeps every node
     in the layer as a candidate, so nothing is pruned for low entropy and the
-    layer stop is the only thing left skipping work. perm_rng permutes the
-    graph's concept labels for attribution controls.
+    layer stop is the only thing left skipping work. recheck holds on to the
+    nodes this search skips rather than dropping them. On a find it goes back
+    up one layer and probes the find's parents along with the high entropy
+    group, or just one of the two when set to parents or to entropy. On an
+    empty descent it works through every skipped node from the largest subset
+    down. perm_rng permutes the graph's concept labels for attribution
+    controls.
     """
     baseline_ranking = rbc.get(combo_key(start_node), [])
     if not baseline_ranking:
@@ -110,15 +162,23 @@ def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
         calls += 1
         return rbc.get(key)
 
+    def found(key, subset, ranking):
+        """Hand back a find, after the recheck has had its say."""
+        if recheck:
+            better = _recheck_above(skipped, subset, baseline, probe, recheck)
+            if better is not None:
+                key, subset, ranking = better
+        return {"found": True, "key": key, "size": len(subset),
+                "ranking": ranking, "calls": calls,
+                "budget_used": budget_used, "pruned_nodes": pruned}
+
     for _size, subsets in iter_search_layers(criteria, start_node, "down"):
         unknown = []
         for subset in subsets:
             key = combo_key(subset)
             if key in known:
                 if known[key] and known[key][0] != baseline:
-                    return {"found": True, "key": key, "size": len(subset),
-                            "ranking": known[key], "calls": calls,
-                            "budget_used": budget_used, "pruned_nodes": pruned}
+                    return found(key, subset, known[key])
                 continue
             if key not in estimates:
                 continue
@@ -179,13 +239,18 @@ def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
             if truth:
                 known[key] = truth
                 if truth[0] != baseline:
-                    return {"found": True, "key": key, "size": len(subset),
-                            "ranking": truth, "calls": calls,
-                            "budget_used": budget_used, "pruned_nodes": pruned}
+                    return found(key, subset, truth)
                 if key in claims and claims_left is not None:
                     claims_left -= 1
                     cut = claims_left == 0
                 if is_pool and g >= pool_bar:
                     pool_done = True
+    if recheck:
+        late = _reopen_skipped(skipped, baseline, probe)
+        if late is not None:
+            key, subset, ranking = late
+            return {"found": True, "key": key, "size": len(subset),
+                    "ranking": ranking, "calls": calls,
+                    "budget_used": budget_used, "pruned_nodes": pruned}
     return {"found": False, "key": None, "size": None, "ranking": None,
             "calls": calls, "budget_used": budget_used, "pruned_nodes": pruned}
