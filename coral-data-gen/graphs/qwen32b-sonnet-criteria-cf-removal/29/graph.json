@@ -1,0 +1,264 @@
+{
+  "query_id": 29,
+  "query": "Should I take a probiotic supplement for gut health? There's so much conflicting information out there.",
+  "mode": "criteria",
+  "atoms": [
+    "specific medical condition being treated",
+    "strain-specific clinical evidence",
+    "general healthy adult benefit",
+    "supplement regulation and label accuracy",
+    "cost of probiotic supplements",
+    "comparison to dietary fiber approach",
+    "fermented food alternatives",
+    "antibiotic use or post-antibiotic recovery",
+    "IBS or digestive condition diagnosis",
+    "manufacturer conflict of interest in research"
+  ],
+  "plausible_answers": [
+    "Answer A (Skip Supplements Default): Don't bother with probiotic supplements if you're generally healthy \u2014 evidence for general gut health benefits is weak, the market is poorly regulated, and dietary fiber diversity produces more reliable microbiome improvements.",
+    "Answer B (Targeted Probiotics for Specific Conditions): Take a probiotic with evidence for your specific condition \u2014 Lactobacillus rhamnosus GG for antibiotic-associated diarrhea or specific IBS strains \u2014 strain and condition specificity is everything.",
+    "Answer C (Fermented Foods Instead): Replace supplements with regular fermented foods (kefir, kimchi, yogurt) \u2014 they provide diverse live cultures, are well-regulated by their food category, and research suggests superior microbiome outcomes versus isolated supplements."
+  ],
+  "baseline_answer": "Answer B (Targeted Probiotics for Specific Conditions): Take a probiotic with evidence for your specific condition \u2014 Lactobacillus rhamnosus GG for antibiotic-associated diarrhea or specific IBS strains \u2014 strain and condition specificity is everything.",
+  "baseline_index": 1,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Should I take a probiotic supplement for gut health?",
+        "description": "There's so much conflicting information out there."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Is there a specific medical condition or symptom that the person is addressing?",
+        "description": "Whether the individual has a specific condition like IBS or is recovering from antibiotics."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the quality and source of the evidence for the probiotic?",
+        "description": "Whether the probiotic has strong, condition-specific clinical evidence and whether research is unbiased."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "How does the supplement compare to other approaches like diet or fermented foods?",
+        "description": "Whether dietary fiber or fermented foods are more effective or reliable than supplements."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the cost and regulatory environment of probiotics?",
+        "description": "Whether the supplements are well-regulated and cost-effective."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "specific medical condition being treated",
+        "description": "Whether the person is using the probiotic to treat a specific health issue."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "strain-specific clinical evidence",
+        "description": "Whether the probiotic has strong, well-supported evidence for a specific strain and condition."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "general healthy adult benefit",
+        "description": "Whether the probiotic provides meaningful benefits for generally healthy individuals."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "supplement regulation and label accuracy",
+        "description": "Whether the supplement market is well-regulated and labels accurately reflect contents."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost of probiotic supplements",
+        "description": "Whether the cost of supplements is justified by their effectiveness."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "comparison to dietary fiber approach",
+        "description": "Whether dietary fiber intake is more effective for gut health than probiotic supplements."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "fermented food alternatives",
+        "description": "Whether fermented foods like kefir or kimchi provide better gut health benefits than supplements."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "antibiotic use or post-antibiotic recovery",
+        "description": "Whether the person is using or recovering from antibiotics."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "IBS or digestive condition diagnosis",
+        "description": "Whether the person has IBS or another digestive condition."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "manufacturer conflict of interest in research",
+        "description": "Whether research on the probiotic is biased due to manufacturer funding."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Skip Supplements Default)",
+        "description": "Don't bother with probiotic supplements if you're generally healthy \u2014 evidence for general gut health benefits is weak, the market is poorly regulated, and dietary fiber diversity produces more reliable microbiome improvements."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Targeted Probiotics for Specific Conditions)",
+        "description": "Take a probiotic with evidence for your specific condition \u2014 Lactobacillus rhamnosus GG for antibiotic-associated diarrhea or specific IBS strains \u2014 strain and condition specificity is everything."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Fermented Foods Instead)",
+        "description": "Replace supplements with regular fermented foods (kefir, kimchi, yogurt) \u2014 they provide diverse live cultures, are well-regulated by their food category, and research suggests superior microbiome outcomes versus isolated supplements."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c5"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

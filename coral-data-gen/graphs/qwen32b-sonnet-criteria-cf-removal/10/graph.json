@@ -1,0 +1,288 @@
+{
+  "query_id": 10,
+  "query": "Should I diversify into real estate or just keep investing in the stock market? I have about $50k saved.",
+  "mode": "criteria",
+  "atoms": [
+    "portfolio liquidity",
+    "leverage and amplified returns",
+    "passive income generation",
+    "diversification from equities",
+    "tax depreciation benefits",
+    "management and time commitment",
+    "concentration risk",
+    "barrier to entry with $50k",
+    "inflation hedging",
+    "correlation with stock market"
+  ],
+  "plausible_answers": [
+    "Answer A (Stock Market Default): Keep investing in diversified index funds \u2014 REITs within your portfolio give real estate exposure without illiquidity, and $50k is too thin for meaningful direct real estate in most markets.",
+    "Answer B (Rental Property for Leverage): Buy a small rental property with $50k as a down payment \u2014 leverage, depreciation deductions, and rental income can generate superior risk-adjusted returns for investors willing to actively manage.",
+    "Answer C (REIT Allocation): Add a dedicated REIT allocation (15\u201320%) within your existing stock portfolio \u2014 you get real estate diversification, inflation hedging, and dividend income without giving up liquidity or taking on landlord risk."
+  ],
+  "baseline_answer": "Answer C (REIT Allocation): Add a dedicated REIT allocation (15\u201320%) within your existing stock portfolio \u2014 you get real estate diversification, inflation hedging, and dividend income without giving up liquidity or taking on landlord risk.",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Should I diversify into real estate or just keep investing in the stock market? I have about $50k saved.",
+        "description": "A question about diversification between real estate and the stock market with a $50k budget."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the liquidity and accessibility implications of each investment option?",
+        "description": "Examines the liquidity and ease of entry for each investment type."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the risk and return characteristics of each investment?",
+        "description": "Compares the risk and return profiles of real estate and stock market options."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the tax and management trade-offs?",
+        "description": "Evaluates the tax advantages and management burden of each investment."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "How does a $50k budget constrain or enable each investment?",
+        "description": "Assesses the feasibility of each investment with a $50k budget."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "portfolio liquidity",
+        "description": "How easily can you convert the investment into cash?"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "leverage and amplified returns",
+        "description": "Potential for higher returns through borrowed capital."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "passive income generation",
+        "description": "Ability to generate income without active involvement."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "diversification from equities",
+        "description": "How much the investment is uncorrelated with the stock market."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "tax depreciation benefits",
+        "description": "Ability to reduce taxable income through depreciation."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "management and time commitment",
+        "description": "Level of ongoing effort required to maintain the investment."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "concentration risk",
+        "description": "Risk of overexposure to a single asset or market."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "barrier to entry with $50k",
+        "description": "How feasible is the investment with a $50k budget?"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "inflation hedging",
+        "description": "Ability of the investment to retain value in inflationary environments."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "correlation with stock market",
+        "description": "How closely the investment moves with the stock market."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Stock Market Default): Keep investing in diversified index funds \u2014 REITs within your portfolio give real estate exposure without illiquidity, and $50k is too thin for meaningful direct real estate in most markets.",
+        "description": "Favors staying in the stock market with REITs for liquidity and simplicity."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Rental Property for Leverage): Buy a small rental property with $50k as a down payment \u2014 leverage, depreciation deductions, and rental income can generate superior risk-adjusted returns for investors willing to actively manage.",
+        "description": "Favors direct rental property for leverage and income."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (REIT Allocation): Add a dedicated REIT allocation (15\u201320%) within your existing stock portfolio \u2014 you get real estate diversification, inflation hedging, and dividend income without giving up liquidity or taking on landlord risk.",
+        "description": "Favors REITs within the stock portfolio for diversification and liquidity."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq4",
+        "target": "c8"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      }
+    ]
+  }
+}

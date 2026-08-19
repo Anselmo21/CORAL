@@ -1,0 +1,289 @@
+{
+  "query_id": 7,
+  "query": "What's the best strategy for a high-yield savings account? Should I ladder CDs or just keep everything in a HYSA?",
+  "mode": "criteria",
+  "atoms": [
+    "full liquidity preservation",
+    "rate lock-in during declining rate environment",
+    "simplicity of management",
+    "maximum current yield",
+    "protection against rate drops",
+    "suitability for emergency fund",
+    "medium-term savings goal optimization",
+    "minimal account management overhead",
+    "penalty-free early access",
+    "FDIC insurance coverage"
+  ],
+  "plausible_answers": [
+    "Answer A (HYSA Default): Keep everything in a high-yield savings account \u2014 current rates of 4.5\u20135%+ with full liquidity make HYSAs superior to CDs for most savers, especially for emergency funds.",
+    "Answer B (CD Ladder for Rate Lock): Build a CD ladder across 3\u201318 month maturities to lock in current high rates if you expect the Fed to cut rates \u2014 you'll preserve yield longer than a HYSA as rates decline.",
+    "Answer C (Split for Goals): Keep your emergency fund in a HYSA for liquidity and ladder CDs with any surplus savings earmarked for specific medium-term goals where you know the time horizon."
+  ],
+  "baseline_answer": "Answer C (Split for Goals): Keep your emergency fund in a HYSA for liquidity and ladder CDs with any surplus savings earmarked for specific medium-term goals where you know the time horizon.",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "q",
+        "description": "What's the best strategy for a high-yield savings account? Should I ladder CDs or just keep everything in a HYSA?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "sq1",
+        "description": "What are the liquidity and access requirements?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "sq2",
+        "description": "What are the rate expectations and time horizon considerations?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "sq3",
+        "description": "What are the management and complexity trade-offs?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "1. full liquidity preservation",
+        "description": "The ability to access funds at any time without penalty."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "2. rate lock-in during declining rate environment",
+        "description": "Securing current high rates before they fall."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "3. simplicity of management",
+        "description": "Ease of maintaining and managing the account."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "4. maximum current yield",
+        "description": "Maximizing the interest earned today."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "5. protection against rate drops",
+        "description": "Preserving higher yields as rates decline."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "6. suitability for emergency fund",
+        "description": "Appropriateness for a rainy-day fund with unpredictable access."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "7. medium-term savings goal optimization",
+        "description": "Efficiently saving for goals with a known time horizon."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "8. minimal account management overhead",
+        "description": "Low effort required to maintain the account."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "9. penalty-free early access",
+        "description": "Accessing funds without financial penalties."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "10. FDIC insurance coverage",
+        "description": "Guaranteed protection of funds up to $250,000."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (HYSA Default)",
+        "description": "Keep everything in a high-yield savings account \u2014 current rates of 4.5\u20135%+ with full liquidity make HYSAs superior to CDs for most savers, especially for emergency funds."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (CD Ladder for Rate Lock)",
+        "description": "Build a CD ladder across 3\u201318 month maturities to lock in current high rates if you expect the Fed to cut rates \u2014 you'll preserve yield longer than a HYSA as rates decline."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Split for Goals)",
+        "description": "Keep your emergency fund in a HYSA for liquidity and ladder CDs with any surplus savings earmarked for specific medium-term goals where you know the time horizon."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

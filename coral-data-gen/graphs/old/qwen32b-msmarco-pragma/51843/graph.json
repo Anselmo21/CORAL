@@ -1,0 +1,264 @@
+{
+  "query_id": 51843,
+  "query": "What is the best laptop for under $1000?",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: PCMag editor recommendation",
+    "trustworthiness: PCWorld review",
+    "trustworthiness: gaming-focused review site",
+    "trustworthiness: Reddit r/SuggestALaptop community",
+    "trustworthiness: consumer aggregator (CNET / Tom's Guide)",
+    "perspective: PC gamer",
+    "perspective: business / productivity user",
+    "perspective: college student / general use",
+    "perspective: frequent traveler / portability priority",
+    "perspective: casual home user with kids"
+  ],
+  "plausible_answers": [
+    "A premium ultrabook (Dell XPS 13, ASUS Zenbook, or MacBook Air)",
+    "A 15\" gaming laptop with dedicated GPU (Acer Aspire / Lenovo IdeaPad Gaming)",
+    "A mainstream 15\" Dell or ASUS Vivobook touchscreen with large screen + ample RAM"
+  ],
+  "baseline_answer": "A mainstream 15\" Dell or ASUS Vivobook touchscreen with large screen + ample RAM",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 3,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best laptop for under $1000?",
+        "description": "Identify the best laptop under $1000 based on performance, use case, and features."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which laptop is best for general productivity and everyday use?",
+        "description": "Identify the laptop that best suits general computing and productivity tasks."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which laptop is best for gaming and multimedia?",
+        "description": "Identify the laptop that best suits gaming and multimedia consumption."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which laptop is best for portability and battery life?",
+        "description": "Identify the laptop that best suits users who prioritize portability and battery life."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which laptop is best for budget-conscious buyers with family or casual use?",
+        "description": "Identify the laptop that best suits casual home users or families on a budget."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: PCMag editor recommendation",
+        "description": "Laptop recommendation from PCMag editors."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: PCWorld review",
+        "description": "Laptop review from PCWorld."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: gaming-focused review site",
+        "description": "Laptop review from a gaming-focused website."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: Reddit r/SuggestALaptop community",
+        "description": "Community-based laptop recommendations from Reddit."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: consumer aggregator (CNET / Tom's Guide)",
+        "description": "Laptop reviews from consumer tech aggregators."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: PC gamer",
+        "description": "Recommendations from a PC gamer perspective."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: business / productivity user",
+        "description": "Recommendations from a business or productivity-focused user."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: college student / general use",
+        "description": "Recommendations from a college student or general-use perspective."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: frequent traveler / portability priority",
+        "description": "Recommendations from a frequent traveler or portability-focused user."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: casual home user with kids",
+        "description": "Recommendations from a casual home user with kids."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "A premium ultrabook (Dell XPS 13, ASUS Zenbook, or MacBook Air)",
+        "description": "A high-end ultrabook with portability and performance."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "A 15\" gaming laptop with dedicated GPU (Acer Aspire / Lenovo IdeaPad Gaming)",
+        "description": "A 15\" laptop with a dedicated GPU for gaming and multimedia."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "A mainstream 15\" Dell or ASUS Vivobook touchscreen with large screen + ample RAM",
+        "description": "A mainstream 15\" touchscreen laptop with good RAM and screen size."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

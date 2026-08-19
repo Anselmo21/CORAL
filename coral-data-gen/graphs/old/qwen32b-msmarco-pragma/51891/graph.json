@@ -1,0 +1,229 @@
+{
+  "query_id": 51891,
+  "query": "Which pop song best motivates sports atheletes?",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: Billboard / professional music publication",
+    "trustworthiness: Bleacher Report / sports media",
+    "trustworthiness: team strength-and-conditioning coach",
+    "trustworthiness: fitness / gym playlist curator",
+    "trustworthiness: Spotify / pop chart aggregator",
+    "perspective: athlete pre-game pump-up moment",
+    "perspective: athlete celebrating victory",
+    "perspective: endurance athlete (long event)",
+    "perspective: high-school or college team setting",
+    "perspective: individual lifter / training-alone"
+  ],
+  "plausible_answers": [
+    "'Eye of the Tiger' by Survivor",
+    "'We Are The Champions' by Queen",
+    "'Chariots of Fire' by Vangelis"
+  ],
+  "baseline_answer": "'We Are The Champions' by Queen",
+  "baseline_index": 1,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Which pop song best motivates sports athletes?",
+        "description": "Which pop song is most effective at motivating athletes in sports contexts?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which song is most associated with victory and celebration?",
+        "description": "Identifies songs that are used to celebrate or symbolize victory in sports."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which song is most used for pre-game motivation or team hype?",
+        "description": "Identifies songs used to energize athletes before a game or in team settings."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which song is most tied to historical or cinematic sports moments?",
+        "description": "Identifies songs with strong historical or cinematic ties to sports."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: Billboard / professional music publication",
+        "description": "Sources like Billboard or music publications that list top motivational songs for sports."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: Bleacher Report / sports media",
+        "description": "Sports-focused media like Bleacher Report that rank songs for pre-game motivation."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: team strength-and-conditioning coach",
+        "description": "Testimonials from strength-and-conditioning coaches who recommend songs for athlete motivation."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: fitness / gym playlist curator",
+        "description": "Fitness or gym playlist creators who include songs for endurance and training."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: Spotify / pop chart aggregator",
+        "description": "Spotify or other music platforms that aggregate popular sports-related songs."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: athlete pre-game pump-up moment",
+        "description": "Songs that are used to hype up athletes before a game or competition."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: athlete celebrating victory",
+        "description": "Songs that are played or sung after a victory or win."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: endurance athlete (long event)",
+        "description": "Songs used by endurance athletes during long or sustained physical activity."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: high-school or college team setting",
+        "description": "Songs that are popular or used in high-school or college sports environments."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: individual lifter / training-alone",
+        "description": "Songs used by individuals during solo training or weightlifting."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "'Eye of the Tiger' by Survivor",
+        "description": "A classic motivational song tied to pre-game hype and team energy."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "'We Are The Champions' by Queen",
+        "description": "An anthem for victory and celebration in sports."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "'Chariots of Fire' by Vangelis",
+        "description": "A song tied to historical sports moments and endurance."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      }
+    ]
+  }
+}

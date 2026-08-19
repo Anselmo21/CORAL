@@ -1,0 +1,257 @@
+{
+  "query_id": 51726,
+  "query": "best excel font for numbers",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: Microsoft Office documentation",
+    "trustworthiness: typography / design publication",
+    "trustworthiness: data journalism style guide",
+    "trustworthiness: office productivity user forum",
+    "trustworthiness: academic typography research",
+    "perspective: graphic designer producing annual reports",
+    "perspective: financial analyst preparing tables",
+    "perspective: casual office user",
+    "perspective: data scientist visualizing tables",
+    "perspective: print-output focused user"
+  ],
+  "plausible_answers": [
+    "A typographer-grade font with tabular figures",
+    "Calibri",
+    "A monospaced font"
+  ],
+  "baseline_answer": "A typographer-grade font with tabular figures",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best excel font for numbers",
+        "description": "What is the best font for displaying numbers in Excel, especially for readability and alignment in tables?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What font is recommended by typography experts for numeric alignment and professional use?",
+        "description": "Identifies fonts that are recommended by typography experts and publications for professional use with numbers."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What font is most commonly used or recommended in office environments and for practical use?",
+        "description": "Identifies fonts that are widely used or recommended in office environments and for general Excel use."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What font is best for readability and aesthetics in reports and data visualization?",
+        "description": "Identifies fonts that are best suited for readability and visual appeal in reports and data presentations."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: Microsoft Office documentation",
+        "description": "Official Microsoft Office documentation about fonts and formatting."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: typography / design publication",
+        "description": "Fonts recommended by typography or design publications."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: data journalism style guide",
+        "description": "Fonts recommended by data journalism style guides for clarity and alignment."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: office productivity user forum",
+        "description": "Fonts recommended or used by users in office productivity forums."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: academic typography research",
+        "description": "Fonts supported by academic research in typography."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: graphic designer producing annual reports",
+        "description": "Fonts preferred by graphic designers for annual reports and professional publications."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: financial analyst preparing tables",
+        "description": "Fonts preferred by financial analysts for clarity in tables and financial reports."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: casual office user",
+        "description": "Fonts preferred by casual users for general Excel use."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: data scientist visualizing tables",
+        "description": "Fonts preferred by data scientists for visualizing data in tables."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: print-output focused user",
+        "description": "Fonts preferred for print output and professional printing."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "A typographer-grade font with tabular figures",
+        "description": "A font with typographer-grade quality and tabular figures, ideal for aligned columns of numbers."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Calibri",
+        "description": "The default Microsoft Office font, widely used in Excel for general purposes."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "A monospaced font",
+        "description": "A font with monospaced characters, where each character has the same width."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      }
+    ]
+  }
+}

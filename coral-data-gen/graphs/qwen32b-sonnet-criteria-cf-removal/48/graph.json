@@ -1,0 +1,309 @@
+{
+  "query_id": 48,
+  "query": "Should I buy a new car or a used one? I have about $25,000 to spend.",
+  "mode": "criteria",
+  "atoms": [
+    "total cost of ownership over 5 years",
+    "depreciation avoidance",
+    "warranty and reliability coverage",
+    "access to latest safety technology",
+    "unknown maintenance history risk",
+    "peace of mind and predictability",
+    "brand and model reliability record",
+    "CPO program availability",
+    "financing rate differences (new vs used)",
+    "insurance cost differential"
+  ],
+  "plausible_answers": [
+    "Answer A (Used 2\u20134 Years Old Default): Buy a 2\u20134 year old used vehicle from a reliable brand \u2014 you avoid the steepest depreciation while getting modern safety features, and $25k buys significantly more car than new at that budget.",
+    "Answer B (New for Long-Term Ownership): Buy new if you plan to keep the car 10+ years \u2014 the full warranty, known maintenance history, and latest safety technology amortize the depreciation premium over a decade of ownership.",
+    "Answer C (Certified Pre-Owned): Buy a manufacturer Certified Pre-Owned vehicle \u2014 it combines used car pricing with factory warranty extension and vehicle inspection, providing the best balance of value and reliability certainty."
+  ],
+  "baseline_answer": "Answer C (Certified Pre-Owned): Buy a manufacturer Certified Pre-Owned vehicle \u2014 it combines used car pricing with factory warranty extension and vehicle inspection, providing the best balance of value and reliability certainty.",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Should I buy a new car or a used one? I have about $25,000 to spend.",
+        "description": "A decision between new, used, or certified pre-owned cars based on budget and long-term value."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the long-term financial implications of the purchase?",
+        "description": "Focuses on cost, depreciation, and financial risk over time."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the reliability and risk factors?",
+        "description": "Focuses on vehicle condition, warranty, and maintenance history."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the technology and peace of mind considerations?",
+        "description": "Focuses on safety, brand reputation, and CPO programs."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "total cost of ownership over 5 years",
+        "description": "The overall cost of the car including purchase, maintenance, insurance, and depreciation."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "depreciation avoidance",
+        "description": "The ability to avoid the steepest depreciation curve by buying older."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "warranty and reliability coverage",
+        "description": "The extent of manufacturer or extended warranty protection."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "access to latest safety technology",
+        "description": "Whether the vehicle has the most recent safety features."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "unknown maintenance history risk",
+        "description": "Risk of hidden issues in a used car with unknown past."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "peace of mind and predictability",
+        "description": "Confidence in the vehicle's condition and future performance."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "brand and model reliability record",
+        "description": "The track record of the car's brand and model for reliability."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "CPO program availability",
+        "description": "Whether the car is part of a manufacturer's certified pre-owned program."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "financing rate differences (new vs used)",
+        "description": "Interest rates vary between new and used car loans."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "insurance cost differential",
+        "description": "Used cars often cost less to insure than new cars."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Used 2\u20134 Years Old Default",
+        "description": "Buy a 2\u20134 year old used vehicle from a reliable brand \u2014 you avoid the steepest depreciation while getting modern safety features, and $25k buys significantly more car than new at that budget."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "New for Long-Term Ownership",
+        "description": "Buy new if you plan to keep the car 10+ years \u2014 the full warranty, known maintenance history, and latest safety technology amortize the depreciation premium over a decade of ownership."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Certified Pre-Owned",
+        "description": "Buy a manufacturer Certified Pre-Owned vehicle \u2014 it combines used car pricing with factory warranty extension and vehicle inspection, providing the best balance of value and reliability certainty."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      }
+    ]
+  }
+}

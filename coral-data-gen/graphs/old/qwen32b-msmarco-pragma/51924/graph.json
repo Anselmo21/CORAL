@@ -1,0 +1,253 @@
+{
+  "query_id": 51924,
+  "query": "best over the counter medication for cold and inflammation",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: clinical practice guideline",
+    "trustworthiness: peer-reviewed pharmacology journal",
+    "trustworthiness: pharmacist-curated drug guide",
+    "trustworthiness: consumer health platform",
+    "trustworthiness: NSAID safety / FDA warning",
+    "trustworthiness: patient OTC forum",
+    "perspective: stomach-sensitive patient",
+    "perspective: dose-frequency-minimizing patient",
+    "perspective: fast-relief seeker",
+    "perspective: kidney-concerned older adult"
+  ],
+  "plausible_answers": [
+    "Ibuprofen (Advil / Motrin)",
+    "Naproxen (Aleve)",
+    "Acetaminophen (Tylenol / Panadol)"
+  ],
+  "baseline_answer": "Ibuprofen (Advil / Motrin)",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 3,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best over the counter medication for cold and inflammation",
+        "description": "What is the best over-the-counter medication for treating both cold symptoms and inflammation?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the most effective OTC medication for inflammation?",
+        "description": "Focus on drugs with anti-inflammatory properties."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the most effective OTC medication for cold symptoms?",
+        "description": "Focus on drugs that treat common cold symptoms like fever, sore throat, and body aches."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What OTC medication is safest and most suitable for specific patient concerns?",
+        "description": "Consider patient-specific concerns like stomach sensitivity, kidney health, and frequency of dosing."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "1. trustworthiness: clinical practice guideline",
+        "description": ""
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "2. trustworthiness: peer-reviewed pharmacology journal",
+        "description": ""
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "3. trustworthiness: pharmacist-curated drug guide",
+        "description": ""
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "4. trustworthiness: consumer health platform",
+        "description": ""
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "5. trustworthiness: NSAID safety / FDA warning",
+        "description": ""
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "6. trustworthiness: patient OTC forum",
+        "description": ""
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "7. perspective: stomach-sensitive patient",
+        "description": ""
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "8. perspective: dose-frequency-minimizing patient",
+        "description": ""
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "9. perspective: fast-relief seeker",
+        "description": ""
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "10. perspective: kidney-concerned older adult",
+        "description": ""
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "1. Ibuprofen (Advil / Motrin)",
+        "description": ""
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "2. Naproxen (Aleve)",
+        "description": ""
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "3. Acetaminophen (Tylenol / Panadol)",
+        "description": ""
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

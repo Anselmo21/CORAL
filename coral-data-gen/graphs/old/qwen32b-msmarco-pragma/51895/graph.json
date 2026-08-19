@@ -1,0 +1,245 @@
+{
+  "query_id": 51895,
+  "query": "Which natural remedy best eases teenage depression?",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: pediatric psychiatry clinical guideline",
+    "trustworthiness: peer-reviewed adolescent mental health journal",
+    "trustworthiness: naturopath / integrative practitioner",
+    "trustworthiness: WebMD / consumer health platform",
+    "trustworthiness: teen-focused mental health resource",
+    "perspective: teen with mild depression",
+    "perspective: teen with moderate / persistent depression",
+    "perspective: teen on prescription SSRI (interaction concerns)",
+    "perspective: teen with insomnia / sleep issues",
+    "perspective: supplement-averse teen / parent"
+  ],
+  "plausible_answers": [
+    "St. John's Wort herbal supplement",
+    "Omega-3 fatty acids (fish oil / flax oil)",
+    "Lifestyle intervention: exercise, yoga, diet, sleep hygiene"
+  ],
+  "baseline_answer": "Lifestyle intervention: exercise, yoga, diet, sleep hygiene",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Which natural remedy best eases teenage depression?",
+        "description": "Which natural remedy best eases teenage depression?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which remedies are supported by trustworthy sources for treating teenage depression?",
+        "description": "Which remedies are supported by trustworthy sources for treating teenage depression?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which remedies are favored by teens with specific symptoms or conditions?",
+        "description": "Which remedies are favored by teens with specific symptoms or conditions?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which remedies are suitable for teens with concerns about supplements or medication interactions?",
+        "description": "Which remedies are suitable for teens with concerns about supplements or medication interactions?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: pediatric psychiatry clinical guideline",
+        "description": "trustworthiness: pediatric psychiatry clinical guideline"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: peer-reviewed adolescent mental health journal",
+        "description": "trustworthiness: peer-reviewed adolescent mental health journal"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: naturopath / integrative practitioner",
+        "description": "trustworthiness: naturopath / integrative practitioner"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: WebMD / consumer health platform",
+        "description": "trustworthiness: WebMD / consumer health platform"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: teen-focused mental health resource",
+        "description": "trustworthiness: teen-focused mental health resource"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: teen with mild depression",
+        "description": "perspective: teen with mild depression"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: teen with moderate / persistent depression",
+        "description": "perspective: teen with moderate / persistent depression"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: teen on prescription SSRI (interaction concerns)",
+        "description": "perspective: teen on prescription SSRI (interaction concerns)"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: teen with insomnia / sleep issues",
+        "description": "perspective: teen with insomnia / sleep issues"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: supplement-averse teen / parent",
+        "description": "perspective: supplement-averse teen / parent"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "St. John's Wort herbal supplement",
+        "description": "St. John's Wort herbal supplement"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Omega-3 fatty acids (fish oil / flax oil)",
+        "description": "Omega-3 fatty acids (fish oil / flax oil)"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Lifestyle intervention: exercise, yoga, diet, sleep hygiene",
+        "description": "Lifestyle intervention: exercise, yoga, diet, sleep hygiene"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

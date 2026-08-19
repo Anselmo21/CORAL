@@ -1,0 +1,273 @@
+{
+  "query_id": 40,
+  "query": "I'm thinking about doing a PhD in data science. Is it actually worth it for industry careers?",
+  "mode": "criteria",
+  "atoms": [
+    "target role requiring PhD (research scientist)",
+    "financial return over 10-year career",
+    "research vs industry application orientation",
+    "opportunity cost of 4\u20136 years",
+    "access to frontier AI lab positions",
+    "academic career aspirations",
+    "publication and intellectual contribution interest",
+    "stipend and funding availability",
+    "alternative paths via strong MS degree",
+    "specialization depth vs breadth"
+  ],
+  "plausible_answers": [
+    "Answer A (Skip PhD for Industry Default): Don't do a PhD for industry data science \u2014 a strong Master's plus projects gets you 90% of the roles at 25% of the time cost, and the financial break-even on a PhD takes over a decade.",
+    "Answer B (PhD for Research Roles): Do a PhD if your goal is a research scientist role at a top AI lab \u2014 these positions are effectively closed to non-PhDs regardless of skill, and the credential is genuinely required for frontier ML work.",
+    "Answer C (PhD for Academic and Long-Term Specialization): Consider a PhD if you're interested in academic careers or want to develop deep specialization in a narrow research area \u2014 the intrinsic value of research training justifies it independently of salary premium."
+  ],
+  "baseline_answer": "Answer A (Skip PhD for Industry Default): Don't do a PhD for industry data science \u2014 a strong Master's plus projects gets you 90% of the roles at 25% of the time cost, and the financial break-even on a PhD takes over a decade.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Is a PhD in data science worth it for industry careers?",
+        "description": "Evaluating the value of a PhD in data science for industry careers."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What types of roles require or strongly favor a PhD?",
+        "description": "Assessing roles that are inaccessible or strongly biased toward PhD holders."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the financial and time trade-offs of a PhD?",
+        "description": "Evaluating the long-term return on investment and time cost."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the alternative pathways and personal motivations for a PhD?",
+        "description": "Considering motivations and alternatives to a PhD in data science."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "target role requiring PhD (research scientist)",
+        "description": "Roles like research scientist at top AI labs typically require a PhD."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "financial return over 10-year career",
+        "description": "Assessing the long-term salary and financial return of a PhD."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "research vs industry application orientation",
+        "description": "Whether the individual prefers research or industry application work."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "opportunity cost of 4\u20136 years",
+        "description": "The cost of time spent in a PhD program versus industry experience."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "access to frontier AI lab positions",
+        "description": "Whether a PhD is a gatekeeper for top AI research positions."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "academic career aspirations",
+        "description": "Whether the individual is interested in a long-term academic career."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "publication and intellectual contribution interest",
+        "description": "Interest in contributing to the academic literature and research."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "stipend and funding availability",
+        "description": "Whether funding is available for the PhD program."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "alternative paths via strong MS degree",
+        "description": "Whether a strong Master's degree can substitute for a PhD in many roles."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "specialization depth vs breadth",
+        "description": "Whether deep specialization is desired over broader skills."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Skip PhD for Industry Default)",
+        "description": "Don't do a PhD for industry data science \u2014 a strong Master's plus projects gets you 90% of the roles at 25% of the time cost, and the financial break-even on a PhD takes over a decade."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (PhD for Research Roles)",
+        "description": "Do a PhD if your goal is a research scientist role at a top AI lab \u2014 these positions are effectively closed to non-PhDs regardless of skill, and the credential is genuinely required for frontier ML work."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (PhD for Academic and Long-Term Specialization)",
+        "description": "Consider a PhD if you're interested in academic careers or want to develop deep specialization in a narrow research area \u2014 the intrinsic value of research training justifies it independently of salary premium."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

@@ -1,0 +1,257 @@
+{
+  "query_id": 51811,
+  "query": "What is the best herb to relieve headaches?",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: neurology / headache clinical guideline",
+    "trustworthiness: peer-reviewed herbal medicine journal",
+    "trustworthiness: certified herbalist / naturopath",
+    "trustworthiness: wellness aromatherapy publication",
+    "trustworthiness: consumer health blog",
+    "perspective: chronic migraine sufferer",
+    "perspective: occasional tension headache sufferer",
+    "perspective: pregnant / nursing patient",
+    "perspective: stress / sleep-related headache sufferer",
+    "perspective: topical / non-oral preference"
+  ],
+  "plausible_answers": [
+    "Feverfew",
+    "Butterbur (Petasites hybridus) extract",
+    "Lavender oil (inhaled or topical)"
+  ],
+  "baseline_answer": "Butterbur (Petasites hybridus) extract",
+  "baseline_index": 1,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best herb to relieve headaches?",
+        "description": "Identifying the most effective herb for headache relief based on sources."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What herbs are supported by scientific or clinical evidence for headache relief?",
+        "description": "Focuses on evidence-based or clinical support for headache treatments."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What herbs are preferred for specific types of headaches or patient conditions?",
+        "description": "Focuses on herbs tailored to different headache types or patient profiles."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What herbs are commonly recommended by wellness or lifestyle sources?",
+        "description": "Focuses on popular or lifestyle-based recommendations for headache treatment."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "1. trustworthiness: neurology / headache clinical guideline",
+        "description": "Sources from clinical or neurological guidelines for headache treatment."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "2. trustworthiness: peer-reviewed herbal medicine journal",
+        "description": "Sources from peer-reviewed journals on herbal medicine."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "3. trustworthiness: certified herbalist / naturopath",
+        "description": "Sources from certified herbalists or naturopaths."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "4. trustworthiness: wellness aromatherapy publication",
+        "description": "Sources from wellness or aromatherapy-focused publications."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "5. trustworthiness: consumer health blog",
+        "description": "Sources from consumer health or lifestyle blogs."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "6. perspective: chronic migraine sufferer",
+        "description": "Perspective from individuals with chronic migraines."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "7. perspective: occasional tension headache sufferer",
+        "description": "Perspective from individuals with occasional tension headaches."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "8. perspective: pregnant / nursing patient",
+        "description": "Perspective from pregnant or nursing individuals."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "9. perspective: stress / sleep-related headache sufferer",
+        "description": "Perspective from individuals with stress or sleep-related headaches."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "10. perspective: topical / non-oral preference",
+        "description": "Perspective from individuals preferring topical or non-oral remedies."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Feverfew",
+        "description": "Herb known for reducing migraine frequency and intensity."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Butterbur (Petasites hybridus) extract",
+        "description": "Recent and evidence-based treatment for migraines."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Lavender oil (inhaled or topical)",
+        "description": "Topical or inhaled remedy for tension and stress-related headaches."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

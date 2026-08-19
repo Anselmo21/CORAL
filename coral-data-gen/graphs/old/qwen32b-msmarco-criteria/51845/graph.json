@@ -1,0 +1,268 @@
+{
+  "query_id": 51845,
+  "query": "Who is the best late night talk show host?",
+  "mode": "criteria",
+  "atoms": [
+    "comedic timing",
+    "interview skill",
+    "monologue quality",
+    "ratings",
+    "cultural relevance",
+    "guest variety",
+    "longevity in role",
+    "political wit",
+    "audience rapport",
+    "sketch creativity"
+  ],
+  "plausible_answers": [
+    "Stephen Colbert (Late Show on CBS)",
+    "Jimmy Fallon (The Tonight Show on NBC)",
+    "Johnny Carson (The Tonight Show 1962-1992)"
+  ],
+  "baseline_answer": "Johnny Carson (The Tonight Show 1962-1992)",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Who is the best late night talk show host?",
+        "description": "Determine the best late night talk show host based on a range of professional and audience-based criteria."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Monologue and Stand-Up Performance",
+        "description": "Criteria related to the quality of monologue and comedic delivery."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Interview and Guest Interaction",
+        "description": "Criteria related to how the host interviews and engages with guests."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Longevity and Cultural Impact",
+        "description": "Criteria related to the host's career span and influence on late-night culture."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Content and Format Creativity",
+        "description": "Criteria related to the variety and creativity of the show's content."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "comedic timing",
+        "description": "Ability to deliver jokes and punchlines effectively."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "interview skill",
+        "description": "Ability to conduct insightful and engaging interviews."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "monologue quality",
+        "description": "Quality of the host's monologue and stand-up segments."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "ratings",
+        "description": "Television ratings and audience size."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "cultural relevance",
+        "description": "Influence on popular culture and public discourse."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "guest variety",
+        "description": "Range and diversity of guests on the show."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "longevity in role",
+        "description": "Duration of the host's tenure in the role."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "political wit",
+        "description": "Ability to deliver sharp and insightful political commentary."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "audience rapport",
+        "description": "Connection and relationship with the audience."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "sketch creativity",
+        "description": "Originality and quality of sketches and segments."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Stephen Colbert (Late Show on CBS)",
+        "description": "Modern late-night host known for political wit and monologue quality."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Jimmy Fallon (The Tonight Show on NBC)",
+        "description": "Contemporary host with high energy, creativity, and audience rapport."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Johnny Carson (The Tonight Show 1962-1992)",
+        "description": "Legendary host with enduring cultural impact and longevity."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      }
+    ]
+  }
+}

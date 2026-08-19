@@ -1,0 +1,261 @@
+{
+  "query_id": 52416,
+  "query": "best workouts to do in conjunction with a pro hormone",
+  "mode": "criteria",
+  "atoms": [
+    "workout intensity",
+    "muscle group focus",
+    "training frequency",
+    "recovery time",
+    "dietary considerations",
+    "supplement compatibility",
+    "goal orientation",
+    "exercise variety",
+    "injury history",
+    "experience level"
+  ],
+  "plausible_answers": [
+    "Heavy compound lifts (squat, deadlift, bench, OHP, row) in the 4-8 rep range on a 4-6 day split",
+    "High-volume hypertrophy work (8-12 reps, 15-20 sets per muscle / week)",
+    "Conservative training paired with on-cycle support and recovery emphasis"
+  ],
+  "baseline_answer": "Conservative training paired with on-cycle support and recovery emphasis",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best workouts to do in conjunction with a pro hormone",
+        "description": "What is the most effective workout plan to use with prohormones?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What type of workout structure best aligns with prohormone use?",
+        "description": "Evaluates the workout format, intensity, and focus that align with prohormone goals."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What factors should be considered for safety and long-term effectiveness?",
+        "description": "Evaluates safety, recovery, and health considerations when using prohormones."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What personal factors influence the best workout plan?",
+        "description": "Evaluates individual fitness goals, history, and experience."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "workout intensity",
+        "description": "The level of exertion in the workout."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "muscle group focus",
+        "description": "Which muscle groups are prioritized in the workout."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "training frequency",
+        "description": "How often the workouts are performed per week."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "recovery time",
+        "description": "The time needed for the body to recover between workouts."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "dietary considerations",
+        "description": "Nutritional needs and restrictions related to the workout and prohormone use."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "supplement compatibility",
+        "description": "Whether the workout is compatible with the supplements used during the prohormone cycle."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "goal orientation",
+        "description": "The specific fitness goals being pursued (e.g., strength, hypertrophy, endurance)."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "exercise variety",
+        "description": "The diversity of exercises used in the workout."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "injury history",
+        "description": "Past injuries that may affect workout selection."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "experience level",
+        "description": "The user's level of fitness experience."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Heavy compound lifts (squat, deadlift, bench, OHP, row) in the 4-8 rep range on a 4-6 day split",
+        "description": "A high-intensity, strength-focused workout plan."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "High-volume hypertrophy work (8-12 reps, 15-20 sets per muscle / week)",
+        "description": "A moderate-intensity, muscle-growth-focused workout plan."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Conservative training paired with on-cycle support and recovery emphasis",
+        "description": "A low-intensity, safety-focused workout plan."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

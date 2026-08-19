@@ -1,0 +1,30 @@
+{
+  "query_id": 51709,
+  "query": "Which medication best relieves a common cold?",
+  "mode": "criteria",
+  "atoms": [
+    "symptom coverage",
+    "onset speed",
+    "duration of relief",
+    "side effect profile",
+    "drowsiness factor",
+    "drug interactions",
+    "age suitability",
+    "price",
+    "dosing frequency",
+    "formulation type"
+  ],
+  "plausible_answers": [
+    "An NSAID (ibuprofen / Advil or naproxen / Aleve)",
+    "A multi-symptom OTC like NyQuil or Tylenol Cold Multi Symptom Nighttime"
+  ],
+  "baseline_answer": "A multi-symptom OTC like NyQuil or Tylenol Cold Multi Symptom Nighttime",
+  "baseline_index": 1,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 3,
+  "graph": null,
+  "raw": "```json\n{\n  \"nodes\": [\n    {\n      \"id\": \"q\",\n      \"layer\": \"1\",\n      \"type\": \"question\",\n      \"label\": \"Which medication best relieves a common cold?\",\n      \"description\": \"Select the best over-the-counter medication for treating a common cold based on 10 criteria.\"\n    },\n    {\n      \"id\": \"sq1\",\n      \"layer\": \"2\",\n      \"type\": \"subq\",\n      \"label\": \"Symptom coverage and formulation\",\n      \"description\": \"How well the medication addresses symptoms and its form (pill, syrup, etc.).\"\n    },\n    {\n      \"id\": \"sq2\",\n      \"layer\": \"2\",\n      \"type\": \"subq\",\n      \"label\": \"Effectiveness and side effects\",\n      \"description\": \"How fast it works, how long it lasts, and its side effects.\"\n    },\n    {\n      \"id\": \"sq3\",\n      \"layer\": \"2\",\n      \"type\": \"subq\",\n      \"label\": \"Practicality and safety\",\n      \"description\": \"Drug interactions, age suitability, cost, and how often it must be taken.\"\n    },\n    {\n      \"id\": \"c1\",\n      \"layer\": \"3\",\n      \"type\": \"concept\",\n      \"label\": \"symptom coverage\",\n      \"description\": \"The range of symptoms the medication addresses.\"\n    },\n    {\n      \"id\": \"c2\",\n      \"layer\": \"3\",\n      \"type\": \"concept\",\n      \"label\": \"onset speed\",\n      \"description\": \"How quickly the medication starts to work.\"\n    },\n    {\n      \"id\": \"c3\",\n      \"layer\": \"3\",\n      \"type\": \"concept\",\n      \"label\": \"duration of relief\",\n      \"description\": \"How long the medication provides relief.\"\n    },\n    {\n      \"id\": \"c4\",\n      \"layer\": \"3\",\n      \"type\": \"concept\",\n      \"label\": \"side effect profile\",\n      \"description\": \"The frequency and severity of side effects.\"\n    },\n    {\n      \"id\": \"c5\",\n      \"layer\": \"3\",\n      \"type\": \"concept\",\n      \"label\": \"drowsiness factor\",\n      \"description\": \"Whether the medication causes drowsiness.\"\n    },\n    {\n      \"id\": \"c6\",\n      \"layer\": \"3\",\n      \"type\": \"concept\",\n      \"label\": \"drug interactions\",\n      \"description\": \"Whether the medication interacts with other drugs.\"\n    },\n    {\n      \"id\": \"c7\",\n      \"layer\": \"3\",\n      \"type\": \"concept\",\n      \"label\": \"age suitability\",\n      \"description\": \"Whether the medication is safe for all ages.\"\n    },\n    {\n      \"id\": \"c8\",\n      \"layer\": \"3\",\n      \"type\": \"concept\",\n      \"label\": \"price\",\n      \"description\": \"The cost of the medication.\"\n    },\n    {\n      \"id\": \"c9\",\n      \"layer\": \"3\",\n      \"type\": \"concept\",\n      \"label\": \"dosing frequency\",\n      \"description\": \"How often the medication must be taken.\"\n    },\n    {\n      \"id\": \"c10\",\n      \"layer\": \"3\",\n      \"type\": \"concept\",\n      \"label\": \"formulation type\",\n      \"description\": \"The form of the medication (pill, syrup, etc.).\"\n    },\n    {\n      \"id\": \"a1\",\n      \"layer\": \"4\",\n      \"type\": \"answer\",\n      \"label\": \"A multi-symptom OTC like NyQuil or Tylenol Cold Multi Symptom Nighttime\",\n      \"description\": \"Best for full symptom coverage and nighttime use.\"\n    },\n    {\n      \"id\": \"a2\",\n      \"layer\": \"4\",\n      \"type\": \"answer\",\n      \"label\": \"An NSAID (ibuprofen / Advil or naproxen / Aleve)\",\n      \"description\": \"Best for pain and fever relief with minimal side effects.\"\n    }\n  ],\n  \"edges\": [\n    // q -> sq\n    { \"source\": \"q\", \"target\": \"sq1\" },\n    { \"source\": \"q\", \"target\": \"sq2\" },\n    { \"source\": \"q\", \"target\": \"sq3\" },\n\n    // sq -> c\n    { \"source\": \"sq1\", \"target\": \"c1\" },\n    { \"source\": \"sq1\", \"target\": \"c10\" },\n    { \"source\": \"sq2\", \"target\": \"c2\" },\n    { \"source\": \"sq2\", \"target\": \"c3\" },\n    { \"source\": \"sq2\", \"target\": \"c4\" },\n    { \"source\": \"sq2\", \"target\": \"c5\" },\n    { \"source\": \"sq3\", \"target\": \"c6\" },\n    { \"source\": \"sq3\", \"target\": \"c7\" },\n    { \"source\": \"sq3\", \"target\": \"c8\" },\n    { \"source\": \"sq3\", \"target\": \"c9\" },\n\n    // c -> a\n    { \"source\": \"c1\", \"target\": \"a1\" },\n    { \"source\": \"c2\", \"target\": \"a1\" },\n    { \"source\": \"c2\", \"target\": \"a2\" },\n    { \"source\": \"c3\", \"target\": \"a1\" },\n    { \"source\": \"c3\", \"target\": \"a2\" },\n    { \"source\": \"c4\", \"target\": \"a1\" },\n    { \"source\": \"c4\", \"target\": \"a2\" },\n    { \"source\": \"c5\", \"target\": \"a1\" },\n    { \"source\": \"c5\", \"target\": \"a2\" },\n    { \"source\": \"c6\", \"target\": \"a1\" },\n    { \"source\": \"c6\", \"target\": \"a2\" },\n    { \"source\": \"c7\", \"target\": \"a1\" },\n    { \"source\": \"c7\", \"target\": \"a2\" },\n    { \"source\": \"c8\", \"target\": \"a1\" },\n    { \"source\": \"c8\", \"target\": \"a2\" },\n    { \"source\": \"c9\", \"target\": \"a1\" },\n    { \"source\": \"c9\", \"target\": \"a2\" },\n    { \"source\": \"c10\", \"target\": \"a1\" },\n    { \"source\": \"c10\", \"target\": \"a2\" }\n  ]\n}\n```",
+  "parse_error": true
+}

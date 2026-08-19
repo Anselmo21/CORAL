@@ -1,0 +1,321 @@
+{
+  "query_id": 57,
+  "query": "I want to start making espresso at home. What's the best machine under $500?",
+  "mode": "pragmas",
+  "atoms": [
+    "temporal: 2023 only",
+    "temporal: 2021\u20132023",
+    "geographic: USA",
+    "geographic: Global coffee enthusiast market",
+    "perspective: Beginner wanting easy daily espresso",
+    "perspective: Enthusiast willing to learn and invest in quality",
+    "trustworthiness: Consumer product recommendation publication",
+    "trustworthiness: Espresso enthusiast community",
+    "trustworthiness: Tech journalism",
+    "trustworthiness: Specialty coffee retailer"
+  ],
+  "plausible_answers": [
+    "Answer A (Breville Bambino Plus Default): Get the Breville Bambino Plus \u2014 it produces genuine espresso quality, has a powerful steam wand, and heats up in 3 seconds, making it the best balance of quality and ease for new home baristas.",
+    "Answer B (Machine Plus Quality Grinder): Spend $200\u2013250 on a basic machine and $200\u2013250 on a quality burr grinder \u2014 the grinder has more impact on espresso quality than the machine, and this combination outperforms a $500 machine with a poor grinder.",
+    "Answer C (Gaggia Classic Pro for Longevity): Buy the Gaggia Classic Pro at ~$450 \u2014 its repairability, upgrade path, and espresso quality ceiling make it the right choice for anyone serious about the craft who wants a machine they'll use for 10+ years."
+  ],
+  "baseline_answer": "Answer A (Breville Bambino Plus Default): Get the Breville Bambino Plus \u2014 it produces genuine espresso quality, has a powerful steam wand, and heats up in 3 seconds, making it the best balance of quality and ease for new home baristas.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "q",
+        "description": "I want to start making espresso at home. What's the best machine under $500?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "sq1",
+        "description": "What is the best machine for a beginner who wants easy daily espresso?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "sq2",
+        "description": "What is the best machine for someone serious about espresso and long-term quality?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "sq3",
+        "description": "What is the best machine when considering the balance between cost and quality components (grinder vs. machine)?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2023 only",
+        "description": ""
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2021\u20132023",
+        "description": ""
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: USA",
+        "description": ""
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: Global coffee enthusiast market",
+        "description": ""
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Beginner wanting easy daily espresso",
+        "description": ""
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Enthusiast willing to learn and invest in quality",
+        "description": ""
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Consumer product recommendation publication",
+        "description": ""
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Espresso enthusiast community",
+        "description": ""
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Tech journalism",
+        "description": ""
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Specialty coffee retailer",
+        "description": ""
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Breville Bambino Plus Default)",
+        "description": "Get the Breville Bambino Plus \u2014 it produces genuine espresso quality, has a powerful steam wand, and heats up in 3 seconds, making it the best balance of quality and ease for new home baristas."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Machine Plus Quality Grinder)",
+        "description": "Spend $200\u2013250 on a basic machine and $200\u2013250 on a quality burr grinder \u2014 the grinder has more impact on espresso quality than the machine, and this combination outperforms a $500 machine with a poor grinder."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Gaggia Classic Pro for Longevity)",
+        "description": "Buy the Gaggia Classic Pro at ~$450 \u2014 its repairability, upgrade path, and espresso quality ceiling make it the right choice for anyone serious about the craft who wants a machine they'll use for 10+ years."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      }
+    ]
+  }
+}

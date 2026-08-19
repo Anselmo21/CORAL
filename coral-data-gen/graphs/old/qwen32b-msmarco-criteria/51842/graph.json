@@ -1,0 +1,265 @@
+{
+  "query_id": 51842,
+  "query": "What is the best laptop with Microsoft Office pre-installed?",
+  "mode": "criteria",
+  "atoms": [
+    "Office version included",
+    "processor speed",
+    "RAM size",
+    "storage capacity",
+    "screen size",
+    "battery life",
+    "price",
+    "brand reliability",
+    "weight and portability",
+    "keyboard quality"
+  ],
+  "plausible_answers": [
+    "A budget Dell or HP laptop with Office Home & Student bundled at checkout",
+    "Microsoft Surface Pro or Surface Laptop with Office pre-activated",
+    "A higher-end Lenovo ThinkPad with Office Professional pre-installed"
+  ],
+  "baseline_answer": "Microsoft Surface Pro or Surface Laptop with Office pre-activated",
+  "baseline_index": 1,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best laptop with Microsoft Office pre-installed?",
+        "description": "The question asks for the best laptop with Microsoft Office pre-installed, considering multiple factors."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the hardware and performance considerations?",
+        "description": "Hardware and performance-related factors that influence the best laptop choice."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the software and usability considerations?",
+        "description": "Software and usability-related factors for evaluating laptops with Microsoft Office."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the cost and brand considerations?",
+        "description": "Cost and brand reputation as decision-making factors for the laptop."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "Office version included",
+        "description": "The version of Microsoft Office that is included with the laptop."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "processor speed",
+        "description": "The speed of the laptop's processor, affecting performance."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "RAM size",
+        "description": "The amount of RAM available, affecting multitasking and performance."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "storage capacity",
+        "description": "The amount of storage space available on the laptop."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "screen size",
+        "description": "The size of the laptop screen, affecting usability and portability."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "battery life",
+        "description": "How long the laptop can run on a single charge."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "price",
+        "description": "The cost of the laptop, including bundled software."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "brand reliability",
+        "description": "The trustworthiness and quality of the laptop brand."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "weight and portability",
+        "description": "How easy the laptop is to carry and use on the go."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "keyboard quality",
+        "description": "The comfort and responsiveness of the laptop's keyboard."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "A budget Dell or HP laptop with Office Home & Student bundled at checkout",
+        "description": "An affordable option with basic Office needs covered."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Microsoft Surface Pro or Surface Laptop with Office pre-activated",
+        "description": "A high-quality, pre-activated Office laptop from Microsoft."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "A higher-end Lenovo ThinkPad with Office Professional pre-installed",
+        "description": "A premium laptop with full Office Professional and durable design."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

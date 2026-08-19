@@ -1,0 +1,257 @@
+{
+  "query_id": 52420,
+  "query": "best zinc brand for acne",
+  "mode": "criteria",
+  "atoms": [
+    "form of zinc",
+    "dosage recommendation",
+    "additional ingredients",
+    "absorption efficiency",
+    "target demographic",
+    "brand reputation",
+    "price point",
+    "user reviews",
+    "clinical evidence",
+    "availability"
+  ],
+  "plausible_answers": [
+    "Zinc ascorbate supplement",
+    "Oral zinc gluconate at the trial-validated 200 mg/day dose (~30 mg elemental zinc)",
+    "Multivitamin with high-potency zinc plus Vitamins A / B6 / C / E"
+  ],
+  "baseline_answer": "Zinc ascorbate supplement",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best zinc brand for acne",
+        "description": "Which zinc supplement is most effective for treating acne?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What form of zinc is most effective for acne?",
+        "description": "Evaluates the most bioavailable and clinically supported zinc form for acne treatment."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What dosage and formulation support acne treatment?",
+        "description": "Evaluates optimal dosage and supplementary ingredients for acne management."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What makes a zinc product accessible and trustworthy?",
+        "description": "Evaluates brand reliability, price, availability, and user satisfaction."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "form of zinc",
+        "description": "Type of zinc compound used in the supplement (e.g., ascorbate, gluconate)."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "dosage recommendation",
+        "description": "Amount of zinc per dose, based on clinical studies."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "additional ingredients",
+        "description": "Other nutrients or compounds included in the supplement."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "absorption efficiency",
+        "description": "How well the body absorbs the zinc form."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "target demographic",
+        "description": "Who the product is best suited for (e.g., acne-prone individuals)."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "brand reputation",
+        "description": "Trustworthiness and reliability of the brand."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "price point",
+        "description": "Cost of the supplement per month or per dose."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "user reviews",
+        "description": "Customer feedback and real-world effectiveness."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "clinical evidence",
+        "description": "Scientific studies supporting the product's efficacy."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "availability",
+        "description": "How easily the product can be obtained."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Zinc ascorbate supplement",
+        "description": "Highly absorbable zinc compound with vitamin C, supported by user reviews and studies."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Oral zinc gluconate at the trial-validated 200 mg/day dose (~30 mg elemental zinc)",
+        "description": "Dosage backed by clinical trials for acne reduction."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Multivitamin with high-potency zinc plus Vitamins A / B6 / C / E",
+        "description": "Combination of zinc and essential vitamins for acne support."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

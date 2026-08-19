@@ -1,0 +1,238 @@
+{
+  "query_id": 51717,
+  "query": "What is the best engineering college in Wisconsin?",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: US News & World Report engineering rankings",
+    "trustworthiness: ABET accreditation database",
+    "trustworthiness: peer-reviewed engineering education journal",
+    "trustworthiness: college ranking aggregator (Cappex / Niche)",
+    "trustworthiness: student / alumni review forum",
+    "perspective: research-career-focused student",
+    "perspective: industry-job-focused undergraduate",
+    "perspective: in-state cost-conscious student",
+    "perspective: small-class-size-preferring student",
+    "perspective: computer engineering specialist"
+  ],
+  "plausible_answers": [
+    "University of Wisconsin-Madison",
+    "Milwaukee School of Engineering (MSOE)",
+    "University of Wisconsin-Milwaukee"
+  ],
+  "baseline_answer": "University of Wisconsin-Madison",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best engineering college in Wisconsin?",
+        "description": "Determining the best engineering college in Wisconsin based on multiple trustworthiness and perspective criteria."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which engineering schools in Wisconsin are most trusted or highly ranked?",
+        "description": "Evaluating schools based on rankings, accreditations, and aggregated data."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which engineering schools best meet the needs of specific student perspectives?",
+        "description": "Evaluating schools based on student preferences like class size, focus, and cost."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: US News & World Report engineering rankings",
+        "description": "Rankings from a well-known and trusted source."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: ABET accreditation database",
+        "description": "Accreditations from ABET, a gold standard in engineering education."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: peer-reviewed engineering education journal",
+        "description": "Research-based evaluations from academic journals."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: college ranking aggregator (Cappex / Niche)",
+        "description": "Aggregate rankings from multiple online platforms."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: student / alumni review forum",
+        "description": "Feedback from students and alumni on platforms like Niche or College Confidential."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: research-career-focused student",
+        "description": "Students prioritizing research opportunities and graduate school preparation."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: industry-job-focused undergraduate",
+        "description": "Students prioritizing direct entry into engineering careers."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: in-state cost-conscious student",
+        "description": "Students prioritizing affordability for in-state residents."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: small-class-size-preferring student",
+        "description": "Students who prefer smaller class sizes and more personalized attention."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: computer engineering specialist",
+        "description": "Students focusing on computer engineering as a discipline."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "University of Wisconsin-Madison",
+        "description": "Largest and most research-focused engineering school in Wisconsin."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Milwaukee School of Engineering (MSOE)",
+        "description": "Industry-focused, smaller, and emphasizes hands-on learning."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "University of Wisconsin-Milwaukee",
+        "description": "Offers a balance between research and industry with smaller class sizes."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      }
+    ]
+  }
+}

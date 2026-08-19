@@ -1,0 +1,297 @@
+{
+  "query_id": 47,
+  "query": "What's the best budget Android phone in 2024 under $400?",
+  "mode": "criteria",
+  "atoms": [
+    "camera quality",
+    "software update longevity",
+    "display quality",
+    "battery life",
+    "value for specs at price point",
+    "clean Android software experience",
+    "North American availability and support",
+    "long-term resale value",
+    "build quality and durability",
+    "5G availability"
+  ],
+  "plausible_answers": [
+    "Answer A (Pixel 7a Default): Get the Google Pixel 7a \u2014 its camera quality, guaranteed multi-year updates, and clean Android experience make it the best overall mid-range Android when discounted to the $350\u2013400 range.",
+    "Answer B (Samsung Galaxy A54 for Display): Choose the Samsung Galaxy A54 if display quality is your priority \u2014 its AMOLED panel and 4 years of OS updates make it the best balance of screen quality and software longevity.",
+    "Answer C (Motorola for Battery): Buy a Motorola G Power if all-day battery life is your main concern \u2014 nothing in the sub-$300 range comes close to its battery performance, even at the cost of camera and display quality."
+  ],
+  "baseline_answer": "Answer A (Pixel 7a Default): Get the Google Pixel 7a \u2014 its camera quality, guaranteed multi-year updates, and clean Android experience make it the best overall mid-range Android when discounted to the $350\u2013400 range.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What's the best budget Android phone in 2024 under $400?",
+        "description": "Which Android phone under $400 offers the best balance of performance, features, and value?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What phone offers the best camera and software experience for a mid-range budget?",
+        "description": "Prioritizes camera quality and software longevity."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which phone provides the best display quality and long-term software support?",
+        "description": "Prioritizes display and software update longevity."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which phone delivers the longest battery life and best value for specs?",
+        "description": "Prioritizes battery and affordability."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "camera quality",
+        "description": "Photographic performance and image sensor capabilities."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "software update longevity",
+        "description": "Number of years of OS and security updates."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "display quality",
+        "description": "Screen resolution, color accuracy, and panel type."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "battery life",
+        "description": "Estimated hours of use on a single charge."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "value for specs at price point",
+        "description": "How well the phone's features match its cost."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "clean Android software experience",
+        "description": "Minimal bloatware and close to stock Android."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "North American availability and support",
+        "description": "Widespread retail presence and local service options."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "long-term resale value",
+        "description": "How well the phone retains value over time."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "build quality and durability",
+        "description": "Physical robustness and materials used."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "5G availability",
+        "description": "Whether the phone supports 5G networks."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Pixel 7a Default)",
+        "description": "Get the Google Pixel 7a \u2014 its camera quality, guaranteed multi-year updates, and clean Android experience make it the best overall mid-range Android when discounted to the $350\u2013400 range."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Samsung Galaxy A54 for Display)",
+        "description": "Choose the Samsung Galaxy A54 if display quality is your priority \u2014 its AMOLED panel and 4 years of OS updates make it the best balance of screen quality and software longevity."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Motorola for Battery)",
+        "description": "Buy a Motorola G Power if all-day battery life is your main concern \u2014 nothing in the sub-$300 range comes close to its battery performance, even at the cost of camera and display quality."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      }
+    ]
+  }
+}

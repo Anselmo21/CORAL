@@ -1,0 +1,257 @@
+{
+  "query_id": 51691,
+  "query": "What is the best diet for reducing PMS symptoms?",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: registered dietitian guidance",
+    "trustworthiness: peer-reviewed gynecology / nutrition journal",
+    "trustworthiness: integrative medicine source",
+    "trustworthiness: women's health magazine",
+    "trustworthiness: wellness blog",
+    "perspective: PMS sufferer with severe cramps",
+    "perspective: PMS sufferer with mood / fatigue dominant symptoms",
+    "perspective: PMDD diagnosed patient",
+    "perspective: lactose-intolerant / dairy-averse woman",
+    "perspective: vegan / plant-forward woman"
+  ],
+  "plausible_answers": [
+    "Mediterranean-style diet",
+    "Dairy-free / Cycle Diet",
+    "Anti-inflammatory elimination diet"
+  ],
+  "baseline_answer": "Dairy-free / Cycle Diet",
+  "baseline_index": 1,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 3,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best diet for reducing PMS symptoms?",
+        "description": "Identifying the most effective dietary strategy to reduce PMS symptoms."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which diet is most supported by professional or scientific sources?",
+        "description": "Evaluating diets based on guidance from registered dietitians, journals, and health publications."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which diet is best for specific symptom profiles?",
+        "description": "Evaluating diets based on symptom severity and type (e.g., cramps, mood swings)."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which diet is best for specific dietary restrictions or preferences?",
+        "description": "Evaluating diets based on dietary needs or preferences (e.g., dairy-free, vegan)."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: registered dietitian guidance",
+        "description": "Expert dietary advice from registered dietitians."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: peer-reviewed gynecology / nutrition journal",
+        "description": "Scientific studies from reputable gynecology and nutrition journals."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: integrative medicine source",
+        "description": "Integrative medicine resources combining traditional and alternative approaches."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: women's health magazine",
+        "description": "Health advice from women's health magazines like Shape or Health."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: wellness blog",
+        "description": "Lifestyle and health advice from wellness blogs."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: PMS sufferer with severe cramps",
+        "description": "Personal experience of a woman with severe PMS cramps."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: PMS sufferer with mood / fatigue dominant symptoms",
+        "description": "Personal experience of a woman with mood and fatigue symptoms."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: PMDD diagnosed patient",
+        "description": "Personal experience of a woman diagnosed with PMDD."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: lactose-intolerant / dairy-averse woman",
+        "description": "Personal experience of a woman avoiding dairy."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: vegan / plant-forward woman",
+        "description": "Personal experience of a woman following a plant-based diet."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Mediterranean-style diet",
+        "description": "A diet rich in fruits, vegetables, whole grains, and healthy fats."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Dairy-free / Cycle Diet",
+        "description": "A cyclical eating plan that avoids dairy and follows hormonal cycles."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Anti-inflammatory elimination diet",
+        "description": "A restrictive diet aimed at reducing inflammation and PMS symptoms."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      }
+    ]
+  }
+}

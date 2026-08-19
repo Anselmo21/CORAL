@@ -1,0 +1,296 @@
+{
+  "query_id": 24,
+  "query": "I'm an adult who thinks I might have ADHD. Is medication or behavioral strategies more effective for managing it?",
+  "mode": "criteria",
+  "atoms": [
+    "severity of functional impairment",
+    "speed of symptom relief",
+    "long-term skill development",
+    "dependency and side effect concerns",
+    "cardiovascular health considerations",
+    "access to CBT for ADHD",
+    "medication tolerance and response",
+    "occupational or academic performance needs",
+    "preference for non-pharmacological treatment",
+    "comorbid anxiety or mood disorders"
+  ],
+  "plausible_answers": [
+    "Answer A (Medication First Default): Start with stimulant medication \u2014 70\u201380% of adults with ADHD respond well and it produces faster, larger functional improvements than behavioral strategies alone for moderate-to-severe impairment.",
+    "Answer B (Behavioral Strategies First): Start with CBT and external structure systems if you have mild impairment or strong concerns about medication side effects \u2014 behavioral approaches build lasting skills that medication cannot.",
+    "Answer C (Combined Approach): Pursue medication and CBT simultaneously \u2014 long-term outcomes are superior to either alone, with medication addressing core attention deficits while CBT builds the organizational skills ADHD has prevented developing."
+  ],
+  "baseline_answer": "Answer C (Combined Approach): Pursue medication and CBT simultaneously \u2014 long-term outcomes are superior to either alone, with medication addressing core attention deficits while CBT builds the organizational skills ADHD has prevented developing.",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Is medication or behavioral strategies more effective for managing adult ADHD?",
+        "description": "An adult is considering ADHD treatment options and is weighing medication versus behavioral strategies."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Functional and speed-related benefits",
+        "description": "Evaluates how quickly and effectively each treatment improves daily functioning."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Long-term and skill-building benefits",
+        "description": "Evaluates which treatment supports lasting skill development and independence."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Safety, side effect, and dependency concerns",
+        "description": "Evaluates the risks and long-term safety of each treatment approach."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Contextual and personal preferences",
+        "description": "Evaluates how accessibility, personal values, and lifestyle influence treatment choice."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "severity of functional impairment",
+        "description": "How much the ADHD is impacting daily life and work."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "speed of symptom relief",
+        "description": "How quickly the treatment begins to reduce ADHD symptoms."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "long-term skill development",
+        "description": "Whether the treatment helps build lasting organizational and emotional regulation skills."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "dependency and side effect concerns",
+        "description": "Whether the treatment carries risks of dependency or negative side effects."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "cardiovascular health considerations",
+        "description": "Whether the treatment poses risks to heart health."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "access to CBT for ADHD",
+        "description": "Whether cognitive behavioral therapy for ADHD is readily available."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "medication tolerance and response",
+        "description": "Whether the individual responds well to ADHD medication."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "occupational or academic performance needs",
+        "description": "Whether the treatment supports improved work or school performance."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "preference for non-pharmacological treatment",
+        "description": "Whether the individual prefers to avoid medication."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "comorbid anxiety or mood disorders",
+        "description": "Whether the individual also has anxiety or mood disorders that need treatment."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Medication First Default",
+        "description": "Start with stimulant medication \u2014 70\u201380% of adults with ADHD respond well and it produces faster, larger functional improvements than behavioral strategies alone for moderate-to-severe impairment."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Behavioral Strategies First",
+        "description": "Start with CBT and external structure systems if you have mild impairment or strong concerns about medication side effects \u2014 behavioral approaches build lasting skills that medication cannot."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Combined Approach",
+        "description": "Pursue medication and CBT simultaneously \u2014 long-term outcomes are superior to either alone, with medication addressing core attention deficits while CBT builds the organizational skills ADHD has prevented developing."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq4",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      }
+    ]
+  }
+}

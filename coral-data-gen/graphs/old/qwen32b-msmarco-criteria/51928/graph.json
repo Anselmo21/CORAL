@@ -1,0 +1,312 @@
+{
+  "query_id": 51928,
+  "query": "best over the counter meds for female yeast infection",
+  "mode": "criteria",
+  "atoms": [
+    "active ingredient",
+    "treatment duration",
+    "symptom severity",
+    "formulation type",
+    "safety during pregnancy",
+    "brand reputation",
+    "user reviews",
+    "cost-effectiveness",
+    "availability",
+    "prescription alternatives"
+  ],
+  "plausible_answers": [
+    "7-day miconazole (Monistat-7) regimen",
+    "3-day clotrimazole (Lotrimin / Mycelex) treatment",
+    "1-day high-dose miconazole"
+  ],
+  "baseline_answer": "7-day miconazole (Monistat-7) regimen",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 3,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best over the counter meds for female yeast infection",
+        "description": "Which OTC treatment is most effective for female yeast infections?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the most effective active ingredients for treating yeast infections over-the-counter?",
+        "description": "Evaluates the effectiveness of OTC antifungal ingredients."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which treatment duration is most appropriate for different symptom severities?",
+        "description": "Compares 1-day, 3-day, and 7-day treatment regimens."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What formulation types are most practical and safe for different patient needs (e.g., pregnant women)?",
+        "description": "Evaluates cream vs. suppository and safety in pregnancy."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the broader practical considerations (cost, availability, brand, etc.) for choosing an OTC yeast infection treatment?",
+        "description": "Considers cost, brand trust, and availability."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "active ingredient",
+        "description": "The specific antifungal compound used in the treatment."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "treatment duration",
+        "description": "The number of days the treatment must be used."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "symptom severity",
+        "description": "The intensity of the yeast infection symptoms."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "formulation type",
+        "description": "Whether the treatment is a cream, suppository, or tablet."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "safety during pregnancy",
+        "description": "Whether the treatment is safe for use during pregnancy."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "brand reputation",
+        "description": "The trustworthiness and recognition of the brand."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "user reviews",
+        "description": "Feedback from users about the effectiveness and ease of use."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost-effectiveness",
+        "description": "The price of the treatment relative to its effectiveness."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "availability",
+        "description": "How widely the treatment is available at pharmacies and stores."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "prescription alternatives",
+        "description": "Whether the OTC treatment is similar to prescription drugs."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "7-day miconazole (Monistat-7) regimen",
+        "description": "7-day treatment with miconazole, known for effectiveness and safety."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "3-day clotrimazole (Lotrimin / Mycelex) treatment",
+        "description": "3-day treatment with clotrimazole, suitable for mild to moderate cases."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "1-day high-dose miconazole",
+        "description": "Single-dose treatment with miconazole, convenient for mild symptoms."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq4",
+        "target": "c6"
+      },
+      {
+        "source": "sq4",
+        "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c8"
+      },
+      {
+        "source": "sq4",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      }
+    ]
+  }
+}

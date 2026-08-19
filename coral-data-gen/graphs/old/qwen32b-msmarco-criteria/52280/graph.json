@@ -1,0 +1,260 @@
+{
+  "query_id": 52280,
+  "query": "best way to deter seagulls",
+  "mode": "criteria",
+  "atoms": [
+    "effectiveness against seagulls",
+    "cost of implementation",
+    "ease of installation",
+    "environmental impact",
+    "duration of effectiveness",
+    "safety for other wildlife",
+    "visibility of deterrent",
+    "maintenance requirements",
+    "legal considerations",
+    "user satisfaction"
+  ],
+  "plausible_answers": [
+    "Bird netting",
+    "Predator decoys + Osprey / Eagle Jackite kite",
+    "Garbage management + remove food sources"
+  ],
+  "baseline_answer": "Bird netting",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best way to deter seagulls",
+        "description": "What is the most effective and practical method to deter seagulls from an area?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "How effective is the method at deterring seagulls?",
+        "description": "Assesses the immediate and long-term effectiveness of a deterrent method against seagulls."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the practical and economic considerations?",
+        "description": "Evaluates cost, ease of installation, and maintenance of the method."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the environmental and ethical implications?",
+        "description": "Considers environmental impact, safety for other wildlife, and legal considerations."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the user experience and long-term satisfaction?",
+        "description": "Assesses how user-friendly and satisfying the method is in the long run."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "effectiveness against seagulls",
+        "description": "How well the method deters seagulls."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost of implementation",
+        "description": "The financial cost to implement the method."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "ease of installation",
+        "description": "How simple or difficult it is to set up the method."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "environmental impact",
+        "description": "The effect of the method on the environment."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "duration of effectiveness",
+        "description": "How long the method remains effective."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "safety for other wildlife",
+        "description": "Whether the method harms or endangers other animals."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "visibility of deterrent",
+        "description": "How noticeable the deterrent is to birds."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "maintenance requirements",
+        "description": "How much upkeep the method requires."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "legal considerations",
+        "description": "Whether the method is permitted by local laws."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "user satisfaction",
+        "description": "How satisfied users are with the method."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Bird netting",
+        "description": "Physical barrier using netting to prevent birds from landing."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Predator decoys + Osprey / Eagle Jackite kite",
+        "description": "Using fake predators and windsocks to scare birds away."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Garbage management + remove food sources",
+        "description": "Reducing bird attraction by eliminating food sources and managing waste."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      }
+    ]
+  }
+}

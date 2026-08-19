@@ -1,0 +1,285 @@
+{
+  "query_id": 34,
+  "query": "I want to work in machine learning. What's the best undergraduate degree to study?",
+  "mode": "criteria",
+  "atoms": [
+    "direct alignment with ML industry hiring",
+    "mathematical and theoretical depth",
+    "access to ML-specific courses and research",
+    "industry vs research career orientation",
+    "programming and systems engineering skills",
+    "top program prestige and network",
+    "flexibility for non-ML career pivots",
+    "self-study supplement feasibility",
+    "graduate school preparation",
+    "breadth of applicable problem domains"
+  ],
+  "plausible_answers": [
+    "Answer A (Computer Science Default): Study Computer Science at the best program you can access \u2014 it provides the broadest path to ML industry roles, includes dedicated ML coursework, and is the most recognized credential for ML engineering positions.",
+    "Answer B (Mathematics or Statistics for Research): Choose Mathematics or Statistics if your goal is ML research or a PhD \u2014 the theoretical depth produces stronger researchers, and frontier ML labs like DeepMind heavily recruit from mathematical backgrounds.",
+    "Answer C (Any STEM with Self-Study): Choose the best-ranked STEM program available regardless of specific major and build your ML skills through courses, projects, and competitions \u2014 demonstrated skills increasingly outweigh degree field for industry ML roles."
+  ],
+  "baseline_answer": "Answer A (Computer Science Default): Study Computer Science at the best program you can access \u2014 it provides the broadest path to ML industry roles, includes dedicated ML coursework, and is the most recognized credential for ML engineering positions.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "q",
+        "description": "I want to work in machine learning. What's the best undergraduate degree to study?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "sq1",
+        "description": "What degree best aligns with ML industry hiring and provides the most direct path to ML engineering roles?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "sq2",
+        "description": "Which degree offers the strongest theoretical foundation for ML research or a PhD?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "sq3",
+        "description": "Which degree offers the most flexibility and feasibility when supplemented by self-study and projects?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "direct alignment with ML industry hiring",
+        "description": "How well the degree aligns with what ML employers look for."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "mathematical and theoretical depth",
+        "description": "Strength of mathematical and theoretical training."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "access to ML-specific courses and research",
+        "description": "Availability of dedicated ML curriculum and research opportunities."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "industry vs research career orientation",
+        "description": "Whether the degree is more suited for industry or academic research."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "programming and systems engineering skills",
+        "description": "Strength in programming and systems-level engineering."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "top program prestige and network",
+        "description": "Reputation and hiring network of top-tier programs."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "flexibility for non-ML career pivots",
+        "description": "How transferable the degree is to non-ML fields."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "self-study supplement feasibility",
+        "description": "How easy it is to supplement the degree with self-study and projects."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "graduate school preparation",
+        "description": "How well the degree prepares for advanced degrees."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "breadth of applicable problem domains",
+        "description": "How broadly applicable the degree is to different problem domains."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Computer Science Default)",
+        "description": "Study Computer Science at the best program you can access \u2014 it provides the broadest path to ML industry roles, includes dedicated ML coursework, and is the most recognized credential for ML engineering positions."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Mathematics or Statistics for Research)",
+        "description": "Choose Mathematics or Statistics if your goal is ML research or a PhD \u2014 the theoretical depth produces stronger researchers, and frontier ML labs like DeepMind heavily recruit from mathematical backgrounds."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Any STEM with Self-Study)",
+        "description": "Choose the best-ranked STEM program available regardless of specific major and build your ML skills through courses, projects, and competitions \u2014 demonstrated skills increasingly outweigh degree field for industry ML roles."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

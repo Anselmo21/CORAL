@@ -1,0 +1,289 @@
+{
+  "query_id": 51894,
+  "query": "best natural sources of calcium",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: NIH / US dietary guidelines",
+    "trustworthiness: peer-reviewed nutrition journal",
+    "trustworthiness: registered dietitian",
+    "trustworthiness: vegan / plant-based publication",
+    "trustworthiness: consumer health website",
+    "trustworthiness: food sustainability advocacy",
+    "perspective: lactose-intolerant consumer",
+    "perspective: vegan",
+    "perspective: omnivorous default consumer",
+    "perspective: pregnant woman"
+  ],
+  "plausible_answers": [
+    "Dairy: milk, yogurt, and cheese",
+    "Leafy greens: boiled collards (~358 mg/cup), kale, bok choy, Swiss chard, turnip greens",
+    "Calcium-fortified plant-based foods: soy milk, calcium-set tofu, fortified juice and cereal"
+  ],
+  "baseline_answer": "Leafy greens: boiled collards (~358 mg/cup), kale, bok choy, Swiss chard, turnip greens",
+  "baseline_index": 1,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 3,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best natural sources of calcium",
+        "description": "Which natural food sources provide the highest amounts of calcium?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which calcium sources are best for omnivores or general consumers?",
+        "description": "Sources favored by dietary guidelines and general health websites."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which calcium sources are best for lactose-intolerant or vegan consumers?",
+        "description": "Sources suitable for plant-based or non-dairy diets."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which calcium sources are emphasized in trusted dietary guidelines or scientific research?",
+        "description": "Sources highlighted in peer-reviewed journals or government dietary guidelines."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: NIH / US dietary guidelines",
+        "description": "Calcium sources emphasized in national dietary guidelines."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: peer-reviewed nutrition journal",
+        "description": "Calcium sources cited in scientific studies."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: registered dietitian",
+        "description": "Calcium sources recommended by certified nutrition professionals."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: vegan / plant-based publication",
+        "description": "Calcium sources promoted in plant-based health publications."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: consumer health website",
+        "description": "Calcium sources listed on general health websites."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: food sustainability advocacy",
+        "description": "Calcium sources promoted by sustainable food advocates."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: lactose-intolerant consumer",
+        "description": "Calcium sources suitable for those avoiding dairy."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: vegan",
+        "description": "Calcium sources for those avoiding all animal products."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: omnivorous default consumer",
+        "description": "Calcium sources for those who consume a variety of foods."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: pregnant woman",
+        "description": "Calcium sources recommended for maternal and fetal bone health."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Dairy: milk, yogurt, and cheese",
+        "description": "Rich natural sources of calcium, commonly consumed in the US."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Leafy greens: boiled collards (~358 mg/cup), kale, bok choy, Swiss chard, turnip greens",
+        "description": "High in calcium and magnesium, ideal for plant-based diets."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Calcium-fortified plant-based foods: soy milk, calcium-set tofu, fortified juice and cereal",
+        "description": "Non-dairy calcium sources with added calcium for dietary flexibility."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

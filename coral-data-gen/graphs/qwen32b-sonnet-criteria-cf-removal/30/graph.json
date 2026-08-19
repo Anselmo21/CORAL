@@ -1,0 +1,293 @@
+{
+  "query_id": 30,
+  "query": "I'm 29 and working in marketing. I want to switch into software development. Should I get a CS degree or do a coding bootcamp?",
+  "mode": "criteria",
+  "atoms": [
+    "time to first employment",
+    "total cost including opportunity cost",
+    "long-term earnings trajectory",
+    "suitability for FAANG/top-tier companies",
+    "depth of computer science fundamentals",
+    "age and career timeline considerations",
+    "current employer reputation signals",
+    "self-directed learning ability",
+    "networking and career support quality",
+    "flexibility to work while learning"
+  ],
+  "plausible_answers": [
+    "Answer A (Bootcamp Default): Do a coding bootcamp \u2014 at 29 with a career to build, the 6\u201312 month path to employment vastly outweighs a 4-year degree's opportunity cost for most software development roles outside top-tier companies.",
+    "Answer B (CS Degree for Long-Term): Get a CS degree if your goal is to work at top-tier tech companies or move into machine learning, systems engineering, or other roles where foundational depth is genuinely required.",
+    "Answer C (Self-Taught with Portfolio): Skip both and self-teach using free resources while building a strong GitHub portfolio \u2014 it takes longer but costs nothing and many employers care more about demonstrable skills than credentials."
+  ],
+  "baseline_answer": "Answer A (Bootcamp Default): Do a coding bootcamp \u2014 at 29 with a career to build, the 6\u201312 month path to employment vastly outweighs a 4-year degree's opportunity cost for most software development roles outside top-tier companies.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Should I get a CS degree or do a coding bootcamp?",
+        "description": "I'm 29 and working in marketing. I want to switch into software development."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "How long and how costly is each path in terms of time and money?",
+        "description": "Includes time to employment, cost, and flexibility."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the long-term career implications of each path?",
+        "description": "Includes long-term earnings, FAANG suitability, and CS depth."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the personal and situational factors that influence the decision?",
+        "description": "Includes age, learning style, and networking."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "time to first employment",
+        "description": "How quickly can you get a job in software development."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "total cost including opportunity cost",
+        "description": "Cost of education and lost income during training."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "long-term earnings trajectory",
+        "description": "Expected income growth over a 10-year career."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "suitability for FAANG/top-tier companies",
+        "description": "Whether the path prepares for top-tier roles."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "depth of computer science fundamentals",
+        "description": "How much theory and foundational knowledge is taught."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "age and career timeline considerations",
+        "description": "How age and existing career impact the choice."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "current employer reputation signals",
+        "description": "Whether the path provides recognizable credentials."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "self-directed learning ability",
+        "description": "Capacity to learn independently without structured support."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "networking and career support quality",
+        "description": "Access to mentors, job placements, and industry connections."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "flexibility to work while learning",
+        "description": "Whether the path allows part-time or remote learning."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Bootcamp Default)",
+        "description": "Do a coding bootcamp \u2014 at 29 with a career to build, the 6\u201312 month path to employment vastly outweighs a 4-year degree's opportunity cost for most software development roles outside top-tier companies."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (CS Degree for Long-Term)",
+        "description": "Get a CS degree if your goal is to work at top-tier tech companies or move into machine learning, systems engineering, or other roles where foundational depth is genuinely required."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Self-Taught with Portfolio)",
+        "description": "Skip both and self-teach using free resources while building a strong GitHub portfolio \u2014 it takes longer but costs nothing and many employers care more about demonstrable skills than credentials."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

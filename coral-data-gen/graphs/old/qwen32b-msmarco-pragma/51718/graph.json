@@ -1,0 +1,245 @@
+{
+  "query_id": 51718,
+  "query": "best enzyme product to help with facial extractions",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: licensed esthetician guidance",
+    "trustworthiness: peer-reviewed dermatology journal",
+    "trustworthiness: consumer beauty forum",
+    "trustworthiness: manufacturer product documentation",
+    "trustworthiness: spa industry publication",
+    "trustworthiness: FDA cosmetic ingredient documentation",
+    "perspective: acne-prone consumer seeking extractions",
+    "perspective: sensitive-skin consumer",
+    "perspective: anti-aging-focused consumer",
+    "perspective: budget-first consumer"
+  ],
+  "plausible_answers": [
+    "Dermalogica adjustable-strength enzyme peel (pumpkin/cranberry/cherry-berry, 5\u201320% selectable concentration)",
+    "Glo Therapeutics / Sanitas enzyme masque used in a professional European facial",
+    "Salicylic-acid-paired enzyme exfoliation in an acne-control facial regimen"
+  ],
+  "baseline_answer": "Dermalogica adjustable-strength enzyme peel (pumpkin/cranberry/cherry-berry, 5\u201320% selectable concentration)",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 2,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best enzyme product to help with facial extractions",
+        "description": "Identify the best enzyme product for facial extractions based on professional and consumer inputs."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What enzyme product is best supported by professional expertise and product documentation?",
+        "description": "Evaluates products based on licensed guidance and documentation."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What enzyme product is best for specific skin concerns and consumer preferences?",
+        "description": "Evaluates products based on skin type and consumer needs."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What enzyme product is best supported by consumer use and product availability in facials?",
+        "description": "Evaluates products based on consumer use and availability in professional facials."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: licensed esthetician guidance",
+        "description": "Products recommended by licensed professionals."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: peer-reviewed dermatology journal",
+        "description": "Products validated in scientific literature."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: consumer beauty forum",
+        "description": "Products discussed and recommended in beauty communities."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: manufacturer product documentation",
+        "description": "Products with detailed manufacturer-provided information."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: spa industry publication",
+        "description": "Products featured in spa and beauty publications."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: FDA cosmetic ingredient documentation",
+        "description": "Products with FDA-approved ingredients."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: acne-prone consumer seeking extractions",
+        "description": "Products prioritized by acne-prone individuals."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: sensitive-skin consumer",
+        "description": "Products preferred by individuals with sensitive skin."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: anti-aging-focused consumer",
+        "description": "Products favored by those seeking anti-aging benefits."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: budget-first consumer",
+        "description": "Products prioritized by price-conscious individuals."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Dermalogica adjustable-strength enzyme peel (pumpkin/cranberry/cherry-berry, 5\u201320% selectable concentration)",
+        "description": "Customizable enzyme peel for professional use."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Glo Therapeutics / Sanitas enzyme masque used in a professional European facial",
+        "description": "Enzyme masque used in European-style facials."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Salicylic-acid-paired enzyme exfoliation in an acne-control facial regimen",
+        "description": "Enzyme exfoliation combined with salicylic acid for acne-prone skin."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

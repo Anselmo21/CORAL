@@ -1,0 +1,273 @@
+{
+  "query_id": 17,
+  "query": "I have chronic knee pain that's been getting worse for six months. Should I try physical therapy first or just get surgery?",
+  "mode": "criteria",
+  "atoms": [
+    "clinical evidence for non-surgical outcomes",
+    "severity and type of knee damage",
+    "speed of return to activity",
+    "surgical risk and recovery time",
+    "long-term joint preservation",
+    "structural damage requiring repair",
+    "patient age and activity level",
+    "prior PT failure",
+    "imaging findings (MRI/X-ray)",
+    "cost and access to physical therapy"
+  ],
+  "plausible_answers": [
+    "Answer A (Physical Therapy Default): Start with a structured physical therapy program \u2014 for most chronic knee conditions, PT produces outcomes equivalent to surgery without the risk, recovery time, or cost.",
+    "Answer B (Surgery for Structural Damage): Proceed to surgery if imaging confirms significant structural damage (complete ACL tear, severe OA, locked meniscus) \u2014 PT cannot repair structural deficits and delaying surgery risks further joint deterioration.",
+    "Answer C (PT Then Reassess): Complete a full 8\u201312 week PT course then reassess with imaging \u2014 this approach exhausts conservative treatment, provides documented PT failure if surgery is later needed, and avoids unnecessary procedures."
+  ],
+  "baseline_answer": "Answer C (PT Then Reassess): Complete a full 8\u201312 week PT course then reassess with imaging \u2014 this approach exhausts conservative treatment, provides documented PT failure if surgery is later needed, and avoids unnecessary procedures.",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Chronic Knee Pain Treatment",
+        "description": "Should I try physical therapy first or just get surgery?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Efficacy and Evidence",
+        "description": "Evaluates the effectiveness and evidence for non-surgical treatments."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Structural and Diagnostic Considerations",
+        "description": "Evaluates the presence and severity of structural damage."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Patient and Practical Factors",
+        "description": "Evaluates patient-specific and practical considerations like risk, cost, and prior treatment."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "clinical evidence for non-surgical outcomes",
+        "description": "Evidence that PT is effective for chronic knee pain without surgery."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "severity and type of knee damage",
+        "description": "How severe and what type of damage the knee has."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "speed of return to activity",
+        "description": "How quickly the treatment allows return to daily or athletic activity."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "surgical risk and recovery time",
+        "description": "The risks and recovery time associated with knee surgery."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "long-term joint preservation",
+        "description": "The ability of the treatment to preserve joint function over time."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "structural damage requiring repair",
+        "description": "Whether the knee damage is structural and requires surgical repair."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "patient age and activity level",
+        "description": "The age and activity level of the patient, which may affect treatment choice."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "prior PT failure",
+        "description": "Whether previous PT attempts have failed."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "imaging findings (MRI/X-ray)",
+        "description": "Imaging results that confirm or rule out structural damage."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost and access to physical therapy",
+        "description": "The cost and availability of physical therapy."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Physical Therapy Default",
+        "description": "Start with a structured physical therapy program \u2014 for most chronic knee conditions, PT produces outcomes equivalent to surgery without the risk, recovery time, or cost."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Surgery for Structural Damage",
+        "description": "Proceed to surgery if imaging confirms significant structural damage (complete ACL tear, severe OA, locked meniscus) \u2014 PT cannot repair structural deficits and delaying surgery risks further joint deterioration."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "PT Then Reassess",
+        "description": "Complete a full 8\u201312 week PT course then reassess with imaging \u2014 this approach exhausts conservative treatment, provides documented PT failure if surgery is later needed, and avoids unnecessary procedures."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

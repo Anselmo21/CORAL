@@ -1,0 +1,260 @@
+{
+  "query_id": 51734,
+  "query": "best eye drops for floaters",
+  "mode": "pragmas",
+  "atoms": [
+    "geographic: Europe",
+    "trustworthiness: peer-reviewed ophthalmology journal",
+    "trustworthiness: ophthalmologist clinical practice guideline",
+    "trustworthiness: patient health forum",
+    "trustworthiness: alternative / integrative medicine source",
+    "trustworthiness: mainstream consumer health website",
+    "perspective: patient with severe vision-affecting floaters",
+    "perspective: patient with mild chronic floaters",
+    "perspective: non-surgical preference patient",
+    "perspective: anxious / sudden-onset patient"
+  ],
+  "plausible_answers": [
+    "Vitreolent eye drops",
+    "Watchful waiting",
+    "Vitrectomy surgery referral"
+  ],
+  "baseline_answer": "Vitreolent eye drops",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best eye drops for floaters",
+        "description": "What is the best treatment in the form of eye drops for managing eye floaters?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the most trustworthy sources for recommending a treatment for eye floaters?",
+        "description": "Identify the most reliable sources of information for recommending a treatment for eye floaters."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the most trustworthy sources for recommending non-surgical or conservative approaches?",
+        "description": "Identify the most reliable sources for recommending non-invasive or non-surgical treatment approaches."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the most trustworthy sources for recommending surgical intervention?",
+        "description": "Identify the most reliable sources for recommending surgical treatment for floaters."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the patient perspectives that influence the choice of treatment?",
+        "description": "Identify the patient viewpoints that influence the choice between different treatment options."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "geographic: Europe",
+        "description": "Information from a European source about eye floaters."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: peer-reviewed ophthalmology journal",
+        "description": "Sources from peer-reviewed ophthalmology journals."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: ophthalmologist clinical practice guideline",
+        "description": "Guidelines from practicing ophthalmologists."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: patient health forum",
+        "description": "Patient experiences shared in health forums."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: alternative / integrative medicine source",
+        "description": "Sources from integrative or alternative medicine."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: mainstream consumer health website",
+        "description": "Health information from mainstream consumer websites."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: patient with severe vision-affecting floaters",
+        "description": "Patients whose vision is significantly affected by floaters."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: patient with mild chronic floaters",
+        "description": "Patients with mild, long-term floaters."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: non-surgical preference patient",
+        "description": "Patients who prefer non-surgical treatment options."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: anxious / sudden-onset patient",
+        "description": "Patients with sudden floaters and anxiety about their condition."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Vitreolent eye drops",
+        "description": "Eye drops recommended for reducing eye floaters."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Watchful waiting",
+        "description": "Monitoring floaters without immediate treatment."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Vitrectomy surgery referral",
+        "description": "Referral for surgical removal of floaters."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "sq4",
+        "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

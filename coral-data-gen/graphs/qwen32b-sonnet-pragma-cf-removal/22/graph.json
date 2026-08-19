@@ -1,0 +1,275 @@
+{
+  "query_id": 22,
+  "query": "I have generalized anxiety and I'd rather not take medication. What are my best options?",
+  "mode": "pragmas",
+  "atoms": [
+    "temporal: 2023 only",
+    "temporal: 2021\u20132023",
+    "geographic: USA",
+    "perspective: Patient with mild-moderate GAD",
+    "perspective: Patient with severe or functionally impairing anxiety",
+    "perspective: Psychologist or psychiatrist",
+    "trustworthiness: Peer-reviewed clinical research",
+    "trustworthiness: Medical institution guidance",
+    "trustworthiness: Consumer health information",
+    "trustworthiness: Patient community experience"
+  ],
+  "plausible_answers": [
+    "Answer A (CBT Default): Pursue CBT with a licensed therapist \u2014 it has the strongest evidence base for GAD, produces lasting remission, and builds self-management skills that persist without ongoing treatment.",
+    "Answer B (Exercise Plus Mindfulness): Combine regular aerobic exercise with a mindfulness-based program like MBSR \u2014 these are accessible, low-cost, and produce clinically meaningful anxiety reduction for mild-to-moderate symptoms.",
+    "Answer C (Digital CBT-I First): Start with a structured digital CBT program (like those based on the Worry Hill model) for immediate access while waiting for a therapist \u2014 evidence-based apps can produce meaningful benefit for mild anxiety without a waitlist."
+  ],
+  "baseline_answer": "Answer A (CBT Default): Pursue CBT with a licensed therapist \u2014 it has the strongest evidence base for GAD, produces lasting remission, and builds self-management skills that persist without ongoing treatment.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "q",
+        "description": "I have generalized anxiety and I'd rather not take medication. What are my best options?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "sq1",
+        "description": "What is the most effective non-pharmacological treatment for GAD based on recent, peer-reviewed research?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "sq2",
+        "description": "What are the most accessible and low-cost non-pharmacological treatments for mild-to-moderate GAD?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "sq3",
+        "description": "What are effective non-pharmacological treatment options for severe or functionally impairing GAD?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2023 only"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2021\u20132023"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: USA"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Patient with mild-moderate GAD"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Patient with severe or functionally impairing anxiety"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Psychologist or psychiatrist"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Peer-reviewed clinical research"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Medical institution guidance"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Consumer health information"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Patient community experience"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (CBT Default)",
+        "description": "Pursue CBT with a licensed therapist \u2014 it has the strongest evidence base for GAD, produces lasting remission, and builds self-management skills that persist without ongoing treatment."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Exercise Plus Mindfulness)",
+        "description": "Combine regular aerobic exercise with a mindfulness-based program like MBSR \u2014 these are accessible, low-cost, and produce clinically meaningful anxiety reduction for mild-to-moderate symptoms."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Digital CBT-I First)",
+        "description": "Start with a structured digital CBT program (like those based on the Worry Hill model) for immediate access while waiting for a therapist \u2014 evidence-based apps can produce meaningful benefit for mild anxiety without a waitlist."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

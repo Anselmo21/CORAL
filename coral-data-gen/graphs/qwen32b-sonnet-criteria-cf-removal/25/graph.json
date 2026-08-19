@@ -1,0 +1,316 @@
+{
+  "query_id": 25,
+  "query": "I suffer from terrible seasonal allergies every spring. What's the most effective long-term treatment?",
+  "mode": "criteria",
+  "atoms": [
+    "long-term remission vs symptom control",
+    "speed of symptom relief",
+    "cost and insurance coverage",
+    "time commitment of treatment",
+    "severity of allergy symptoms",
+    "avoidance of daily medication",
+    "convenience of self-administration",
+    "safety and side effect profile",
+    "effectiveness for multiple allergens",
+    "patient preference for injection vs oral"
+  ],
+  "plausible_answers": [
+    "Answer A (Immunotherapy Default): Pursue allergen immunotherapy (shots or sublingual tablets) \u2014 it's the only treatment that modifies the underlying allergy and can produce multi-year remission after a 3\u20135 year course, making it superior for severe or persistent symptoms.",
+    "Answer B (Daily Nasal Steroid): Use a daily intranasal corticosteroid like fluticasone as your primary treatment \u2014 it's more effective than antihistamines for overall symptom control, available OTC, and requires no specialist visits.",
+    "Answer C (Antihistamine Plus Rinse): Start with a daily non-sedating antihistamine combined with regular saline nasal rinses \u2014 this low-cost approach effectively controls mild-to-moderate seasonal symptoms without prescription treatment or specialist referral."
+  ],
+  "baseline_answer": "Answer A (Immunotherapy Default): Pursue allergen immunotherapy (shots or sublingual tablets) \u2014 it's the only treatment that modifies the underlying allergy and can produce multi-year remission after a 3\u20135 year course, making it superior for severe or persistent symptoms.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What's the most effective long-term treatment for severe seasonal allergies?",
+        "description": "A question about the best long-term strategy for managing severe seasonal allergies."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Long-term outcomes (remission vs symptom control)",
+        "description": "Whether the treatment can lead to long-term remission or only manage symptoms."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Speed and effectiveness of symptom control",
+        "description": "How quickly and how well the treatment controls allergy symptoms."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Practical and financial considerations",
+        "description": "Factors like cost, insurance, time, and convenience of treatment."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Safety and patient preference",
+        "description": "Side effects and whether the patient prefers injections or oral treatments."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "long-term remission vs symptom control",
+        "description": "Whether the treatment leads to a lasting reduction in allergy symptoms or only manages them."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "speed of symptom relief",
+        "description": "How quickly the treatment provides relief from allergy symptoms."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost and insurance coverage",
+        "description": "Financial burden and whether the treatment is covered by insurance."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "time commitment of treatment",
+        "description": "How much time and effort the treatment requires."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "severity of allergy symptoms",
+        "description": "Whether the treatment is effective for mild, moderate, or severe symptoms."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "avoidance of daily medication",
+        "description": "Whether the treatment requires daily use of medication."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "convenience of self-administration",
+        "description": "How easy it is for the patient to administer the treatment themselves."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "safety and side effect profile",
+        "description": "Whether the treatment is safe and has minimal side effects."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "effectiveness for multiple allergens",
+        "description": "Whether the treatment works for multiple types of allergens."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "patient preference for injection vs oral",
+        "description": "Whether the patient prefers injections or oral treatments."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Immunotherapy Default)",
+        "description": "Pursue allergen immunotherapy (shots or sublingual tablets) \u2014 it's the only treatment that modifies the underlying allergy and can produce multi-year remission after a 3\u20135 year course, making it superior for severe or persistent symptoms."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Daily Nasal Steroid)",
+        "description": "Use a daily intranasal corticosteroid like fluticasone as your primary treatment \u2014 it's more effective than antihistamines for overall symptom control, available OTC, and requires no specialist visits."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Antihistamine Plus Rinse)",
+        "description": "Start with a daily non-sedating antihistamine combined with regular saline nasal rinses \u2014 this low-cost approach effectively controls mild-to-moderate seasonal symptoms without prescription treatment or specialist referral."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c8"
+      },
+      {
+        "source": "sq4",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

@@ -1,0 +1,257 @@
+{
+  "query_id": 51705,
+  "query": "Which dog breed helps most with anxiety and depression?",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: psychiatric service dog organization",
+    "trustworthiness: peer-reviewed psychology / animal-assisted therapy journal",
+    "trustworthiness: WebMD / consumer health platform",
+    "trustworthiness: AKC (American Kennel Club) breed guide",
+    "trustworthiness: dog owner / mental health forum",
+    "perspective: apartment dweller with limited space",
+    "perspective: highly active outdoor exerciser",
+    "perspective: first-time dog owner",
+    "perspective: severe / disabling mental health condition",
+    "perspective: child or teen with anxiety"
+  ],
+  "plausible_answers": [
+    "Labrador Retriever or Golden Retriever",
+    "A small companion breed (Cavalier King Charles Spaniel, Bichon Frise, Cockapoo)",
+    "A trained psychiatric service dog (Standard Poodle / German Shepherd)"
+  ],
+  "baseline_answer": "A trained psychiatric service dog (Standard Poodle / German Shepherd)",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 2,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Which dog breed helps most with anxiety and depression?",
+        "description": "Determine the dog breed most effective for alleviating symptoms of anxiety and depression."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which breeds are most recommended by mental health and psychiatric service dog organizations?",
+        "description": "Focus on breeds recommended by trusted psychiatric service dog resources."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which breeds are best for general anxiety and depression based on temperament and lifestyle factors?",
+        "description": "Consider temperament, trainability, and suitability for different living conditions."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which breeds are most supported by health platforms and scientific studies?",
+        "description": "Focus on breeds recommended by health platforms and peer-reviewed research."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: psychiatric service dog organization",
+        "description": "Reputable organizations that train and recommend psychiatric service dogs."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: peer-reviewed psychology / animal-assisted therapy journal",
+        "description": "Scientific studies and journals on the therapeutic effects of animals."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: WebMD / consumer health platform",
+        "description": "Consumer health resources that discuss the benefits of pets for mental health."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: AKC (American Kennel Club) breed guide",
+        "description": "Official breed information from a trusted dog breed authority."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "trustworthiness: dog owner / mental health forum",
+        "description": "Online communities where dog owners and mental health professionals share experiences."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: apartment dweller with limited space",
+        "description": "Consideration for individuals living in small spaces."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: highly active outdoor exerciser",
+        "description": "Preference for breeds that support an active outdoor lifestyle."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: first-time dog owner",
+        "description": "Consideration for individuals new to dog ownership."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: severe / disabling mental health condition",
+        "description": "Focus on breeds that provide support for severe mental health needs."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "perspective: child or teen with anxiety",
+        "description": "Consideration for families with children or teenagers."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Labrador Retriever or Golden Retriever",
+        "description": "Popular breeds known for their calm, friendly, and trainable nature."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "A small companion breed (Cavalier King Charles Spaniel, Bichon Frise, Cockapoo)",
+        "description": "Small, affectionate breeds suitable for apartment living and first-time owners."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "A trained psychiatric service dog (Standard Poodle / German Shepherd)",
+        "description": "Highly trained dogs used for individuals with severe mental health conditions."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      }
+    ]
+  }
+}

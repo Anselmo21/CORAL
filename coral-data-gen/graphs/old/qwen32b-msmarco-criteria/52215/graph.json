@@ -1,0 +1,249 @@
+{
+  "query_id": 52215,
+  "query": "best type of paint to paint over rust",
+  "mode": "criteria",
+  "atoms": [
+    "type of primer",
+    "application method",
+    "rust presence tolerance",
+    "drying time",
+    "finish durability",
+    "brand reputation",
+    "surface preparation",
+    "environmental conditions",
+    "color options",
+    "cost-effectiveness"
+  ],
+  "plausible_answers": [
+    "Brush-applied rust-inhibiting primer (zinc chromate or iron oxide) followed by a finish coat",
+    "Rustoleum (consumer brand) spray or brush-on",
+    "Direct-over-rust anti-rust enamel like Krylon Rust Protector or Rust Tough Enamel"
+  ],
+  "baseline_answer": "Rustoleum (consumer brand) spray or brush-on",
+  "baseline_index": 1,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best type of paint to paint over rust",
+        "description": "What is the best type of paint to paint over rust?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What kind of primer and finish is best for rusted surfaces?",
+        "description": "What kind of primer and finish is best for rusted surfaces?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "How important is the application method for rust coverage?",
+        "description": "How important is the application method for rust coverage?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the key practical considerations (drying time, durability, cost, etc.) for rust paint?",
+        "description": "What are the key practical considerations (drying time, durability, cost, etc.) for rust paint?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "type of primer",
+        "description": "Whether the paint includes a rust-inhibiting primer or requires a separate one."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "application method",
+        "description": "Whether the paint is applied by brush, spray, or other method."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "rust presence tolerance",
+        "description": "Whether the paint can be applied over existing rust or requires complete rust removal."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "drying time",
+        "description": "How quickly the paint dries and becomes touch-dry or fully cured."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "finish durability",
+        "description": "How long the paint finish lasts and resists peeling or flaking."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "brand reputation",
+        "description": "The brand's reliability and popularity in the market for rust paint."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "surface preparation",
+        "description": "How much surface cleaning or sanding is required before painting."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "environmental conditions",
+        "description": "How well the paint performs in different weather or temperature conditions."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "color options",
+        "description": "The variety of colors available in the paint."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost-effectiveness",
+        "description": "The price of the paint relative to its performance and durability."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Brush-applied rust-inhibiting primer (zinc chromate or iron oxide) followed by a finish coat",
+        "description": "Brush-applied rust-inhibiting primer (zinc chromate or iron oxide) followed by a finish coat"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Rustoleum (consumer brand) spray or brush-on",
+        "description": "Rustoleum (consumer brand) spray or brush-on"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Direct-over-rust anti-rust enamel like Krylon Rust Protector or Rust Tough Enamel",
+        "description": "Direct-over-rust anti-rust enamel like Krylon Rust Protector or Rust Tough Enamel"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      }
+    ]
+  }
+}

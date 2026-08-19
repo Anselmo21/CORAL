@@ -1,0 +1,309 @@
+{
+  "query_id": 38,
+  "query": "I'm considering graduate school but I can't afford to quit my job. Should I do part-time or full-time?",
+  "mode": "criteria",
+  "atoms": [
+    "ability to maintain income during studies",
+    "time to degree completion",
+    "strength of peer networking opportunity",
+    "degree type (professional vs research/academic)",
+    "completion rate and burnout risk",
+    "immediate application of learning to current job",
+    "access to internships and research roles",
+    "employer tuition reimbursement availability",
+    "family and personal life obligations",
+    "program prestige and outcomes equivalence"
+  ],
+  "plausible_answers": [
+    "Answer A (Part-Time Default for Professional Degrees): Do a part-time program if you're pursuing a professional degree (MBA, MPA, MS) \u2014 you maintain income, apply learning immediately, avoid employment gaps, and outcomes are largely equivalent to full-time.",
+    "Answer B (Full-Time for Immersion and Research): Go full-time if you can fund it \u2014 the peer network, research opportunities, and immersive experience are difficult to replicate part-time, and for research-based degrees full-time is essentially required.",
+    "Answer C (Part-Time Only with Employer Support): Pursue part-time only if your employer offers tuition reimbursement \u2014 this eliminates the financial risk of part-time study and makes the math clearly favorable, but without employer support the burnout risk over 3\u20134 years is high."
+  ],
+  "baseline_answer": "Answer A (Part-Time Default for Professional Degrees): Do a part-time program if you're pursuing a professional degree (MBA, MPA, MS) \u2014 you maintain income, apply learning immediately, avoid employment gaps, and outcomes are largely equivalent to full-time.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Should I do part-time or full-time graduate school if I can't quit my job?",
+        "description": "Considering financial constraints, degree type, and employer support, which study mode is best?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Financial and job-related considerations",
+        "description": "Factors like income maintenance, job application of learning, employer support, and family obligations."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Degree type influence",
+        "description": "Whether the degree is professional or research-based and how that affects study mode choice."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Academic and social benefits of full-time",
+        "description": "Time to degree, peer networking, access to internships, and burnout risk."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "ability to maintain income during studies",
+        "description": "Can you keep working while in school?"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "time to degree completion",
+        "description": "How long will it take to finish your degree?"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "strength of peer networking opportunity",
+        "description": "How strong is the peer network in the program?"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "degree type (professional vs research/academic)",
+        "description": "Is your degree professional (MBA, MPA) or research-based (PhD)?"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "completion rate and burnout risk",
+        "description": "What are the completion rates and risks of burnout?"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "immediate application of learning to current job",
+        "description": "Can you apply what you learn to your current job?"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "access to internships and research roles",
+        "description": "Are internships and research opportunities available?"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "employer tuition reimbursement availability",
+        "description": "Does your employer offer tuition reimbursement?"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "family and personal life obligations",
+        "description": "How will school affect your family and personal life?"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "program prestige and outcomes equivalence",
+        "description": "Does the part-time program have the same prestige and outcomes as full-time?"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Part-Time Default for Professional Degrees)",
+        "description": "Do a part-time program if you're pursuing a professional degree (MBA, MPA, MS) \u2014 you maintain income, apply learning immediately, avoid employment gaps, and outcomes are largely equivalent to full-time."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Full-Time for Immersion and Research)",
+        "description": "Go full-time if you can fund it \u2014 the peer network, research opportunities, and immersive experience are difficult to replicate part-time, and for research-based degrees full-time is essentially required."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Part-Time Only with Employer Support)",
+        "description": "Pursue part-time only if your employer offers tuition reimbursement \u2014 this eliminates the financial risk of part-time study and makes the math clearly favorable, but without employer support the burnout risk over 3\u20134 years is high."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      }
+    ]
+  }
+}
