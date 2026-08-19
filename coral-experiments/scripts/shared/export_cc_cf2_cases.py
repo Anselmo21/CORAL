@@ -1,7 +1,8 @@
 """Export cc_cases.json for the cf2 case pool (CPU step, run before the GPU step).
 
-Reads data/cases_16x20_cf2removals.json (20 sub-lattices per size k=3..9 per
-(run, dataset), CF ~2 removals below start) plus the lattice runs under
+Reads data/cases_16x20_cfmin3.json (20 sub-lattices per size k=3..9 per
+(run, dataset), shallowest CF >= 3 removals below start for k>=4, >= 2 for k=3 — see
+scripts.shared.generate_cf2_pool) plus the lattice runs under
 coral-runs-lattices/<run>/, and writes the self-contained per-case exports
 consumed by scripts.shared.run_cc_qwen:
 
@@ -22,7 +23,7 @@ from itertools import combinations
 
 from search.lattice import combo_key
 
-CASES_PATH = "data/cases_16x20_cf2removals.json"
+CASES_PATH = "data/cases_16x20_cfmin3.json"
 DATASET_SUBDIRS = {
     "msmarco_criteria": "msmarco-criteria",
     "msmarco_pragma":   "msmarco-pragmas",

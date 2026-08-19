@@ -118,6 +118,7 @@ def main() -> None:
         scored = score_cc(bfs_res, cc_res, rbc, start_node)
         results.append({
             "case_id":        cid,
+            "start_node":     case["start_node"],
             "query_id":       case["query_id"],
             "effective_size": k,
             "budget":         args.budget,
