@@ -1,16 +1,16 @@
-"""ERA's top-down search, with the GoT graph deciding where the probes go.
+"""MRA's top-down search, with the GoT graph deciding where the probes go.
 
 The graph says which concepts back each candidate answer. A node's contrast is
 how much more of the baseline's backing it strips than its best rival's, so a
 positive contrast is the model's own explanation calling for a flip there.
 
-A node ERA prunes still gets a second chance at the end of the layer when the
+A node MRA prunes still gets a second chance at the end of the layer when the
 graph vouches for it, taken in contrast order, and that pool closes as soon as
-one of the stronger ones comes back holding the baseline. The nodes ERA is
+one of the stronger ones comes back holding the baseline. The nodes MRA is
 unsure about get led by the top max-jump tier of contrast, and if every node in
 that tier comes back holding the baseline, the rest of the layer is skipped.
 When contrast is flat across a layer there is no tier and nothing gets skipped,
-so a graph with nothing to say falls back to plain ERA on its own.
+so a graph with nothing to say falls back to plain MRA on its own.
 """
 # TODO: Coordinate with Katherine about budget positioning in the paper
 from __future__ import annotations
@@ -19,9 +19,9 @@ from itertools import combinations
 
 import numpy as np
 
-from search.heuristics import max_jump_cutoff, softmax_entropy
+from search.heuristics import max_jump_cutoff, norm_softmax, shannon_entropy
 from search.lattice import combo_key, iter_search_layers
-from search.rank import _get_child_voters, _normalize_max, _store_estimate
+from search.rank import _normalize_max, _ranking_to_score_vector
 
 
 def graph_contrast(subset, supports, answers, baseline):
@@ -33,81 +33,54 @@ def graph_contrast(subset, supports, answers, baseline):
     return max((cov(a) - base for a in answers if a != baseline), default=0.0)
 
 
-def _aggregate(voters, answers, weights):
-    """aggregator_default with per-voter weights; all-ones weights reproduce it."""
+def _child_voters(subset, known, estimates, answers):
+    """Children one concept smaller, on the scale and in the order MRA uses.
+
+    A measured child is a max-normalized Borda vector; an estimated one is the
+    softmaxed aggregate the layer below stored. The two scales differ on
+    purpose, which is what lets a measured child outweigh an estimate. Walking
+    the children through combinations() rather than by slicing matters too: the
+    sum runs in the other direction and settles ties the other way.
+    """
+    out = {}
+    for combo in combinations(range(len(subset)), len(subset) - 1):
+        child = [subset[i] for i in combo]
+        if not child:
+            continue
+        ck = combo_key(child)
+        if ck in known:
+            out[ck] = _normalize_max(_ranking_to_score_vector(known[ck], answers))
+        elif ck in estimates:
+            out[ck] = estimates[ck]
+    return out
+
+
+def _aggregate(voters, answers):
+    """Borda sum over the voters, left unnormalized for the softmax."""
     agg = {a: 0.0 for a in answers}
-    for vk, sv in voters.items():
-        sv = _normalize_max(sv)
+    for sv in voters.values():
         for a in answers:
-            agg[a] += weights.get(vk, 1.0) * sv.get(a, 0.0)
-    agg = _normalize_max(agg)
+            agg[a] += sv.get(a, 0.0)
     return sorted(agg, key=lambda a: (-agg[a], a)), agg
 
 
-def _recheck_above(skipped, found_subset, baseline, probe, recheck):
-    """Give the nodes skipped one layer above a find a second look.
-
-    Those nodes drop fewer concepts than the find so a counterfactual among
-    them is the better answer. Two kinds earn the probe. A parent keeps every
-    concept the find keeps and holds one more. A node from the high entropy
-    group left its layer the least settled. Setting recheck to parents or to
-    entropy takes only that kind and anything else takes both. Parents go
-    first and the rest follow in entropy order. Returns the first
-    counterfactual it turns up and None when they all hold the baseline.
-    """
-    above = [d for d in skipped if d["size"] == len(found_subset) + 1]
-    if not above:
-        return None
-    present = set(found_subset)
-    parents = {d["key"] for d in above if present < set(d["subset"])}
-    unsettled = set(max_jump_cutoff([(d["key"], d["ent"]) for d in above],
-                                    len(above)))
-    if recheck == "parents":
-        picks = [d for d in above if d["key"] in parents]
-    elif recheck == "entropy":
-        picks = [d for d in above if d["key"] in unsettled]
-    else:
-        picks = [d for d in above if d["key"] in parents or d["key"] in unsettled]
-    picks.sort(key=lambda d: (d["key"] not in parents, -d["ent"]))
-    for d in picks:
-        truth = probe(d["key"])
-        if truth and truth[0] != baseline:
-            return d["key"], d["subset"], truth
-    return None
-
-
-def _reopen_skipped(skipped, baseline, probe):
-    """Probe the skipped nodes once the descent has come up empty.
-
-    Nothing flipped so every skip is now suspect. The largest subsets dropped
-    the fewest concepts so they go first and the first hit is the most minimal
-    counterfactual still on the table. Returns None when none of them flip.
-    """
-    for d in sorted(skipped, key=lambda d: -d["size"]):
-        truth = probe(d["key"])
-        if truth and truth[0] != baseline:
-            return d["key"], d["subset"], truth
-    return None
-
-
 def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
-                     tier=True, pool=True, flip_boost=True, graph_first=False,
-                     entropy_cut=True, recheck=False, perm_rng=None):
+                     tier=True, pool=True, graph_first=False,
+                     entropy_cut=True, perm_rng=None):
     """Top-down counterfactual search with the graph guiding Phase 2.
 
-    tier=False, pool=False, flip_boost=False reduces to era_search(direction=
-    'down', propagate_scores=True). flip_boost weights a measured voter that
-    already flipped by the node's voter count; it is an ERA-native change kept
-    separable from the graph. graph_first probes the graph's tier ahead of the
-    displaced nodes instead of behind them. entropy_cut=False keeps every node
-    in the layer as a candidate, so nothing is pruned for low entropy and the
-    layer stop is the only thing left skipping work. recheck holds on to the
-    nodes this search skips rather than dropping them. On a find it goes back
-    up one layer and probes the find's parents along with the high entropy
-    group, or just one of the two when set to parents or to entropy. On an
-    empty descent it works through every skipped node from the largest subset
-    down. perm_rng permutes the graph's concept labels for attribution
-    controls.
+    tier=False, pool=False reduces this to mra_search(direction="down",
+    normalize_fn="softmax") case for case, on all four datasets at b=0/4/8/16.
+    One difference is left in on purpose and never fires there: mra_search
+    tests an already-known node through its Borda vector, so a top-1 outside
+    the baseline's answer list cannot win the counterfactual, while the same
+    node probed later is tested on its raw ranking. Both paths here read the
+    raw ranking.
+    graph_first probes the graph's tier ahead of the displaced nodes
+    instead of behind them. entropy_cut=False keeps every node in the layer as
+    a candidate, so nothing is pruned for low entropy and the layer stop is the
+    only thing left skipping work. perm_rng permutes the graph's concept
+    labels for attribution controls.
     """
     baseline_ranking = rbc.get(combo_key(start_node), [])
     if not baseline_ranking:
@@ -134,28 +107,27 @@ def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
         for combo in combinations(range(len(start_node)), layer_size):
             subset = [start_node[i] for i in combo]
             key = combo_key(subset)
-            voters = _get_child_voters(subset, known, estimates, answers)
+            if key in known:
+                continue
+            voters = _child_voters(subset, known, estimates, answers)
             if not voters:
                 continue
-            weights = {}
-            if flip_boost:
-                w = float(len(voters))
-                weights = {vk: w for vk in voters if known.get(vk)
-                           and known[vk][0] != baseline}
-            ranking, scores = _aggregate(voters, answers, weights)
+            _ranking, scores = _aggregate(voters, answers)
             if not scores:
                 continue
-            estimates[key] = _store_estimate(ranking, scores, answers, True)
-            entropies[key] = softmax_entropy(scores)
+            probs = norm_softmax(scores)
+            estimates[key] = probs
+            entropies[key] = shannon_entropy(probs)
             layer.append((key, entropies[key]))
         for sel in max_jump_cutoff(layer, budget_remaining):
-            if sel in rbc:
+            if budget_remaining <= 0:
+                break
+            if rbc.get(sel):
                 known[sel] = rbc[sel]
-                budget_remaining -= 1
+            budget_remaining -= 1
     budget_used = budget - budget_remaining
 
     calls = pruned = 0
-    skipped = []
 
     def probe(key):
         nonlocal calls
@@ -163,11 +135,6 @@ def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
         return rbc.get(key)
 
     def found(key, subset, ranking):
-        """Hand back a find, after the recheck has had its say."""
-        if recheck:
-            better = _recheck_above(skipped, subset, baseline, probe, recheck)
-            if better is not None:
-                key, subset, ranking = better
         return {"found": True, "key": key, "size": len(subset),
                 "ranking": ranking, "calls": calls,
                 "budget_used": budget_used, "pruned_nodes": pruned}
@@ -203,8 +170,6 @@ def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
                 rescued.append(u)
             else:
                 pruned += 1
-                skipped.append({"key": u[1], "subset": u[0],
-                                "size": len(u[0]), "ent": u[3]})
         pool_bar = float(np.median([u[4] for u in rescued])) if rescued else 0.0
         rescued.sort(key=lambda u: -u[4])
 
@@ -227,13 +192,9 @@ def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
             is_pool = disp < 1 and key not in high
             if cut and not is_pool and disp < 1 and key not in claims:
                 pruned += 1
-                skipped.append({"key": key, "subset": subset,
-                                "size": len(subset), "ent": _ent})
                 continue
             if pool_done and is_pool:
                 pruned += 1
-                skipped.append({"key": key, "subset": subset,
-                                "size": len(subset), "ent": _ent})
                 continue
             truth = probe(key)
             if truth:
@@ -245,12 +206,5 @@ def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
                     cut = claims_left == 0
                 if is_pool and g >= pool_bar:
                     pool_done = True
-    if recheck:
-        late = _reopen_skipped(skipped, baseline, probe)
-        if late is not None:
-            key, subset, ranking = late
-            return {"found": True, "key": key, "size": len(subset),
-                    "ranking": ranking, "calls": calls,
-                    "budget_used": budget_used, "pruned_nodes": pruned}
     return {"found": False, "key": None, "size": None, "ranking": None,
             "calls": calls, "budget_used": budget_used, "pruned_nodes": pruned}
