@@ -1,0 +1,254 @@
+{
+  "query_id": 51726,
+  "query": "best excel font for numbers",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: Microsoft Office documentation",
+    "trustworthiness: typography / design publication",
+    "trustworthiness: data journalism style guide",
+    "trustworthiness: office productivity user forum",
+    "trustworthiness: academic typography research",
+    "perspective: graphic designer producing annual reports",
+    "perspective: financial analyst preparing tables",
+    "perspective: casual office user",
+    "perspective: data scientist visualizing tables",
+    "perspective: print-output focused user"
+  ],
+  "plausible_answers": [
+    "A typographer-grade font with tabular figures",
+    "Calibri",
+    "A monospaced font"
+  ],
+  "baseline_answer": "A typographer-grade font with tabular figures",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best excel font for numbers",
+        "description": "Determining the optimal font for numerical data in Excel based on alignment, readability, and use case."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Professional alignment and design standards",
+        "description": "What font is best for aligning columns of numbers in professional reports, financial tables, and print output?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "General usability and default settings",
+        "description": "What font is best for casual users, general data entry, and standard office workflows without specialized alignment needs?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Microsoft Office documentation",
+        "description": "Prioritize official Microsoft guides and documentation."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: typography / design publication",
+        "description": "Prioritize expert advice from typography and design publications."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: data journalism style guide",
+        "description": "Prioritize standards used in data journalism for clarity."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: office productivity user forum",
+        "description": "Prioritize practical tips from user communities."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: academic typography research",
+        "description": "Prioritize findings from academic research on typography."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: graphic designer producing annual reports",
+        "description": "Prioritize the needs of graphic designers creating high-end reports."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: financial analyst preparing tables",
+        "description": "Prioritize the needs of financial analysts working with dense tables."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: casual office user",
+        "description": "Prioritize the ease of use for non-expert office workers."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: data scientist visualizing tables",
+        "description": "Prioritize the needs of data scientists visualizing datasets."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: print-output focused user",
+        "description": "Prioritize the needs of users focused on printed output quality."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "A typographer-grade font with tabular figures",
+        "description": "The optimal choice for alignment and professional presentation."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Calibri",
+        "description": "The standard default font for general use."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "A monospaced font",
+        "description": "A specialized choice for code-like data or specific technical alignment."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      }
+    ]
+  }
+}

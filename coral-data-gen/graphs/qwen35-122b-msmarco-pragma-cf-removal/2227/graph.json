@@ -1,0 +1,289 @@
+{
+  "query_id": 2227,
+  "query": "What is the best clarifying shampoo to remove color?",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: salon professional / stylist guidance",
+    "trustworthiness: peer-reviewed cosmetic chemistry literature",
+    "trustworthiness: DIY hair-care community forum",
+    "trustworthiness: beauty consumer reviews",
+    "trustworthiness: product manufacturer documentation",
+    "perspective: client with damaged / dry hair",
+    "perspective: client with semi-permanent dye to fade",
+    "perspective: budget-conscious DIYer",
+    "perspective: client with permanent dye",
+    "perspective: color-fading-fast priority"
+  ],
+  "plausible_answers": [
+    "A high-strength sulfate-based clarifying shampoo",
+    "A gentle clarifying shampoo",
+    "A baking-soda + vitamin-C DIY clarifying treatment"
+  ],
+  "baseline_answer": "A high-strength sulfate-based clarifying shampoo",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best clarifying shampoo to remove color?",
+        "description": "The primary inquiry regarding the optimal product for dye removal."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the most effective method for removing dye according to professionals and science?",
+        "description": "Focuses on efficacy, professional standards, and chemical potency."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the safest method for removing dye without damaging hair?",
+        "description": "Focuses on hair health, gentleness, and minimizing breakage."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the best accessible or DIY options for fading specific dye types?",
+        "description": "Focuses on budget, community advice, and semi-permanent fading."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: salon professional / stylist guidance",
+        "description": "Prioritizes advice from licensed professionals."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed cosmetic chemistry literature",
+        "description": "Prioritizes scientific evidence and chemical analysis."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: DIY hair-care community forum",
+        "description": "Prioritizes anecdotal evidence from home users."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: beauty consumer reviews",
+        "description": "Prioritizes general user feedback and ratings."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: product manufacturer documentation",
+        "description": "Prioritizes official product claims and instructions."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: client with damaged / dry hair",
+        "description": "Prioritizes safety and moisture retention over stripping power."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: client with semi-permanent dye to fade",
+        "description": "Prioritizes methods effective for semi-permanent color."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: budget-conscious DIYer",
+        "description": "Prioritizes low-cost, home-remedy solutions."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: client with permanent dye",
+        "description": "Prioritizes methods capable of tackling permanent pigment."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: color-fading-fast priority",
+        "description": "Prioritizes speed of removal over hair condition."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "A high-strength sulfate-based clarifying shampoo",
+        "description": "The baseline answer favored by professional and scientific standards."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "A gentle clarifying shampoo",
+        "description": "The answer favored when safety and hair health are prioritized."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "A baking-soda + vitamin-C DIY clarifying treatment",
+        "description": "The answer favored when budget and DIY community advice are prioritized."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      }
+    ]
+  }
+}

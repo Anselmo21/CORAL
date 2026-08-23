@@ -1,0 +1,282 @@
+{
+  "query_id": 51895,
+  "query": "Which natural remedy best eases teenage depression?",
+  "mode": "criteria",
+  "atoms": [
+    "scientific evidence",
+    "mood improvement efficacy",
+    "safety in adolescents",
+    "drug interactions",
+    "side effect profile",
+    "ease of use",
+    "cost",
+    "accessibility",
+    "dosing convenience",
+    "time to onset"
+  ],
+  "plausible_answers": [
+    "St. John's Wort herbal supplement",
+    "Omega-3 fatty acids (fish oil / flax oil)",
+    "Lifestyle intervention: exercise, yoga, diet, sleep hygiene"
+  ],
+  "baseline_answer": "Lifestyle intervention: exercise, yoga, diet, sleep hygiene",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Which natural remedy best eases teenage depression?",
+        "description": "The primary question asking for the optimal natural intervention for adolescent depression."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Clinical efficacy and safety profile",
+        "description": "Evaluates how well the remedy works and its safety risks for teens."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Practical implementation and accessibility",
+        "description": "Evaluates the cost, ease, and convenience of adopting the remedy."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "scientific evidence",
+        "description": "Strength of research backing the remedy's effectiveness."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "mood improvement efficacy",
+        "description": "The actual ability of the remedy to alleviate depressive symptoms."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "safety in adolescents",
+        "description": "Risk of harm or adverse developmental effects in teenagers."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "drug interactions",
+        "description": "Potential for negative interactions with other medications."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "side effect profile",
+        "description": "Frequency and severity of unwanted side effects."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "ease of use",
+        "description": "How simple the remedy is to integrate into daily life."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost",
+        "description": "Financial burden of the remedy."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "accessibility",
+        "description": "Availability of the remedy to the general population."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "dosing convenience",
+        "description": "Simplicity of the dosing schedule (e.g., one pill vs multiple habits)."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "time to onset",
+        "description": "How quickly the remedy produces noticeable results."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "St. John's Wort herbal supplement",
+        "description": "Herbal supplement often used for mild depression."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Omega-3 fatty acids (fish oil / flax oil)",
+        "description": "Nutritional supplement known for brain health."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Lifestyle intervention: exercise, yoga, diet, sleep hygiene",
+        "description": "Holistic behavioral changes including physical activity and diet."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

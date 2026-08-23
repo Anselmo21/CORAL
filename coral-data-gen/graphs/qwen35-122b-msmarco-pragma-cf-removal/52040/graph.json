@@ -1,0 +1,289 @@
+{
+  "query_id": 52040,
+  "query": "best skin care for redness",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: dermatology clinical practice",
+    "trustworthiness: peer-reviewed cosmetic dermatology journal",
+    "trustworthiness: beauty industry publication",
+    "trustworthiness: consumer skincare reviews",
+    "trustworthiness: DIY / minimalist skincare blog",
+    "perspective: rosacea sufferer",
+    "perspective: sensitive-skin minimalist",
+    "perspective: mechanism / ingredient-focused user",
+    "perspective: aging skin with redness",
+    "perspective: budget-conscious consumer"
+  ],
+  "plausible_answers": [
+    "Murad Redness Therapy 3-part system",
+    "A caffeine-based anti-redness serum",
+    "Build-your-own minimalist routine"
+  ],
+  "baseline_answer": "Murad Redness Therapy 3-part system",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best skin care for redness",
+        "description": "Determining the optimal skincare solution for facial redness."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Comprehensive clinical regimen",
+        "description": "What is the best approach when prioritizing clinical evidence and treating rosacea as a complex condition?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Targeted ingredient solution",
+        "description": "What is the best approach when prioritizing specific active ingredients and consumer efficacy reports?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Minimalist DIY approach",
+        "description": "What is the best approach when prioritizing budget, simplicity, and self-curated routines?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: dermatology clinical practice",
+        "description": "Prioritize sources from clinical dermatology practices."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed cosmetic dermatology journal",
+        "description": "Prioritize sources from peer-reviewed journals."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: beauty industry publication",
+        "description": "Prioritize sources from beauty industry magazines."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: consumer skincare reviews",
+        "description": "Prioritize user reviews and testimonials."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: DIY / minimalist skincare blog",
+        "description": "Prioritize DIY and minimalist lifestyle blogs."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: rosacea sufferer",
+        "description": "Prioritize the viewpoint of someone actively suffering from rosacea."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: sensitive-skin minimalist",
+        "description": "Prioritize the viewpoint of someone seeking minimal product use."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: mechanism / ingredient-focused user",
+        "description": "Prioritize the viewpoint of someone focused on specific active ingredients."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: aging skin with redness",
+        "description": "Prioritize the viewpoint of someone with aging skin experiencing redness."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: budget-conscious consumer",
+        "description": "Prioritize the viewpoint of someone with budget constraints."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Murad Redness Therapy 3-part system",
+        "description": "A branded, three-step system designed for sensitive skin and redness."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "A caffeine-based anti-redness serum",
+        "description": "A single-product solution using caffeine to constrict blood vessels."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Build-your-own minimalist routine",
+        "description": "A custom routine assembled from simple, low-cost, or natural products."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

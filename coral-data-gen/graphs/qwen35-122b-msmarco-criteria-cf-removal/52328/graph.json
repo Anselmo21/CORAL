@@ -1,0 +1,313 @@
+{
+  "query_id": 52328,
+  "query": "best way to lose weight for a child",
+  "mode": "criteria",
+  "atoms": [
+    "age-appropriate methods",
+    "family involvement",
+    "dietary balance",
+    "physical activity level",
+    "goal setting",
+    "professional guidance",
+    "long-term sustainability",
+    "emotional support",
+    "health monitoring",
+    "cultural considerations"
+  ],
+  "plausible_answers": [
+    "Whole-family lifestyle change with the choosemyplate.gov plate method (half fruits/veggies, quarter lean protein, quarter whole grains) plus aerobic exercise",
+    "Pediatrician-led monitoring with attainable goals (1-4 lb/month), a food diary, and biweekly weight checks",
+    "A formal multi-disciplinary weight loss program for children whose home efforts fail"
+  ],
+  "baseline_answer": "Whole-family lifestyle change with the choosemyplate.gov plate method (half fruits/veggies, quarter lean protein, quarter whole grains) plus aerobic exercise",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best way to lose weight for a child",
+        "description": "The main question asking for the optimal weight loss strategy for children."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Methodology & Diet Structure",
+        "description": "How should the diet and daily habits be structured for the child?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Medical & Goal Management",
+        "description": "How should progress be tracked, goals set, and medical oversight provided?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Context & Scope of Intervention",
+        "description": "What is the scope of the intervention and who must be involved?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "age-appropriate methods",
+        "description": "Methods must suit the child's developmental stage and metabolism."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "family involvement",
+        "description": "The entire family must participate in lifestyle changes, not just the child."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "dietary balance",
+        "description": "Focus on a well-balanced, proportioned diet rather than strict restriction."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "physical activity level",
+        "description": "Incorporation of aerobic activity and exercise."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "goal setting",
+        "description": "Setting small, attainable weight loss goals to avoid discouragement."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "professional guidance",
+        "description": "Involvement of registered dietitians, doctors, or psychologists."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "long-term sustainability",
+        "description": "Creating lifetime modifications rather than temporary fixes."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "emotional support",
+        "description": "Preventing discouragement and managing the emotional impact of weight loss."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "health monitoring",
+        "description": "Regular weight checks and blood tests to ensure safety."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "cultural considerations",
+        "description": "Adapting diet and habits to fit the family's cultural background."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Whole-family lifestyle change with the choosemyplate.gov plate method (half fruits/veggies, quarter lean protein, quarter whole grains) plus aerobic exercise",
+        "description": "A holistic home-based approach focusing on diet balance and family habits."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Pediatrician-led monitoring with attainable goals (1-4 lb/month), a food diary, and biweekly weight checks",
+        "description": "A medical monitoring approach focusing on specific metrics and tracking."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "A formal multi-disciplinary weight loss program for children whose home efforts fail",
+        "description": "A clinical program for severe cases where home interventions are unsuccessful."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

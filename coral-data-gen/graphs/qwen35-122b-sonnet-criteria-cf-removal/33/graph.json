@@ -1,0 +1,297 @@
+{
+  "query_id": 33,
+  "query": "Is it smarter to start at a community college and transfer, or go straight to a 4-year university?",
+  "mode": "criteria",
+  "atoms": [
+    "total cost and debt reduction",
+    "probability of successfully completing transfer",
+    "target institution accessibility via transfer",
+    "career earnings impact of institution selectivity",
+    "credit articulation and loss risk",
+    "time to degree completion",
+    "social and campus experience value",
+    "availability of formal articulation agreements",
+    "financial aid and scholarship availability",
+    "academic readiness for 4-year coursework"
+  ],
+  "plausible_answers": [
+    "Answer A (Community College Default): Start at community college if you're paying out-of-pocket \u2014 2 years of CC followed by transfer saves $40\u201380k in tuition with comparable graduation outcomes when transfer is executed with formal articulation agreements.",
+    "Answer B (4-Year University for Selectivity): Go straight to the best 4-year university you can access \u2014 the career earnings premium and networking benefits of attending a selective institution are not achievable through transfer, as top schools rarely admit transfer students.",
+    "Answer C (CC with Articulation Agreement): Community college is the right choice only if a formal transfer articulation agreement exists with your target school \u2014 structured TAG programs produce transfer outcomes comparable to direct entry, while unstructured transfers carry significant credit loss risk."
+  ],
+  "baseline_answer": "Answer C (CC with Articulation Agreement): Community college is the right choice only if a formal transfer articulation agreement exists with your target school \u2014 structured TAG programs produce transfer outcomes comparable to direct entry, while unstructured transfers carry significant credit loss risk.",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Is it smarter to start at a community college and transfer, or go straight to a 4-year university?",
+        "description": "Core question regarding the optimal educational pathway."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Financial and Structural Viability",
+        "description": "Evaluates cost, debt, credit mechanics, and formal agreements."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Academic and Social Success",
+        "description": "Evaluates completion probability, readiness, and campus experience."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Long-term Career and Access",
+        "description": "Evaluates earnings, selectivity, and access to top institutions."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "total cost and debt reduction",
+        "description": "Financial savings from lower tuition."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "probability of successfully completing transfer",
+        "description": "Likelihood of finishing the degree after transfer."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "target institution accessibility via transfer",
+        "description": "Ability to reach specific top-tier schools via transfer."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "career earnings impact of institution selectivity",
+        "description": "Earnings premium from attending a selective school."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "credit articulation and loss risk",
+        "description": "Risk of losing credits during the transfer process."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "time to degree completion",
+        "description": "Duration required to earn the bachelor's degree."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "social and campus experience value",
+        "description": "Quality of the college social environment."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "availability of formal articulation agreements",
+        "description": "Existence of structured transfer pathways like TAG."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "financial aid and scholarship availability",
+        "description": "Access to funding at the starting institution."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "academic readiness for 4-year coursework",
+        "description": "Preparation level for upper-division classes."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Community College Default)",
+        "description": "Start at community college if you're paying out-of-pocket \u2014 2 years of CC followed by transfer saves $40\u201380k in tuition with comparable graduation outcomes when transfer is executed with formal articulation agreements."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (4-Year University for Selectivity)",
+        "description": "Go straight to the best 4-year university you can access \u2014 the career earnings premium and networking benefits of attending a selective institution are not achievable through transfer, as top schools rarely admit transfer students."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (CC with Articulation Agreement)",
+        "description": "Community college is the right choice only if a formal transfer articulation agreement exists with your target school \u2014 structured TAG programs produce transfer outcomes comparable to direct entry, while unstructured transfers carry significant credit loss risk."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

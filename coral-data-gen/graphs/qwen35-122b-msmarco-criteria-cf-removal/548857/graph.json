@@ -1,0 +1,305 @@
+{
+  "query_id": 548857,
+  "query": "what  is  the best  pain  medication  for horses",
+  "mode": "criteria",
+  "atoms": [
+    "medication type",
+    "administration method",
+    "duration of treatment",
+    "condition treated",
+    "side effects",
+    "prescription status",
+    "effectiveness",
+    "cost",
+    "availability",
+    "veterinary recommendation"
+  ],
+  "plausible_answers": [
+    "Phenylbutazone (Bute)",
+    "Multi-drug regimen (NSAID + DMSO topical, or NSAID + opioid)",
+    "Targeted route \u2014 epidural injection for severe hind-end lameness, or transdermal patch"
+  ],
+  "baseline_answer": "Phenylbutazone (Bute)",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "what is the best pain medication for horses",
+        "description": "The primary inquiry regarding optimal equine pain management."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Standard Care & Accessibility",
+        "description": "Evaluates general utility, cost, and availability for common conditions."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Efficacy in Severe Cases",
+        "description": "Evaluates effectiveness and safety for complex or ICU-level pain."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Specialized Interventions",
+        "description": "Evaluates targeted routes for specific anatomical failures."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "medication type",
+        "description": "The classification of the drug (NSAID, opioid, etc.)."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "administration method",
+        "description": "How the drug is delivered (oral, IV, topical, etc.)."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "duration of treatment",
+        "description": "How long the treatment lasts or is intended to last."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "condition treated",
+        "description": "The specific pathology the medication addresses."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "side effects",
+        "description": "Adverse reactions associated with the medication."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "prescription status",
+        "description": "Whether a vet prescription is required."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "effectiveness",
+        "description": "The degree of pain relief achieved."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost",
+        "description": "The financial expense of the treatment."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "availability",
+        "description": "How easily the medication can be obtained."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "veterinary recommendation",
+        "description": "The standard advice given by veterinarians."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Phenylbutazone (Bute)",
+        "description": "The standard NSAID for general bone, joint, and muscle injuries."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Multi-drug regimen (NSAID + DMSO topical, or NSAID + opioid)",
+        "description": "Combination therapy for severe or non-responsive pain."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Targeted route \u2014 epidural injection for severe hind-end lameness, or transdermal patch",
+        "description": "Specialized delivery for specific severe hind-end or localized pain."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

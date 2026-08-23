@@ -1,0 +1,253 @@
+{
+  "query_id": 0,
+  "query": "I'm 30 years old and just started investing. Should I put my money in index funds or actively managed funds?",
+  "mode": "criteria",
+  "atoms": [
+    "low expense ratios",
+    "long-term compounding",
+    "historical outperformance evidence",
+    "simplicity of management",
+    "tax efficiency",
+    "diversification breadth",
+    "downside protection in bear markets",
+    "active manager skill in niche markets",
+    "short-term return maximization",
+    "tolerance for manager underperformance risk"
+  ],
+  "plausible_answers": [
+    "Answer A (Index-Fund Default): Put your money in a low-cost total market index fund \u2014 after fees, passive investing beats active management for the vast majority of retail investors over a 30-year horizon.",
+    "Answer B (Active for Niche Allocation): Allocate 80% to index funds but dedicate 20% to actively managed small-cap or emerging market funds where active managers have a demonstrated edge.",
+    "Answer C (Active Bear-Market Shield): Choose a tactical active fund with a strong bear-market track record if capital preservation during downturns is your primary concern, accepting lower long-term average returns."
+  ],
+  "baseline_answer": "Answer A (Index-Fund Default): Put your money in a low-cost total market index fund \u2014 after fees, passive investing beats active management for the vast majority of retail investors over a 30-year horizon.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 2,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Should I put my money in index funds or actively managed funds?",
+        "description": "Investment choice for a 30-year-old beginner."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Long-Term Growth & Cost Efficiency",
+        "description": "Evaluating fees, compounding, and historical returns over decades."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Management Style & Complexity",
+        "description": "Evaluating simplicity, diversification breadth, and niche skills."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Risk & Protection",
+        "description": "Evaluating downside protection and tolerance for underperformance."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "low expense ratios",
+        "description": "Lower fees lead to higher net returns."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "long-term compounding",
+        "description": "Growth over 30 years magnifies fee differences."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "historical outperformance evidence",
+        "description": "Data showing passive beats active over time."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "simplicity of management",
+        "description": "Ease of maintaining a passive portfolio."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "tax efficiency",
+        "description": "Lower turnover reduces tax drag."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "diversification breadth",
+        "description": "Access to a wide range of assets."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "downside protection in bear markets",
+        "description": "Ability to reduce losses during market crashes."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "active manager skill in niche markets",
+        "description": "Edge in small-cap or emerging markets."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "short-term return maximization",
+        "description": "Focus on immediate gains rather than long-term stability."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "tolerance for manager underperformance risk",
+        "description": "Willingness to accept active manager failure."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Index-Fund Default)",
+        "description": "Put your money in a low-cost total market index fund \u2014 after fees, passive investing beats active management for the vast majority of retail investors over a 30-year horizon."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Active for Niche Allocation)",
+        "description": "Allocate 80% to index funds but dedicate 20% to actively managed small-cap or emerging market funds where active managers have a demonstrated edge."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Active Bear-Market Shield)",
+        "description": "Choose a tactical active fund with a strong bear-market track record if capital preservation during downturns is your primary concern, accepting lower long-term average returns."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      }
+    ]
+  }
+}

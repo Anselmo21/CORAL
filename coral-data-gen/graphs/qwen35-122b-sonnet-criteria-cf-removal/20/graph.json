@@ -1,0 +1,301 @@
+{
+  "query_id": 20,
+  "query": "Is intermittent fasting actually effective for weight loss, or is it just another fad diet?",
+  "mode": "criteria",
+  "atoms": [
+    "total calorie reduction effectiveness",
+    "long-term adherence and sustainability",
+    "metabolic benefits beyond calorie restriction",
+    "muscle mass preservation",
+    "simplicity vs calorie counting",
+    "insulin sensitivity improvement",
+    "suitability for social eating patterns",
+    "evidence from long-term randomized trials",
+    "applicability across different age groups",
+    "interaction with exercise performance"
+  ],
+  "plausible_answers": [
+    "Answer A (Effective Tool Default): Intermittent fasting is an effective weight loss approach for many people \u2014 not because of metabolic magic, but because restricting eating windows is a sustainable way to reduce total calorie intake.",
+    "Answer B (No Better Than Calorie Restriction): Intermittent fasting is not superior to regular calorie restriction for weight loss \u2014 choose whichever dietary pattern you can sustain long-term, as adherence is the only meaningful predictor of outcome.",
+    "Answer C (Metabolic Benefits Beyond Weight): IF may offer metabolic benefits including improved insulin sensitivity and circadian alignment beyond simple calorie reduction \u2014 worth trying if you respond well to structure and want broader metabolic health benefits."
+  ],
+  "baseline_answer": "Answer A (Effective Tool Default): Intermittent fasting is an effective weight loss approach for many people \u2014 not because of metabolic magic, but because restricting eating windows is a sustainable way to reduce total calorie intake.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Is intermittent fasting actually effective for weight loss, or is it just another fad diet?",
+        "description": "Main question regarding the efficacy and nature of intermittent fasting."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Mechanism and Efficacy Evidence",
+        "description": "Evaluates the physiological mechanisms and trial data regarding weight loss."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Adherence and Lifestyle Fit",
+        "description": "Evaluates how easy the diet is to maintain and fit into daily life."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Specific Metabolic Advantages",
+        "description": "Evaluates potential health benefits beyond simple weight reduction."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "total calorie reduction effectiveness",
+        "description": "The degree to which IF reduces total calorie intake."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "long-term adherence and sustainability",
+        "description": "The ability of users to stick to the diet over extended periods."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "metabolic benefits beyond calorie restriction",
+        "description": "Health improvements not solely explained by calorie deficit."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "muscle mass preservation",
+        "description": "The impact of IF on maintaining lean muscle during weight loss."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "simplicity vs calorie counting",
+        "description": "The ease of following IF compared to tracking calories."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "insulin sensitivity improvement",
+        "description": "The effect of IF on insulin response and sensitivity."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "suitability for social eating patterns",
+        "description": "How well IF fits with social dining and events."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "evidence from long-term randomized trials",
+        "description": "Data from rigorous long-term studies comparing IF to other diets."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "applicability across different age groups",
+        "description": "Whether IF is safe and effective for various ages."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "interaction with exercise performance",
+        "description": "How IF affects physical performance and training."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Effective Tool Default)",
+        "description": "IF is effective primarily due to sustainable calorie reduction."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (No Better Than Calorie Restriction)",
+        "description": "IF is not superior; adherence is the only predictor."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Metabolic Benefits Beyond Weight)",
+        "description": "IF offers metabolic benefits beyond simple calorie reduction."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

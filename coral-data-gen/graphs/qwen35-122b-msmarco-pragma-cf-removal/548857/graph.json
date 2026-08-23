@@ -1,0 +1,317 @@
+{
+  "query_id": 548857,
+  "query": "what  is  the best  pain  medication  for horses",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: AAEP (American Association of Equine Practitioners) guidance",
+    "trustworthiness: peer-reviewed veterinary anesthesia journal",
+    "trustworthiness: equine veterinary clinical practice",
+    "trustworthiness: trainer / owner online forum",
+    "trustworthiness: horse industry magazine",
+    "perspective: working / performance horse owner",
+    "perspective: severe acute lameness case",
+    "perspective: retired pleasure horse",
+    "perspective: surgical recovery horse",
+    "perspective: pregnant / breeding mare"
+  ],
+  "plausible_answers": [
+    "Phenylbutazone (Bute)",
+    "Multi-drug regimen (NSAID + DMSO topical, or NSAID + opioid)",
+    "Targeted route \u2014 epidural injection for severe hind-end lameness, or transdermal patch"
+  ],
+  "baseline_answer": "Phenylbutazone (Bute)",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "what is the best pain medication for horses",
+        "description": "Identifying the optimal analgesic strategy for equine patients."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "General Long-Term Management",
+        "description": "What is the standard of care for typical musculoskeletal pain in horses?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Severe or Complex Pain",
+        "description": "How should pain be managed when single-drug therapy is insufficient or for acute severe cases?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Specialized Surgical or Anatomical Interventions",
+        "description": "What are the best options for specific conditions like severe hind-end lameness or post-surgical recovery?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: AAEP (American Association of Equine Practitioners) guidance",
+        "description": "Prioritizes official association guidelines which favor standard NSAID protocols."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed veterinary anesthesia journal",
+        "description": "Prioritizes academic research which often emphasizes efficacy of standard drugs but also complex regimens."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: equine veterinary clinical practice",
+        "description": "Prioritizes real-world clinical norms where Phenylbutazone is the default."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: trainer / owner online forum",
+        "description": "Prioritizes anecdotal owner experiences which may vary widely."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: horse industry magazine",
+        "description": "Prioritizes industry publications covering a broad range of treatments."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: working / performance horse owner",
+        "description": "Focuses on maintaining performance, often favoring standard systemic drugs."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: severe acute lameness case",
+        "description": "Focuses on extreme pain scenarios requiring aggressive or specific interventions."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: retired pleasure horse",
+        "description": "Focuses on comfort in non-working horses, often favoring simpler regimens."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: surgical recovery horse",
+        "description": "Focuses on post-operative pain, often requiring specific routes like epidurals."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: pregnant / breeding mare",
+        "description": "Focuses on safety for breeding stock, influencing drug choice."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Phenylbutazone (Bute)",
+        "description": "The standard, widely prescribed NSAID for general musculoskeletal pain."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Multi-drug regimen (NSAID + DMSO topical, or NSAID + opioid)",
+        "description": "Combination therapy for pain unresponsive to single agents."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Targeted route \u2014 epidural injection for severe hind-end lameness, or transdermal patch",
+        "description": "Specific administration routes for severe or localized conditions."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

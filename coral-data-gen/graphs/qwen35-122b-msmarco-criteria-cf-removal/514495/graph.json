@@ -1,0 +1,273 @@
+{
+  "query_id": 514495,
+  "query": "the best way to get rid of squarrels",
+  "mode": "criteria",
+  "atoms": [
+    "method of removal",
+    "location of squirrels",
+    "type of bait",
+    "seasonal timing",
+    "squirrel age",
+    "safety of method",
+    "effectiveness of traps",
+    "environmental impact",
+    "cost of solution",
+    "ease of implementation"
+  ],
+  "plausible_answers": [
+    "Exclusion: seal entry points around the house / attic",
+    "Live or kill trapping with corn / peanut butter bait, timed for just after hibernation",
+    "Repellents: mothballs, homemade water-based spray, or the Squirrel Evictor product"
+  ],
+  "baseline_answer": "Exclusion: seal entry points around the house / attic",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "the best way to get rid of squarrels",
+        "description": "Main inquiry regarding squirrel removal methods."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Method and Location Strategy",
+        "description": "Evaluates the core approach and where it applies."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Execution and Timing Details",
+        "description": "Evaluates the specific steps, bait, and timing required."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Impact and Feasibility",
+        "description": "Evaluates safety, cost, and environmental consequences."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "method of removal",
+        "description": "The specific technique used to eliminate or deter squirrels."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "location of squirrels",
+        "description": "Whether squirrels are in the attic, yard, or garden."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "type of bait",
+        "description": "The food used to attract squirrels into traps."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "seasonal timing",
+        "description": "The time of year the method is applied (e.g., post-hibernation)."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "squirrel age",
+        "description": "Considerations for baby squirrels vs. adults."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "safety of method",
+        "description": "Risk to humans, pets, and non-target animals."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "effectiveness of traps",
+        "description": "How reliably the method removes the squirrels."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "environmental impact",
+        "description": "Toxicity and ecological footprint of the solution."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost of solution",
+        "description": "Financial expense of the removal method."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "ease of implementation",
+        "description": "How difficult the method is to set up and execute."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Exclusion: seal entry points around the house / attic",
+        "description": "Permanent prevention by blocking access."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Live or kill trapping with corn / peanut butter bait, timed for just after hibernation",
+        "description": "Active capture using specific bait and timing."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Repellents: mothballs, homemade water-based spray, or the Squirrel Evictor product",
+        "description": "Deterrence using smell or mechanical devices."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

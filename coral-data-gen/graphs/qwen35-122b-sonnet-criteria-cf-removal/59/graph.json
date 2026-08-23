@@ -1,0 +1,321 @@
+{
+  "query_id": 59,
+  "query": "I want to track my workouts and health metrics. What's the best smartwatch for fitness tracking?",
+  "mode": "criteria",
+  "atoms": [
+    "heart rate and health sensor accuracy",
+    "GPS accuracy for outdoor workouts",
+    "battery life between charges",
+    "smartphone ecosystem compatibility",
+    "sleep tracking quality",
+    "sport-specific training metrics",
+    "ECG and medical-grade health features",
+    "price and value",
+    "app ecosystem and third-party integration",
+    "durability for outdoor and multi-sport use"
+  ],
+  "plausible_answers": [
+    "Answer A (Apple Watch Default): Get the Apple Watch Series 9 if you're on iPhone \u2014 the best health sensor accuracy, ECG, and tightest app ecosystem make it the default choice for general health and fitness tracking.",
+    "Answer B (Garmin for Serious Athletes): Choose a Garmin Forerunner or Fenix if you're a serious runner, cyclist, or triathlete \u2014 multi-band GPS, 2-week battery, and advanced training metrics are unmatched by Apple or Samsung for performance sports.",
+    "Answer C (Fitbit for Sleep and Wellness): Get a Fitbit if your priority is long-term health trend monitoring and sleep quality \u2014 its sleep tracking and wellness insights are more detailed than Apple Watch at a lower price point, ideal for general health over athletic performance."
+  ],
+  "baseline_answer": "Answer A (Apple Watch Default): Get the Apple Watch Series 9 if you're on iPhone \u2014 the best health sensor accuracy, ECG, and tightest app ecosystem make it the default choice for general health and fitness tracking.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What's the best smartwatch for fitness tracking?",
+        "description": "User wants to track workouts and health metrics."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "General Health & Ecosystem",
+        "description": "Criteria regarding daily health, sensors, and phone integration."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Athletic Performance & Endurance",
+        "description": "Criteria regarding GPS, battery, and advanced training data."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Wellness, Sleep & Value",
+        "description": "Criteria regarding sleep, price, and long-term trends."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "heart rate and health sensor accuracy",
+        "description": "Accuracy of biometric sensors."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "GPS accuracy for outdoor workouts",
+        "description": "Precision of location tracking."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "battery life between charges",
+        "description": "Duration of use on a single charge."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "smartphone ecosystem compatibility",
+        "description": "Integration with iOS or Android."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "sleep tracking quality",
+        "description": "Depth and accuracy of sleep analysis."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "sport-specific training metrics",
+        "description": "Advanced data for specific sports."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "ECG and medical-grade health features",
+        "description": "FDA-cleared health features like ECG."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "price and value",
+        "description": "Cost relative to features offered."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "app ecosystem and third-party integration",
+        "description": "Availability of apps and services."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "durability for outdoor and multi-sport use",
+        "description": "Build quality for harsh conditions."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Apple Watch Default)",
+        "description": "Get the Apple Watch Series 9 if you're on iPhone \u2014 the best health sensor accuracy, ECG, and tightest app ecosystem make it the default choice for general health and fitness tracking."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Garmin for Serious Athletes)",
+        "description": "Choose a Garmin Forerunner or Fenix if you're a serious runner, cyclist, or triathlete \u2014 multi-band GPS, 2-week battery, and advanced training metrics are unmatched by Apple or Samsung for performance sports."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Fitbit for Sleep and Wellness)",
+        "description": "Get a Fitbit if your priority is long-term health trend monitoring and sleep quality \u2014 its sleep tracking and wellness insights are more detailed than Apple Watch at a lower price point, ideal for general health over athletic performance."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

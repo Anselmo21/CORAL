@@ -1,0 +1,293 @@
+{
+  "query_id": 18,
+  "query": "I've had chronic lower back pain for over a year. What's the best approach to finally get relief?",
+  "mode": "criteria",
+  "atoms": [
+    "long-term pain reduction evidence",
+    "speed of symptom relief",
+    "addressing central sensitization",
+    "avoidance of unnecessary procedures",
+    "functional restoration and strength",
+    "presence of clear structural pathology",
+    "prior treatment failure history",
+    "patient engagement with active treatment",
+    "cost and access to multidisciplinary care",
+    "risk of opioid or passive treatment dependency"
+  ],
+  "plausible_answers": [
+    "Answer A (Active Multimodal Default): Pursue a combination of supervised strength training, pain neuroscience education, and CBT \u2014 this multimodal active approach has the strongest long-term evidence for non-specific chronic back pain.",
+    "Answer B (Structural Investigation First): Get updated imaging and a specialist referral before committing to conservative management \u2014 if a structural cause (herniated disc, stenosis) is confirmed, targeted interventions or surgery may be warranted.",
+    "Answer C (Mind-Body Focus): Prioritize CBT and pain neuroscience education alongside gentle movement \u2014 for chronic pain with central sensitization features, addressing psychological factors often produces more relief than physical interventions alone."
+  ],
+  "baseline_answer": "Answer A (Active Multimodal Default): Pursue a combination of supervised strength training, pain neuroscience education, and CBT \u2014 this multimodal active approach has the strongest long-term evidence for non-specific chronic back pain.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Best approach for chronic lower back pain?",
+        "description": "User seeks relief for chronic lower back pain >1 year."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Efficacy and Mechanism",
+        "description": "Which approach best reduces pain and restores function?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Safety and Prerequisites",
+        "description": "Which approach avoids harm and correctly identifies pathology?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Feasibility and Context",
+        "description": "Which approach fits patient history and engagement capabilities?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "long-term pain reduction evidence",
+        "description": "Evidence supporting sustained relief over time."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "speed of symptom relief",
+        "description": "How quickly symptoms are alleviated."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "addressing central sensitization",
+        "description": "Treating the nervous system's heightened pain response."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "avoidance of unnecessary procedures",
+        "description": "Minimizing invasive or low-yield interventions."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "functional restoration and strength",
+        "description": "Improving physical capacity and muscle strength."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "presence of clear structural pathology",
+        "description": "Confirming specific anatomical causes like herniation."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "prior treatment failure history",
+        "description": "History of what has or hasn't worked previously."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "patient engagement with active treatment",
+        "description": "Patient's ability and willingness to perform active exercises."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost and access to multidisciplinary care",
+        "description": "Financial and logistical barriers to comprehensive care."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "risk of opioid or passive treatment dependency",
+        "description": "Avoiding reliance on medications or passive therapies."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Active Multimodal Default)",
+        "description": "Supervised strength training, pain neuroscience education, and CBT."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Structural Investigation First)",
+        "description": "Updated imaging and specialist referral before conservative management."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Mind-Body Focus)",
+        "description": "CBT, pain neuroscience education, and gentle movement."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

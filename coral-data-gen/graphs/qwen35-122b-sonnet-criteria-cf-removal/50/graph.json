@@ -1,0 +1,289 @@
+{
+  "query_id": 50,
+  "query": "I have a small kitchen. Should I get an air fryer or a countertop convection oven?",
+  "mode": "criteria",
+  "atoms": [
+    "countertop footprint size",
+    "versatility for multiple cooking tasks",
+    "peak air frying performance",
+    "baking and roasting capability",
+    "energy efficiency for daily use",
+    "speed of cooking small batches",
+    "ability to replace full-size oven",
+    "price and value",
+    "household size and cooking volume",
+    "ease of cleaning"
+  ],
+  "plausible_answers": [
+    "Answer A (Combo Convection Oven Default): Get a compact countertop convection oven with air fry mode \u2014 it replaces your toaster, air fryer, and secondary oven in one footprint, which is the right trade-off for small kitchens even if peak air frying performance is slightly lower.",
+    "Answer B (Dedicated Air Fryer for Best Results): Buy a dedicated air fryer if air frying is your primary use case \u2014 the higher fan speed and dedicated chamber produce noticeably crispier results than combo units for wings, fries, and vegetables.",
+    "Answer C (Air Fryer for Efficiency): Choose a dedicated air fryer for energy efficiency and speed \u2014 for single-person or couple households cooking small batches daily, the faster heat-up time and lower energy use make it the more practical everyday appliance."
+  ],
+  "baseline_answer": "Answer A (Combo Convection Oven Default): Get a compact countertop convection oven with air fry mode \u2014 it replaces your toaster, air fryer, and secondary oven in one footprint, which is the right trade-off for small kitchens even if peak air frying performance is slightly lower.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "I have a small kitchen. Should I get an air fryer or a countertop convection oven?",
+        "description": "Main question regarding appliance choice for small kitchens."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Space and Versatility",
+        "description": "Questions regarding footprint, multi-tasking, and appliance replacement."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Performance and Speed",
+        "description": "Questions regarding cooking quality, speed, and cleaning."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Efficiency and Cost",
+        "description": "Questions regarding energy use, price, and household volume."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "countertop footprint size",
+        "description": "Physical space required by the appliance."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "versatility for multiple cooking tasks",
+        "description": "Ability to perform various cooking functions."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "peak air frying performance",
+        "description": "Maximum crispiness and quality of air-fried food."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "baking and roasting capability",
+        "description": "Quality of baking and roasting results."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "energy efficiency for daily use",
+        "description": "Power consumption for small cooking tasks."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "speed of cooking small batches",
+        "description": "Time required to cook small portions."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "ability to replace full-size oven",
+        "description": "Capacity to substitute for a standard oven."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "price and value",
+        "description": "Cost effectiveness of the appliance."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "household size and cooking volume",
+        "description": "Suitability for the number of people and amount of food."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "ease of cleaning",
+        "description": "Simplicity of maintaining the appliance."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Combo Convection Oven Default)",
+        "description": "Get a compact countertop convection oven with air fry mode."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Dedicated Air Fryer for Best Results)",
+        "description": "Buy a dedicated air fryer if air frying is your primary use case."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Air Fryer for Efficiency)",
+        "description": "Choose a dedicated air fryer for energy efficiency and speed."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

@@ -1,0 +1,265 @@
+{
+  "query_id": 52329,
+  "query": "best way to lower prolactin levels",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: endocrinology clinical guideline",
+    "trustworthiness: peer-reviewed endocrinology journal",
+    "trustworthiness: Pituitary Society treatment guidance",
+    "trustworthiness: integrative medicine source",
+    "trustworthiness: patient health forum",
+    "perspective: confirmed prolactinoma patient",
+    "perspective: drug-induced hyperprolactinemia case",
+    "perspective: hypothyroid co-morbid patient",
+    "perspective: fertility-trying woman",
+    "perspective: stress-driven mildly elevated patient"
+  ],
+  "plausible_answers": [
+    "Dopamine-agonist medication (bromocriptine or cabergoline)",
+    "Identify and address the underlying cause",
+    "Stress reduction + lifestyle"
+  ],
+  "baseline_answer": "Dopamine-agonist medication (bromocriptine or cabergoline)",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 3,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best way to lower prolactin levels",
+        "description": "Primary question regarding optimal treatment for hyperprolactinemia."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Standard medical treatment for confirmed cases",
+        "description": "Focuses on pharmacological intervention for prolactinomas."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Management of cause-specific hyperprolactinemia",
+        "description": "Focuses on resolving external causes like drugs or hypothyroidism."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Lifestyle and stress-driven management",
+        "description": "Focuses on non-pharmacological approaches for stress-induced elevation."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: endocrinology clinical guideline",
+        "description": "Prioritizes official clinical guidelines."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed endocrinology journal",
+        "description": "Prioritizes peer-reviewed journal articles."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Pituitary Society treatment guidance",
+        "description": "Prioritizes Pituitary Society specific guidance."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: integrative medicine source",
+        "description": "Prioritizes integrative medicine perspectives."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: patient health forum",
+        "description": "Prioritizes patient forum discussions."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: confirmed prolactinoma patient",
+        "description": "Prioritizes the view of a patient with a confirmed tumor."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: drug-induced hyperprolactinemia case",
+        "description": "Prioritizes the view of a patient with drug-induced elevation."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: hypothyroid co-morbid patient",
+        "description": "Prioritizes the view of a patient with hypothyroidism."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: fertility-trying woman",
+        "description": "Prioritizes the view of a woman trying to conceive."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: stress-driven mildly elevated patient",
+        "description": "Prioritizes the view of a patient with stress-driven elevation."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Dopamine-agonist medication (bromocriptine or cabergoline)",
+        "description": "Pharmacological treatment using dopamine agonists."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Identify and address the underlying cause",
+        "description": "Resolving the root cause such as stopping a drug or treating hypothyroidism."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Stress reduction + lifestyle",
+        "description": "Non-pharmacological management through stress reduction and lifestyle changes."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

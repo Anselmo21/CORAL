@@ -1,0 +1,293 @@
+{
+  "query_id": 51816,
+  "query": "best house plant to clean air",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: NASA Clean Air Study",
+    "trustworthiness: horticultural extension publication",
+    "trustworthiness: environmental health journal",
+    "trustworthiness: gardening blog",
+    "trustworthiness: home improvement publication",
+    "perspective: beginner houseplant owner",
+    "perspective: VOC-anxious / chemical-sensitive renter",
+    "perspective: large open-floorplan homeowner",
+    "perspective: aesthetic-first plant enthusiast",
+    "perspective: low-maintenance owner"
+  ],
+  "plausible_answers": [
+    "Spider plant (Chlorophytum comosum) \u2014 easy to grow, NASA-listed, filters benzene/formaldehyde/CO/xylene; best single-plant pick",
+    "Match a NASA Clean Air Study plant to your dominant VOC (e.g., formaldehyde-targeted vs benzene-targeted choice)",
+    "A multiple-plant strategy: one 10-12 inch potted plant per 100 sq ft of living space, per NASA/Wolverton guidance"
+  ],
+  "baseline_answer": "A multiple-plant strategy: one 10-12 inch potted plant per 100 sq ft of living space, per NASA/Wolverton guidance",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 2,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best house plant to clean air",
+        "description": "The main question to be answered."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Scientific Authority & Strategy",
+        "description": "Determines if the answer relies on NASA/Extension data and a specific strategy."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "User Constraints & Ease",
+        "description": "Determines if the answer prioritizes beginner-friendliness, low maintenance, or scale."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Environmental Context & Aesthetics",
+        "description": "Determines if the answer accounts for specific VOC sources, renter needs, or aesthetics."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: NASA Clean Air Study",
+        "description": "Prioritizes NASA data which supports density strategies."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: horticultural extension publication",
+        "description": "Prioritizes extension data for general plant care."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: environmental health journal",
+        "description": "Prioritizes health journals emphasizing VOC complexity."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: gardening blog",
+        "description": "Prioritizes popular gardening advice."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: home improvement publication",
+        "description": "Prioritizes sources linking renovation to air quality."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: beginner houseplant owner",
+        "description": "Prioritizes ease of care for new owners."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: VOC-anxious / chemical-sensitive renter",
+        "description": "Prioritizes safety for sensitive individuals."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: large open-floorplan homeowner",
+        "description": "Prioritizes solutions for large spaces."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: aesthetic-first plant enthusiast",
+        "description": "Prioritizes visual appeal over function."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: low-maintenance owner",
+        "description": "Prioritizes plants that require minimal care."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Spider plant (Chlorophytum comosum) \u2014 easy to grow, NASA-listed, filters benzene/formaldehyde/CO/xylene; best single-plant pick",
+        "description": "A specific plant recommendation."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Match a NASA Clean Air Study plant to your dominant VOC (e.g., formaldehyde-targeted vs benzene-targeted choice)",
+        "description": "A tailored chemical matching strategy."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "A multiple-plant strategy: one 10-12 inch potted plant per 100 sq ft of living space, per NASA/Wolverton guidance",
+        "description": "A density-based strategy (Baseline A*)."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

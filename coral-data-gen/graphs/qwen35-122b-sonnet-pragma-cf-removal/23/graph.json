@@ -1,0 +1,301 @@
+{
+  "query_id": 23,
+  "query": "I'm 28 years old. Is it worth getting the HPV vaccine if I've already been sexually active for years?",
+  "mode": "pragmas",
+  "atoms": [
+    "temporal: 2023 only",
+    "temporal: 2021\u20132023",
+    "geographic: USA",
+    "perspective: Individual with ongoing multiple new partners",
+    "perspective: Individual in long-term monogamous relationship",
+    "perspective: Gynecologist or preventive medicine physician",
+    "trustworthiness: Government public health guidance",
+    "trustworthiness: Peer-reviewed clinical research",
+    "trustworthiness: Consumer health information",
+    "trustworthiness: Patient community experience"
+  ],
+  "plausible_answers": [
+    "Answer A (Get Vaccinated Default): Get the HPV vaccine \u2014 even with prior sexual activity, you're unlikely to have encountered all 9 covered strains, and the vaccine provides meaningful protection against cervical, anal, and oropharyngeal cancers.",
+    "Answer B (Skip if Monogamous): Vaccination is unlikely to be cost-effective if you're in a long-term monogamous relationship \u2014 your risk of new HPV strain exposure is minimal and CDC guidance is to individualize the decision for adults over 26.",
+    "Answer C (Discuss with Physician): Make a shared decision with your doctor based on your specific sexual history and risk profile \u2014 the benefit is highly individual at age 28 and depends on factors your physician can assess."
+  ],
+  "baseline_answer": "Answer C (Discuss with Physician): Make a shared decision with your doctor based on your specific sexual history and risk profile \u2014 the benefit is highly individual at age 28 and depends on factors your physician can assess.",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "QUESTION",
+        "description": "I'm 28 years old. Is it worth getting the HPV vaccine if I've already been sexually active for years?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "SQ1: Risk Profile & Efficacy",
+        "description": "What is the biological efficacy and risk profile based on sexual history?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "SQ2: Guidance & Trust",
+        "description": "What do authoritative medical bodies and research say about the recommendation?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "SQ3: Context & Experience",
+        "description": "How do real-world factors like cost, time, and community experience influence the decision?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2023 only",
+        "description": "Prioritize sources from 2023 only."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2021\u20132023",
+        "description": "Prioritize sources from 2021 to 2023."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: USA",
+        "description": "Prioritize sources from the USA."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Individual with ongoing multiple new partners",
+        "description": "Filter for high-risk sexual behavior."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Individual in long-term monogamous relationship",
+        "description": "Filter for low-risk sexual behavior."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Gynecologist or preventive medicine physician",
+        "description": "Filter for professional medical advice."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Government public health guidance",
+        "description": "Prioritize CDC/government sources."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Peer-reviewed clinical research",
+        "description": "Prioritize clinical trials and journals."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Consumer health information",
+        "description": "Prioritize consumer-facing health sites."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Patient community experience",
+        "description": "Prioritize patient forums and anecdotal evidence."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Get Vaccinated Default)",
+        "description": "Get the HPV vaccine \u2014 even with prior sexual activity, you're unlikely to have encountered all 9 covered strains, and the vaccine provides meaningful protection against cervical, anal, and oropharyngeal cancers."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Skip if Monogamous)",
+        "description": "Vaccination is unlikely to be cost-effective if you're in a long-term monogamous relationship \u2014 your risk of new HPV strain exposure is minimal and CDC guidance is to individualize the decision for adults over 26."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Discuss with Physician)",
+        "description": "Make a shared decision with your doctor based on your specific sexual history and risk profile \u2014 the benefit is highly individual at age 28 and depends on factors your physician can assess."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      }
+    ]
+  }
+}

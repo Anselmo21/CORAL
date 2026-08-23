@@ -1,0 +1,313 @@
+{
+  "query_id": 58,
+  "query": "I need to back up my home files and photos. Should I use a NAS or just pay for cloud storage?",
+  "mode": "pragmas",
+  "atoms": [
+    "temporal: 2023 only",
+    "temporal: 2021\u20132023",
+    "geographic: USA",
+    "geographic: Global / Taiwan (NAS manufacturer)",
+    "perspective: Average home user minimizing complexity",
+    "perspective: Power user with large data volumes and technical comfort",
+    "trustworthiness: Consumer product recommendation publication",
+    "trustworthiness: Tech journalism",
+    "trustworthiness: Home lab and self-hosting community",
+    "trustworthiness: NAS manufacturer documentation"
+  ],
+  "plausible_answers": [
+    "Answer A (Cloud Storage Default): Use cloud storage (Backblaze, Google One, iCloud) \u2014 for most home users, the zero-maintenance automatic offsite protection at $3\u201312/month is vastly simpler than NAS ownership and protects against local disasters.",
+    "Answer B (NAS for Large Data): Buy a Synology NAS if you have 10TB+ of data \u2014 the one-time hardware cost beats cloud subscription costs over 5 years, and local speeds make backup and restore dramatically faster for large libraries.",
+    "Answer C (NAS Plus Cloud for 3-2-1): Combine a NAS for local backups with Backblaze B2 for offsite cloud replication \u2014 this implements the proper 3-2-1 backup strategy and is the only approach that protects against both local hardware failure and physical disaster."
+  ],
+  "baseline_answer": "Answer C (NAS Plus Cloud for 3-2-1): Combine a NAS for local backups with Backblaze B2 for offsite cloud replication \u2014 this implements the proper 3-2-1 backup strategy and is the only approach that protects against both local hardware failure and physical disaster.",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "I need to back up my home files and photos. Should I use a NAS or just pay for cloud storage?",
+        "description": "Core question regarding backup strategy choice."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best approach for an average home user prioritizing simplicity?",
+        "description": "Focuses on ease of use, cost, and recent consumer recommendations."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the optimal strategy for power users with large data volumes?",
+        "description": "Focuses on cost-efficiency over time, speed, and technical capacity."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "How can we ensure maximum data safety and redundancy?",
+        "description": "Focuses on the 3-2-1 rule, vendor risk, and community best practices."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2023 only",
+        "description": "Filters for the most recent advice (2023)."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2021\u20132023",
+        "description": "Filters for advice within the last 3 years."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: USA",
+        "description": "Filters for US-based sources."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: Global / Taiwan (NAS manufacturer)",
+        "description": "Filters for global or manufacturer-specific perspectives."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Average home user minimizing complexity",
+        "description": "Filters for simplicity-focused viewpoints."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Power user with large data volumes and technical comfort",
+        "description": "Filters for technical, high-volume viewpoints."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Consumer product recommendation publication",
+        "description": "Filters for consumer advocacy publications."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Tech journalism",
+        "description": "Filters for tech journalism outlets."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Home lab and self-hosting community",
+        "description": "Filters for community-driven, technical self-hosting advice."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: NAS manufacturer documentation",
+        "description": "Filters for official manufacturer documentation."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Cloud Storage Default)",
+        "description": "Use cloud storage (Backblaze, Google One, iCloud) \u2014 for most home users, the zero-maintenance automatic offsite protection at $3\u201312/month is vastly simpler than NAS ownership and protects against local disasters."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (NAS for Large Data)",
+        "description": "Buy a Synology NAS if you have 10TB+ of data \u2014 the one-time hardware cost beats cloud subscription costs over 5 years, and local speeds make backup and restore dramatically faster for large libraries."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (NAS Plus Cloud for 3-2-1)",
+        "description": "Combine a NAS for local backups with Backblaze B2 for offsite cloud replication \u2014 this implements the proper 3-2-1 backup strategy and is the only approach that protects against both local hardware failure and physical disaster."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      }
+    ]
+  }
+}

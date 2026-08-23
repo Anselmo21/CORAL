@@ -1,0 +1,300 @@
+{
+  "query_id": 35,
+  "query": "I'm interested in legal work but not sure I want to commit to law school. Should I become a paralegal instead?",
+  "mode": "criteria",
+  "atoms": [
+    "total cost of law school vs paralegal certification",
+    "earnings potential over 20-year career",
+    "certainty of interest in legal practice",
+    "target practice setting (BigLaw vs small firm)",
+    "time investment required",
+    "debt burden tolerance",
+    "job market growth for each path",
+    "career advancement ceiling",
+    "work-life balance comparison",
+    "ability to test legal work before committing"
+  ],
+  "plausible_answers": [
+    "Answer A (Paralegal First Default): Start as a paralegal \u2014 it lets you test whether you genuinely enjoy legal work before committing $150\u2013250k to law school, and paralegal careers are stable, growing, and financially reasonable for those not targeting BigLaw.",
+    "Answer B (Law School for Big Earnings): Go to a top-20 law school if your goal is BigLaw or federal clerkships \u2014 the $215k starting salary justifies the debt investment in a way that lower-ranked law school outcomes do not.",
+    "Answer C (Paralegal as Career, Not Stepping Stone): Build a paralegal career intentionally rather than as a stopgap \u2014 specialization in areas like IP, healthcare, or corporate law creates a fulfilling, debt-free career that compares favorably to most non-BigLaw attorney outcomes."
+  ],
+  "baseline_answer": "Answer A (Paralegal First Default): Start as a paralegal \u2014 it lets you test whether you genuinely enjoy legal work before committing $150\u2013250k to law school, and paralegal careers are stable, growing, and financially reasonable for those not targeting BigLaw.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 2,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Should I become a paralegal instead of law school?",
+        "description": "Decision between entering the legal field as a paralegal or committing to law school."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Financial & Time Investment",
+        "description": "Evaluates the cost, debt burden, and time required for each path."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Market & Earnings Trajectory",
+        "description": "Evaluates job growth, earnings potential, target settings, and career ceilings."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Personal Fit & Validation",
+        "description": "Evaluates certainty of interest and the ability to test the role before committing."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Lifestyle & Career Identity",
+        "description": "Evaluates work-life balance and the nature of the career identity."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "total cost of law school vs paralegal certification",
+        "description": "Comparison of $150-250k law school costs vs low-cost paralegal certificates."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "earnings potential over 20-year career",
+        "description": "Long-term income comparison between paralegals and lawyers."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "certainty of interest in legal practice",
+        "description": "Whether the user is sure about law or needs to explore."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "target practice setting (BigLaw vs small firm)",
+        "description": "Whether the goal is elite BigLaw or general legal work."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "time investment required",
+        "description": "3+ years for law school vs 1-2 years for paralegal certification."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "debt burden tolerance",
+        "description": "Ability to handle $150k+ debt vs debt-free entry."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "job market growth for each path",
+        "description": "14% growth for paralegals vs variable growth for lawyers."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "career advancement ceiling",
+        "description": "Potential for specialization and senior roles in each path."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "work-life balance comparison",
+        "description": "Relative balance between paralegal work and legal practice."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "ability to test legal work before committing",
+        "description": "Using paralegal work to verify interest before law school."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Paralegal First Default)",
+        "description": "Start as a paralegal to test interest and avoid debt; stable and reasonable for non-BigLaw goals."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Law School for Big Earnings)",
+        "description": "Go to a top-20 law school if the goal is BigLaw; high salary justifies debt."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Paralegal as Career, Not Stepping Stone)",
+        "description": "Build a specialized paralegal career intentionally; debt-free and fulfilling."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "sq4",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      }
+    ]
+  }
+}

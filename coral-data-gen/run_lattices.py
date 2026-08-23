@@ -117,6 +117,12 @@ def main() -> None:
     ap.add_argument("--batch-size", type=int, default=1)
     ap.add_argument("--tensor-parallel-size", type=int, default=1,
                     help="Number of GPUs to shard the vLLM model across (vllm provider only)")
+    ap.add_argument("--max-model-len", type=int, default=None,
+                    help="Cap tokens per request (prompt + output) for vLLM. vLLM reserves "
+                         "KV cache for one request at the model's full context, which large "
+                         "windows make unaffordable on smaller cards; 8192 covers these prompts.")
+    ap.add_argument("--gpu-memory-utilization", type=float, default=None,
+                    help="Fraction of GPU memory vLLM may reserve (vllm provider only)")
     ap.add_argument("--max-retries", type=int, default=3)
     ap.add_argument("--fill-missing", action="store_true",
                     help="Resume per-combo within each row (not just per-row)")
@@ -143,6 +149,8 @@ def main() -> None:
         provider=args.provider,
         model=args.model,
         tensor_parallel_size=args.tensor_parallel_size,
+        max_model_len=args.max_model_len,
+        gpu_memory_utilization=args.gpu_memory_utilization,
     )
 
     skipped = completed = failed = 0

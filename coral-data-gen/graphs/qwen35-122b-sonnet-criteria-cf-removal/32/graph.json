@@ -1,0 +1,281 @@
+{
+  "query_id": 32,
+  "query": "I'm a working adult with a full-time job. Should I do my university degree online or in person?",
+  "mode": "criteria",
+  "atoms": [
+    "ability to maintain full-time employment",
+    "networking and career relationship building",
+    "employer perception of online credential",
+    "completion rate and self-discipline required",
+    "cost differential between online and in-person",
+    "access to campus resources and professors",
+    "field of study networking intensity",
+    "geographic constraints on in-person attendance",
+    "family and personal schedule flexibility",
+    "hybrid option availability"
+  ],
+  "plausible_answers": [
+    "Answer A (Online Default): Choose an online degree from an accredited university \u2014 for a working adult, the ability to maintain your income and schedule while earning a credential that employers now largely treat equally outweighs the networking disadvantages.",
+    "Answer B (In-Person for Networking Fields): Attend in-person if you're in a field where professional networks directly drive career outcomes (consulting, finance, law) \u2014 the relationship-building advantages of physical presence are worth the scheduling sacrifice.",
+    "Answer C (Hybrid Program): Seek a hybrid or HyFlex program if available \u2014 attending key classes in person while completing most coursework online preserves your work schedule while capturing the high-value networking interactions that purely online programs miss."
+  ],
+  "baseline_answer": "Answer C (Hybrid Program): Seek a hybrid or HyFlex program if available \u2014 attending key classes in person while completing most coursework online preserves your work schedule while capturing the high-value networking interactions that purely online programs miss.",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 2,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "I'm a working adult with a full-time job. Should I do my university degree online or in person?",
+        "description": "Core decision question for a working adult."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Work and Life Integration",
+        "description": "Criteria related to maintaining employment, flexibility, and geography."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Career and Credential Value",
+        "description": "Criteria related to networking, employer perception, and field specifics."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Execution and Feasibility",
+        "description": "Criteria related to completion rates, discipline, and program availability."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "ability to maintain full-time employment",
+        "description": "Critical for working adults; favors flexible options."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "networking and career relationship building",
+        "description": "Stronger in physical presence; favors in-person/hybrid."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "employer perception of online credential",
+        "description": "Source 1 says equal; favors options with online components by removing stigma."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "completion rate and self-discipline required",
+        "description": "Online has lower rates; favors in-person/hybrid."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost differential between online and in-person",
+        "description": "Online/Hybrid often cheaper; favors flexible options."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "access to campus resources and professors",
+        "description": "Physical access favors in-person/hybrid."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "field of study networking intensity",
+        "description": "High-intensity fields favor in-person."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "geographic constraints on in-person attendance",
+        "description": "Constraints favor online/hybrid."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "family and personal schedule flexibility",
+        "description": "Favors online/hybrid."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "hybrid option availability",
+        "description": "Unique advantage of hybrid programs."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Online Default)",
+        "description": "Choose an online degree from an accredited university \u2014 for a working adult, the ability to maintain your income and schedule while earning a credential that employers now largely treat equally outweighs the networking disadvantages."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (In-Person for Networking Fields)",
+        "description": "Attend in-person if you're in a field where professional networks directly drive career outcomes (consulting, finance, law) \u2014 the relationship-building advantages of physical presence are worth the scheduling sacrifice."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Hybrid Program)",
+        "description": "Seek a hybrid or HyFlex program if available \u2014 attending key classes in person while completing most coursework online preserves your work schedule while capturing the high-value networking interactions that purely online programs miss."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

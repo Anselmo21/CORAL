@@ -1,0 +1,277 @@
+{
+  "query_id": 51693,
+  "query": "What is the best diet to improve thyroid function?",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: endocrinology clinical guideline",
+    "trustworthiness: peer-reviewed nutrition journal",
+    "trustworthiness: functional / integrative medicine source",
+    "trustworthiness: registered dietitian guidance",
+    "trustworthiness: wellness / natural-health blog",
+    "perspective: hypothyroid patient",
+    "perspective: hyperthyroid patient",
+    "perspective: patient with Hashimoto's / autoimmune thyroiditis",
+    "perspective: supplement-cautious patient",
+    "perspective: vegan / plant-based patient"
+  ],
+  "plausible_answers": [
+    "High-iodine seafood-rich diet",
+    "Whole-foods anti-inflammatory elimination diet",
+    "Supplement-supported regimen"
+  ],
+  "baseline_answer": "Whole-foods anti-inflammatory elimination diet",
+  "baseline_index": 1,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 2,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best diet to improve thyroid function?",
+        "description": "Main question regarding optimal thyroid diet."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "General Dietary Principles & Inflammation",
+        "description": "Focuses on whole foods, elimination, and general health."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Supplement & Nutrient Strategy",
+        "description": "Focuses on the role of specific nutrients and supplements."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Condition-Specific Contraindications",
+        "description": "Focuses on how specific thyroid conditions alter dietary needs."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: endocrinology clinical guideline",
+        "description": "Prioritizes clinical guidelines."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed nutrition journal",
+        "description": "Prioritizes peer-reviewed nutrition research."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: functional / integrative medicine source",
+        "description": "Prioritizes functional medicine perspectives."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: registered dietitian guidance",
+        "description": "Prioritizes registered dietitian advice."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: wellness / natural-health blog",
+        "description": "Prioritizes wellness and natural health blogs."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: hypothyroid patient",
+        "description": "Prioritizes the perspective of a hypothyroid patient."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: hyperthyroid patient",
+        "description": "Prioritizes the perspective of a hyperthyroid patient."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: patient with Hashimoto's / autoimmune thyroiditis",
+        "description": "Prioritizes the perspective of a Hashimoto's patient."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: supplement-cautious patient",
+        "description": "Prioritizes a patient cautious about supplements."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: vegan / plant-based patient",
+        "description": "Prioritizes a vegan or plant-based perspective."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "High-iodine seafood-rich diet",
+        "description": "Diet high in iodine via seafood."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Whole-foods anti-inflammatory elimination diet",
+        "description": "Diet focusing on whole foods and eliminating inflammatory triggers."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Supplement-supported regimen",
+        "description": "Diet supported by specific supplements."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

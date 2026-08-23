@@ -1,0 +1,289 @@
+{
+  "query_id": 39,
+  "query": "Is a liberal arts degree worth it, or should I do something more vocational with better job prospects?",
+  "mode": "criteria",
+  "atoms": [
+    "early career earnings potential",
+    "long-term career adaptability",
+    "specific job market demand for credential",
+    "development of communication and critical thinking",
+    "passion and intellectual engagement",
+    "risk of automation of vocational skills",
+    "graduate school pathway availability",
+    "debt relative to earning potential",
+    "management and leadership development",
+    "clarity of post-graduation employment path"
+  ],
+  "plausible_answers": [
+    "Answer A (Vocational for Early Career Default): Choose a vocational or professional degree for clearer job market entry and significantly higher early-career earnings \u2014 the liberal arts earnings convergence in mid-career is real but requires weathering a difficult first 5\u201310 years.",
+    "Answer B (Liberal Arts for Long-Term Flexibility): A liberal arts degree is worth it if you're genuinely uncertain about your career direction \u2014 the adaptability, communication skills, and intellectual breadth it develops become more valuable as careers advance and automate.",
+    "Answer C (Hybrid Approach): Double-major in a liberal arts field and a vocational or technical discipline \u2014 you develop the critical thinking of the humanities alongside marketable technical skills, capturing both career flexibility and early employment leverage."
+  ],
+  "baseline_answer": "Answer C (Hybrid Approach): Double-major in a liberal arts field and a vocational or technical discipline \u2014 you develop the critical thinking of the humanities alongside marketable technical skills, capturing both career flexibility and early employment leverage.",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Is a liberal arts degree worth it, or should I do something more vocational with better job prospects?",
+        "description": "Core question weighing liberal arts vs. vocational degrees."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Financial and Market Realities",
+        "description": "Evaluates immediate earnings, debt, and job market clarity."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Skill Development and Future-Proofing",
+        "description": "Evaluates adaptability, automation risk, and leadership potential."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Personal Fit and Trajectory",
+        "description": "Evaluates passion, intellectual engagement, and graduate school paths."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "early career earnings potential",
+        "description": "Higher in vocational degrees initially."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "long-term career adaptability",
+        "description": "Higher in liberal arts and hybrid degrees."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "specific job market demand for credential",
+        "description": "Higher for specific vocational credentials."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "development of communication and critical thinking",
+        "description": "Core strength of liberal arts."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "passion and intellectual engagement",
+        "description": "Often higher in liberal arts."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "risk of automation of vocational skills",
+        "description": "Vocational skills are more susceptible to automation than generalist skills."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "graduate school pathway availability",
+        "description": "Both paths offer pathways, but vocational is more direct for specific fields."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "debt relative to earning potential",
+        "description": "Vocational degrees often have better ROI in early years."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "management and leadership development",
+        "description": "Favored by liberal arts and hybrid approaches."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "clarity of post-graduation employment path",
+        "description": "Higher in vocational degrees."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Vocational for Early Career Default)",
+        "description": "Choose vocational for immediate earnings and clarity."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Liberal Arts for Long-Term Flexibility)",
+        "description": "Choose liberal arts for adaptability and intellectual breadth."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Hybrid Approach)",
+        "description": "Double-major to capture both flexibility and leverage."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

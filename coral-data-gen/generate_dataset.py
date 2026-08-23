@@ -43,6 +43,8 @@ def create_llm_client(
     local_device: str = "auto",
     local_dtype: str = "auto",
     tensor_parallel_size: int = 1,
+    max_model_len: Optional[int] = None,
+    gpu_memory_utilization: Optional[float] = None,
 ) -> Any:
     """Build an LLM client for the chosen provider. Build once, reuse across queries.
 
@@ -50,6 +52,9 @@ def create_llm_client(
     (Ollama, LM Studio, llama.cpp server, vLLM --served). Falls back to
     OPENAI_BASE_URL env var, else the official OpenAI API. When base_url is set
     a real API key is usually unnecessary; a placeholder is used if none is given.
+
+    max_model_len and gpu_memory_utilization are vllm-only; leaving them None
+    keeps vLLM's own defaults.
     """
     if provider == "openai":
         if OpenAI is None:
@@ -69,12 +74,25 @@ def create_llm_client(
             raise SystemExit("pip install vllm") from exc
         if not model:
             raise ValueError("model is required for provider='vllm'")
-        print(f"Loading vLLM model '{model}' (dtype={local_dtype}, tensor_parallel_size={tensor_parallel_size})...")
+        # vLLM sizes the KV cache to hold one request at the model's full context.
+        # Checkpoints advertising a 100k+ window leave nothing for it on smaller
+        # cards, so cap max_model_len to what the prompts actually need.
+        extra = {}
+        if max_model_len is not None:
+            extra["max_model_len"] = max_model_len
+        if gpu_memory_utilization is not None:
+            extra["gpu_memory_utilization"] = gpu_memory_utilization
+        print(f"Loading vLLM model '{model}' (dtype={local_dtype}, "
+              f"tensor_parallel_size={tensor_parallel_size}"
+              + (f", max_model_len={max_model_len}" if max_model_len else "")
+              + (f", gpu_memory_utilization={gpu_memory_utilization}" if gpu_memory_utilization else "")
+              + ")...")
         client = LLM(
             model=model,
             dtype=local_dtype,
             enable_prefix_caching=True,
             tensor_parallel_size=tensor_parallel_size,
+            **extra,
         )
         print("Model loaded.")
         return client

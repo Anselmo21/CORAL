@@ -1,0 +1,301 @@
+{
+  "query_id": 7,
+  "query": "What's the best strategy for a high-yield savings account? Should I ladder CDs or just keep everything in a HYSA?",
+  "mode": "criteria",
+  "atoms": [
+    "full liquidity preservation",
+    "rate lock-in during declining rate environment",
+    "simplicity of management",
+    "maximum current yield",
+    "protection against rate drops",
+    "suitability for emergency fund",
+    "medium-term savings goal optimization",
+    "minimal account management overhead",
+    "penalty-free early access",
+    "FDIC insurance coverage"
+  ],
+  "plausible_answers": [
+    "Answer A (HYSA Default): Keep everything in a high-yield savings account \u2014 current rates of 4.5\u20135%+ with full liquidity make HYSAs superior to CDs for most savers, especially for emergency funds.",
+    "Answer B (CD Ladder for Rate Lock): Build a CD ladder across 3\u201318 month maturities to lock in current high rates if you expect the Fed to cut rates \u2014 you'll preserve yield longer than a HYSA as rates decline.",
+    "Answer C (Split for Goals): Keep your emergency fund in a HYSA for liquidity and ladder CDs with any surplus savings earmarked for specific medium-term goals where you know the time horizon."
+  ],
+  "baseline_answer": "Answer C (Split for Goals): Keep your emergency fund in a HYSA for liquidity and ladder CDs with any surplus savings earmarked for specific medium-term goals where you know the time horizon.",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What's the best strategy for a high-yield savings account? Should I ladder CDs or just keep everything in a HYSA?",
+        "description": "The primary question regarding savings strategy selection."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Liquidity and Emergency Access",
+        "description": "Evaluates how well the strategy handles immediate cash needs and emergency funds."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Rate Strategy and Yield",
+        "description": "Evaluates the ability to maximize yield and protect against interest rate fluctuations."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Complexity and Goal Alignment",
+        "description": "Evaluates the management burden and fit for specific savings time horizons."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "full liquidity preservation",
+        "description": "The ability to access funds instantly without restriction."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "rate lock-in during declining rate environment",
+        "description": "Securing current high rates before they fall."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "simplicity of management",
+        "description": "Ease of maintaining the account with minimal effort."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "maximum current yield",
+        "description": "Achieving the highest possible interest rate today."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "protection against rate drops",
+        "description": "Insulating savings from future decreases in interest rates."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "suitability for emergency fund",
+        "description": "Appropriateness of the vehicle for unexpected financial needs."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "medium-term savings goal optimization",
+        "description": "Tailoring the investment to specific, known time horizons."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "minimal account management overhead",
+        "description": "Reducing the administrative work required to maintain the strategy."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "penalty-free early access",
+        "description": "Withdrawing funds before maturity without financial penalty."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "FDIC insurance coverage",
+        "description": "Government-backed protection of deposited funds."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (HYSA Default)",
+        "description": "Keep everything in a high-yield savings account \u2014 current rates of 4.5\u20135%+ with full liquidity make HYSAs superior to CDs for most savers, especially for emergency funds."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (CD Ladder for Rate Lock)",
+        "description": "Build a CD ladder across 3\u201318 month maturities to lock in current high rates if you expect the Fed to cut rates \u2014 you'll preserve yield longer than a HYSA as rates decline."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Split for Goals)",
+        "description": "Keep your emergency fund in a HYSA for liquidity and ladder CDs with any surplus savings earmarked for specific medium-term goals where you know the time horizon."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

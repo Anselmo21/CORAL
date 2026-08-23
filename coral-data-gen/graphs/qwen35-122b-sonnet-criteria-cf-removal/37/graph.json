@@ -1,0 +1,273 @@
+{
+  "query_id": 37,
+  "query": "I want to become a doctor but didn't get into medical school in Canada. Should I study medicine abroad?",
+  "mode": "criteria",
+  "atoms": [
+    "probability of matching to Canadian residency",
+    "total financial cost of foreign medical education",
+    "global recognition of the degree",
+    "quality and accreditation of the program",
+    "personal and family cost of relocation",
+    "MCAT and academic competitiveness for reapplication",
+    "alternative paths to Canadian practice (US then transfer)",
+    "specific destination country match rates",
+    "timeline to practicing physician",
+    "emotional and resilience cost of extended training"
+  ],
+  "plausible_answers": [
+    "Answer A (Reapply in Canada Default): Strengthen your Canadian medical school application and reapply \u2014 improving your MCAT, gaining clinical experience, and applying more broadly has higher expected value than the financial and career risk of most foreign medical programs.",
+    "Answer B (UK or Australia if Committed): If you're committed to studying abroad, choose an accredited UK or Australian program over Caribbean schools \u2014 their graduates have substantially higher North American residency match rates and globally recognized degrees.",
+    "Answer C (Caribbean as Last Resort Only): Consider a Caribbean school only as an absolute last resort with full understanding of the match rate risk \u2014 the financial cost of attending without matching to residency is catastrophic and affects approximately 50% of Caribbean graduates."
+  ],
+  "baseline_answer": "Answer B (UK or Australia if Committed): If you're committed to studying abroad, choose an accredited UK or Australian program over Caribbean schools \u2014 their graduates have substantially higher North American residency match rates and globally recognized degrees.",
+  "baseline_index": 1,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Should I study medicine abroad?",
+        "description": "Decision on whether to pursue medical education outside Canada after rejection."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Risk and Outcome Probability",
+        "description": "Evaluating the likelihood of matching to residency and the consequences of failure."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Feasibility and Quality",
+        "description": "Assessing the accreditation, recognition, and entry requirements of the programs."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Cost and Alternatives",
+        "description": "Analyzing financial burdens, relocation, and alternative pathways to practice."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "probability of matching to Canadian residency",
+        "description": "The statistical chance of securing a residency spot in Canada after graduation."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "total financial cost of foreign medical education",
+        "description": "The tuition and living expenses incurred by studying abroad."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "global recognition of the degree",
+        "description": "How widely the medical degree is accepted internationally."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "quality and accreditation of the program",
+        "description": "The standard of education and official accreditation status."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "personal and family cost of relocation",
+        "description": "The emotional and logistical impact of moving to a foreign country."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "MCAT and academic competitiveness for reapplication",
+        "description": "The difficulty of meeting entry requirements for reapplying or transferring."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "alternative paths to Canadian practice (US then transfer)",
+        "description": "Viability of other routes like US residency followed by transfer."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "specific destination country match rates",
+        "description": "Historical match rates for specific countries like UK, Australia, or Caribbean."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "timeline to practicing physician",
+        "description": "The total time required to become a practicing doctor."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "emotional and resilience cost of extended training",
+        "description": "The psychological toll of potential failure or prolonged training."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Reapply in Canada Default)",
+        "description": "Strengthen your Canadian medical school application and reapply \u2014 improving your MCAT, gaining clinical experience, and applying more broadly has higher expected value than the financial and career risk of most foreign medical programs."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (UK or Australia if Committed)",
+        "description": "If you're committed to studying abroad, choose an accredited UK or Australian program over Caribbean schools \u2014 their graduates have substantially higher North American residency match rates and globally recognized degrees."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Caribbean as Last Resort Only)",
+        "description": "Consider a Caribbean school only as an absolute last resort with full understanding of the match rate risk \u2014 the financial cost of attending without matching to residency is catastrophic and affects approximately 50% of Caribbean graduates."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      }
+    ]
+  }
+}

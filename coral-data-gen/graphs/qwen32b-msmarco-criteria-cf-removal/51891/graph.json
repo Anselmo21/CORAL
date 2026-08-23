@@ -1,0 +1,297 @@
+{
+  "query_id": 51891,
+  "query": "Which pop song best motivates sports atheletes?",
+  "mode": "criteria",
+  "atoms": [
+    "tempo",
+    "lyrical inspiration",
+    "beat strength",
+    "mainstream recognition",
+    "energy level",
+    "vocal intensity",
+    "chorus catchiness",
+    "build-up structure",
+    "cultural impact",
+    "sports-victory association"
+  ],
+  "plausible_answers": [
+    "'Eye of the Tiger' by Survivor",
+    "'We Are The Champions' by Queen",
+    "'Chariots of Fire' by Vangelis"
+  ],
+  "baseline_answer": "'We Are The Champions' by Queen",
+  "baseline_index": 1,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Which pop song best motivates sports athletes?",
+        "description": "Evaluate which song is most effective at motivating athletes based on musical and cultural factors."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What makes a song effective for motivating athletes during performance?",
+        "description": "Criteria related to the musical structure and energy of the song."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "How does a song inspire or emotionally impact athletes?",
+        "description": "Criteria related to lyrics, vocal delivery, and emotional resonance."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What factors contribute to a song\u2019s widespread use and acceptance in sports culture?",
+        "description": "Criteria related to cultural presence, recognition, and association with sports events."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "tempo",
+        "description": "The speed or pace of the song."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "lyrical inspiration",
+        "description": "The motivational or emotional content of the lyrics."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "beat strength",
+        "description": "The intensity and driving nature of the rhythm."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "mainstream recognition",
+        "description": "How widely known and used the song is in the public sphere."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "energy level",
+        "description": "The overall energetic feel of the song."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "vocal intensity",
+        "description": "The power and emotion in the vocal delivery."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "chorus catchiness",
+        "description": "How memorable and repeatable the chorus is."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "build-up structure",
+        "description": "The progression of intensity in the song."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "cultural impact",
+        "description": "The song\u2019s lasting influence in sports and popular culture."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "sports-victory association",
+        "description": "How often and strongly the song is linked to winning or celebrating."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "'Eye of the Tiger' by Survivor",
+        "description": "Motivational anthem from Rocky III with strong beat and energy."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "'We Are The Champions' by Queen",
+        "description": "Arguably the best inspirational sports song, with strong cultural and lyrical impact."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "'Chariots of Fire' by Vangelis",
+        "description": "Instrumental anthem from the 1981 film, known for its emotional and cinematic build."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      }
+    ]
+  }
+}

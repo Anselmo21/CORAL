@@ -1,0 +1,281 @@
+{
+  "query_id": 21,
+  "query": "My doctor says my cholesterol is borderline high. Should I start statins or try to manage it with lifestyle changes first?",
+  "mode": "criteria",
+  "atoms": [
+    "10-year cardiovascular risk score",
+    "family history of heart disease",
+    "LDL reduction achievable through diet",
+    "statin side effect tolerance",
+    "patient motivation for lifestyle change",
+    "speed of risk reduction needed",
+    "age and comorbidity profile",
+    "prior cardiovascular events",
+    "access to dietary counseling",
+    "long-term medication adherence"
+  ],
+  "plausible_answers": [
+    "Answer A (Lifestyle First Default): Try dietary changes and exercise for 3\u20136 months first \u2014 for borderline cholesterol with low cardiovascular risk, lifestyle intervention can achieve meaningful LDL reduction without medication side effects.",
+    "Answer B (Statins for Elevated Risk): Start statins now if you have a family history of early heart disease, multiple risk factors, or a 10-year cardiovascular risk above 7.5% \u2014 the absolute risk reduction from statins outweighs side effect concerns.",
+    "Answer C (Risk Calculator First): Use a cardiovascular risk calculator with your physician before deciding \u2014 statin benefit depends on baseline risk, not cholesterol level alone, and the decision should be individualized to your complete risk profile."
+  ],
+  "baseline_answer": "Answer C (Risk Calculator First): Use a cardiovascular risk calculator with your physician before deciding \u2014 statin benefit depends on baseline risk, not cholesterol level alone, and the decision should be individualized to your complete risk profile.",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Should I start statins or try lifestyle changes first?",
+        "description": "Decision between immediate statin therapy and a trial of lifestyle modification for borderline high cholesterol."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Risk Stratification Factors",
+        "description": "Evaluating the patient's baseline cardiovascular risk and urgency."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Intervention Efficacy & Tolerance",
+        "description": "Comparing the effectiveness and side effect profiles of lifestyle vs. statins."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Patient Context & Feasibility",
+        "description": "Assessing patient-specific factors like motivation, access, and adherence."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "10-year cardiovascular risk score",
+        "description": "Quantitative measure of future heart attack/stroke risk."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "family history of heart disease",
+        "description": "Genetic predisposition increasing baseline risk."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "LDL reduction achievable through diet",
+        "description": "Magnitude of cholesterol lowering possible via lifestyle."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "statin side effect tolerance",
+        "description": "Patient's susceptibility to muscle aches or fatigue from medication."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "patient motivation for lifestyle change",
+        "description": "Willingness and ability to adhere to diet and exercise."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "speed of risk reduction needed",
+        "description": "Urgency of lowering cholesterol to prevent imminent events."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "age and comorbidity profile",
+        "description": "Overall health status and life expectancy influencing treatment choice."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "prior cardiovascular events",
+        "description": "History of heart attack or stroke indicating high risk."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "access to dietary counseling",
+        "description": "Availability of professional support for lifestyle changes."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "long-term medication adherence",
+        "description": "Likelihood of consistently taking statins as prescribed."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Lifestyle First Default)",
+        "description": "Try dietary changes and exercise for 3\u20136 months first."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Statins for Elevated Risk)",
+        "description": "Start statins now if you have a family history of early heart disease, multiple risk factors, or a 10-year cardiovascular risk above 7.5%."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Risk Calculator First)",
+        "description": "Use a cardiovascular risk calculator with your physician before deciding."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      }
+    ]
+  }
+}

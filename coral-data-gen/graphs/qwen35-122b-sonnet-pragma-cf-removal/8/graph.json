@@ -1,0 +1,317 @@
+{
+  "query_id": 8,
+  "query": "My employer 401k match is only 1%. Should I still max it out before contributing elsewhere?",
+  "mode": "pragmas",
+  "atoms": [
+    "temporal: 2023 only",
+    "temporal: 2021\u20132023",
+    "geographic: USA",
+    "perspective: Average income earner below Roth limits",
+    "perspective: High earner above Roth income limits",
+    "perspective: Fee-sensitive optimizer",
+    "trustworthiness: Institutional financial research",
+    "trustworthiness: Consumer financial advisory",
+    "trustworthiness: Community peer advice",
+    "trustworthiness: Brokerage/investment platform guidance"
+  ],
+  "plausible_answers": [
+    "Answer A (Match Then IRA Default): Contribute just enough to get the 1% match, then direct all remaining retirement savings to a Roth or traditional IRA \u2014 better investment options and lower fees in the IRA outweigh the minimal 401k match beyond the free money.",
+    "Answer B (Max 401k First): Max the 401k entirely before the IRA if you're a high earner seeking maximum pre-tax deductions \u2014 the tax benefit outweighs the fee disadvantage at high income levels.",
+    "Answer C (IRA Only After Match): After capturing the match, skip the 401k entirely until the IRA is maxed \u2014 the investment flexibility and lower costs of a self-directed IRA deliver better long-term outcomes for most investors."
+  ],
+  "baseline_answer": "Answer A (Match Then IRA Default): Contribute just enough to get the 1% match, then direct all remaining retirement savings to a Roth or traditional IRA \u2014 better investment options and lower fees in the IRA outweigh the minimal 401k match beyond the free money.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 2,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Should I max a 401k with only a 1% match?",
+        "description": "Core question regarding 401k contribution strategy with low match."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the standard advice for average earners?",
+        "description": "Focuses on fee sensitivity and standard investment options for the typical user."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the strategy for high-income earners?",
+        "description": "Focuses on tax deductions and Roth limits for high earners."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "How do source reliability and perspective shape the advice?",
+        "description": "Evaluates the weight of institutional vs. community advice and fee optimization."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2023 only",
+        "description": "Filters for most recent advice only."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2021\u20132023",
+        "description": "Filters for advice within the last three years."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: USA",
+        "description": "Filters for US-specific tax laws and plans."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Average income earner below Roth limits",
+        "description": "Filters for advice relevant to the majority of workers."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: High earner above Roth income limits",
+        "description": "Filters for advice relevant to high-income tax planning."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Fee-sensitive optimizer",
+        "description": "Filters for advice prioritizing low expense ratios."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Institutional financial research",
+        "description": "Filters for professional research and analysis."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Consumer financial advisory",
+        "description": "Filters for advice from consumer-focused advisory sites."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Community peer advice",
+        "description": "Filters for crowd-sourced or forum advice."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Brokerage/investment platform guidance",
+        "description": "Filters for guidance from brokerage firms."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Match Then IRA Default)",
+        "description": "Contribute just enough to get the 1% match, then direct all remaining retirement savings to a Roth or traditional IRA."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Max 401k First)",
+        "description": "Max the 401k entirely before the IRA if you're a high earner seeking maximum pre-tax deductions."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (IRA Only After Match)",
+        "description": "After capturing the match, skip the 401k entirely until the IRA is maxed."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      }
+    ]
+  }
+}

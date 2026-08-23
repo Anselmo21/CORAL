@@ -1,0 +1,289 @@
+{
+  "query_id": 393179,
+  "query": "in Ontario what is the best gasoline for your vehicle",
+  "mode": "pragmas",
+  "atoms": [
+    "geographic: Ontario",
+    "trustworthiness: SAE / automotive engineering technical report",
+    "trustworthiness: CBC Marketplace consumer reporting",
+    "trustworthiness: owner's manual specification",
+    "trustworthiness: automaker official recommendation",
+    "trustworthiness: local automotive forum",
+    "perspective: luxury car owner",
+    "perspective: regular sedan owner",
+    "perspective: performance enthusiast",
+    "perspective: long-term keep-vehicle owner"
+  ],
+  "plausible_answers": [
+    "Top Tier Detergent Gasoline (Shell V-Power, Esso, Chevron)",
+    "Petro-Canada Ultra 94\u2122",
+    "Regular 87-octane unleaded at any reputable station"
+  ],
+  "baseline_answer": "Top Tier Detergent Gasoline (Shell V-Power, Esso, Chevron)",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "in Ontario what is the best gasoline for your vehicle",
+        "description": "Primary question regarding optimal fuel choice in Ontario."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What do technical standards and automakers say about fuel quality?",
+        "description": "Focuses on engineering specs, manual requirements, and long-term engine health."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What do consumer reports and typical owners say about fuel necessity?",
+        "description": "Focuses on myths, cost, and the reality for standard vehicles."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is available locally and desired by enthusiasts?",
+        "description": "Focuses on Ontario-specific supply and high-performance preferences."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: Ontario",
+        "description": "Prioritizes sources discussing fuel availability and regulations in Ontario."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: SAE / automotive engineering technical report",
+        "description": "Prioritizes technical reports on engine design and fuel standards."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: CBC Marketplace consumer reporting",
+        "description": "Prioritizes consumer investigations into fuel marketing and value."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: owner's manual specification",
+        "description": "Prioritizes the vehicle manufacturer's specific fuel requirements."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: automaker official recommendation",
+        "description": "Prioritizes official endorsements from major car manufacturers (e.g., Top Tier)."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: local automotive forum",
+        "description": "Prioritizes anecdotal evidence and discussions from local drivers."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: luxury car owner",
+        "description": "Prioritizes the viewpoint of owners of high-end vehicles."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: regular sedan owner",
+        "description": "Prioritizes the viewpoint of owners of standard, non-performance vehicles."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: performance enthusiast",
+        "description": "Prioritizes the viewpoint of drivers seeking maximum power."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: long-term keep-vehicle owner",
+        "description": "Prioritizes the viewpoint of owners focused on vehicle longevity and cleanliness."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Top Tier Detergent Gasoline (Shell V-Power, Esso, Chevron)",
+        "description": "Best choice based on detergent quality and manufacturer endorsements."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Petro-Canada Ultra 94\u2122",
+        "description": "Best choice based on high octane and specific Ontario availability."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Regular 87-octane unleaded at any reputable station",
+        "description": "Best choice based on cost-effectiveness for standard engines."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      }
+    ]
+  }
+}

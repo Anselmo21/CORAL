@@ -1,0 +1,269 @@
+{
+  "query_id": 52328,
+  "query": "best way to lose weight for a child",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: AAP / pediatric clinical guideline",
+    "trustworthiness: peer-reviewed pediatric nutrition journal",
+    "trustworthiness: registered dietitian guidance",
+    "trustworthiness: choosemyplate.gov",
+    "trustworthiness: commercial weight loss program",
+    "trustworthiness: parent / mom blog",
+    "perspective: parent of mildly overweight child",
+    "perspective: parent of obese child with health risk",
+    "perspective: pediatrician-led case",
+    "perspective: family-engaged household"
+  ],
+  "plausible_answers": [
+    "Whole-family lifestyle change with the choosemyplate.gov plate method (half fruits/veggies, quarter lean protein, quarter whole grains) plus aerobic exercise",
+    "Pediatrician-led monitoring with attainable goals (1-4 lb/month), a food diary, and biweekly weight checks",
+    "A formal multi-disciplinary weight loss program for children whose home efforts fail"
+  ],
+  "baseline_answer": "Whole-family lifestyle change with the choosemyplate.gov plate method (half fruits/veggies, quarter lean protein, quarter whole grains) plus aerobic exercise",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 3,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best way to lose weight for a child",
+        "description": "The primary inquiry regarding pediatric weight loss strategies."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the primary dietary and lifestyle strategy?",
+        "description": "Focuses on general diet, family involvement, and plate methods."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the clinical monitoring parameters and goals?",
+        "description": "Focuses on medical supervision, weight loss rates, and tracking."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "When is a formal program indicated?",
+        "description": "Focuses on escalation after home efforts fail and high-risk scenarios."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: AAP / pediatric clinical guideline",
+        "description": "Prioritizes American Academy of Pediatrics clinical guidelines."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed pediatric nutrition journal",
+        "description": "Prioritizes academic nutrition research."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: registered dietitian guidance",
+        "description": "Prioritizes advice from registered dietitians."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: choosemyplate.gov",
+        "description": "Prioritizes the federal plate method resource."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: commercial weight loss program",
+        "description": "Prioritizes commercial program characteristics."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: parent / mom blog",
+        "description": "Prioritizes informal parent blog advice."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: parent of mildly overweight child",
+        "description": "Prioritizes the view of parents with mildly overweight children."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: parent of obese child with health risk",
+        "description": "Prioritizes the view of parents with obese children facing health risks."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: pediatrician-led case",
+        "description": "Prioritizes the perspective of pediatrician-led cases."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: family-engaged household",
+        "description": "Prioritizes the family-engaged household perspective."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Whole-family lifestyle change with the choosemyplate.gov plate method (half fruits/veggies, quarter lean protein, quarter whole grains) plus aerobic exercise",
+        "description": "Baseline answer A* supported by all directives."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Pediatrician-led monitoring with attainable goals (1-4 lb/month), a food diary, and biweekly weight checks",
+        "description": "Alternative answer supported when c4 and c10 are dropped."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "A formal multi-disciplinary weight loss program for children whose home efforts fail",
+        "description": "Alternative answer supported when c1, c4, c6, c7, and c10 are dropped."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      }
+    ]
+  }
+}

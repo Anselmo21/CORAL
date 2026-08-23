@@ -1,0 +1,341 @@
+{
+  "query_id": 31,
+  "query": "I want to start a company after graduation. Which MBA program should I prioritize \u2014 Stanford GSB, HBS, or Wharton?",
+  "mode": "pragmas",
+  "atoms": [
+    "temporal: 2023 only",
+    "temporal: 2021\u20132023",
+    "geographic: USA \u2014 Silicon Valley / West Coast",
+    "geographic: USA \u2014 East Coast / Global",
+    "perspective: Aspiring tech startup founder",
+    "perspective: Entrepreneur in finance, healthcare, or consumer sectors",
+    "trustworthiness: Education ranking publication",
+    "trustworthiness: Business journalism",
+    "trustworthiness: Community peer advice from MBA applicants",
+    "trustworthiness: School-published program materials"
+  ],
+  "plausible_answers": [
+    "Answer A (Stanford GSB Default): Prioritize Stanford GSB for entrepreneurship \u2014 its VC network, Silicon Valley location, alumni founder density, and risk-tolerant culture make it the strongest launchpad for venture-backed tech startups.",
+    "Answer B (HBS for Non-Tech Ventures): Choose HBS if your startup targets industries beyond tech \u2014 its unmatched global alumni network and brand recognition opens doors in healthcare, consumer goods, emerging markets, and institutional fundraising.",
+    "Answer C (Wharton for Capital-Intensive Startups): Choose Wharton if your venture is in fintech, healthtech, or requires sophisticated capital structuring \u2014 its finance depth and cross-disciplinary Penn ecosystem are particularly strong for capital-intensive business models."
+  ],
+  "baseline_answer": "Answer A (Stanford GSB Default): Prioritize Stanford GSB for entrepreneurship \u2014 its VC network, Silicon Valley location, alumni founder density, and risk-tolerant culture make it the strongest launchpad for venture-backed tech startups.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Which MBA program should I prioritize \u2014 Stanford GSB, HBS, or Wharton?",
+        "description": "Question asking for the best MBA program for starting a company."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Best for tech startup founder in Silicon Valley?",
+        "description": "Sub-question focusing on tech, VC, and West Coast ecosystem."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Best for non-tech ventures globally?",
+        "description": "Sub-question focusing on consumer, healthcare, and global brand networks."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Best for capital-intensive fintech/healthtech?",
+        "description": "Sub-question focusing on finance depth and capital structuring."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2023 only",
+        "description": "Filter for only 2023 data."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2021\u20132023",
+        "description": "Filter for data from 2021 to 2023."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: USA \u2014 Silicon Valley / West Coast",
+        "description": "Filter for West Coast geographic focus."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: USA \u2014 East Coast / Global",
+        "description": "Filter for East Coast or Global geographic focus."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Aspiring tech startup founder",
+        "description": "Filter for tech startup founder perspective."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Entrepreneur in finance, healthcare, or consumer sectors",
+        "description": "Filter for non-tech sector entrepreneur perspective."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Education ranking publication",
+        "description": "Filter for education ranking publications."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Business journalism",
+        "description": "Filter for business journalism."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Community peer advice from MBA applicants",
+        "description": "Filter for community peer advice."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: School-published program materials",
+        "description": "Filter for school-published materials."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Stanford GSB Default)",
+        "description": "Prioritize Stanford GSB for entrepreneurship \u2014 its VC network, Silicon Valley location, alumni founder density, and risk-tolerant culture make it the strongest launchpad for venture-backed tech startups."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (HBS for Non-Tech Ventures)",
+        "description": "Choose HBS if your startup targets industries beyond tech \u2014 its unmatched global alumni network and brand recognition opens doors in healthcare, consumer goods, emerging markets, and institutional fundraising."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Wharton for Capital-Intensive Startups)",
+        "description": "Choose Wharton if your venture is in fintech, healthtech, or requires sophisticated capital structuring \u2014 its finance depth and cross-disciplinary Penn ecosystem are particularly strong for capital-intensive business models."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

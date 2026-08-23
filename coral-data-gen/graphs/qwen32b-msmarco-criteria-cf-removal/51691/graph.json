@@ -1,0 +1,325 @@
+{
+  "query_id": 51691,
+  "query": "What is the best diet for reducing PMS symptoms?",
+  "mode": "criteria",
+  "atoms": [
+    "magnesium content",
+    "vitamin B levels",
+    "calcium intake",
+    "fiber content",
+    "anti-inflammatory foods",
+    "sugar reduction",
+    "caffeine reduction",
+    "omega-3 inclusion",
+    "hydration support",
+    "ease of adherence"
+  ],
+  "plausible_answers": [
+    "Mediterranean-style diet",
+    "Dairy-free / Cycle Diet",
+    "Anti-inflammatory elimination diet"
+  ],
+  "baseline_answer": "Dairy-free / Cycle Diet",
+  "baseline_index": 1,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best diet for reducing PMS symptoms?",
+        "description": "Identify the most effective dietary approach to alleviate PMS symptoms based on nutritional and lifestyle criteria."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Nutritional content and hormone regulation",
+        "description": "Criteria related to essential nutrients and their role in hormone balance."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Dietary habits and inflammation",
+        "description": "Criteria related to food choices that reduce inflammation and support gut health."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Practicality and lifestyle",
+        "description": "Criteria related to how easy and sustainable the diet is to follow."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "magnesium content",
+        "description": "Amount of magnesium in the diet, which helps with cramps and mood regulation."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "vitamin B levels",
+        "description": "Levels of B vitamins, which help with mood swings and energy."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "calcium intake",
+        "description": "Calcium intake, which supports muscle function and mood stability."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "fiber content",
+        "description": "Fiber content, which supports digestion and blood sugar regulation."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "anti-inflammatory foods",
+        "description": "Inclusion of foods that reduce inflammation and support hormonal balance."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "sugar reduction",
+        "description": "Reduction of sugar intake to stabilize mood and energy."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "caffeine reduction",
+        "description": "Reduction of caffeine to decrease irritability and anxiety."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "omega-3 inclusion",
+        "description": "Inclusion of omega-3 fatty acids to reduce cramps and inflammation."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "hydration support",
+        "description": "Adequate hydration to reduce bloating and support overall health."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "ease of adherence",
+        "description": "How easy and sustainable the diet is to follow long-term."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Mediterranean-style diet",
+        "description": "A diet rich in fruits, vegetables, whole grains, and healthy fats."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Dairy-free / Cycle Diet",
+        "description": "A diet that avoids dairy and follows nutritional needs based on hormonal cycles."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Anti-inflammatory elimination diet",
+        "description": "A restrictive diet that eliminates inflammatory foods and focuses on whole, anti-inflammatory ingredients."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

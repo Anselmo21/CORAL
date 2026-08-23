@@ -1,0 +1,269 @@
+{
+  "query_id": 42,
+  "query": "I got into two universities \u2014 one is higher ranked but costs $30,000 more. How should I decide?",
+  "mode": "criteria",
+  "atoms": [
+    "field-specific prestige signal importance",
+    "total debt and financial flexibility post-graduation",
+    "first-job hiring signal value",
+    "long-term career earnings premium",
+    "personal motivation and fit at each school",
+    "networking quality difference between schools",
+    "entrepreneurial or risk-taking career aspirations",
+    "graduate school ambitions (prestige matters more for PhD)",
+    "scholarship and aid negotiation potential",
+    "family financial situation and co-signer risk"
+  ],
+  "plausible_answers": [
+    "Answer A (Choose Affordable School Default): Choose the less expensive school unless the prestige gap is extreme \u2014 $30k less debt provides lasting financial flexibility that outweighs a moderate ranking difference for most career paths.",
+    "Answer B (Pay for Prestige in Prestige-Sensitive Fields): Pay the $30k premium if you're entering finance, consulting, or law \u2014 these fields use institutional brand as a primary hiring filter and the ROI from the higher-ranked school is real and measurable.",
+    "Answer C (Negotiate Aid First): Attempt to negotiate financial aid from the higher-ranked school before deciding \u2014 admissions offices frequently match or improve offers when presented with competing packages, potentially eliminating the cost gap entirely."
+  ],
+  "baseline_answer": "Answer A (Choose Affordable School Default): Choose the less expensive school unless the prestige gap is extreme \u2014 $30k less debt provides lasting financial flexibility that outweighs a moderate ranking difference for most career paths.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 2,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Question",
+        "description": "I got into two universities \u2014 one is higher ranked but costs $30,000 more. How should I decide?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Financial & Personal Risk Factors",
+        "description": "Evaluates debt impact, family situation, and personal fit."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Career & Prestige Value Factors",
+        "description": "Evaluates how much the school brand impacts hiring and earnings."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Immediate Cost Mitigation",
+        "description": "Evaluates the potential to reduce costs through negotiation."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "field-specific prestige signal importance",
+        "description": "How critical is brand for the specific field?"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "total debt and financial flexibility post-graduation",
+        "description": "Impact of $30k debt on life choices."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "first-job hiring signal value",
+        "description": "Does prestige matter for the first job?"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "long-term career earnings premium",
+        "description": "Long-term ROI of the higher-ranked school."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "personal motivation and fit at each school",
+        "description": "Student's drive and happiness at the institution."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "networking quality difference between schools",
+        "description": "Value of alumni network differences."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "entrepreneurial or risk-taking career aspirations",
+        "description": "Need for low debt to take risks."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "graduate school ambitions (prestige matters more for PhD)",
+        "description": "Impact on future academic pursuits."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "scholarship and aid negotiation potential",
+        "description": "Possibility of reducing the cost gap."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "family financial situation and co-signer risk",
+        "description": "Family's ability to absorb the cost."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Choose Affordable School Default)",
+        "description": "Choose the less expensive school unless the prestige gap is extreme \u2014 $30k less debt provides lasting financial flexibility that outweighs a moderate ranking difference for most career paths."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Pay for Prestige in Prestige-Sensitive Fields)",
+        "description": "Pay the $30k premium if you're entering finance, consulting, or law \u2014 these fields use institutional brand as a primary hiring filter and the ROI from the higher-ranked school is real and measurable."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Negotiate Aid First)",
+        "description": "Attempt to negotiate financial aid from the higher-ranked school before deciding \u2014 admissions offices frequently match or improve offers when presented with competing packages, potentially eliminating the cost gap entirely."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      }
+    ]
+  }
+}
