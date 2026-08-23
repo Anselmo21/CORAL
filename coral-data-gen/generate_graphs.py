@@ -41,6 +41,8 @@ from generate_dataset import (
     _invoke_chat_completion,
     _strip_code_fences,
     create_llm_client,
+    reset_usage,
+    usage_so_far,
 )
 from graph_ops import pick_answer_with_all_atoms
 from run_lattices import flatten_pragmas, load_rows, parse_qid_filter, stringify_sources
@@ -266,6 +268,7 @@ def generate_row_graph(
     max_tokens: int,
     max_retries: int,
 ) -> None:
+    reset_usage()
     atoms = select_atoms(row, mode)
     sources_text = stringify_sources(row.get("sources"))
     question = row.get("query") or ""
@@ -326,6 +329,7 @@ def generate_row_graph(
         "provider": provider,
         "temperature": temperature,
         "attempts": attempts,
+        "usage": usage_so_far(),
         "graph": graph,
     }
     if graph is None:

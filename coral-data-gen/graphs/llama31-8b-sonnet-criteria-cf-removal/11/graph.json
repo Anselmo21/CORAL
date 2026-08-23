@@ -1,0 +1,566 @@
+{
+  "query_id": 11,
+  "query": "Should I use a financial advisor or just manage my investments myself? I have about $150k in savings.",
+  "mode": "criteria",
+  "atoms": [
+    "annual fee cost relative to portfolio size",
+    "complexity of financial situation",
+    "behavioral coaching during volatility",
+    "tax optimization value",
+    "estate and retirement planning needs",
+    "investor confidence and financial literacy",
+    "access to specialized expertise",
+    "simplicity of investment strategy",
+    "time and interest in self-management",
+    "value of accountability partner"
+  ],
+  "plausible_answers": [
+    "Answer A (DIY Default): Self-manage with a simple three-fund index portfolio \u2014 at $150k with a straightforward situation, the 0.5\u20131% advisor fee compounds into tens of thousands of dollars of unnecessary cost over time.",
+    "Answer B (Fee-Only Advisor for Complexity): Hire a fee-only fiduciary advisor if your situation involves business ownership, equity compensation, estate planning, or you've historically made emotional investing decisions during market downturns.",
+    "Answer C (Robo-Advisor Middle Ground): Use a robo-advisor at 0.25% AUM for automated rebalancing and tax-loss harvesting \u2014 you get most of the value of active management at a fraction of the cost of a human advisor."
+  ],
+  "baseline_answer": "Answer A (DIY Default): Self-manage with a simple three-fund index portfolio \u2014 at $150k with a straightforward situation, the 0.5\u20131% advisor fee compounds into tens of thousands of dollars of unnecessary cost over time.",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 3,
+  "usage": {
+    "prompt_tokens": 12168,
+    "output_tokens": 9619,
+    "llm_calls": 4,
+    "finish_reasons": [
+      "stop",
+      "length",
+      "length",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Should I use a financial advisor or just manage my investments myself? I have about $150k in savings.",
+        "description": "Plausible answers range from DIY Default to Fee-Only Advisor for Complexity to Robo-Advisor Middle Ground"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Is my financial situation straightforward?",
+        "description": "Criteria 1, 8, and 9 are most relevant to simplicity and self-management"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Do I need specialized expertise?",
+        "description": "Criteria 2, 5, and 7 are most relevant to complexity and specialized expertise"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Can I benefit from behavioral coaching and tax optimization?",
+        "description": "Criteria 3, 4, and 6 are most relevant to behavioral coaching and tax optimization"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "annual fee cost relative to portfolio size",
+        "description": ""
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "complexity of financial situation",
+        "description": ""
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "behavioral coaching during volatility",
+        "description": ""
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "tax optimization value",
+        "description": ""
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "estate and retirement planning needs",
+        "description": ""
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "investor confidence and financial literacy",
+        "description": ""
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "access to specialized expertise",
+        "description": ""
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "simplicity of investment strategy",
+        "description": ""
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "time and interest in self-management",
+        "description": ""
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "value of accountability partner",
+        "description": ""
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "DIY Default: Self-manage with a simple three-fund index portfolio",
+        "description": "At $150k with a straightforward situation, the 0.5\u20131% advisor fee compounds into tens of thousands of dollars of unnecessary cost over time."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Fee-Only Advisor for Complexity: Hire a fee-only fiduciary advisor",
+        "description": "If your situation involves business ownership, equity compensation, estate planning, or you've historically made emotional investing decisions during market downturns."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Robo-Advisor Middle Ground: Use a robo-advisor at 0.25% AUM",
+        "description": "You get most of the value of active management at a fraction of the cost of a human advisor."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a2",
+        "type": "remove"
+      },
+      {
+        "source": "c8",
+        "target": "a2",
+        "type": "remove"
+      },
+      {
+        "source": "c9",
+        "target": "a2",
+        "type": "remove"
+      },
+      {
+        "source": "c3",
+        "target": "a2",
+        "type": "remove"
+      },
+      {
+        "source": "c4",
+        "target": "a2",
+        "type": "remove"
+      },
+      {
+        "source": "c6",
+        "target": "a2",
+        "type": "remove"
+      },
+      {
+        "source": "c10",
+        "target": "a2",
+        "type": "remove"
+      },
+      {
+        "source": "c1",
+        "target": "a3",
+        "type": "remove"
+      },
+      {
+        "source": "c8",
+        "target": "a3",
+        "type": "remove"
+      },
+      {
+        "source": "c9",
+        "target": "a3",
+        "type": "remove"
+      },
+      {
+        "source": "c3",
+        "target": "a3",
+        "type": "remove"
+      },
+      {
+        "source": "c4",
+        "target": "a3",
+        "type": "remove"
+      },
+      {
+        "source": "c6",
+        "target": "a3",
+        "type": "remove"
+      },
+      {
+        "source": "c10",
+        "target": "a3",
+        "type": "remove"
+      }
+    ]
+  }
+}

@@ -1,0 +1,297 @@
+{
+  "query_id": 40,
+  "query": "I'm thinking about doing a PhD in data science. Is it actually worth it for industry careers?",
+  "mode": "criteria",
+  "atoms": [
+    "target role requiring PhD (research scientist)",
+    "financial return over 10-year career",
+    "research vs industry application orientation",
+    "opportunity cost of 4\u20136 years",
+    "access to frontier AI lab positions",
+    "academic career aspirations",
+    "publication and intellectual contribution interest",
+    "stipend and funding availability",
+    "alternative paths via strong MS degree",
+    "specialization depth vs breadth"
+  ],
+  "plausible_answers": [
+    "Answer A (Skip PhD for Industry Default): Don't do a PhD for industry data science \u2014 a strong Master's plus projects gets you 90% of the roles at 25% of the time cost, and the financial break-even on a PhD takes over a decade.",
+    "Answer B (PhD for Research Roles): Do a PhD if your goal is a research scientist role at a top AI lab \u2014 these positions are effectively closed to non-PhDs regardless of skill, and the credential is genuinely required for frontier ML work.",
+    "Answer C (PhD for Academic and Long-Term Specialization): Consider a PhD if you're interested in academic careers or want to develop deep specialization in a narrow research area \u2014 the intrinsic value of research training justifies it independently of salary premium."
+  ],
+  "baseline_answer": "Answer B (PhD for Research Roles): Do a PhD if your goal is a research scientist role at a top AI lab \u2014 these positions are effectively closed to non-PhDs regardless of skill, and the credential is genuinely required for frontier ML work.",
+  "baseline_index": 1,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2369,
+    "output_tokens": 2648,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Is a PhD in data science worth it for industry careers?",
+        "description": "The question is whether a PhD in data science is worth it for industry careers."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Is a PhD necessary for industry data science roles?",
+        "description": "The sub-question is whether a PhD is necessary for industry data science roles."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the financial implications of pursuing a PhD?",
+        "description": "The sub-question is what are the financial implications of pursuing a PhD."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the implications for research vs industry application orientation?",
+        "description": "The sub-question is what are the implications for research vs industry application orientation."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the implications for academic career aspirations and publication interest?",
+        "description": "The sub-question is what are the implications for academic career aspirations and publication interest."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "target role requiring PhD (research scientist)",
+        "description": "The concept is a target role requiring a PhD."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "financial return over 10-year career",
+        "description": "The concept is the financial return over a 10-year career."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "research vs industry application orientation",
+        "description": "The concept is the research vs industry application orientation."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "opportunity cost of 4\u20136 years",
+        "description": "The concept is the opportunity cost of 4\u20136 years."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "access to frontier AI lab positions",
+        "description": "The concept is access to frontier AI lab positions."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "academic career aspirations",
+        "description": "The concept is academic career aspirations."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "publication and intellectual contribution interest",
+        "description": "The concept is publication and intellectual contribution interest."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "stipend and funding availability",
+        "description": "The concept is stipend and funding availability."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "alternative paths via strong MS degree",
+        "description": "The concept is alternative paths via strong MS degree."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "specialization depth vs breadth",
+        "description": "The concept is specialization depth vs breadth."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Skip PhD for Industry Default",
+        "description": "The answer is to skip a PhD for industry default."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "PhD for Research Roles",
+        "description": "The answer is to do a PhD for research roles."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "PhD for Academic and Long-Term Specialization",
+        "description": "The answer is to do a PhD for academic and long-term specialization."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c6"
+      },
+      {
+        "source": "sq4",
+        "target": "c7"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "a2",
+        "target": "c1"
+      },
+      {
+        "source": "a2",
+        "target": "c2"
+      },
+      {
+        "source": "a2",
+        "target": "c3"
+      },
+      {
+        "source": "a2",
+        "target": "c4"
+      },
+      {
+        "source": "a2",
+        "target": "c5"
+      },
+      {
+        "source": "a2",
+        "target": "c6"
+      },
+      {
+        "source": "a2",
+        "target": "c7"
+      },
+      {
+        "source": "a2",
+        "target": "c8"
+      },
+      {
+        "source": "a2",
+        "target": "c9"
+      },
+      {
+        "source": "a2",
+        "target": "c10"
+      }
+    ]
+  }
+}

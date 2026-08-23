@@ -1,0 +1,250 @@
+{
+  "query_id": 32,
+  "query": "I'm a working adult with a full-time job. Should I do my university degree online or in person?",
+  "mode": "pragmas",
+  "atoms": [
+    "temporal: 2023 only",
+    "temporal: 2021\u20132023",
+    "geographic: USA",
+    "geographic: Global online education market",
+    "perspective: Full-time worker prioritizing schedule flexibility",
+    "perspective: Career-changer focused on networking outcomes",
+    "trustworthiness: Education research institution",
+    "trustworthiness: Industry workforce report",
+    "trustworthiness: Online learner community",
+    "trustworthiness: Higher education journalism"
+  ],
+  "plausible_answers": [
+    "Answer A (Online Default): Choose an online degree from an accredited university \u2014 for a working adult, the ability to maintain your income and schedule while earning a credential that employers now largely treat equally outweighs the networking disadvantages.",
+    "Answer B (In-Person for Networking Fields): Attend in-person if you're in a field where professional networks directly drive career outcomes (consulting, finance, law) \u2014 the relationship-building advantages of physical presence are worth the scheduling sacrifice.",
+    "Answer C (Hybrid Program): Seek a hybrid or HyFlex program if available \u2014 attending key classes in person while completing most coursework online preserves your work schedule while capturing the high-value networking interactions that purely online programs miss."
+  ],
+  "baseline_answer": "Answer A (Online Default): Choose an online degree from an accredited university \u2014 for a working adult, the ability to maintain your income and schedule while earning a credential that employers now largely treat equally outweighs the networking disadvantages.",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2438,
+    "output_tokens": 1876,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Should I do my university degree online or in person as a working adult with a full-time job?",
+        "description": "Advantages of online and in-person programs for working adults"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the advantages of online programs for working adults?",
+        "description": "Advantages of online programs for working adults"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the benefits of in-person programs for professional networking?",
+        "description": "Benefits of in-person programs for professional networking"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the options for balancing schedule flexibility and networking benefits?",
+        "description": "Options for balancing schedule flexibility and networking benefits"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2023 only",
+        "description": "Only consider sources from 2023"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2021\u20132023",
+        "description": "Consider sources from 2021 to 2023"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: USA",
+        "description": "Only consider sources from the USA"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: Global online education market",
+        "description": "Consider sources from the global online education market"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Full-time worker prioritizing schedule flexibility",
+        "description": "Prioritize sources that support flexibility for full-time workers"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Career-changer focused on networking outcomes",
+        "description": "Prioritize sources that support networking benefits for career-changers"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Education research institution",
+        "description": "Prioritize sources from education research institutions"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Industry workforce report",
+        "description": "Prioritize sources from industry workforce reports"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Online learner community",
+        "description": "Prioritize sources from online learner communities"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Higher education journalism",
+        "description": "Prioritize sources from higher education journalism"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Online Default): Choose an online degree from an accredited university",
+        "description": "Advantages of online programs for working adults"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (In-Person for Networking Fields): Attend in-person if you're in a field where professional networks directly drive career outcomes",
+        "description": "Benefits of in-person programs for professional networking"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Hybrid Program): Seek a hybrid or HyFlex program if available",
+        "description": "Options for balancing schedule flexibility and networking benefits"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "a1"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "a2"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

@@ -1,0 +1,385 @@
+{
+  "query_id": 51717,
+  "query": "What is the best engineering college in Wisconsin?",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: US News & World Report engineering rankings",
+    "trustworthiness: ABET accreditation database",
+    "trustworthiness: peer-reviewed engineering education journal",
+    "trustworthiness: college ranking aggregator (Cappex / Niche)",
+    "trustworthiness: student / alumni review forum",
+    "perspective: research-career-focused student",
+    "perspective: industry-job-focused undergraduate",
+    "perspective: in-state cost-conscious student",
+    "perspective: small-class-size-preferring student",
+    "perspective: computer engineering specialist"
+  ],
+  "plausible_answers": [
+    "University of Wisconsin-Madison",
+    "Milwaukee School of Engineering (MSOE)",
+    "University of Wisconsin-Milwaukee"
+  ],
+  "baseline_answer": "University of Wisconsin-Madison",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 3180,
+    "output_tokens": 2384,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best engineering college in Wisconsin?",
+        "description": "Determine the top engineering college in Wisconsin"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the most trustworthy engineering college in Wisconsin?",
+        "description": "Find the most trustworthy engineering college in Wisconsin"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best engineering college in Wisconsin for a research-career-focused student?",
+        "description": "Find the best engineering college for research-career-focused students"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best engineering college in Wisconsin for an industry-job-focused undergraduate?",
+        "description": "Find the best engineering college for industry-job-focused undergraduates"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best engineering college in Wisconsin for a computer engineering specialist?",
+        "description": "Find the best engineering college for computer engineering specialists"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: US News & World Report engineering rankings",
+        "description": "Trustworthiness filter from US News & World Report"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: ABET accreditation database",
+        "description": "Trustworthiness filter from ABET accreditation database"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed engineering education journal",
+        "description": "Trustworthiness filter from peer-reviewed engineering education journal"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: college ranking aggregator (Cappex / Niche)",
+        "description": "Trustworthiness filter from college ranking aggregator"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: student / alumni review forum",
+        "description": "Trustworthiness filter from student / alumni review forum"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: research-career-focused student",
+        "description": "Perspective filter from research-career-focused student"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: industry-job-focused undergraduate",
+        "description": "Perspective filter from industry-job-focused undergraduate"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: in-state cost-conscious student",
+        "description": "Perspective filter from in-state cost-conscious student"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: small-class-size-preferring student",
+        "description": "Perspective filter from small-class-size-preferring student"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: computer engineering specialist",
+        "description": "Perspective filter from computer engineering specialist"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "University of Wisconsin-Madison",
+        "description": "Top-ranked engineering college in Wisconsin"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Milwaukee School of Engineering (MSOE)",
+        "description": "Engineering college with strong focus on industry-job-focused students"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "University of Wisconsin-Milwaukee",
+        "description": "Engineering college with strong focus on research-career-focused students"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "sq4",
+        "target": "c6"
+      },
+      {
+        "source": "sq4",
+        "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c8"
+      },
+      {
+        "source": "sq4",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      }
+    ]
+  }
+}
