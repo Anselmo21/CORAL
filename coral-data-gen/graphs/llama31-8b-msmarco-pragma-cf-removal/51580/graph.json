@@ -1,0 +1,283 @@
+{
+  "query_id": 51580,
+  "query": "What is the best antidepressant for energy and mood?",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: psychiatry clinical practice guideline",
+    "trustworthiness: peer-reviewed pharmacology literature",
+    "trustworthiness: integrative medicine source",
+    "trustworthiness: patient mental-health forum",
+    "trustworthiness: wellness / lifestyle publication",
+    "perspective: low-energy depression patient",
+    "perspective: anxious patient",
+    "perspective: patient avoiding pharmacologic intervention",
+    "perspective: patient with comorbid weight concerns",
+    "perspective: pregnant patient"
+  ],
+  "plausible_answers": [
+    "Bupropion (Wellbutrin)",
+    "SSRI (Prozac, Zoloft)",
+    "Natural supplements (St John's Wort, SAM-e, Omega-3, B vitamins) + exercise"
+  ],
+  "baseline_answer": "Bupropion (Wellbutrin)",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 4609,
+    "output_tokens": 1745,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best antidepressant for energy and mood?",
+        "description": ""
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best antidepressant for energy and mood, considering trustworthy sources?",
+        "description": ""
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best antidepressant for energy and mood, considering the patient's perspective?",
+        "description": ""
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: psychiatry clinical practice guideline",
+        "description": ""
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed pharmacology literature",
+        "description": ""
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: integrative medicine source",
+        "description": ""
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: patient mental-health forum",
+        "description": ""
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: wellness / lifestyle publication",
+        "description": ""
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: low-energy depression patient",
+        "description": ""
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: anxious patient",
+        "description": ""
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: patient avoiding pharmacologic intervention",
+        "description": ""
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: patient with comorbid weight concerns",
+        "description": ""
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: pregnant patient",
+        "description": ""
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Bupropion (Wellbutrin)",
+        "description": "Best antidepressant for energy and mood"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "SSRI (Prozac, Zoloft)",
+        "description": "Effective for energy and mood"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Natural supplements (St John's Wort, SAM-e, Omega-3, B vitamins) + exercise",
+        "description": "Alternative treatment for energy and mood"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

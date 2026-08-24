@@ -1,0 +1,333 @@
+{
+  "query_id": 52420,
+  "query": "best zinc brand for acne",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: peer-reviewed dermatology journal",
+    "trustworthiness: registered dietitian guidance",
+    "trustworthiness: nutritionist recommendation",
+    "trustworthiness: consumer health blog",
+    "trustworthiness: patient acne forum",
+    "perspective: zinc-deficient confirmed patient",
+    "perspective: antibiotic-resistant acne sufferer",
+    "perspective: hormonal acne sufferer",
+    "perspective: clean-supplement preference",
+    "perspective: budget-conscious consumer"
+  ],
+  "plausible_answers": [
+    "Zinc ascorbate supplement",
+    "Oral zinc gluconate at the trial-validated 200 mg/day dose (~30 mg elemental zinc)",
+    "Multivitamin with high-potency zinc plus Vitamins A / B6 / C / E"
+  ],
+  "baseline_answer": "Zinc ascorbate supplement",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 4104,
+    "output_tokens": 2009,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best zinc brand for acne",
+        "description": "The best zinc brand for acne"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "most trustworthy source",
+        "description": "The most trustworthy source of information about zinc for acne"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "best perspective",
+        "description": "The best perspective to consider when choosing a zinc supplement for acne"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "most effective form",
+        "description": "The most effective form of zinc for acne"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "best way to consume",
+        "description": "The best way to consume zinc for acne (oral, topical, etc.)"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed dermatology journal",
+        "description": "Peer-reviewed dermatology journal"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: registered dietitian guidance",
+        "description": "Registered dietitian guidance"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: nutritionist recommendation",
+        "description": "Nutritionist recommendation"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: consumer health blog",
+        "description": "Consumer health blog"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: patient acne forum",
+        "description": "Patient acne forum"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: zinc-deficient confirmed patient",
+        "description": "Zinc-deficient confirmed patient"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: antibiotic-resistant acne sufferer",
+        "description": "Antibiotic-resistant acne sufferer"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: hormonal acne sufferer",
+        "description": "Hormonal acne sufferer"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: clean-supplement preference",
+        "description": "Clean-supplement preference"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: budget-conscious consumer",
+        "description": "Budget-conscious consumer"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Zinc ascorbate supplement",
+        "description": "Zinc ascorbate supplement"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Oral zinc gluconate at the trial-validated 200 mg/day dose (~30 mg elemental zinc)",
+        "description": "Oral zinc gluconate at the trial-validated 200 mg/day dose (~30 mg elemental zinc)"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Multivitamin with high-potency zinc plus Vitamins A / B6 / C / E",
+        "description": "Multivitamin with high-potency zinc plus Vitamins A / B6 / C / E"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq4",
+        "target": "c1"
+      },
+      {
+        "source": "sq4",
+        "target": "c2"
+      },
+      {
+        "source": "sq4",
+        "target": "c3"
+      },
+      {
+        "source": "sq4",
+        "target": "c4"
+      },
+      {
+        "source": "sq4",
+        "target": "c5"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      }
+    ]
+  }
+}

@@ -1,0 +1,270 @@
+{
+  "query_id": 51811,
+  "query": "What is the best herb to relieve headaches?",
+  "mode": "criteria",
+  "atoms": [
+    "migraine efficacy",
+    "tension headache efficacy",
+    "onset speed",
+    "side effect profile",
+    "drug interactions",
+    "dosing convenience",
+    "scientific evidence",
+    "cost",
+    "availability",
+    "taste/palatability"
+  ],
+  "plausible_answers": [
+    "Feverfew",
+    "Butterbur (Petasites hybridus) extract",
+    "Lavender oil (inhaled or topical)"
+  ],
+  "baseline_answer": "Feverfew",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 2,
+  "usage": {
+    "prompt_tokens": 6867,
+    "output_tokens": 3405,
+    "llm_calls": 3,
+    "finish_reasons": [
+      "stop",
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best herb to relieve headaches?",
+        "description": "The best herb to relieve headaches, with Feverfew being the top-ranked option when considering all factors."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Efficacy",
+        "description": "The effectiveness of herbs in relieving headaches."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Safety and Interactions",
+        "description": "The potential side effects and interactions of herbs."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Practicality",
+        "description": "The convenience, cost, availability, and taste of herbs."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Scientific Foundation",
+        "description": "The scientific evidence and onset speed of herbs."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "migraine efficacy",
+        "description": "The effectiveness of herbs in relieving migraines."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "tension headache efficacy",
+        "description": "The effectiveness of herbs in relieving tension headaches."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "side effect profile",
+        "description": "The potential side effects of herbs."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "drug interactions",
+        "description": "The potential interactions of herbs with other medications."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "dosing convenience",
+        "description": "The ease of dosing herbs."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost",
+        "description": "The cost of herbs."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "availability",
+        "description": "The availability of herbs."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "taste/palatability",
+        "description": "The taste and palatability of herbs."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "onset speed",
+        "description": "The speed at which herbs take effect."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "scientific evidence",
+        "description": "The scientific evidence supporting the use of herbs."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Butterbur (Petasites hybridus) extract",
+        "description": "A herbal remedy for headaches."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Lavender oil (inhaled or topical)",
+        "description": "A herbal remedy for headaches."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Feverfew",
+        "description": "A herbal remedy for headaches."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq4",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      }
+    ]
+  }
+}

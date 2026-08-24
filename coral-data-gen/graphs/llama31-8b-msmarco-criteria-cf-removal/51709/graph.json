@@ -1,0 +1,281 @@
+{
+  "query_id": 51709,
+  "query": "Which medication best relieves a common cold?",
+  "mode": "criteria",
+  "atoms": [
+    "symptom coverage",
+    "onset speed",
+    "duration of relief",
+    "side effect profile",
+    "drowsiness factor",
+    "drug interactions",
+    "age suitability",
+    "price",
+    "dosing frequency",
+    "formulation type"
+  ],
+  "plausible_answers": [
+    "An NSAID (ibuprofen / Advil or naproxen / Aleve)",
+    "A multi-symptom OTC like NyQuil or Tylenol Cold Multi Symptom Nighttime"
+  ],
+  "baseline_answer": "An NSAID (ibuprofen / Advil or naproxen / Aleve)",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 3434,
+    "output_tokens": 1917,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Which medication best relieves a common cold?",
+        "description": "The best medication for relieving a common cold"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Symptom coverage and duration of relief",
+        "description": "Does the medication cover multiple symptoms and provide long-lasting relief?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Onset speed and dosing frequency",
+        "description": "How quickly does the medication take effect and how often does it need to be taken?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Side effect profile, drowsiness factor, and age suitability",
+        "description": "What are the potential side effects of the medication and is it suitable for all ages?"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Price and formulation type",
+        "description": "How expensive is the medication and what form does it come in?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "symptom coverage",
+        "description": "Does the medication cover multiple symptoms?"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "onset speed",
+        "description": "How quickly does the medication take effect?"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "duration of relief",
+        "description": "How long does the medication provide relief?"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "side effect profile",
+        "description": "What are the potential side effects of the medication?"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "drowsiness factor",
+        "description": "Does the medication cause drowsiness?"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "drug interactions",
+        "description": "Can the medication interact with other medications?"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "age suitability",
+        "description": "Is the medication suitable for all ages?"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "price",
+        "description": "How expensive is the medication?"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "dosing frequency",
+        "description": "How often does the medication need to be taken?"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "formulation type",
+        "description": "What form does the medication come in?"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "An NSAID (ibuprofen / Advil or naproxen / Aleve)",
+        "description": "A nonsteroidal anti-inflammatory drug"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "A multi-symptom OTC like NyQuil or Tylenol Cold Multi Symptom Nighttime",
+        "description": "A multi-symptom over-the-counter medication"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c8"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      }
+    ]
+  }
+}

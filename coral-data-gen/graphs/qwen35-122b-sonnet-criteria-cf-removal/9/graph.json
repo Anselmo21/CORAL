@@ -1,0 +1,289 @@
+{
+  "query_id": 9,
+  "query": "I have $8,000 spread across three credit cards at 19%, 22%, and 24% APR. What's the best way to pay this off?",
+  "mode": "criteria",
+  "atoms": [
+    "total interest cost minimization",
+    "psychological motivation and completion rate",
+    "speed of debt elimination",
+    "simplicity of single payment",
+    "credit score impact",
+    "access to balance transfer offers",
+    "risk of rate reset on promotional offers",
+    "qualification for consolidation loan",
+    "flexibility to handle financial emergencies",
+    "immediate cash flow relief"
+  ],
+  "plausible_answers": [
+    "Answer A (Avalanche Default): Pay minimums on all cards and throw every extra dollar at the 24% card first \u2014 the avalanche method minimizes total interest and is mathematically optimal for someone committed to following through.",
+    "Answer B (Snowball for Motivation): Target the smallest balance first regardless of rate \u2014 the psychological wins from eliminating individual cards keep most people on track better than pure math, making snowball more effective in practice.",
+    "Answer C (Balance Transfer): Transfer all three balances to a 0% APR card and pay off the full amount within the promotional window \u2014 if you qualify, this eliminates interest entirely and is faster than any payment-order strategy."
+  ],
+  "baseline_answer": "Answer C (Balance Transfer): Transfer all three balances to a 0% APR card and pay off the full amount within the promotional window \u2014 if you qualify, this eliminates interest entirely and is faster than any payment-order strategy.",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 2,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Best way to pay off $8k debt?",
+        "description": "Determine the optimal debt repayment strategy for $8,000 across three credit cards at 19-24% APR."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Mathematical & Financial Efficiency",
+        "description": "Evaluates cost, speed, and feasibility of financial instruments."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Behavioral & Psychological Factors",
+        "description": "Evaluates user motivation, flexibility, and cash flow needs."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Operational & Structural Simplicity",
+        "description": "Evaluates the mechanics of payment structure and credit impact."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "total interest cost minimization",
+        "description": "Minimizing the total dollar amount paid in interest."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "psychological motivation and completion rate",
+        "description": "The likelihood of sticking to the plan due to early wins."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "speed of debt elimination",
+        "description": "How quickly the debt is fully paid off."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "simplicity of single payment",
+        "description": "Consolidating multiple payments into one."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "credit score impact",
+        "description": "Effect on credit utilization and score during repayment."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "access to balance transfer offers",
+        "description": "Ability to qualify for 0% APR promotional cards."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "risk of rate reset on promotional offers",
+        "description": "The danger of high rates returning after the promo period."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "qualification for consolidation loan",
+        "description": "Eligibility for a lower-rate personal loan."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "flexibility to handle financial emergencies",
+        "description": "Ability to pause or adjust payments if needed."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "immediate cash flow relief",
+        "description": "Reducing monthly payment burden immediately."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Avalanche Default)",
+        "description": "Pay minimums on all cards and throw every extra dollar at the 24% card first."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Snowball for Motivation)",
+        "description": "Target the smallest balance first regardless of rate."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Balance Transfer)",
+        "description": "Transfer all three balances to a 0% APR card and pay off the full amount within the promotional window."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      }
+    ]
+  }
+}

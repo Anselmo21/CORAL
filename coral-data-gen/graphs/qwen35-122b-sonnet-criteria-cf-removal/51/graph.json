@@ -1,0 +1,277 @@
+{
+  "query_id": 51,
+  "query": "I wake up with back pain almost every morning. What mattress should I get?",
+  "mode": "criteria",
+  "atoms": [
+    "spinal alignment support",
+    "medium-firm firmness for back pain",
+    "sleep trial availability for evaluation",
+    "pressure point relief",
+    "heat retention for temperature regulation",
+    "durability and longevity",
+    "responsiveness for position changes",
+    "price and value",
+    "edge support for getting in and out",
+    "suitability for sleep position (side, back, stomach)"
+  ],
+  "plausible_answers": [
+    "Answer A (Hybrid Medium-Firm Default): Get a hybrid medium-firm mattress like the Saatva Classic \u2014 innerspring support with foam comfort layers provides the spinal alignment most associated with back pain relief, and a 100-night trial lets you verify it works for you.",
+    "Answer B (Latex for Responsiveness): Choose a latex mattress if you move frequently during sleep \u2014 latex's immediate responsiveness and pressure relief without heat retention is superior to memory foam for combination sleepers with back pain.",
+    "Answer C (Buy with Long Trial First): Prioritize a mattress with at least a 100-night sleep trial above all other factors \u2014 back pain response is highly individual and no recommendation is reliable without the ability to test it for at least 6\u20138 weeks."
+  ],
+  "baseline_answer": "Answer A (Hybrid Medium-Firm Default): Get a hybrid medium-firm mattress like the Saatva Classic \u2014 innerspring support with foam comfort layers provides the spinal alignment most associated with back pain relief, and a 100-night trial lets you verify it works for you.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 2,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What mattress should I get for back pain?",
+        "description": "User wakes up with back pain and needs a mattress recommendation."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Structural and Clinical Fit",
+        "description": "How does the mattress support the spine and manage pain?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Material and Sensory Experience",
+        "description": "How do material properties affect comfort, heat, and movement?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Risk Mitigation and Logistics",
+        "description": "What are the purchasing terms and long-term value?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "spinal alignment support",
+        "description": "Ability to keep the spine in a neutral position."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "medium-firm firmness for back pain",
+        "description": "Specific firmness level clinically proven to reduce back pain."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "sleep trial availability for evaluation",
+        "description": "Opportunity to test the mattress for an extended period."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "pressure point relief",
+        "description": "Reduction of pressure on hips and shoulders."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "heat retention for temperature regulation",
+        "description": "Ability to sleep cool without overheating."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "durability and longevity",
+        "description": "How long the mattress lasts before sagging."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "responsiveness for position changes",
+        "description": "How quickly the mattress adapts to body movement."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "price and value",
+        "description": "Cost-effectiveness of the mattress."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "edge support for getting in and out",
+        "description": "Stability of the mattress perimeter."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "suitability for sleep position (side, back, stomach)",
+        "description": "Compatibility with specific sleeping postures."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Hybrid Medium-Firm Default)",
+        "description": "Get a hybrid medium-firm mattress like the Saatva Classic."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Latex for Responsiveness)",
+        "description": "Choose a latex mattress if you move frequently during sleep."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Buy with Long Trial First)",
+        "description": "Prioritize a mattress with at least a 100-night sleep trial above all other factors."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      }
+    ]
+  }
+}

@@ -1,0 +1,313 @@
+{
+  "query_id": 51843,
+  "query": "What is the best laptop for under $1000?",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: PCMag editor recommendation",
+    "trustworthiness: PCWorld review",
+    "trustworthiness: gaming-focused review site",
+    "trustworthiness: Reddit r/SuggestALaptop community",
+    "trustworthiness: consumer aggregator (CNET / Tom's Guide)",
+    "perspective: PC gamer",
+    "perspective: business / productivity user",
+    "perspective: college student / general use",
+    "perspective: frequent traveler / portability priority",
+    "perspective: casual home user with kids"
+  ],
+  "plausible_answers": [
+    "A premium ultrabook (Dell XPS 13, ASUS Zenbook, or MacBook Air)",
+    "A 15\" gaming laptop with dedicated GPU (Acer Aspire / Lenovo IdeaPad Gaming)",
+    "A mainstream 15\" Dell or ASUS Vivobook touchscreen with large screen + ample RAM"
+  ],
+  "baseline_answer": "A mainstream 15\" Dell or ASUS Vivobook touchscreen with large screen + ample RAM",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best laptop for under $1000?",
+        "description": "The primary inquiry regarding the best laptop purchase under a specific budget."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Best for general use, students, and value",
+        "description": "Focuses on large screens, touch, and RAM for general productivity and media."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Best for gaming and performance",
+        "description": "Focuses on dedicated GPUs and gaming-specific hardware requirements."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Best for portability and business",
+        "description": "Focuses on ultrabooks, battery life, and lightweight form factors."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: PCMag editor recommendation",
+        "description": "Prioritizes PCMag's editorial choice, which favors the ultrabook as a 'safe bet'."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: PCWorld review",
+        "description": "Prioritizes PCWorld reviews, which highlight the 15-inch mainstream options."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: gaming-focused review site",
+        "description": "Prioritizes sources like PCGamerHome and Heavy.com focused on gaming specs."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Reddit r/SuggestALaptop community",
+        "description": "Prioritizes community consensus from Reddit."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: consumer aggregator (CNET / Tom's Guide)",
+        "description": "Prioritizes aggregated scores from major consumer tech sites."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: PC gamer",
+        "description": "Filters for user needs focused on gaming performance."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: business / productivity user",
+        "description": "Filters for user needs focused on work, battery, and reliability."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: college student / general use",
+        "description": "Filters for user needs focused on versatility and screen size."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: frequent traveler / portability priority",
+        "description": "Filters for user needs focused on weight and battery life."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: casual home user with kids",
+        "description": "Filters for user needs focused on durability and ease of use."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "A premium ultrabook (Dell XPS 13, ASUS Zenbook, or MacBook Air)",
+        "description": "Best choice when portability and build quality are prioritized over screen size."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "A 15\" gaming laptop with dedicated GPU (Acer Aspire / Lenovo IdeaPad Gaming)",
+        "description": "Best choice when gaming performance and dedicated graphics are prioritized."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "A mainstream 15\" Dell or ASUS Vivobook touchscreen with large screen + ample RAM",
+        "description": "Best choice when balancing screen size, touch, RAM, and value for general use."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      }
+    ]
+  }
+}

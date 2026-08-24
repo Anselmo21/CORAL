@@ -1,0 +1,297 @@
+{
+  "query_id": 27,
+  "query": "I get migraines about twice a month. Should I take something preventively or just treat each one when it happens?",
+  "mode": "criteria",
+  "atoms": [
+    "monthly migraine frequency threshold",
+    "impact on quality of life and productivity",
+    "acute medication overuse risk",
+    "side effect burden of daily preventives",
+    "efficacy of triptans for acute treatment",
+    "risk of progression to chronic migraine",
+    "cost and insurance coverage of CGRP inhibitors",
+    "patient preference for daily medication",
+    "lifestyle trigger management potential",
+    "prior acute treatment failure"
+  ],
+  "plausible_answers": [
+    "Answer A (Acute Treatment Default): Manage 2 migraines per month with triptans as needed \u2014 daily preventive medication adds side effect burden that isn't justified at this frequency, and most patients manage well with acute-only treatment.",
+    "Answer B (Start Preventives Early): Begin preventive therapy even at 2/month if your attacks are severely disabling \u2014 preventing progression to chronic migraine justifies earlier preventive intervention, and newer CGRP inhibitors have minimal side effects.",
+    "Answer C (Lifestyle Plus Acute): Prioritize identifying and eliminating personal triggers (sleep, diet, stress) alongside acute triptans before adding daily medication \u2014 many patients reduce frequency below treatment threshold through lifestyle modification alone."
+  ],
+  "baseline_answer": "Answer B (Start Preventives Early): Begin preventive therapy even at 2/month if your attacks are severely disabling \u2014 preventing progression to chronic migraine justifies earlier preventive intervention, and newer CGRP inhibitors have minimal side effects.",
+  "baseline_index": 1,
+  "model": "meta-llama/Llama-3.3-70B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2334,
+    "output_tokens": 2041,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Migraine Treatment Approach",
+        "description": "Should I take something preventively or just treat each migraine when it happens?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Threshold and Impact",
+        "description": "Considerations related to migraine frequency and impact"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Treatment Efficacy and Burden",
+        "description": "Considerations related to treatment effectiveness and side effects"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Patient Preferences and Progression",
+        "description": "Considerations related to patient preferences and disease progression"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Prior Experience and Failure",
+        "description": "Considerations related to prior treatment experiences"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "monthly migraine frequency threshold",
+        "description": "The frequency at which migraines occur"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "impact on quality of life and productivity",
+        "description": "How migraines affect daily life and work"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "acute medication overuse risk",
+        "description": "The risk of overusing acute migraine medications"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "side effect burden of daily preventives",
+        "description": "The side effects associated with daily preventive medications"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "efficacy of triptans for acute treatment",
+        "description": "How effective triptans are for treating migraines acutely"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "risk of progression to chronic migraine",
+        "description": "The risk that migraines will become chronic"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost and insurance coverage of CGRP inhibitors",
+        "description": "The cost and insurance coverage of CGRP inhibitors"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "patient preference for daily medication",
+        "description": "Patient preference for taking daily medication"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "lifestyle trigger management potential",
+        "description": "The potential for managing migraines through lifestyle changes"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "prior acute treatment failure",
+        "description": "Failure of prior acute treatments"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Acute Treatment Default",
+        "description": "Manage migraines with triptans as needed"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Start Preventives Early",
+        "description": "Begin preventive therapy even at a low frequency if attacks are severely disabling"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Lifestyle Plus Acute",
+        "description": "Prioritize identifying and eliminating personal triggers alongside acute triptans"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      }
+    ]
+  }
+}

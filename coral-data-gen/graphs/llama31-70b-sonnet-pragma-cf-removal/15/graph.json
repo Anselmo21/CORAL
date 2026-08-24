@@ -1,0 +1,294 @@
+{
+  "query_id": 15,
+  "query": "I've been feeling low and anxious for a few months. Should I try therapy or antidepressants first?",
+  "mode": "pragmas",
+  "atoms": [
+    "temporal: 2023 only",
+    "temporal: 2021\u20132023",
+    "geographic: USA",
+    "perspective: Patient preferring non-medication approach",
+    "perspective: Patient needing rapid symptom relief",
+    "perspective: Clinical psychiatrist or GP",
+    "trustworthiness: Peer-reviewed clinical research",
+    "trustworthiness: Medical institution guidance",
+    "trustworthiness: Consumer health information",
+    "trustworthiness: Patient community experience"
+  ],
+  "plausible_answers": [
+    "Answer A (Therapy First Default): Start with CBT or another evidence-based therapy \u2014 for mild to moderate symptoms it's as effective as medication without side effects, builds lasting coping skills, and is recommended as first-line by most clinical guidelines.",
+    "Answer B (Medication for Speed): Start with an SSRI if you need faster relief or have moderate-to-severe symptoms \u2014 antidepressants typically show effect in 2\u20134 weeks versus months for therapy to fully work.",
+    "Answer C (Combined Approach): Pursue therapy and medication simultaneously \u2014 the combination outperforms either alone for persistent or moderate-severe cases and is recommended when symptoms are significantly impairing daily function."
+  ],
+  "baseline_answer": "Answer A (Therapy First Default): Start with CBT or another evidence-based therapy \u2014 for mild to moderate symptoms it's as effective as medication without side effects, builds lasting coping skills, and is recommended as first-line by most clinical guidelines.",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.1-70B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2458,
+    "output_tokens": 1902,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Should I try therapy or antidepressants first?",
+        "description": "Treatment approach for mild to moderate depression and anxiety"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Recommended treatment approaches",
+        "description": "What are the recommended treatment approaches for mild to moderate depression and anxiety?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Benefits and drawbacks of each approach",
+        "description": "What are the benefits and drawbacks of each treatment approach?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Influence of sources and perspectives",
+        "description": "How do different sources and perspectives influence the recommended treatment approach?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2023 only",
+        "description": "Only consider sources from 2023"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2021\u20132023",
+        "description": "Only consider sources from 2021 to 2023"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: USA",
+        "description": "Only consider sources from the USA"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Patient preferring non-medication approach",
+        "description": "Prioritize sources from the patient's perspective that prefer non-medication approaches"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Patient needing rapid symptom relief",
+        "description": "Prioritize sources from the patient's perspective that need rapid symptom relief"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Clinical psychiatrist or GP",
+        "description": "Prioritize sources from the perspective of clinical psychiatrists or GPs"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Peer-reviewed clinical research",
+        "description": "Only consider peer-reviewed clinical research sources"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Medical institution guidance",
+        "description": "Only consider sources from medical institutions"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Consumer health information",
+        "description": "Only consider consumer health information sources"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Patient community experience",
+        "description": "Only consider sources from patient community experience"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Therapy First Default",
+        "description": "Start with CBT or another evidence-based therapy"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Medication for Speed",
+        "description": "Start with an SSRI if you need faster relief or have moderate-to-severe symptoms"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Combined Approach",
+        "description": "Pursue therapy and medication simultaneously"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      }
+    ]
+  }
+}

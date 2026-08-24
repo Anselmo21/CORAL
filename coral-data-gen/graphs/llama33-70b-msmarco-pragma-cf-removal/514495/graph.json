@@ -1,0 +1,315 @@
+{
+  "query_id": 514495,
+  "query": "the best way to get rid of squarrels",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: wildlife control professional",
+    "trustworthiness: peer-reviewed mammalogy literature",
+    "trustworthiness: pest control product retailer",
+    "trustworthiness: DIY homeowner blog",
+    "trustworthiness: wildlife rehabilitation guidance",
+    "perspective: homeowner with attic squirrel infestation",
+    "perspective: garden / yard squirrel problem",
+    "perspective: wildlife-friendly advocate",
+    "perspective: property protection priority",
+    "perspective: seasonal-timing-aware homeowner"
+  ],
+  "plausible_answers": [
+    "Exclusion: seal entry points around the house / attic",
+    "Live or kill trapping with corn / peanut butter bait, timed for just after hibernation",
+    "Repellents: mothballs, homemade water-based spray, or the Squirrel Evictor product"
+  ],
+  "baseline_answer": "Exclusion: seal entry points around the house / attic",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.3-70B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 3022,
+    "output_tokens": 1714,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "the best way to get rid of squirrels",
+        "description": ""
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "removing squirrels from a house or attic",
+        "description": ""
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "removing squirrels from a yard or garden",
+        "description": ""
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: wildlife control professional",
+        "description": ""
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed mammalogy literature",
+        "description": ""
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: pest control product retailer",
+        "description": ""
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: DIY homeowner blog",
+        "description": ""
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: wildlife rehabilitation guidance",
+        "description": ""
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: homeowner with attic squirrel infestation",
+        "description": ""
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: garden / yard squirrel problem",
+        "description": ""
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: wildlife-friendly advocate",
+        "description": ""
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: property protection priority",
+        "description": ""
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: seasonal-timing-aware homeowner",
+        "description": ""
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Exclusion: seal entry points around the house / attic",
+        "description": ""
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Live or kill trapping with corn / peanut butter bait, timed for just after hibernation",
+        "description": ""
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Repellents: mothballs, homemade water-based spray, or the Squirrel Evictor product",
+        "description": ""
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

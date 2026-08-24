@@ -1,0 +1,329 @@
+{
+  "query_id": 51790,
+  "query": "What is the best gas loyalty points card in Canada?",
+  "mode": "pragmas",
+  "atoms": [
+    "geographic: Canada (national)",
+    "geographic: Ontario / GTA",
+    "geographic: Western Canada (Alberta / BC)",
+    "trustworthiness: MoneySense / personal finance publication",
+    "trustworthiness: RateSupermarket.ca rewards comparison",
+    "trustworthiness: Canadian consumer finance blog",
+    "trustworthiness: bank product documentation",
+    "perspective: low-spend driver (~$200/mo)",
+    "perspective: high-spend driver (~$500/mo)",
+    "perspective: credit-card-averse consumer"
+  ],
+  "plausible_answers": [
+    "Esso Extra",
+    "Petro-Points (Petro-Canada)",
+    "RBC Royal Bank Esso Visa",
+    "CIBC Costco Gas Mastercard"
+  ],
+  "baseline_answer": "RBC Royal Bank Esso Visa",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 3,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best gas loyalty points card in Canada?",
+        "description": "Primary question asking for the top gas loyalty card."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Geographic Scope",
+        "description": "Evaluates availability and optimality across national vs. regional markets."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Source Credibility",
+        "description": "Evaluates the reliability of bank documentation vs. third-party comparisons."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "User Profile",
+        "description": "Evaluates suitability based on spending volume and credit card preference."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: Canada (national)",
+        "description": "Prioritizes sources covering the entire Canadian market."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: Ontario / GTA",
+        "description": "Prioritizes sources specific to Ontario and the Greater Toronto Area."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: Western Canada (Alberta / BC)",
+        "description": "Prioritizes sources specific to Western Canadian provinces."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: MoneySense / personal finance publication",
+        "description": "Prioritizes established personal finance publications."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: RateSupermarket.ca rewards comparison",
+        "description": "Prioritizes data from RateSupermarket comparisons."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Canadian consumer finance blog",
+        "description": "Prioritizes insights from consumer finance blogs."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: bank product documentation",
+        "description": "Prioritizes official documentation from issuing banks."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: low-spend driver (~$200/mo)",
+        "description": "Focuses on value for drivers with low monthly gas spend."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: high-spend driver (~$500/mo)",
+        "description": "Focuses on value for drivers with high monthly gas spend."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: credit-card-averse consumer",
+        "description": "Focuses on options for consumers avoiding credit cards."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Esso Extra",
+        "description": "Store loyalty program for Esso stations."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Petro-Points (Petro-Canada)",
+        "description": "Store loyalty program for Petro-Canada stations."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "RBC Royal Bank Esso Visa",
+        "description": "Co-branded credit card offering high rewards for Esso."
+      },
+      {
+        "id": "a4",
+        "layer": "4",
+        "type": "answer",
+        "label": "CIBC Costco Gas Mastercard",
+        "description": "Co-branded credit card offering high rewards for Costco and gas."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a4"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a4"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a4"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a4"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a4"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a4"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a4"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a4"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a4"
+      }
+    ]
+  }
+}

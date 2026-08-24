@@ -1,0 +1,257 @@
+{
+  "query_id": 26,
+  "query": "I work at a desk all day and have been having back pain. Would a standing desk actually help?",
+  "mode": "pragmas",
+  "atoms": [
+    "temporal: 2023 only",
+    "temporal: 2021\u20132023",
+    "geographic: USA",
+    "geographic: UK",
+    "perspective: Individual focused on cost-effective solutions",
+    "perspective: Ergonomics specialist or occupational therapist",
+    "trustworthiness: Peer-reviewed clinical research",
+    "trustworthiness: Medical institution guidance",
+    "trustworthiness: Consumer health information",
+    "trustworthiness: Community ergonomics experience"
+  ],
+  "plausible_answers": [
+    "Answer A (Movement Breaks Default): Skip the standing desk and focus on taking a 2\u20135 minute movement break every 30\u201345 minutes \u2014 evidence shows frequent movement reduces back pain more reliably than sit-stand desks, at zero cost.",
+    "Answer B (Standing Desk With Proper Setup): Get a sit-stand desk with anti-fatigue mat and proper ergonomic setup \u2014 used correctly with alternating postures every 30 minutes, it reduces upper back pain and prolonged sitting with meaningful evidence from long-term RCTs.",
+    "Answer C (Exercise Over Equipment): Invest time in a strength training program targeting core and hip stability rather than buying a standing desk \u2014 structural weakness is the primary driver of desk-related back pain and exercise addresses the root cause."
+  ],
+  "baseline_answer": "Answer A (Movement Breaks Default): Skip the standing desk and focus on taking a 2\u20135 minute movement break every 30\u201345 minutes \u2014 evidence shows frequent movement reduces back pain more reliably than sit-stand desks, at zero cost.",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.1-70B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2488,
+    "output_tokens": 1818,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "I work at a desk all day and have been having back pain. Would a standing desk actually help?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the effectiveness of standing desks in reducing back pain?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the potential risks or drawbacks of using a standing desk?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the most cost-effective and evidence-based solutions for addressing back pain?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2023 only"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2021\u20132023"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: USA"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: UK"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Individual focused on cost-effective solutions"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Ergonomics specialist or occupational therapist"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Peer-reviewed clinical research"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Medical institution guidance"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Consumer health information"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Community ergonomics experience"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Skip the standing desk and focus on taking a 2\u20135 minute movement break every 30\u201345 minutes \u2014 evidence shows frequent movement reduces back pain more reliably than sit-stand desks, at zero cost."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Get a sit-stand desk with anti-fatigue mat and proper ergonomic setup \u2014 used correctly with alternating postures every 30 minutes, it reduces upper back pain and prolonged sitting with meaningful evidence from long-term RCTs."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Invest time in a strength training program targeting core and hip stability rather than buying a standing desk \u2014 structural weakness is the primary driver of desk-related back pain and exercise addresses the root cause."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

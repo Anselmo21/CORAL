@@ -1,0 +1,308 @@
+{
+  "query_id": 51957,
+  "query": "best places in spain to see for backpackers",
+  "mode": "criteria",
+  "atoms": [
+    "cultural experiences",
+    "affordability",
+    "nightlife options",
+    "natural attractions",
+    "historical significance",
+    "local cuisine",
+    "transportation access",
+    "backpacker community",
+    "seasonal events",
+    "safety for travelers"
+  ],
+  "plausible_answers": [
+    "Barcelona",
+    "Madrid + Granada",
+    "Basque Country (Bilbao)"
+  ],
+  "baseline_answer": "Barcelona",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best places in spain to see for backpackers",
+        "description": "Which cities or regions in Spain are most recommended for backpackers based on cultural, social, and practical criteria?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "cultural experiences and historical significance",
+        "description": "Which places in Spain offer the most immersive cultural and historical experiences for backpackers?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "affordability and backpacker community",
+        "description": "Which regions in Spain are most affordable and have the strongest backpacker communities?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "nightlife and local cuisine",
+        "description": "Where in Spain is the nightlife and local cuisine most appealing to backpackers?"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "natural attractions and seasonal events",
+        "description": "Which areas in Spain offer the best natural attractions and seasonal events for backpackers?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "cultural experiences",
+        "description": "Availability of museums, festivals, and cultural immersion opportunities."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "affordability",
+        "description": "Cost of accommodation and daily expenses for backpackers."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "nightlife options",
+        "description": "Variety and accessibility of bars, clubs, and late-night venues."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "natural attractions",
+        "description": "Proximity to parks, beaches, and scenic landscapes."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "historical significance",
+        "description": "Presence of UNESCO sites and historical landmarks."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "local cuisine",
+        "description": "Availability and affordability of traditional Spanish food."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "transportation access",
+        "description": "Ease of getting around the city and to other destinations."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "backpacker community",
+        "description": "Presence and activity of a backpacker-friendly social network."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "seasonal events",
+        "description": "Major festivals or events that occur seasonally."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "safety for travelers",
+        "description": "Perceived and actual safety for solo and budget travelers."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Barcelona",
+        "description": "Barcelona is the top choice for backpackers due to its vibrant culture, nightlife, and accessibility."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Madrid + Granada",
+        "description": "A combination of urban Madrid and historical Granada offers a balanced backpacking experience."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Basque Country (Bilbao)",
+        "description": "Bilbao in the Basque Country offers modern architecture and a growing backpacker scene."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq4",
+        "target": "c4"
+      },
+      {
+        "source": "sq4",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
+        "source": "sq4",
+        "target": "c7"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

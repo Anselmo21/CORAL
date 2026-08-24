@@ -1,0 +1,292 @@
+{
+  "query_id": 41,
+  "query": "What's the best online platform for learning programming from scratch?",
+  "mode": "criteria",
+  "atoms": [
+    "zero cost or low cost access",
+    "beginner friendliness and zero setup friction",
+    "depth of computer science fundamentals",
+    "project-based and job-ready skills",
+    "community support and peer learning",
+    "structured curriculum vs self-directed",
+    "real development environment practice",
+    "language and technology coverage breadth",
+    "instructor quality and content updates",
+    "completion rate and motivation support"
+  ],
+  "plausible_answers": [
+    "Answer A (CS50 Default): Start with Harvard's CS50 on edX \u2014 it's free, teaches real computer science fundamentals rather than just syntax, and produces learners who can problem-solve across any language or technology.",
+    "Answer B (Codecademy for Zero Friction): Use Codecademy if you want to start coding immediately with no setup \u2014 its browser-based interactive environment is the lowest-friction entry point and maintains beginner momentum better than lecture-heavy alternatives.",
+    "Answer C (The Odin Project for Job Readiness): Follow The Odin Project if your goal is employment \u2014 it builds real projects in a real development environment from day one, producing portfolio work and practical skills that browser-based platforms cannot replicate."
+  ],
+  "baseline_answer": "Answer A (CS50 Default): Start with Harvard's CS50 on edX \u2014 it's free, teaches real computer science fundamentals rather than just syntax, and produces learners who can problem-solve across any language or technology.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What's the best online platform for learning programming from scratch?",
+        "description": "Main query evaluating three distinct learning platforms."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Accessibility and Entry Friction",
+        "description": "Evaluates cost and the ease of starting to code immediately."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Foundational Depth and Structure",
+        "description": "Evaluates the theoretical rigor, curriculum design, and breadth of topics."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Practical Application and Environment",
+        "description": "Evaluates the nature of projects and the development tools used."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Support and Content Quality",
+        "description": "Evaluates community, instructor quality, and motivation factors."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "zero cost or low cost access",
+        "description": "Financial barrier to entry."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "beginner friendliness and zero setup friction",
+        "description": "Ease of starting without local environment configuration."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "depth of computer science fundamentals",
+        "description": "Teaching theory and problem-solving over just syntax."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "project-based and job-ready skills",
+        "description": "Focus on building portfolio pieces for employment."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "community support and peer learning",
+        "description": "Availability of forums and peer interaction."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "structured curriculum vs self-directed",
+        "description": "Degree of guided learning path versus self-pacing."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "real development environment practice",
+        "description": "Using local IDEs and real tools rather than browser sandboxes."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "language and technology coverage breadth",
+        "description": "Variety of languages and tech stacks covered."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "instructor quality and content updates",
+        "description": "Expertise of teachers and currency of materials."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "completion rate and motivation support",
+        "description": "Factors that help learners finish the course."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (CS50 Default)",
+        "description": "Start with Harvard's CS50 on edX \u2014 it's free, teaches real computer science fundamentals rather than just syntax, and produces learners who can problem-solve across any language or technology."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Codecademy for Zero Friction)",
+        "description": "Use Codecademy if you want to start coding immediately with no setup \u2014 its browser-based interactive environment is the lowest-friction entry point and maintains beginner momentum better than lecture-heavy alternatives."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (The Odin Project for Job Readiness)",
+        "description": "Follow The Odin Project if your goal is employment \u2014 it builds real projects in a real development environment from day one, producing portfolio work and practical skills that browser-based platforms cannot replicate."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c5"
+      },
+      {
+        "source": "sq4",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

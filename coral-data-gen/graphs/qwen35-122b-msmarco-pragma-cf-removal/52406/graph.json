@@ -1,0 +1,297 @@
+{
+  "query_id": 52406,
+  "query": "best ways to lose 50 pounds",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: clinical practice guideline",
+    "trustworthiness: peer-reviewed obesity medicine journal",
+    "trustworthiness: University of Maryland Medical Center",
+    "trustworthiness: online fitness influencer",
+    "trustworthiness: commercial diet program",
+    "perspective: rapid-results-seeker (event-driven)",
+    "perspective: comorbid conditions patient",
+    "perspective: sustainable-habits seeker",
+    "perspective: older adult patient",
+    "perspective: gym enthusiast"
+  ],
+  "plausible_answers": [
+    "Gradual lifestyle change",
+    "Aggressive 3-4 month plan",
+    "Doctor-supervised plan"
+  ],
+  "baseline_answer": "Gradual lifestyle change",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best ways to lose 50 pounds",
+        "description": "The primary question regarding optimal weight loss strategies for a 50-pound goal."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Safest, most sustainable method",
+        "description": "Focuses on long-term health, gradual loss, and general population safety."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Rapid weight loss in 3-4 months",
+        "description": "Focuses on speed, strict adherence, and event-driven goals."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Approach for high-risk individuals",
+        "description": "Focuses on medical necessity, comorbidities, and supervision."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: clinical practice guideline",
+        "description": "Prioritizes sources based on clinical guidelines."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed obesity medicine journal",
+        "description": "Prioritizes peer-reviewed medical literature."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: University of Maryland Medical Center",
+        "description": "Prioritizes specific medical institution advice."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: online fitness influencer",
+        "description": "Prioritizes advice from social media fitness personalities."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: commercial diet program",
+        "description": "Prioritizes advice from paid diet companies."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: rapid-results-seeker (event-driven)",
+        "description": "Prioritizes the viewpoint of someone needing fast results."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: comorbid conditions patient",
+        "description": "Prioritizes the viewpoint of a patient with other health issues."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: sustainable-habits seeker",
+        "description": "Prioritizes the viewpoint of someone seeking long-term lifestyle changes."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: older adult patient",
+        "description": "Prioritizes the viewpoint of an older adult."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: gym enthusiast",
+        "description": "Prioritizes the viewpoint of a fitness-focused individual."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Gradual lifestyle change",
+        "description": "The baseline answer favored by safety and sustainability."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Aggressive 3-4 month plan",
+        "description": "The answer favored by speed and strict constraints."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Doctor-supervised plan",
+        "description": "The answer favored by medical risk and professional oversight."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      }
+    ]
+  }
+}

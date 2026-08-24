@@ -1,0 +1,277 @@
+{
+  "query_id": 52040,
+  "query": "best skin care for redness",
+  "mode": "criteria",
+  "atoms": [
+    "skin condition type",
+    "ingredient sensitivity",
+    "product formulation",
+    "application method",
+    "sun protection",
+    "targeted treatment",
+    "skin type compatibility",
+    "brand reputation",
+    "price range",
+    "user experience"
+  ],
+  "plausible_answers": [
+    "Murad Redness Therapy 3-part system",
+    "A caffeine-based anti-redness serum",
+    "Build-your-own minimalist routine"
+  ],
+  "baseline_answer": "Murad Redness Therapy 3-part system",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best skin care for redness",
+        "description": "Identifying the optimal skincare solution for redness."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Product Efficacy & Formulation",
+        "description": "How well does the product address the condition and what is in it?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "User Suitability & Experience",
+        "description": "How does the product fit the user's skin and lifestyle?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Market & Accessibility Factors",
+        "description": "What are the brand and cost considerations?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "skin condition type",
+        "description": "Specifics of the redness (rosacea, aging, acne) requiring tailored care."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "ingredient sensitivity",
+        "description": "Avoidance of irritants like fragrances and harsh chemicals."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "product formulation",
+        "description": "Completeness and scientific backing of the product mix."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "application method",
+        "description": "Ease and complexity of the daily routine steps."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "sun protection",
+        "description": "Inclusion of SPF to prevent sun damage and irritation."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "targeted treatment",
+        "description": "Ability to address multiple symptoms (redness, bumps, wrinkles) simultaneously."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "skin type compatibility",
+        "description": "Suitability for sensitive or delicate skin types."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "brand reputation",
+        "description": "Trust in the manufacturer's expertise with redness conditions."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "price range",
+        "description": "Affordability of the solution."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "user experience",
+        "description": "Overall satisfaction and feeling of the products on skin."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Murad Redness Therapy 3-part system",
+        "description": "Comprehensive system with cleanser, gel, and SPF moisturizer."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "A caffeine-based anti-redness serum",
+        "description": "Single product targeting visible redness with vasoconstrictors."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Build-your-own minimalist routine",
+        "description": "Custom selection of products by the user."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

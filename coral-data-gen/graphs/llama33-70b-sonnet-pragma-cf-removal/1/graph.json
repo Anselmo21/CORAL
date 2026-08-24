@@ -1,0 +1,287 @@
+{
+  "query_id": 1,
+  "query": "I just graduated with $34,000 in student loans at 6.8% interest. Should I aggressively pay them off or start investing in my Roth IRA and 401k?",
+  "mode": "pragmas",
+  "atoms": [
+    "temporal: 2023 only",
+    "temporal: 2022\u20132023",
+    "geographic: USA federal student loan system",
+    "geographic: USA employer 401k context",
+    "perspective: Risk-averse borrower",
+    "perspective: Long-term growth-focused investor",
+    "perspective: Public sector / PSLF-eligible employee",
+    "trustworthiness: Certified financial planner consensus",
+    "trustworthiness: Community peer advice",
+    "trustworthiness: Financial journalism"
+  ],
+  "plausible_answers": [
+    "Answer A (Invest-First Default): Capture the full 401k employer match, contribute to a Roth IRA, then make minimum loan payments \u2014 the expected market return exceeds 6.8% and tax-advantaged space lost now can never be recovered.",
+    "Answer B (Debt-First Aggressive): Pay off the student loans completely before investing beyond the employer match \u2014 the guaranteed 6.8% return is hard to beat risk-adjusted and eliminates monthly cash flow pressure.",
+    "Answer C (IDR and Invest): Enroll in income-driven repayment to minimize monthly loan payments and redirect cash aggressively into tax-advantaged accounts, betting on eventual forgiveness."
+  ],
+  "baseline_answer": "Answer A (Invest-First Default): Capture the full 401k employer match, contribute to a Roth IRA, then make minimum loan payments \u2014 the expected market return exceeds 6.8% and tax-advantaged space lost now can never be recovered.",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.3-70B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2508,
+    "output_tokens": 1673,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Should I aggressively pay off student loans or start investing in Roth IRA and 401k?",
+        "description": ""
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Temporal and geographic considerations",
+        "description": ""
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Perspectives and trustworthiness considerations",
+        "description": ""
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2023 only",
+        "description": ""
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2022\u20132023",
+        "description": ""
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: USA federal student loan system",
+        "description": ""
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: USA employer 401k context",
+        "description": ""
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Risk-averse borrower",
+        "description": ""
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Long-term growth-focused investor",
+        "description": ""
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Public sector / PSLF-eligible employee",
+        "description": ""
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Certified financial planner consensus",
+        "description": ""
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Community peer advice",
+        "description": ""
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Financial journalism",
+        "description": ""
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Invest-First Default",
+        "description": ""
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Debt-First Aggressive",
+        "description": ""
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "IDR and Invest",
+        "description": ""
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      }
+    ]
+  }
+}

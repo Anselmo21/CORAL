@@ -1,0 +1,306 @@
+{
+  "query_id": 51580,
+  "query": "What is the best antidepressant for energy and mood?",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: psychiatry clinical practice guideline",
+    "trustworthiness: peer-reviewed pharmacology literature",
+    "trustworthiness: integrative medicine source",
+    "trustworthiness: patient mental-health forum",
+    "trustworthiness: wellness / lifestyle publication",
+    "perspective: low-energy depression patient",
+    "perspective: anxious patient",
+    "perspective: patient avoiding pharmacologic intervention",
+    "perspective: patient with comorbid weight concerns",
+    "perspective: pregnant patient"
+  ],
+  "plausible_answers": [
+    "Bupropion (Wellbutrin)",
+    "SSRI (Prozac, Zoloft)",
+    "Natural supplements (St John's Wort, SAM-e, Omega-3, B vitamins) + exercise"
+  ],
+  "baseline_answer": "Bupropion (Wellbutrin)",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.3-70B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 4609,
+    "output_tokens": 2062,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Best antidepressant for energy and mood",
+        "description": "What is the best antidepressant for energy and mood?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Effective antidepressants for energy and mood",
+        "description": "What are the most effective antidepressants for improving energy and mood?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Patient perspective influence",
+        "description": "How do different patient perspectives influence the choice of antidepressant?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Trustworthiness and source perspective",
+        "description": "What role do trustworthiness and source perspective play in evaluating antidepressant effectiveness?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: psychiatry clinical practice guideline",
+        "description": "Psychiatry clinical practice guideline"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed pharmacology literature",
+        "description": "Peer-reviewed pharmacology literature"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: integrative medicine source",
+        "description": "Integrative medicine source"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: patient mental-health forum",
+        "description": "Patient mental-health forum"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: wellness / lifestyle publication",
+        "description": "Wellness / lifestyle publication"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: low-energy depression patient",
+        "description": "Low-energy depression patient perspective"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: anxious patient",
+        "description": "Anxious patient perspective"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: patient avoiding pharmacologic intervention",
+        "description": "Patient avoiding pharmacologic intervention perspective"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: patient with comorbid weight concerns",
+        "description": "Patient with comorbid weight concerns perspective"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: pregnant patient",
+        "description": "Pregnant patient perspective"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Bupropion (Wellbutrin)",
+        "description": "Bupropion (Wellbutrin) as the best antidepressant for energy and mood"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "SSRI (Prozac, Zoloft)",
+        "description": "SSRI (Prozac, Zoloft) as an alternative"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Natural supplements (St John's Wort, SAM-e, Omega-3, B vitamins) + exercise",
+        "description": "Natural supplements and exercise as a non-pharmacologic approach"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

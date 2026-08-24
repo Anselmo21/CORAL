@@ -1,0 +1,245 @@
+{
+  "query_id": 51603,
+  "query": "What is the best beretta for home defense?",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: firearms expert review publication",
+    "trustworthiness: peer-reviewed personal defense literature",
+    "trustworthiness: Beretta manufacturer documentation",
+    "trustworthiness: amateur firearms forum (Yahoo Answers)",
+    "trustworthiness: shooting sports magazine",
+    "perspective: first-time gun owner",
+    "perspective: shotgun-preferring homeowner",
+    "perspective: apartment / compact-space dweller",
+    "perspective: high-recoil-tolerant user",
+    "perspective: concealed-carry-aware homeowner"
+  ],
+  "plausible_answers": [
+    "Beretta 92FS",
+    "Beretta 1301 Tactical",
+    "A compact Beretta (PX4 Storm Compact or APX Compact)"
+  ],
+  "baseline_answer": "Beretta 1301 Tactical",
+  "baseline_index": 1,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best beretta for home defense?",
+        "description": "Identify the optimal Beretta firearm for home defense scenarios."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which Beretta offers the highest tactical reliability and stopping power?",
+        "description": "Focuses on expert reviews, manufacturer specs, and shotgun preferences."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which Beretta is best for beginners and general ease of use?",
+        "description": "Focuses on first-time owner needs and amateur consensus."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which Beretta fits compact living and concealed carry needs?",
+        "description": "Focuses on apartment dwellers and concealed carry awareness."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: firearms expert review publication",
+        "description": "Prioritizes professional magazine reviews and expert consensus."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed personal defense literature",
+        "description": "Prioritizes academic or formal defense literature."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Beretta manufacturer documentation",
+        "description": "Prioritizes official Beretta product descriptions and specs."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: amateur firearms forum (Yahoo Answers)",
+        "description": "Prioritizes user experiences from forums like Yahoo Answers."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: shooting sports magazine",
+        "description": "Prioritizes content from shooting sports publications."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: first-time gun owner",
+        "description": "Prioritizes ease of use and beginner-friendly features."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: shotgun-preferring homeowner",
+        "description": "Prioritizes the advantages of shotguns for home defense."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: apartment / compact-space dweller",
+        "description": "Prioritizes maneuverability in tight spaces."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: high-recoil-tolerant user",
+        "description": "Prioritizes users who can handle high recoil (shotguns)."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: concealed-carry-aware homeowner",
+        "description": "Prioritizes firearms suitable for concealment or small homes."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Beretta 92FS",
+        "description": "Full-size pistol, recommended for beginners and general defense."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Beretta 1301 Tactical",
+        "description": "Semi-automatic shotgun, recommended by experts and manufacturer as top tactical choice."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "A compact Beretta (PX4 Storm Compact or APX Compact)",
+        "description": "Smaller pistols recommended for apartments and concealed carry."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

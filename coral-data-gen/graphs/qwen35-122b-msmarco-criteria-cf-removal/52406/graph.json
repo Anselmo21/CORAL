@@ -1,0 +1,293 @@
+{
+  "query_id": 52406,
+  "query": "best ways to lose 50 pounds",
+  "mode": "criteria",
+  "atoms": [
+    "safety of methods",
+    "timeframe for weight loss",
+    "dietary approach",
+    "exercise intensity",
+    "sustainability of plan",
+    "support systems",
+    "motivation techniques",
+    "health considerations",
+    "caloric intake",
+    "meal frequency"
+  ],
+  "plausible_answers": [
+    "Gradual lifestyle change",
+    "Aggressive 3-4 month plan",
+    "Doctor-supervised plan"
+  ],
+  "baseline_answer": "Gradual lifestyle change",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best ways to lose 50 pounds",
+        "description": "Main question asking for the optimal weight loss strategy."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Methodology and Safety",
+        "description": "Evaluates the safety, diet, exercise, and health risks of the method."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Timeline and Structure",
+        "description": "Evaluates the speed, meal timing, and motivational aspects of the plan."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Long-term Viability",
+        "description": "Evaluates the sustainability and external support required."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "safety of methods",
+        "description": "Assesses the immediate physical risks of the weight loss approach."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "timeframe for weight loss",
+        "description": "Evaluates how quickly the 50-pound goal is achieved."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "dietary approach",
+        "description": "Considers the specific nutritional strategy employed."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "exercise intensity",
+        "description": "Evaluates the level of physical activity required."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "sustainability of plan",
+        "description": "Determines if the weight loss can be maintained long-term."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "support systems",
+        "description": "Assesses the role of external help like nutritionists or groups."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "motivation techniques",
+        "description": "Evaluates psychological strategies to stay on track."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "health considerations",
+        "description": "Addresses underlying medical conditions and risks like diabetes."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "caloric intake",
+        "description": "Focuses on the specific calorie deficit required."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "meal frequency",
+        "description": "Considers how often meals are eaten during the process."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Gradual lifestyle change",
+        "description": "A slow, sustainable approach focusing on long-term habits."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Aggressive 3-4 month plan",
+        "description": "A fast-paced plan prioritizing speed over gradual adaptation."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Doctor-supervised plan",
+        "description": "A medically monitored approach for safety and health management."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

@@ -1,0 +1,313 @@
+{
+  "query_id": 49,
+  "query": "I have two cats and my floors are always covered in fur. What's the best robot vacuum for pet hair?",
+  "mode": "criteria",
+  "atoms": [
+    "suction power for pet hair on carpet",
+    "self-emptying base for low maintenance",
+    "obstacle and pet waste avoidance",
+    "rubber brush roll for tangle prevention",
+    "value for price",
+    "noise level during operation",
+    "mapping and navigation reliability",
+    "mopping capability for mixed floors",
+    "bin size and emptying frequency",
+    "home size and battery range"
+  ],
+  "plausible_answers": [
+    "Answer A (Roomba j7+ Default): Get the iRobot Roomba j7+ \u2014 its pet waste obstacle avoidance, self-emptying base, and reliable navigation make it the most maintenance-free option for cat owners.",
+    "Answer B (Roborock for Performance): Choose a Roborock S7 or S8 series if you have a large home with mixed flooring \u2014 superior suction, mopping capability, and self-cleaning dock outperform Roomba for high-shedding pet households.",
+    "Answer C (Eufy for Value): Buy a Eufy RoboVac if you're in a smaller space and want to save $200\u2013400 \u2014 it handles cat hair adequately at half the flagship price, with the caveat that you'll need to empty it manually after each run."
+  ],
+  "baseline_answer": "Answer A (Roomba j7+ Default): Get the iRobot Roomba j7+ \u2014 its pet waste obstacle avoidance, self-emptying base, and reliable navigation make it the most maintenance-free option for cat owners.",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.3-70B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2361,
+    "output_tokens": 2127,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Best Robot Vacuum for Pet Hair",
+        "description": "Finding the best robot vacuum for pet hair"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Performance and Maintenance",
+        "description": "Considerations for effective pet hair cleaning and maintenance"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Pet Hair Handling and Value",
+        "description": "Factors influencing pet hair handling and cost-effectiveness"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Operational Considerations",
+        "description": "Aspects affecting the operation and user experience"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Home and Floor Type Compatibility",
+        "description": "Compatibility with different home sizes and floor types"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "suction power for pet hair on carpet",
+        "description": "The ability to effectively clean pet hair from carpeted floors"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "self-emptying base for low maintenance",
+        "description": "A feature that automatically empties the vacuum's dustbin"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "obstacle and pet waste avoidance",
+        "description": "The capability to navigate around obstacles and avoid pet waste"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "rubber brush roll for tangle prevention",
+        "description": "A brush roll designed to prevent hair tangles"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "value for price",
+        "description": "The cost-effectiveness of the vacuum"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "noise level during operation",
+        "description": "How loud the vacuum is while in use"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "mapping and navigation reliability",
+        "description": "The vacuum's ability to accurately map and navigate spaces"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "mopping capability for mixed floors",
+        "description": "The ability to both vacuum and mop floors"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "bin size and emptying frequency",
+        "description": "The size of the dustbin and how often it needs to be emptied"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "home size and battery range",
+        "description": "The suitability of the vacuum for different home sizes and its battery life"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Roomba j7+",
+        "description": "Get the iRobot Roomba j7+ for its pet waste obstacle avoidance and self-emptying base"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Roborock S7 or S8",
+        "description": "Choose a Roborock S7 or S8 series for superior suction and mopping capability"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Eufy RoboVac",
+        "description": "Buy a Eufy RoboVac for its value and adequate pet hair handling at a lower price"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c8"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      }
+    ]
+  }
+}

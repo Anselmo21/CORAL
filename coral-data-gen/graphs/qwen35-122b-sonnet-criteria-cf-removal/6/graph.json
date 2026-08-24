@@ -1,0 +1,294 @@
+{
+  "query_id": 6,
+  "query": "I have 15 years left on my mortgage at 3.2% interest. Should I pay it off early or invest the extra money?",
+  "mode": "criteria",
+  "atoms": [
+    "expected investment return vs mortgage rate spread",
+    "guaranteed return of debt elimination",
+    "psychological value of being debt-free",
+    "tax deductibility of mortgage interest",
+    "sequence-of-returns risk near retirement",
+    "liquidity of invested assets",
+    "years remaining until retirement",
+    "tolerance for market volatility",
+    "fixed monthly obligation elimination",
+    "tax-advantaged investment space availability"
+  ],
+  "plausible_answers": [
+    "Answer A (Invest the Difference Default): Invest the extra money in index funds \u2014 at 3.2% mortgage rate versus historical ~10% market returns, the spread is too large to justify early payoff purely on financial grounds.",
+    "Answer B (Pay Off for Peace of Mind): Pay down the mortgage aggressively if being debt-free has strong psychological value or you're within 10 years of retirement and want to eliminate fixed obligations.",
+    "Answer C (Hybrid Split): Split extra payments 50/50 between mortgage paydown and investments \u2014 this captures partial emotional benefit of debt reduction while maintaining meaningful market exposure."
+  ],
+  "baseline_answer": "Answer A (Invest the Difference Default): Invest the extra money in index funds \u2014 at 3.2% mortgage rate versus historical ~10% market returns, the spread is too large to justify early payoff purely on financial grounds.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Mortgage Payoff vs. Investment",
+        "description": "Should I pay off a 3.2% mortgage early or invest the extra money?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Financial Optimization Factors",
+        "description": "Evaluating the mathematical and liquidity advantages of investing."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Psychological & Risk Factors",
+        "description": "Evaluating the emotional benefits and retirement risk mitigation of debt elimination."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "expected investment return vs mortgage rate spread",
+        "description": "The difference between market returns (~10%) and the low mortgage rate (3.2%)."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "guaranteed return of debt elimination",
+        "description": "The risk-free return equivalent to the mortgage interest rate saved."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "psychological value of being debt-free",
+        "description": "The emotional peace of mind derived from eliminating debt."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "tax deductibility of mortgage interest",
+        "description": "The reduction of effective borrowing cost via tax deductions."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "sequence-of-returns risk near retirement",
+        "description": "The danger of forced selling investments during a market downturn to pay debt."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "liquidity of invested assets",
+        "description": "The ability to access cash quickly from investments versus locked-in equity."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "years remaining until retirement",
+        "description": "The time horizon affecting the urgency of debt elimination."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "tolerance for market volatility",
+        "description": "The investor's ability to withstand market fluctuations without panic."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "fixed monthly obligation elimination",
+        "description": "Removing a mandatory monthly payment to improve cash flow stability."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "tax-advantaged investment space availability",
+        "description": "The opportunity to utilize tax-sheltered accounts for investments."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Invest the Difference Default)",
+        "description": "Invest the extra money in index funds \u2014 at 3.2% mortgage rate versus historical ~10% market returns, the spread is too large to justify early payoff purely on financial grounds."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Pay Off for Peace of Mind)",
+        "description": "Pay down the mortgage aggressively if being debt-free has strong psychological value or you're within 10 years of retirement and want to eliminate fixed obligations."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Hybrid Split)",
+        "description": "Split extra payments 50/50 between mortgage paydown and investments \u2014 this captures partial emotional benefit of debt reduction while maintaining meaningful market exposure."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

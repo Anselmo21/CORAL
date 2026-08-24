@@ -41,6 +41,8 @@ from generate_dataset import (
     _invoke_chat_completion,
     _strip_code_fences,
     create_llm_client,
+    reset_usage,
+    usage_so_far,
 )
 from graph_ops import pick_answer_with_all_atoms
 from run_lattices import flatten_pragmas, load_rows, parse_qid_filter, stringify_sources
@@ -266,6 +268,7 @@ def generate_row_graph(
     max_tokens: int,
     max_retries: int,
 ) -> None:
+    reset_usage()
     atoms = select_atoms(row, mode)
     sources_text = stringify_sources(row.get("sources"))
     question = row.get("query") or ""
@@ -326,12 +329,25 @@ def generate_row_graph(
         "provider": provider,
         "temperature": temperature,
         "attempts": attempts,
+        "usage": usage_so_far(),
         "graph": graph,
     }
     if graph is None:
         payload["raw"] = raw
         payload["parse_error"] = True
-    (out_dir / "graph.json").write_text(json.dumps(payload, indent=2), encoding="utf-8")
+
+    # A re-run of a failed row would overwrite the raw output that explains the
+    # failure, so keep the old payload before replacing it. Without this you
+    # cannot tell afterwards whether the model or the parser was at fault.
+    out_path = out_dir / "graph.json"
+    if out_path.exists():
+        try:
+            prev = json.loads(out_path.read_text(encoding="utf-8"))
+        except Exception:
+            prev = {}
+        if prev.get("parse_error"):
+            out_path.replace(out_dir / "graph.failed.json")
+    out_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
 
 def graph_complete(out_dir: Path) -> bool:
@@ -371,6 +387,12 @@ def main() -> None:
     ap.add_argument("--max-retries", type=int, default=3)
     ap.add_argument("--tensor-parallel-size", type=int, default=1,
                     help="GPUs for vLLM (vllm provider only)")
+    ap.add_argument("--max-model-len", type=int, default=None,
+                    help="Cap tokens per request (prompt + output) for vLLM. vLLM reserves "
+                         "KV cache for one request at the model's full context, which large "
+                         "windows make unaffordable on smaller cards; 8192 covers these prompts.")
+    ap.add_argument("--gpu-memory-utilization", type=float, default=None,
+                    help="Fraction of GPU memory vLLM may reserve (vllm provider only)")
     ap.add_argument("--force", action="store_true",
                     help="Re-run rows whose graph.json already parsed successfully")
     args = ap.parse_args()
@@ -393,6 +415,8 @@ def main() -> None:
         api_key=args.api_key,
         base_url=args.openai_base_url,
         tensor_parallel_size=args.tensor_parallel_size,
+        max_model_len=args.max_model_len,
+        gpu_memory_utilization=args.gpu_memory_utilization,
     )
 
     skipped = completed = failed = 0

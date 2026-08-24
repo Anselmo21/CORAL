@@ -1,0 +1,318 @@
+{
+  "query_id": 10,
+  "query": "Should I diversify into real estate or just keep investing in the stock market? I have about $50k saved.",
+  "mode": "pragmas",
+  "atoms": [
+    "temporal: 2023 only",
+    "temporal: 2021\u20132023",
+    "geographic: USA",
+    "perspective: Passive hands-off investor",
+    "perspective: Active landlord willing to manage property",
+    "perspective: Tax optimization focused investor",
+    "trustworthiness: Institutional financial research",
+    "trustworthiness: Real estate investor community",
+    "trustworthiness: Community peer advice",
+    "trustworthiness: Financial journalism"
+  ],
+  "plausible_answers": [
+    "Answer A (Stock Market Default): Keep investing in diversified index funds \u2014 REITs within your portfolio give real estate exposure without illiquidity, and $50k is too thin for meaningful direct real estate in most markets.",
+    "Answer B (Rental Property for Leverage): Buy a small rental property with $50k as a down payment \u2014 leverage, depreciation deductions, and rental income can generate superior risk-adjusted returns for investors willing to actively manage.",
+    "Answer C (REIT Allocation): Add a dedicated REIT allocation (15\u201320%) within your existing stock portfolio \u2014 you get real estate diversification, inflation hedging, and dividend income without giving up liquidity or taking on landlord risk."
+  ],
+  "baseline_answer": "Answer C (REIT Allocation): Add a dedicated REIT allocation (15\u201320%) within your existing stock portfolio \u2014 you get real estate diversification, inflation hedging, and dividend income without giving up liquidity or taking on landlord risk.",
+  "baseline_index": 2,
+  "model": "meta-llama/Llama-3.3-70B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2442,
+    "output_tokens": 2271,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Should I diversify into real estate or just keep investing in the stock market?",
+        "description": "Decision on investment strategy"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Temporal considerations",
+        "description": "Considering the time frame for investment"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Geographic and perspective considerations",
+        "description": "Considering location and investment approach"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Trustworthiness of sources",
+        "description": "Evaluating the reliability of information sources"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2023 only",
+        "description": "Considering only 2023 information"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2021\u20132023",
+        "description": "Considering information from 2021 to 2023"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: USA",
+        "description": "Focusing on the USA"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Passive hands-off investor",
+        "description": "Considering the perspective of a passive investor"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Active landlord willing to manage property",
+        "description": "Considering the perspective of an active landlord"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Tax optimization focused investor",
+        "description": "Considering the perspective of a tax optimization focused investor"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Institutional financial research",
+        "description": "Trusting institutional financial research"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Real estate investor community",
+        "description": "Trusting the real estate investor community"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Community peer advice",
+        "description": "Trusting community peer advice"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Financial journalism",
+        "description": "Trusting financial journalism"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Stock Market Default",
+        "description": "Keep investing in diversified index funds"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Rental Property for Leverage",
+        "description": "Buy a small rental property with $50k as a down payment"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "REIT Allocation",
+        "description": "Add a dedicated REIT allocation within your existing stock portfolio"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

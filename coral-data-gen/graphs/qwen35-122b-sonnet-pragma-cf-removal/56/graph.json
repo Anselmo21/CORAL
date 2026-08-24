@@ -1,0 +1,365 @@
+{
+  "query_id": 56,
+  "query": "I want to get a standing desk but I'm not sure if I should get a motorized one or a manual crank. Is the price difference worth it?",
+  "mode": "pragmas",
+  "atoms": [
+    "temporal: 2023 only",
+    "temporal: 2021\u20132023",
+    "geographic: USA",
+    "geographic: UK",
+    "perspective: User prioritizing health benefit over cost",
+    "perspective: Budget-constrained buyer willing to accept manual adjustment",
+    "trustworthiness: Consumer product recommendation publication",
+    "trustworthiness: Tech journalism",
+    "trustworthiness: Standing desk user community",
+    "trustworthiness: Occupational health research"
+  ],
+  "plausible_answers": [
+    "Answer A (Motorized Default): Get a motorized desk \u2014 the price premium over manual is $200\u2013400, but research clearly shows that manual cranking friction causes users to change positions far less often, defeating the health purpose of the desk entirely.",
+    "Answer B (Manual for Budget): Buy a manual crank desk if budget is the hard constraint \u2014 a $250 IKEA SKARSTA is vastly better than no standing desk, and disciplined users who set timers can achieve adequate position variety even with manual adjustment.",
+    "Answer C (Motorized with Presets): Get a motorized desk specifically with programmable memory presets \u2014 one-touch height switching between sitting and standing positions is the feature most associated with frequent transitions and actual health benefit."
+  ],
+  "baseline_answer": "Answer C (Motorized with Presets): Get a motorized desk specifically with programmable memory presets \u2014 one-touch height switching between sitting and standing positions is the feature most associated with frequent transitions and actual health benefit.",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 3,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Is the price difference between motorized and manual standing desks worth it?",
+        "description": "Main question regarding cost-benefit analysis of desk types."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Health impact of adjustment friction",
+        "description": "What does evidence say about friction and transition frequency?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Budget vs. discipline trade-off",
+        "description": "How do cost constraints affect the viability of manual desks?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Specific features and high-trust sources",
+        "description": "Which features and sources confirm the superiority of motorized desks with presets?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2023 only",
+        "description": "Filters for sources published in 2023."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2021\u20132023",
+        "description": "Filters for sources published between 2021 and 2023."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: USA",
+        "description": "Filters for sources focused on the USA market."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: UK",
+        "description": "Filters for sources focused on the UK market."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: User prioritizing health benefit over cost",
+        "description": "Prioritizes health outcomes regardless of price."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Budget-constrained buyer willing to accept manual adjustment",
+        "description": "Prioritizes cost savings and accepts manual adjustment."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Consumer product recommendation publication",
+        "description": "Filters for consumer product reviews (e.g., Wirecutter)."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Tech journalism",
+        "description": "Filters for tech news and journalism (e.g., The Verge)."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Standing desk user community",
+        "description": "Filters for community discussions (e.g., Reddit)."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Occupational health research",
+        "description": "Filters for academic research on health outcomes."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Motorized Default)",
+        "description": "Get a motorized desk \u2014 the price premium is worth it due to reduced friction."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Manual for Budget)",
+        "description": "Buy a manual crank desk if budget is the hard constraint."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Motorized with Presets)",
+        "description": "Get a motorized desk specifically with programmable memory presets."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

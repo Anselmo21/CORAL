@@ -1,0 +1,290 @@
+{
+  "query_id": 51971,
+  "query": "best prescription sleep aid for insomnia",
+  "mode": "criteria",
+  "atoms": [
+    "duration of action",
+    "onset time",
+    "side effects profile",
+    "cost-effectiveness",
+    "safety for long-term use",
+    "specific insomnia type",
+    "patient age",
+    "interaction with other medications",
+    "doctor's recommendation",
+    "FDA approval status"
+  ],
+  "plausible_answers": [
+    "Zolpidem (Ambien)",
+    "Trazodone or low-dose mirtazapine",
+    "Temazepam (Restoril)"
+  ],
+  "baseline_answer": "Zolpidem (Ambien)",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 4120,
+    "output_tokens": 1702,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best prescription sleep aid for insomnia",
+        "description": "Effectiveness, side effects, and practical considerations"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Effectiveness and Safety",
+        "description": "Effectiveness, side effects, and safety"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Practical Considerations",
+        "description": "Cost-effectiveness, interaction with other medications, and doctor's recommendation"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Specifics",
+        "description": "Specific insomnia type, patient age, and FDA approval status"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "duration of action",
+        "description": "How long the medication stays effective"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "onset time",
+        "description": "How long it takes for the medication to start working"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "side effects profile",
+        "description": "The types and severity of side effects"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "safety for long-term use",
+        "description": "The safety of using the medication for an extended period"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost-effectiveness",
+        "description": "The cost of the medication compared to its effectiveness"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "interaction with other medications",
+        "description": "The potential interactions with other medications"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "doctor's recommendation",
+        "description": "The doctor's opinion on the medication"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "specific insomnia type",
+        "description": "The specific type of insomnia being treated"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "patient age",
+        "description": "The age of the patient"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "FDA approval status",
+        "description": "The FDA approval status of the medication"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Zolpidem (Ambien)",
+        "description": "A prescription sleep aid with a fast onset time and long duration of action"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Trazodone or low-dose mirtazapine",
+        "description": "An antidepressant with a different side effects profile and safety profile"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Temazepam (Restoril)",
+        "description": "A prescription sleep aid with a slower onset time and shorter duration of action"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a2",
+        "removed": true
+      },
+      {
+        "source": "c2",
+        "target": "a2",
+        "removed": true
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a3",
+        "removed": true
+      },
+      {
+        "source": "c2",
+        "target": "a3",
+        "removed": true
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      }
+    ]
+  }
+}

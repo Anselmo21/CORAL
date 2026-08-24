@@ -1,0 +1,325 @@
+{
+  "query_id": 52416,
+  "query": "best workouts to do in conjunction with a pro hormone",
+  "mode": "criteria",
+  "atoms": [
+    "workout intensity",
+    "muscle group focus",
+    "training frequency",
+    "recovery time",
+    "dietary considerations",
+    "supplement compatibility",
+    "goal orientation",
+    "exercise variety",
+    "injury history",
+    "experience level"
+  ],
+  "plausible_answers": [
+    "Heavy compound lifts (squat, deadlift, bench, OHP, row) in the 4-8 rep range on a 4-6 day split",
+    "High-volume hypertrophy work (8-12 reps, 15-20 sets per muscle / week)",
+    "Conservative training paired with on-cycle support and recovery emphasis"
+  ],
+  "baseline_answer": "Conservative training paired with on-cycle support and recovery emphasis",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best workouts to do in conjunction with a pro hormone",
+        "description": "Selecting the optimal workout regimen to pair with prohormone cycles."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Physiological Safety & Recovery",
+        "description": "Factors related to the body's ability to handle stress and recover."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Training Mechanics & Intensity",
+        "description": "Structural elements of the workout routine."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Strategic Alignment",
+        "description": "Alignment of training with user goals and external factors."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "workout intensity",
+        "description": "The level of effort and load placed on muscles."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "muscle group focus",
+        "description": "Targeting specific muscle groups for development."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "training frequency",
+        "description": "How often training sessions occur."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "recovery time",
+        "description": "Time required for the body to repair and adapt."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "dietary considerations",
+        "description": "Nutritional needs to support the cycle and body."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "supplement compatibility",
+        "description": "Compatibility with on-cycle support and other supplements."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "goal orientation",
+        "description": "Primary objective of the training cycle."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "exercise variety",
+        "description": "Range of different exercises performed."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "injury history",
+        "description": "Past injuries affecting current training capacity."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "experience level",
+        "description": "User's familiarity with training and prohormones."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Heavy compound lifts (squat, deadlift, bench, OHP, row) in the 4-8 rep range on a 4-6 day split",
+        "description": "High-intensity, low-rep strength training."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "High-volume hypertrophy work (8-12 reps, 15-20 sets per muscle / week)",
+        "description": "High-volume muscle building training."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Conservative training paired with on-cycle support and recovery emphasis",
+        "description": "Safety-focused training with emphasis on health support."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      }
+    ]
+  }
+}

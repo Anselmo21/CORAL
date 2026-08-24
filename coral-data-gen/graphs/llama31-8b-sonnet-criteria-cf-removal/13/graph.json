@@ -1,0 +1,271 @@
+{
+  "query_id": 13,
+  "query": "I just received a $10,000 tax refund. What's the smartest thing to do with it?",
+  "mode": "criteria",
+  "atoms": [
+    "elimination of high-interest debt",
+    "emergency fund adequacy",
+    "tax-advantaged space availability",
+    "lump-sum vs DCA return optimization",
+    "regret minimization from market timing",
+    "immediate guaranteed return on debt payoff",
+    "long-term wealth compounding",
+    "psychological comfort with market volatility",
+    "liquidity preservation",
+    "simplicity of deployment"
+  ],
+  "plausible_answers": [
+    "Answer A (Debt and Invest Default): Pay off any high-interest debt first, top up your emergency fund to 3 months, then invest the remainder as a lump sum in a broad index fund \u2014 this order maximizes guaranteed and expected returns.",
+    "Answer B (Lump Sum Invest): If you have no high-interest debt and a full emergency fund, invest the entire $10k immediately as a lump sum \u2014 two-thirds of the time this beats spreading contributions and markets reward early investment.",
+    "Answer C (DCA Over 6 Months): Spread the $10k across 6 monthly investments to reduce the risk of deploying at a market peak \u2014 you sacrifice some expected return but avoid the regret of an immediate post-investment downturn."
+  ],
+  "baseline_answer": "Answer A (Debt and Invest Default): Pay off any high-interest debt first, top up your emergency fund to 3 months, then invest the remainder as a lump sum in a broad index fund \u2014 this order maximizes guaranteed and expected returns.",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2322,
+    "output_tokens": 1656,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "I just received a $10,000 tax refund. What's the smartest thing to do with it?",
+        "description": ""
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "How to prioritize the use of the $10,000 tax refund?",
+        "description": ""
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "How to optimize the timing of the investment?",
+        "description": ""
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "elimination of high-interest debt",
+        "description": ""
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "emergency fund adequacy",
+        "description": ""
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "tax-advantaged space availability",
+        "description": ""
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "lump-sum vs DCA return optimization",
+        "description": ""
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "regret minimization from market timing",
+        "description": ""
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "immediate guaranteed return on debt payoff",
+        "description": ""
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "long-term wealth compounding",
+        "description": ""
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "psychological comfort with market volatility",
+        "description": ""
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "liquidity preservation",
+        "description": ""
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "simplicity of deployment",
+        "description": ""
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Debt and Invest Default): Pay off any high-interest debt first, top up your emergency fund to 3 months, then invest the remainder as a lump sum in a broad index fund \u2014 this order maximizes guaranteed and expected returns.",
+        "description": ""
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Lump Sum Invest): If you have no high-interest debt and a full emergency fund, invest the entire $10k immediately as a lump sum \u2014 two-thirds of the time this beats spreading contributions and markets reward early investment.",
+        "description": ""
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (DCA Over 6 Months): Spread the $10k across 6 monthly investments to reduce the risk of deploying at a market peak \u2014 you sacrifice some expected return but avoid the regret of an immediate post-investment downturn.",
+        "description": ""
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "a1",
+        "target": "c1"
+      },
+      {
+        "source": "a1",
+        "target": "c2"
+      },
+      {
+        "source": "a1",
+        "target": "c3"
+      },
+      {
+        "source": "a1",
+        "target": "c7"
+      },
+      {
+        "source": "a1",
+        "target": "c9"
+      },
+      {
+        "source": "a1",
+        "target": "c10"
+      },
+      {
+        "source": "a2",
+        "target": "c4"
+      },
+      {
+        "source": "a2",
+        "target": "c5"
+      },
+      {
+        "source": "a2",
+        "target": "c6"
+      },
+      {
+        "source": "a2",
+        "target": "c7"
+      },
+      {
+        "source": "a2",
+        "target": "c9"
+      },
+      {
+        "source": "a2",
+        "target": "c10"
+      },
+      {
+        "source": "a3",
+        "target": "c4"
+      },
+      {
+        "source": "a3",
+        "target": "c5"
+      },
+      {
+        "source": "a3",
+        "target": "c6"
+      },
+      {
+        "source": "a3",
+        "target": "c7"
+      },
+      {
+        "source": "a3",
+        "target": "c9"
+      },
+      {
+        "source": "a3",
+        "target": "c10"
+      }
+    ]
+  }
+}

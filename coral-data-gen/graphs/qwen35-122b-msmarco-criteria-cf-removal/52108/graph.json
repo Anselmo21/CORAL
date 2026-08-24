@@ -1,0 +1,293 @@
+{
+  "query_id": 52108,
+  "query": "best thing for a sunburn",
+  "mode": "criteria",
+  "atoms": [
+    "type of treatment",
+    "application method",
+    "ingredient effectiveness",
+    "duration of relief",
+    "skin sensitivity",
+    "hydration level",
+    "pain relief",
+    "availability of ingredients",
+    "safety for children",
+    "long-term skin health"
+  ],
+  "plausible_answers": [
+    "Cool (not cold) water bath or compress for 10-20 minutes, then aloe vera gel",
+    "DIY burn cream: aloe vera + witch hazel + mint + baking soda + water",
+    "Lavender oil bath plus milk compresses"
+  ],
+  "baseline_answer": "Cool (not cold) water bath or compress for 10-20 minutes, then aloe vera gel",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best thing for a sunburn",
+        "description": "Identifying the optimal treatment for sunburn based on provided sources."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Immediate Relief & Safety",
+        "description": "Evaluating speed of pain relief, application simplicity, and safety for sensitive skin/children."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Ingredient & Hydration Efficacy",
+        "description": "Evaluating the effectiveness, duration, hydration, and availability of the active ingredients."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Long-term & Holistic Health",
+        "description": "Evaluating the impact on long-term skin health and future prevention."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "type of treatment",
+        "description": "The category of intervention (e.g., water bath vs. cream vs. oil)."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "application method",
+        "description": "How the treatment is applied (e.g., simple bath vs. mixing cream)."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "ingredient effectiveness",
+        "description": "How well the specific ingredients work to soothe the burn."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "duration of relief",
+        "description": "How long the soothing effects last."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "skin sensitivity",
+        "description": "Risk of irritation for sensitive skin types."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "hydration level",
+        "description": "Ability of the treatment to restore moisture to the skin."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "pain relief",
+        "description": "Immediate reduction of burning pain."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "availability of ingredients",
+        "description": "Ease of obtaining the required items."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "safety for children",
+        "description": "Suitability and safety for pediatric use."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "long-term skin health",
+        "description": "Impact on preventing long-term damage like wrinkles or cancer."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Cool (not cold) water bath or compress for 10-20 minutes, then aloe vera gel",
+        "description": "Standard medical recommendation using water and aloe."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "DIY burn cream: aloe vera + witch hazel + mint + baking soda + water",
+        "description": "Homemade mixture of multiple soothing agents."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Lavender oil bath plus milk compresses",
+        "description": "Natural remedy using specific oils and dairy."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

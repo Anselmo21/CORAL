@@ -1,0 +1,382 @@
+{
+  "query_id": 51790,
+  "query": "What is the best gas loyalty points card in Canada?",
+  "mode": "criteria",
+  "atoms": [
+    "points earn rate",
+    "redemption flexibility",
+    "annual fee",
+    "gas station partner coverage",
+    "sign-up bonus",
+    "expiration policy",
+    "mobile app quality",
+    "extra perks",
+    "foreign transaction fee",
+    "credit requirements"
+  ],
+  "plausible_answers": [
+    "Esso Extra",
+    "Petro-Points (Petro-Canada)",
+    "RBC Royal Bank Esso Visa",
+    "CIBC Costco Gas Mastercard"
+  ],
+  "baseline_answer": "Esso Extra",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 3180,
+    "output_tokens": 2593,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What is the best gas loyalty points card in Canada?",
+        "description": "The best gas loyalty points card in Canada"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Points earn rate and redemption flexibility",
+        "description": "Points earn rate and redemption flexibility"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Annual fee, gas station partner coverage, and sign-up bonus",
+        "description": "Annual fee, gas station partner coverage, and sign-up bonus"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Expiration policy, mobile app quality, extra perks, foreign transaction fee, and credit requirements",
+        "description": "Expiration policy, mobile app quality, extra perks, foreign transaction fee, and credit requirements"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "points earn rate",
+        "description": "points earn rate"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "redemption flexibility",
+        "description": "redemption flexibility"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "annual fee",
+        "description": "annual fee"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "gas station partner coverage",
+        "description": "gas station partner coverage"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "sign-up bonus",
+        "description": "sign-up bonus"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "expiration policy",
+        "description": "expiration policy"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "mobile app quality",
+        "description": "mobile app quality"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "extra perks",
+        "description": "extra perks"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "foreign transaction fee",
+        "description": "foreign transaction fee"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "credit requirements",
+        "description": "credit requirements"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Petro-Points (Petro-Canada)",
+        "description": "Petro-Points (Petro-Canada)"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "RBC Royal Bank Esso Visa",
+        "description": "RBC Royal Bank Esso Visa"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "CIBC Costco Gas Mastercard",
+        "description": "CIBC Costco Gas Mastercard"
+      },
+      {
+        "id": "a4",
+        "layer": "4",
+        "type": "answer",
+        "label": "Esso Extra",
+        "description": "Esso Extra"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "a1",
+        "target": "c1"
+      },
+      {
+        "source": "a1",
+        "target": "c2"
+      },
+      {
+        "source": "a1",
+        "target": "c3"
+      },
+      {
+        "source": "a1",
+        "target": "c4"
+      },
+      {
+        "source": "a1",
+        "target": "c5"
+      },
+      {
+        "source": "a1",
+        "target": "c6"
+      },
+      {
+        "source": "a1",
+        "target": "c7"
+      },
+      {
+        "source": "a1",
+        "target": "c8"
+      },
+      {
+        "source": "a1",
+        "target": "c9"
+      },
+      {
+        "source": "a1",
+        "target": "c10"
+      },
+      {
+        "source": "a2",
+        "target": "c1"
+      },
+      {
+        "source": "a2",
+        "target": "c2"
+      },
+      {
+        "source": "a2",
+        "target": "c3"
+      },
+      {
+        "source": "a2",
+        "target": "c4"
+      },
+      {
+        "source": "a2",
+        "target": "c5"
+      },
+      {
+        "source": "a2",
+        "target": "c6"
+      },
+      {
+        "source": "a2",
+        "target": "c7"
+      },
+      {
+        "source": "a2",
+        "target": "c8"
+      },
+      {
+        "source": "a2",
+        "target": "c9"
+      },
+      {
+        "source": "a2",
+        "target": "c10"
+      },
+      {
+        "source": "a3",
+        "target": "c1"
+      },
+      {
+        "source": "a3",
+        "target": "c2"
+      },
+      {
+        "source": "a3",
+        "target": "c3"
+      },
+      {
+        "source": "a3",
+        "target": "c4"
+      },
+      {
+        "source": "a3",
+        "target": "c5"
+      },
+      {
+        "source": "a3",
+        "target": "c6"
+      },
+      {
+        "source": "a3",
+        "target": "c7"
+      },
+      {
+        "source": "a3",
+        "target": "c8"
+      },
+      {
+        "source": "a3",
+        "target": "c9"
+      },
+      {
+        "source": "a3",
+        "target": "c10"
+      },
+      {
+        "source": "a4",
+        "target": "c1"
+      },
+      {
+        "source": "a4",
+        "target": "c2"
+      },
+      {
+        "source": "a4",
+        "target": "c3"
+      },
+      {
+        "source": "a4",
+        "target": "c4"
+      },
+      {
+        "source": "a4",
+        "target": "c5"
+      },
+      {
+        "source": "a4",
+        "target": "c6"
+      },
+      {
+        "source": "a4",
+        "target": "c7"
+      },
+      {
+        "source": "a4",
+        "target": "c8"
+      },
+      {
+        "source": "a4",
+        "target": "c9"
+      },
+      {
+        "source": "a4",
+        "target": "c10"
+      }
+    ]
+  }
+}

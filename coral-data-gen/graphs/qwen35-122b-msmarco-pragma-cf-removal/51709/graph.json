@@ -1,0 +1,238 @@
+{
+  "query_id": 51709,
+  "query": "Which medication best relieves a common cold?",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: clinical practice guideline",
+    "trustworthiness: Consumer Reports OTC ranking",
+    "trustworthiness: pharmacist-curated drug guide",
+    "trustworthiness: patient OTC forum",
+    "trustworthiness: consumer health platform",
+    "perspective: pain / fever dominant symptoms",
+    "perspective: multi-symptom cold (cough + congestion + sore throat)",
+    "perspective: high-blood-pressure patient avoiding decongestants",
+    "perspective: nighttime sleep-disturbance dominant",
+    "perspective: minimize-side-effects user"
+  ],
+  "plausible_answers": [
+    "An NSAID (ibuprofen / Advil or naproxen / Aleve)",
+    "A multi-symptom OTC like NyQuil or Tylenol Cold Multi Symptom Nighttime"
+  ],
+  "baseline_answer": "A multi-symptom OTC like NyQuil or Tylenol Cold Multi Symptom Nighttime",
+  "baseline_index": 1,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Which medication best relieves a common cold?",
+        "description": "The primary inquiry regarding the most effective OTC medication for a common cold."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Best for multi-symptom relief (cough, congestion, sore throat, fever)?",
+        "description": "Focuses on comprehensive treatment for the 'full monty' of cold symptoms."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Best for pain/fever dominance or minimizing side effects?",
+        "description": "Focuses on targeted relief for pain/fever or avoiding unnecessary drug exposure."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: clinical practice guideline",
+        "description": "Prioritizes sources based on clinical guidelines."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Consumer Reports OTC ranking",
+        "description": "Prioritizes Consumer Reports effectiveness and safety rankings."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: pharmacist-curated drug guide",
+        "description": "Prioritizes advice from pharmacists."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: patient OTC forum",
+        "description": "Prioritizes anecdotal patient experiences."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: consumer health platform",
+        "description": "Prioritizes general consumer health websites."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: pain / fever dominant symptoms",
+        "description": "Filters for scenarios where pain and fever are the main issues."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: multi-symptom cold (cough + congestion + sore throat)",
+        "description": "Filters for scenarios requiring treatment of multiple symptoms simultaneously."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: high-blood-pressure patient avoiding decongestants",
+        "description": "Filters for patients who must avoid decongestants."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: nighttime sleep-disturbance dominant",
+        "description": "Filters for scenarios where sleep aid is a primary goal."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: minimize-side-effects user",
+        "description": "Filters for users wanting to avoid drowsiness or other side effects."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "An NSAID (ibuprofen / Advil or naproxen / Aleve)",
+        "description": "Targeted relief for pain, fever, and inflammation."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "A multi-symptom OTC like NyQuil or Tylenol Cold Multi Symptom Nighttime",
+        "description": "Broad relief for cough, congestion, sore throat, and fever."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      }
+    ]
+  }
+}

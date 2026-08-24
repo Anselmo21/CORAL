@@ -1,0 +1,281 @@
+{
+  "query_id": 52109,
+  "query": "best thing for impotence",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: clinical practice guideline",
+    "trustworthiness: peer-reviewed urology journal",
+    "trustworthiness: evidence-based medicine review",
+    "trustworthiness: mental health professional",
+    "trustworthiness: wellness / lifestyle publication",
+    "perspective: man with confirmed vascular / metabolic cause",
+    "perspective: man with stress / anxiety / relationship cause",
+    "perspective: older man with chronic ED",
+    "perspective: patient avoiding medications",
+    "perspective: young man with situational ED"
+  ],
+  "plausible_answers": [
+    "A PDE5 inhibitor (Viagra, Cialis, or Levitra) for direct pharmacologic restoration of erectile function",
+    "Treat the underlying condition + lifestyle change (cardiovascular fitness, weight, glucose control)",
+    "Psychological treatment: sensate focus and counseling for stress / anxiety / relationship-driven cases"
+  ],
+  "baseline_answer": "Treat the underlying condition + lifestyle change (cardiovascular fitness, weight, glucose control)",
+  "baseline_index": 1,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 3,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best thing for impotence",
+        "description": "Identifying the optimal treatment for erectile dysfunction."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Standard medical management for physical or chronic ED",
+        "description": "What is the evidence-based approach for general, vascular, or age-related ED?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Management for psychological or stress-related ED",
+        "description": "What is the best approach when the cause is anxiety, stress, or relationship issues?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Approaches prioritizing non-pharmacologic or lifestyle factors",
+        "description": "What strategies are best for patients avoiding medication or focusing on root causes?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: clinical practice guideline",
+        "description": "Prioritizes official medical guidelines."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed urology journal",
+        "description": "Prioritizes specialized medical research."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: evidence-based medicine review",
+        "description": "Prioritizes systematic reviews of medical evidence."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: mental health professional",
+        "description": "Prioritizes psychological expertise."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: wellness / lifestyle publication",
+        "description": "Prioritizes holistic, lifestyle-oriented sources."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: man with confirmed vascular / metabolic cause",
+        "description": "Focuses on physical/vascular origins."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: man with stress / anxiety / relationship cause",
+        "description": "Focuses on psychological origins."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: older man with chronic ED",
+        "description": "Focuses on older patients with long-term issues."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: patient avoiding medications",
+        "description": "Focuses on non-drug solutions."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: young man with situational ED",
+        "description": "Focuses on younger patients with situational issues."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "A PDE5 inhibitor (Viagra, Cialis, or Levitra) for direct pharmacologic restoration of erectile function",
+        "description": "Immediate pharmacologic treatment."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Treat the underlying condition + lifestyle change (cardiovascular fitness, weight, glucose control)",
+        "description": "Root cause management and lifestyle modification."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Psychological treatment: sensate focus and counseling for stress / anxiety / relationship-driven cases",
+        "description": "Psychological intervention for mental causes."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

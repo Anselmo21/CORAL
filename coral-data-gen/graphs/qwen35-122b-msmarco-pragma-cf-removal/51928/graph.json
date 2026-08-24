@@ -1,0 +1,285 @@
+{
+  "query_id": 51928,
+  "query": "best over the counter meds for female yeast infection",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: CDC vaginal infections guidance",
+    "trustworthiness: peer-reviewed gynecology journal",
+    "trustworthiness: OB-GYN clinical practice guideline",
+    "trustworthiness: consumer health platform",
+    "trustworthiness: patient health forum",
+    "trustworthiness: pharmacist-curated drug guide",
+    "perspective: pregnant patient",
+    "perspective: first-time yeast sufferer",
+    "perspective: recurrent yeast infections patient",
+    "perspective: severe-symptom patient"
+  ],
+  "plausible_answers": [
+    "7-day miconazole (Monistat-7) regimen",
+    "3-day clotrimazole (Lotrimin / Mycelex) treatment",
+    "1-day high-dose miconazole"
+  ],
+  "baseline_answer": "7-day miconazole (Monistat-7) regimen",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best over the counter meds for female yeast infection",
+        "description": "Identify the optimal OTC treatment regimen for vaginal yeast infections."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best treatment for pregnant or severe-symptom patients?",
+        "description": "Focuses on safety and efficacy for high-risk groups."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the standard treatment for first-time or mild cases?",
+        "description": "Focuses on convenience and standard care for uncomplicated infections."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the considerations for recurrent infections?",
+        "description": "Focuses on preventing recurrence and ensuring full clearance."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: CDC vaginal infections guidance",
+        "description": "Prioritizes official CDC guidelines."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed gynecology journal",
+        "description": "Prioritizes academic medical literature."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: OB-GYN clinical practice guideline",
+        "description": "Prioritizes professional clinical standards."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: consumer health platform",
+        "description": "Prioritizes general consumer health information."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: patient health forum",
+        "description": "Prioritizes anecdotal patient experiences."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: pharmacist-curated drug guide",
+        "description": "Prioritizes professional pharmacist recommendations."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: pregnant patient",
+        "description": "Filters for safety in pregnancy."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: first-time yeast sufferer",
+        "description": "Filters for first-time infection context."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: recurrent yeast infections patient",
+        "description": "Filters for history of recurrence."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: severe-symptom patient",
+        "description": "Filters for severe symptom intensity."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "7-day miconazole (Monistat-7) regimen",
+        "description": "The top-ranked answer under full constraints."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "3-day clotrimazole (Lotrimin / Mycelex) treatment",
+        "description": "Alternative for standard/mild cases."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "1-day high-dose miconazole",
+        "description": "Alternative for convenience in mild cases."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      }
+    ]
+  }
+}

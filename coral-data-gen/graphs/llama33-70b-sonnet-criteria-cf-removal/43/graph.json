@@ -1,0 +1,290 @@
+{
+  "query_id": 43,
+  "query": "I'm about to finish high school. Should I take a gap year before starting university?",
+  "mode": "criteria",
+  "atoms": [
+    "clarity of purpose and structure of gap year",
+    "risk of losing academic momentum",
+    "benefit of career exploration before committing",
+    "financial cost and savings opportunity",
+    "university deferral availability",
+    "personal maturity and readiness for university",
+    "international or experiential learning value",
+    "risk of never returning to education",
+    "major and career direction certainty",
+    "mental health and burnout recovery"
+  ],
+  "plausible_answers": [
+    "Answer A (Gap Year if Structured Default): Take a gap year if you have a clear plan \u2014 structured gap years (work abroad, volunteering, skill building) produce higher GPA and major satisfaction, and most universities support deferral.",
+    "Answer B (Start University Immediately): Go straight to university if you don't have a specific gap year purpose \u2014 unstructured gap years rarely produce meaningful growth and risk undermining academic momentum without a clear plan.",
+    "Answer C (Gap Year for Career Clarity): Take a gap year specifically to explore different career environments if you're undecided about your major \u2014 a year of deliberate career testing before committing to a program reduces costly mid-degree changes."
+  ],
+  "baseline_answer": "Answer A (Gap Year if Structured Default): Take a gap year if you have a clear plan \u2014 structured gap years (work abroad, volunteering, skill building) produce higher GPA and major satisfaction, and most universities support deferral.",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.3-70B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2271,
+    "output_tokens": 2083,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Should I take a gap year before starting university?",
+        "description": "Decision on whether to take a gap year"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Preparation and Purpose",
+        "description": "Sub-question on preparation and purpose"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Risks and Benefits",
+        "description": "Sub-question on risks and benefits"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Outcomes and Support",
+        "description": "Sub-question on outcomes and support"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "clarity of purpose and structure of gap year",
+        "description": "Importance of having a clear plan for the gap year"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "risk of losing academic momentum",
+        "description": "Risk of falling behind academically during the gap year"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "benefit of career exploration before committing",
+        "description": "Advantage of exploring careers before choosing a major"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "financial cost and savings opportunity",
+        "description": "Financial implications of taking a gap year"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "university deferral availability",
+        "description": "Availability of deferral options from universities"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "personal maturity and readiness for university",
+        "description": "Importance of being mature and ready for university"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "international or experiential learning value",
+        "description": "Value of international or experiential learning experiences"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "risk of never returning to education",
+        "description": "Risk of not returning to education after the gap year"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "major and career direction certainty",
+        "description": "Importance of having a clear direction for major and career"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "mental health and burnout recovery",
+        "description": "Importance of mental health and burnout recovery during the gap year"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Gap Year if Structured Default",
+        "description": "Take a gap year if you have a clear plan"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Start University Immediately",
+        "description": "Go straight to university if you don't have a specific gap year purpose"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Gap Year for Career Clarity",
+        "description": "Take a gap year specifically to explore different career environments"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

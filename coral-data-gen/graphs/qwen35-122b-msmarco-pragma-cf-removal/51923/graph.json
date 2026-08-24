@@ -1,0 +1,357 @@
+{
+  "query_id": 51923,
+  "query": "best over the counter head cold medicine",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: clinical practice guideline",
+    "trustworthiness: peer-reviewed pharmacology journal",
+    "trustworthiness: pharmacist-curated drug guide",
+    "trustworthiness: consumer health platform",
+    "trustworthiness: patient OTC forum",
+    "trustworthiness: CDC / public health guidance",
+    "perspective: high-blood-pressure patient",
+    "perspective: drainage-dominant cold sufferer",
+    "perspective: severe congestion cold sufferer",
+    "perspective: minimize-side-effects user"
+  ],
+  "plausible_answers": [
+    "Pseudoephedrine (Sudafed)",
+    "A first-generation antihistamine (chlorpheniramine or diphenhydramine)",
+    "A symptom-matched multi-drug regimen"
+  ],
+  "baseline_answer": "A symptom-matched multi-drug regimen",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best over the counter head cold medicine",
+        "description": "The primary inquiry regarding the optimal OTC medication for a head cold."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best general approach for a cold sufferer?",
+        "description": "Evaluates the overall strategy considering safety, symptom matching, and diverse patient needs."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best treatment for severe nasal congestion?",
+        "description": "Focuses specifically on relieving nasal stuffiness and congestion."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best treatment for drainage and sneezing?",
+        "description": "Focuses specifically on runny nose, watery eyes, and sneezing symptoms."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: clinical practice guideline",
+        "description": "Prioritizes sources based on clinical guidelines."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed pharmacology journal",
+        "description": "Prioritizes sources from peer-reviewed journals."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: pharmacist-curated drug guide",
+        "description": "Prioritizes sources curated by pharmacists."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: consumer health platform",
+        "description": "Prioritizes general consumer health information."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: patient OTC forum",
+        "description": "Prioritizes anecdotal evidence from patient forums."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: CDC / public health guidance",
+        "description": "Prioritizes official public health guidance."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: high-blood-pressure patient",
+        "description": "Filters for safety regarding high blood pressure, excluding decongestants."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: drainage-dominant cold sufferer",
+        "description": "Filters for effectiveness against runny nose and sneezing."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: severe congestion cold sufferer",
+        "description": "Filters for effectiveness against severe nasal congestion."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: minimize-side-effects user",
+        "description": "Filters for treatments with minimal side effects like drowsiness or stimulation."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Pseudoephedrine (Sudafed)",
+        "description": "A specific decongestant effective for severe congestion."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "A first-generation antihistamine (chlorpheniramine or diphenhydramine)",
+        "description": "A specific antihistamine effective for drainage and sneezing."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "A symptom-matched multi-drug regimen",
+        "description": "A flexible approach matching specific drugs to specific symptoms."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      }
+    ]
+  }
+}

@@ -1,0 +1,297 @@
+{
+  "query_id": 10,
+  "query": "Should I diversify into real estate or just keep investing in the stock market? I have about $50k saved.",
+  "mode": "criteria",
+  "atoms": [
+    "portfolio liquidity",
+    "leverage and amplified returns",
+    "passive income generation",
+    "diversification from equities",
+    "tax depreciation benefits",
+    "management and time commitment",
+    "concentration risk",
+    "barrier to entry with $50k",
+    "inflation hedging",
+    "correlation with stock market"
+  ],
+  "plausible_answers": [
+    "Answer A (Stock Market Default): Keep investing in diversified index funds \u2014 REITs within your portfolio give real estate exposure without illiquidity, and $50k is too thin for meaningful direct real estate in most markets.",
+    "Answer B (Rental Property for Leverage): Buy a small rental property with $50k as a down payment \u2014 leverage, depreciation deductions, and rental income can generate superior risk-adjusted returns for investors willing to actively manage.",
+    "Answer C (REIT Allocation): Add a dedicated REIT allocation (15\u201320%) within your existing stock portfolio \u2014 you get real estate diversification, inflation hedging, and dividend income without giving up liquidity or taking on landlord risk."
+  ],
+  "baseline_answer": "Answer C (REIT Allocation): Add a dedicated REIT allocation (15\u201320%) within your existing stock portfolio \u2014 you get real estate diversification, inflation hedging, and dividend income without giving up liquidity or taking on landlord risk.",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Should I diversify into real estate or just keep investing in the stock market?",
+        "description": "Decision on asset allocation with $50k capital."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Accessibility and Liquidity Constraints",
+        "description": "How do the $50k limit and need for cash access impact the investment choice?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Financial Mechanics and Return Drivers",
+        "description": "What are the specific financial advantages like leverage, taxes, and inflation protection?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Risk Profile and Operational Effort",
+        "description": "What are the risks regarding concentration, correlation, and time commitment?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "portfolio liquidity",
+        "description": "Ability to convert assets to cash quickly."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "leverage and amplified returns",
+        "description": "Using borrowed money to increase potential gains."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "passive income generation",
+        "description": "Earning cash flow with minimal active work."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "diversification from equities",
+        "description": "Reducing portfolio risk by adding non-correlated assets."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "tax depreciation benefits",
+        "description": "Tax deductions available for property owners."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "management and time commitment",
+        "description": "The effort required to maintain the investment."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "concentration risk",
+        "description": "Risk of having too much capital in a single asset."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "barrier to entry with $50k",
+        "description": "Difficulty entering the market with limited capital."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "inflation hedging",
+        "description": "Protection against rising prices."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "correlation with stock market",
+        "description": "How closely the asset moves with the stock market."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Stock Market Default)",
+        "description": "Keep investing in diversified index funds; REITs give exposure without illiquidity."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Rental Property for Leverage)",
+        "description": "Buy a small rental property; leverage and tax deductions generate superior returns."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (REIT Allocation)",
+        "description": "Add a dedicated REIT allocation; diversification and income without landlord risk."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

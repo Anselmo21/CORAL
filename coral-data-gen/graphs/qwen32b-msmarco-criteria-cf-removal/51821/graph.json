@@ -1,0 +1,312 @@
+{
+  "query_id": 51821,
+  "query": "best ink for prints on cardstock",
+  "mode": "criteria",
+  "atoms": [
+    "ink type compatibility",
+    "printer feeding method",
+    "paper weight range",
+    "finish quality",
+    "cost-effectiveness",
+    "brand reliability",
+    "color vibrancy",
+    "drying time",
+    "ease of use",
+    "availability of replacement ink"
+  ],
+  "plausible_answers": [
+    "Pigment-based inkjet ink in a rear-feed printer",
+    "Standard dye-based inkjet ink in a top/rear-loading Epson or Canon",
+    "Toner (laser printing)"
+  ],
+  "baseline_answer": "Pigment-based inkjet ink in a rear-feed printer",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3-32B",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best ink for prints on cardstock",
+        "description": "What is the best ink type and printer combination for printing on cardstock?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Printer and ink compatibility with cardstock",
+        "description": "What printer and ink combination supports cardstock feeding and printing without bending or jamming?"
+      },
+      {
+        "id": "sq2",
+        "type": "subq",
+        "layer": "2",
+        "label": "Print quality and durability",
+        "description": "What ink type produces high-quality, durable prints on cardstock?"
+      },
+      {
+        "id": "sq3",
+        "type": "subq",
+        "layer": "2",
+        "label": "Cost and long-term usability",
+        "description": "What factors affect cost and long-term usability of the ink and printer?"
+      },
+      {
+        "id": "sq4",
+        "type": "subq",
+        "layer": "2",
+        "label": "Printer features for cardstock",
+        "description": "What printer features are important for handling custom cardstock sizes and types?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "ink type compatibility",
+        "description": "Compatibility of the ink type with cardstock paper"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "printer feeding method",
+        "description": "How the printer feeds paper (e.g., rear, top, front)"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "paper weight range",
+        "description": "The range of cardstock weights the printer can handle"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "finish quality",
+        "description": "The quality of the final print finish on cardstock"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost-effectiveness",
+        "description": "The cost of ink and printer over time"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "brand reliability",
+        "description": "Reliability and reputation of the printer brand"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "color vibrancy",
+        "description": "The vibrancy and saturation of printed colors on cardstock"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "drying time",
+        "description": "How quickly the ink dries on the cardstock"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "ease of use",
+        "description": "How easy the printer is to use with cardstock"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "availability of replacement ink",
+        "description": "How readily available replacement ink is for the printer"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Pigment-based inkjet ink in a rear-feed printer",
+        "description": "Pigment-based inkjet ink used in a printer with rear feeding to avoid bending or jamming"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Standard dye-based inkjet ink in a top/rear-loading Epson or Canon",
+        "description": "Standard dye-based inkjet ink in a top or rear-loading Epson or Canon printer"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Toner (laser printing)",
+        "description": "Toner-based printing using a laser printer for cardstock"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "sq4",
+        "target": "c2"
+      },
+      {
+        "source": "sq4",
+        "target": "c3"
+      },
+      {
+        "source": "sq4",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

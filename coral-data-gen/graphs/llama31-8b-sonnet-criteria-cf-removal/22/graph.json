@@ -1,0 +1,305 @@
+{
+  "query_id": 22,
+  "query": "I have generalized anxiety and I'd rather not take medication. What are my best options?",
+  "mode": "criteria",
+  "atoms": [
+    "long-term remission without medication",
+    "speed of symptom relief",
+    "relapse prevention",
+    "skill building for self-management",
+    "access and cost of therapy",
+    "exercise tolerance and physical health",
+    "severity of anxiety symptoms",
+    "patient engagement with active treatment",
+    "evidence strength for non-pharmacological approaches",
+    "suitability for ongoing use without professional support"
+  ],
+  "plausible_answers": [
+    "Answer A (CBT Default): Pursue CBT with a licensed therapist \u2014 it has the strongest evidence base for GAD, produces lasting remission, and builds self-management skills that persist without ongoing treatment.",
+    "Answer B (Exercise Plus Mindfulness): Combine regular aerobic exercise with a mindfulness-based program like MBSR \u2014 these are accessible, low-cost, and produce clinically meaningful anxiety reduction for mild-to-moderate symptoms.",
+    "Answer C (Digital CBT-I First): Start with a structured digital CBT program (like those based on the Worry Hill model) for immediate access while waiting for a therapist \u2014 evidence-based apps can produce meaningful benefit for mild anxiety without a waitlist."
+  ],
+  "baseline_answer": "Answer A (CBT Default): Pursue CBT with a licensed therapist \u2014 it has the strongest evidence base for GAD, produces lasting remission, and builds self-management skills that persist without ongoing treatment.",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2268,
+    "output_tokens": 2131,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What are my best options for managing generalized anxiety without taking medication?",
+        "description": "Generalized anxiety management options without medication"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the most effective non-pharmacological treatments for generalized anxiety?",
+        "description": "Effective non-pharmacological treatments for GAD"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "How can I manage my anxiety symptoms quickly and effectively?",
+        "description": "Quick and effective anxiety symptom management"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the most accessible and cost-effective options for treating generalized anxiety?",
+        "description": "Accessible and cost-effective GAD treatment options"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the long-term benefits and risks of different non-pharmacological approaches?",
+        "description": "Long-term benefits and risks of non-pharmacological approaches"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "long-term remission without medication",
+        "description": "Long-term remission without medication"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "speed of symptom relief",
+        "description": "Speed of symptom relief"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "relapse prevention",
+        "description": "Relapse prevention"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "skill building for self-management",
+        "description": "Skill building for self-management"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "access and cost of therapy",
+        "description": "Access and cost of therapy"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "exercise tolerance and physical health",
+        "description": "Exercise tolerance and physical health"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "severity of anxiety symptoms",
+        "description": "Severity of anxiety symptoms"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "patient engagement with active treatment",
+        "description": "Patient engagement with active treatment"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "evidence strength for non-pharmacological approaches",
+        "description": "Evidence strength for non-pharmacological approaches"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "suitability for ongoing use without professional support",
+        "description": "Suitability for ongoing use without professional support"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Pursue CBT with a licensed therapist",
+        "description": "Pursue CBT with a licensed therapist"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Combine regular aerobic exercise with a mindfulness-based program like MBSR",
+        "description": "Combine regular aerobic exercise with a mindfulness-based program like MBSR"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Start with a structured digital CBT program (like those based on the Worry Hill model) for immediate access while waiting for a therapist",
+        "description": "Start with a structured digital CBT program (like those based on the Worry Hill model) for immediate access while waiting for a therapist"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "sq4",
+        "target": "c1"
+      },
+      {
+        "source": "sq4",
+        "target": "c3"
+      },
+      {
+        "source": "sq4",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

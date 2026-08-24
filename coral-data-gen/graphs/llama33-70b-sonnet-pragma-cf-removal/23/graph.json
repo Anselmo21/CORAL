@@ -1,0 +1,318 @@
+{
+  "query_id": 23,
+  "query": "I'm 28 years old. Is it worth getting the HPV vaccine if I've already been sexually active for years?",
+  "mode": "pragmas",
+  "atoms": [
+    "temporal: 2023 only",
+    "temporal: 2021\u20132023",
+    "geographic: USA",
+    "perspective: Individual with ongoing multiple new partners",
+    "perspective: Individual in long-term monogamous relationship",
+    "perspective: Gynecologist or preventive medicine physician",
+    "trustworthiness: Government public health guidance",
+    "trustworthiness: Peer-reviewed clinical research",
+    "trustworthiness: Consumer health information",
+    "trustworthiness: Patient community experience"
+  ],
+  "plausible_answers": [
+    "Answer A (Get Vaccinated Default): Get the HPV vaccine \u2014 even with prior sexual activity, you're unlikely to have encountered all 9 covered strains, and the vaccine provides meaningful protection against cervical, anal, and oropharyngeal cancers.",
+    "Answer B (Skip if Monogamous): Vaccination is unlikely to be cost-effective if you're in a long-term monogamous relationship \u2014 your risk of new HPV strain exposure is minimal and CDC guidance is to individualize the decision for adults over 26.",
+    "Answer C (Discuss with Physician): Make a shared decision with your doctor based on your specific sexual history and risk profile \u2014 the benefit is highly individual at age 28 and depends on factors your physician can assess."
+  ],
+  "baseline_answer": "Answer C (Discuss with Physician): Make a shared decision with your doctor based on your specific sexual history and risk profile \u2014 the benefit is highly individual at age 28 and depends on factors your physician can assess.",
+  "baseline_index": 2,
+  "model": "meta-llama/Llama-3.3-70B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2540,
+    "output_tokens": 2051,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Is it worth getting the HPV vaccine at 28 with prior sexual activity?",
+        "description": "HPV vaccination decision for a 28-year-old"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "General recommendation for HPV vaccination in adults over 26",
+        "description": "Understanding general guidelines"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Effectiveness and cost-effectiveness based on individual risk factors",
+        "description": "Considering personal risk factors"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Stakeholder perspectives on HPV vaccination value",
+        "description": "Evaluating different viewpoints"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2023 only",
+        "description": "Considering only 2023 sources"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2021\u20132023",
+        "description": "Considering sources from 2021 to 2023"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: USA",
+        "description": "Focusing on sources from the USA"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Individual with ongoing multiple new partners",
+        "description": "Considering the perspective of individuals with multiple partners"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Individual in long-term monogamous relationship",
+        "description": "Considering the perspective of individuals in monogamous relationships"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Gynecologist or preventive medicine physician",
+        "description": "Considering the perspective of gynecologists or preventive medicine physicians"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Government public health guidance",
+        "description": "Prioritizing government public health guidance"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Peer-reviewed clinical research",
+        "description": "Prioritizing peer-reviewed clinical research"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Consumer health information",
+        "description": "Considering consumer health information"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Patient community experience",
+        "description": "Considering patient community experience"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Get the HPV vaccine",
+        "description": "Vaccination recommended for protection"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Skip if Monogamous",
+        "description": "Vaccination might not be cost-effective in monogamous relationships"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Discuss with Physician",
+        "description": "Shared decision-making with a physician based on individual risk factors"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

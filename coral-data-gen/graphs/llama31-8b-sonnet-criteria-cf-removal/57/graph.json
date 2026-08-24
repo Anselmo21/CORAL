@@ -1,0 +1,242 @@
+{
+  "query_id": 57,
+  "query": "I want to start making espresso at home. What's the best machine under $500?",
+  "mode": "criteria",
+  "atoms": [
+    "espresso extraction quality",
+    "steam wand quality for milk drinks",
+    "speed and ease of daily use",
+    "grinder quality and compatibility",
+    "machine longevity and repairability",
+    "learning curve and barista skill required",
+    "countertop footprint",
+    "total system cost (machine plus grinder)",
+    "beginner-friendliness",
+    "upgrade path for future improvement"
+  ],
+  "plausible_answers": [
+    "Answer A (Breville Bambino Plus Default): Get the Breville Bambino Plus \u2014 it produces genuine espresso quality, has a powerful steam wand, and heats up in 3 seconds, making it the best balance of quality and ease for new home baristas.",
+    "Answer B (Machine Plus Quality Grinder): Spend $200\u2013250 on a basic machine and $200\u2013250 on a quality burr grinder \u2014 the grinder has more impact on espresso quality than the machine, and this combination outperforms a $500 machine with a poor grinder.",
+    "Answer C (Gaggia Classic Pro for Longevity): Buy the Gaggia Classic Pro at ~$450 \u2014 its repairability, upgrade path, and espresso quality ceiling make it the right choice for anyone serious about the craft who wants a machine they'll use for 10+ years."
+  ],
+  "baseline_answer": "Answer A (Breville Bambino Plus Default): Get the Breville Bambino Plus \u2014 it produces genuine espresso quality, has a powerful steam wand, and heats up in 3 seconds, making it the best balance of quality and ease for new home baristas.",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2425,
+    "output_tokens": 1787,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What's the best machine under $500 for making espresso at home?",
+        "description": ""
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What's the best machine under $500 for making espresso at home, considering espresso extraction quality and steam wand quality?",
+        "description": ""
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What's the best machine under $500 for making espresso at home, considering speed and ease of daily use, machine longevity, and beginner-friendliness?",
+        "description": ""
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What's the best machine under $500 for making espresso at home, considering grinder quality and compatibility, and total system cost?",
+        "description": ""
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "espresso extraction quality",
+        "description": ""
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "steam wand quality for milk drinks",
+        "description": ""
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "speed and ease of daily use",
+        "description": ""
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "grinder quality and compatibility",
+        "description": ""
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "machine longevity and repairability",
+        "description": ""
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "learning curve and barista skill required",
+        "description": ""
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "countertop footprint",
+        "description": ""
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "total system cost (machine plus grinder)",
+        "description": ""
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "beginner-friendliness",
+        "description": ""
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "upgrade path for future improvement",
+        "description": ""
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Get the Breville Bambino Plus \u2014 it produces genuine espresso quality, has a powerful steam wand, and heats up in 3 seconds, making it the best balance of quality and ease for new home baristas.",
+        "description": ""
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Spend $200\u2013250 on a basic machine and $200\u2013250 on a quality burr grinder \u2014 the grinder has more impact on espresso quality than the machine, and this combination outperforms a $500 machine with a poor grinder.",
+        "description": ""
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Buy the Gaggia Classic Pro at ~$450 \u2014 its repairability, upgrade path, and espresso quality ceiling make it the right choice for anyone serious about the craft who wants a machine they'll use for 10+ years.",
+        "description": ""
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "a1",
+        "target": "c1"
+      },
+      {
+        "source": "a1",
+        "target": "c2"
+      },
+      {
+        "source": "a1",
+        "target": "c3"
+      },
+      {
+        "source": "a1",
+        "target": "c5"
+      },
+      {
+        "source": "a1",
+        "target": "c9"
+      },
+      {
+        "source": "a1",
+        "target": "c10"
+      },
+      {
+        "source": "a2",
+        "target": "c4"
+      },
+      {
+        "source": "a2",
+        "target": "c8"
+      },
+      {
+        "source": "a3",
+        "target": "c5"
+      },
+      {
+        "source": "a3",
+        "target": "c10"
+      }
+    ]
+  }
+}

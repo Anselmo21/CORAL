@@ -1,0 +1,286 @@
+{
+  "query_id": 18,
+  "query": "I've had chronic lower back pain for over a year. What's the best approach to finally get relief?",
+  "mode": "pragmas",
+  "atoms": [
+    "temporal: 2023 only",
+    "temporal: 2021\u20132023",
+    "geographic: USA",
+    "perspective: Patient with non-specific chronic pain",
+    "perspective: Patient with confirmed structural pathology",
+    "perspective: Pain management specialist or physiotherapist",
+    "trustworthiness: Peer-reviewed clinical research",
+    "trustworthiness: Medical institution guidance",
+    "trustworthiness: Consumer health information",
+    "trustworthiness: Patient community experience"
+  ],
+  "plausible_answers": [
+    "Answer A (Active Multimodal Default): Pursue a combination of supervised strength training, pain neuroscience education, and CBT \u2014 this multimodal active approach has the strongest long-term evidence for non-specific chronic back pain.",
+    "Answer B (Structural Investigation First): Get updated imaging and a specialist referral before committing to conservative management \u2014 if a structural cause (herniated disc, stenosis) is confirmed, targeted interventions or surgery may be warranted.",
+    "Answer C (Mind-Body Focus): Prioritize CBT and pain neuroscience education alongside gentle movement \u2014 for chronic pain with central sensitization features, addressing psychological factors often produces more relief than physical interventions alone."
+  ],
+  "baseline_answer": "Answer A (Active Multimodal Default): Pursue a combination of supervised strength training, pain neuroscience education, and CBT \u2014 this multimodal active approach has the strongest long-term evidence for non-specific chronic back pain.",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.1-70B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2448,
+    "output_tokens": 1911,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Best approach for chronic lower back pain",
+        "description": "What's the best approach to finally get relief from chronic lower back pain?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Effective approach for non-specific chronic low back pain",
+        "description": "What is the most effective approach for non-specific chronic low back pain?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Importance of structural investigation",
+        "description": "How important is structural investigation in determining the best course of treatment?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Role of mind-body approaches",
+        "description": "What role do mind-body approaches play in managing chronic back pain?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2023 only",
+        "description": "Only consider sources from 2023"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2021\u20132023",
+        "description": "Only consider sources from 2021 to 2023"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: USA",
+        "description": "Only consider sources from the USA"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Patient with non-specific chronic pain",
+        "description": "Only consider sources from the perspective of patients with non-specific chronic pain"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Patient with confirmed structural pathology",
+        "description": "Only consider sources from the perspective of patients with confirmed structural pathology"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Pain management specialist or physiotherapist",
+        "description": "Only consider sources from the perspective of pain management specialists or physiotherapists"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Peer-reviewed clinical research",
+        "description": "Only consider peer-reviewed clinical research sources"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Medical institution guidance",
+        "description": "Only consider sources from medical institutions"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Consumer health information",
+        "description": "Only consider consumer health information sources"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Patient community experience",
+        "description": "Only consider sources from patient communities"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Active Multimodal Default",
+        "description": "Pursue a combination of supervised strength training, pain neuroscience education, and CBT"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Structural Investigation First",
+        "description": "Get updated imaging and a specialist referral before committing to conservative management"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Mind-Body Focus",
+        "description": "Prioritize CBT and pain neuroscience education alongside gentle movement"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      }
+    ]
+  }
+}

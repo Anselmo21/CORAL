@@ -1,0 +1,269 @@
+{
+  "query_id": 4,
+  "query": "Should I open a Roth IRA or a traditional IRA? I'm 28 making $72,000 a year.",
+  "mode": "criteria",
+  "atoms": [
+    "tax-free retirement income",
+    "immediate tax deduction benefit",
+    "long-term compounding advantage",
+    "expected retirement tax bracket",
+    "current marginal tax rate optimization",
+    "flexibility of withdrawal rules",
+    "protection from future tax rate increases",
+    "state income tax considerations",
+    "estate planning benefits",
+    "simplicity of contribution rules"
+  ],
+  "plausible_answers": [
+    "Answer A (Roth Default): Open a Roth IRA \u2014 at 28 with decades of compounding ahead, tax-free growth almost always beats the immediate deduction, especially if your income is likely to rise.",
+    "Answer B (Traditional for Current Deduction): Choose a traditional IRA if you're in a high tax bracket now and expect meaningfully lower income in retirement \u2014 the immediate 22% deduction deployed into additional investments can outperform Roth over time.",
+    "Answer C (Both via Backdoor): Contribute to a traditional IRA for the current deduction then immediately convert to Roth (backdoor Roth) to capture both benefits while income limits allow."
+  ],
+  "baseline_answer": "Answer A (Roth Default): Open a Roth IRA \u2014 at 28 with decades of compounding ahead, tax-free growth almost always beats the immediate deduction, especially if your income is likely to rise.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Roth vs Traditional IRA for a 28-year-old earning $72k",
+        "description": "Decision on IRA type based on age, income, and tax implications."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Long-term Growth & Future Tax Outlook",
+        "description": "Evaluates the impact of time horizon and future tax rates on wealth accumulation."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Immediate Tax & Cash Flow Optimization",
+        "description": "Evaluates current tax savings and immediate financial mechanics."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Operational Mechanics & Rules",
+        "description": "Evaluates account flexibility, complexity, and estate factors."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "tax-free retirement income",
+        "description": "The ability to withdraw earnings without paying taxes in retirement."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "immediate tax deduction benefit",
+        "description": "Reducing current taxable income by the contribution amount."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "long-term compounding advantage",
+        "description": "The exponential growth of earnings over decades without tax drag."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "expected retirement tax bracket",
+        "description": "Prediction of tax rates in retirement versus current rates."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "current marginal tax rate optimization",
+        "description": "Maximizing the value of the deduction at the current 22% bracket."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "flexibility of withdrawal rules",
+        "description": "Ease of accessing funds before retirement without penalties."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "protection from future tax rate increases",
+        "description": "Locking in current tax rates to avoid higher future taxes."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "state income tax considerations",
+        "description": "Impact of current state taxes on the value of the deduction."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "estate planning benefits",
+        "description": "Advantages for passing wealth to heirs."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "simplicity of contribution rules",
+        "description": "Ease of setting up and contributing to the account."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Roth Default)",
+        "description": "Open a Roth IRA \u2014 at 28 with decades of compounding ahead, tax-free growth almost always beats the immediate deduction, especially if your income is likely to rise."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Traditional for Current Deduction)",
+        "description": "Choose a traditional IRA if you're in a high tax bracket now and expect meaningfully lower income in retirement \u2014 the immediate 22% deduction deployed into additional investments can outperform Roth over time."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Both via Backdoor)",
+        "description": "Contribute to a traditional IRA for the current deduction then immediately convert to Roth (backdoor Roth) to capture both benefits while income limits allow."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

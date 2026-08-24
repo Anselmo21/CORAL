@@ -1,0 +1,293 @@
+{
+  "query_id": 52280,
+  "query": "best way to deter seagulls",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: pest control industry publication",
+    "trustworthiness: peer-reviewed ornithology journal",
+    "trustworthiness: wildlife management agency",
+    "trustworthiness: bird control product retailer",
+    "trustworthiness: horticultural / gardening publication",
+    "perspective: restaurant or outdoor-event owner",
+    "perspective: rooftop homeowner",
+    "perspective: public park or harbor manager",
+    "perspective: wildlife-friendly advocate",
+    "perspective: aesthetic-first homeowner"
+  ],
+  "plausible_answers": [
+    "Bird netting",
+    "Predator decoys + Osprey / Eagle Jackite kite",
+    "Garbage management + remove food sources"
+  ],
+  "baseline_answer": "Bird netting",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best way to deter seagulls",
+        "description": "Identify the most effective method to deter seagulls based on provided sources."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Physical exclusion for structures",
+        "description": "What physical barriers work best for buildings, roofs, and gardens?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Visual and behavioral deterrents",
+        "description": "What non-physical methods (decoys, kites) effectively scare birds away?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Source removal and food management",
+        "description": "How does managing food sources and garbage impact seagull presence?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: pest control industry publication",
+        "description": "Prioritize sources from professional pest control experts."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed ornithology journal",
+        "description": "Prioritize scientific, peer-reviewed ornithological data."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: wildlife management agency",
+        "description": "Prioritize official wildlife management guidelines."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: bird control product retailer",
+        "description": "Prioritize advice from sellers of bird control products."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: horticultural / gardening publication",
+        "description": "Prioritize advice from gardening and horticulture experts."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: restaurant or outdoor-event owner",
+        "description": "Prioritize the needs of event hosts dealing with scavenging birds."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: rooftop homeowner",
+        "description": "Prioritize the needs of homeowners with roof nesting issues."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: public park or harbor manager",
+        "description": "Prioritize the needs of managers of public spaces near water."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: wildlife-friendly advocate",
+        "description": "Prioritize non-lethal, humane, and wildlife-friendly methods."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: aesthetic-first homeowner",
+        "description": "Prioritize methods that maintain visual appeal of the property."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Bird netting",
+        "description": "Using physical netting to block access."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Predator decoys + Osprey / Eagle Jackite kite",
+        "description": "Using visual scare tactics and predator mimicry."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Garbage management + remove food sources",
+        "description": "Eliminating food attractants to reduce bird presence."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

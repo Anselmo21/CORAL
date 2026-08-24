@@ -1,0 +1,277 @@
+{
+  "query_id": 46,
+  "query": "I do a lot of software development. Should I get a MacBook or stick with Windows?",
+  "mode": "criteria",
+  "atoms": [
+    "Unix-based environment for server compatibility",
+    "raw performance per dollar",
+    "battery life during development work",
+    "target platform (iOS/macOS development requirement)",
+    "Docker and container performance",
+    "hardware choice and upgrade flexibility",
+    "team and employer standard compatibility",
+    "Windows Subsystem for Linux viability",
+    "long-term resale and longevity",
+    "cost at equivalent performance tier"
+  ],
+  "plausible_answers": [
+    "Answer A (MacBook Default): Get a MacBook with Apple Silicon \u2014 the Unix environment, Docker performance, battery life, and build quality make it the dominant choice for web and mobile developers, and Apple Silicon's performance-per-watt is unmatched.",
+    "Answer B (Windows for Value and Flexibility): Choose a high-spec Windows laptop if you want more performance per dollar and hardware flexibility \u2014 WSL2 has made Windows a fully viable development environment for most workflows.",
+    "Answer C (Windows Required for Platform): Stick with Windows if you're in a .NET, game development, or enterprise environment where Windows is the target platform \u2014 macOS creates friction where the stack is Windows-native."
+  ],
+  "baseline_answer": "Answer A (MacBook Default): Get a MacBook with Apple Silicon \u2014 the Unix environment, Docker performance, battery life, and build quality make it the dominant choice for web and mobile developers, and Apple Silicon's performance-per-watt is unmatched.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "MacBook or Windows?",
+        "description": "Should a software developer get a MacBook or stick with Windows?"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "General Dev Environment",
+        "description": "Which OS offers the best environment for general web and mobile development?"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Hardware Value & Flexibility",
+        "description": "Which OS provides better hardware value and flexibility?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Platform Constraints",
+        "description": "Which OS is required for specific enterprise or platform constraints?"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "Unix-based environment for server compatibility",
+        "description": "Native Unix environment for Linux server compatibility."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "raw performance per dollar",
+        "description": "Performance delivered per unit of currency spent."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "battery life during development work",
+        "description": "Duration of battery life under development workloads."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "target platform (iOS/macOS development requirement)",
+        "description": "Requirement to develop for iOS or macOS."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "Docker and container performance",
+        "description": "Efficiency and speed of Docker container execution."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "hardware choice and upgrade flexibility",
+        "description": "Variety of hardware options and ability to upgrade components."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "team and employer standard compatibility",
+        "description": "Alignment with team or employer's standard OS."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "Windows Subsystem for Linux viability",
+        "description": "Effectiveness of WSL2 for Linux development on Windows."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "long-term resale and longevity",
+        "description": "Resale value and lifespan of the device."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost at equivalent performance tier",
+        "description": "Price point for equivalent performance capabilities."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (MacBook Default)",
+        "description": "Get a MacBook with Apple Silicon for Unix, Docker, battery, and build quality."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Windows for Value and Flexibility)",
+        "description": "Choose a high-spec Windows laptop for performance per dollar and hardware flexibility."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Windows Required for Platform)",
+        "description": "Stick with Windows if in a .NET, game dev, or enterprise environment."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      }
+    ]
+  }
+}

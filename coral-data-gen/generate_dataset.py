@@ -43,6 +43,8 @@ def create_llm_client(
     local_device: str = "auto",
     local_dtype: str = "auto",
     tensor_parallel_size: int = 1,
+    max_model_len: Optional[int] = None,
+    gpu_memory_utilization: Optional[float] = None,
 ) -> Any:
     """Build an LLM client for the chosen provider. Build once, reuse across queries.
 
@@ -50,6 +52,9 @@ def create_llm_client(
     (Ollama, LM Studio, llama.cpp server, vLLM --served). Falls back to
     OPENAI_BASE_URL env var, else the official OpenAI API. When base_url is set
     a real API key is usually unnecessary; a placeholder is used if none is given.
+
+    max_model_len and gpu_memory_utilization are vllm-only; leaving them None
+    keeps vLLM's own defaults.
     """
     if provider == "openai":
         if OpenAI is None:
@@ -69,12 +74,25 @@ def create_llm_client(
             raise SystemExit("pip install vllm") from exc
         if not model:
             raise ValueError("model is required for provider='vllm'")
-        print(f"Loading vLLM model '{model}' (dtype={local_dtype}, tensor_parallel_size={tensor_parallel_size})...")
+        # vLLM sizes the KV cache to hold one request at the model's full context.
+        # Checkpoints advertising a 100k+ window leave nothing for it on smaller
+        # cards, so cap max_model_len to what the prompts actually need.
+        extra = {}
+        if max_model_len is not None:
+            extra["max_model_len"] = max_model_len
+        if gpu_memory_utilization is not None:
+            extra["gpu_memory_utilization"] = gpu_memory_utilization
+        print(f"Loading vLLM model '{model}' (dtype={local_dtype}, "
+              f"tensor_parallel_size={tensor_parallel_size}"
+              + (f", max_model_len={max_model_len}" if max_model_len else "")
+              + (f", gpu_memory_utilization={gpu_memory_utilization}" if gpu_memory_utilization else "")
+              + ")...")
         client = LLM(
             model=model,
             dtype=local_dtype,
             enable_prefix_caching=True,
             tensor_parallel_size=tensor_parallel_size,
+            **extra,
         )
         print("Model loaded.")
         return client
@@ -112,6 +130,36 @@ def create_llm_client(
     raise ValueError(f"Unknown provider: {provider}")
 
 
+_USAGE: Dict[str, Any] = {"prompt_tokens": 0, "output_tokens": 0,
+                          "calls": 0, "finish_reasons": []}
+
+
+def reset_usage() -> None:
+    """Zero the counters before a unit of work whose cost you want to record."""
+    _USAGE.update(prompt_tokens=0, output_tokens=0, calls=0, finish_reasons=[])
+
+
+def usage_so_far() -> Dict[str, Any]:
+    """Totals across every _invoke_chat_completion since the last reset.
+
+    Counts are None-safe: providers that do not report them leave the totals
+    where they were, so a zero means "not reported", not "free".
+    """
+    return {"prompt_tokens": _USAGE["prompt_tokens"],
+            "output_tokens": _USAGE["output_tokens"],
+            "llm_calls": _USAGE["calls"],
+            "finish_reasons": list(_USAGE["finish_reasons"])}
+
+
+def _record_usage(prompt_tokens, output_tokens, finish_reason) -> None:
+    _USAGE["calls"] += 1
+    _USAGE["finish_reasons"].append(finish_reason)
+    if prompt_tokens is not None:
+        _USAGE["prompt_tokens"] += prompt_tokens
+    if output_tokens is not None:
+        _USAGE["output_tokens"] += output_tokens
+
+
 def _invoke_chat_completion(
     *,
     client: Any,
@@ -130,6 +178,10 @@ def _invoke_chat_completion(
             temperature=temperature,
             max_tokens=max_tokens,
         )
+        usage = getattr(resp, "usage", None)
+        _record_usage(getattr(usage, "prompt_tokens", None),
+                      getattr(usage, "completion_tokens", None),
+                      resp.choices[0].finish_reason)
         return resp.choices[0].message.content or ""
     if provider == "vllm":
         from vllm import SamplingParams
@@ -149,7 +201,11 @@ def _invoke_chat_completion(
             use_tqdm=use_tqdm,
             chat_template_kwargs={"enable_thinking": False},
         )
-        return (outputs[0].outputs[0].text or "").strip()
+        out = outputs[0]
+        _record_usage(len(out.prompt_token_ids or []),
+                      len(out.outputs[0].token_ids or []),
+                      out.outputs[0].finish_reason)
+        return (out.outputs[0].text or "").strip()
     if provider == "local":
         do_sample = temperature > 0
         result = client(

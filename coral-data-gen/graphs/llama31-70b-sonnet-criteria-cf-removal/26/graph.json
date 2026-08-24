@@ -1,0 +1,274 @@
+{
+  "query_id": 26,
+  "query": "I work at a desk all day and have been having back pain. Would a standing desk actually help?",
+  "mode": "criteria",
+  "atoms": [
+    "evidence for back pain reduction",
+    "reduction of total daily sitting time",
+    "correct usage and ergonomic setup",
+    "combination with movement breaks",
+    "cost of desk vs cheaper alternatives",
+    "upper vs lower back pain distinction",
+    "standing fatigue and new pain risks",
+    "workplace feasibility",
+    "long-term compliance and usage habits",
+    "comparison to exercise and movement breaks"
+  ],
+  "plausible_answers": [
+    "Answer A (Movement Breaks Default): Skip the standing desk and focus on taking a 2\u20135 minute movement break every 30\u201345 minutes \u2014 evidence shows frequent movement reduces back pain more reliably than sit-stand desks, at zero cost.",
+    "Answer B (Standing Desk With Proper Setup): Get a sit-stand desk with anti-fatigue mat and proper ergonomic setup \u2014 used correctly with alternating postures every 30 minutes, it reduces upper back pain and prolonged sitting with meaningful evidence from long-term RCTs.",
+    "Answer C (Exercise Over Equipment): Invest time in a strength training program targeting core and hip stability rather than buying a standing desk \u2014 structural weakness is the primary driver of desk-related back pain and exercise addresses the root cause."
+  ],
+  "baseline_answer": "Answer A (Movement Breaks Default): Skip the standing desk and focus on taking a 2\u20135 minute movement break every 30\u201345 minutes \u2014 evidence shows frequent movement reduces back pain more reliably than sit-stand desks, at zero cost.",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.1-70B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2304,
+    "output_tokens": 2039,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Would a standing desk help alleviate back pain?",
+        "description": "Considering the effectiveness and practicality of standing desks in reducing back pain"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Effectiveness of standing desks in reducing back pain",
+        "description": "Evaluating the evidence and benefits of standing desks"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Practical considerations for using a standing desk",
+        "description": "Assessing the feasibility and usability of standing desks"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Comparison to alternative solutions",
+        "description": "Comparing standing desks to other options for reducing back pain"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "evidence for back pain reduction",
+        "description": "The scientific evidence supporting the effectiveness of standing desks in reducing back pain"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "reduction of total daily sitting time",
+        "description": "The impact of standing desks on reducing overall sitting time"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "correct usage and ergonomic setup",
+        "description": "The importance of proper setup and usage of standing desks"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "combination with movement breaks",
+        "description": "The benefits of combining standing desks with regular movement breaks"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost of desk vs cheaper alternatives",
+        "description": "The cost-effectiveness of standing desks compared to other options"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "upper vs lower back pain distinction",
+        "description": "The differences in effectiveness of standing desks for upper and lower back pain"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "standing fatigue and new pain risks",
+        "description": "The potential risks of standing fatigue and new pain associated with standing desks"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "workplace feasibility",
+        "description": "The practicality of implementing standing desks in a workplace setting"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "long-term compliance and usage habits",
+        "description": "The importance of maintaining consistent usage habits with standing desks"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "comparison to exercise and movement breaks",
+        "description": "The effectiveness of standing desks compared to exercise and movement breaks"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Skip the standing desk and focus on taking a 2\u20135 minute movement break every 30\u201345 minutes \u2014 evidence shows frequent movement reduces back pain more reliably than sit-stand desks, at zero cost.",
+        "description": "Prioritizing movement breaks over standing desks"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Get a sit-stand desk with anti-fatigue mat and proper ergonomic setup \u2014 used correctly with alternating postures every 30 minutes, it reduces upper back pain and prolonged sitting with meaningful evidence from long-term RCTs.",
+        "description": "Using a standing desk with proper setup and ergonomic considerations"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Invest time in a strength training program targeting core and hip stability rather than buying a standing desk \u2014 structural weakness is the primary driver of desk-related back pain and exercise addresses the root cause.",
+        "description": "Prioritizing exercise programs over standing desks"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

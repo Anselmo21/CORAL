@@ -1,0 +1,322 @@
+{
+  "query_id": 58,
+  "query": "I need to back up my home files and photos. Should I use a NAS or just pay for cloud storage?",
+  "mode": "pragmas",
+  "atoms": [
+    "temporal: 2023 only",
+    "temporal: 2021\u20132023",
+    "geographic: USA",
+    "geographic: Global / Taiwan (NAS manufacturer)",
+    "perspective: Average home user minimizing complexity",
+    "perspective: Power user with large data volumes and technical comfort",
+    "trustworthiness: Consumer product recommendation publication",
+    "trustworthiness: Tech journalism",
+    "trustworthiness: Home lab and self-hosting community",
+    "trustworthiness: NAS manufacturer documentation"
+  ],
+  "plausible_answers": [
+    "Answer A (Cloud Storage Default): Use cloud storage (Backblaze, Google One, iCloud) \u2014 for most home users, the zero-maintenance automatic offsite protection at $3\u201312/month is vastly simpler than NAS ownership and protects against local disasters.",
+    "Answer B (NAS for Large Data): Buy a Synology NAS if you have 10TB+ of data \u2014 the one-time hardware cost beats cloud subscription costs over 5 years, and local speeds make backup and restore dramatically faster for large libraries.",
+    "Answer C (NAS Plus Cloud for 3-2-1): Combine a NAS for local backups with Backblaze B2 for offsite cloud replication \u2014 this implements the proper 3-2-1 backup strategy and is the only approach that protects against both local hardware failure and physical disaster."
+  ],
+  "baseline_answer": "Answer C (NAS Plus Cloud for 3-2-1): Combine a NAS for local backups with Backblaze B2 for offsite cloud replication \u2014 this implements the proper 3-2-1 backup strategy and is the only approach that protects against both local hardware failure and physical disaster.",
+  "baseline_index": 2,
+  "model": "meta-llama/Llama-3.3-70B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2607,
+    "output_tokens": 2020,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "NAS or Cloud Storage",
+        "description": "Choose between NAS and cloud storage for home file and photo backups"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "General Recommendations",
+        "description": "Consider geographic and temporal factors"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Perspective and Trustworthiness",
+        "description": "Consider different perspectives and trustworthiness sources"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Large Data Volumes",
+        "description": "Consider technical comfort and large data volumes"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2023 only",
+        "description": "Consider only 2023 sources"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2021\u20132023",
+        "description": "Consider 2021-2023 sources"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: USA",
+        "description": "Consider USA sources"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: Global / Taiwan (NAS manufacturer)",
+        "description": "Consider global and Taiwan sources"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Average home user minimizing complexity",
+        "description": "Consider average home user needs"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Power user with large data volumes and technical comfort",
+        "description": "Consider power user needs"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Consumer product recommendation publication",
+        "description": "Consider consumer product recommendation publications"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Tech journalism",
+        "description": "Consider tech journalism sources"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Home lab and self-hosting community",
+        "description": "Consider home lab and self-hosting community sources"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: NAS manufacturer documentation",
+        "description": "Consider NAS manufacturer documentation"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Cloud Storage Default",
+        "description": "Use cloud storage for simplicity and cost-effectiveness"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "NAS for Large Data",
+        "description": "Use NAS for large data volumes and local speeds"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "NAS Plus Cloud for 3-2-1",
+        "description": "Combine NAS and cloud storage for 3-2-1 backup strategy"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

@@ -1,0 +1,285 @@
+{
+  "query_id": 23,
+  "query": "I'm 28 years old. Is it worth getting the HPV vaccine if I've already been sexually active for years?",
+  "mode": "criteria",
+  "atoms": [
+    "likelihood of exposure to new HPV strains",
+    "number of recent or upcoming new partners",
+    "cost and insurance coverage of vaccine",
+    "reduction of HPV-related cancer risk",
+    "prior HPV infection or abnormal Pap history",
+    "physician recommendation basis",
+    "gender and anatomy-specific cancer risk",
+    "monogamy vs ongoing new exposure",
+    "cost-effectiveness at age 28",
+    "peace of mind value of vaccination"
+  ],
+  "plausible_answers": [
+    "Answer A (Get Vaccinated Default): Get the HPV vaccine \u2014 even with prior sexual activity, you're unlikely to have encountered all 9 covered strains, and the vaccine provides meaningful protection against cervical, anal, and oropharyngeal cancers.",
+    "Answer B (Skip if Monogamous): Vaccination is unlikely to be cost-effective if you're in a long-term monogamous relationship \u2014 your risk of new HPV strain exposure is minimal and CDC guidance is to individualize the decision for adults over 26.",
+    "Answer C (Discuss with Physician): Make a shared decision with your doctor based on your specific sexual history and risk profile \u2014 the benefit is highly individual at age 28 and depends on factors your physician can assess."
+  ],
+  "baseline_answer": "Answer C (Discuss with Physician): Make a shared decision with your doctor based on your specific sexual history and risk profile \u2014 the benefit is highly individual at age 28 and depends on factors your physician can assess.",
+  "baseline_index": 2,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Is it worth getting the HPV vaccine if I've already been sexually active for years?",
+        "description": "The core inquiry regarding HPV vaccination for a 28-year-old sexually active adult."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the clinical efficacy and cancer risk factors?",
+        "description": "Evaluates biological protection, exposure likelihood, and specific cancer risks."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the economic and guideline considerations?",
+        "description": "Evaluates cost, insurance, cost-effectiveness, and medical recommendations."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the personal and relationship context factors?",
+        "description": "Evaluates relationship status, peace of mind, and individual history."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "likelihood of exposure to new HPV strains",
+        "description": "Probability of encountering new strains not previously infected."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "number of recent or upcoming new partners",
+        "description": "Count of new sexual partners influencing exposure risk."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost and insurance coverage of vaccine",
+        "description": "Financial burden and accessibility of the vaccine."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "reduction of HPV-related cancer risk",
+        "description": "Potential to prevent cervical, anal, and oropharyngeal cancers."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "prior HPV infection or abnormal Pap history",
+        "description": "Existing infection status which limits therapeutic benefit."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "physician recommendation basis",
+        "description": "Guidelines for shared clinical decision-making for ages 27-45."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "gender and anatomy-specific cancer risk",
+        "description": "Specific cancer risks associated with the patient's anatomy."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "monogamy vs ongoing new exposure",
+        "description": "Relationship status determining future exposure probability."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost-effectiveness at age 28",
+        "description": "Economic analysis of vaccination benefits for this age group."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "peace of mind value of vaccination",
+        "description": "Subjective psychological benefit of being vaccinated."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Get Vaccinated Default)",
+        "description": "Get the HPV vaccine \u2014 even with prior sexual activity, you're unlikely to have encountered all 9 covered strains, and the vaccine provides meaningful protection against cervical, anal, and oropharyngeal cancers."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Skip if Monogamous)",
+        "description": "Vaccination is unlikely to be cost-effective if you're in a long-term monogamous relationship \u2014 your risk of new HPV strain exposure is minimal and CDC guidance is to individualize the decision for adults over 26."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Discuss with Physician)",
+        "description": "Make a shared decision with your doctor based on your specific sexual history and risk profile \u2014 the benefit is highly individual at age 28 and depends on factors your physician can assess."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

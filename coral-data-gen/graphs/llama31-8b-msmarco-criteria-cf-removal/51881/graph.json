@@ -1,0 +1,269 @@
+{
+  "query_id": 51881,
+  "query": "What mineral sunscreen best hydrates dry skin?",
+  "mode": "criteria",
+  "atoms": [
+    "hydrating ingredients",
+    "SPF level",
+    "broad-spectrum coverage",
+    "finish type",
+    "white cast",
+    "fragrance-free formulation",
+    "price",
+    "ease of application",
+    "water resistance",
+    "sensitive-skin safety"
+  ],
+  "plausible_answers": [
+    "Vanicream Sunscreen Sensitive Skin SPF 30",
+    "A mineral SPF 30 with hydrating UltraCalming oat + botanical complex",
+    "Sephora Skin-Soothing Mineral Sunscreen SPF 40 with olive polyphenols"
+  ],
+  "baseline_answer": "Vanicream Sunscreen Sensitive Skin SPF 30",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 3388,
+    "output_tokens": 1770,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What mineral sunscreen best hydrates dry skin?",
+        "description": ""
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What mineral sunscreen has hydrating ingredients?",
+        "description": ""
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What mineral sunscreen has broad-spectrum coverage?",
+        "description": ""
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What mineral sunscreen is sensitive-skin safe?",
+        "description": ""
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What mineral sunscreen has a specific finish type?",
+        "description": ""
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "hydrating ingredients",
+        "description": ""
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "SPF level",
+        "description": ""
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "broad-spectrum coverage",
+        "description": ""
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "finish type",
+        "description": ""
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "white cast",
+        "description": ""
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "fragrance-free formulation",
+        "description": ""
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "price",
+        "description": ""
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "ease of application",
+        "description": ""
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "water resistance",
+        "description": ""
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "sensitive-skin safety",
+        "description": ""
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Vanicream Sunscreen Sensitive Skin SPF 30",
+        "description": ""
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "A mineral SPF 30 with hydrating UltraCalming oat + botanical complex",
+        "description": ""
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Sephora Skin-Soothing Mineral Sunscreen SPF 40 with olive polyphenols",
+        "description": ""
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "sq4",
+        "target": "c4"
+      },
+      {
+        "source": "sq4",
+        "target": "c5"
+      },
+      {
+        "source": "sq4",
+        "target": "c6"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

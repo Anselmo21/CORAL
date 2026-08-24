@@ -1,0 +1,289 @@
+{
+  "query_id": 14,
+  "query": "I'm 62 years old. When should I start taking Social Security \u2014 at 62, full retirement age, or wait until 70?",
+  "mode": "criteria",
+  "atoms": [
+    "expected longevity and health status",
+    "survivor benefit for spouse",
+    "need for immediate income",
+    "breakeven age analysis",
+    "portfolio withdrawal rate reduction",
+    "inflation-adjusted lifetime income maximization",
+    "other retirement income sources available",
+    "sequence-of-returns risk mitigation",
+    "tax treatment of Social Security benefits",
+    "flexibility to change claiming strategy"
+  ],
+  "plausible_answers": [
+    "Answer A (Delay to 70 Default): Wait until 70 to claim Social Security \u2014 the 8% annual delayed credit is an unbeatable risk-free return for healthy individuals, and maximizes inflation-adjusted lifetime income if you live past 82.",
+    "Answer B (Claim at 62 for Immediate Need): Claim at 62 if you have health concerns, need the income to avoid portfolio withdrawals, or lack other retirement income \u2014 the breakeven math favors early claiming for shorter life expectancies.",
+    "Answer C (Full Retirement Age Compromise): Claim at full retirement age (66\u201367) as a compromise \u2014 you avoid the 30% early reduction while not tying up capital until 70, suitable when longevity is uncertain and some portfolio flexibility is needed."
+  ],
+  "baseline_answer": "Answer A (Delay to 70 Default): Wait until 70 to claim Social Security \u2014 the 8% annual delayed credit is an unbeatable risk-free return for healthy individuals, and maximizes inflation-adjusted lifetime income if you live past 82.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 2,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "When should I start taking Social Security?",
+        "description": "Decision point for a 62-year-old between claiming at 62, FRA, or 70."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Longevity & Income Maximization",
+        "description": "Evaluates life expectancy, survivor benefits, and total income optimization."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Liquidity & Portfolio Protection",
+        "description": "Evaluates immediate cash needs, other income sources, and investment risks."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Flexibility & Administrative Factors",
+        "description": "Evaluates tax implications and ability to change strategy."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "expected longevity and health status",
+        "description": "Critical for determining if delaying benefits yields a net positive."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "survivor benefit for spouse",
+        "description": "Maximized by delaying to 70 for the higher earner."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "need for immediate income",
+        "description": "Favors claiming early to avoid depleting other assets."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "breakeven age analysis",
+        "description": "Calculates the age where delaying benefits pays off over early claiming."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "portfolio withdrawal rate reduction",
+        "description": "Claiming early allows reducing portfolio withdrawals, mitigating sequence risk."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "inflation-adjusted lifetime income maximization",
+        "description": "Delaying to 70 provides the highest inflation-adjusted lifetime income."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "other retirement income sources available",
+        "description": "Availability of pensions/savings influences the urgency of claiming SS."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "sequence-of-returns risk mitigation",
+        "description": "Claiming early can protect the portfolio from market downturns early in retirement."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "tax treatment of Social Security benefits",
+        "description": "Timing of claims affects the taxability of benefits and other income."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "flexibility to change claiming strategy",
+        "description": "Ability to suspend or adjust claims based on changing circumstances."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Delay to 70 Default)",
+        "description": "Wait until 70 to claim Social Security \u2014 the 8% annual delayed credit is an unbeatable risk-free return for healthy individuals, and maximizes inflation-adjusted lifetime income if you live past 82."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Claim at 62 for Immediate Need)",
+        "description": "Claim at 62 if you have health concerns, need the income to avoid portfolio withdrawals, or lack other retirement income \u2014 the breakeven math favors early claiming for shorter life expectancies."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (Full Retirement Age Compromise)",
+        "description": "Claim at full retirement age (66\u201367) as a compromise \u2014 you avoid the 30% early reduction while not tying up capital until 70, suitable when longevity is uncertain and some portfolio flexibility is needed."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}

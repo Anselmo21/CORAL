@@ -1,0 +1,313 @@
+{
+  "query_id": 49,
+  "query": "I have two cats and my floors are always covered in fur. What's the best robot vacuum for pet hair?",
+  "mode": "criteria",
+  "atoms": [
+    "suction power for pet hair on carpet",
+    "self-emptying base for low maintenance",
+    "obstacle and pet waste avoidance",
+    "rubber brush roll for tangle prevention",
+    "value for price",
+    "noise level during operation",
+    "mapping and navigation reliability",
+    "mopping capability for mixed floors",
+    "bin size and emptying frequency",
+    "home size and battery range"
+  ],
+  "plausible_answers": [
+    "Answer A (Roomba j7+ Default): Get the iRobot Roomba j7+ \u2014 its pet waste obstacle avoidance, self-emptying base, and reliable navigation make it the most maintenance-free option for cat owners.",
+    "Answer B (Roborock for Performance): Choose a Roborock S7 or S8 series if you have a large home with mixed flooring \u2014 superior suction, mopping capability, and self-cleaning dock outperform Roomba for high-shedding pet households.",
+    "Answer C (Eufy for Value): Buy a Eufy RoboVac if you're in a smaller space and want to save $200\u2013400 \u2014 it handles cat hair adequately at half the flagship price, with the caveat that you'll need to empty it manually after each run."
+  ],
+  "baseline_answer": "Answer A (Roomba j7+ Default): Get the iRobot Roomba j7+ \u2014 its pet waste obstacle avoidance, self-emptying base, and reliable navigation make it the most maintenance-free option for cat owners.",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2361,
+    "output_tokens": 1893,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Best robot vacuum for pet hair",
+        "description": "Pet hair handling and maintenance-free option"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Maintenance and Ease of Use",
+        "description": "Self-emptying base, obstacle avoidance, and bin size"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Performance",
+        "description": "Suction power, mopping capability, and navigation reliability"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Value and Practicality",
+        "description": "Value for price, rubber brush roll, and home size"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Navigation and Adaptability",
+        "description": "Obstacle and pet waste avoidance, mapping and navigation reliability"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "Suction power for pet hair on carpet",
+        "description": "Ability to pick up pet hair on carpet"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "Self-emptying base for low maintenance",
+        "description": "Automatically empties dustbin"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "Obstacle and pet waste avoidance",
+        "description": "Avoids getting stuck on pet waste"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "Rubber brush roll for tangle prevention",
+        "description": "Prevents hair tangling in brush roll"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "Value for price",
+        "description": "Cost-effectiveness"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "Noise level during operation",
+        "description": "Operates quietly"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "Mapping and navigation reliability",
+        "description": "Reliable navigation and mapping"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "Mopping capability for mixed floors",
+        "description": "Cleans both carpets and hard floors"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "Bin size and emptying frequency",
+        "description": "Dustbin size and emptying frequency"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "Home size and battery range",
+        "description": "Suitable for large homes with long battery life"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Roomba j7+ Default",
+        "description": "Most maintenance-free option for cat owners"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Roborock for Performance",
+        "description": "Superior suction and mopping capability for high-shedding pet households"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Eufy for Value",
+        "description": "Best value for smaller spaces and manual emptying"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c3"
+      },
+      {
+        "source": "sq4",
+        "target": "c6"
+      },
+      {
+        "source": "sq4",
+        "target": "c7"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      }
+    ]
+  }
+}

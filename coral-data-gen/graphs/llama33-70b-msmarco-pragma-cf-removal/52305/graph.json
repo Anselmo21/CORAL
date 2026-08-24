@@ -1,0 +1,287 @@
+{
+  "query_id": 52305,
+  "query": "best way to get rid of ivy",
+  "mode": "pragmas",
+  "atoms": [
+    "trustworthiness: agricultural extension service guideline",
+    "trustworthiness: peer-reviewed weed science journal",
+    "trustworthiness: organic gardening publication",
+    "trustworthiness: home & garden DIY blog",
+    "trustworthiness: pesticide industry documentation",
+    "perspective: homeowner with established ivy on building",
+    "perspective: pet / child-safe priority gardener",
+    "perspective: small-area weekend gardener",
+    "perspective: rental tenant",
+    "perspective: large-area ivy patch owner"
+  ],
+  "plausible_answers": [
+    "Manual pulling with hand tools (snipper, ladder, saw, shovel)",
+    "Natural spray: white vinegar OR salt + soap + water solution",
+    "Glyphosate (Roundup) or triclopyr (Brush-B-Gon) herbicide applied to leaves"
+  ],
+  "baseline_answer": "Natural spray: white vinegar OR salt + soap + water solution",
+  "baseline_index": 1,
+  "model": "meta-llama/Llama-3.3-70B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 4559,
+    "output_tokens": 2079,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "best way to get rid of ivy",
+        "description": "Finding the most effective method to remove ivy"
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Effective methods for removing ivy",
+        "description": "Considering trustworthiness of sources"
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Perspective influence on method choice",
+        "description": "How different perspectives affect the choice of ivy removal method"
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: agricultural extension service guideline",
+        "description": "Guidelines from agricultural extension services"
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: peer-reviewed weed science journal",
+        "description": "Research from peer-reviewed weed science journals"
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: organic gardening publication",
+        "description": "Advice from organic gardening publications"
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: home & garden DIY blog",
+        "description": "Tips from home and garden DIY blogs"
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: pesticide industry documentation",
+        "description": "Information from pesticide industry documentation"
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: homeowner with established ivy on building",
+        "description": "Perspective of a homeowner dealing with ivy on their building"
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: pet / child-safe priority gardener",
+        "description": "Perspective of a gardener prioritizing pet and child safety"
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: small-area weekend gardener",
+        "description": "Perspective of a gardener working on small areas over weekends"
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: rental tenant",
+        "description": "Perspective of a rental tenant dealing with ivy"
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: large-area ivy patch owner",
+        "description": "Perspective of an owner dealing with a large ivy patch"
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Manual pulling with hand tools (snipper, ladder, saw, shovel)",
+        "description": "Removing ivy by manually pulling it with various hand tools"
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Natural spray: white vinegar OR salt + soap + water solution",
+        "description": "Using a natural spray made from white vinegar or a salt, soap, and water solution to kill ivy"
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Glyphosate (Roundup) or triclopyr (Brush-B-Gon) herbicide applied to leaves",
+        "description": "Applying glyphosate or triclopyr herbicides to the leaves of the ivy plants"
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      }
+    ]
+  }
+}

@@ -1,0 +1,278 @@
+{
+  "query_id": 9,
+  "query": "I have $8,000 spread across three credit cards at 19%, 22%, and 24% APR. What's the best way to pay this off?",
+  "mode": "pragmas",
+  "atoms": [
+    "temporal: 2023 only",
+    "temporal: 2021\u20132023",
+    "geographic: USA",
+    "perspective: Mathematically-driven optimizer",
+    "perspective: Motivation-driven borrower needing quick wins",
+    "perspective: Good-credit borrower eligible for balance transfer",
+    "trustworthiness: Consumer financial advisory",
+    "trustworthiness: Banking industry publication",
+    "trustworthiness: Community peer advice",
+    "trustworthiness: Financial journalism"
+  ],
+  "plausible_answers": [
+    "Answer A (Avalanche Default): Pay minimums on all cards and throw every extra dollar at the 24% card first \u2014 the avalanche method minimizes total interest and is mathematically optimal for someone committed to following through.",
+    "Answer B (Snowball for Motivation): Target the smallest balance first regardless of rate \u2014 the psychological wins from eliminating individual cards keep most people on track better than pure math, making snowball more effective in practice.",
+    "Answer C (Balance Transfer): Transfer all three balances to a 0% APR card and pay off the full amount within the promotional window \u2014 if you qualify, this eliminates interest entirely and is faster than any payment-order strategy."
+  ],
+  "baseline_answer": "Answer A (Avalanche Default): Pay minimums on all cards and throw every extra dollar at the 24% card first \u2014 the avalanche method minimizes total interest and is mathematically optimal for someone committed to following through.",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.1-70B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2465,
+    "output_tokens": 1877,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "What's the best way to pay off $8,000 spread across three credit cards at 19%, 22%, and 24% APR?",
+        "description": ""
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Most mathematically optimal method",
+        "description": ""
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Method for borrowers who need motivation and quick wins",
+        "description": ""
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Alternatives for borrowers with good credit",
+        "description": ""
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2023 only",
+        "description": ""
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "directive",
+        "label": "temporal: 2021\u20132023",
+        "description": ""
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: USA",
+        "description": ""
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Mathematically-driven optimizer",
+        "description": ""
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Motivation-driven borrower needing quick wins",
+        "description": ""
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: Good-credit borrower eligible for balance transfer",
+        "description": ""
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Consumer financial advisory",
+        "description": ""
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Banking industry publication",
+        "description": ""
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Community peer advice",
+        "description": ""
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "directive",
+        "label": "trustworthiness: Financial journalism",
+        "description": ""
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Avalanche Default",
+        "description": "Pay minimums on all cards and throw every extra dollar at the 24% card first \u2014 the avalanche method minimizes total interest and is mathematically optimal for someone committed to following through."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Snowball for Motivation",
+        "description": "Target the smallest balance first regardless of rate \u2014 the psychological wins from eliminating individual cards keep most people on track better than pure math, making snowball more effective in practice."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Balance Transfer",
+        "description": "Transfer all three balances to a 0% APR card and pay off the full amount within the promotional window \u2014 if you qualify, this eliminates interest entirely and is faster than any payment-order strategy."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      }
+    ]
+  }
+}

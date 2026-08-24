@@ -1,0 +1,289 @@
+{
+  "query_id": 53,
+  "query": "I write code all day. What mechanical keyboard should I get?",
+  "mode": "criteria",
+  "atoms": [
+    "switch type for long typing sessions",
+    "form factor for desk space efficiency",
+    "noise level for office or shared space",
+    "customizability and programmability",
+    "build quality and longevity",
+    "hot-swap socket for switch experimentation",
+    "wired vs wireless connectivity",
+    "price and value",
+    "compatibility with macOS and Windows",
+    "arrow key and navigation key retention"
+  ],
+  "plausible_answers": [
+    "Answer A (Keychron TKL Linear Default): Get a Keychron Q or V series in TKL with linear switches \u2014 the combination of hot-swap customizability, quiet linears for shared spaces, and compact layout is the best all-around choice for daily programming.",
+    "Answer B (Tactile for Touch Typing): Choose tactile switches (Boba U4 or Topre) on a 65% if you're a touch typist \u2014 the actuation feedback reduces errors and finger fatigue during marathon coding sessions without the noise of clicky switches.",
+    "Answer C (65% for Desk Efficiency): Prioritize a 65% form factor above switch choice \u2014 keeping your mouse closer and eliminating numpad bulk reduces shoulder strain during long development sessions more than any switch selection."
+  ],
+  "baseline_answer": "Answer A (Keychron TKL Linear Default): Get a Keychron Q or V series in TKL with linear switches \u2014 the combination of hot-swap customizability, quiet linears for shared spaces, and compact layout is the best all-around choice for daily programming.",
+  "baseline_index": 0,
+  "model": "Qwen/Qwen3.5-122B-A10B-FP8",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 2,
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "I write code all day. What mechanical keyboard should I get?",
+        "description": "Main question seeking a keyboard recommendation for a developer."
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "Switch and Noise Considerations",
+        "description": "Evaluates switch feel, fatigue, and noise levels for coding."
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "Ergonomics and Layout",
+        "description": "Evaluates form factor, desk space, and key retention."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Features and Value",
+        "description": "Evaluates programmability, connectivity, compatibility, and price."
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "switch type for long typing sessions",
+        "description": "Linear reduces fatigue; Tactile reduces errors."
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "form factor for desk space efficiency",
+        "description": "65% saves more space than TKL."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "noise level for office or shared space",
+        "description": "Quiet switches preferred over clicky."
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "customizability and programmability",
+        "description": "QMK/VIA support for custom layouts."
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "build quality and longevity",
+        "description": "Durability of the chassis and switches."
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "hot-swap socket for switch experimentation",
+        "description": "Ability to change switches without soldering."
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "wired vs wireless connectivity",
+        "description": "Connection method preference."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "price and value",
+        "description": "Cost-effectiveness of the board."
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "compatibility with macOS and Windows",
+        "description": "OS support for the keyboard."
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "arrow key and navigation key retention",
+        "description": "Presence of dedicated arrow keys."
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer A (Keychron TKL Linear Default)",
+        "description": "Get a Keychron Q or V series in TKL with linear switches \u2014 the combination of hot-swap customizability, quiet linears for shared spaces, and compact layout is the best all-around choice for daily programming."
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer B (Tactile for Touch Typing)",
+        "description": "Choose tactile switches (Boba U4 or Topre) on a 65% if you're a touch typist \u2014 the actuation feedback reduces errors and finger fatigue during marathon coding sessions without the noise of clicky switches."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Answer C (65% for Desk Efficiency)",
+        "description": "Prioritize a 65% form factor above switch choice \u2014 keeping your mouse closer and eliminating numpad bulk reduces shoulder strain during long development sessions more than any switch selection."
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      }
+    ]
+  }
+}
