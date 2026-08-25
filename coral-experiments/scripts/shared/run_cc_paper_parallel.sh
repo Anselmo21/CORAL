@@ -1,28 +1,31 @@
 #!/usr/bin/env bash
-# Launch CC/LSM runs for the Llama paper datasets (4 datasets × N budgets).
+# Launch CC/LSM runs for Llama paper datasets (4 datasets × N budgets).
 #
-# Default: 4 datasets × budgets 4, 8, 16 = 12 jobs, dispatched across GPUs.
-# Each job pins CUDA_VISIBLE_DEVICES to one GPU and writes to
-# logged_results/<dataset>/cc_results_budget_<N>.json. Runners checkpoint after
-# every case, so kill & restart is safe (they resume).
+# Default: Llama-3.1-8B, one GPU per job, writes to
+# logged_results/llama31-8b/<dataset>/cc_results_budget_<N>.json.
+# Runners checkpoint after every case, so kill & restart is safe (they resume).
 #
-# Model defaults to meta-llama/Llama-3.1-8B-Instruct (see load_cc_model.py).
-# cc_cases.json must exist for each dataset; missing pragma exports are run
-# automatically.
+# 70B needs tensor parallelism across all 4 L40S (weights ~140GB fp16):
+#   DATASET_ROOT=llama31-70b MODEL=meta-llama/Llama-3.1-70B-Instruct \
+#     TENSOR_PARALLEL_SIZE=4 BUDGETS="4" bash scripts/shared/run_cc_paper_parallel.sh
 #
 # Usage:
 #   bash scripts/shared/run_cc_paper_parallel.sh
 #
 # Tunables:
-#   GPU_IDS   — space-separated GPU indices (default "0 1 2 3")
-#   BUDGETS   — space-separated fixed budgets (default "4 8 16")
-#   CONDA_ENV — conda env name (default "coral")
-#   MODEL     — optional HF model id (default: Llama-3.1-8B-Instruct)
+#   GPU_IDS              — space-separated GPU indices (default "0 1 2 3")
+#   BUDGETS              — space-separated fixed budgets (default "4 8 16")
+#   CONDA_ENV            — conda env name (default "coral")
+#   MODEL                — HF model id (default: Llama-3.1-8B-Instruct)
+#   DATASET_ROOT         — logged_results/<root>/<dataset>/ prefix (default "llama31-8b")
+#   TENSOR_PARALLEL_SIZE — GPUs per job (default 1; 70B needs 4)
+#   MAX_MODEL_LEN        — vLLM context cap (default 16384; Llama-3.1 native 128k)
 #
 # Examples:
 #   GPU_IDS="0 1" bash scripts/shared/run_cc_paper_parallel.sh
-#   BUDGETS="4 8" bash scripts/shared/run_cc_paper_parallel.sh
-#   BUDGETS="16" GPU_IDS="2" bash scripts/shared/run_cc_paper_parallel.sh
+#   BUDGETS="4" bash scripts/shared/run_cc_paper_parallel.sh
+#   DATASET_ROOT=llama31-70b MODEL=meta-llama/Llama-3.1-70B-Instruct \
+#     TENSOR_PARALLEL_SIZE=4 BUDGETS="4" bash scripts/shared/run_cc_paper_parallel.sh
 
 set -euo pipefail
 
@@ -39,54 +42,40 @@ fi
 
 GPU_IDS="${GPU_IDS:-0 1 2 3}"
 BUDGETS="${BUDGETS:-4 8 16}"
+DATASET_ROOT="${DATASET_ROOT:-llama31-8b}"
+MODEL="${MODEL:-meta-llama/Llama-3.1-8B-Instruct}"
+MAX_MODEL_LEN="${MAX_MODEL_LEN:-16384}"
+TENSOR_PARALLEL_SIZE="${TENSOR_PARALLEL_SIZE:-1}"
 read -ra GPU_ARR <<< "$GPU_IDS"
 read -ra BUDGET_ARR <<< "$BUDGETS"
 export VLLM_USE_FLASHINFER_SAMPLER=0
 
-DATASETS=(msmarco_criteria msmarco_pragma curated_criteria curated_pragma)
+NUM_GPUS=${#GPU_ARR[@]}
+if (( NUM_GPUS % TENSOR_PARALLEL_SIZE != 0 )); then
+  echo "ERROR: ${NUM_GPUS} GPU(s) in GPU_IDS not divisible by TENSOR_PARALLEL_SIZE=${TENSOR_PARALLEL_SIZE}"
+  exit 1
+fi
 
-# dataset → python module
-declare -A MODULE=(
-  [msmarco_criteria]=scripts.criteria.msmarco.run_cc_full
-  [curated_criteria]=scripts.criteria.curated.run_cc_full
-  [msmarco_pragma]=scripts.pragma.msmarco.run_cc_full
-  [curated_pragma]=scripts.pragma.curated.run_cc_full
-)
-
-# dataset → needs --run flag (pragma msmarco only)
-declare -A NEEDS_RUN=(
-  [msmarco_pragma]=1
-)
-
-# dataset → export command when cc_cases.json is missing
-declare -A EXPORTS=(
-  [msmarco_criteria]="(already built by run_subsample.py)"
-  [curated_criteria]="(already built by run_subsample.py)"
-  [msmarco_pragma]="python3 -m scripts.pragma.msmarco.run_cc_full --export"
-  [curated_pragma]="python3 -m scripts.pragma.curated.run_cc_ablation --export"
-)
-
-# ---------------------------------------------------------------------------
-# Step 1 — make sure cc_cases.json exists for every dataset
-# ---------------------------------------------------------------------------
-
-for ds in "${DATASETS[@]}"; do
-  path="logged_results/${ds}/cc_cases.json"
-  if [[ ! -f "$path" ]]; then
-    cmd="${EXPORTS[$ds]}"
-    if [[ "$cmd" == "("* ]]; then
-      echo "ERROR: $path missing and produced by $cmd"
-      echo "       run scripts.<dataset>.run_subsample first"
-      exit 1
-    fi
-    echo "Exporting $path ..."
-    conda run -n "$CONDA_ENV" $cmd
-  fi
+WORKERS=()
+for (( i=0; i<NUM_GPUS; i+=TENSOR_PARALLEL_SIZE )); do
+  slot=""
+  for (( j=0; j<TENSOR_PARALLEL_SIZE; j++ )); do
+    if [[ -n "$slot" ]]; then slot+=","; fi
+    slot+="${GPU_ARR[$((i + j))]}"
+  done
+  WORKERS+=("$slot")
 done
 
-# ---------------------------------------------------------------------------
-# Step 2 — define jobs: dataset × budget
-# ---------------------------------------------------------------------------
+DATASETS=(msmarco_criteria msmarco_pragma curated_criteria curated_pragma)
+
+for ds in "${DATASETS[@]}"; do
+  path="logged_results/${DATASET_ROOT}/${ds}/cc_cases.json"
+  if [[ ! -f "$path" ]]; then
+    echo "ERROR: $path missing"
+    echo "       expected under logged_results/${DATASET_ROOT}/<dataset>/"
+    exit 1
+  fi
+done
 
 JOBS=()
 for ds in "${DATASETS[@]}"; do
@@ -95,56 +84,49 @@ for ds in "${DATASETS[@]}"; do
   done
 done
 
-echo "Launching ${#JOBS[@]} jobs across ${#GPU_ARR[@]} GPU(s): ${GPU_ARR[*]}"
-echo "Budgets: ${BUDGET_ARR[*]}"
+echo "Launching ${#JOBS[@]} jobs across ${#WORKERS[@]} worker slot(s): ${WORKERS[*]}"
+echo "Dataset root: logged_results/${DATASET_ROOT}/  Model: ${MODEL}"
+echo "Budgets: ${BUDGET_ARR[*]}  tensor_parallel_size=${TENSOR_PARALLEL_SIZE}"
 mkdir -p logs/cc_paper
 
-# ---------------------------------------------------------------------------
-# Step 3 — dispatch: one job per GPU at a time, queue the rest
-# ---------------------------------------------------------------------------
-
-declare -A PID_BY_GPU=()
+declare -A PID_BY_WORKER=()
 JOB_IDX=0
 
 launch_job() {
-  local gpu=$1
+  local worker_idx=$1
   local job=$2
   IFS='|' read -r ds budget <<< "$job"
-  local mod="${MODULE[$ds]}"
-  local log="logs/cc_paper/${ds}_budget${budget}_gpu${gpu}.log"
-  local run_flag=()
-  if [[ "${NEEDS_RUN[$ds]:-0}" == "1" ]]; then
-    run_flag=(--run)
-  fi
-  local model_flag=()
-  if [[ -n "${MODEL:-}" ]]; then
-    model_flag=(--model "$MODEL")
-  fi
+  local gpus="${WORKERS[$worker_idx]}"
+  local log="logs/cc_paper/${DATASET_ROOT}_${ds}_budget${budget}_gpu${gpus//,/_}.log"
 
-  echo "  [GPU $gpu] $ds budget=$budget  →  $log"
-  CUDA_VISIBLE_DEVICES=$gpu PYTHONUNBUFFERED=1 \
+  echo "  [GPUs $gpus] $ds budget=$budget  →  $log"
+  CUDA_VISIBLE_DEVICES=$gpus PYTHONUNBUFFERED=1 \
     conda run --no-capture-output -n "$CONDA_ENV" \
-      python3 -m "$mod" "${run_flag[@]}" --vllm "${model_flag[@]}" \
-        --budget "$budget" \
+      python3 -m scripts.shared.run_cc_qwen \
+        --dataset "$ds" --budget "$budget" --vllm \
+        --model "$MODEL" \
+        --dataset-root "$DATASET_ROOT" \
+        --tensor-parallel-size "$TENSOR_PARALLEL_SIZE" \
+        --max-model-len "$MAX_MODEL_LEN" \
       > "$log" 2>&1 &
-  PID_BY_GPU[$gpu]=$!
+  PID_BY_WORKER[$worker_idx]=$!
 }
 
-for gpu in "${GPU_ARR[@]}"; do
+for worker_idx in "${!WORKERS[@]}"; do
   if (( JOB_IDX < ${#JOBS[@]} )); then
-    launch_job "$gpu" "${JOBS[$JOB_IDX]}"
+    launch_job "$worker_idx" "${JOBS[$JOB_IDX]}"
     JOB_IDX=$((JOB_IDX + 1))
   fi
 done
 
-while (( ${#PID_BY_GPU[@]} > 0 )); do
-  for gpu in "${!PID_BY_GPU[@]}"; do
-    pid=${PID_BY_GPU[$gpu]}
+while (( ${#PID_BY_WORKER[@]} > 0 )); do
+  for worker_idx in "${!PID_BY_WORKER[@]}"; do
+    pid=${PID_BY_WORKER[$worker_idx]}
     if ! kill -0 "$pid" 2>/dev/null; then
-      wait "$pid" || echo "  [GPU $gpu] job exited non-zero"
-      unset PID_BY_GPU[$gpu]
+      wait "$pid" || echo "  [worker $worker_idx] job exited non-zero"
+      unset PID_BY_WORKER[$worker_idx]
       if (( JOB_IDX < ${#JOBS[@]} )); then
-        launch_job "$gpu" "${JOBS[$JOB_IDX]}"
+        launch_job "$worker_idx" "${JOBS[$JOB_IDX]}"
         JOB_IDX=$((JOB_IDX + 1))
       fi
     fi
@@ -154,4 +136,4 @@ done
 
 echo ""
 echo "All ${#JOBS[@]} CC runs complete."
-echo "Results written to logged_results/<dataset>/cc_results_budget_<N>.json"
+echo "Results written to logged_results/${DATASET_ROOT}/<dataset>/cc_results_budget_<N>.json"

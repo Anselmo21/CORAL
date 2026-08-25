@@ -7,10 +7,10 @@ Reads the self-contained cases exported by scripts.shared.export_cc_cf2_cases
   - SRA  — native combsum-Borda sra_search (paper convention)
   - ERA  — mra_search(normalize_fn="softmax") at budgets 4/8/16, stored as
            mra_b{4,8,16} (paper-facing "ERA" label, see PRESENTATION_PLOTS.md)
-  - MRA-prop — same mra_search config plus scores_by_combo fed from the
+  - ERA (elicited) — same mra_search config plus scores_by_combo fed from the
            run's elicited per-answer scores ("-100" runs) or probabilities
            ("-percentage" runs), voter_norm="max" (the plot_qwen3_scores_bfs_sra
-           convention), stored as mra_scores_b{4,8,16} and labeled "MRA-prop"
+           convention), stored as mra_scores_b{4,8,16} and labeled "ERA (elicited)"
            in the cf2 per-lattice artifact
 
 Rows match the plot_qwen3_scores_bfs_sra results.json schema (score_proxy

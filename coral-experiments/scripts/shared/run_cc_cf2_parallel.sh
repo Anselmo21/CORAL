@@ -25,6 +25,8 @@
 #                          256 default can exceed what fits)
 #   CONDA_ENV            — conda env name (default "coral")
 #   RUNS                 — lattice runs to process (default all four)
+#   TARGET               — surrogate target: "gen" (default) or "rank"
+#                          (rank writes cc_rank_results_budget_<N>.json)
 #   MODEL_32B            — HF id for the qwen3-32b-* runs (default Qwen/Qwen3-32B)
 #   MODEL_122B           — HF id for the qwen35-122b-* runs. NO DEFAULT — set it,
 #                          or restrict RUNS to the 32b runs.
@@ -53,6 +55,7 @@ GPU_MEM_UTIL="${GPU_MEM_UTIL:-0.85}"
 MAX_MODEL_LEN="${MAX_MODEL_LEN:-16384}"
 MAX_NUM_SEQS="${MAX_NUM_SEQS:-64}"
 RUNS="${RUNS:-qwen3-32b-100 qwen3-32b-percentage qwen35-122b-100 qwen35-122b-percentage}"
+TARGET="${TARGET:-gen}"   # gen | rank (run_cc_qwen --target)
 MODEL_32B="${MODEL_32B:-Qwen/Qwen3-32B}"
 MODEL_122B="${MODEL_122B:-}"
 read -ra GPU_ARR <<< "$GPU_IDS"
@@ -127,7 +130,7 @@ launch_job() {
   local gpus="${WORKERS[$worker_idx]}"
   local model
   model=$(model_for_run "$run")
-  local log="logs/cc_cf2/${run}_${ds}_budget${budget}_gpu${gpus//,/_}.log"
+  local log="logs/cc_cf2/${run}_${ds}_${TARGET}_budget${budget}_gpu${gpus//,/_}.log"
 
   echo "  [GPUs $gpus] run=$run dataset=$ds budget=$budget model=$model  →  $log"
   CUDA_VISIBLE_DEVICES=$gpus PYTHONUNBUFFERED=1 \
@@ -140,6 +143,7 @@ launch_job() {
         --max-model-len "$MAX_MODEL_LEN" \
         --max-num-seqs "$MAX_NUM_SEQS" \
         --dataset-root "${run}-cf2" \
+        --target "$TARGET" \
       > "$log" 2>&1 &
   PID_BY_WORKER[$worker_idx]=$!
 }

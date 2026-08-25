@@ -83,7 +83,7 @@ def _collect(budget: int, min_tie: int) -> tuple[list[dict], dict[str, int]]:
     per_ds_count: dict[str, int] = {}
     for ds, lat_path, _nice in DATASETS:
         lattices = _load_lattices(lat_path)
-        res_path = f"logged_results/{ds}/mra_entropy_ablation/results_b{budget}.json"
+        res_path = f"logged_results/llama31-8b/{ds}/mra_entropy_ablation/results_b{budget}.json"
         if not os.path.exists(res_path):
             print(f"  skip {ds}: {res_path} missing")
             per_ds_count[ds] = 0

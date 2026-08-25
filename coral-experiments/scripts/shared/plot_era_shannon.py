@@ -83,7 +83,7 @@ def _run_era(criteria, rbc, budget, entropy_fn, start, bfs_for_proxy, bfs_key, s
 
 def _compute_all(dataset: str, modpath: str) -> list[dict]:
     """Run ERA(softmax) and ERA(shannon) at b=4/8 plus ERA(shannon) at b=16/pct_10."""
-    with open(f"logged_results/{dataset}/paper_results.json") as f:
+    with open(f"logged_results/llama31-8b/{dataset}/paper_results.json") as f:
         rows = json.load(f)
 
     mod = import_module(modpath)

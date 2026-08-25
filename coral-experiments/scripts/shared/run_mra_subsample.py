@@ -352,7 +352,7 @@ def plot_budget_sweep(dataset_results: list[dict], out: str) -> None:
 def main() -> None:
     dataset_results = []
     for log_dir, data_path, label in DATASETS:
-        ds = run_dataset(f"logged_results/{log_dir}", data_path, label)
+        ds = run_dataset(f"logged_results/qwen3-32b-prelim/{log_dir.removeprefix('qwen3_')}", data_path, label)
         dataset_results.append(ds)
 
     plot_size_breakdown(dataset_results, PLOT_BUDGET, "plots/qwen3_mra_subsample_size.png")

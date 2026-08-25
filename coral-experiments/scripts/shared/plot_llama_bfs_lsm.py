@@ -41,7 +41,7 @@ MODELS = {
             ("curated_criteria", "data/llama31-8b/curated-criteria-lattices.json", "Llama-3.1-8B Curated criteria"),
             ("curated_pragma",   "data/llama31-8b/curated-pragmas-lattices.json",  "Llama-3.1-8B Curated pragma"),
         ],
-        "result_root": "logged_results",           # 8b lives at the flat root (historical)
+        "result_root": "logged_results/llama31-8b",
         "plot_root": "presentation_plots/llama31-8b",
         "true_era_plot_root": "presentation_plots/true_era/llama31-8b",
         "families": [

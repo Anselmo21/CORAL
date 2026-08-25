@@ -1,6 +1,6 @@
 """Run SRA with each pyflagr rank-aggregation algorithm on the 4 Llama-3.1-8B datasets.
 
-Uses the subsampled cases in logged_results/<dataset>/cases.json as the start nodes.
+Uses the subsampled cases in logged_results/llama31-8b/<dataset>/cases.json as the start nodes.
 For each (dataset, aggregator) pair, reports accuracy (matches BFS layer) and mean cost.
 
 Usage:
@@ -54,7 +54,7 @@ def score(proxy: dict, rbc: dict, start_node: list[str], bfs_layer: int) -> tupl
 
 def run_dataset(name: str, path: str, label: str) -> dict:
     lattices = load_lattices(path)
-    with open(f"logged_results/{name}/cases.json") as f:
+    with open(f"logged_results/llama31-8b/{name}/cases.json") as f:
         cases = json.load(f)
 
     # Pre-compute BFS on each case's sub-lattice

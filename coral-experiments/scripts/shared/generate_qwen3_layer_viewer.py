@@ -26,7 +26,7 @@ OUT_PATH = "artifacts/qwen3_layer_viewer.html"
 
 
 def build_cases(ds_key: str, data_path: str) -> list[dict]:
-    results_path = f"logged_results/qwen3_{ds_key}/results.json"
+    results_path = f"logged_results/qwen3-32b-prelim/{ds_key}/results.json"
     results = json.load(open(results_path))["results"]
     raw_data = json.load(open(data_path))
 

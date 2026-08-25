@@ -77,7 +77,7 @@ def _load_rbc(name: str, dtype: str) -> dict[str, dict[str, list[str]]]:
 
 
 def _load_results(name: str) -> list[dict]:
-    path = f"logged_results/{name}/results.json"
+    path = f"logged_results/llama31-8b/{name}/results.json"
     with open(path) as f:
         r = json.load(f)
     return r["results"] if isinstance(r, dict) else r

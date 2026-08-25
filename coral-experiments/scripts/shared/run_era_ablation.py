@@ -282,8 +282,8 @@ def plot_combined(
 
 def run_for_dataset(dataset: str, modpath: str, x_label: str, axis: str) -> None:
     variants = AXES[axis]
-    cases_path   = f"logged_results/{dataset}/cases.json"
-    out_dir      = f"logged_results/{dataset}/era_ablation/{axis}"
+    cases_path   = f"logged_results/llama31-8b/{dataset}/cases.json"
+    out_dir      = f"logged_results/llama31-8b/{dataset}/era_ablation/{axis}"
     plot_dir     = f"plots/{dataset}/era_ablation/{axis}"
     results_path = f"{out_dir}/results.json"
 

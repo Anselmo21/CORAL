@@ -3,7 +3,7 @@
 Sweeps budget in [2, 4, 8, 16, 32] across the 4 Llama-3.1-8B datasets
 (or Qwen3-32B with --model qwen3).
 
-Results → logged_results/{ds}/mra_budget_ablation/results.json
+Results → logged_results/llama31-8b/{ds}/mra_budget_ablation/results.json
            (qwen3: logged_results/qwen3-32b/{ds}/mra_budget_ablation/results.json)
 Plot    → plots/llama31/mra_budget_ablation.png
            plots/qwen3-32b/mra_budget_ablation.png
@@ -195,7 +195,7 @@ def main() -> None:
         title      = "Qwen3-32B"
     else:
         datasets   = LLAMA_DATASETS
-        log_prefix = "logged_results"
+        log_prefix = "logged_results/llama31-8b"
         plot_out   = "plots/llama31/mra_budget_ablation.png"
         title      = "Llama-3.1-8B"
 

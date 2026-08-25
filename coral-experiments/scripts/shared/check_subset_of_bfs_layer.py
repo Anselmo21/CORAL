@@ -45,7 +45,7 @@ def _load_lattices(path: str) -> dict[str, tuple[list[str], dict[str, list[str]]
 
 
 def _analyze_dataset(name: str, data_path: str, nice: str, log_lines: list[str]):
-    with open(f"logged_results/{name}/paper_results.json") as f:
+    with open(f"logged_results/llama31-8b/{name}/paper_results.json") as f:
         rows = json.load(f)
     lattices = _load_lattices(data_path)
 

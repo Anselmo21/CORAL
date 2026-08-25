@@ -43,8 +43,8 @@ METHODS = [
 OUT_BASE = "plots"
 
 
-def _load(dataset: str) -> list[dict]:
-    with open(f"logged_results/{dataset}/paper_results.json") as f:
+def _load(dataset: str, root: str = "logged_results/llama31-8b") -> list[dict]:
+    with open(f"{root}/{dataset}/paper_results.json") as f:
         return json.load(f)
 
 
@@ -101,8 +101,8 @@ def _series(rows_by_size: dict[int, list[dict]], col: str, kind: str, is_bfs: bo
     return xs, ys
 
 
-def plot_dataset(name: str, out_name: str, nice: str) -> None:
-    rows = _load(name)
+def plot_dataset(name: str, out_name: str, nice: str, root: str = "logged_results/llama31-8b") -> None:
+    rows = _load(name, root)
     rows_by = _by_size(rows)
     available = [(col, lab, mk, ls, c, lw, is_bfs) for col, lab, mk, ls, c, lw, is_bfs in METHODS
                  if _has_method(rows, col)]

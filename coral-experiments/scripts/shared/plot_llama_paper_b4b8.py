@@ -58,7 +58,7 @@ def _compute_methods(name: str, modpath: str) -> None:
     mod = import_module(modpath)
     score_proxy = mod.score_proxy
 
-    path = f"logged_results/{name}/paper_results.json"
+    path = f"logged_results/llama31-8b/{name}/paper_results.json"
     rows = json.load(open(path))
 
     qids = sorted({r["qid"] for r in rows})
@@ -86,7 +86,7 @@ def _compute_methods(name: str, modpath: str) -> None:
 
 
 def _load_cc_by_size(name: str, budget: int) -> dict[int, list[dict]] | None:
-    path = f"logged_results/{name}/cc_results_budget_{budget}.json"
+    path = f"logged_results/llama31-8b/{name}/cc_results_budget_{budget}.json"
     if not os.path.exists(path):
         return None
     rows = json.load(open(path))
@@ -171,7 +171,7 @@ def _hop_values(bucket: list[dict], col: str) -> list[float]:
 
 
 def _plot(name: str, nice: str) -> None:
-    rows = json.load(open(f"logged_results/{name}/paper_results.json"))
+    rows = json.load(open(f"logged_results/llama31-8b/{name}/paper_results.json"))
     rows_by = _by_size(rows)
     xlabel = "Number of Available Pragmas" if "pragma" in name else "Number of Available Criteria"
     out_dir = f"plots/llama31/{name}"

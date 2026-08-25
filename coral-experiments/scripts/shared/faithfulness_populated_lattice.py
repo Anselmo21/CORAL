@@ -203,7 +203,7 @@ VARIANTS = [
 
 
 def _run_dataset(name: str, path: str) -> dict:
-    cases = json.loads(Path(f"logged_results/{name}/cases.json").read_text())
+    cases = json.loads(Path(f"logged_results/llama31-8b/{name}/cases.json").read_text())
     lat = _load_lattices(path, {str(c["qid"]) for c in cases})
 
     stats = {v: {

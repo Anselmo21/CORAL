@@ -28,8 +28,15 @@ DATASETS = [
 ERA_BUDGETS = (4, 8)
 
 
+QWEN3_PRELIM_ROOT = "logged_results/qwen3-32b-prelim"
+
+
+def _ds_dir(name: str) -> str:
+    return f"{QWEN3_PRELIM_ROOT}/{name.removeprefix('qwen3_')}"
+
+
 def _load_results(name: str) -> list[dict]:
-    d = json.loads(open(f"logged_results/{name}/results.json").read())
+    d = json.loads(open(f"{_ds_dir(name)}/results.json").read())
     return d["results"] if isinstance(d, dict) and "results" in d else d
 
 
@@ -100,13 +107,13 @@ def _score(bfs_for_proxy: dict, proxy: dict, rbc: dict, start: list[str]) -> dic
 def main() -> None:
     apply_plot_style()
     for name, files, nice in DATASETS:
-        cases = json.loads(open(f"logged_results/{name}/cases.json").read())
+        cases = json.loads(open(f"{_ds_dir(name)}/cases.json").read())
         stale = _is_stale(name, cases)
         rows = _rows_recomputed(files, cases) if stale else _rows_from_results(name)
-        with open(f"logged_results/{name}/paper_results.json", "w") as f:
+        with open(f"{_ds_dir(name)}/paper_results.json", "w") as f:
             json.dump(rows, f, indent=2)
-        merge_dataset(name)
-        plot_dataset(name, name, nice)
+        merge_dataset(name.removeprefix("qwen3_"), root=QWEN3_PRELIM_ROOT)
+        plot_dataset(name.removeprefix("qwen3_"), name, nice, root=QWEN3_PRELIM_ROOT)
         print(f"  {nice}: {len(rows)} rows{' [recomputed]' if stale else ''} -> plots/{name}/combined.png")
 
 

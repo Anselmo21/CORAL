@@ -37,7 +37,7 @@ CONFIGS = [
 
 
 def make_eval_lattices(name, modpath, sizes):
-    with open(f"logged_results/{name}/cases.json") as f:
+    with open(f"logged_results/llama31-8b/{name}/cases.json") as f:
         cases = json.load(f)
     mod = import_module(modpath)
     qids = sorted({c["qid"] for c in cases})

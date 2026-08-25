@@ -1,8 +1,8 @@
 """Side-by-side ERA vs MRA entropy ablation comparison (budget=8, llama31).
 
 Loads:
-  logged_results/{ds}/era_ablation/entropy/results_b8.json
-  logged_results/{ds}/mra_entropy_ablation/results_b8.json
+  logged_results/llama31-8b/{ds}/era_ablation/entropy/results_b8.json
+  logged_results/llama31-8b/{ds}/mra_entropy_ablation/results_b8.json
 
 Output:
   plots/llama31/era_mra_entropy_comparison_b8.png
@@ -90,8 +90,8 @@ def main() -> None:
                  fontsize=12, fontweight="bold")
 
     for col_idx, (ds, nice, x_label) in enumerate(DATASETS):
-        era_path = f"logged_results/{ds}/era_ablation/entropy/results_b8.json"
-        mra_path = f"logged_results/{ds}/mra_entropy_ablation/results_b8.json"
+        era_path = f"logged_results/llama31-8b/{ds}/era_ablation/entropy/results_b8.json"
+        mra_path = f"logged_results/llama31-8b/{ds}/mra_entropy_ablation/results_b8.json"
 
         era_rows = _load(era_path)
         mra_rows = _load(mra_path)

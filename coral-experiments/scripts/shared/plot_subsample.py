@@ -36,7 +36,7 @@ _COLORS  = plt.colormaps["tab10"].colors
 
 def _load_results(dataset: str) -> list[dict]:
     """Load results.json for a dataset; handle both dict-wrapped (criteria) and flat-list (pragma) forms."""
-    with open(f"logged_results/{dataset}/results.json") as f:
+    with open(f"logged_results/llama31-8b/{dataset}/results.json") as f:
         d = json.load(f)
     if isinstance(d, dict) and "results" in d:
         return d["results"]

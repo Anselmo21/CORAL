@@ -1,7 +1,7 @@
 """Merge LSM (b=4, b=8) results into paper_results.json for each dataset.
 
 After LSM has been run on a GPU machine, copy the cc_results_*.json files back to
-logged_results/<dataset>/ and then run this script to update paper_results.json with
+logged_results/llama31-8b/<dataset>/ and then run this script to update paper_results.json with
 cc_b4 / cc_b8 columns, recompute the per-dataset table, and print the final
 summary.
 
@@ -29,13 +29,13 @@ DATASETS = [
 ]
 
 
-def _load_paper(name: str) -> list[dict]:
-    with open(f"logged_results/{name}/paper_results.json") as f:
+def _load_paper(name: str, root: str = "logged_results/llama31-8b") -> list[dict]:
+    with open(f"{root}/{name}/paper_results.json") as f:
         return json.load(f)
 
 
-def _load_cc(name: str, config_label: str) -> dict[int, dict] | None:
-    path = f"logged_results/{name}/cc_results_{config_label}.json"
+def _load_cc(name: str, config_label: str, root: str = "logged_results/llama31-8b") -> dict[int, dict] | None:
+    path = f"{root}/{name}/cc_results_{config_label}.json"
     if not os.path.exists(path):
         return None
     with open(path) as f:
@@ -43,10 +43,10 @@ def _load_cc(name: str, config_label: str) -> dict[int, dict] | None:
     return {r["case_id"]: r for r in rows}
 
 
-def merge_dataset(name: str) -> list[dict]:
-    rows = _load_paper(name)
-    cc_b4 = _load_cc(name, "budget_4")
-    cc_b8 = _load_cc(name, "budget_8")
+def merge_dataset(name: str, root: str = "logged_results/llama31-8b") -> list[dict]:
+    rows = _load_paper(name, root)
+    cc_b4 = _load_cc(name, "budget_4", root)
+    cc_b8 = _load_cc(name, "budget_8", root)
 
     for r in rows:
         bfs_key = r["bfs"].get("key")
@@ -67,7 +67,7 @@ def merge_dataset(name: str) -> list[dict]:
             entry["hop_to_bfs"] = hop_distance(entry["proxy_key"], bfs_key, r.get("start_node"))
             r[col] = entry
 
-    with open(f"logged_results/{name}/paper_results.json", "w") as f:
+    with open(f"{root}/{name}/paper_results.json", "w") as f:
         json.dump(rows, f, indent=2)
     return rows
 
@@ -106,7 +106,7 @@ def summarize(rows: list[dict]) -> str:
 
 def main():
     for name, nice in DATASETS:
-        print(f"\n{'='*70}\n  {nice}   (logged_results/{name}/)\n{'='*70}")
+        print(f"\n{'='*70}\n  {nice}   (logged_results/llama31-8b/{name}/)\n{'='*70}")
         rows = merge_dataset(name)
         print(summarize(rows))
 

@@ -4,7 +4,7 @@ For each of the 4 main datasets, refresh ERA at budgets 4 and 8 under the
 current normalized softmax_entropy, copy BFS + SRA from existing results,
 compute hop distance from BFS's CF for every method, and emit:
 
-    logged_results/<dataset>/paper_results.json   (per-case rows: bfs/sra/era_b4/era_b8)
+    logged_results/llama31-8b/<dataset>/paper_results.json   (per-case rows: bfs/sra/era_b4/era_b8)
     stdout                             (per-dataset table: accuracy, cost, hop)
 
 Datasets:
@@ -59,8 +59,8 @@ def _load_lattices(mod):
 
 
 def rerun_dataset(name: str, modpath: str, propagate_scores: bool = PROPAGATE_SCORES) -> list[dict]:
-    cases_path   = f"logged_results/{name}/cases.json"
-    results_path = f"logged_results/{name}/results.json"
+    cases_path   = f"logged_results/llama31-8b/{name}/cases.json"
+    results_path = f"logged_results/llama31-8b/{name}/results.json"
 
     with open(cases_path) as f:
         cases = json.load(f)
@@ -152,9 +152,9 @@ def summarize(rows: list[dict]) -> str:
 def main():
     flag = "  [propagate_scores=ON]" if PROPAGATE_SCORES else ""
     for name, modpath, nice in DATASETS:
-        print(f"\n{'='*70}\n  {nice}   (logged_results/{name}/){flag}\n{'='*70}")
+        print(f"\n{'='*70}\n  {nice}   (logged_results/llama31-8b/{name}/){flag}\n{'='*70}")
         rows = rerun_dataset(name, modpath, propagate_scores=PROPAGATE_SCORES)
-        out_path = f"logged_results/{name}/paper_results.json"
+        out_path = f"logged_results/llama31-8b/{name}/paper_results.json"
         with open(out_path, "w") as f:
             json.dump(rows, f, indent=2)
         print(f"\n  → {out_path}  ({len(rows)} rows)\n")

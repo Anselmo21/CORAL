@@ -30,7 +30,7 @@ COLOR_SRA = "#e15759"
 
 
 def _load(dataset: str) -> list[dict]:
-    with open(f"logged_results/{dataset}/results.json") as f:
+    with open(f"logged_results/qwen3-32b-prelim/{dataset.removeprefix('qwen3_')}/results.json") as f:
         d = json.load(f)
     return d["results"] if isinstance(d, dict) and "results" in d else d
 

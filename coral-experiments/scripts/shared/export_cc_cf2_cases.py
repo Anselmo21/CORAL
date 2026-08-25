@@ -1,53 +1,78 @@
-"""Export cc_cases.json for the cf2 case pool (CPU step, run before the GPU step).
+"""Export cc_cases.json for a cf2/ranked case pool (CPU step, run before the GPU step).
 
-Reads data/cases_16x20_cfmin3.json (20 sub-lattices per size k=3..9 per
-(run, dataset), shallowest CF >= 3 removals below start for k>=4, >= 2 for k=3 — see
-scripts.shared.generate_cf2_pool) plus the lattice runs under
-coral-runs-lattices/<run>/, and writes the self-contained per-case exports
-consumed by scripts.shared.run_cc_qwen:
+Reads a case pool (default data/cases_16x20_cfmin3.json; see
+scripts.shared.generate_cf2_pool / generate_ranked_pool) plus the source
+lattices, and writes the self-contained per-case exports consumed by
+scripts.shared.run_cc_qwen:
 
     logged_results/<run>-cf2/<dataset>/cc_cases.json
 
 Each case carries query/sources/plausible_answers from the run's config.json
-and rankings_by_combo restricted to the sub-lattice, matching the schema of
-the existing qwen3-32b-temp0 exports.
+and rankings_by_combo restricted to the sub-lattice.
+
+Two source formats are auto-detected per run:
+  - score-elicited runs (coral-runs-lattices/<run>/<subdir>): config has
+    query/atoms, answers.json maps combo_key -> {ranking: [idx], scores};
+  - ranked runs (<run> = "<model>-ranked", from --ranked-lattice-root/
+    <subdir>-<model>): config has question/criteria, answers.json maps
+    combo_key -> [answer str, ...] directly (sonnet-* dir naming for curated).
 
 Usage:
-    conda run -n coral python3 -m scripts.shared.export_cc_cf2_cases
+    conda run -n coral python3 -m scripts.shared.export_cc_cf2_cases \
+        [--cases-path data/cases_16x20_cfmin2_qwen35-122b-ranked.json]
 """
 from __future__ import annotations
 
+import argparse
 import json
 import os
 from itertools import combinations
 
 from search.lattice import combo_key
 
-CASES_PATH = "data/cases_16x20_cfmin3.json"
 DATASET_SUBDIRS = {
     "msmarco_criteria": "msmarco-criteria",
     "msmarco_pragma":   "msmarco-pragmas",
     "curated_criteria": "curated-criteria",
     "curated_pragma":   "curated-pragmas",
 }
+RANKED_SUBDIRS = {**DATASET_SUBDIRS,
+                  "curated_criteria": "sonnet-criteria",
+                  "curated_pragma":   "sonnet-pragmas"}
+
+
+def _load(base: str, qid: str) -> tuple[str, dict, dict]:
+    """Returns (query, config, rankings_by_combo) for either source format."""
+    cfg = json.load(open(f"{base}/{qid}/config.json"))
+    ans = json.load(open(f"{base}/{qid}/answers.json"))
+    if "atoms" in cfg:   # score-elicited coral-runs format
+        pa = cfg["plausible_answers"]
+        return cfg["query"], cfg, {k: [pa[j] for j in e["ranking"]] for k, e in ans.items()}
+    return cfg["question"], cfg, ans
 
 
 def main() -> None:
-    pool = json.load(open(CASES_PATH))
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--cases-path", default="data/cases_16x20_cfmin3.json")
+    ap.add_argument("--ranked-lattice-root", default="/Users/kathling/coral-data-gen/lattices")
+    args = ap.parse_args()
+
+    pool = json.load(open(args.cases_path))
     for run, by_ds in pool["cases"].items():
+        ranked = run.endswith("-ranked")
         for ds, cases in by_ds.items():
-            base = f"coral-runs-lattices/{run}/{DATASET_SUBDIRS[ds]}"
-            cfg_cache: dict[str, tuple[dict, dict]] = {}
+            if ranked:
+                model = run[: -len("-ranked")]
+                base = f"{args.ranked_lattice_root}/{RANKED_SUBDIRS[ds]}-{model}"
+            else:
+                base = f"coral-runs-lattices/{run}/{DATASET_SUBDIRS[ds]}"
+            cache: dict[str, tuple[str, dict, dict]] = {}
             out = []
             for i, case in enumerate(cases):
                 qid = case["qid"]
-                if qid not in cfg_cache:
-                    cfg = json.load(open(f"{base}/{qid}/config.json"))
-                    ans = json.load(open(f"{base}/{qid}/answers.json"))
-                    pa = cfg["plausible_answers"]
-                    rbc_full = {k: [pa[j] for j in e["ranking"]] for k, e in ans.items()}
-                    cfg_cache[qid] = (cfg, rbc_full)
-                cfg, rbc_full = cfg_cache[qid]
+                if qid not in cache:
+                    cache[qid] = _load(base, qid)
+                query, cfg, rbc_full = cache[qid]
                 start = case["start_node"]
                 rbc = {}
                 for r in range(len(start) + 1):
@@ -57,7 +82,7 @@ def main() -> None:
                 out.append({
                     "case_id":           i,
                     "query_id":          qid,
-                    "query":             cfg["query"],
+                    "query":             query,
                     "sources":           cfg["sources"],
                     "plausible_answers": cfg["plausible_answers"],
                     "criteria":          start,

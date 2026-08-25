@@ -4,15 +4,15 @@ Two phases:
 
   Phase 1 — Export (local, no GPU):
     python3 -m scripts.pragma.curated.run_cc_ablation --export
-    Reads  logged_results/curated_pragma/cases.json
-    Writes logged_results/curated_pragma/cc_cases.json
+    Reads  logged_results/llama31-8b/curated_pragma/cases.json
+    Writes logged_results/llama31-8b/curated_pragma/cc_cases.json
 
   Phase 2 — Run (GPU):
     CUDA_VISIBLE_DEVICES=0 VLLM_USE_FLASHINFER_SAMPLER=0 VLLM_WORKER_MULTIPROC_METHOD=spawn \\
       python3 -m scripts.pragma.curated.run_cc_ablation --run --vllm
 
 Sweeps fixed [4,8,16,32,64,128,256] and pct [10..100]% of 2^k budgets. Writes
-logged_results/curated_pragma/cc_ablation_results.json with resume on (case_id, budget_label).
+logged_results/llama31-8b/curated_pragma/cc_ablation_results.json with resume on (case_id, budget_label).
 """
 from __future__ import annotations
 
@@ -26,9 +26,9 @@ from scripts.shared.cc_budget_ablation_dev import score_cc
 from search.bfs import bfs_search
 
 DATASET_PATH  = "data/curated_pragma.json"
-CASES_PATH    = "logged_results/curated_pragma/cases.json"
-CC_CASES_PATH = "logged_results/curated_pragma/cc_cases.json"
-OUT_PATH      = "logged_results/curated_pragma/cc_ablation_results.json"
+CASES_PATH    = "logged_results/llama31-8b/curated_pragma/cases.json"
+CC_CASES_PATH = "logged_results/llama31-8b/curated_pragma/cc_cases.json"
+OUT_PATH      = "logged_results/llama31-8b/curated_pragma/cc_ablation_results.json"
 
 BUDGETS_FIXED: list[int] = [4, 8, 16, 32, 64, 128, 256]
 BUDGETS_PCT:   list[int] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]

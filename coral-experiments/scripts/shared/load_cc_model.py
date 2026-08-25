@@ -73,6 +73,7 @@ def load_model_and_tokenizer(args: argparse.Namespace) -> tuple:
         model = LLM(model=args.model, dtype="float16",
                     tensor_parallel_size=args.tensor_parallel_size,
                     gpu_memory_utilization=args.gpu_memory_utilization,
+                    seed=0,
                     **extra)
         tokenizer = model.get_tokenizer()
     else:

@@ -52,7 +52,7 @@ def _load_llama31_8b_lattices():
         "curated_criteria":  "curated-criteria-lattices.json",
         "curated_pragma":    "curated-pragmas-lattices.json",
     }
-    cases_root = Path("logged_results")
+    cases_root = Path("logged_results/llama31-8b")
     return {ds: {"data": root / fn, "cases": cases_root / ds / "cases.json"}
             for ds, fn in files.items()}
 

@@ -42,7 +42,7 @@ OUT_BASE = "temp_plots"
 
 
 def _load(dataset: str) -> list[dict]:
-    with open(f"logged_results/{dataset}/paper_results.json") as f:
+    with open(f"logged_results/llama31-8b/{dataset}/paper_results.json") as f:
         return json.load(f)
 
 

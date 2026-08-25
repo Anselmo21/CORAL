@@ -3,7 +3,7 @@
 Fixes normalize_fn=max and sweeps entropy_fn:
   shannon, softmax, weighted, renyi_0.5, renyi_2
 
-Results → logged_results/<dataset>/mra_entropy_ablation/results_b<N>.json
+Results → logged_results/llama31-8b/<dataset>/mra_entropy_ablation/results_b<N>.json
           (qwen3: logged_results/qwen3-32b/<dataset>/mra_entropy_ablation/results_b<N>.json)
 Plot    → plots/llama31/mra_entropy_ablation_b<N>.png
           plots/qwen3-32b/mra_entropy_ablation_b<N>.png
@@ -207,7 +207,7 @@ def main() -> None:
         title      = "Qwen3-32B"
     else:
         datasets   = LLAMA_DATASETS
-        log_prefix = "logged_results"
+        log_prefix = "logged_results/llama31-8b"
         plot_out   = f"plots/llama31/mra_entropy_ablation_b{args.budget}.png"
         title      = "Llama-3.1-8B"
 

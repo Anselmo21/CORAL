@@ -1,12 +1,12 @@
 """Unified entropy-function ablation across the four paper datasets.
 
 Replaces the four per-dataset `scripts/<group>/<ds>/run_entropy_ablation.py`
-scripts. Reads `logged_results/<dataset>/cases.json` and runs ERA at pct_10 budget
+scripts. Reads `logged_results/llama31-8b/<dataset>/cases.json` and runs ERA at pct_10 budget
 (max(1, int(0.10 * 2**size))) for each of the 5 entropy variants:
   softmax, shannon, renyi(α=0.5), renyi(α=2), weighted
 
 Outputs:
-  logged_results/<dataset>/entropy_ablation/results.json
+  logged_results/llama31-8b/<dataset>/entropy_ablation/results.json
   plots/<dataset>/entropy_ablation/{accuracy_by_size,calls_by_size,outcomes,accuracy_cost_combined}.png
 
 CLI:
@@ -332,8 +332,8 @@ def plot_combined(results: list[dict], out_dir: str, x_label: str) -> None:
 # ---------------------------------------------------------------------------
 
 def run_for_dataset(dataset: str, modpath: str, x_label: str) -> None:
-    cases_path = f"logged_results/{dataset}/cases.json"
-    out_dir    = f"logged_results/{dataset}/entropy_ablation"
+    cases_path = f"logged_results/llama31-8b/{dataset}/cases.json"
+    out_dir    = f"logged_results/llama31-8b/{dataset}/entropy_ablation"
     plot_dir   = f"plots/{dataset}/entropy_ablation"
     results_path = f"{out_dir}/results.json"
 

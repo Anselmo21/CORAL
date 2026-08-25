@@ -36,7 +36,7 @@ MODELS = {
             ("curated_criteria", "data/llama31-8b/curated-criteria-lattices.json",  "Curated criteria"),
             ("curated_pragma",   "data/llama31-8b/curated-pragmas-lattices.json",   "Curated pragma"),
         ],
-        "result_root": "logged_results",
+        "result_root": "logged_results/llama31-8b",
     },
     "qwen3-32b": {
         "datasets": [

@@ -121,7 +121,9 @@ def _vllm_teacher_forced_logit_probs(
         token_id_lists.append(prompt_ids + response_ids)
 
     sp = SamplingParams(
-        temperature=1.0,
+        # temperature=1.0,
+        temperature=0.0,
+        seed=0,
         top_p=1.0,
         top_k=-1,
         max_tokens=1,

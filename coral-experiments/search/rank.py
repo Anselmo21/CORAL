@@ -586,21 +586,35 @@ def _mra_get_child_voters(
     estimated_scores: dict[str, dict[str, float]],
     answers: list[str],
     voter_norm: str = "max",
+    known_weight: float = 1.0,
 ) -> dict[str, dict[str, float]]:
     """Voter score vectors for size-(|subset|-1) children of ``subset``.
 
     voter_norm="max"  → max-normalize known children (default).
     voter_norm="none" → pass known children as-is (preserves absolute magnitudes,
                         e.g. raw LLM confidence when scores_by_combo populated known).
+    known_weight — relative weight of known (ground-truth) voters vs estimated
+    ones. Weights are rescaled to mean 1 per electorate, so a node whose
+    children are all known (or all estimated) is unchanged regardless of the
+    weight; only mixed electorates shift toward the known voters.
     """
     out: dict[str, dict[str, float]] = {}
+    weights: dict[str, float] = {}
     for combo in combinations(range(len(subset)), len(subset) - 1):
         child = [subset[i] for i in combo]
         child_key = combo_key(child)
         if child_key in known:
             out[child_key] = dict(known[child_key]) if voter_norm == "none" else _normalize_max(known[child_key])
+            weights[child_key] = known_weight
         elif child_key in estimated_scores:
             out[child_key] = estimated_scores[child_key]
+            weights[child_key] = 1.0
+    if known_weight != 1.0 and out:
+        mean_w = sum(weights.values()) / len(weights)
+        out = {
+            k: {a: v * (weights[k] / mean_w) for a, v in sv.items()}
+            for k, sv in out.items()
+        }
     return out
 
 
@@ -708,6 +722,7 @@ def mra_search(
     verbose=False,
     scores_by_combo: dict[str, dict[str, float]] | None = None,
     voter_norm: str = "max",
+    known_weight: float = 1.0,
 ):
     """When ``scores_by_combo`` is provided, voter score vectors come from the
     model's per-answer scores instead of Borda-from-rank. ``voter_norm="max"``
@@ -795,7 +810,7 @@ def mra_search(
                 continue
 
             voter_scores = _mra_get_child_voters(
-                subset, known, estimated_scores, plausible_answers, voter_norm,
+                subset, known, estimated_scores, plausible_answers, voter_norm, known_weight,
             )
             if not voter_scores:
                 continue

@@ -40,7 +40,11 @@ ERA_BUDGETS = (4, 8)
 
 
 def run_dataset(name: str, data_path: str, runners, out_name: str, verbose: bool = True) -> list[dict]:
-    cases = json.loads(Path(f"logged_results/{name}/cases.json").read_text())
+    if name.startswith("qwen3_"):
+        ds_dir = f"logged_results/qwen3-32b-prelim/{name.removeprefix('qwen3_')}"
+    else:
+        ds_dir = f"logged_results/llama31-8b/{name}"
+    cases = json.loads(Path(f"{ds_dir}/cases.json").read_text())
     qids = {str(c["qid"]) for c in cases}
 
     # load the non-halted lattices from the consolidated data file
@@ -77,7 +81,7 @@ def run_dataset(name: str, data_path: str, runners, out_name: str, verbose: bool
         if verbose and (i + 1) % 20 == 0:
             print(f"  {name}: {i + 1}/{len(cases)} cases ({time.time() - t0:.0f}s)", flush=True)
 
-    out = Path(f"logged_results/{name}/{out_name}")
+    out = Path(f"{ds_dir}/{out_name}")
     out.write_text(json.dumps(rows, indent=2))
     print(f"wrote {out}")
     return rows

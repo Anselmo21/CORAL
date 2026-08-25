@@ -2,7 +2,7 @@
 against the built-in MRA aggregator.
 
 Focused run on Llama-3.1-8B + msmarco_criteria only. Uses the same cases from
-logged_results/msmarco_criteria/cases.json and the same score_proxy pipeline
+logged_results/llama31-8b/msmarco_criteria/cases.json and the same score_proxy pipeline
 so results are directly comparable to the existing SUMMARY.md.
 
 Usage:
@@ -24,11 +24,11 @@ from search.flagr import make_era_aggregator
 from search.lattice import combo_key, hop_distance
 from search.rank import mra_search
 
-BUDGETS = (4, 8, 16)
+DEFAULT_BUDGETS = (4, 8, 16)
 NORMALIZE_FN = "softmax"
-METHODS = ["borda", "combsum", "combmnz"]
+DEFAULT_METHODS = ["borda", "combsum", "combmnz"]
 DATA_PATH = Path("data/llama31-8b/msmarco-criteria-lattices.json")
-CASES_PATH = Path("logged_results/msmarco_criteria/cases.json")
+CASES_PATH = Path("logged_results/llama31-8b/msmarco_criteria/cases.json")
 OUT_DIR = Path("logged_results/mra_flagr_comb_compare")
 
 
@@ -92,7 +92,16 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=None,
                     help="Cap on cases (evenly spaced) for a fast pilot run.")
+    ap.add_argument("--methods", type=str, default=",".join(DEFAULT_METHODS),
+                    help="Comma-separated pyflagr method names (see search.flagr._FACTORIES).")
+    ap.add_argument("--budgets", type=str, default=",".join(map(str, DEFAULT_BUDGETS)),
+                    help="Comma-separated Phase-1 budgets.")
+    ap.add_argument("--tag", type=str, default="",
+                    help="Suffix for output files so new sweeps don't clobber logged ones.")
     args = ap.parse_args()
+    methods = [m.strip() for m in args.methods.split(",") if m.strip()]
+    budgets = tuple(int(b) for b in args.budgets.split(","))
+    suffix = f"_{args.tag}" if args.tag else ""
 
     lattices = _load_dataset(DATA_PATH)
     cases = json.loads(CASES_PATH.read_text())
@@ -102,7 +111,7 @@ def main():
     print(f"loaded {len(cases)} cases, {len(lattices)} lattices", flush=True)
 
     # Build replacements once.
-    replacements = {m: make_era_aggregator(m) for m in METHODS}
+    replacements = {m: make_era_aggregator(m) for m in methods}
 
     rows = []
     t0 = time.time()
@@ -116,9 +125,9 @@ def main():
         row = {"case_id": i, "qid": qid, "size": case["size"], "start_node": start,
                "bfs": {"key": bfs["key"], "size": bfs["size"], "found": bfs["found"],
                        "calls": bfs["calls"]}}
-        for b in BUDGETS:
+        for b in budgets:
             row[f"builtin_b{b}"] = _score(_run(crit, rbc, start, b, None), bfs, rbc, start)
-            for m in METHODS:
+            for m in methods:
                 res = _run(crit, rbc, start, b, replacements[m])
                 row[f"{m}_b{b}"] = _score(res, bfs, rbc, start)
         rows.append(row)
@@ -126,27 +135,25 @@ def main():
             print(f"  [{i+1:>3}/{len(cases)}] {time.time()-t0:.0f}s", flush=True)
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    (OUT_DIR / "msmarco_criteria_llama31_8b.json").write_text(json.dumps(rows, indent=2))
+    (OUT_DIR / f"msmarco_criteria_llama31_8b{suffix}.json").write_text(json.dumps(rows, indent=2))
 
-    lines = ["# MRA: built-in vs pyflagr comb methods (Llama-3.1-8B, msmarco_criteria)\n",
+    lines = [f"# MRA: built-in vs pyflagr {'/'.join(methods)} (Llama-3.1-8B, msmarco_criteria)\n",
              f"- normalize_fn=\"{NORMALIZE_FN}\", n={len(rows)}",
              "- pyflagr methods collapse each estimated child's score vector to a "
              "ranking, run the classical aggregator, and re-normalize.\n",
              "| Budget | Impl | Acc | Cost | Hop-miss μ |",
              "|---:|---|---:|---:|---:|"]
-    for b in BUDGETS:
-        for col, label in [(f"builtin_b{b}", "built-in"),
-                            (f"borda_b{b}",   "pyflagr borda"),
-                            (f"combsum_b{b}", "pyflagr combsum"),
-                            (f"combmnz_b{b}", "pyflagr combmnz")]:
+    for b in budgets:
+        for col, label in ([(f"builtin_b{b}", "built-in")] +
+                           [(f"{m}_b{b}", f"pyflagr {m}") for m in methods]):
             s = _pool(rows, col)
             if s is None:
                 continue
             lines.append(f"| {b} | {label} | {s['acc']:.1f}% | {s['cost']:.1f} | {s['hop_miss']:.2f} |")
         lines.append("")
 
-    (OUT_DIR / "SUMMARY.md").write_text("\n".join(lines))
-    print(f"\n→ {OUT_DIR/'SUMMARY.md'}  ({time.time()-t0:.0f}s total)")
+    (OUT_DIR / f"SUMMARY{suffix}.md").write_text("\n".join(lines))
+    print(f"\n→ {OUT_DIR / f'SUMMARY{suffix}.md'}  ({time.time()-t0:.0f}s total)")
 
 
 if __name__ == "__main__":

@@ -10,9 +10,9 @@ Runs BFS / SRA / ERA(fixed-budget grid) / ERA(percent-of-lattice grid) on each
 case with incremental per-case checkpointing.
 
 Outputs:
-  logged_results/curated_pragma/cases.json                — sampled cases (full set)
-  logged_results/curated_pragma/per_case/case_<i>.json    — per-case results (resumable)
-  logged_results/curated_pragma/results.json              — aggregate results
+  logged_results/llama31-8b/curated_pragma/cases.json                — sampled cases (full set)
+  logged_results/llama31-8b/curated_pragma/per_case/case_<i>.json    — per-case results (resumable)
+  logged_results/llama31-8b/curated_pragma/results.json              — aggregate results
 
 CLI:
   conda run -n coral python3 -m scripts.pragma.curated.run_subsample
@@ -31,7 +31,7 @@ from search.lattice import combo_key, jaccard_keys
 from search.rank import era_search, sra_search
 
 DATASET_PATH = "data/curated_pragma.json"
-OUT_DIR      = "logged_results/curated_pragma"
+OUT_DIR      = "logged_results/llama31-8b/curated_pragma"
 CASES_PATH   = f"{OUT_DIR}/cases.json"
 RESULTS_PATH = f"{OUT_DIR}/results.json"
 

@@ -2,7 +2,7 @@
 
 Reads rows from logged_results/<run>-cf2/<dataset>/results.json (written by
 scripts.shared.eval_cf2_bfs_sra_era: BFS + native-combsum SRA + mra_search
-softmax b=4/8/16 labeled "ERA", plus score/prob-fed "MRA-prop" columns,
+softmax b=4/8/16 labeled "ERA", plus score/prob-fed "ERA (elicited)" columns,
 per PRESENTATION_PLOTS.md) and LSM from
 cc_results_budget_{4,8,16}.json in the same dir (written by the GPU CC step).
 LSM lines are drawn only for budgets whose file exists and covers every case
@@ -44,6 +44,11 @@ def _load(run: str, dataset: str) -> tuple[list[dict], dict[int, list]]:
     cc: dict[int, list] = {}
     by_id = {r["case_id"]: r for r in rows}
     for budget, *_ in panels.LSM_METHODS:
+        # TEMPORARY: show only LSM b=8 — b=4/16 hidden until their CC re-run
+        # on the cfmin3 pool completes.
+        if budget != 8:
+            cc[budget] = []
+            continue
         path = root / f"cc_results_budget_{budget}.json"
         data = json.load(open(path)) if path.exists() else []
         # Keep only rows whose recorded BFS matches the current pool's case —
@@ -51,9 +56,15 @@ def _load(run: str, dataset: str) -> tuple[list[dict], dict[int, list]]:
         # pre-cfmin2 exactly-2 pool, where only k=10 cases survive).
         kept = [c for c in data if c["case_id"] in by_id
                 and c.get("bfs_key") == by_id[c["case_id"]]["bfs"]["key"]]
-        if len(kept) < len(data):
-            print(f"    NOTE: {path}: {len(kept)}/{len(data)} rows match the current pool "
-                  f"(rest stale or still running) — using the matching rows only")
+        # A budget is drawn in full only when its CC output covers every case
+        # in the pool; otherwise fall back to the k=10 cases (old-pool k<=9
+        # survivors are tiny coincidental samples — jumpy lines) until the CC
+        # re-run on the cfmin3 pool lands for that budget.
+        if len(kept) < len(rows):
+            kept = [c for c in kept if by_id[c["case_id"]]["size"] == 10]
+            print(f"    NOTE: {path}: partial coverage "
+                  f"({len(kept)} k=10 rows kept of {len(data)} in file) — "
+                  f"drawing this budget at k=10 only")
         cc[budget] = kept
     return rows, cc
 
