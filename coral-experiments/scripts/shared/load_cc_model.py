@@ -56,6 +56,13 @@ def add_model_args(parser: argparse.ArgumentParser) -> None:
              "Prompt-logprob scoring needs a few hundred MB of headroom per "
              "chunk, so keep this below vLLM's 0.90 default on <=48GB cards.",
     )
+    parser.add_argument(
+        "--disable-custom-all-reduce", action="store_true",
+        help="Use NCCL instead of vLLM's custom all-reduce kernel (vllm "
+             "backend only). vLLM only drops that kernel above two PCIe-only "
+             "GPUs, so a TP=2 group on cards without NVLink keeps it and then "
+             "dies registering IPC buffers at the end of CUDA graph capture.",
+    )
 
 
 def load_model_and_tokenizer(args: argparse.Namespace) -> tuple:
@@ -70,6 +77,8 @@ def load_model_and_tokenizer(args: argparse.Namespace) -> tuple:
             extra["max_model_len"] = args.max_model_len
         if args.max_num_seqs is not None:
             extra["max_num_seqs"] = args.max_num_seqs
+        if args.disable_custom_all_reduce:
+            extra["disable_custom_all_reduce"] = True
         model = LLM(model=args.model, dtype="float16",
                     tensor_parallel_size=args.tensor_parallel_size,
                     gpu_memory_utilization=args.gpu_memory_utilization,
