@@ -40,17 +40,17 @@ QID_ALLOWLIST: dict[str, list[str]] = {
     "msmarco_pragma":   ["51603", "51717", "51730", "51785", "51821", "51891",
                          "51923", "52008", "52040", "52280", "52328", "52329",
                          "393179", "441101", "480543", "514495"],
-    "sonnet_criteria":  ["0", "3", "12", "14", "18", "19", "28", "29",
+    "curated_criteria":  ["0", "3", "12", "14", "18", "19", "28", "29",
                          "31", "37", "39", "44", "46", "47", "50", "54"],
-    "sonnet_pragma":    ["2", "7", "12", "13", "15", "18", "19", "25",
+    "curated_pragma":    ["2", "7", "12", "13", "15", "18", "19", "25",
                          "28", "30", "34", "36", "41", "51", "52", "56"],
 }
 
 DATASETS = [
     ("msmarco_criteria", ["msmarco-criteria-qwen3-32b-temp0.json"], "Qwen MSMARCO criteria"),
     ("msmarco_pragma",   ["msmarco-pragmas-qwen3-32b-temp0.json"], "Qwen MSMARCO pragma"),
-    ("sonnet_criteria",  ["sonnet-criteria-qwen3-32b-temp0.json"], "Qwen Sonnet criteria"),
-    ("sonnet_pragma",    ["sonnet-pragmas-qwen3-32b-temp0.json"], "Qwen Sonnet pragma"),
+    ("curated_criteria",  ["curated-criteria-qwen3-32b-temp0.json"], "Qwen Curated criteria"),
+    ("curated_pragma",    ["curated-pragmas-qwen3-32b-temp0.json"], "Qwen Curated pragma"),
 ]
 
 # Set per dataset before the loaders run.

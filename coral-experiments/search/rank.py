@@ -9,6 +9,10 @@ from search.heuristics import (
     norm_rank,
     norm_softmax,
     shannon_entropy,
+    cra_top1_disagreement,
+    cra_score_variance,
+    cra_kendall_tau,
+    cra_distance_to_aggregate,
 )
 from search.lattice import combo_key, iter_search_layers
 
@@ -132,10 +136,14 @@ def _get_child_voters(
     known: dict[str, list[str]],
     estimated_scores: dict[str, dict[str, float]],
     answers: list[str],
+    scores_by_combo: dict[str, dict[str, float]] | None = None,
+    voter_norm: str = "max",
 ) -> dict[str, dict[str, float]]:
     """Voter score vectors for size-(|subset|-1) children of ``subset``.
 
-    Known children → Borda from ranking, max-normalized to [0, 1].
+    Known children → model scores when ``scores_by_combo`` is provided (raw
+    when voter_norm="none", max-normalized when voter_norm="max"), else Borda
+    from ranking (always max-normalized — voter_norm only affects model scores).
     Estimated children → previously-stored score vector (already normalized).
     """
     out: dict[str, dict[str, float]] = {}
@@ -145,7 +153,11 @@ def _get_child_voters(
             continue
         child_key = combo_key(child)
         if child_key in known:
-            out[child_key] = _normalize_max(_ranking_to_score_vector(known[child_key], answers))
+            if scores_by_combo is not None and child_key in scores_by_combo:
+                sv = scores_by_combo[child_key]
+                out[child_key] = dict(sv) if voter_norm == "none" else _normalize_max(sv)
+            else:
+                out[child_key] = _normalize_max(_ranking_to_score_vector(known[child_key], answers))
         elif child_key in estimated_scores:
             out[child_key] = estimated_scores[child_key]
     return out
@@ -182,6 +194,8 @@ def _era_phase1_down(
     cutoff_fn,
     propagate_scores: bool,
     norm_fn=None,
+    scores_by_combo: dict[str, dict[str, float]] | None = None,
+    voter_norm: str = "max",
 ) -> tuple[int, list[str]]:
     """
     ERA downward Phase-1 budget allocation.
@@ -201,7 +215,8 @@ def _era_phase1_down(
             subset = [start_node[i] for i in combo]
             key = combo_key(subset)
 
-            voter_scores = _get_child_voters(subset, known, estimated_scores, answers)
+            voter_scores = _get_child_voters(subset, known, estimated_scores, answers,
+                                             scores_by_combo, voter_norm)
             if not voter_scores:
                 continue
             ranking, scores = aggregator_fn(voter_scores, answers)
@@ -232,12 +247,18 @@ def sra_search(
     direction="down",
     rank_displacement_threshold=1,
     verbose=False,
+    scores_by_combo: dict[str, dict[str, float]] | None = None,
+    voter_norm: str = "max",
 ):
     """Simple Rank Aggregation (SRA) search.
 
     Estimates all node rankings by aggregating singleton rankings (CombSUM by
     default). Within each layer, nodes with higher baseline displacement are
     tried first. Returns the first node whose true top-1 ≠ baseline top-1.
+
+    When ``scores_by_combo`` is provided, singleton voter vectors come from the
+    model's per-answer scores (max-normalized) instead of Borda-from-rank, and
+    aggregation is entry-wise sum of those score vectors.
     """
     if aggregator is None:
         aggregator = "combsum"
@@ -257,6 +278,12 @@ def sra_search(
     baseline_answer = baseline_ranking[0]
     answers = list(baseline_ranking)
     singleton_rankings = {c: rankings_by_combo[c] for c in criteria if c in rankings_by_combo}
+    singleton_scores = None
+    if scores_by_combo is not None:
+        singleton_scores = {
+            c: (dict(scores_by_combo[c]) if voter_norm == "none" else _normalize_max(scores_by_combo[c]))
+            for c in criteria if c in scores_by_combo
+        }
 
     calls = 0
     for layer_size, subsets in iter_search_layers(criteria, start_node, direction):
@@ -271,6 +298,15 @@ def sra_search(
                 estimated_ranking = singleton_rankings[key]
             elif not subset:
                 estimated_ranking = []
+            elif singleton_scores is not None:
+                agg: dict[str, float] = {a: 0.0 for a in answers}
+                for c in subset:
+                    sv = singleton_scores.get(c)
+                    if not sv:
+                        continue
+                    for a in answers:
+                        agg[a] += sv.get(a, 0.0)
+                estimated_ranking = sorted(agg, key=lambda a: (-agg[a], a))
             else:
                 voter_rankings = {c: singleton_rankings[c] for c in subset if c in singleton_rankings}
                 estimated_ranking, _ = _aggregate_with_scores(voter_rankings, answers, aggregator)
@@ -318,6 +354,8 @@ def era_search(
     direction="down",
     propagate_scores: bool = True,
     verbose=False,
+    scores_by_combo: dict[str, dict[str, float]] | None = None,
+    voter_norm: str = "max",
 ):
     """
     Entropy-Rank Aggregation (ERA) search algorithm.
@@ -430,6 +468,8 @@ def era_search(
             estimated_scores, entropies, budget_remaining,
             aggregator_fn, entropy_fn, cutoff_fn, propagate_scores,
             norm_fn,
+            scores_by_combo=scores_by_combo,
+            voter_norm=voter_norm,
         )
     elif direction == "up":
         extra = [c for c in criteria if c not in start_node]
@@ -469,7 +509,8 @@ def era_search(
 
             if direction == "up":
                 # Re-estimate fresh each layer against the growing known dict.
-                voter_scores = _get_child_voters(subset, known, estimated_scores, answers)
+                voter_scores = _get_child_voters(subset, known, estimated_scores, answers,
+                                                 scores_by_combo, voter_norm)
                 if not voter_scores:
                     continue
                 ranking, scores = aggregator_fn(voter_scores, answers)
@@ -544,16 +585,36 @@ def _mra_get_child_voters(
     known: dict[str, dict[str, float]],
     estimated_scores: dict[str, dict[str, float]],
     answers: list[str],
+    voter_norm: str = "max",
+    known_weight: float = 1.0,
 ) -> dict[str, dict[str, float]]:
-    """Raw Borda score vectors for size-(|subset|-1) children of ``subset``."""
+    """Voter score vectors for size-(|subset|-1) children of ``subset``.
+
+    voter_norm="max"  → max-normalize known children (default).
+    voter_norm="none" → pass known children as-is (preserves absolute magnitudes,
+                        e.g. raw LLM confidence when scores_by_combo populated known).
+    known_weight — relative weight of known (ground-truth) voters vs estimated
+    ones. Weights are rescaled to mean 1 per electorate, so a node whose
+    children are all known (or all estimated) is unchanged regardless of the
+    weight; only mixed electorates shift toward the known voters.
+    """
     out: dict[str, dict[str, float]] = {}
+    weights: dict[str, float] = {}
     for combo in combinations(range(len(subset)), len(subset) - 1):
         child = [subset[i] for i in combo]
         child_key = combo_key(child)
         if child_key in known:
-            out[child_key] = _normalize_max(known[child_key])
+            out[child_key] = dict(known[child_key]) if voter_norm == "none" else _normalize_max(known[child_key])
+            weights[child_key] = known_weight
         elif child_key in estimated_scores:
             out[child_key] = estimated_scores[child_key]
+            weights[child_key] = 1.0
+    if known_weight != 1.0 and out:
+        mean_w = sum(weights.values()) / len(weights)
+        out = {
+            k: {a: v * (weights[k] / mean_w) for a, v in sv.items()}
+            for k, sv in out.items()
+        }
     return out
 
 
@@ -659,7 +720,18 @@ def mra_search(
     entropy_fn=None,
     direction="down",
     verbose=False,
+    scores_by_combo: dict[str, dict[str, float]] | None = None,
+    voter_norm: str = "max",
+    known_weight: float = 1.0,
 ):
+    """When ``scores_by_combo`` is provided, voter score vectors come from the
+    model's per-answer scores instead of Borda-from-rank. ``voter_norm="max"``
+    (default) max-normalizes each voter to [0, 1] shape; ``voter_norm="none"``
+    keeps raw magnitudes so absolute LLM confidence propagates into the sum
+    (weak voters naturally contribute less than confident ones).
+    CF detection still uses ``rankings_by_combo[key][0]`` — the raw top-1 can
+    disagree with ``argmax(scores)`` so we do not derive it from scores.
+    """
     normalize_fn = _resolve_norm_fn(normalize_fn)
     if entropy_fn is None:
         entropy_fn = shannon_entropy
@@ -684,18 +756,29 @@ def mra_search(
         print(f"Start key: {start_key}")
         print(f"Baseline answer: {baseline_answer}")
 
+    def _voter_vector(key: str) -> dict[str, float]:
+        """Voter score vector for a known ground-truth combo."""
+        if scores_by_combo is not None and key in scores_by_combo:
+            sv = scores_by_combo[key]
+            return dict(sv) if voter_norm == "none" else _normalize_max(sv)
+        return _ranking_to_score_vector(rankings_by_combo[key], plausible_answers)
+
+    def _top1(key: str) -> str | None:
+        """Ranking's top-1 answer for a known combo (independent of scores)."""
+        r = rankings_by_combo.get(key) or []
+        return r[0] if r else None
+
     known: dict[str, dict[str, float]] = {}
     estimated_scores: dict[str, dict[str, float]] = {}
     entropies: dict[str, float] = {}
 
     for c in concepts:
-        ranking = rankings_by_combo.get(c, [])
-        if not ranking:
+        if c not in rankings_by_combo or not rankings_by_combo[c]:
             raise ValueError(f"Concept {c} has no rankings")
-        known[c] = _ranking_to_score_vector(ranking, plausible_answers)
+        known[c] = _voter_vector(c)
 
     if "" in rankings_by_combo:
-        known[""] = _ranking_to_score_vector(rankings_by_combo[""], plausible_answers)
+        known[""] = _voter_vector("")
 
     if verbose:
         print(f"Phase 1: bottom-up Borda estimation (budget={budget})")
@@ -727,7 +810,7 @@ def mra_search(
                 continue
 
             voter_scores = _mra_get_child_voters(
-                subset, known, estimated_scores, plausible_answers,
+                subset, known, estimated_scores, plausible_answers, voter_norm, known_weight,
             )
             if not voter_scores:
                 continue
@@ -742,7 +825,10 @@ def mra_search(
             # print(f"scores: {scores}")
             # print(f"scores_for_entropy: {scores_for_entropy}")
 
-            entropy = entropy_fn(scores_for_entropy)
+            try:
+                entropy = entropy_fn(scores_for_entropy, voter_scores=voter_scores)
+            except TypeError:
+                entropy = entropy_fn(scores_for_entropy)
             entropies_layer[key] = entropy
             entropies[key] = entropy
             layer_nodes.append((key, entropy, scores_for_entropy))
@@ -757,7 +843,7 @@ def mra_search(
                 break
             gt = rankings_by_combo.get(key, [])
             if gt:
-                known[key] = _ranking_to_score_vector(gt, plausible_answers)
+                known[key] = _voter_vector(key)
             budget_remaining -= 1
 
     budget_used = budget - budget_remaining
@@ -774,9 +860,12 @@ def mra_search(
         for subset in subsets:
             key = combo_key(subset)
 
-            # free CF check on nodes already in known (singletons + budget lookups)
+            # free CF check on nodes already in known (singletons + budget lookups).
+            # Use the raw ranking's top-1, not argmax(scores) — they can disagree
+            # when scores_by_combo is provided (model outputs its own tiebreaks).
             if key in known:
-                if _mra_top1(known[key]) != baseline_answer:
+                top1 = _top1(key)
+                if top1 is not None and top1 != baseline_answer:
                     return {
                         "found": True,
                         "key": key,
@@ -827,7 +916,211 @@ def mra_search(
             calls += 1
             ground_truth = rankings_by_combo.get(key, [])
             if ground_truth:
-                known[key] = _ranking_to_score_vector(ground_truth, plausible_answers)
+                known[key] = _voter_vector(key)
+            if ground_truth and ground_truth[0] != baseline_answer:
+                return {
+                    "found": True,
+                    "key": key,
+                    "size": layer_size,
+                    "ranking": ground_truth,
+                    "calls": calls,
+                    "budget_used": budget_used,
+                    "pruned_nodes": pruned_nodes,
+                }
+
+    return {
+        "found": False,
+        "key": None,
+        "size": None,
+        "ranking": None,
+        "calls": calls,
+        "budget_used": budget_used,
+        "pruned_nodes": pruned_nodes,
+    }
+
+
+# ─── CRA (Conflict-based Rank Aggregation) ───────────────────────────────
+#
+# Same skeleton as MRA but replaces entropy with voter-disagreement metrics.
+# Phase 1: bottom-up estimation, score each node by how much its child
+# voters disagree (top-1 disagreement, Kendall tau, score variance, or
+# distance-to-aggregate). Budget allocated to highest-conflict nodes.
+# Phase 2: top-down search identical to MRA — displacement + conflict
+# pruning.
+
+CRA_INFORMATIVENESS_FNS = {
+    "top1_disagreement": cra_top1_disagreement,
+    "score_variance": cra_score_variance,
+    "kendall_tau": cra_kendall_tau,
+    "distance_to_aggregate": cra_distance_to_aggregate,
+}
+
+
+def cra_search(
+    concepts,
+    rankings_by_combo,
+    plausible_answers=None,
+    start_node=None,
+    fixed_set=None,
+    budget=8,
+    aggregator_fn=None,
+    normalize_fn=None,
+    informativeness_fn=None,
+    cutoff_fn=None,
+    direction="down",
+    verbose=False,
+    scores_by_combo: dict[str, dict[str, float]] | None = None,
+    voter_norm: str = "max",
+):
+    """Conflict-based Rank Aggregation search.
+
+    Like MRA but Phase 1 selects budget nodes by voter disagreement rather
+    than entropy. ``informativeness_fn`` is called with
+    (scores, voter_scores=voter_dict) and returns a float (higher = more
+    informative). Defaults to top-1 decision disagreement.
+    """
+    normalize_fn = _resolve_norm_fn(normalize_fn)
+    if informativeness_fn is None:
+        informativeness_fn = cra_top1_disagreement
+    elif isinstance(informativeness_fn, str):
+        informativeness_fn = CRA_INFORMATIVENESS_FNS[informativeness_fn]
+    if cutoff_fn is None:
+        cutoff_fn = max_jump_cutoff
+
+    if start_node is None:
+        start_node = list(concepts)
+    if fixed_set is None:
+        fixed_set = []
+
+    start_key = combo_key(start_node)
+    baseline_ranking = rankings_by_combo.get(start_key, [])
+    if not baseline_ranking:
+        return {"found": False, "key": None, "size": None, "ranking": None,
+                "calls": 0, "budget_used": 0, "pruned_nodes": 0}
+
+    baseline_answer = baseline_ranking[0]
+    if plausible_answers is None:
+        plausible_answers = list(baseline_ranking)
+
+    if verbose:
+        print(f"CRA start_key: {start_key}")
+        print(f"CRA baseline: {baseline_answer}")
+
+    def _voter_vector(key: str) -> dict[str, float]:
+        if scores_by_combo is not None and key in scores_by_combo:
+            sv = scores_by_combo[key]
+            return dict(sv) if voter_norm == "none" else _normalize_max(sv)
+        return _ranking_to_score_vector(rankings_by_combo[key], plausible_answers)
+
+    def _top1(key: str) -> str | None:
+        r = rankings_by_combo.get(key) or []
+        return r[0] if r else None
+
+    known: dict[str, dict[str, float]] = {}
+    estimated_scores: dict[str, dict[str, float]] = {}
+    informativeness: dict[str, float] = {}
+
+    for c in concepts:
+        if c not in rankings_by_combo or not rankings_by_combo[c]:
+            raise ValueError(f"Concept {c} has no rankings")
+        known[c] = _voter_vector(c)
+
+    if "" in rankings_by_combo:
+        known[""] = _voter_vector("")
+
+    budget_remaining = budget
+
+    # Phase 1: bottom-up estimation + budget allocation by voter conflict
+    for layer_size, subsets in iter_search_layers(concepts, fixed_set, "up"):
+        if layer_size >= len(concepts):
+            continue
+
+        layer_nodes: list[tuple[str, float]] = []
+        for subset in subsets:
+            key = combo_key(subset)
+            if key in known:
+                continue
+
+            voter_scores = _mra_get_child_voters(
+                subset, known, estimated_scores, plausible_answers, voter_norm,
+            )
+            if not voter_scores:
+                continue
+
+            ranking, scores = _mra_aggregate_borda(voter_scores, plausible_answers)
+            scores_for_store = normalize_fn(scores) if normalize_fn else scores
+            estimated_scores[key] = scores_for_store
+
+            try:
+                info_score = informativeness_fn(scores_for_store, voter_scores=voter_scores)
+            except TypeError:
+                info_score = informativeness_fn(scores_for_store)
+            informativeness[key] = info_score
+            layer_nodes.append((key, info_score))
+
+        mj_selected = cutoff_fn(layer_nodes, budget_remaining)
+        for key in mj_selected:
+            if budget_remaining <= 0:
+                break
+            gt = rankings_by_combo.get(key, [])
+            if gt:
+                known[key] = _voter_vector(key)
+            budget_remaining -= 1
+
+    budget_used = budget - budget_remaining
+
+    # Phase 2: top-down search
+    calls = 0
+    pruned_nodes = 0
+    for layer_size, subsets in iter_search_layers(concepts, start_node, "down"):
+        unknown_nodes: list[tuple[str, int, float, dict[str, float]]] = []
+
+        for subset in subsets:
+            key = combo_key(subset)
+
+            if key in known:
+                top1 = _top1(key)
+                if top1 is not None and top1 != baseline_answer:
+                    return {
+                        "found": True,
+                        "key": key,
+                        "size": len(subset),
+                        "ranking": rankings_by_combo.get(key),
+                        "calls": calls,
+                        "budget_used": budget_used,
+                        "pruned_nodes": pruned_nodes,
+                    }
+                continue
+
+            if key not in estimated_scores:
+                continue
+
+            scores = estimated_scores[key]
+            ranking = _mra_ranking_from_scores(scores)
+            displacement = _mra_displacement(ranking, baseline_answer)
+            info_score = informativeness.get(key, 0.0)
+            unknown_nodes.append((key, displacement, info_score, scores))
+
+        if not unknown_nodes:
+            continue
+
+        info_inputs = [(k, inf) for k, _, inf, _ in unknown_nodes]
+        high_info_keys = set(cutoff_fn(info_inputs, len(unknown_nodes)))
+
+        candidates = [
+            (key, disp, inf, scores)
+            for key, disp, inf, scores in unknown_nodes
+            if not (disp <= 0 and key not in high_info_keys)
+        ]
+        pruned_nodes += len(unknown_nodes) - len(candidates)
+
+        candidates.sort(key=lambda x: (-x[1], x[2]))
+
+        for key, _, _, _ in candidates:
+            calls += 1
+            ground_truth = rankings_by_combo.get(key, [])
+            if ground_truth:
+                known[key] = _voter_vector(key)
             if ground_truth and ground_truth[0] != baseline_answer:
                 return {
                     "found": True,

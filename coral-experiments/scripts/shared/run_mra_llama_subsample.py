@@ -22,8 +22,8 @@ from search.rank import mra_search
 DATASETS = [
     ("msmarco_criteria", "criteria", "MSMARCO\ncriteria"),
     ("msmarco_pragma",   "pragma",   "MSMARCO\npragma"),
-    ("sonnet_criteria",  "criteria", "Sonnet\ncriteria"),
-    ("sonnet_pragma",    "pragma",   "Sonnet\npragma"),
+    ("curated_criteria",  "criteria", "Curated\ncriteria"),
+    ("curated_pragma",    "pragma",   "Curated\npragma"),
 ]
 
 SIZES = list(range(3, 11))
@@ -63,13 +63,13 @@ def _load_rbc(name: str, dtype: str) -> dict[str, dict[str, list[str]]]:
             d = json.load(f)
         return {str(qid): lat["rankings"] for qid, lat in d["lattices"].items()}
 
-    if name == "sonnet_criteria":
-        with open("data/sonnet_criteria.json") as f:
+    if name == "curated_criteria":
+        with open("data/curated_criteria.json") as f:
             d = json.load(f)
         return {qid: lat["raw_answers"] for qid, lat in d.items() if qid != "_meta"}
 
-    if name == "sonnet_pragma":
-        with open("data/sonnet_pragma.json") as f:
+    if name == "curated_pragma":
+        with open("data/curated_pragma.json") as f:
             d = json.load(f)
         return {str(rec["id"]): rec["lattice"]["answers"] for rec in d}
 
@@ -77,7 +77,7 @@ def _load_rbc(name: str, dtype: str) -> dict[str, dict[str, list[str]]]:
 
 
 def _load_results(name: str) -> list[dict]:
-    path = f"logged_results/{name}/results.json"
+    path = f"logged_results/llama31-8b/{name}/results.json"
     with open(path) as f:
         r = json.load(f)
     return r["results"] if isinstance(r, dict) else r

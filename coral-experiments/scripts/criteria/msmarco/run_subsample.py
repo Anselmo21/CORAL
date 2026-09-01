@@ -10,10 +10,10 @@ Also writes a CC-ready export of the same case set so the CC runner can
 operate on the identical lattice slices.
 
 Outputs:
-  logged_results/msmarco_criteria/cases.json             — sampled (qid, size, start_node) cases
-  logged_results/msmarco_criteria/cc_cases.json          — CC-ready export (sub-lattice rbc + sources)
-  logged_results/msmarco_criteria/per_case/case_<i>.json — per-case results (resumable)
-  logged_results/msmarco_criteria/results.json           — aggregate results
+  logged_results/llama31-8b/msmarco_criteria/cases.json             — sampled (qid, size, start_node) cases
+  logged_results/llama31-8b/msmarco_criteria/cc_cases.json          — CC-ready export (sub-lattice rbc + sources)
+  logged_results/llama31-8b/msmarco_criteria/per_case/case_<i>.json — per-case results (resumable)
+  logged_results/llama31-8b/msmarco_criteria/results.json           — aggregate results
 """
 
 from __future__ import annotations
@@ -31,7 +31,7 @@ from search.lattice import combo_key, jaccard_keys, restrict_rbc
 from search.rank import era_search, sra_search
 
 DATA_PATH = "data/msmarco_criteria.json"
-OUT_DIR = "logged_results/msmarco_criteria"
+OUT_DIR = "logged_results/llama31-8b/msmarco_criteria"
 CASES_PATH = f"{OUT_DIR}/cases.json"
 CC_CASES_PATH = f"{OUT_DIR}/cc_cases.json"
 RESULTS_PATH = f"{OUT_DIR}/results.json"

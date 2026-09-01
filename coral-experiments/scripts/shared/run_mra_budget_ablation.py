@@ -3,7 +3,7 @@
 Sweeps budget in [2, 4, 8, 16, 32] across the 4 Llama-3.1-8B datasets
 (or Qwen3-32B with --model qwen3).
 
-Results → logged_results/{ds}/mra_budget_ablation/results.json
+Results → logged_results/llama31-8b/{ds}/mra_budget_ablation/results.json
            (qwen3: logged_results/qwen3-32b/{ds}/mra_budget_ablation/results.json)
 Plot    → plots/llama31/mra_budget_ablation.png
            plots/qwen3-32b/mra_budget_ablation.png
@@ -36,15 +36,15 @@ from search.rank import mra_search
 LLAMA_DATASETS = [
     ("msmarco_criteria", "scripts.criteria.msmarco.run_subsample", "MSMARCO criteria", "Criteria"),
     ("msmarco_pragma",   "scripts.pragma.msmarco.run_subsample",   "MSMARCO pragma",   "Pragmas"),
-    ("sonnet_criteria",  "scripts.criteria.sonnet.run_subsample",  "Sonnet criteria",  "Criteria"),
-    ("sonnet_pragma",    "scripts.pragma.sonnet.run_subsample",    "Sonnet pragma",    "Pragmas"),
+    ("curated_criteria",  "scripts.criteria.curated.run_subsample",  "Curated criteria",  "Criteria"),
+    ("curated_pragma",    "scripts.pragma.curated.run_subsample",    "Curated pragma",    "Pragmas"),
 ]
 
 QWEN3_DATASETS = [
     ("msmarco_criteria", "data/qwen3-32b/msmarco-criteria-qwen3-32.json",  "Qwen3 MSMARCO criteria", "Criteria"),
     ("msmarco_pragma",   "data/qwen3-32b/msmarco-pragmas-qwen3-32b.json",  "Qwen3 MSMARCO pragma",   "Pragmas"),
-    ("sonnet_criteria",  "data/qwen3-32b/sonnet-criteria-qwen3-32b.json",  "Qwen3 Sonnet criteria",  "Criteria"),
-    ("sonnet_pragma",    "data/qwen3-32b/sonnet-pragmas-qwen3-32b.json",   "Qwen3 Sonnet pragma",    "Pragmas"),
+    ("curated_criteria",  "data/qwen3-32b/curated-criteria-qwen3-32b.json",  "Qwen3 Curated criteria",  "Criteria"),
+    ("curated_pragma",    "data/qwen3-32b/curated-pragmas-qwen3-32b.json",   "Qwen3 Curated pragma",    "Pragmas"),
 ]
 
 BUDGETS = [2, 4, 8, 16, 32, 64]
@@ -195,7 +195,7 @@ def main() -> None:
         title      = "Qwen3-32B"
     else:
         datasets   = LLAMA_DATASETS
-        log_prefix = "logged_results"
+        log_prefix = "logged_results/llama31-8b"
         plot_out   = "plots/llama31/mra_budget_ablation.png"
         title      = "Llama-3.1-8B"
 

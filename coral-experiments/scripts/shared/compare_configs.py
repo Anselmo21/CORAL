@@ -7,7 +7,7 @@ era_search.budget_used (apples-to-apples vs BFS.calls).
 Examples:
     python -m scripts.shared.compare_configs
     python -m scripts.shared.compare_configs --sizes 9 10
-    python -m scripts.shared.compare_configs --dataset sonnet_pragma
+    python -m scripts.shared.compare_configs --dataset curated_pragma
     python -m scripts.shared.compare_configs --sizes 10 --dataset msmarco_criteria
 """
 import argparse
@@ -20,10 +20,10 @@ from search.rank import era_search
 from metric import evaluate
 
 DATASETS = [
-    ("sonnet_pragma",    "scripts.pragma.sonnet.run_subsample"),
+    ("curated_pragma",    "scripts.pragma.curated.run_subsample"),
     ("msmarco_pragma",   "scripts.pragma.msmarco.run_subsample"),
     ("msmarco_criteria", "scripts.criteria.msmarco.run_subsample"),
-    ("sonnet_criteria",  "scripts.criteria.sonnet.run_subsample"),
+    ("curated_criteria",  "scripts.criteria.curated.run_subsample"),
 ]
 
 # Edit this list to compare different ERA configs. Each entry is
@@ -37,7 +37,7 @@ CONFIGS = [
 
 
 def make_eval_lattices(name, modpath, sizes):
-    with open(f"logged_results/{name}/cases.json") as f:
+    with open(f"logged_results/llama31-8b/{name}/cases.json") as f:
         cases = json.load(f)
     mod = import_module(modpath)
     qids = sorted({c["qid"] for c in cases})

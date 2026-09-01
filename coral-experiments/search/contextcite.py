@@ -90,6 +90,34 @@ def contextcite_search(
                 mask[criteria_to_idx[c]] = 1.0
         return float(solver.predict(mask.reshape(1, -1))[0])
 
+    result = _surrogate_guided_search(
+        criteria, rankings_by_combo, baseline_top1,
+        start_node, direction, surrogate_score, prune_threshold,
+    )
+    result.update({
+        "attributions": attr_scores,
+        "num_ablations": num_ablations,
+        "response": cc.response,
+        "solver": solver,
+    })
+    return result
+
+
+def _surrogate_guided_search(
+    criteria,
+    rankings_by_combo,
+    baseline_top1,
+    start_node,
+    direction,
+    surrogate_score,
+    prune_threshold,
+):
+    """Layer-by-layer traversal ordered by a surrogate score.
+
+    Within each layer, nodes are checked in ascending predicted score
+    (baseline least supported first); nodes with score > prune_threshold are
+    skipped without verification. Returns the first verified CF.
+    """
     calls = 0
     pruned_nodes = 0
 
@@ -118,10 +146,6 @@ def contextcite_search(
                     "ranking": ranking,
                     "calls": calls,
                     "pruned_nodes": pruned_nodes,
-                    "attributions": attr_scores,
-                    "num_ablations": num_ablations,
-                    "response": cc.response,
-                    "solver": solver,
                 }
 
     return {
@@ -130,8 +154,126 @@ def contextcite_search(
         "ranking": None,
         "calls": calls,
         "pruned_nodes": pruned_nodes,
+    }
+
+
+FORCED_RANKING_PREFIX = '{"ranking": ['
+
+
+def contextcite_rank_search(
+    criteria,
+    rankings_by_combo,
+    query,
+    sources,
+    answers,
+    model,
+    tokenizer,
+    mode="criteria",
+    num_ablations=64,
+    ablation_keep_prob=0.5,
+    batch_size=1,
+    criteria_baseline=None,
+    start_node=None,
+    direction="down",
+    prune_threshold=0.0,
+):
+    """Rank-target ContextCite search ("LSM-rank").
+
+    Renders the exact ground-truth scoring prompt (coral-runs/qa.py, vendored
+    in context_cite.ScoringPromptPartitioner), teacher-forces the response
+    prefix '{"ranking": [<baseline_index>', and fits the Lasso surrogate on
+    logit(p) of the forced index token — the same per-token quantity the
+    ContextCite paper uses, restricted to the position that decides the
+    ground-truth top-1. Predicted score > 0 then means predicted
+    P(index token) > 50% over the vocabulary, which guarantees the index is
+    argmax, so prune_threshold=0.0 has sound non-CF semantics.
+
+    criteria_baseline defaults to None (NOT "empty" as in contextcite_search):
+    reference subtraction would turn the target into lift-over-empty-prompt
+    and destroy the threshold-0 argmax semantics. Keep it None unless
+    deliberately A/B-testing.
+    """
+    if start_node is None:
+        start_node = list(criteria)
+
+    from context_cite import ScoringPromptPartitioner, SCORING_PROMPT_TEMPLATE
+
+    start_key = combo_key(start_node)
+    baseline = rankings_by_combo.get(start_key, [])
+    baseline_top1 = baseline[0] if baseline else None
+    if baseline_top1 is None:
+        raise ValueError(f"no baseline ranking for start node {start_key!r}")
+    try:
+        baseline_index = list(answers).index(baseline_top1)
+    except ValueError:
+        raise ValueError(
+            f"baseline top-1 {baseline_top1!r} not found in answers "
+            f"{list(answers)!r} — stale or mismatched cases"
+        )
+    # Single-digit index assumed by the one-token target expectation below.
+    assert len(answers) <= 10, "multi-digit answer indices not supported"
+
+    partitioner = ScoringPromptPartitioner(
+        question=query,
+        atoms=list(criteria),
+        sources_block=sources,
+        answers=list(answers),
+        mode=mode,
+    )
+    forced = FORCED_RANKING_PREFIX + str(baseline_index)
+
+    cc = _make_citer(
+        model,
+        tokenizer,
+        context=partitioner.context,
+        query="",
+        partitioner=partitioner,
+        prompt_template=SCORING_PROMPT_TEMPLATE,
+        response_override=forced,
+        criteria_baseline=criteria_baseline,
+        num_ablations=num_ablations,
+        batch_size=batch_size,
+        ablation_keep_prob=ablation_keep_prob,
+    )
+
+    # Fit on the char range covering just the index digit -> its token(s).
+    prefix_len = len(FORCED_RANKING_PREFIX)
+    attr = cc.get_attributions(
+        start_idx=prefix_len, end_idx=len(forced),
+        as_dataframe=False, verbose=False,
+    )
+    attr_scores = {c: float(attr[i]) for i, c in enumerate(criteria)}
+
+    tok_start, tok_end = cc._indices_to_token_indices(prefix_len, len(forced))
+    index_token_span = int(tok_end - tok_start)
+    if index_token_span != 1:
+        print(
+            f"WARNING: forced index digit spans {index_token_span} tokens "
+            f"(BPE merge?); target is P(merged span), semantics still hold"
+        )
+
+    solver = cc.last_fitted_solver
+    criteria_to_idx = {c: i for i, c in enumerate(criteria)}
+    n_criteria = len(criteria)
+
+    def surrogate_score(subset):
+        mask = np.zeros(n_criteria, dtype=np.float32)
+        for c in subset:
+            if c in criteria_to_idx:
+                mask[criteria_to_idx[c]] = 1.0
+        return float(solver.predict(mask.reshape(1, -1))[0])
+
+    result = _surrogate_guided_search(
+        criteria, rankings_by_combo, baseline_top1,
+        start_node, direction, surrogate_score, prune_threshold,
+    )
+    result.update({
         "attributions": attr_scores,
         "num_ablations": num_ablations,
         "response": cc.response,
         "solver": solver,
-    }
+        "baseline_index": baseline_index,
+        "forced_response": forced,
+        "index_token_span": index_token_span,
+    })
+    return result

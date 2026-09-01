@@ -13,7 +13,7 @@ import json
 import time
 from pathlib import Path
 
-from scripts.criteria.sonnet.run_subsample import score_proxy
+from scripts.criteria.curated.run_subsample import score_proxy
 from search.bfs import bfs_search
 from search.flagr import make_era_aggregator, make_sra_aggregator
 from search.lattice import combo_key, hop_distance, parse_combo_key
@@ -22,12 +22,12 @@ from search.rank import era_search, sra_search
 DATASETS = {
     "msmarco_criteria":       "data/llama31-8b/msmarco-criteria-lattices.json",
     "msmarco_pragma":         "data/llama31-8b/msmarco-pragmas-lattices.json",
-    "sonnet_criteria":        "data/llama31-8b/sonnet-criteria-lattices.json",
-    "sonnet_pragma":          "data/llama31-8b/sonnet-pragmas-lattices.json",
+    "curated_criteria":        "data/llama31-8b/curated-criteria-lattices.json",
+    "curated_pragma":          "data/llama31-8b/curated-pragmas-lattices.json",
     "qwen3_msmarco_criteria": "data/qwen3-32b/msmarco-criteria-lattices.json",
     "qwen3_msmarco_pragma":   "data/qwen3-32b/msmarco-pragmas-lattices.json",
-    "qwen3_sonnet_criteria":  "data/qwen3-32b/sonnet-criteria-lattices.json",
-    "qwen3_sonnet_pragma":    "data/qwen3-32b/sonnet-pragmas-lattices.json",
+    "qwen3_curated_criteria":  "data/qwen3-32b/curated-criteria-lattices.json",
+    "qwen3_curated_pragma":    "data/qwen3-32b/curated-pragmas-lattices.json",
 }
 
 SRA_METHODS = ["borda", "combsum", "combmnz", "condorcet", "copeland",
@@ -40,7 +40,11 @@ ERA_BUDGETS = (4, 8)
 
 
 def run_dataset(name: str, data_path: str, runners, out_name: str, verbose: bool = True) -> list[dict]:
-    cases = json.loads(Path(f"logged_results/{name}/cases.json").read_text())
+    if name.startswith("qwen3_"):
+        ds_dir = f"logged_results/qwen3-32b-prelim/{name.removeprefix('qwen3_')}"
+    else:
+        ds_dir = f"logged_results/llama31-8b/{name}"
+    cases = json.loads(Path(f"{ds_dir}/cases.json").read_text())
     qids = {str(c["qid"]) for c in cases}
 
     # load the non-halted lattices from the consolidated data file
@@ -77,7 +81,7 @@ def run_dataset(name: str, data_path: str, runners, out_name: str, verbose: bool
         if verbose and (i + 1) % 20 == 0:
             print(f"  {name}: {i + 1}/{len(cases)} cases ({time.time() - t0:.0f}s)", flush=True)
 
-    out = Path(f"logged_results/{name}/{out_name}")
+    out = Path(f"{ds_dir}/{out_name}")
     out.write_text(json.dumps(rows, indent=2))
     print(f"wrote {out}")
     return rows

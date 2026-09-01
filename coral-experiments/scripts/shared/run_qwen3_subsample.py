@@ -10,14 +10,14 @@ on each case with subprocess isolation + incremental checkpointing.
 Usage:
     conda run -n coral python3 -m scripts.shared.run_qwen3_subsample --dataset msmarco_criteria
     conda run -n coral python3 -m scripts.shared.run_qwen3_subsample --dataset msmarco_pragma
-    conda run -n coral python3 -m scripts.shared.run_qwen3_subsample --dataset sonnet_criteria
-    conda run -n coral python3 -m scripts.shared.run_qwen3_subsample --dataset sonnet_pragma
+    conda run -n coral python3 -m scripts.shared.run_qwen3_subsample --dataset curated_criteria
+    conda run -n coral python3 -m scripts.shared.run_qwen3_subsample --dataset curated_pragma
 
 Outputs (per dataset):
-    logged_results/qwen3_<dataset>/cases.json
-    logged_results/qwen3_<dataset>/cc_cases.json
-    logged_results/qwen3_<dataset>/per_case/case_<i>.json
-    logged_results/qwen3_<dataset>/results.json
+    logged_results/qwen3-32b-prelim/<dataset>/cases.json
+    logged_results/qwen3-32b-prelim/<dataset>/cc_cases.json
+    logged_results/qwen3-32b-prelim/<dataset>/per_case/case_<i>.json
+    logged_results/qwen3-32b-prelim/<dataset>/results.json
 """
 from __future__ import annotations
 
@@ -36,22 +36,22 @@ from search.rank import era_search, sra_search
 DATASETS: dict[str, tuple[str, str, int | None]] = {
     "msmarco_criteria": (
         "data/qwen3-32b/msmarco-criteria-qwen3-32.json",
-        "logged_results/qwen3_msmarco_criteria",
+        "logged_results/qwen3-32b-prelim/msmarco_criteria",
         20,
     ),
     "msmarco_pragma": (
         "data/qwen3-32b/msmarco-pragmas-qwen3-32b.json",
-        "logged_results/qwen3_msmarco_pragma",
+        "logged_results/qwen3-32b-prelim/msmarco_pragma",
         20,
     ),
-    "sonnet_criteria": (
-        "data/qwen3-32b/sonnet-criteria-qwen3-32b.json",
-        "logged_results/qwen3_sonnet_criteria",
+    "curated_criteria": (
+        "data/qwen3-32b/curated-criteria-qwen3-32b.json",
+        "logged_results/qwen3-32b-prelim/curated_criteria",
         20,
     ),
-    "sonnet_pragma": (
-        "data/qwen3-32b/sonnet-pragmas-qwen3-32b.json",
-        "logged_results/qwen3_sonnet_pragma",
+    "curated_pragma": (
+        "data/qwen3-32b/curated-pragmas-qwen3-32b.json",
+        "logged_results/qwen3-32b-prelim/curated_pragma",
         20,
     ),
 }

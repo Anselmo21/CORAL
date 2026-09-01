@@ -11,9 +11,9 @@ leaving 16 lattices. (52412 kept from the original 3-qid exclusion because it
 has the highest k=10 BFS cost of the three.)
 
 Outputs:
-  logged_results/msmarco_pragma/cases.json
-  logged_results/msmarco_pragma/per_case/case_<i>.json
-  logged_results/msmarco_pragma/results.json
+  logged_results/llama31-8b/msmarco_pragma/cases.json
+  logged_results/llama31-8b/msmarco_pragma/per_case/case_<i>.json
+  logged_results/llama31-8b/msmarco_pragma/results.json
 """
 from __future__ import annotations
 
@@ -31,7 +31,7 @@ import scripts.pragma.msmarco.run_subsample as base
 
 EXCLUDE_QIDS: set[str] = {"480543", "51587"}
 
-OUT_DIR      = "logged_results/msmarco_pragma"
+OUT_DIR      = "logged_results/llama31-8b/msmarco_pragma"
 CASES_PATH   = f"{OUT_DIR}/cases.json"
 RESULTS_PATH = f"{OUT_DIR}/results.json"
 

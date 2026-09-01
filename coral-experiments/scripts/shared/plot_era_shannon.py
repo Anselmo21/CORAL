@@ -28,9 +28,9 @@ from search.rank import era_search
 
 DATASETS = [
     ("msmarco_criteria", "scripts.criteria.msmarco.run_subsample", "MSMARCO Criteria"),
-    ("sonnet_criteria",  "scripts.criteria.sonnet.run_subsample",  "Sonnet Criteria"),
+    ("curated_criteria",  "scripts.criteria.curated.run_subsample",  "Curated Criteria"),
     ("msmarco_pragma",   "scripts.pragma.msmarco.run_subsample",   "MSMARCO Pragma"),
-    ("sonnet_pragma",    "scripts.pragma.sonnet.run_subsample",    "Sonnet Pragma"),
+    ("curated_pragma",    "scripts.pragma.curated.run_subsample",    "Curated Pragma"),
 ]
 
 # Sequential colormaps: light→dark = low→high budget.
@@ -83,7 +83,7 @@ def _run_era(criteria, rbc, budget, entropy_fn, start, bfs_for_proxy, bfs_key, s
 
 def _compute_all(dataset: str, modpath: str) -> list[dict]:
     """Run ERA(softmax) and ERA(shannon) at b=4/8 plus ERA(shannon) at b=16/pct_10."""
-    with open(f"logged_results/{dataset}/paper_results.json") as f:
+    with open(f"logged_results/llama31-8b/{dataset}/paper_results.json") as f:
         rows = json.load(f)
 
     mod = import_module(modpath)

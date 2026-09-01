@@ -22,8 +22,8 @@ from search.rank import mra_search
 DATASETS = [
     ("qwen3_msmarco_criteria", "data/qwen3-32b/msmarco-criteria-qwen3-32.json",  "MSMARCO\ncriteria"),
     ("qwen3_msmarco_pragma",   "data/qwen3-32b/msmarco-pragmas-qwen3-32b.json",  "MSMARCO\npragma"),
-    ("qwen3_sonnet_criteria",  "data/qwen3-32b/sonnet-criteria-qwen3-32b.json",   "Sonnet\ncriteria"),
-    ("qwen3_sonnet_pragma",    "data/qwen3-32b/sonnet-pragmas-qwen3-32b.json",    "Sonnet\npragma"),
+    ("qwen3_curated_criteria",  "data/qwen3-32b/curated-criteria-qwen3-32b.json",   "Curated\ncriteria"),
+    ("qwen3_curated_pragma",    "data/qwen3-32b/curated-pragmas-qwen3-32b.json",    "Curated\npragma"),
 ]
 
 SIZES = list(range(3, 11))
@@ -352,7 +352,7 @@ def plot_budget_sweep(dataset_results: list[dict], out: str) -> None:
 def main() -> None:
     dataset_results = []
     for log_dir, data_path, label in DATASETS:
-        ds = run_dataset(f"logged_results/{log_dir}", data_path, label)
+        ds = run_dataset(f"logged_results/qwen3-32b-prelim/{log_dir.removeprefix('qwen3_')}", data_path, label)
         dataset_results.append(ds)
 
     plot_size_breakdown(dataset_results, PLOT_BUDGET, "plots/qwen3_mra_subsample_size.png")

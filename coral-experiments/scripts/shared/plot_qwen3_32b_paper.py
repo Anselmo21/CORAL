@@ -3,7 +3,7 @@
 Adds era_b4, era_b8, mra_zscore_b4/b8, mra_softmax_b4/b8 to paper_results.json,
 then writes plots/qwen3-32b/<dataset>/combined.png with those methods.
 LSM (ContextCite) lines are overlaid for msmarco_criteria and msmarco_pragma
-from logged_results/qwen3_{name}/cc_results_budget_{N}.json.
+from logged_results/qwen3-32b-prelim/{name}/cc_results_budget_{N}.json.
 
 Usage:
     conda run -n coral python3 -m scripts.shared.plot_qwen3_32b_paper
@@ -27,8 +27,8 @@ from scripts.shared.plot_style import apply_plot_style, draw_hop_bars
 DATASETS = [
     ("msmarco_criteria", "data/qwen3-32b/msmarco-criteria-qwen3-32.json",  "Qwen MSMARCO criteria"),
     ("msmarco_pragma",   "data/qwen3-32b/msmarco-pragmas-qwen3-32b.json",  "Qwen MSMARCO pragma"),
-    ("sonnet_criteria",  "data/qwen3-32b/sonnet-criteria-qwen3-32b.json",  "Qwen Sonnet criteria"),
-    ("sonnet_pragma",    "data/qwen3-32b/sonnet-pragmas-qwen3-32b.json",   "Qwen Sonnet pragma"),
+    ("curated_criteria",  "data/qwen3-32b/curated-criteria-qwen3-32b.json",  "Qwen Curated criteria"),
+    ("curated_pragma",    "data/qwen3-32b/curated-pragmas-qwen3-32b.json",   "Qwen Curated pragma"),
 ]
 
 NEW_METHODS = [
@@ -55,7 +55,7 @@ LSM_METHODS = [
     (16, "LSM (b=16)", "D", "-", "#ff7f0e", 2.0),
 ]
 
-LSM_DATASETS = {"msmarco_criteria", "msmarco_pragma", "sonnet_criteria", "sonnet_pragma"}
+LSM_DATASETS = {"msmarco_criteria", "msmarco_pragma", "curated_criteria", "curated_pragma"}
 
 
 def _load_lattices(data_path: str) -> dict[str, tuple[list, dict]]:
@@ -97,7 +97,7 @@ def _compute_methods(name: str, data_path: str) -> None:
 
 
 def _load_cc_by_size(name: str, budget: int) -> dict[int, list[dict]] | None:
-    path = f"logged_results/qwen3_{name}/cc_results_budget_{budget}.json"
+    path = f"logged_results/qwen3-32b-prelim/{name}/cc_results_budget_{budget}.json"
     if not os.path.exists(path):
         return None
     rows = json.load(open(path))

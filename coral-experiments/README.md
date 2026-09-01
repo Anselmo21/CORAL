@@ -2,7 +2,7 @@
 
 Search algorithms that find **minimal counterfactual subsets** of criteria or pragmas which flip the LLM's original answer to a user's question. 
 
-Compares an oracle (BFS) against three proxies (SRA, ERA, LSM) across four datasets — two question-criteria sets (MSMARCO, Sonnet) and two pragma sets (MSMARCO, Sonnet).
+Compares an oracle (BFS) against three proxies (SRA, ERA, LSM) across four datasets — two question-criteria sets (MSMARCO, Curated) and two pragma sets (MSMARCO, Curated).
 
 ## Quick start
 
@@ -38,15 +38,15 @@ plots/             the paper's headline plots
 ```
 data/                               raw lattice JSONs (one per dataset)
 ├ msmarco_criteria.json
-├ sonnet_criteria.json
+├ curated_criteria.json
 ├ msmarco_pragma.json
-└ sonnet_pragma.json
+└ curated_pragma.json
 
 logged_results/
 ├ msmarco_criteria/                 processed: cases, results, cc_results, paper_results
-├ sonnet_criteria/
+├ curated_criteria/
 ├ msmarco_pragma/
-└ sonnet_pragma/
+└ curated_pragma/
 ```
 
 Each `data/<X>.json` is the raw LLM-grading output. The sibling
@@ -58,9 +58,9 @@ truth for the headline table.
 
 ```
 scripts/criteria/msmarco/           MSMARCO criteria pipeline
-scripts/criteria/sonnet/            Sonnet criteria pipeline
+scripts/criteria/curated/            Curated criteria pipeline
 scripts/pragma/msmarco/             MSMARCO pragma pipeline
-scripts/pragma/sonnet/              Sonnet pragma pipeline
+scripts/pragma/curated/              Curated pragma pipeline
 scripts/shared/                     cross-dataset paper pipeline + helpers
 ```
 
@@ -103,9 +103,9 @@ Plus `plot_style.py`, `load_cc_model.py`, `cc_budget_ablation_dev.py`
 # 1. Generate cases.json + results.json (BFS + SRA + ERA budget sweep) per dataset.
 #    This is the slow step — minutes per dataset on CPU.
 python -m scripts.criteria.msmarco.run_subsample
-python -m scripts.criteria.sonnet.run_subsample
+python -m scripts.criteria.curated.run_subsample
 python -m scripts.pragma.msmarco.run_subsample
-python -m scripts.pragma.sonnet.run_subsample
+python -m scripts.pragma.curated.run_subsample
 
 # 2. Refresh the paper table with current ERA heuristics.
 python -m scripts.shared.paper_results
@@ -128,9 +128,9 @@ ERA(b=16) Pareto-dominates the other proxies on every dataset:
 | Dataset          | BFS cost | ERA(b=16) acc / cost | CC(pct_10) acc / cost |
 | ---------------- | -------- | -------------------- | --------------------- |
 | MSMARCO criteria | 92.75    | 93.6% / 47.04        | 73.7% / 73.33         |
-| Sonnet criteria  | 138.34   | 98.7% / 75.35        | 85.9% / 121.27        |
+| Curated criteria  | 138.34   | 98.7% / 75.35        | 85.9% / 121.27        |
 | MSMARCO pragma   | 95.96    | 94.9% / 63.69        | 90.0% / 102.13        |
-| Sonnet pragma    | 80.52    | 96.8% / 62.83        | 92.3% / 92.74         |
+| Curated pragma    | 80.52    | 96.8% / 62.83        | 92.3% / 92.74         |
 
 
 See `plots/headline_acc_vs_cost.png` and `plots/<X>/combined.png`.

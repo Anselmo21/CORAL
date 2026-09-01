@@ -61,7 +61,7 @@ for (( i=0; i<NUM_GPUS; i+=TENSOR_PARALLEL_SIZE )); do
   WORKERS+=("$slot")
 done
 
-DATASETS=(msmarco_criteria msmarco_pragma sonnet_criteria sonnet_pragma)
+DATASETS=(msmarco_criteria msmarco_pragma curated_criteria curated_pragma)
 for ds in "${DATASETS[@]}"; do
   path="logged_results/${DATASET_ROOT}/${ds}/cc_cases.json"
   if [[ ! -f "$path" ]]; then

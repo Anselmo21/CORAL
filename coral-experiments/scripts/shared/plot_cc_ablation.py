@@ -1,8 +1,8 @@
 """Unified CC budget-ablation plotter (replaces the three per-dataset variants).
 
 Reads:
-  logged_results/<dataset>/cc_ablation_results.json   (produced by run_cc_ablation.py)
-  logged_results/<dataset>/results.json                (BFS/SRA/ERA references)
+  logged_results/llama31-8b/<dataset>/cc_ablation_results.json   (produced by run_cc_ablation.py)
+  logged_results/llama31-8b/<dataset>/results.json                (BFS/SRA/ERA references)
 
 Writes plots/<dataset>/:
   cc_fixed_budgets.png    fixed CC budgets vs refs (accuracy | cost)
@@ -33,7 +33,7 @@ import numpy as np
 
 from scripts.shared.plot_style import apply_plot_style
 
-DATASETS = ["msmarco_criteria", "sonnet_criteria", "msmarco_pragma", "sonnet_pragma"]
+DATASETS = ["msmarco_criteria", "curated_criteria", "msmarco_pragma", "curated_pragma"]
 
 BUDGETS_FIXED: list[int] = [4, 8, 16, 32, 64, 128, 256]
 BUDGETS_PCT:   list[int] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
@@ -45,8 +45,8 @@ _COLORS  = plt.colormaps["tab10"].colors
 
 
 def _load(dataset: str) -> tuple[list[dict], list[dict]]:
-    cc_path = f"logged_results/{dataset}/cc_ablation_results.json"
-    era_path = f"logged_results/{dataset}/results.json"
+    cc_path = f"logged_results/llama31-8b/{dataset}/cc_ablation_results.json"
+    era_path = f"logged_results/llama31-8b/{dataset}/results.json"
     with open(cc_path) as f:
         cc_rows = json.load(f)
     with open(era_path) as f:
@@ -157,7 +157,7 @@ def plot_pair(dataset: str, kind_panels: list[str], out_path: str) -> None:
 
 
 def plot_dataset(dataset: str) -> None:
-    cc_path = f"logged_results/{dataset}/cc_ablation_results.json"
+    cc_path = f"logged_results/llama31-8b/{dataset}/cc_ablation_results.json"
     if not os.path.exists(cc_path):
         print(f"[{dataset}] SKIP — {cc_path} doesn't exist (no CC ablation has been run)")
         return

@@ -19,7 +19,7 @@ import time
 from scripts.shared.cc_budget_ablation_dev import score_cc
 from search.bfs import bfs_search
 
-DATASETS = ["msmarco_criteria", "msmarco_pragma", "sonnet_criteria", "sonnet_pragma"]
+DATASETS = ["msmarco_criteria", "msmarco_pragma", "curated_criteria", "curated_pragma"]
 
 
 def run_dataset(dataset, args, model, tokenizer, contextcite_search):

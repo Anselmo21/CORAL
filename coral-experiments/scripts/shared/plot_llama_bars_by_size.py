@@ -22,8 +22,8 @@ from scripts.shared.plot_style import apply_plot_style
 DATASETS = [
     ("msmarco_criteria", "MSMARCO\ncriteria"),
     ("msmarco_pragma",   "MSMARCO\npragma"),
-    ("sonnet_criteria",  "Sonnet\ncriteria"),
-    ("sonnet_pragma",    "Sonnet\npragma"),
+    ("curated_criteria",  "Curated\ncriteria"),
+    ("curated_pragma",    "Curated\npragma"),
 ]
 
 METHODS = [
@@ -43,7 +43,7 @@ METRICS = [
 
 
 def _load(dataset: str) -> dict[int, list[dict]]:
-    rows = json.load(open(f"logged_results/{dataset}/paper_results.json"))
+    rows = json.load(open(f"logged_results/llama31-8b/{dataset}/paper_results.json"))
     by_size: dict[int, list[dict]] = defaultdict(list)
     for r in rows:
         by_size[r["size"]].append(r)

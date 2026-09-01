@@ -21,8 +21,8 @@ from search.rank import era_search, mra_search, sra_search
 DATASETS = [
     ("msmarco_criteria", "data/qwen3-32b/msmarco-criteria-qwen3-32.json",  "MSMARCO\ncriteria"),
     ("msmarco_pragma",   "data/qwen3-32b/msmarco-pragmas-qwen3-32b.json",  "MSMARCO\npragma"),
-    ("sonnet_criteria",  "data/qwen3-32b/sonnet-criteria-qwen3-32b.json",   "Sonnet\ncriteria"),
-    ("sonnet_pragma",    "data/qwen3-32b/sonnet-pragmas-qwen3-32b.json",    "Sonnet\npragma"),
+    ("curated_criteria",  "data/qwen3-32b/curated-criteria-qwen3-32b.json",   "Curated\ncriteria"),
+    ("curated_pragma",    "data/qwen3-32b/curated-pragmas-qwen3-32b.json",    "Curated\npragma"),
 ]
 
 BUDGETS = [4, 8, 16, 32, 64]

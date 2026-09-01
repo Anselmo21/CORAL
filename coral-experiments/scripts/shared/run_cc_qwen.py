@@ -24,8 +24,8 @@ from search.bfs import bfs_search
 DATASETS = [
     "msmarco_criteria",
     "msmarco_pragma",
-    "sonnet_criteria",
-    "sonnet_pragma",
+    "curated_criteria",
+    "curated_pragma",
 ]
 
 
@@ -44,6 +44,16 @@ def main() -> None:
         help="Fixed number of CC ablations per case.",
     )
     parser.add_argument(
+        "--target", choices=("gen", "rank"), default="gen",
+        help="Surrogate target: 'gen' = ContextCite response-likelihood "
+             "(contextcite_search, historical default); 'rank' = elicited-"
+             "ranking index token (contextcite_rank_search, scoring prompt).",
+    )
+    parser.add_argument(
+        "--limit", type=int, default=None,
+        help="Process at most N not-yet-done cases (smoke runs).",
+    )
+    parser.add_argument(
         "--dataset-root", default="qwen3-32b-temp0",
         help="logged_results/<dataset-root>/<dataset>/ prefix. "
              "Default 'qwen3-32b-temp0' matches scripts.qwen3_32b.run_subsample.",
@@ -52,7 +62,9 @@ def main() -> None:
 
     out_dir         = f"logged_results/{args.dataset_root}/{args.dataset}"
     cc_cases_path   = f"{out_dir}/cc_cases.json"
-    cc_results_path = f"{out_dir}/cc_results_budget_{args.budget}.json"
+    stem            = "cc_rank_results" if args.target == "rank" else "cc_results"
+    cc_results_path = f"{out_dir}/{stem}_budget_{args.budget}.json"
+    mode            = "pragma" if args.dataset.endswith("_pragma") else "criteria"
 
     with open(cc_cases_path) as f:
         cases = json.load(f)
@@ -62,6 +74,8 @@ def main() -> None:
 
     model, tokenizer = load_model_and_tokenizer(args)
     from search.contextcite import contextcite_search
+    if args.target == "rank":
+        from search.contextcite import contextcite_rank_search
 
     os.makedirs(out_dir, exist_ok=True)
     try:
@@ -74,10 +88,13 @@ def main() -> None:
         done = set()
 
     skipped = 0
+    n_processed = 0
     for case in cases:
         cid = case["case_id"]
         if cid in done:
             continue
+        if args.limit is not None and n_processed >= args.limit:
+            break
         if not case.get("sources"):
             skipped += 1
             continue
@@ -98,15 +115,27 @@ def main() -> None:
         )
         t0 = time.time()
         try:
-            cc_res = contextcite_search(
-                criteria, rbc,
-                case["query"], case["sources"], case["plausible_answers"],
-                model, tokenizer,
-                num_ablations=args.budget,
-                batch_size=args.batch_size,
-                start_node=start_node,
-                direction="down",
-            )
+            if args.target == "rank":
+                cc_res = contextcite_rank_search(
+                    criteria, rbc,
+                    case["query"], case["sources"], case["plausible_answers"],
+                    model, tokenizer,
+                    mode=mode,
+                    num_ablations=args.budget,
+                    batch_size=args.batch_size,
+                    start_node=start_node,
+                    direction="down",
+                )
+            else:
+                cc_res = contextcite_search(
+                    criteria, rbc,
+                    case["query"], case["sources"], case["plausible_answers"],
+                    model, tokenizer,
+                    num_ablations=args.budget,
+                    batch_size=args.batch_size,
+                    start_node=start_node,
+                    direction="down",
+                )
         except Exception as e:
             print(f"ERROR: {e}")
             with open(cc_results_path, "w") as f:
@@ -116,11 +145,21 @@ def main() -> None:
         elapsed = time.time() - t0
 
         scored = score_cc(bfs_res, cc_res, rbc, start_node)
+        n_processed += 1
+        extras = {}
+        if args.target == "rank":
+            extras = {
+                "baseline_index":   cc_res["baseline_index"],
+                "index_token_span": cc_res["index_token_span"],
+            }
         results.append({
             "case_id":        cid,
+            "start_node":     case["start_node"],
             "query_id":       case["query_id"],
             "effective_size": k,
+            "target":         args.target,
             "budget":         args.budget,
+            **extras,
             "bfs_key":        bfs_res["key"],
             "bfs_layer":      bfs_res["size"],
             "bfs_calls":      bfs_res["calls"],

@@ -21,8 +21,8 @@ from scripts.shared.plot_style import apply_plot_style
 DATASETS = [
     ("qwen3_msmarco_criteria", "MSMARCO\ncriteria"),
     ("qwen3_msmarco_pragma",   "MSMARCO\npragma"),
-    ("qwen3_sonnet_criteria",  "Sonnet\ncriteria"),
-    ("qwen3_sonnet_pragma",    "Sonnet\npragma"),
+    ("qwen3_curated_criteria",  "Curated\ncriteria"),
+    ("qwen3_curated_pragma",    "Curated\npragma"),
 ]
 
 COLOR_BFS = "#4e79a7"
@@ -30,7 +30,7 @@ COLOR_SRA = "#e15759"
 
 
 def _load(dataset: str) -> list[dict]:
-    with open(f"logged_results/{dataset}/results.json") as f:
+    with open(f"logged_results/qwen3-32b-prelim/{dataset.removeprefix('qwen3_')}/results.json") as f:
         d = json.load(f)
     return d["results"] if isinstance(d, dict) and "results" in d else d
 

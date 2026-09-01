@@ -23,8 +23,8 @@ from scripts.shared.plot_style import apply_plot_style
 DATASETS = [
     ("msmarco_criteria", "MSMARCO\ncriteria"),
     ("msmarco_pragma",   "MSMARCO\npragma"),
-    ("sonnet_criteria",  "Sonnet\ncriteria"),
-    ("sonnet_pragma",    "Sonnet\npragma"),
+    ("curated_criteria",  "Curated\ncriteria"),
+    ("curated_pragma",    "Curated\npragma"),
 ]
 
 METHODS = [
@@ -38,7 +38,7 @@ METHODS = [
 
 
 def _load(dataset: str) -> list[dict]:
-    with open(f"logged_results/{dataset}/paper_results.json") as f:
+    with open(f"logged_results/llama31-8b/{dataset}/paper_results.json") as f:
         return json.load(f)
 
 

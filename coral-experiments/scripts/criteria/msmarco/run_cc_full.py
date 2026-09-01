@@ -1,7 +1,7 @@
 """CC (LSM) on the MSMARCO sub-lattice cases at the selected budget (GPU).
 
-Reads  logged_results/msmarco_criteria/cc_cases.json (exported by run_subsample.py).
-Writes logged_results/msmarco_criteria/cc_results.json with resume on case_id.
+Reads  logged_results/llama31-8b/msmarco_criteria/cc_cases.json (exported by run_subsample.py).
+Writes logged_results/llama31-8b/msmarco_criteria/cc_results.json with resume on case_id.
 
 Default budget = pct_10 (max(1, int(0.10 * 2**k)) per case). Override with --pct.
 
@@ -18,8 +18,8 @@ import time
 from scripts.shared.cc_budget_ablation_dev import score_cc
 from search.bfs import bfs_search
 
-CC_CASES_PATH = "logged_results/msmarco_criteria/cc_cases.json"
-RESULTS_DIR   = "logged_results/msmarco_criteria"
+CC_CASES_PATH = "logged_results/llama31-8b/msmarco_criteria/cc_cases.json"
+RESULTS_DIR   = "logged_results/llama31-8b/msmarco_criteria"
 
 
 def main() -> None:

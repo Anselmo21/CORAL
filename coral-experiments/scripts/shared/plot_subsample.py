@@ -24,7 +24,7 @@ import numpy as np
 
 from scripts.shared.plot_style import apply_plot_style
 
-DATASETS = ["msmarco_criteria", "sonnet_criteria", "msmarco_pragma", "sonnet_pragma"]
+DATASETS = ["msmarco_criteria", "curated_criteria", "msmarco_pragma", "curated_pragma"]
 
 ERA_BUDGETS_FIXED: list[int] = [4, 8, 16, 32, 64, 128, 256]
 ERA_BUDGETS_PCT:   list[int] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
@@ -36,7 +36,7 @@ _COLORS  = plt.colormaps["tab10"].colors
 
 def _load_results(dataset: str) -> list[dict]:
     """Load results.json for a dataset; handle both dict-wrapped (criteria) and flat-list (pragma) forms."""
-    with open(f"logged_results/{dataset}/results.json") as f:
+    with open(f"logged_results/llama31-8b/{dataset}/results.json") as f:
         d = json.load(f)
     if isinstance(d, dict) and "results" in d:
         return d["results"]

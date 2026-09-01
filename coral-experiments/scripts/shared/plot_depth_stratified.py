@@ -21,9 +21,9 @@ from search.rank import mra_search
 
 DATASETS = [
     ("qwen3_msmarco_criteria", "data/qwen3-32b/msmarco-criteria-qwen3-32.json",  "criteria"),
-    ("qwen3_sonnet_criteria",  "data/qwen3-32b/sonnet-criteria-qwen3-32b.json",   "criteria"),
+    ("qwen3_curated_criteria",  "data/qwen3-32b/curated-criteria-qwen3-32b.json",   "criteria"),
     ("qwen3_msmarco_pragma",   "data/qwen3-32b/msmarco-pragmas-qwen3-32b.json",   "pragma"),
-    ("qwen3_sonnet_pragma",    "data/qwen3-32b/sonnet-pragmas-qwen3-32b.json",    "pragma"),
+    ("qwen3_curated_pragma",    "data/qwen3-32b/curated-pragmas-qwen3-32b.json",    "pragma"),
 ]
 
 MRA_BUDGETS = [4, 8]
@@ -231,7 +231,7 @@ def plot(all_rows: list[dict], out: str) -> None:
 def main() -> None:
     all_rows: list[dict] = []
     for log_name, data_path, dtype in DATASETS:
-        log_dir = f"logged_results/{log_name}"
+        log_dir = f"logged_results/qwen3-32b-prelim/{log_name.removeprefix('qwen3_')}"
         print(f"Evaluating {log_name} ...")
         rows = evaluate_dataset(log_dir, data_path, dtype)
         print(f"  {len(rows)} BFS-found cases")
