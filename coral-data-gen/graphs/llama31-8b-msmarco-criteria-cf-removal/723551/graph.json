@@ -1,0 +1,511 @@
+{
+  "query_id": 723551,
+  "query": "Which medication class is effective for treating a migraine?",
+  "mode": "criteria",
+  "atoms": [
+    "mechanism of action",
+    "side effect profile",
+    "onset of action",
+    "evidence from studies",
+    "individual variability",
+    "cost-effectiveness",
+    "long-term safety",
+    "route of administration",
+    "availability of options",
+    "patient preferences"
+  ],
+  "plausible_answers": [
+    "Ergot drugs",
+    "Magnesium supplementation",
+    "Over-the-counter analgesics",
+    "New headache drugs"
+  ],
+  "baseline_answer": "Ergot drugs",
+  "baseline_index": 0,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "provider": "vllm",
+  "temperature": 0.7,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 3152,
+    "output_tokens": 2420,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q",
+        "layer": "1",
+        "type": "question",
+        "label": "Which medication class is effective for treating a migraine?",
+        "description": ""
+      },
+      {
+        "id": "sq1",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the key factors to consider when evaluating medication classes for migraines?",
+        "description": ""
+      },
+      {
+        "id": "sq2",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the benefits and drawbacks of different medication classes for migraines?",
+        "description": ""
+      },
+      {
+        "id": "c1",
+        "layer": "3",
+        "type": "concept",
+        "label": "mechanism of action",
+        "description": ""
+      },
+      {
+        "id": "c2",
+        "layer": "3",
+        "type": "concept",
+        "label": "side effect profile",
+        "description": ""
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "onset of action",
+        "description": ""
+      },
+      {
+        "id": "c4",
+        "layer": "3",
+        "type": "concept",
+        "label": "evidence from studies",
+        "description": ""
+      },
+      {
+        "id": "c5",
+        "layer": "3",
+        "type": "concept",
+        "label": "individual variability",
+        "description": ""
+      },
+      {
+        "id": "c6",
+        "layer": "3",
+        "type": "concept",
+        "label": "cost-effectiveness",
+        "description": ""
+      },
+      {
+        "id": "c7",
+        "layer": "3",
+        "type": "concept",
+        "label": "long-term safety",
+        "description": ""
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "route of administration",
+        "description": ""
+      },
+      {
+        "id": "c9",
+        "layer": "3",
+        "type": "concept",
+        "label": "availability of options",
+        "description": ""
+      },
+      {
+        "id": "c10",
+        "layer": "3",
+        "type": "concept",
+        "label": "patient preferences",
+        "description": ""
+      },
+      {
+        "id": "a1",
+        "layer": "4",
+        "type": "answer",
+        "label": "Ergot drugs",
+        "description": ""
+      },
+      {
+        "id": "a2",
+        "layer": "4",
+        "type": "answer",
+        "label": "Magnesium supplementation",
+        "description": ""
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Over-the-counter analgesics",
+        "description": ""
+      },
+      {
+        "id": "a4",
+        "layer": "4",
+        "type": "answer",
+        "label": "New headache drugs",
+        "description": ""
+      }
+    ],
+    "edges": [
+      {
+        "source": "q",
+        "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a4"
+      },
+      {
+        "source": "c2",
+        "target": "a4"
+      },
+      {
+        "source": "c3",
+        "target": "a4"
+      },
+      {
+        "source": "c4",
+        "target": "a4"
+      },
+      {
+        "source": "c5",
+        "target": "a4"
+      },
+      {
+        "source": "c6",
+        "target": "a4"
+      },
+      {
+        "source": "c7",
+        "target": "a4"
+      },
+      {
+        "source": "c8",
+        "target": "a4"
+      },
+      {
+        "source": "c9",
+        "target": "a4"
+      },
+      {
+        "source": "c10",
+        "target": "a4"
+      },
+      {
+        "source": "a1",
+        "target": "a2",
+        "R": [
+          "mechanism of action",
+          "onset of action",
+          "side effect profile"
+        ]
+      },
+      {
+        "source": "a1",
+        "target": "a3",
+        "R": [
+          "evidence from studies",
+          "long-term safety"
+        ]
+      },
+      {
+        "source": "a1",
+        "target": "a4",
+        "R": [
+          "availability of options",
+          "patient preferences"
+        ]
+      },
+      {
+        "source": "a2",
+        "target": "a1",
+        "R": [
+          "mechanism of action",
+          "onset of action",
+          "side effect profile"
+        ]
+      },
+      {
+        "source": "a2",
+        "target": "a3",
+        "R": [
+          "evidence from studies",
+          "long-term safety"
+        ]
+      },
+      {
+        "source": "a2",
+        "target": "a4",
+        "R": [
+          "availability of options",
+          "patient preferences"
+        ]
+      },
+      {
+        "source": "a3",
+        "target": "a1",
+        "R": [
+          "evidence from studies",
+          "long-term safety"
+        ]
+      },
+      {
+        "source": "a3",
+        "target": "a2",
+        "R": [
+          "mechanism of action",
+          "onset of action",
+          "side effect profile"
+        ]
+      },
+      {
+        "source": "a3",
+        "target": "a4",
+        "R": [
+          "availability of options",
+          "patient preferences"
+        ]
+      },
+      {
+        "source": "a4",
+        "target": "a1",
+        "R": [
+          "availability of options",
+          "patient preferences"
+        ]
+      },
+      {
+        "source": "a4",
+        "target": "a2",
+        "R": [
+          "mechanism of action",
+          "onset of action",
+          "side effect profile"
+        ]
+      },
+      {
+        "source": "a4",
+        "target": "a3",
+        "R": [
+          "evidence from studies",
+          "long-term safety"
+        ]
+      }
+    ]
+  }
+}
