@@ -123,6 +123,19 @@ def main() -> None:
                          "windows make unaffordable on smaller cards; 8192 covers these prompts.")
     ap.add_argument("--gpu-memory-utilization", type=float, default=None,
                     help="Fraction of GPU memory vLLM may reserve (vllm provider only)")
+    ap.add_argument("--max-num-seqs", type=int, default=None,
+                    help="Cap concurrent sequences (vllm provider only); hybrid "
+                         "models need one state block per sequence")
+    ap.add_argument("--max-num-batched-tokens", type=int, default=None,
+                    help="Cap tokens per engine step (vllm provider only); lowers "
+                         "the startup profile peak on GPUs shared with other "
+                         "processes")
+    ap.add_argument("--disable-custom-all-reduce", action="store_true",
+                    help="Use NCCL instead of vLLM's custom all-reduce (needed "
+                         "for TP=2 on PCIe-only GPUs)")
+    ap.add_argument("--enforce-eager", action="store_true",
+                    help="Skip CUDA graph capture (vllm provider only); slower "
+                         "but avoids the capture-time memory spike")
     ap.add_argument("--max-retries", type=int, default=3)
     ap.add_argument("--fill-missing", action="store_true",
                     help="Resume per-combo within each row (not just per-row)")
@@ -151,6 +164,10 @@ def main() -> None:
         tensor_parallel_size=args.tensor_parallel_size,
         max_model_len=args.max_model_len,
         gpu_memory_utilization=args.gpu_memory_utilization,
+        max_num_seqs=args.max_num_seqs,
+        max_num_batched_tokens=args.max_num_batched_tokens,
+        disable_custom_all_reduce=args.disable_custom_all_reduce,
+        enforce_eager=args.enforce_eager,
     )
 
     skipped = completed = failed = 0

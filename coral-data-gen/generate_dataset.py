@@ -45,6 +45,10 @@ def create_llm_client(
     tensor_parallel_size: int = 1,
     max_model_len: Optional[int] = None,
     gpu_memory_utilization: Optional[float] = None,
+    max_num_seqs: Optional[int] = None,
+    max_num_batched_tokens: Optional[int] = None,
+    disable_custom_all_reduce: bool = False,
+    enforce_eager: bool = False,
 ) -> Any:
     """Build an LLM client for the chosen provider. Build once, reuse across queries.
 
@@ -82,6 +86,17 @@ def create_llm_client(
             extra["max_model_len"] = max_model_len
         if gpu_memory_utilization is not None:
             extra["gpu_memory_utilization"] = gpu_memory_utilization
+        # caps the startup profile peak on GPUs shared with other processes
+        if max_num_seqs is not None:
+            extra["max_num_seqs"] = max_num_seqs
+        if max_num_batched_tokens is not None:
+            extra["max_num_batched_tokens"] = max_num_batched_tokens
+        # TP=2 on PCIe-only GPUs crashes in vLLM's custom all-reduce
+        if disable_custom_all_reduce:
+            extra["disable_custom_all_reduce"] = True
+        # skips CUDA graph capture; slower but avoids the capture-time spike
+        if enforce_eager:
+            extra["enforce_eager"] = True
         print(f"Loading vLLM model '{model}' (dtype={local_dtype}, "
               f"tensor_parallel_size={tensor_parallel_size}"
               + (f", max_model_len={max_model_len}" if max_model_len else "")
@@ -151,9 +166,14 @@ def usage_so_far() -> Dict[str, Any]:
             "finish_reasons": list(_USAGE["finish_reasons"])}
 
 
+# (prompt_tokens, output_tokens) per output of the most recent invoke, in order.
+_LAST_CALL_USAGES: List[tuple] = []
+
+
 def _record_usage(prompt_tokens, output_tokens, finish_reason) -> None:
     _USAGE["calls"] += 1
     _USAGE["finish_reasons"].append(finish_reason)
+    _LAST_CALL_USAGES.append((prompt_tokens, output_tokens))
     if prompt_tokens is not None:
         _USAGE["prompt_tokens"] += prompt_tokens
     if output_tokens is not None:
@@ -171,6 +191,7 @@ def _invoke_chat_completion(
     use_tqdm: bool = False,
 ) -> str:
     """Provider-agnostic chat completion. Returns the assistant message content as a string."""
+    _LAST_CALL_USAGES.clear()
     if provider == "openai":
         resp = client.chat.completions.create(
             model=model,
@@ -240,6 +261,7 @@ def _invoke_chat_completion_batch(
     """
     if not messages_list:
         return []
+    _LAST_CALL_USAGES.clear()
     if provider == "vllm":
         from vllm import SamplingParams
         # Qwen3 non-thinking recommended sampling: top_p=0.8, top_k=20, min_p=0.
@@ -256,6 +278,10 @@ def _invoke_chat_completion_batch(
             use_tqdm=use_tqdm,
             chat_template_kwargs={"enable_thinking": False},
         )
+        for o in outputs:
+            _record_usage(len(o.prompt_token_ids or []),
+                          len(o.outputs[0].token_ids or []),
+                          o.outputs[0].finish_reason)
         return [(o.outputs[0].text or "").strip() for o in outputs]
     if provider == "local":
         do_sample = temperature > 0
@@ -674,6 +700,8 @@ def generate_dataset(
     else:
         print(f"Generating rankings for {len(all_combos)} {mode} combinations...")
 
+    reset_usage()
+    node_usage: Dict[str, List[int]] = {}
     singleton_top1s: List[str] = []
     halted_reason: Optional[str] = None
 
@@ -744,9 +772,11 @@ def generate_dataset(
                 batch_size=bs,
                 use_tqdm=use_tqdm,
             )
+            batch_usages = list(_LAST_CALL_USAGES)
         except Exception as e:
             print(f"  ⚠ batch call failed ({e}); falling back to sequential for this batch")
             response_texts = []
+            batch_usages = []
             for m in messages_list:
                 try:
                     response_texts.append(_invoke_chat_completion(
@@ -754,17 +784,24 @@ def generate_dataset(
                         messages=m, temperature=temperature, max_tokens=max_tokens,
                         use_tqdm=use_tqdm,
                     ))
+                    batch_usages.append(_LAST_CALL_USAGES[0] if _LAST_CALL_USAGES else (None, None))
                 except Exception as e2:
                     print(f"    sequential fallback also failed: {e2}")
                     response_texts.append("")
+                    batch_usages.append((None, None))
+        if len(batch_usages) < len(batch):
+            # some providers record fewer entries than the batch; keep the zip aligned
+            batch_usages += [(None, None)] * (len(batch) - len(batch_usages))
 
         # Parse each response; retry failures individually
-        for (i, combo, combo_key), base_prompt, text in zip(batch, base_prompts, response_texts):
+        for (i, combo, combo_key), base_prompt, text, call_usage in zip(
+                batch, base_prompts, response_texts, batch_usages):
             display_key = combo_key if combo_key else "(no criteria)"
             print(f"[{i}/{len(all_combos)}] '{display_key}'")
 
             parsed = parse_full_ranking(text, plausible_answers)
             last_text = text
+            final_usage = call_usage
             attempts_used = 1
             while parsed is None and attempts_used < max_retries:
                 attempts_used += 1
@@ -782,6 +819,8 @@ def generate_dataset(
                         temperature=temperature, max_tokens=max_tokens,
                         use_tqdm=use_tqdm,
                     )
+                    if _LAST_CALL_USAGES:
+                        final_usage = _LAST_CALL_USAGES[0]
                     parsed = parse_full_ranking(last_text, plausible_answers)
                     if parsed is None:
                         print(f"  ⚠ retry {attempts_used}/{max_retries} parse_fail")
@@ -794,6 +833,8 @@ def generate_dataset(
                 else:
                     print(f"  ✓ Ranked: {parsed[:3]}{' …' if len(parsed) > 3 else ''}")
                 answers_dict[combo_key] = parsed
+                # node price = the parseable attempt; retry waste stays in the query totals
+                node_usage[combo_key] = list(final_usage)
                 if len(combo) == 1:
                     singleton_top1s.append(parsed[0].strip().lower())
             else:
@@ -825,6 +866,21 @@ def generate_dataset(
             halted_reason_out = prev.get("halted_reason", halted_reason_out)
         except Exception:
             pass
+    usage = usage_so_far()
+    reasons: Dict[str, int] = {}
+    for r in usage.pop("finish_reasons"):
+        reasons[str(r)] = reasons.get(str(r), 0) + 1
+    usage["finish_reasons"] = reasons
+    if fill_missing and Path(out_config_path).exists():
+        # Cumulative across the original run and any fills.
+        try:
+            prev_usage = json.loads(Path(out_config_path).read_text()).get("usage") or {}
+            for k in ("prompt_tokens", "output_tokens", "llm_calls"):
+                usage[k] += int(prev_usage.get(k) or 0)
+            for r, n in (prev_usage.get("finish_reasons") or {}).items():
+                usage["finish_reasons"][r] = usage["finish_reasons"].get(r, 0) + int(n)
+        except Exception:
+            pass
     config_out = {
         "name": dataset_name,
         "question": question,
@@ -836,10 +892,30 @@ def generate_dataset(
         "halted_reason": halted_reason_out,
         "combos_total": len(all_combos),
         "combos_run": len(answers_dict),
+        "usage": usage,
+        "generation": {
+            "model": model,
+            "provider": provider,
+            "temperature": temperature,
+            "max_tokens": max_tokens,
+        },
     }
     with open(out_config_path, 'w') as f:
         json.dump(config_out, f, indent=2)
     print(f"Saved config to {out_config_path}")
+
+    # per-node prices: {combo_key: [prompt_tokens, output_tokens]}
+    tokens_path = os.path.join(dataset_dir, "tokens.json")
+    if fill_missing and Path(tokens_path).exists():
+        try:
+            prev_tokens = json.loads(Path(tokens_path).read_text())
+            prev_tokens.update(node_usage)
+            node_usage = prev_tokens
+        except Exception:
+            pass
+    with open(tokens_path, 'w') as f:
+        json.dump(node_usage, f)
+    print(f"Saved per-node tokens to {tokens_path}")
 
     return answers_dict
 
