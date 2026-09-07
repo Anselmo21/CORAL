@@ -51,6 +51,14 @@ def add_model_args(parser: argparse.ArgumentParser) -> None:
              "most budget+1 prompts at once, so 64 is more than enough.",
     )
     parser.add_argument(
+        "--max-num-batched-tokens", type=int, default=None,
+        help="Cap tokens per engine step (vllm backend only). The startup "
+             "profile pass allocates activations for one full batch, ~8 GiB "
+             "at vLLM's 8192 default; on GPUs shared with other processes "
+             "that peak can be what OOMs, independent of "
+             "gpu-memory-utilization.",
+    )
+    parser.add_argument(
         "--gpu-memory-utilization", type=float, default=0.85,
         help="Fraction of GPU memory vLLM may reserve (vllm backend only). "
              "Prompt-logprob scoring needs a few hundred MB of headroom per "
@@ -77,6 +85,8 @@ def load_model_and_tokenizer(args: argparse.Namespace) -> tuple:
             extra["max_model_len"] = args.max_model_len
         if args.max_num_seqs is not None:
             extra["max_num_seqs"] = args.max_num_seqs
+        if args.max_num_batched_tokens is not None:
+            extra["max_num_batched_tokens"] = args.max_num_batched_tokens
         if args.disable_custom_all_reduce:
             extra["disable_custom_all_reduce"] = True
         model = LLM(model=args.model, dtype="float16",

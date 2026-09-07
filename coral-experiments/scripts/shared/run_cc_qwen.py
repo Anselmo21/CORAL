@@ -164,6 +164,9 @@ def main() -> None:
             "bfs_layer":      bfs_res["size"],
             "bfs_calls":      bfs_res["calls"],
             "elapsed":        round(elapsed, 2),
+            "prompt_tokens":  cc_res.get("usage", {}).get("prompt_tokens"),
+            "output_tokens":  cc_res.get("usage", {}).get("output_tokens"),
+            "llm_calls":      cc_res.get("usage", {}).get("llm_calls"),
             **scored,
         })
 

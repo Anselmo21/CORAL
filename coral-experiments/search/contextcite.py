@@ -99,6 +99,7 @@ def contextcite_search(
         "num_ablations": num_ablations,
         "response": cc.response,
         "solver": solver,
+        "usage": dict(cc.usage),
     })
     return result
 
@@ -272,6 +273,7 @@ def contextcite_rank_search(
         "num_ablations": num_ablations,
         "response": cc.response,
         "solver": solver,
+        "usage": dict(cc.usage),
         "baseline_index": baseline_index,
         "forced_response": forced,
         "index_token_span": index_token_span,

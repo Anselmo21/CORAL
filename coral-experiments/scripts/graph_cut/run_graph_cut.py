@@ -42,10 +42,13 @@ def graph_supports(graphs_dir, qid, concepts, answers):
     """{answer -> supporting concepts} from the graph's Layer-3 to Layer-4 edges."""
     def match(lab, pool):
         """Some graphs number their labels ('1. trustworthiness: ...'); others keep
-        only the answer's title ('Answer A (Rent and Invest Default)'), and others
-        just the title's parenthetical ('Rent and Invest Default'). Strip the
-        number, then take a prefix match, then a parenthetical match, each only
-        when exactly one candidate qualifies."""
+        only the answer's title ('Answer A (Rent and Invest Default)'), others
+        just the title's parenthetical ('Rent and Invest Default'), and the
+        llama31-8b graphs shorten answers to a bare name ('Pseudoephedrine
+        (Sudafed)') or drift on case ('Eltamd' for 'EltaMD'). Strip the
+        number, then take a prefix match, then a parenthetical match, then a
+        containment match (exact case, then case-folded), each only when
+        exactly one candidate qualifies."""
         if lab in pool:
             return lab
         stripped = re.sub(r"^\s*\d+[.)]\s*", "", lab)
@@ -55,6 +58,12 @@ def graph_supports(graphs_dir, qid, concepts, answers):
         if len(hits) == 1:
             return hits[0]
         hits = [p for p in pool if f"({stripped})" in p]
+        if len(hits) == 1:
+            return hits[0]
+        hits = [p for p in pool if stripped in p]
+        if len(hits) == 1:
+            return hits[0]
+        hits = [p for p in pool if stripped.casefold() in p.casefold()]
         return hits[0] if len(hits) == 1 else None
 
     try:
@@ -72,6 +81,9 @@ def graph_supports(graphs_dir, qid, concepts, answers):
     sup = {a: set() for a in answers}
     for e in graph["edges"]:
         s, t = e.get("source"), e.get("target")
+        if s in l4 and t in l3:
+            # a few llama31-8b graphs write the support edge answer-first
+            s, t = t, s
         if s not in l3 or t not in l4 or l4[t] is None:
             continue
         c = match(label[s], concepts)

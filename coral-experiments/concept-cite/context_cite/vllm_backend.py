@@ -110,6 +110,7 @@ def _vllm_teacher_forced_logit_probs(
     get_prompt_ids,
     response_ids,
     show_progress: bool = True,
+    usage=None,
 ) -> NDArray:
     """Batched teacher-forced logit-prob computation via vLLM prompt_logprobs."""
     response_ids = list(response_ids)
@@ -134,6 +135,10 @@ def _vllm_teacher_forced_logit_probs(
         sampling_params=sp,
         use_tqdm=show_progress,
     )
+    if usage is not None:
+        usage["prompt_tokens"] += sum(len(t) for t in token_id_lists)
+        usage["output_tokens"] += sum(len(o.outputs[0].token_ids) for o in outputs)
+        usage["llm_calls"] += len(token_id_lists)
 
     logit_probs = np.zeros((len(masks), len(response_ids)), dtype=np.float32)
     for i, out in enumerate(outputs):
@@ -208,6 +213,9 @@ class VLLMContextCiter(ContextCiter):
                 use_tqdm=False,
             )
             gen_text = results[0].outputs[0].text
+            self.usage["prompt_tokens"] += len(prompt_ids)
+            self.usage["output_tokens"] += len(results[0].outputs[0].token_ids)
+            self.usage["llm_calls"] += 1
             self._cache["output"] = prompt + gen_text
         return self._cache["output"]
 
@@ -221,6 +229,7 @@ class VLLMContextCiter(ContextCiter):
             masks,
             self._get_prompt_ids,
             self._response_ids,
+            usage=self.usage,
         )
         self._cache["reg_masks"] = masks
         self._cache["reg_logit_probs"] = logit_probs
@@ -240,5 +249,6 @@ class VLLMContextCiter(ContextCiter):
                 self._get_prompt_ids,
                 self._response_ids,
                 show_progress=False,
+                usage=self.usage,
             )
         return self._cache[key]

@@ -112,6 +112,9 @@ class ContextCiter:
         self.criteria_baseline = criteria_baseline
 
         self._cache = {}
+        # Live-call token totals across response generation, ablation scoring
+        # and reference scoring; both HF and vLLM paths add into this.
+        self.usage = {"prompt_tokens": 0, "output_tokens": 0, "llm_calls": 0}
         self._last_fitted_solver: Optional[BaseSolver] = None
         self.logger = logging.getLogger("ContextCite")
         self.logger.setLevel(logging.DEBUG)  # TODO: change to INFO later
@@ -145,6 +148,10 @@ class ContextCiter:
                 self._response_ids,
                 mask,
             )
+            self.usage["prompt_tokens"] += (
+                len(self._get_prompt_ids(mask=mask)) + len(self._response_ids)
+            )
+            self.usage["llm_calls"] += 1
         return self._cache[key]
 
     @classmethod
@@ -225,6 +232,9 @@ class ContextCiter:
             prompt_ids, prompt = self._get_prompt_ids(return_prompt=True)
             input_ids = ch.tensor([prompt_ids], device=self.model.device)
             output_ids = self.model.generate(input_ids, **self.generate_kwargs)[0]
+            self.usage["prompt_tokens"] += len(prompt_ids)
+            self.usage["output_tokens"] += len(output_ids) - len(prompt_ids)
+            self.usage["llm_calls"] += 1
             # We take the original prompt because sometimes encoding and decoding changes it
             raw_output = self.tokenizer.decode(output_ids)
             prompt_length = len(self.tokenizer.decode(prompt_ids))
@@ -331,6 +341,12 @@ class ContextCiter:
                 self.batch_size,
             )
         )
+        # Teacher-forced scoring: full ablated prompt + response in, nothing
+        # generated. Re-tokenizing per mask duplicates CPU work only.
+        n_resp = len(self._response_ids)
+        for mask in self._cache["reg_masks"]:
+            self.usage["prompt_tokens"] += len(self._get_prompt_ids(mask=mask)) + n_resp
+        self.usage["llm_calls"] += len(self._cache["reg_masks"])
 
     @property
     def _masks(self):
