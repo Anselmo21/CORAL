@@ -93,7 +93,14 @@ def pick_answer_with_all_atoms(
         raise ValueError(f"unknown mode: {mode!r}")
 
     n = len(plausible_answers)
-    messages = [{"role": "user", "content": prompt}]
+    # same system message the lattice generator uses, so a live baseline call
+    # reproduces the lattice elicitation exactly
+    messages = [
+        {"role": "system", "content": (
+            "You are a helpful assistant that ranks items as JSON arrays. "
+            "Follow formatting instructions exactly.")},
+        {"role": "user", "content": prompt},
+    ]
     for _ in range(max_retries):
         raw = _invoke_chat_completion(
             client=client, provider=provider, model=model,

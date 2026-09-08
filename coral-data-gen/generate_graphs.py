@@ -45,6 +45,7 @@ from generate_dataset import (
     usage_so_far,
 )
 from graph_ops import pick_answer_with_all_atoms
+from ranking_utils import combo_key_from_items
 from run_lattices import flatten_pragmas, load_rows, parse_qid_filter, stringify_sources
 
 
@@ -209,6 +210,37 @@ def select_atoms(row: Dict[str, Any], mode: str) -> List[str]:
     raise ValueError(f"unknown mode: {mode!r}")
 
 
+LATTICES_ROOT_FOR_BASELINE = Path("lattices")
+
+
+def baseline_from_lattice(lattice_run: str, qid: Any, plausible: List[str]):
+    """Ground-truth baseline from the lattice: the full-set top-1, or the
+    halt-consensus answer for halted queries. Returns (index, label) or None."""
+    qdir = LATTICES_ROOT_FOR_BASELINE / lattice_run / str(qid)
+    try:
+        cfg = json.loads((qdir / "config.json").read_text(encoding="utf-8"))
+        ans = json.loads((qdir / "answers.json").read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    atoms = cfg.get("criteria") or []
+    if cfg.get("halted"):
+        counts: Dict[str, int] = {}
+        for atom in atoms:
+            r = ans.get(atom)
+            if r:
+                counts[r[0]] = counts.get(r[0], 0) + 1
+        label = max(counts, key=counts.get) if counts else None
+    else:
+        r = ans.get(combo_key_from_items(atoms))
+        label = r[0] if r else None
+    if label is None:
+        return None
+    try:
+        return plausible.index(label), label
+    except ValueError:
+        return None
+
+
 _JSON_FENCE_RE = re.compile(r"```(?:json)?\s*(\{.*?\})\s*```", re.DOTALL)
 _LINE_COMMENT_RE = re.compile(r"//[^\n]*")
 _BLOCK_COMMENT_RE = re.compile(r"/\*.*?\*/", re.DOTALL)
@@ -267,6 +299,7 @@ def generate_row_graph(
     temperature: float,
     max_tokens: int,
     max_retries: int,
+    lattice_run: Optional[str] = None,
 ) -> None:
     reset_usage()
     atoms = select_atoms(row, mode)
@@ -274,12 +307,18 @@ def generate_row_graph(
     question = row.get("query") or ""
     plausible = list(row.get("plausible_answers") or [])
 
-    baseline_idx, baseline_label = pick_answer_with_all_atoms(
-        client=client, provider=provider, model=model,
-        question=question, sources=sources_text,
-        atoms=atoms, plausible_answers=plausible, mode=mode,
-        temperature=0.0, max_tokens=256, max_retries=max_retries,
-    )
+    picked = None
+    if lattice_run:
+        picked = baseline_from_lattice(lattice_run, row["id"], plausible)
+    baseline_source = "lattice" if picked is not None else "live"
+    if picked is None:
+        picked = pick_answer_with_all_atoms(
+            client=client, provider=provider, model=model,
+            question=question, sources=sources_text,
+            atoms=atoms, plausible_answers=plausible, mode=mode,
+            temperature=0.0, max_tokens=256, max_retries=max_retries,
+        )
+    baseline_idx, baseline_label = picked
 
     prompt = build_graph_of_thoughts_prompt(
         sources_text=sources_text,
@@ -325,6 +364,7 @@ def generate_row_graph(
         "plausible_answers": plausible,
         "baseline_answer": baseline_label,
         "baseline_index": baseline_idx,
+        "baseline_source": baseline_source,
         "model": model,
         "provider": provider,
         "temperature": temperature,
@@ -370,6 +410,10 @@ def main() -> None:
     ap.add_argument("--mode", choices=("criteria", "pragmas"), required=True)
     ap.add_argument("--run-name", required=True,
                     help="Subdir under graphs/ for this run's outputs")
+    ap.add_argument("--lattice-run", default=None,
+                    help="Lattice run dir under lattices/ whose ground truth "
+                         "seeds the baseline answer; falls back to a live "
+                         "ranking call when absent")
     ap.add_argument("--provider", choices=("openai", "vllm", "local"), default="openai")
     ap.add_argument("--model", default="gpt-4o-mini")
     ap.add_argument("--openai-base-url", default=None,
@@ -391,6 +435,14 @@ def main() -> None:
                     help="Cap tokens per request (prompt + output) for vLLM. vLLM reserves "
                          "KV cache for one request at the model's full context, which large "
                          "windows make unaffordable on smaller cards; 8192 covers these prompts.")
+    ap.add_argument("--max-num-seqs", type=int, default=None,
+                    help="Cap concurrent sequences (vllm provider only)")
+    ap.add_argument("--max-num-batched-tokens", type=int, default=None,
+                    help="Cap tokens per engine step (vllm provider only)")
+    ap.add_argument("--disable-custom-all-reduce", action="store_true",
+                    help="Use NCCL instead of vLLM's custom all-reduce")
+    ap.add_argument("--enforce-eager", action="store_true",
+                    help="Skip CUDA graph capture (vllm provider only)")
     ap.add_argument("--gpu-memory-utilization", type=float, default=None,
                     help="Fraction of GPU memory vLLM may reserve (vllm provider only)")
     ap.add_argument("--force", action="store_true",
@@ -417,6 +469,10 @@ def main() -> None:
         tensor_parallel_size=args.tensor_parallel_size,
         max_model_len=args.max_model_len,
         gpu_memory_utilization=args.gpu_memory_utilization,
+        max_num_seqs=args.max_num_seqs,
+        max_num_batched_tokens=args.max_num_batched_tokens,
+        disable_custom_all_reduce=args.disable_custom_all_reduce,
+        enforce_eager=args.enforce_eager,
     )
 
     skipped = completed = failed = 0
@@ -446,6 +502,7 @@ def main() -> None:
                 temperature=args.temperature,
                 max_tokens=args.max_tokens,
                 max_retries=args.max_retries,
+                lattice_run=args.lattice_run,
             )
             if graph_complete(out_dir):
                 completed += 1
