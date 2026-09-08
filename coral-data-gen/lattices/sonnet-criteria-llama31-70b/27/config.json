@@ -1,0 +1,41 @@
+{
+  "name": "sonnet-criteria-llama31-70b/27",
+  "question": "I get migraines about twice a month. Should I take something preventively or just treat each one when it happens?",
+  "mode": "criteria",
+  "criteria": [
+    "monthly migraine frequency threshold",
+    "impact on quality of life and productivity",
+    "acute medication overuse risk",
+    "side effect burden of daily preventives",
+    "efficacy of triptans for acute treatment",
+    "risk of progression to chronic migraine",
+    "cost and insurance coverage of CGRP inhibitors",
+    "patient preference for daily medication",
+    "lifestyle trigger management potential",
+    "prior acute treatment failure"
+  ],
+  "plausible_answers": [
+    "Answer A (Acute Treatment Default): Manage 2 migraines per month with triptans as needed \u2014 daily preventive medication adds side effect burden that isn't justified at this frequency, and most patients manage well with acute-only treatment.",
+    "Answer B (Start Preventives Early): Begin preventive therapy even at 2/month if your attacks are severely disabling \u2014 preventing progression to chronic migraine justifies earlier preventive intervention, and newer CGRP inhibitors have minimal side effects.",
+    "Answer C (Lifestyle Plus Acute): Prioritize identifying and eliminating personal triggers (sleep, diet, stress) alongside acute triptans before adding daily medication \u2014 many patients reduce frequency below treatment threshold through lifestyle modification alone."
+  ],
+  "sources": "Source 1 (2022, Mayo Clinic, Rochester MN USA): Preventive therapy is recommended when migraines occur 4 or more days per month, significantly impair quality of life, or when acute medications are overused \u2014 options include beta-blockers, topiramate, and CGRP inhibitors.\n\nSource 2 (2023, NEJM, Boston MA USA): CGRP monoclonal antibodies (erenumab, fremanezumab) reduce monthly migraine days by 50% in approximately 40\u201350% of patients \u2014 they are well-tolerated with minimal side effects compared to older preventives.\n\nSource 3 (2023, WebMD, Atlanta GA USA): Many patients with 2 migraines per month manage effectively with acute triptans alone \u2014 preventive medication adds daily pill burden and side effects that may not be justified for low-frequency episodic migraine.\n\nSource 4 (2023, Reddit r/migraine, USA): Community is divided \u2014 members with 2/month often manage with triptans and lifestyle triggers; those who progressed to chronic migraine regret not starting preventives earlier when frequency was lower.\n\nSource 5 (2022, JAMA Neurology, Chicago IL USA): For patients with 4\u201314 migraine days/month, preventive combined with acute rescue medication is more cost-effective long-term than acute-only treatment when accounting for lost productivity and quality of life.",
+  "halted": false,
+  "halted_reason": null,
+  "combos_total": 1024,
+  "combos_run": 1024,
+  "usage": {
+    "prompt_tokens": 770051,
+    "output_tokens": 10240,
+    "llm_calls": 1024,
+    "finish_reasons": {
+      "stop": 1024
+    }
+  },
+  "generation": {
+    "model": "meta-llama/Llama-3.1-70B-Instruct",
+    "provider": "vllm",
+    "temperature": 0.0,
+    "max_tokens": 4096
+  }
+}

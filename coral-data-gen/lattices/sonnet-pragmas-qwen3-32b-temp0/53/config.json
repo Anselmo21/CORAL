@@ -1,0 +1,41 @@
+{
+  "name": "sonnet-pragmas-qwen3-32b-temp0/53",
+  "question": "I write code all day. What mechanical keyboard should I get?",
+  "mode": "pragmas",
+  "criteria": [
+    "temporal: 2023 only",
+    "temporal: 2021\u20132023",
+    "geographic: USA",
+    "geographic: Global",
+    "perspective: Developer in open office or shared space",
+    "perspective: Developer working from home with no noise constraint",
+    "trustworthiness: Consumer product recommendation publication",
+    "trustworthiness: Mechanical keyboard enthusiast community",
+    "trustworthiness: Tech journalism",
+    "trustworthiness: Keyboard manufacturer"
+  ],
+  "plausible_answers": [
+    "Answer A (Keychron TKL Linear Default): Get a Keychron Q or V series in TKL with linear switches \u2014 the combination of hot-swap customizability, quiet linears for shared spaces, and compact layout is the best all-around choice for daily programming.",
+    "Answer B (Tactile for Touch Typing): Choose tactile switches (Boba U4 or Topre) on a 65% if you're a touch typist \u2014 the actuation feedback reduces errors and finger fatigue during marathon coding sessions without the noise of clicky switches.",
+    "Answer C (65% for Desk Efficiency): Prioritize a 65% form factor above switch choice \u2014 keeping your mouse closer and eliminating numpad bulk reduces shoulder strain during long development sessions more than any switch selection."
+  ],
+  "sources": "Source 1 (2023, Wirecutter, USA): Wirecutter recommends the Keychron Q or V series for programmers \u2014 excellent build quality, hot-swap switches, and QMK/VIA programmability make them the best-value customizable keyboards for developers.\n\nSource 2 (2022, Reddit r/MechanicalKeyboards, Global): Community recommends linear switches (Cherry MX Red, Gateron Yellow) for programmers who type for hours \u2014 the low actuation force reduces finger fatigue compared to tactile and clicky switches.\n\nSource 3 (2023, Ars Technica, USA): The 65% or TKL (tenkeyless) form factor is widely preferred by programmers \u2014 it saves desk space, keeps your mouse closer, and removes the numpad most developers never use while retaining arrow keys.\n\nSource 4 (2022, r/MechanicalKeyboards, Global): Tactile switches (Topre, Holy Pandas, Boba U4) are preferred by touch typists who want feedback without noise \u2014 the bump confirms actuation without bottoming out, reducing errors and fatigue for long typing sessions.\n\nSource 5 (2021, Das Keyboard, USA): Clicky switches (Cherry MX Blue) are strongly discouraged for office and co-working environments \u2014 the noise is disruptive and most developers who start with clicky switches migrate to linear or tactile within a year.",
+  "halted": true,
+  "halted_reason": "all 10 singletons produced the same top-1 answer: 'answer a (keychron tkl linear default): get a keychron q or v series in tkl with linear switches \u2014 the combination of hot-swap customizability, quiet linears for shared spaces, and compact layout is the best all-around choice for daily programming.'",
+  "combos_total": 1024,
+  "combos_run": 11,
+  "usage": {
+    "prompt_tokens": 8768,
+    "output_tokens": 114,
+    "llm_calls": 11,
+    "finish_reasons": {
+      "stop": 11
+    }
+  },
+  "generation": {
+    "model": "Qwen/Qwen3-32B",
+    "provider": "vllm",
+    "temperature": 0.0,
+    "max_tokens": 4096
+  }
+}

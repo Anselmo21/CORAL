@@ -1,0 +1,41 @@
+{
+  "name": "sonnet-criteria-llama31-70b/56",
+  "question": "I want to get a standing desk but I'm not sure if I should get a motorized one or a manual crank. Is the price difference worth it?",
+  "mode": "criteria",
+  "criteria": [
+    "frequency of position changes during workday",
+    "price and budget",
+    "ease and speed of height adjustment",
+    "long-term reliability and warranty",
+    "weight capacity and stability",
+    "desk preset memory for instant switching",
+    "noise level of motorized mechanism",
+    "physical effort required for manual cranking",
+    "total cost of ownership over 5 years",
+    "available space and cable management"
+  ],
+  "plausible_answers": [
+    "Answer A (Motorized Default): Get a motorized desk \u2014 the price premium over manual is $200\u2013400, but research clearly shows that manual cranking friction causes users to change positions far less often, defeating the health purpose of the desk entirely.",
+    "Answer B (Manual for Budget): Buy a manual crank desk if budget is the hard constraint \u2014 a $250 IKEA SKARSTA is vastly better than no standing desk, and disciplined users who set timers can achieve adequate position variety even with manual adjustment.",
+    "Answer C (Motorized with Presets): Get a motorized desk specifically with programmable memory presets \u2014 one-touch height switching between sitting and standing positions is the feature most associated with frequent transitions and actual health benefit."
+  ],
+  "sources": "Source 1 (2023, Wirecutter, USA): Wirecutter recommends the Uplift V2 or Flexispot E7 as top motorized sit-stand desks \u2014 smooth electric adjustment encourages more frequent position changes, which is the entire health point of a standing desk.\n\nSource 2 (2022, The Verge, USA): Manual crank desks (IKEA SKARSTA, Flexispot crank models) cost $200\u2013300 versus $500\u2013700 for quality motorized options \u2014 the manual crank takes 30\u201340 seconds to adjust, which most users report makes them change positions significantly less often.\n\nSource 3 (2023, Reddit r/StandingDesk, Global): Community almost universally recommends motorized over manual \u2014 frequent position switching is the health benefit, and users report that the friction of manual cranking causes them to stay in one position for hours.\n\nSource 4 (2022, Consumer Reports, USA): Motorized desks have more potential failure points (motor, controller, keypad) but most quality models carry 5\u201310 year warranties \u2014 the reliability gap over manual desks is minimal for reputable brands.\n\nSource 5 (2021, Occupational and Environmental Medicine, UK): Research confirms that the frequency of sit-stand transitions matters more than total standing time \u2014 desks with memory presets that enable one-touch height change produce significantly more transitions than manual alternatives.",
+  "halted": true,
+  "halted_reason": "all 10 singletons produced the same top-1 answer: 'answer c (motorized with presets): get a motorized desk specifically with programmable memory presets \u2014 one-touch height switching between sitting and standing positions is the feature most associated with frequent transitions and actual health benefit.'",
+  "combos_total": 1024,
+  "combos_run": 11,
+  "usage": {
+    "prompt_tokens": 8122,
+    "output_tokens": 110,
+    "llm_calls": 11,
+    "finish_reasons": {
+      "stop": 11
+    }
+  },
+  "generation": {
+    "model": "meta-llama/Llama-3.1-70B-Instruct",
+    "provider": "vllm",
+    "temperature": 0.0,
+    "max_tokens": 4096
+  }
+}

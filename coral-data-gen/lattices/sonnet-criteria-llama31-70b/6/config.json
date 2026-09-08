@@ -1,0 +1,41 @@
+{
+  "name": "sonnet-criteria-llama31-70b/6",
+  "question": "I have 15 years left on my mortgage at 3.2% interest. Should I pay it off early or invest the extra money?",
+  "mode": "criteria",
+  "criteria": [
+    "expected investment return vs mortgage rate spread",
+    "guaranteed return of debt elimination",
+    "psychological value of being debt-free",
+    "tax deductibility of mortgage interest",
+    "sequence-of-returns risk near retirement",
+    "liquidity of invested assets",
+    "years remaining until retirement",
+    "tolerance for market volatility",
+    "fixed monthly obligation elimination",
+    "tax-advantaged investment space availability"
+  ],
+  "plausible_answers": [
+    "Answer A (Invest the Difference Default): Invest the extra money in index funds \u2014 at 3.2% mortgage rate versus historical ~10% market returns, the spread is too large to justify early payoff purely on financial grounds.",
+    "Answer B (Pay Off for Peace of Mind): Pay down the mortgage aggressively if being debt-free has strong psychological value or you're within 10 years of retirement and want to eliminate fixed obligations.",
+    "Answer C (Hybrid Split): Split extra payments 50/50 between mortgage paydown and investments \u2014 this captures partial emotional benefit of debt reduction while maintaining meaningful market exposure."
+  ],
+  "sources": "Source 1 (2023, Investopedia, USA): At 3.2% mortgage rate, the math strongly favours investing over accelerated payoff \u2014 the S&P 500 has historically returned ~10% annually, making the 6\u20137% spread a compelling long-term arbitrage.\n\nSource 2 (2022, NerdWallet, USA): Paying off a low-rate mortgage early is primarily a psychological decision, not a financial one \u2014 the guaranteed peace of mind has real value but comes at the cost of significant expected investment returns.\n\nSource 3 (2023, Morningstar, USA): Tax-deductible mortgage interest (where applicable) further reduces the effective rate, widening the gap between borrowing costs and expected equity returns, reinforcing the invest-first argument.\n\nSource 4 (2022, Reddit r/personalfinance, USA): Many community members advocate paying off the mortgage for the emotional benefit of being debt-free, particularly for those approaching retirement who want to eliminate fixed obligations.\n\nSource 5 (2021, WSJ, USA): Sequence-of-returns risk means homeowners near retirement who carry mortgage debt face potential forced selling of investments in a downturn to cover payments \u2014 eliminating the mortgage removes this vulnerability.",
+  "halted": false,
+  "halted_reason": null,
+  "combos_total": 1024,
+  "combos_run": 1024,
+  "usage": {
+    "prompt_tokens": 718851,
+    "output_tokens": 10240,
+    "llm_calls": 1024,
+    "finish_reasons": {
+      "stop": 1024
+    }
+  },
+  "generation": {
+    "model": "meta-llama/Llama-3.1-70B-Instruct",
+    "provider": "vllm",
+    "temperature": 0.0,
+    "max_tokens": 4096
+  }
+}

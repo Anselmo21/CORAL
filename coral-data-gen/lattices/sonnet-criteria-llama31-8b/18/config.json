@@ -1,0 +1,41 @@
+{
+  "name": "sonnet-criteria-llama31-8b/18",
+  "question": "I've had chronic lower back pain for over a year. What's the best approach to finally get relief?",
+  "mode": "criteria",
+  "criteria": [
+    "long-term pain reduction evidence",
+    "speed of symptom relief",
+    "addressing central sensitization",
+    "avoidance of unnecessary procedures",
+    "functional restoration and strength",
+    "presence of clear structural pathology",
+    "prior treatment failure history",
+    "patient engagement with active treatment",
+    "cost and access to multidisciplinary care",
+    "risk of opioid or passive treatment dependency"
+  ],
+  "plausible_answers": [
+    "Answer A (Active Multimodal Default): Pursue a combination of supervised strength training, pain neuroscience education, and CBT \u2014 this multimodal active approach has the strongest long-term evidence for non-specific chronic back pain.",
+    "Answer B (Structural Investigation First): Get updated imaging and a specialist referral before committing to conservative management \u2014 if a structural cause (herniated disc, stenosis) is confirmed, targeted interventions or surgery may be warranted.",
+    "Answer C (Mind-Body Focus): Prioritize CBT and pain neuroscience education alongside gentle movement \u2014 for chronic pain with central sensitization features, addressing psychological factors often produces more relief than physical interventions alone."
+  ],
+  "sources": "Source 1 (2023, Mayo Clinic, Rochester MN USA): For chronic low back pain, a multimodal approach combining exercise therapy, cognitive behavioral therapy, and pain education is recommended \u2014 passive treatments like rest or repeated imaging rarely improve long-term outcomes.\n\nSource 2 (2022, NEJM, Boston MA USA): A systematic review found that supervised exercise therapy, particularly strength training and stabilization exercises, reduces chronic low back pain intensity and improves function more than any single passive intervention.\n\nSource 3 (2023, WebMD, Atlanta GA USA): Mind-body approaches including CBT, mindfulness-based stress reduction, and pain neuroscience education have strong evidence for chronic back pain \u2014 they address the central sensitization component that often perpetuates pain beyond initial injury.\n\nSource 4 (2022, Reddit r/backpain, USA): Community members report the most success with active approaches (strength training, walking, yoga) combined with understanding pain science; passive treatments like repeated chiropractic or injections provided temporary relief at best.\n\nSource 5 (2021, Spine Journal, USA): Spinal surgery for non-specific chronic low back pain without clear structural pathology shows poor evidence of benefit over conservative management \u2014 imaging findings like disc bulges are common in pain-free populations and should not automatically indicate surgery.",
+  "halted": true,
+  "halted_reason": "all 10 singletons produced the same top-1 answer: 'answer a (active multimodal default): pursue a combination of supervised strength training, pain neuroscience education, and cbt \u2014 this multimodal active approach has the strongest long-term evidence for non-specific chronic back pain.'",
+  "combos_total": 1024,
+  "combos_run": 11,
+  "usage": {
+    "prompt_tokens": 7609,
+    "output_tokens": 165,
+    "llm_calls": 11,
+    "finish_reasons": {
+      "stop": 11
+    }
+  },
+  "generation": {
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "provider": "vllm",
+    "temperature": 0.0,
+    "max_tokens": 4096
+  }
+}

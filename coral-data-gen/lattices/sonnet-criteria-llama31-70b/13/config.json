@@ -1,0 +1,41 @@
+{
+  "name": "sonnet-criteria-llama31-70b/13",
+  "question": "I just received a $10,000 tax refund. What's the smartest thing to do with it?",
+  "mode": "criteria",
+  "criteria": [
+    "elimination of high-interest debt",
+    "emergency fund adequacy",
+    "tax-advantaged space availability",
+    "lump-sum vs DCA return optimization",
+    "regret minimization from market timing",
+    "immediate guaranteed return on debt payoff",
+    "long-term wealth compounding",
+    "psychological comfort with market volatility",
+    "liquidity preservation",
+    "simplicity of deployment"
+  ],
+  "plausible_answers": [
+    "Answer A (Debt and Invest Default): Pay off any high-interest debt first, top up your emergency fund to 3 months, then invest the remainder as a lump sum in a broad index fund \u2014 this order maximizes guaranteed and expected returns.",
+    "Answer B (Lump Sum Invest): If you have no high-interest debt and a full emergency fund, invest the entire $10k immediately as a lump sum \u2014 two-thirds of the time this beats spreading contributions and markets reward early investment.",
+    "Answer C (DCA Over 6 Months): Spread the $10k across 6 monthly investments to reduce the risk of deploying at a market peak \u2014 you sacrifice some expected return but avoid the regret of an immediate post-investment downturn."
+  ],
+  "sources": "Source 1 (2023, NerdWallet, USA): The standard priority order: pay off high-interest debt first, then build or top up your emergency fund, then maximize tax-advantaged retirement contributions, then invest in a taxable brokerage.\n\nSource 2 (2022, Investopedia, USA): A lump sum invested immediately in a broad market index fund outperforms dollar-cost averaging about two-thirds of the time historically, because markets trend upward \u2014 but DCA reduces regret risk if markets fall soon after investing.\n\nSource 3 (2023, Reddit r/personalfinance, USA): Community advice: resist lifestyle inflation, don't keep it in a checking account, and follow the personal finance flowchart \u2014 high-interest debt \u2192 emergency fund \u2192 IRA \u2192 401k \u2192 taxable brokerage.\n\nSource 4 (2022, Morningstar, USA): Lump-sum investing a windfall into a diversified portfolio has historically been the mathematically superior approach, but investors who lump-sum at a market peak and panic-sell underperform those who spread contributions over 3\u20136 months.\n\nSource 5 (2021, WSJ, USA): Using a windfall to eliminate high-interest consumer debt provides a guaranteed risk-free return equal to the interest rate \u2014 for debt above 7\u20138%, this often beats expected market returns on a risk-adjusted basis.",
+  "halted": true,
+  "halted_reason": "all 10 singletons produced the same top-1 answer: 'answer a (debt and invest default): pay off any high-interest debt first, top up your emergency fund to 3 months, then invest the remainder as a lump sum in a broad index fund \u2014 this order maximizes guaranteed and expected returns.'",
+  "combos_total": 1024,
+  "combos_run": 11,
+  "usage": {
+    "prompt_tokens": 7960,
+    "output_tokens": 110,
+    "llm_calls": 11,
+    "finish_reasons": {
+      "stop": 11
+    }
+  },
+  "generation": {
+    "model": "meta-llama/Llama-3.1-70B-Instruct",
+    "provider": "vllm",
+    "temperature": 0.0,
+    "max_tokens": 4096
+  }
+}

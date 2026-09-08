@@ -1,0 +1,41 @@
+{
+  "name": "sonnet-pragmas-llama31-70b/14",
+  "question": "I'm 62 years old. When should I start taking Social Security \u2014 at 62, full retirement age, or wait until 70?",
+  "mode": "pragmas",
+  "criteria": [
+    "temporal: 2023 only",
+    "temporal: 2021\u20132023",
+    "geographic: USA federal Social Security system",
+    "perspective: Healthy individual with long family longevity",
+    "perspective: Individual with health concerns or below-average longevity",
+    "perspective: Married couple optimizing survivor benefits",
+    "trustworthiness: Government/SSA official guidance",
+    "trustworthiness: Institutional retirement research",
+    "trustworthiness: Community peer advice",
+    "trustworthiness: Financial journalism"
+  ],
+  "plausible_answers": [
+    "Answer A (Delay to 70 Default): Wait until 70 to claim Social Security \u2014 the 8% annual delayed credit is an unbeatable risk-free return for healthy individuals, and maximizes inflation-adjusted lifetime income if you live past 82.",
+    "Answer B (Claim at 62 for Immediate Need): Claim at 62 if you have health concerns, need the income to avoid portfolio withdrawals, or lack other retirement income \u2014 the breakeven math favors early claiming for shorter life expectancies.",
+    "Answer C (Full Retirement Age Compromise): Claim at full retirement age (66\u201367) as a compromise \u2014 you avoid the 30% early reduction while not tying up capital until 70, suitable when longevity is uncertain and some portfolio flexibility is needed."
+  ],
+  "sources": "Source 1 (2023, SSA.gov, USA): Delaying Social Security past full retirement age (66\u201367) increases benefits by 8% per year up to age 70 \u2014 waiting from 62 to 70 can increase monthly benefits by up to 76%.\n\nSource 2 (2022, Investopedia, USA): The breakeven age for delaying from 62 to 70 is approximately 80\u201382 \u2014 if you expect to live past that age, waiting delivers more lifetime income; if health is poor or longevity uncertain, taking benefits early makes sense.\n\nSource 3 (2023, Morningstar, USA): For married couples, the higher earner should almost always delay to 70 to maximize the survivor benefit \u2014 the surviving spouse inherits the higher payment, making delay a longevity insurance strategy for the household.\n\nSource 4 (2022, Reddit r/retirement, USA): Community is divided based on personal circumstances \u2014 those with pension income, savings, or health issues often prefer early claiming; those without other retirement income strongly prefer delaying.\n\nSource 5 (2021, WSJ, USA): Sequence-of-returns risk means retirees who claim Social Security early and invest the proceeds often underperform those who delay, particularly if they claim during a bear market and exhaust portfolio assets before age 80.",
+  "halted": false,
+  "halted_reason": null,
+  "combos_total": 1024,
+  "combos_run": 1024,
+  "usage": {
+    "prompt_tokens": 851974,
+    "output_tokens": 10240,
+    "llm_calls": 1024,
+    "finish_reasons": {
+      "stop": 1024
+    }
+  },
+  "generation": {
+    "model": "meta-llama/Llama-3.1-70B-Instruct",
+    "provider": "vllm",
+    "temperature": 0.0,
+    "max_tokens": 4096
+  }
+}

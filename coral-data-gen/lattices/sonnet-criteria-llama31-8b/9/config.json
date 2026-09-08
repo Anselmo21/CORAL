@@ -1,0 +1,41 @@
+{
+  "name": "sonnet-criteria-llama31-8b/9",
+  "question": "I have $8,000 spread across three credit cards at 19%, 22%, and 24% APR. What's the best way to pay this off?",
+  "mode": "criteria",
+  "criteria": [
+    "total interest cost minimization",
+    "psychological motivation and completion rate",
+    "speed of debt elimination",
+    "simplicity of single payment",
+    "credit score impact",
+    "access to balance transfer offers",
+    "risk of rate reset on promotional offers",
+    "qualification for consolidation loan",
+    "flexibility to handle financial emergencies",
+    "immediate cash flow relief"
+  ],
+  "plausible_answers": [
+    "Answer A (Avalanche Default): Pay minimums on all cards and throw every extra dollar at the 24% card first \u2014 the avalanche method minimizes total interest and is mathematically optimal for someone committed to following through.",
+    "Answer B (Snowball for Motivation): Target the smallest balance first regardless of rate \u2014 the psychological wins from eliminating individual cards keep most people on track better than pure math, making snowball more effective in practice.",
+    "Answer C (Balance Transfer): Transfer all three balances to a 0% APR card and pay off the full amount within the promotional window \u2014 if you qualify, this eliminates interest entirely and is faster than any payment-order strategy."
+  ],
+  "sources": "Source 1 (2023, NerdWallet, USA): The avalanche method \u2014 paying minimums on all cards and directing extra payments to the highest-rate debt first \u2014 minimizes total interest paid and is mathematically optimal for debt elimination.\n\nSource 2 (2022, Investopedia, USA): The snowball method targets the smallest balance first regardless of rate; research shows it produces higher completion rates due to psychological momentum from early wins, despite costing slightly more in interest.\n\nSource 3 (2023, Reddit r/personalfinance, USA): Community broadly favors avalanche for math-oriented people and snowball for those who've struggled to stay motivated \u2014 the best method is the one you'll actually stick to.\n\nSource 4 (2022, Bankrate, USA): Balance transfer cards with 0% intro APR for 15\u201321 months can eliminate interest entirely during the promotional period \u2014 viable if you qualify for sufficient transfer limits and can pay off the balance before the rate resets.\n\nSource 5 (2021, WSJ, USA): Debt consolidation loans at lower fixed rates (8\u201312% for good credit) can simplify repayment into one payment and reduce interest costs compared to revolving credit card debt at 19\u201324%.",
+  "halted": true,
+  "halted_reason": "all 10 singletons produced the same top-1 answer: 'answer c (balance transfer): transfer all three balances to a 0% apr card and pay off the full amount within the promotional window \u2014 if you qualify, this eliminates interest entirely and is faster than any payment-order strategy.'",
+  "combos_total": 1024,
+  "combos_run": 11,
+  "usage": {
+    "prompt_tokens": 7693,
+    "output_tokens": 165,
+    "llm_calls": 11,
+    "finish_reasons": {
+      "stop": 11
+    }
+  },
+  "generation": {
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "provider": "vllm",
+    "temperature": 0.0,
+    "max_tokens": 4096
+  }
+}

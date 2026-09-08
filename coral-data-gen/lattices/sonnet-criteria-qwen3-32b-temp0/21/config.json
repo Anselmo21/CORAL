@@ -1,0 +1,41 @@
+{
+  "name": "sonnet-criteria-qwen3-32b-temp0/21",
+  "question": "My doctor says my cholesterol is borderline high. Should I start statins or try to manage it with lifestyle changes first?",
+  "mode": "criteria",
+  "criteria": [
+    "10-year cardiovascular risk score",
+    "family history of heart disease",
+    "LDL reduction achievable through diet",
+    "statin side effect tolerance",
+    "patient motivation for lifestyle change",
+    "speed of risk reduction needed",
+    "age and comorbidity profile",
+    "prior cardiovascular events",
+    "access to dietary counseling",
+    "long-term medication adherence"
+  ],
+  "plausible_answers": [
+    "Answer A (Lifestyle First Default): Try dietary changes and exercise for 3\u20136 months first \u2014 for borderline cholesterol with low cardiovascular risk, lifestyle intervention can achieve meaningful LDL reduction without medication side effects.",
+    "Answer B (Statins for Elevated Risk): Start statins now if you have a family history of early heart disease, multiple risk factors, or a 10-year cardiovascular risk above 7.5% \u2014 the absolute risk reduction from statins outweighs side effect concerns.",
+    "Answer C (Risk Calculator First): Use a cardiovascular risk calculator with your physician before deciding \u2014 statin benefit depends on baseline risk, not cholesterol level alone, and the decision should be individualized to your complete risk profile."
+  ],
+  "sources": "Source 1 (2023, Mayo Clinic, Rochester MN USA): For patients with borderline cholesterol and low 10-year cardiovascular risk, lifestyle modification \u2014 diet, exercise, weight loss \u2014 is recommended for 3\u20136 months before considering statin therapy.\n\nSource 2 (2022, NEJM, Boston MA USA): Statins reduce LDL cholesterol by 30\u201350% and significantly reduce cardiovascular events even in patients with modest baseline risk \u2014 the absolute benefit depends on baseline risk, not just cholesterol level.\n\nSource 3 (2023, WebMD, Atlanta GA USA): Diet changes including reduced saturated fat, increased soluble fiber, and plant sterols can lower LDL by 10\u201320% \u2014 meaningful but often insufficient alone for patients with family history or multiple risk factors.\n\nSource 4 (2022, Reddit r/AskDocs, USA): Community experience is mixed \u2014 many users found statin side effects (muscle aches, fatigue) intolerable; others report no side effects and credit statins with dramatically improved lipid profiles without lifestyle changes.\n\nSource 5 (2021, JAMA Cardiology, Chicago IL USA): A 10-year cardiovascular risk calculator (PCE) should guide statin decisions \u2014 patients with borderline risk (5\u20137.5%) benefit from a risk discussion with their physician weighing statin benefits against side effect risk and patient preference.",
+  "halted": true,
+  "halted_reason": "all 10 singletons produced the same top-1 answer: 'answer c (risk calculator first): use a cardiovascular risk calculator with your physician before deciding \u2014 statin benefit depends on baseline risk, not cholesterol level alone, and the decision should be individualized to your complete risk profile.'",
+  "combos_total": 1024,
+  "combos_run": 11,
+  "usage": {
+    "prompt_tokens": 7938,
+    "output_tokens": 110,
+    "llm_calls": 11,
+    "finish_reasons": {
+      "stop": 11
+    }
+  },
+  "generation": {
+    "model": "Qwen/Qwen3-32B",
+    "provider": "vllm",
+    "temperature": 0.0,
+    "max_tokens": 4096
+  }
+}
