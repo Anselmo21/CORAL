@@ -65,6 +65,11 @@ def add_model_args(parser: argparse.ArgumentParser) -> None:
              "chunk, so keep this below vLLM's 0.90 default on <=48GB cards.",
     )
     parser.add_argument(
+        "--enforce-eager", action="store_true",
+        help="Skip CUDA graph capture (vllm backend only). Frees the capture "
+             "allocation on cards whose free memory is already borderline.",
+    )
+    parser.add_argument(
         "--disable-custom-all-reduce", action="store_true",
         help="Use NCCL instead of vLLM's custom all-reduce kernel (vllm "
              "backend only). vLLM only drops that kernel above two PCIe-only "
@@ -89,6 +94,8 @@ def load_model_and_tokenizer(args: argparse.Namespace) -> tuple:
             extra["max_num_batched_tokens"] = args.max_num_batched_tokens
         if args.disable_custom_all_reduce:
             extra["disable_custom_all_reduce"] = True
+        if args.enforce_eager:
+            extra["enforce_eager"] = True
         model = LLM(model=args.model, dtype="float16",
                     tensor_parallel_size=args.tensor_parallel_size,
                     gpu_memory_utilization=args.gpu_memory_utilization,

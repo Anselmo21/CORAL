@@ -62,6 +62,26 @@ MODELS = {
         "pool": "results",
         "graphs": "qwen35-122b-{gds}-cf-removal",
     },
+    "llama31-8b-regen": {
+        "lattice": ("rundir", "../coral-data-gen/lattices/{dst}-llama31-8b"),
+        "pool": "results",
+        "graphs": "llama31-8b-{gds}-cf-removal",
+    },
+    "qwen3-32b-regen": {
+        "lattice": ("rundir", "../coral-data-gen/lattices/{dst}-qwen3-32b-temp0"),
+        "pool": "results",
+        "graphs": "qwen32b-{gds}-cf-removal",
+    },
+    "llama31-70b-regen": {
+        "lattice": ("rundir", "../coral-data-gen/lattices/{dst}-llama31-70b"),
+        "pool": "results",
+        "graphs": "llama31-70b-{gds}-cf-removal",
+    },
+    "qwen35-122b-regen": {
+        "lattice": ("rundir", "../coral-data-gen/lattices/{dst}-qwen35-122b"),
+        "pool": "results",
+        "graphs": "qwen35-122b-{gds}-cf-removal",
+    },
     "qwen35-122b-ranked-cf2": {
         # ranked-elicitation lattices (answer texts, coral-data-gen layout);
         # pool and LSM live under the logged -ranked-cf2 root
