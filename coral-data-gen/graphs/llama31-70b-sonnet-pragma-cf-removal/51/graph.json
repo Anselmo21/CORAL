@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Hybrid Medium-Firm Default): Get a hybrid medium-firm mattress like the Saatva Classic \u2014 innerspring support with foam comfort layers provides the spinal alignment most associated with back pain relief, and a 100-night trial lets you verify it works for you.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2515,
-    "output_tokens": 1931,
-    "llm_calls": 2,
+    "prompt_tokens": 1674,
+    "output_tokens": 1720,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,120 +40,104 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What mattress should I get to alleviate back pain?",
-        "description": ""
+        "label": "What mattress should I get for back pain?",
+        "description": "I wake up with back pain almost every morning."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What type of mattress is best for back pain relief?",
-        "description": ""
+        "label": "What type of mattress is best for back pain relief?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What features should I prioritize when choosing a mattress for back pain?",
-        "description": ""
+        "label": "What features should I prioritize when choosing a mattress for back pain?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "How can I ensure the mattress I choose will work for me?",
-        "description": ""
+        "label": "How can I ensure that a mattress will work for my specific back pain needs?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "temporal: 2023 only",
-        "description": ""
+        "label": "temporal: 2023 only"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "temporal: 2021\u20132023",
-        "description": ""
+        "label": "temporal: 2021\u20132023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "geographic: USA",
-        "description": ""
+        "label": "geographic: USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "geographic: Global",
-        "description": ""
+        "label": "geographic: Global"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: Back sleeper with chronic lower back pain",
-        "description": ""
+        "label": "perspective: Back sleeper with chronic lower back pain"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: Side sleeper with pressure point sensitivity",
-        "description": ""
+        "label": "perspective: Side sleeper with pressure point sensitivity"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Consumer product recommendation publication",
-        "description": ""
+        "label": "trustworthiness: Consumer product recommendation publication"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Consumer product testing organization",
-        "description": ""
+        "label": "trustworthiness: Consumer product testing organization"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Mattress enthusiast community",
-        "description": ""
+        "label": "trustworthiness: Mattress enthusiast community"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Clinical sleep research",
-        "description": ""
+        "label": "trustworthiness: Clinical sleep research"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Get a hybrid medium-firm mattress like the Saatva Classic \u2014 innerspring support with foam comfort layers provides the spinal alignment most associated with back pain relief, and a 100-night trial lets you verify it works for you.",
-        "description": ""
+        "label": "Hybrid Medium-Firm Default"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Choose a latex mattress if you move frequently during sleep \u2014 latex's immediate responsiveness and pressure relief without heat retention is superior to memory foam for combination sleepers with back pain.",
-        "description": ""
+        "label": "Latex for Responsiveness"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Prioritize a mattress with at least a 100-night sleep trial above all other factors \u2014 back pain response is highly individual and no recommendation is reliable without the ability to test it for at least 6\u20138 weeks.",
-        "description": ""
+        "label": "Buy with Long Trial First"
       }
     ],
     "edges": [
@@ -278,11 +262,11 @@
         "target": "a3"
       },
       {
-        "source": "c4",
+        "source": "c3",
         "target": "a3"
       },
       {
-        "source": "c5",
+        "source": "c4",
         "target": "a3"
       },
       {

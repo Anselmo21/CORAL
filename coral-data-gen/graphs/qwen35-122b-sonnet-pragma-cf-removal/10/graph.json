@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer C (REIT Allocation): Add a dedicated REIT allocation (15\u201320%) within your existing stock portfolio \u2014 you get real estate diversification, inflation hedging, and dividend income without giving up liquidity or taking on landlord risk.",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 2,
+  "temperature": 0.0,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1680,
+    "output_tokens": 3973,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -38,106 +47,106 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Market Viability & Constraints",
-        "description": "Assessing if $50k is sufficient for direct ownership given current rates and geography."
+        "label": "Optimal strategy for passive, liquidity-focused investors in the current US market",
+        "description": "Focuses on safety, liquidity, and current market conditions (2023) for a hands-off approach."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Investor Profile & Strategy",
-        "description": "Determining the best path based on management willingness and financial goals."
+        "label": "Potential benefits and risks of active real estate ownership for hands-on investors",
+        "description": "Focuses on leverage, tax benefits, and management requirements for active investors."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Filters for 2023 data only, highlighting high interest rates."
+        "description": "Filters for the most recent market data, highlighting high interest rates and narrowing returns."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Filters for the 2021-2023 period, including lower rate environments."
+        "description": "Filters for a broader recent trend including the pre-2023 boom and subsequent rate hikes."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Filters for US-specific market conditions and regulations."
+        "description": "Restricts analysis to the US market context."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Passive hands-off investor",
-        "description": "Prioritizes strategies requiring no active management."
+        "description": "Prioritizes sources and arguments favoring low-maintenance investments."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Active landlord willing to manage property",
-        "description": "Prioritizes strategies requiring active property management."
+        "description": "Prioritizes sources and arguments favoring direct ownership and management."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Tax optimization focused investor",
-        "description": "Prioritizes strategies with significant tax advantages like depreciation."
+        "description": "Prioritizes sources emphasizing depreciation and tax deductions."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Institutional financial research",
-        "description": "Prioritizes data from established financial institutions."
+        "description": "Prioritizes data from established financial institutions and research firms."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Real estate investor community",
-        "description": "Prioritizes advice from specialized real estate investor forums."
+        "description": "Prioritizes insights from specialized real estate investment communities."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Community peer advice",
-        "description": "Prioritizes general peer-to-peer financial advice."
+        "description": "Prioritizes general peer-to-peer financial advice and forums."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Financial journalism",
-        "description": "Prioritizes analysis from financial news outlets."
+        "description": "Prioritizes reporting from major financial news outlets."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Stock Market Default)",
-        "description": "Keep investing in diversified index funds; REITs give exposure but $50k is too thin for direct real estate."
+        "description": "Keep investing in diversified index funds \u2014 REITs within your portfolio give real estate exposure without illiquidity, and $50k is too thin for meaningful direct real estate in most markets."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Rental Property for Leverage)",
-        "description": "Buy a small rental property with $50k as a down payment for leverage and tax benefits."
+        "description": "Buy a small rental property with $50k as a down payment \u2014 leverage, depreciation deductions, and rental income can generate superior risk-adjusted returns for investors willing to actively manage."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (REIT Allocation)",
-        "description": "Add a dedicated REIT allocation (15\u201320%) for diversification and inflation hedging without landlord risk."
+        "description": "Add a dedicated REIT allocation (15\u201320%) within your existing stock portfolio \u2014 you get real estate diversification, inflation hedging, and dividend income without giving up liquidity or taking on landlord risk."
       }
     ],
     "edges": [
@@ -162,8 +171,24 @@
         "target": "c3"
       },
       {
-        "source": "sq2",
+        "source": "sq1",
         "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
       },
       {
         "source": "sq2",
@@ -175,10 +200,6 @@
       },
       {
         "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
         "target": "c8"
       },
       {
@@ -186,14 +207,6 @@
         "target": "c9"
       },
       {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
-        "source": "c1",
-        "target": "a1"
-      },
-      {
         "source": "c1",
         "target": "a3"
       },
@@ -234,10 +247,6 @@
         "target": "a2"
       },
       {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
         "source": "c6",
         "target": "a2"
       },
@@ -251,11 +260,11 @@
       },
       {
         "source": "c7",
-        "target": "a2"
+        "target": "a3"
       },
       {
-        "source": "c7",
-        "target": "a3"
+        "source": "c8",
+        "target": "a1"
       },
       {
         "source": "c8",
@@ -264,6 +273,10 @@
       {
         "source": "c8",
         "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
       },
       {
         "source": "c9",

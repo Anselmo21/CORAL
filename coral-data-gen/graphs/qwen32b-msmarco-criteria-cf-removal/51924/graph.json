@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Ibuprofen (Advil / Motrin)",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1737,
+    "output_tokens": 2134,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,42 +41,42 @@
         "layer": "1",
         "type": "question",
         "label": "best over the counter medication for cold and inflammation",
-        "description": "What is the best over-the-counter medication for cold and inflammation?"
+        "description": "What is the best OTC medication for cold and inflammation?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "pharmacological properties",
-        "description": "What are the key pharmacological properties of the medication?"
+        "label": "What type of active ingredient is most effective for cold and inflammation?",
+        "description": "Evaluates the active ingredient type for effectiveness in treating cold and inflammation."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "safety and tolerability",
-        "description": "What are the safety and tolerability considerations?"
+        "label": "How effective is the medication in providing pain and inflammation relief?",
+        "description": "Evaluates the effectiveness of the medication in treating pain and inflammation."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "effectiveness and convenience",
-        "description": "How effective and convenient is the medication in use?"
+        "label": "What are the safety and side effect profiles of the medication?",
+        "description": "Evaluates the safety and side effects of the medication."
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "target symptoms",
-        "description": "What symptoms is the medication best suited for?"
+        "label": "What symptoms is the medication best suited for?",
+        "description": "Evaluates the symptoms the medication is most effective for."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "active ingredient type",
-        "description": "The classification of the medication based on its active ingredient."
+        "description": "The type of active ingredient in the medication."
       },
       {
         "id": "c2",
@@ -81,14 +90,14 @@
         "layer": "3",
         "type": "concept",
         "label": "anti-inflammatory properties",
-        "description": "Whether the medication reduces inflammation."
+        "description": "The ability of the medication to reduce inflammation."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "safety profile",
-        "description": "The overall safety and risk of the medication."
+        "description": "The safety and risk profile of the medication."
       },
       {
         "id": "c5",
@@ -102,7 +111,7 @@
         "layer": "3",
         "type": "concept",
         "label": "onset of action",
-        "description": "How quickly the medication begins to work."
+        "description": "How quickly the medication starts to work."
       },
       {
         "id": "c7",
@@ -116,42 +125,42 @@
         "layer": "3",
         "type": "concept",
         "label": "side effects",
-        "description": "The adverse effects associated with the medication."
+        "description": "The potential side effects of the medication."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "target symptoms",
-        "description": "The symptoms the medication is most effective for."
+        "description": "The symptoms the medication is intended to treat."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "age suitability",
-        "description": "Which age groups the medication is appropriate for."
+        "description": "The age groups for which the medication is appropriate."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Ibuprofen (Advil / Motrin)",
-        "description": "An NSAID with strong pain and inflammation relief."
+        "description": "NSAID with strong anti-inflammatory and pain-relieving properties."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Naproxen (Aleve)",
-        "description": "An NSAID with longer duration of action."
+        "description": "NSAID with longer duration of action and anti-inflammatory properties."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Acetaminophen (Tylenol / Panadol)",
-        "description": "A non-NSAID pain reliever with no anti-inflammatory properties."
+        "description": "Non-NSAID pain reliever with no anti-inflammatory properties."
       }
     ],
     "edges": [
@@ -176,36 +185,20 @@
         "target": "c1"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c2"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c3"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c4"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c8"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
-      },
-      {
-        "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
       },
       {
         "source": "sq4",
@@ -216,75 +209,7 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
         "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
         "target": "a2"
       },
       {
@@ -293,7 +218,31 @@
       },
       {
         "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
         "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
       },
       {
         "source": "c4",
@@ -301,7 +250,23 @@
       },
       {
         "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
         "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
       },
       {
         "source": "c6",
@@ -309,7 +274,23 @@
       },
       {
         "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
         "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
       },
       {
         "source": "c8",
@@ -317,7 +298,23 @@
       },
       {
         "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
         "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
       },
       {
         "source": "c10",

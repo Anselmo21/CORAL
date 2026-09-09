@@ -19,18 +19,18 @@
     "Dairy-free / Cycle Diet",
     "Anti-inflammatory elimination diet"
   ],
-  "baseline_answer": "Mediterranean-style diet",
-  "baseline_index": 0,
+  "baseline_answer": "Dairy-free / Cycle Diet",
+  "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2974,
-    "output_tokens": 1635,
-    "llm_calls": 2,
+    "prompt_tokens": 1867,
+    "output_tokens": 1903,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,103 +40,120 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Best diet for reducing PMS symptoms"
+        "label": "What is the best diet for reducing PMS symptoms?",
+        "description": "Dietary recommendations for reducing PMS symptoms"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Nutrient content impact"
+        "label": "Key nutrients to include",
+        "description": "Magnesium, vitamin B, calcium, fiber, omega-3"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Specific food types"
+        "label": "Dietary components to avoid",
+        "description": "Anti-inflammatory foods, sugar, caffeine"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Overall approach and feasibility"
+        "label": "Practical considerations",
+        "description": "Hydration, ease of adherence"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "Magnesium content"
+        "label": "Magnesium content",
+        "description": "Importance of magnesium in reducing PMS symptoms"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "Vitamin B levels"
+        "label": "Vitamin B levels",
+        "description": "Importance of vitamin B in reducing PMS symptoms"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "Calcium intake"
+        "label": "Calcium intake",
+        "description": "Importance of calcium in reducing PMS symptoms"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "Fiber content"
+        "label": "Fiber content",
+        "description": "Importance of fiber in reducing PMS symptoms"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "Anti-inflammatory foods"
+        "label": "Anti-inflammatory foods",
+        "description": "Importance of anti-inflammatory foods in reducing PMS symptoms"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "Sugar reduction"
+        "label": "Sugar reduction",
+        "description": "Importance of reducing sugar in reducing PMS symptoms"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "Caffeine reduction"
+        "label": "Caffeine reduction",
+        "description": "Importance of reducing caffeine in reducing PMS symptoms"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "Omega-3 inclusion"
+        "label": "Omega-3 inclusion",
+        "description": "Importance of omega-3 in reducing PMS symptoms"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "Hydration support"
+        "label": "Hydration support",
+        "description": "Importance of hydration in reducing PMS symptoms"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "Ease of adherence"
+        "label": "Ease of adherence",
+        "description": "Importance of ease of adherence in reducing PMS symptoms"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Mediterranean-style diet"
+        "label": "Mediterranean-style diet",
+        "description": "Dietary recommendations for reducing PMS symptoms"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Dairy-free / Cycle Diet"
+        "label": "Dairy-free / Cycle Diet",
+        "description": "Dietary recommendations for reducing PMS symptoms"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Anti-inflammatory elimination diet"
+        "label": "Anti-inflammatory elimination diet",
+        "description": "Dietary recommendations for reducing PMS symptoms"
       }
     ],
     "edges": [
@@ -169,6 +186,10 @@
         "target": "c4"
       },
       {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
         "source": "sq2",
         "target": "c5"
       },
@@ -181,11 +202,7 @@
         "target": "c7"
       },
       {
-        "source": "sq2",
-        "target": "c8"
-      },
-      {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c9"
       },
       {
@@ -193,104 +210,84 @@
         "target": "c10"
       },
       {
-        "source": "a1",
-        "target": "c1"
+        "source": "c1",
+        "target": "a1"
       },
       {
-        "source": "a1",
-        "target": "c2"
+        "source": "c2",
+        "target": "a1"
       },
       {
-        "source": "a1",
-        "target": "c3"
+        "source": "c3",
+        "target": "a1"
       },
       {
-        "source": "a1",
-        "target": "c4"
+        "source": "c4",
+        "target": "a1"
       },
       {
-        "source": "a1",
-        "target": "c5"
+        "source": "c8",
+        "target": "a1"
       },
       {
-        "source": "a1",
-        "target": "c6"
+        "source": "c5",
+        "target": "a2"
       },
       {
-        "source": "a1",
-        "target": "c7"
+        "source": "c6",
+        "target": "a2"
       },
       {
-        "source": "a1",
-        "target": "c8"
+        "source": "c7",
+        "target": "a2"
       },
       {
-        "source": "a1",
-        "target": "c9"
+        "source": "c9",
+        "target": "a2"
       },
       {
-        "source": "a1",
-        "target": "c10"
+        "source": "c10",
+        "target": "a2"
       },
       {
-        "source": "a2",
-        "target": "c1"
+        "source": "c1",
+        "target": "a3"
       },
       {
-        "source": "a2",
-        "target": "c2"
+        "source": "c2",
+        "target": "a3"
       },
       {
-        "source": "a2",
-        "target": "c4"
+        "source": "c3",
+        "target": "a3"
       },
       {
-        "source": "a2",
-        "target": "c5"
+        "source": "c4",
+        "target": "a3"
       },
       {
-        "source": "a2",
-        "target": "c6"
+        "source": "c8",
+        "target": "a3"
       },
       {
-        "source": "a2",
-        "target": "c7"
+        "source": "c5",
+        "target": "a1"
       },
       {
-        "source": "a2",
-        "target": "c8"
+        "source": "c6",
+        "target": "a1"
       },
       {
-        "source": "a2",
-        "target": "c10"
+        "source": "c7",
+        "target": "a1"
       },
       {
-        "source": "a3",
-        "target": "c1"
+        "source": "c9",
+        "target": "a3"
       },
       {
-        "source": "a3",
-        "target": "c2"
-      },
-      {
-        "source": "a3",
-        "target": "c3"
-      },
-      {
-        "source": "a3",
-        "target": "c4"
-      },
-      {
-        "source": "a3",
-        "target": "c7"
-      },
-      {
-        "source": "a3",
-        "target": "c9"
-      },
-      {
-        "source": "a3",
-        "target": "c10"
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Conservative training paired with on-cycle support and recovery emphasis",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1801,
+    "output_tokens": 3127,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,35 +41,35 @@
         "layer": "1",
         "type": "question",
         "label": "best workouts to do in conjunction with a pro hormone",
-        "description": "Selecting the optimal workout regimen to pair with prohormone cycles."
+        "description": "Identifying the optimal training regimen to pair with prohormone cycles."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "Physiological Safety & Recovery",
-        "description": "Factors related to the body's ability to handle stress and recover."
+        "description": "How do safety, recovery, and health constraints influence the choice?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Training Mechanics & Intensity",
-        "description": "Structural elements of the workout routine."
+        "label": "Training Mechanics & Volume",
+        "description": "What are the specific structural requirements of the workout?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Strategic Alignment",
-        "description": "Alignment of training with user goals and external factors."
+        "label": "User Context & Goals",
+        "description": "How do individual goals and background shape the decision?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "workout intensity",
-        "description": "The level of effort and load placed on muscles."
+        "description": "The level of force and effort exerted during exercise."
       },
       {
         "id": "c2",
@@ -81,70 +90,70 @@
         "layer": "3",
         "type": "concept",
         "label": "recovery time",
-        "description": "Time required for the body to repair and adapt."
+        "description": "Time needed for the body to repair and adapt."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "dietary considerations",
-        "description": "Nutritional needs to support the cycle and body."
+        "description": "Nutritional needs to support training and drug metabolism."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "supplement compatibility",
-        "description": "Compatibility with on-cycle support and other supplements."
+        "description": "Alignment with on-cycle support and other supplements."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "goal orientation",
-        "description": "Primary objective of the training cycle."
+        "description": "The primary objective of the training cycle."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "exercise variety",
-        "description": "Range of different exercises performed."
+        "description": "Range of different movements performed."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "injury history",
-        "description": "Past injuries affecting current training capacity."
+        "description": "Past injuries that limit current training capacity."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "experience level",
-        "description": "User's familiarity with training and prohormones."
+        "description": "The user's familiarity with training and prohormones."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Heavy compound lifts (squat, deadlift, bench, OHP, row) in the 4-8 rep range on a 4-6 day split",
-        "description": "High-intensity, low-rep strength training."
+        "description": "High-intensity, low-rep strength focus."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "High-volume hypertrophy work (8-12 reps, 15-20 sets per muscle / week)",
-        "description": "High-volume muscle building training."
+        "description": "High-volume, moderate-rep muscle growth focus."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Conservative training paired with on-cycle support and recovery emphasis",
-        "description": "Safety-focused training with emphasis on health support."
+        "description": "Safety-first approach prioritizing health and recovery."
       }
     ],
     "edges": [
@@ -170,6 +179,10 @@
       },
       {
         "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
         "target": "c9"
       },
       {
@@ -191,10 +204,6 @@
       {
         "source": "sq2",
         "target": "c8"
-      },
-      {
-        "source": "sq3",
-        "target": "c6"
       },
       {
         "source": "sq3",
@@ -250,75 +259,39 @@
       },
       {
         "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
         "target": "a1"
       },
       {
         "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
         "target": "a2"
       },
       {
         "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
         "target": "a2"
       },
       {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
         "source": "c9",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

@@ -21,10 +21,20 @@
   ],
   "baseline_answer": "Vitreolent eye drops",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 2,
+  "usage": {
+    "prompt_tokens": 7791,
+    "output_tokens": 6118,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,112 +42,112 @@
         "layer": "1",
         "type": "question",
         "label": "best eye drops for floaters",
-        "description": "Identify the best eye drops for treating eye floaters."
+        "description": "The main question asking for the best eye drops for eye floaters."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Anecdotal and alternative product recommendations",
-        "description": "What product is recommended by non-mainstream, European, or forum-based sources?"
+        "label": "What do patient anecdotes and alternative sources claim?",
+        "description": "Focuses on anecdotal claims and alternative medicine perspectives."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Standard care for mild chronic floaters",
-        "description": "What is the recommended approach for mild, chronic floaters based on guidelines?"
+        "label": "What is the standard medical advice for mild or chronic floaters?",
+        "description": "Focuses on clinical guidelines and mild patient perspectives."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Intervention for severe or sudden floaters",
-        "description": "What procedure is indicated for severe, vision-affecting, or sudden-onset floaters?"
+        "label": "What is the recommended action for severe or sudden-onset floaters?",
+        "description": "Focuses on urgent cases and surgical interventions."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Europe",
-        "description": "Prioritize sources from Europe."
+        "description": "Filters for sources from Europe."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed ophthalmology journal",
-        "description": "Prioritize peer-reviewed journals."
+        "description": "Filters for peer-reviewed journals."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: ophthalmologist clinical practice guideline",
-        "description": "Prioritize clinical practice guidelines."
+        "description": "Filters for clinical practice guidelines."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: patient health forum",
-        "description": "Prioritize patient forum discussions."
+        "description": "Filters for patient health forums."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: alternative / integrative medicine source",
-        "description": "Prioritize alternative medicine sources."
+        "description": "Filters for alternative medicine sources."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: mainstream consumer health website",
-        "description": "Prioritize mainstream consumer health sites."
+        "description": "Filters for mainstream consumer health websites."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: patient with severe vision-affecting floaters",
-        "description": "Prioritize severe cases."
+        "description": "Filters for patients with severe symptoms."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: patient with mild chronic floaters",
-        "description": "Prioritize mild chronic cases."
+        "description": "Filters for patients with mild symptoms."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: non-surgical preference patient",
-        "description": "Prioritize non-surgical options."
+        "description": "Filters for patients preferring non-surgical options."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: anxious / sudden-onset patient",
-        "description": "Prioritize anxious or sudden-onset cases."
+        "description": "Filters for patients with sudden onset or anxiety."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Vitreolent eye drops",
-        "description": "Specific product mentioned in anecdotal sources."
+        "description": "A specific product claimed to cure floaters in anecdotal sources."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Watchful waiting",
-        "description": "Conservative management for mild cases."
+        "description": "Standard advice to ignore harmless floaters."
       },
       {
         "id": "a3",
@@ -178,6 +188,10 @@
       },
       {
         "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
         "target": "c9"
       },
       {
@@ -195,6 +209,10 @@
       {
         "source": "sq2",
         "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
       },
       {
         "source": "sq3",
@@ -218,11 +236,19 @@
       },
       {
         "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
         "target": "a2"
       },
       {
         "source": "c2",
         "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
       },
       {
         "source": "c3",
@@ -237,6 +263,10 @@
         "target": "a1"
       },
       {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
         "source": "c5",
         "target": "a1"
       },
@@ -249,8 +279,16 @@
         "target": "a2"
       },
       {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
         "source": "c7",
         "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
       },
       {
         "source": "c8",
@@ -263,6 +301,10 @@
       {
         "source": "c9",
         "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",

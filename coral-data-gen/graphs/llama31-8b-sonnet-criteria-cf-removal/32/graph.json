@@ -19,18 +19,18 @@
     "Answer B (In-Person for Networking Fields): Attend in-person if you're in a field where professional networks directly drive career outcomes (consulting, finance, law) \u2014 the relationship-building advantages of physical presence are worth the scheduling sacrifice.",
     "Answer C (Hybrid Program): Seek a hybrid or HyFlex program if available \u2014 attending key classes in person while completing most coursework online preserves your work schedule while capturing the high-value networking interactions that purely online programs miss."
   ],
-  "baseline_answer": "Answer A (Online Default): Choose an online degree from an accredited university \u2014 for a working adult, the ability to maintain your income and schedule while earning a credential that employers now largely treat equally outweighs the networking disadvantages.",
-  "baseline_index": 0,
+  "baseline_answer": "Answer C (Hybrid Program): Seek a hybrid or HyFlex program if available \u2014 attending key classes in person while completing most coursework online preserves your work schedule while capturing the high-value networking interactions that purely online programs miss.",
+  "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2258,
-    "output_tokens": 1916,
-    "llm_calls": 2,
+    "prompt_tokens": 1527,
+    "output_tokens": 1830,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,127 +40,120 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Degree Program Choice",
-        "description": "Should I do my university degree online or in person?"
+        "label": "Should I do my university degree online or in person?",
+        "description": "Working adult considering online or in-person degree"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Advantages of Online Programs",
-        "description": "What are the advantages of online programs for working adults?"
+        "label": "What are the benefits and drawbacks of online programs?",
+        "description": "Online program pros and cons"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Importance of Networking",
-        "description": "How important are professional networks and networking opportunities?"
+        "label": "How important is networking and career relationship building for my field?",
+        "description": "Networking importance for field"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Benefits of In-Person Programs",
-        "description": "What are the benefits of in-person programs?"
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "Alternative Options",
-        "description": "Are there alternative options to traditional online or in-person programs?"
+        "label": "What are the constraints and opportunities of in-person attendance?",
+        "description": "In-person attendance pros and cons"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "ability to maintain full-time employment",
-        "description": "Can you keep your job while studying?"
+        "description": "Maintaining income while studying"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "networking and career relationship building",
-        "description": "How important are professional networks and networking opportunities?"
+        "description": "Professional networks and career outcomes"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "employer perception of online credential",
-        "description": "Do employers view online degrees equally?"
+        "description": "Employer view of online degree"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "completion rate and self-discipline required",
-        "description": "How difficult is it to complete a degree online?"
+        "description": "Self-discipline and completion rates"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "cost differential between online and in-person",
-        "description": "Are online programs cheaper?"
+        "description": "Cost difference between online and in-person"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "access to campus resources and professors",
-        "description": "Can you access campus resources and professors online?"
+        "description": "Campus resources and professor access"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "field of study networking intensity",
-        "description": "How important are professional networks in your field?"
+        "description": "Networking intensity in field"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "geographic constraints on in-person attendance",
-        "description": "Can you attend classes in person?"
+        "description": "In-person attendance constraints"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "family and personal schedule flexibility",
-        "description": "Can you balance work, family, and coursework?"
+        "description": "Flexibility for family and personal schedule"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "hybrid option availability",
-        "description": "Are hybrid programs available?"
+        "description": "Hybrid program availability"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Online Default",
-        "description": "Choose an online degree from an accredited university"
+        "label": "Answer A (Online Default)",
+        "description": "Choose an online degree for flexibility and equal employer perception"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "In-Person for Networking Fields",
-        "description": "Attend in-person if you're in a field where professional networks drive career outcomes"
+        "label": "Answer B (In-Person for Networking Fields)",
+        "description": "Attend in-person for networking fields"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Hybrid Program",
-        "description": "Seek a hybrid or HyFlex program if available"
+        "label": "Answer C (Hybrid Program)",
+        "description": "Seek a hybrid or HyFlex program for flexibility and networking"
       }
     ],
     "edges": [
@@ -177,16 +170,20 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
-      },
-      {
         "source": "sq1",
         "target": "c1"
       },
       {
         "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
         "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
       },
       {
         "source": "sq2",
@@ -194,22 +191,22 @@
       },
       {
         "source": "sq2",
-        "target": "c7"
+        "target": "c3"
       },
       {
-        "source": "sq3",
-        "target": "c3"
+        "source": "sq2",
+        "target": "c7"
       },
       {
         "source": "sq3",
         "target": "c6"
       },
       {
-        "source": "sq4",
-        "target": "c1"
+        "source": "sq3",
+        "target": "c8"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c10"
       },
       {
@@ -217,47 +214,19 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
         "source": "c1",
         "target": "a3"
       },
       {
         "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
         "target": "a1"
       },
       {
@@ -266,7 +235,15 @@
       },
       {
         "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
         "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
       },
       {
         "source": "c5",
@@ -274,14 +251,30 @@
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
       },
       {
         "source": "c7",
-        "target": "a1"
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
       },
       {
         "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
         "target": "a1"
       },
       {
@@ -290,7 +283,11 @@
       },
       {
         "source": "c10",
-        "target": "a1"
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

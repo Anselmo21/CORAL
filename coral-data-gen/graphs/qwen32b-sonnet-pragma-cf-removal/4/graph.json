@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (Roth Default): Open a Roth IRA \u2014 at 28 with decades of compounding ahead, tax-free growth almost always beats the immediate deduction, especially if your income is likely to rise.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1635,
+    "output_tokens": 2752,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,35 +41,35 @@
         "layer": "1",
         "type": "question",
         "label": "Should I open a Roth IRA or a traditional IRA? I'm 28 making $72,000 a year.",
-        "description": "Decision on retirement account type based on age, income, and tax expectations."
+        "description": "A question about IRA choice for a young, moderate-income investor."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Long-term tax implications for young investors",
-        "description": "What are the long-term tax implications of choosing Roth vs. traditional IRA for someone in their 20s/30s with moderate income?"
+        "label": "Best IRA strategy for a young investor with a moderate income and long time horizon",
+        "description": "Focuses on age, income, and long-term growth considerations."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Short-term tax benefits of traditional IRA",
-        "description": "What are the short-term tax benefits of a traditional IRA at a 22% tax bracket?"
+        "label": "How do current and future tax rates affect the choice between Roth and traditional IRAs?",
+        "description": "Examines the impact of tax brackets now and in retirement."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Tax law and Roth strategy implications",
-        "description": "What are the implications of current tax law and potential changes for Roth IRA strategy?"
+        "label": "Implications of trustworthiness and source type on IRA recommendations",
+        "description": "Evaluates how source credibility affects IRA advice."
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "Role of compounding and investment horizon",
-        "description": "What is the role of compounding and investment horizon in choosing between Roth and traditional IRA?"
+        "label": "Geographic and jurisdictional considerations for IRA strategy",
+        "description": "Looks at federal and state tax implications."
       },
       {
         "id": "c1",
@@ -74,84 +83,84 @@
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Consider sources from 2021 through 2023."
+        "description": "Consider sources from 2021 to 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA federal tax context",
-        "description": "Only consider sources that apply to U.S. federal tax law."
+        "description": "Only consider sources relevant to U.S. federal tax law."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Young investor expecting higher future income",
-        "description": "Only consider sources from the perspective of a young investor expecting higher future income."
+        "description": "Only consider sources assuming higher future income."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Investor expecting lower retirement tax rate",
-        "description": "Only consider sources from the perspective of an investor expecting lower retirement tax rate."
+        "description": "Only consider sources assuming lower retirement tax rates."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: High state income tax jurisdiction resident",
-        "description": "Only consider sources from the perspective of a high state tax jurisdiction resident."
+        "description": "Only consider sources relevant to high state tax jurisdictions."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Institutional financial research",
-        "description": "Only consider sources from institutional financial research."
+        "description": "Only consider institutional financial research sources."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer financial advisory",
-        "description": "Only consider sources from consumer financial advisory platforms."
+        "description": "Only consider consumer financial advisory sources."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Brokerage/investment platform guidance",
-        "description": "Only consider sources from brokerage/investment platforms."
+        "description": "Only consider guidance from brokerage/investment platforms."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Financial journalism",
-        "description": "Only consider sources from financial journalism."
+        "description": "Only consider financial journalism sources."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Roth Default): Open a Roth IRA \u2014 at 28 with decades of compounding ahead, tax-free growth almost always beats the immediate deduction, especially if your income is likely to rise.",
-        "description": "Roth IRA is preferred for long-term tax-free growth and expected higher future income."
+        "description": "Roth IRA is preferred for long-term tax-free growth."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Traditional for Current Deduction): Choose a traditional IRA if you're in a high tax bracket now and expect meaningfully lower income in retirement \u2014 the immediate 22% deduction deployed into additional investments can outperform Roth over time.",
-        "description": "Traditional IRA is better if you expect a lower tax rate in retirement."
+        "description": "Traditional IRA is better if retirement tax rate is lower."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Both via Backdoor): Contribute to a traditional IRA for the current deduction then immediately convert to Roth (backdoor Roth) to capture both benefits while income limits allow.",
-        "description": "Backdoor Roth strategy captures both current deduction and future tax-free growth."
+        "description": "Hybrid strategy using backdoor Roth to get both benefits."
       }
     ],
     "edges": [
@@ -197,11 +206,7 @@
       },
       {
         "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c3"
+        "target": "c4"
       },
       {
         "source": "sq2",
@@ -209,19 +214,19 @@
       },
       {
         "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
         "target": "c8"
       },
       {
         "source": "sq3",
-        "target": "c2"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
+        "target": "c9"
       },
       {
         "source": "sq3",
@@ -229,19 +234,11 @@
       },
       {
         "source": "sq4",
-        "target": "c1"
-      },
-      {
-        "source": "sq4",
         "target": "c3"
       },
       {
         "source": "sq4",
-        "target": "c4"
-      },
-      {
-        "source": "sq4",
-        "target": "c7"
+        "target": "c6"
       },
       {
         "source": "c1",
@@ -261,11 +258,11 @@
       },
       {
         "source": "c5",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c7",
@@ -304,10 +301,6 @@
         "target": "a2"
       },
       {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
         "source": "c8",
         "target": "a2"
       },
@@ -333,10 +326,6 @@
       },
       {
         "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
         "target": "a3"
       },
       {

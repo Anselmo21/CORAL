@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Lifestyle intervention: exercise, yoga, diet, sleep hygiene",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1879,
+    "output_tokens": 2155,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,35 +41,28 @@
         "layer": "1",
         "type": "question",
         "label": "Which natural remedy best eases teenage depression?",
-        "description": "Evaluating natural remedies for teenage depression based on scientific and practical criteria."
+        "description": "Evaluating natural remedies for teenage depression based on scientific evidence, safety, and practicality."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Scientific and medical evidence",
-        "description": "How strong is the scientific support for the remedy's effectiveness in treating teenage depression?"
+        "label": "Scientific and clinical support",
+        "description": "What is the scientific and clinical support for the remedy?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Mood improvement efficacy",
-        "description": "How effective is the remedy in improving mood and reducing depression symptoms in teenagers?"
+        "label": "Safety and tolerability",
+        "description": "How safe and well-tolerated is the remedy for teenagers?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Safety and tolerability",
-        "description": "How safe and well-tolerated is the remedy for adolescents, and what are the risks or interactions?"
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
         "label": "Practicality and accessibility",
-        "description": "How accessible, affordable, and easy to use is the remedy for teenagers?"
+        "description": "How practical and accessible is the remedy?"
       },
       {
         "id": "c1",
@@ -74,21 +76,21 @@
         "layer": "3",
         "type": "concept",
         "label": "mood improvement efficacy",
-        "description": "Effectiveness in improving mood and reducing depressive symptoms."
+        "description": "How effective the remedy is at improving mood."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "safety in adolescents",
-        "description": "Safety and risk profile for use in teenagers."
+        "description": "Safety profile for teenage populations."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "drug interactions",
-        "description": "Potential for interacting with other medications."
+        "description": "Potential interactions with other medications."
       },
       {
         "id": "c5",
@@ -102,56 +104,56 @@
         "layer": "3",
         "type": "concept",
         "label": "ease of use",
-        "description": "How easy is the remedy to incorporate into daily life?"
+        "description": "How easy the remedy is to incorporate into daily life."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "cost",
-        "description": "Affordability of the remedy."
+        "description": "Financial cost of the remedy."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "accessibility",
-        "description": "How widely available is the remedy?"
+        "description": "How widely available the remedy is."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "dosing convenience",
-        "description": "How convenient is the dosing schedule?"
+        "description": "How convenient the dosing schedule is."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "time to onset",
-        "description": "How quickly does the remedy start to show effects?"
+        "description": "How quickly the remedy begins to show effects."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "St. John's Wort herbal supplement",
-        "description": "A herbal supplement used for mild to moderate depression."
+        "description": "Herbal supplement used for mild to moderate depression."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Omega-3 fatty acids (fish oil / flax oil)",
-        "description": "A dietary supplement with potential mood-enhancing properties."
+        "description": "Natural supplement with potential mood-boosting effects."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Lifestyle intervention: exercise, yoga, diet, sleep hygiene",
-        "description": "Non-pharmacological approach to improving mental health."
+        "description": "Non-pharmacological approach to managing depression."
       }
     ],
     "edges": [
@@ -168,47 +170,43 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
-      },
-      {
         "source": "sq1",
         "target": "c1"
       },
       {
-        "source": "sq2",
+        "source": "sq1",
         "target": "c2"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c3"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c4"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c5"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c6"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c7"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c8"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c9"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c10"
       },
       {
@@ -237,10 +235,6 @@
       },
       {
         "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
         "target": "a2"
       },
       {
@@ -249,10 +243,6 @@
       },
       {
         "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
         "target": "a2"
       },
       {
@@ -261,10 +251,6 @@
       },
       {
         "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
         "target": "a2"
       },
       {
@@ -318,10 +304,6 @@
       {
         "source": "c9",
         "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
       },
       {
         "source": "c10",

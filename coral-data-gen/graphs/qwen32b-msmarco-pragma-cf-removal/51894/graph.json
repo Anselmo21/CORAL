@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Leafy greens: boiled collards (~358 mg/cup), kale, bok choy, Swiss chard, turnip greens",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1858,
+    "output_tokens": 2488,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,126 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "best natural sources of calcium",
-        "description": "What are the best natural sources of calcium?"
+        "description": "What are the best natural sources of calcium for healthy bones?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Which calcium sources are most recommended by trusted health authorities and dietary guidelines?",
-        "description": "Sources prioritized by NIH, peer-reviewed journals, and dietitians."
+        "label": "trustworthy sources of calcium information",
+        "description": "What are the most trustworthy sources of calcium information?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Which calcium sources are most suitable for plant-based or vegan diets?",
-        "description": "Sources prioritized by vegan publications and dietary restrictions."
+        "label": "dietary perspectives for calcium sources",
+        "description": "What are the most relevant dietary perspectives for calcium sources?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Which calcium sources are most suitable for omnivorous or lactose-tolerant diets?",
-        "description": "Sources prioritized by omnivorous consumers and lactose-tolerant preferences."
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "Which calcium sources are most relevant for specific physiological needs (e.g., pregnancy)?",
-        "description": "Sources prioritized for physiological needs like pregnancy."
+        "label": "sustainable or ethical calcium sources",
+        "description": "What are the most sustainable or ethical sources of calcium?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: NIH / US dietary guidelines",
-        "description": "Prioritize sources aligned with NIH or national dietary guidelines."
+        "description": "Prioritize sources from NIH or US dietary guidelines."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed nutrition journal",
-        "description": "Prioritize peer-reviewed nutrition research."
+        "description": "Prioritize peer-reviewed nutrition journals."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: registered dietitian",
-        "description": "Prioritize recommendations from registered dietitians."
+        "description": "Prioritize sources from registered dietitians."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: vegan / plant-based publication",
-        "description": "Prioritize sources from vegan or plant-based publications."
+        "description": "Prioritize vegan or plant-based publications."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: consumer health website",
-        "description": "Prioritize consumer-oriented health websites."
+        "description": "Prioritize consumer health websites."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: food sustainability advocacy",
-        "description": "Prioritize sources from food sustainability advocacy groups."
+        "description": "Prioritize food sustainability advocacy sources."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: lactose-intolerant consumer",
-        "description": "Prioritize sources for lactose-intolerant individuals."
+        "description": "Prioritize sources from a lactose-intolerant consumer perspective."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: vegan",
-        "description": "Prioritize sources for vegan diets."
+        "description": "Prioritize sources from a vegan perspective."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: omnivorous default consumer",
-        "description": "Prioritize sources for omnivorous consumers."
+        "description": "Prioritize sources from an omnivorous default consumer perspective."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: pregnant woman",
-        "description": "Prioritize sources for pregnant women."
+        "description": "Prioritize sources from a pregnant woman's perspective."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Dairy: milk, yogurt, and cheese",
-        "description": "Calcium-rich dairy products recommended for omnivorous diets."
+        "description": "Dairy products like milk, yogurt, and cheese are rich in calcium."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Leafy greens: boiled collards (~358 mg/cup), kale, bok choy, Swiss chard, turnip greens",
-        "description": "High-calcium leafy greens recommended by dietary guidelines and plant-based sources."
+        "description": "Leafy greens are a natural, plant-based source of calcium."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Calcium-fortified plant-based foods: soy milk, calcium-set tofu, fortified juice and cereal",
-        "description": "Fortified plant-based foods for vegan and lactose-intolerant diets."
+        "description": "Calcium-fortified plant-based foods are a good source for those avoiding dairy."
       }
     ],
     "edges": [
@@ -166,10 +168,6 @@
       {
         "source": "q",
         "target": "sq3"
-      },
-      {
-        "source": "q",
-        "target": "sq4"
       },
       {
         "source": "sq1",
@@ -189,10 +187,6 @@
       },
       {
         "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
         "target": "c7"
       },
       {
@@ -200,16 +194,16 @@
         "target": "c8"
       },
       {
-        "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c9"
       },
       {
-        "source": "sq4",
+        "source": "sq2",
         "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
       },
       {
         "source": "c1",
@@ -280,7 +274,27 @@
         "target": "a1"
       },
       {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
         "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
         "target": "a3"
       },
       {
@@ -288,11 +302,11 @@
         "target": "a3"
       },
       {
-        "source": "c7",
+        "source": "c9",
         "target": "a3"
       },
       {
-        "source": "c8",
+        "source": "c10",
         "target": "a3"
       }
     ]

@@ -21,10 +21,20 @@
   ],
   "baseline_answer": "Dairy: milk, yogurt, and cheese",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 2,
+  "usage": {
+    "prompt_tokens": 6076,
+    "output_tokens": 4342,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -38,36 +48,29 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Nutritional content and absorption",
-        "description": "Evaluates calcium content, how well it's absorbed, and overall nutritional value."
+        "label": "Nutritional and Bioavailability Factors",
+        "description": "Factors related to how much and how well calcium is absorbed."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Dietary and lifestyle considerations",
-        "description": "Evaluates dietary restrictions, age appropriateness, and source type."
+        "label": "Dietary and Accessibility Factors",
+        "description": "Factors related to who can consume the food and where it is available."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Practical and environmental factors",
-        "description": "Evaluates availability, cooking methods, and environmental impact."
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "Food categorization",
-        "description": "Evaluates the food group or category the source belongs to."
+        "label": "Preparation and Environmental Factors",
+        "description": "Factors related to how the food is prepared and its environmental impact."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "source type",
-        "description": "Whether the calcium comes from dairy, plant, or fortified sources."
+        "description": "The category of the food source (e.g., dairy, plant-based)."
       },
       {
         "id": "c2",
@@ -81,35 +84,35 @@
         "layer": "3",
         "type": "concept",
         "label": "dietary restrictions",
-        "description": "Whether the source is suitable for vegetarians, vegans, or people with allergies."
+        "description": "Whether the food is suitable for specific diets (e.g., vegan, lactose-free)."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "calcium content",
-        "description": "The amount of calcium in the food per serving."
+        "description": "The amount of calcium per serving."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "food group",
-        "description": "The category of food the calcium source belongs to (e.g., dairy, vegetables)."
+        "description": "The food group the source belongs to (e.g., vegetables, dairy)."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "cooking method",
-        "description": "How the food is prepared and whether it affects calcium content or bioavailability."
+        "description": "How the food is prepared (e.g., boiled, raw)."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "age group",
-        "description": "Whether the food is appropriate for children, adults, or the elderly."
+        "description": "Suitability for different age groups (e.g., children, elderly)."
       },
       {
         "id": "c8",
@@ -130,28 +133,28 @@
         "layer": "3",
         "type": "concept",
         "label": "environmental impact",
-        "description": "The ecological footprint of producing the food."
+        "description": "The environmental cost of producing the food."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Dairy: milk, yogurt, and cheese",
-        "description": "High calcium content, high bioavailability, and widely consumed."
+        "description": "High calcium content, high bioavailability, and widely available."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Leafy greens: boiled collards (~358 mg/cup), kale, bok choy, Swiss chard, turnip greens",
-        "description": "High calcium content in leafy greens but with lower bioavailability."
+        "description": "High calcium content in leafy greens, but lower bioavailability."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Calcium-fortified plant-based foods: soy milk, calcium-set tofu, fortified juice and cereal",
-        "description": "Processed plant-based sources with added calcium."
+        "description": "Vegan-friendly and high bioavailability, but may be less accessible in some regions."
       }
     ],
     "edges": [
@@ -168,8 +171,8 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
+        "source": "sq1",
+        "target": "c2"
       },
       {
         "source": "sq1",
@@ -177,11 +180,11 @@
       },
       {
         "source": "sq1",
-        "target": "c2"
+        "target": "c9"
       },
       {
-        "source": "sq1",
-        "target": "c9"
+        "source": "sq2",
+        "target": "c1"
       },
       {
         "source": "sq2",
@@ -189,14 +192,14 @@
       },
       {
         "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
         "target": "c7"
       },
       {
         "source": "sq2",
-        "target": "c1"
-      },
-      {
-        "source": "sq3",
         "target": "c8"
       },
       {
@@ -208,103 +211,119 @@
         "target": "c10"
       },
       {
-        "source": "sq4",
-        "target": "c5"
+        "source": "c1",
+        "target": "a1"
       },
       {
         "source": "c1",
-        "target": "a1"
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
       },
       {
         "source": "c2",
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
         "source": "c3",
         "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
       },
       {
         "source": "c3",
         "target": "a2"
       },
       {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
         "source": "c4",
         "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
       },
       {
         "source": "c5",
         "target": "a2"
       },
       {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
         "source": "c6",
         "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
       },
       {
         "source": "c7",
         "target": "a2"
       },
       {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
         "source": "c8",
         "target": "a2"
       },
       {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
         "source": "c9",
         "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
       },
       {
         "source": "c10",
         "target": "a2"
       },
       {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
+        "source": "c10",
         "target": "a3"
       }
     ]

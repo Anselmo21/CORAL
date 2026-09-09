@@ -21,109 +21,118 @@
   ],
   "baseline_answer": "Answer C (Combined Approach): Pursue medication and CBT simultaneously \u2014 long-term outcomes are superior to either alone, with medication addressing core attention deficits while CBT builds the organizational skills ADHD has prevented developing.",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1563,
+    "output_tokens": 2237,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Is medication or behavioral strategies more effective for managing adult ADHD?",
-        "description": "Core question comparing intervention effectiveness."
+        "label": "Medication vs. Behavioral Strategies for Adult ADHD",
+        "description": "Determining the most effective management strategy for adult ADHD."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Efficacy, Speed, and Performance",
-        "description": "How quickly and effectively does the treatment resolve symptoms and improve function?"
+        "label": "Clinical Efficacy & Urgency",
+        "description": "How quickly and effectively must symptoms be managed given the severity?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Safety, Tolerance, and Preference",
-        "description": "What are the risks, side effects, and patient preferences regarding drug use?"
+        "label": "Safety, Tolerance & Preferences",
+        "description": "What are the risks, side effects, and patient values regarding pharmacology?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Long-term Development and Comorbidities",
-        "description": "How does the treatment impact skill building and co-occurring conditions?"
+        "label": "Long-term Development & Access",
+        "description": "How do we ensure lasting skill acquisition and manage logistical barriers?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "severity of functional impairment",
-        "description": "Higher severity often necessitates faster, stronger intervention."
+        "description": "Higher impairment favors medication or combined approaches."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "speed of symptom relief",
-        "description": "Medication typically acts faster than behavioral strategies."
+        "description": "Faster relief is a primary strength of medication."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "long-term skill development",
-        "description": "Behavioral strategies build lasting skills medication does not."
+        "description": "Behavioral strategies are superior for building lasting coping skills."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "dependency and side effect concerns",
-        "description": "Concerns about medication risks favor non-pharmacological options."
+        "description": "Favors non-pharmacological or combined approaches to mitigate risk."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "cardiovascular health considerations",
-        "description": "Specific medical risks associated with stimulant use."
+        "description": "Specific risk factor for stimulants, favoring behavioral or combined."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "access to CBT for ADHD",
-        "description": "Availability of therapy influences the feasibility of behavioral/combined approaches."
+        "description": "Logistical factor determining feasibility of behavioral strategies."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "medication tolerance and response",
-        "description": "Individual variability in how well stimulants work."
+        "description": "Individual biological response determines medication efficacy."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "occupational or academic performance needs",
-        "description": "High-stakes environments often require rapid symptom control."
+        "description": "High-stakes performance often requires rapid, robust intervention."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "preference for non-pharmacological treatment",
-        "description": "Patient desire to avoid medication."
+        "description": "Patient values that favor behavioral strategies."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "comorbid anxiety or mood disorders",
-        "description": "Complex cases often benefit from the holistic approach of CBT alongside meds."
+        "description": "Complexity often requires combined treatment for best outcomes."
       },
       {
         "id": "a1",
@@ -137,7 +146,7 @@
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Behavioral Strategies First)",
-        "description": "Start with CBT and structure for mild impairment or side effect concerns."
+        "description": "Start with CBT and structure for mild impairment or safety concerns."
       },
       {
         "id": "a3",
@@ -189,16 +198,16 @@
         "target": "c9"
       },
       {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
         "source": "sq3",
         "target": "c3"
       },
       {
         "source": "sq3",
         "target": "c6"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
       },
       {
         "source": "c1",

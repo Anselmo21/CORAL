@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (529 Default): Open a 529 plan immediately and contribute regularly \u2014 tax-free growth, state deductions, and the new Roth IRA rollover option make it the clear best vehicle for college savings with a 15-year horizon.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2303,
-    "output_tokens": 1990,
-    "llm_calls": 2,
+    "prompt_tokens": 1551,
+    "output_tokens": 2015,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,109 +40,127 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What's the best way to save for my child's college education?"
+        "label": "What's the best way to save for my child's college education?",
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the tax benefits of the savings plan?"
+        "label": "Benefits of tax-free growth and state income tax deductions",
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How does the savings plan impact financial aid and flexibility?"
+        "label": "Minimizing financial aid impact and ensuring flexibility",
+        "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the investment and management aspects of the savings plan?"
+        "label": "Investment and management considerations",
+        "description": ""
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "Are there any additional benefits or considerations?"
+        "label": "Additional benefits and considerations",
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "tax-free growth on contributions"
+        "label": "tax-free growth on contributions",
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "state income tax deduction"
+        "label": "state income tax deduction",
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "financial aid impact minimization"
+        "label": "financial aid impact minimization",
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "flexibility if child does not attend college"
+        "label": "flexibility if child does not attend college",
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "investment option quality"
+        "label": "investment option quality",
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "contribution limit flexibility"
+        "label": "contribution limit flexibility",
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "K-12 expense coverage"
+        "label": "K-12 expense coverage",
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "Roth IRA rollover option"
+        "label": "Roth IRA rollover option",
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "estate planning utility"
+        "label": "estate planning utility",
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "simplicity of account management"
+        "label": "simplicity of account management",
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Open a 529 plan immediately and contribute regularly"
+        "label": "Open a 529 plan immediately and contribute regularly",
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Prioritize your own Roth IRA contributions before funding a 529"
+        "label": "Prioritize your own Roth IRA contributions before funding a 529",
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Fund both a 529 and a Coverdell ESA if you have high private K-12 costs"
+        "label": "Fund both a 529 and a Coverdell ESA if you have high private K-12 costs",
+        "description": ""
       }
     ],
     "edges": [
@@ -243,10 +261,6 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
         "source": "c3",
         "target": "a2"
       },
@@ -267,8 +281,16 @@
         "target": "a2"
       },
       {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
         "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
       },
       {
         "source": "c2",
@@ -283,7 +305,7 @@
         "target": "a3"
       },
       {
-        "source": "c5",
+        "source": "c6",
         "target": "a3"
       },
       {

@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Beretta 1301 Tactical",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1938,
+    "output_tokens": 2756,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,98 +41,98 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best Beretta for home defense?",
-        "description": "Evaluate Beretta models for home defense based on performance and practicality."
+        "description": "Evaluating Beretta models for home defense based on 10 key criteria."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the key performance characteristics for a home defense firearm?",
-        "description": "Identify the most important factors in selecting a home defense gun."
+        "label": "Performance and Reliability",
+        "description": "Criteria related to how well the gun functions and performs in use."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the differences between Beretta pistols and shotguns for home defense?",
-        "description": "Compare Beretta's pistol and shotgun offerings for home defense."
+        "label": "Handling and Ergonomics",
+        "description": "Criteria related to how the gun feels and fits in the user's hand."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the trade-offs between compactness and effectiveness in Beretta home defense models?",
-        "description": "Analyze the pros and cons of compact vs. full-sized models."
+        "label": "Practicality and Cost",
+        "description": "Criteria related to cost, ease of use, and practicality for home defense."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "magazine capacity",
-        "description": "The number of rounds a gun can hold before reloading."
+        "description": "How many rounds the gun can hold."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "accuracy",
-        "description": "The ability to consistently hit the intended target."
+        "description": "How well the gun can be aimed and fired accurately."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "reliability",
-        "description": "The likelihood that the gun will function as intended under stress."
+        "description": "How consistently the gun functions under stress."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "recoil management",
-        "description": "How well the gun handles the force of firing."
+        "description": "How controllable the gun is after firing."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "grip ergonomics",
-        "description": "The comfort and effectiveness of the grip design."
+        "description": "How comfortable and secure the grip is."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "caliber stopping power",
-        "description": "The effectiveness of the round in stopping a threat."
+        "description": "How effective the bullet is at stopping a threat."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "price",
-        "description": "The cost of the firearm."
+        "description": "The cost of the gun."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "ease of maintenance",
-        "description": "How easy it is to clean and maintain the gun."
+        "description": "How easy the gun is to clean and maintain."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "sight system",
-        "description": "The clarity and effectiveness of the gun's sighting system."
+        "description": "How effective the sights are for aiming."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "frame size",
-        "description": "The physical dimensions of the gun's frame."
+        "description": "The physical size of the gun."
       },
       {
         "id": "a1",
@@ -137,14 +146,14 @@
         "layer": "4",
         "type": "answer",
         "label": "Beretta 1301 Tactical",
-        "description": "A compact 12-gauge tactical shotgun optimized for home defense."
+        "description": "A compact, gas-operated 12-gauge shotgun for home defense."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A compact Beretta (PX4 Storm Compact or APX Compact)",
-        "description": "A smaller 9mm pistol for concealed carry and home defense."
+        "description": "A compact 9mm pistol for concealed carry and home defense."
       }
     ],
     "edges": [
@@ -177,52 +186,148 @@
         "target": "c4"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c5"
       },
       {
-        "source": "sq1",
-        "target": "c6"
-      },
-      {
-        "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c9"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c10"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c6"
       },
       {
-        "source": "sq2",
-        "target": "c10"
+        "source": "sq3",
+        "target": "c7"
       },
       {
         "source": "sq3",
-        "target": "c1"
+        "target": "c8"
       },
       {
-        "source": "sq3",
-        "target": "c4"
+        "source": "c1",
+        "target": "a1"
       },
       {
-        "source": "sq3",
-        "target": "c5"
+        "source": "c1",
+        "target": "a2"
       },
       {
-        "source": "sq3",
-        "target": "c10"
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       },
       {
         "source": "c1",
@@ -265,35 +370,23 @@
         "target": "a2"
       },
       {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
         "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
         "target": "a3"
       },
       {
@@ -301,19 +394,7 @@
         "target": "a3"
       },
       {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
+        "source": "c6",
         "target": "a3"
       },
       {

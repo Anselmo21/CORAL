@@ -21,109 +21,125 @@
   ],
   "baseline_answer": "Answer B (Targeted Probiotics for Specific Conditions): Take a probiotic with evidence for your specific condition \u2014 Lactobacillus rhamnosus GG for antibiotic-associated diarrhea or specific IBS strains \u2014 strain and condition specificity is everything.",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1660,
+    "output_tokens": 3196,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should I take a probiotic supplement for gut health?",
-        "description": "There's so much conflicting information out there."
+        "label": "Should I take a probiotic supplement for gut health? There's so much conflicting information out there.",
+        "description": "A question about the value of probiotic supplements for general gut health, given conflicting evidence."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the strength of evidence for probiotics in general gut health?",
-        "description": ""
+        "label": "What is the evidence for probiotic supplements in general gut health?",
+        "description": "Assesses the general effectiveness of probiotics for gut health in the absence of specific conditions."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "What is the evidence for probiotics in specific conditions like IBS or antibiotic-associated diarrhea?",
-        "description": ""
+        "description": "Evaluates the effectiveness of probiotics for specific gastrointestinal conditions."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "How do different types of sources (peer-reviewed, medical, consumer, community) shape the recommendation?",
-        "description": ""
+        "label": "What is the reliability and regulation of probiotic supplements?",
+        "description": "Assesses the trustworthiness and regulation of the probiotic supplement market."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the comparative effectiveness of probiotics versus dietary fiber or fermented foods?",
+        "description": "Compares the effectiveness of probiotic supplements to dietary interventions like fiber and fermented foods."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": ""
+        "description": "Only consider sources from 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": ""
+        "description": "Only consider sources from 2021 to 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": ""
+        "description": "Only consider sources from the United States."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Healthy adult without specific GI diagnosis",
-        "description": ""
+        "description": "Only consider evidence relevant to healthy adults without gastrointestinal conditions."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient with IBS or antibiotic-associated diarrhea",
-        "description": ""
+        "description": "Only consider evidence relevant to patients with IBS or antibiotic-associated diarrhea."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Gastroenterologist or microbiome researcher",
-        "description": ""
+        "description": "Only consider evidence from medical professionals or researchers."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Peer-reviewed clinical research",
-        "description": ""
+        "description": "Only consider peer-reviewed clinical research."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Medical institution guidance",
-        "description": ""
+        "description": "Only consider guidance from medical institutions."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer health information",
-        "description": ""
+        "description": "Only consider consumer health information from reputable sources."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Patient community experience",
-        "description": ""
+        "description": "Only consider anecdotal or community-based patient experiences."
       },
       {
         "id": "a1",
@@ -161,6 +177,10 @@
         "target": "sq3"
       },
       {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
         "source": "sq1",
         "target": "c1"
       },
@@ -175,10 +195,6 @@
       {
         "source": "sq1",
         "target": "c4"
-      },
-      {
-        "source": "sq1",
-        "target": "c6"
       },
       {
         "source": "sq1",
@@ -206,7 +222,15 @@
       },
       {
         "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
         "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
       },
       {
         "source": "sq3",
@@ -215,10 +239,6 @@
       {
         "source": "sq3",
         "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c6"
       },
       {
         "source": "sq3",
@@ -233,7 +253,35 @@
         "target": "c9"
       },
       {
-        "source": "sq3",
+        "source": "sq4",
+        "target": "c2"
+      },
+      {
+        "source": "sq4",
+        "target": "c3"
+      },
+      {
+        "source": "sq4",
+        "target": "c5"
+      },
+      {
+        "source": "sq4",
+        "target": "c6"
+      },
+      {
+        "source": "sq4",
+        "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c8"
+      },
+      {
+        "source": "sq4",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
         "target": "c10"
       },
       {
@@ -281,6 +329,10 @@
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
         "source": "c3",
         "target": "a1"
       },
@@ -289,15 +341,19 @@
         "target": "a1"
       },
       {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
+        "source": "c7",
         "target": "a1"
       },
       {
         "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
         "target": "a1"
       },
       {
@@ -321,7 +377,23 @@
         "target": "a3"
       },
       {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
         "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
         "target": "a3"
       }
     ]

@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Choose Affordable School Default): Choose the less expensive school unless the prestige gap is extreme \u2014 $30k less debt provides lasting financial flexibility that outweighs a moderate ranking difference for most career paths.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2299,
-    "output_tokens": 1872,
-    "llm_calls": 2,
+    "prompt_tokens": 1546,
+    "output_tokens": 2089,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,106 +47,113 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Prestige-Sensitive Field",
-        "description": "Is the field I'm entering prestige-sensitive?"
+        "label": "Prestige Importance",
+        "description": "How important is university prestige in my career path?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Financial Burden",
-        "description": "Is the financial burden too high?"
+        "label": "Financial Implications",
+        "description": "What are the financial implications of attending a higher-ranked university?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Career Outcomes",
+        "description": "How will attending a higher-ranked university impact my career outcomes?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "Field-Specific Prestige Signal Importance",
-        "description": "How important is prestige in my field?"
+        "label": "field-specific prestige signal importance",
+        "description": "Importance of university prestige in my career path"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "Total Debt and Financial Flexibility Post-Graduation",
-        "description": "How much debt will I have after graduation?"
+        "label": "total debt and financial flexibility post-graduation",
+        "description": "Financial implications of attending a higher-ranked university"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "First-Job Hiring Signal Value",
-        "description": "How much does my first job's prestige matter?"
+        "label": "first-job hiring signal value",
+        "description": "Importance of university prestige in first-job hiring"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "Long-Term Career Earnings Premium",
-        "description": "Will I earn more in the long run due to my degree?"
+        "label": "long-term career earnings premium",
+        "description": "Impact of university prestige on long-term career earnings"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "Personal Motivation and Fit at Each School",
-        "description": "How well do I fit in at each school?"
+        "label": "personal motivation and fit at each school",
+        "description": "Importance of personal motivation and fit at each school"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "Networking Quality Difference Between Schools",
-        "description": "How different are the networking opportunities at each school?"
+        "label": "networking quality difference between schools",
+        "description": "Quality of networking opportunities at each school"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "Entrepreneurial or Risk-Taking Career Aspirations",
-        "description": "Do I plan to start my own business or take risks in my career?"
+        "label": "entrepreneurial or risk-taking career aspirations",
+        "description": "Importance of entrepreneurial or risk-taking career aspirations"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "Graduate School Ambitions (Prestige Matters More for PhD)",
-        "description": "Do I plan to attend graduate school?"
+        "label": "graduate school ambitions (prestige matters more for PhD)",
+        "description": "Importance of university prestige for graduate school ambitions"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "Scholarship and Aid Negotiation Potential",
-        "description": "Can I negotiate better financial aid?"
+        "label": "scholarship and aid negotiation potential",
+        "description": "Potential for scholarship and aid negotiation"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "Family Financial Situation and Co-Signer Risk",
-        "description": "How will my family's financial situation affect my decision?"
+        "label": "family financial situation and co-signer risk",
+        "description": "Importance of family financial situation and co-signer risk"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Choose Affordable School Default",
-        "description": "Choose the less expensive school unless the prestige gap is extreme."
+        "description": "Choose the less expensive school unless the prestige gap is extreme"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Pay for Prestige in Prestige-Sensitive Fields",
-        "description": "Pay the $30k premium if you're entering finance, consulting, or law."
+        "description": "Pay the $30k premium if you're entering finance, consulting, or law"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Negotiate Aid First",
-        "description": "Attempt to negotiate financial aid from the higher-ranked school before deciding."
+        "description": "Attempt to negotiate financial aid from the higher-ranked school before deciding"
       }
     ],
     "edges": [
@@ -159,12 +166,16 @@
         "target": "sq2"
       },
       {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
         "source": "sq1",
         "target": "c1"
       },
       {
         "source": "sq1",
-        "target": "c2"
+        "target": "c3"
       },
       {
         "source": "sq1",
@@ -172,19 +183,7 @@
       },
       {
         "source": "sq1",
-        "target": "c6"
-      },
-      {
-        "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
         "target": "c8"
-      },
-      {
-        "source": "sq1",
-        "target": "c9"
       },
       {
         "source": "sq2",
@@ -196,7 +195,23 @@
       },
       {
         "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
         "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
       },
       {
         "source": "c1",
@@ -213,50 +228,14 @@
       {
         "source": "c4",
         "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
       },
       {
         "source": "c5",
         "target": "a1"
       },
       {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
         "source": "c6",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c7",
@@ -264,11 +243,55 @@
       },
       {
         "source": "c8",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
         "target": "a1"
+      },
+      {
+        "source": "a1",
+        "target": "c2"
+      },
+      {
+        "source": "a1",
+        "target": "c5"
+      },
+      {
+        "source": "a1",
+        "target": "c7"
+      },
+      {
+        "source": "a1",
+        "target": "c10"
+      },
+      {
+        "source": "a2",
+        "target": "c1"
+      },
+      {
+        "source": "a2",
+        "target": "c3"
+      },
+      {
+        "source": "a2",
+        "target": "c4"
+      },
+      {
+        "source": "a2",
+        "target": "c6"
+      },
+      {
+        "source": "a2",
+        "target": "c8"
+      },
+      {
+        "source": "a3",
+        "target": "c9"
       }
     ]
   }

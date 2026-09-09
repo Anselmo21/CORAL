@@ -21,39 +21,48 @@
   ],
   "baseline_answer": "Answer A (Term Life Default): Get a 20-year term policy worth 10\u201312x your income \u2014 it's dramatically cheaper than whole life, covers your mortgage and children's dependency years, and you invest the premium difference separately.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1531,
+    "output_tokens": 2403,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should I get whole life or term life insurance?",
-        "description": "34 years old, two kids, and a mortgage."
+        "label": "q",
+        "description": "I'm 34 with two kids and a mortgage. Should I get whole life or term life insurance?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Cost and Affordability",
-        "description": "Evaluates the monthly cost, death benefit efficiency, and suitability for average income earners."
+        "label": "sq1",
+        "description": "Cost and Affordability"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Coverage and Duration",
-        "description": "Evaluates how well the policy covers peak financial years and whether it provides lifetime coverage."
+        "label": "sq2",
+        "description": "Coverage and Financial Obligations"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Long-Term Financial Tools",
-        "description": "Evaluates cash value, tax-sheltered growth, and estate planning utility."
+        "label": "sq3",
+        "description": "Long-Term and Special Use Cases"
       },
       {
         "id": "c1",
@@ -182,10 +191,6 @@
       },
       {
         "source": "sq2",
-        "target": "c8"
-      },
-      {
-        "source": "sq2",
         "target": "c10"
       },
       {
@@ -199,6 +204,10 @@
       {
         "source": "sq3",
         "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
       },
       {
         "source": "c1",
@@ -245,10 +254,6 @@
         "target": "a2"
       },
       {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
         "source": "c5",
         "target": "a2"
       },
@@ -265,14 +270,6 @@
         "target": "a2"
       },
       {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
         "source": "c5",
         "target": "a3"
       },
@@ -286,10 +283,6 @@
       },
       {
         "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
         "target": "a3"
       }
     ]

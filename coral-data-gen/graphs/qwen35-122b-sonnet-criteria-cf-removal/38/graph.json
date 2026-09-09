@@ -21,67 +21,76 @@
   ],
   "baseline_answer": "Answer A (Part-Time Default for Professional Degrees): Do a part-time program if you're pursuing a professional degree (MBA, MPA, MS) \u2014 you maintain income, apply learning immediately, avoid employment gaps, and outcomes are largely equivalent to full-time.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1593,
+    "output_tokens": 4064,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should I do part-time or full-time?",
-        "description": "User cannot quit job, weighing part-time vs full-time graduate school."
+        "label": "Part-time vs Full-time Graduate School",
+        "description": "Should I do part-time or full-time graduate school if I can't afford to quit my job?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "Financial & Career Continuity",
-        "description": "Evaluates income, immediate application, reimbursement, and employment gaps."
+        "description": "How do the options affect income, employment gaps, and immediate application of skills?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Academic Structure & Outcomes",
-        "description": "Evaluates degree type, networking, research access, completion time, and prestige."
+        "label": "Academic Experience & Outcomes",
+        "description": "How do the options compare regarding networking, research, prestige, and degree requirements?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Personal Capacity & Risk",
-        "description": "Evaluates burnout, family obligations, and completion rates."
+        "label": "Personal Feasibility & Risk",
+        "description": "What are the risks of burnout, completion rates, and impact on family life?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "ability to maintain income during studies",
-        "description": "Critical for those who cannot quit their job."
+        "description": "Part-time allows keeping a job; full-time requires quitting."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "time to degree completion",
-        "description": "Full-time is generally faster."
+        "description": "Full-time is faster; part-time takes longer."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "strength of peer networking opportunity",
-        "description": "Full-time immersion builds stronger networks."
+        "description": "Full-time offers stronger immersion and networking."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "degree type (professional vs research/academic)",
-        "description": "Research degrees often require full-time; professional degrees allow part-time."
+        "description": "Research degrees require full-time; professional degrees allow part-time."
       },
       {
         "id": "c5",
@@ -95,35 +104,35 @@
         "layer": "3",
         "type": "concept",
         "label": "immediate application of learning to current job",
-        "description": "Part-time allows applying learnings immediately."
+        "description": "Part-time allows immediate application; full-time creates a gap."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "access to internships and research roles",
-        "description": "Full-time students have better access."
+        "description": "Full-time provides better access to internships and research."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "employer tuition reimbursement availability",
-        "description": "Employer support reduces financial risk for part-time."
+        "description": "Part-time is often supported by employers; full-time is not."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "family and personal life obligations",
-        "description": "Part-time offers more flexibility for family."
+        "description": "Part-time offers flexibility for family; full-time is rigid."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "program prestige and outcomes equivalence",
-        "description": "Outcomes are largely equivalent for professional degrees."
+        "description": "Part-time outcomes are largely equivalent to full-time for professional degrees."
       },
       {
         "id": "a1",
@@ -209,36 +218,16 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
         "source": "c3",
         "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
       },
       {
         "source": "c4",
         "target": "a1"
       },
       {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
         "source": "c5",
         "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
       },
       {
         "source": "c6",
@@ -249,12 +238,48 @@
         "target": "a1"
       },
       {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
         "source": "c7",
         "target": "a2"
       },
       {
-        "source": "c8",
-        "target": "a1"
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
       },
       {
         "source": "c8",
@@ -262,19 +287,7 @@
       },
       {
         "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
         "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
       }
     ]
   }

@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (MacBook Default): Get a MacBook with Apple Silicon \u2014 the Unix environment, Docker performance, battery life, and build quality make it the dominant choice for web and mobile developers, and Apple Silicon's performance-per-watt is unmatched.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2277,
-    "output_tokens": 2189,
-    "llm_calls": 2,
+    "prompt_tokens": 1539,
+    "output_tokens": 1839,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,126 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "Should I get a MacBook or stick with Windows for software development?",
-        "description": "Evaluation of development environment options"
+        "description": "Software development platform choice"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Unix-based environment, Docker performance, and battery life",
-        "description": "Criteria for web and mobile development"
+        "label": "Unix-based environment and server compatibility",
+        "description": "Importance of Unix-based environment for server compatibility"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "raw performance, hardware choice, and cost at equivalent performance tier",
-        "description": "Criteria for development environment performance"
+        "label": "Performance and value considerations",
+        "description": "Importance of raw performance, value, and hardware choice"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "target platform, team and employer standard compatibility, and long-term resale and longevity",
-        "description": "Criteria for development environment compatibility"
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "Windows Subsystem for Linux viability",
-        "description": "Criteria for Windows development environment"
+        "label": "Platform and compatibility considerations",
+        "description": "Importance of target platform, team and employer standard compatibility"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "Unix-based environment for server compatibility",
-        "description": "Native Unix environment for development"
+        "description": "Importance of Unix-based environment for server compatibility"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "raw performance per dollar",
-        "description": "Performance per dollar for development environment"
+        "description": "Importance of raw performance per dollar"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "battery life during development work",
-        "description": "Battery life for development work"
+        "description": "Importance of battery life during development work"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "target platform (iOS/macOS development requirement)",
-        "description": "Target platform for development"
+        "description": "Importance of target platform"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "Docker and container performance",
-        "description": "Docker performance for development"
+        "description": "Importance of Docker and container performance"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "hardware choice and upgrade flexibility",
-        "description": "Hardware choice and upgrade flexibility"
+        "description": "Importance of hardware choice and upgrade flexibility"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "team and employer standard compatibility",
-        "description": "Compatibility with team and employer standards"
+        "description": "Importance of team and employer standard compatibility"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "Windows Subsystem for Linux viability",
-        "description": "WSL2 viability for development"
+        "description": "Importance of Windows Subsystem for Linux viability"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "long-term resale and longevity",
-        "description": "Long-term resale and longevity"
+        "description": "Importance of long-term resale and longevity"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "cost at equivalent performance tier",
-        "description": "Cost at equivalent performance tier"
+        "description": "Importance of cost at equivalent performance tier"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Get a MacBook with Apple Silicon \u2014 the Unix environment, Docker performance, battery life, and build quality make it the dominant choice for web and mobile developers, and Apple Silicon's performance-per-watt is unmatched.",
-        "description": "Baseline answer"
+        "label": "Get a MacBook with Apple Silicon",
+        "description": "Dominant choice for web and mobile developers"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Choose a high-spec Windows laptop if you want more performance per dollar and hardware flexibility \u2014 WSL2 has made Windows a fully viable development environment for most workflows.",
-        "description": "Alternative answer"
+        "label": "Choose a high-spec Windows laptop",
+        "description": "High-performance and flexible option"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Stick with Windows if you're in a .NET, game development, or enterprise environment where Windows is the target platform \u2014 macOS creates friction where the stack is Windows-native.",
-        "description": "Alternative answer"
+        "label": "Stick with Windows for .NET, game development, or enterprise environments",
+        "description": "Windows-native stack and compatibility"
       }
     ],
     "edges": [
@@ -177,24 +170,24 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
-      },
-      {
         "source": "sq1",
         "target": "c1"
       },
       {
         "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "sq1",
-        "target": "c5"
+        "target": "c8"
       },
       {
         "source": "sq2",
         "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
       },
       {
         "source": "sq2",
@@ -217,132 +210,84 @@
         "target": "c9"
       },
       {
-        "source": "sq4",
-        "target": "c8"
+        "source": "c1",
+        "target": "a1"
       },
       {
-        "source": "a1",
-        "target": "c1"
+        "source": "c2",
+        "target": "a2"
       },
       {
-        "source": "a1",
-        "target": "c2"
+        "source": "c3",
+        "target": "a1"
       },
       {
-        "source": "a1",
-        "target": "c3"
+        "source": "c4",
+        "target": "a3"
       },
       {
-        "source": "a1",
-        "target": "c4"
+        "source": "c5",
+        "target": "a1"
       },
       {
-        "source": "a1",
-        "target": "c5"
+        "source": "c6",
+        "target": "a2"
       },
       {
-        "source": "a1",
-        "target": "c6"
+        "source": "c7",
+        "target": "a3"
       },
       {
-        "source": "a1",
-        "target": "c7"
+        "source": "c8",
+        "target": "a1"
       },
       {
-        "source": "a1",
-        "target": "c8"
+        "source": "c9",
+        "target": "a3"
       },
       {
-        "source": "a1",
-        "target": "c9"
+        "source": "c10",
+        "target": "a2"
       },
       {
-        "source": "a1",
-        "target": "c10"
+        "source": "c1",
+        "target": "a3"
       },
       {
-        "source": "a2",
-        "target": "c2"
+        "source": "c2",
+        "target": "a1"
       },
       {
-        "source": "a2",
-        "target": "c6"
+        "source": "c3",
+        "target": "a2"
       },
       {
-        "source": "a2",
-        "target": "c10"
+        "source": "c4",
+        "target": "a1"
       },
       {
-        "source": "a2",
-        "target": "c8"
+        "source": "c5",
+        "target": "a3"
       },
       {
-        "source": "a3",
-        "target": "c2"
+        "source": "c6",
+        "target": "a1"
       },
       {
-        "source": "a3",
-        "target": "c7"
+        "source": "c7",
+        "target": "a2"
       },
       {
-        "source": "a3",
-        "target": "c8"
+        "source": "c8",
+        "target": "a3"
       },
       {
-        "source": "a3",
-        "target": "c9"
+        "source": "c9",
+        "target": "a1"
       },
       {
-        "source": "a3",
-        "target": "c10"
-      },
-      {
-        "source": "a2",
-        "target": "c1"
-      },
-      {
-        "source": "a3",
-        "target": "c1"
-      },
-      {
-        "source": "a2",
-        "target": "c3"
-      },
-      {
-        "source": "a3",
-        "target": "c3"
-      },
-      {
-        "source": "a2",
-        "target": "c4"
-      },
-      {
-        "source": "a3",
-        "target": "c4"
-      },
-      {
-        "source": "a2",
-        "target": "c5"
-      },
-      {
-        "source": "a3",
-        "target": "c5"
-      },
-      {
-        "source": "a2",
-        "target": "c7"
-      },
-      {
-        "source": "a3",
-        "target": "c7"
-      },
-      {
-        "source": "a2",
-        "target": "c9"
-      },
-      {
-        "source": "a3",
-        "target": "c9"
+        "source": "c10",
+        "target": "a2"
       }
     ]
   }

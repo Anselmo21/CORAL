@@ -21,109 +21,118 @@
   ],
   "baseline_answer": "Answer A (Skip PhD for Industry Default): Don't do a PhD for industry data science \u2014 a strong Master's plus projects gets you 90% of the roles at 25% of the time cost, and the financial break-even on a PhD takes over a decade.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1587,
+    "output_tokens": 2565,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Is a PhD in data science worth it for industry careers?",
-        "description": "Evaluating the value of a PhD in data science for industry careers."
+        "label": "q",
+        "description": "I'm thinking about doing a PhD in data science. Is it actually worth it for industry careers?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What types of roles require or strongly favor a PhD?",
-        "description": "Assessing roles that are inaccessible or strongly biased toward PhD holders."
+        "label": "Career goals and role requirements",
+        "description": "Whether the target role requires a PhD and if the person is interested in academic or research careers."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the financial and time trade-offs of a PhD?",
-        "description": "Evaluating the long-term return on investment and time cost."
+        "label": "Financial and time cost-benefit analysis",
+        "description": "Whether the financial and time investment of a PhD is justified for industry roles."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the alternative pathways and personal motivations for a PhD?",
-        "description": "Considering motivations and alternatives to a PhD in data science."
+        "label": "Motivation and personal fit",
+        "description": "Whether the person is motivated by research, publication, or specialization."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "target role requiring PhD (research scientist)",
-        "description": "Roles like research scientist at top AI labs typically require a PhD."
+        "description": "Whether the desired role in industry (e.g., research scientist) requires a PhD."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "financial return over 10-year career",
-        "description": "Assessing the long-term salary and financial return of a PhD."
+        "description": "Whether the PhD provides a financial return over a 10-year career."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "research vs industry application orientation",
-        "description": "Whether the individual prefers research or industry application work."
+        "description": "Whether the person is more interested in research or industry applications."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "opportunity cost of 4\u20136 years",
-        "description": "The cost of time spent in a PhD program versus industry experience."
+        "description": "The time cost of a PhD and its impact on career trajectory."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "access to frontier AI lab positions",
-        "description": "Whether a PhD is a gatekeeper for top AI research positions."
+        "description": "Whether a PhD is required to access top AI research labs."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "academic career aspirations",
-        "description": "Whether the individual is interested in a long-term academic career."
+        "description": "Whether the person is interested in an academic career."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "publication and intellectual contribution interest",
-        "description": "Interest in contributing to the academic literature and research."
+        "description": "Whether the person is motivated by research and publication."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "stipend and funding availability",
-        "description": "Whether funding is available for the PhD program."
+        "description": "Whether the PhD is financially supported."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "alternative paths via strong MS degree",
-        "description": "Whether a strong Master's degree can substitute for a PhD in many roles."
+        "description": "Whether a strong Master's degree is a viable alternative to a PhD."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "specialization depth vs breadth",
-        "description": "Whether deep specialization is desired over broader skills."
+        "description": "Whether the person prefers deep specialization or broader knowledge."
       },
       {
         "id": "a1",
@@ -185,16 +194,16 @@
         "target": "c8"
       },
       {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
         "source": "sq3",
         "target": "c3"
       },
       {
         "source": "sq3",
         "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c9"
       },
       {
         "source": "sq3",
@@ -209,16 +218,16 @@
         "target": "a2"
       },
       {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
         "source": "c2",
         "target": "a1"
       },
       {
         "source": "c3",
         "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
       },
       {
         "source": "c3",

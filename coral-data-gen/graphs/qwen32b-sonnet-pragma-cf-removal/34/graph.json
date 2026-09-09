@@ -21,109 +21,118 @@
   ],
   "baseline_answer": "Answer A (Computer Science Default): Study Computer Science at the best program you can access \u2014 it provides the broadest path to ML industry roles, includes dedicated ML coursework, and is the most recognized credential for ML engineering positions.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1620,
+    "output_tokens": 2596,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What's the best undergraduate degree for working in machine learning?",
-        "description": "A question about the best undergraduate major for a career in machine learning."
+        "label": "q",
+        "description": "I want to work in machine learning. What's the best undergraduate degree to study?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best degree for ML industry engineering roles?",
-        "description": "Sub-question focusing on students aiming for ML engineering roles in industry."
+        "label": "sq1",
+        "description": "What is the best degree for ML industry engineering roles?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best degree for ML research or PhDs?",
-        "description": "Sub-question focusing on students aiming for ML research or academic careers."
+        "label": "sq2",
+        "description": "What is the best degree for ML research/PhD?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Does the degree matter as much as the demonstrated skills and projects?",
-        "description": "Sub-question focusing on the importance of demonstrated skills versus degree field."
+        "label": "sq3",
+        "description": "What is the best degree for ML if skills and projects matter more than the degree itself?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Only consider sources from 2023."
+        "description": "temporal: 2023 only"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Consider sources from 2021 to 2023."
+        "description": "temporal: 2021\u20132023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Only consider sources from the USA."
+        "description": "geographic: USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: UK / Global research institutions",
-        "description": "Consider sources from the UK or global research institutions."
+        "description": "geographic: UK / Global research institutions"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student targeting ML industry engineering roles",
-        "description": "Only consider sources from the perspective of students targeting ML industry roles."
+        "description": "perspective: Student targeting ML industry engineering roles"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student targeting ML research / PhD",
-        "description": "Only consider sources from the perspective of students targeting ML research or PhDs."
+        "description": "perspective: Student targeting ML research / PhD"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Education ranking publication",
-        "description": "Only consider sources from education ranking publications."
+        "description": "trustworthiness: Education ranking publication"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: ML practitioner community",
-        "description": "Only consider sources from ML practitioner communities."
+        "description": "trustworthiness: ML practitioner community"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Workforce data report",
-        "description": "Only consider sources from workforce data reports."
+        "description": "trustworthiness: Workforce data report"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: AI research lab perspective",
-        "description": "Only consider sources from AI research labs."
+        "description": "trustworthiness: AI research lab perspective"
       },
       {
         "id": "a1",
@@ -194,11 +203,23 @@
       },
       {
         "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
         "target": "c10"
       },
       {
         "source": "sq3",
         "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
       },
       {
         "source": "sq3",
@@ -273,11 +294,11 @@
         "target": "a3"
       },
       {
-        "source": "c4",
+        "source": "c3",
         "target": "a3"
       },
       {
-        "source": "c6",
+        "source": "c5",
         "target": "a3"
       },
       {

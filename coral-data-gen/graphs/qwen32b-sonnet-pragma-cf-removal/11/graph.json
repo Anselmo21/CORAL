@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (DIY Default): Self-manage with a simple three-fund index portfolio \u2014 at $150k with a straightforward situation, the 0.5\u20131% advisor fee compounds into tens of thousands of dollars of unnecessary cost over time.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1701,
+    "output_tokens": 2709,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,35 +41,35 @@
         "layer": "1",
         "type": "question",
         "label": "Should I use a financial advisor or just manage my investments myself? I have about $150k in savings.",
-        "description": "Decision between DIY and advisory services for a $150k portfolio."
+        "description": "Decision between DIY and financial advisor for a $150k portfolio."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Cost-benefit of a fee-only advisor for a simple portfolio and straightforward situation",
-        "description": "Assesses whether advisor fees outweigh value for simple cases."
+        "label": "What is the cost-benefit of using a financial advisor for a $150k portfolio?",
+        "description": "Evaluates financial cost and value of advisor services."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Value of an advisor for complex or emotionally-driven investment behavior",
-        "description": "Evaluates advisor utility in complex or emotional contexts."
+        "label": "Under what personal or financial circumstances is a financial advisor most valuable?",
+        "description": "Identifies situations where advisor value is highest."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Middle-ground alternative between DIY and full advisory services",
-        "description": "Evaluates robo-advisors as a low-cost alternative."
+        "label": "What are the alternatives to a full-service financial advisor?",
+        "description": "Explores cost-effective alternatives like robo-advisors."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Only consider sources from 2023."
+        "description": "Only consider 2023 sources."
       },
       {
         "id": "c2",
@@ -74,35 +83,35 @@
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Only consider U.S.-based sources."
+        "description": "Only consider USA-based sources."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Financially literate DIY investor",
-        "description": "Sources from or for financially literate DIY investors."
+        "description": "Sources from the perspective of a DIY investor."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Investor prone to emotional decision-making",
-        "description": "Sources relevant to emotionally-driven investors."
+        "description": "Sources from the perspective of an emotionally driven investor."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: High-complexity situation (business owner, estate planning)",
-        "description": "Sources for complex financial situations."
+        "description": "Sources from the perspective of a complex financial situation."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer financial advisory",
-        "description": "Sources from consumer financial advisors."
+        "description": "Sources from consumer financial advisory services."
       },
       {
         "id": "c8",
@@ -116,35 +125,35 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Community peer advice",
-        "description": "Sources from community or peer advice."
+        "description": "Sources from community peer advice (e.g., Reddit)."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Investment platform (potential conflict of interest)",
-        "description": "Sources from investment platforms (may have conflicts)."
+        "description": "Sources from investment platforms (e.g., robo-advisors)."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "DIY Default",
-        "description": "Self-manage with a simple three-fund index portfolio \u2014 at $150k with a straightforward situation, the 0.5\u20131% advisor fee compounds into tens of thousands of dollars of unnecessary cost over time."
+        "label": "Answer A (DIY Default): Self-manage with a simple three-fund index portfolio \u2014 at $150k with a straightforward situation, the 0.5\u20131% advisor fee compounds into tens of thousands of dollars of unnecessary cost over time.",
+        "description": "DIY is best for simple, low-fee situations."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Fee-Only Advisor for Complexity",
-        "description": "Hire a fee-only fiduciary advisor if your situation involves business ownership, equity compensation, estate planning, or you've historically made emotional investing decisions during market downturns."
+        "label": "Answer B (Fee-Only Advisor for Complexity): Hire a fee-only fiduciary advisor if your situation involves business ownership, equity compensation, estate planning, or you've historically made emotional investing decisions during market downturns.",
+        "description": "Advisor is best for complex or emotional situations."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Robo-Advisor Middle Ground",
-        "description": "Use a robo-advisor at 0.25% AUM for automated rebalancing and tax-loss harvesting \u2014 you get most of the value of active management at a fraction of the cost of a human advisor."
+        "label": "Answer C (Robo-Advisor Middle Ground): Use a robo-advisor at 0.25% AUM for automated rebalancing and tax-loss harvesting \u2014 you get most of the value of active management at a fraction of the cost of a human advisor.",
+        "description": "Robo-advisors offer a cost-effective middle ground."
       }
     ],
     "edges": [
@@ -174,31 +183,11 @@
       },
       {
         "source": "sq1",
-        "target": "c4"
-      },
-      {
-        "source": "sq1",
         "target": "c7"
       },
       {
         "source": "sq1",
         "target": "c8"
-      },
-      {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
-      },
-      {
-        "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c3"
       },
       {
         "source": "sq2",
@@ -210,66 +199,22 @@
       },
       {
         "source": "sq2",
-        "target": "c8"
-      },
-      {
-        "source": "sq2",
         "target": "c9"
       },
       {
-        "source": "sq3",
-        "target": "c2"
+        "source": "sq2",
+        "target": "c10"
       },
       {
         "source": "sq3",
-        "target": "c3"
+        "target": "c4"
       },
       {
         "source": "sq3",
         "target": "c8"
       },
       {
-        "source": "sq3",
-        "target": "c10"
-      },
-      {
         "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
         "target": "a1"
       },
       {
@@ -277,20 +222,72 @@
         "target": "a2"
       },
       {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
         "source": "c2",
         "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
       },
       {
         "source": "c3",
         "target": "a2"
       },
       {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
         "source": "c7",
         "target": "a2"
       },
       {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
         "source": "c8",
         "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
       },
       {
         "source": "c9",
@@ -301,35 +298,7 @@
         "target": "a2"
       },
       {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
+        "source": "c10",
         "target": "a3"
       }
     ]

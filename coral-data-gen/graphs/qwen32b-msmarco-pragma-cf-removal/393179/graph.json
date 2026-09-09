@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Top Tier Detergent Gasoline (Shell V-Power, Esso, Chevron)",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2617,
+    "output_tokens": 2772,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "in Ontario what is the best gasoline for your vehicle",
-        "description": "Determining the best gasoline for vehicles in Ontario based on technical, consumer, and ownership factors."
+        "description": "What is the best gasoline for your vehicle in Ontario?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What gasoline is recommended by automakers and technical standards in Ontario?",
-        "description": "Evaluating gasoline based on automaker endorsements and technical reports in Ontario."
+        "label": "What is the best gasoline formulation for engine performance and longevity in Ontario?",
+        "description": "Evaluating gasoline formulations for engine health and performance in Ontario."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What gasoline is recommended by consumer reports and owner guidelines in Ontario?",
-        "description": "Evaluating gasoline based on consumer reporting and owner manuals in Ontario."
+        "label": "What is the best gasoline for different types of vehicles (luxury, regular, performance)?",
+        "description": "Evaluating gasoline for different vehicle types in Ontario."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What gasoline is best from the perspective of vehicle type and long-term ownership?",
-        "description": "Evaluating gasoline based on vehicle type and long-term ownership considerations."
+        "label": "What is the best gasoline for long-term vehicle ownership in Ontario?",
+        "description": "Evaluating gasoline for long-term vehicle maintenance in Ontario."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "geographic: Ontario",
-        "description": "Only consider sources relevant to Ontario."
+        "label": "1. geographic: Ontario",
+        "description": "Filter sources relevant to Ontario."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: SAE / automotive engineering technical report",
-        "description": "Only consider sources with technical or engineering credibility."
+        "label": "2. trustworthiness: SAE / automotive engineering technical report",
+        "description": "Filter sources based on SAE or engineering reports."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: CBC Marketplace consumer reporting",
-        "description": "Only consider consumer-focused reporting from CBC Marketplace."
+        "label": "3. trustworthiness: CBC Marketplace consumer reporting",
+        "description": "Filter sources based on CBC Marketplace investigations."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: owner's manual specification",
-        "description": "Only consider guidance from vehicle owner's manuals."
+        "label": "4. trustworthiness: owner's manual specification",
+        "description": "Filter sources based on owner's manual guidance."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: automaker official recommendation",
-        "description": "Only consider recommendations from automakers."
+        "label": "5. trustworthiness: automaker official recommendation",
+        "description": "Filter sources based on automaker endorsements."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: local automotive forum",
-        "description": "Only consider advice from local automotive forums."
+        "label": "6. trustworthiness: local automotive forum",
+        "description": "Filter sources based on local automotive forums."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: luxury car owner",
-        "description": "Only consider the needs of luxury car owners."
+        "label": "7. perspective: luxury car owner",
+        "description": "Filter sources from the perspective of luxury car owners."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: regular sedan owner",
-        "description": "Only consider the needs of regular sedan owners."
+        "label": "8. perspective: regular sedan owner",
+        "description": "Filter sources from the perspective of regular sedan owners."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: performance enthusiast",
-        "description": "Only consider the needs of performance enthusiasts."
+        "label": "9. perspective: performance enthusiast",
+        "description": "Filter sources from the perspective of performance enthusiasts."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: long-term keep-vehicle owner",
-        "description": "Only consider the needs of long-term vehicle owners."
+        "label": "10. perspective: long-term keep-vehicle owner",
+        "description": "Filter sources from the perspective of long-term vehicle owners."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Top Tier Detergent Gasoline (Shell V-Power, Esso, Chevron)",
-        "description": "Endorsed by automakers and technical standards, available in Ontario."
+        "description": "Top Tier gasoline endorsed by major automakers for engine performance and longevity."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Petro-Canada Ultra 94\u2122",
-        "description": "High-octane fuel available in Ontario, favored by performance enthusiasts."
+        "description": "High-octane premium gasoline available in select Ontario locations."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Regular 87-octane unleaded at any reputable station",
-        "description": "Economical and suitable for most regular vehicles in Ontario."
+        "description": "Standard gasoline for most vehicles, cost-effective and sufficient for regular use."
       }
     ],
     "edges": [
@@ -170,11 +179,31 @@
       },
       {
         "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
         "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
       },
       {
         "source": "sq2",
         "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
       },
       {
         "source": "sq2",
@@ -186,19 +215,47 @@
       },
       {
         "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
         "target": "c6"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c7"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c8"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
       },
       {
         "source": "sq3",
@@ -209,20 +266,80 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
         "source": "c2",
         "target": "a1"
       },
       {
         "source": "c3",
         "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
       },
       {
         "source": "c3",
@@ -234,7 +351,7 @@
       },
       {
         "source": "c5",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c6",
@@ -242,7 +359,7 @@
       },
       {
         "source": "c7",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c8",
@@ -250,7 +367,7 @@
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c10",

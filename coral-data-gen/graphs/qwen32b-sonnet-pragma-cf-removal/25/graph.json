@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (Immunotherapy Default): Pursue allergen immunotherapy (shots or sublingual tablets) \u2014 it's the only treatment that modifies the underlying allergy and can produce multi-year remission after a 3\u20135 year course, making it superior for severe or persistent symptoms.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1710,
+    "output_tokens": 2314,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -39,98 +48,91 @@
         "layer": "2",
         "type": "subq",
         "label": "sq1",
-        "description": "What is the most effective treatment for long-term remission of seasonal allergies?"
+        "description": "What is the most effective long-term treatment for severe seasonal allergies?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "sq2",
-        "description": "What is the most effective daily treatment for symptom control without long-term commitment?"
+        "description": "What is the most effective immediate or accessible treatment for mild-to-moderate symptoms?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "sq3",
-        "description": "What is the lowest-cost, lowest-effort treatment for mild-to-moderate seasonal allergies?"
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "sq4",
-        "description": "What is the most effective treatment for long-term allergy management according to patient experience and convenience?"
+        "description": "What is the most trusted or evidence-based treatment for long-term allergy management?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": ""
+        "description": "Only consider sources from 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": ""
+        "description": "Only consider sources from 2021 to 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": ""
+        "description": "Only consider sources from the USA."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient seeking long-term cure over symptom management",
-        "description": ""
+        "description": "Only consider sources from the perspective of a patient seeking a long-term cure."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient needing immediate relief with minimal commitment",
-        "description": ""
+        "description": "Only consider sources from the perspective of a patient needing immediate relief with minimal commitment."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Allergist or ENT physician",
-        "description": ""
+        "description": "Only consider sources from the perspective of an allergist or ENT physician."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Peer-reviewed clinical research",
-        "description": ""
+        "description": "Only consider peer-reviewed clinical research."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Medical institution guidance",
-        "description": ""
+        "description": "Only consider guidance from medical institutions."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer health information",
-        "description": ""
+        "description": "Only consider consumer health information."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Patient community experience",
-        "description": ""
+        "description": "Only consider patient community experience."
       },
       {
         "id": "a1",
@@ -168,8 +170,8 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
+        "source": "sq1",
+        "target": "c1"
       },
       {
         "source": "sq1",
@@ -178,6 +180,10 @@
       {
         "source": "sq1",
         "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
       },
       {
         "source": "sq1",
@@ -205,51 +211,27 @@
       },
       {
         "source": "sq2",
-        "target": "c8"
-      },
-      {
-        "source": "sq2",
         "target": "c9"
       },
       {
         "source": "sq3",
-        "target": "c1"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
-      },
-      {
-        "source": "sq4",
         "target": "c2"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c3"
       },
       {
-        "source": "sq4",
-        "target": "c4"
+        "source": "sq3",
+        "target": "c6"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c7"
       },
       {
-        "source": "sq4",
-        "target": "c10"
+        "source": "sq3",
+        "target": "c8"
       },
       {
         "source": "c1",
@@ -265,10 +247,6 @@
       },
       {
         "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
         "target": "a1"
       },
       {
@@ -292,10 +270,6 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
         "source": "c2",
         "target": "a2"
       },
@@ -308,16 +282,8 @@
         "target": "a2"
       },
       {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
         "source": "c9",
         "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
       },
       {
         "source": "c2",
@@ -328,11 +294,7 @@
         "target": "a3"
       },
       {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
+        "source": "c5",
         "target": "a3"
       },
       {

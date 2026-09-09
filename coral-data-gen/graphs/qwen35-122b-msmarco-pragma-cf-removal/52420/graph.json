@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Zinc ascorbate supplement",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2472,
+    "output_tokens": 2895,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -38,22 +47,22 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Which zinc form has superior bioavailability and clinical evidence?",
-        "description": "Evaluates absorption rates and research-backed efficacy of specific zinc compounds."
+        "label": "Which zinc form has the strongest clinical evidence for efficacy?",
+        "description": "Focuses on antibacterial and anti-inflammatory mechanisms."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How do specific patient conditions influence zinc choice?",
-        "description": "Considers antibiotic resistance, hormonal factors, and deficiency status."
+        "label": "What is the safest and most holistic approach to zinc supplementation?",
+        "description": "Focuses on professional guidance, diet, and nutrient synergy."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the practical and holistic considerations for zinc supplementation?",
-        "description": "Evaluates cost, dietary context, and preference for single vs. blended supplements."
+        "label": "Which option is most accessible and practical for the user?",
+        "description": "Focuses on cost, availability, and user experience."
       },
       {
         "id": "c1",
@@ -67,7 +76,7 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: registered dietitian guidance",
-        "description": "Prioritizes advice from certified dietitians."
+        "description": "Prioritizes advice from registered dietitians."
       },
       {
         "id": "c3",
@@ -81,70 +90,70 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: consumer health blog",
-        "description": "Prioritizes information from general health blogs."
+        "description": "Prioritizes information from consumer health blogs."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: patient acne forum",
-        "description": "Prioritizes anecdotal evidence from patient communities."
+        "description": "Prioritizes anecdotal evidence from patient forums."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: zinc-deficient confirmed patient",
-        "description": "Focuses on the needs of patients with confirmed zinc deficiency."
+        "description": "Prioritizes the needs of patients with confirmed zinc deficiency."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: antibiotic-resistant acne sufferer",
-        "description": "Focuses on patients with antibiotic-resistant bacteria."
+        "description": "Prioritizes solutions for antibiotic-resistant bacteria."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: hormonal acne sufferer",
-        "description": "Focuses on patients with hormonal acne triggers."
+        "description": "Prioritizes solutions for hormonal acne."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: clean-supplement preference",
-        "description": "Prioritizes supplements marketed as 'clean' or free of additives."
+        "description": "Prioritizes single-ingredient, clean-label supplements."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: budget-conscious consumer",
-        "description": "Prioritizes cost-effective solutions."
+        "description": "Prioritizes cost-effective options."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Zinc ascorbate supplement",
-        "description": "Single-ingredient zinc ascorbate, cited as the best form for absorption and free radical protection."
+        "description": "The most effective form of zinc for fighting acne."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Oral zinc gluconate at the trial-validated 200 mg/day dose (~30 mg elemental zinc)",
-        "description": "Zinc gluconate at a specific high dose shown to reduce inflammation in studies."
+        "description": "Clinically validated dosage for reducing inflammation."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Multivitamin with high-potency zinc plus Vitamins A / B6 / C / E",
-        "description": "A blended supplement combining zinc with other skin-supporting vitamins."
+        "description": "Combination supplement for holistic skin health."
       }
     ],
     "edges": [
@@ -166,35 +175,35 @@
       },
       {
         "source": "sq1",
-        "target": "c2"
-      },
-      {
-        "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "sq1",
-        "target": "c4"
-      },
-      {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq2",
-        "target": "c5"
-      },
-      {
-        "source": "sq2",
         "target": "c6"
       },
       {
-        "source": "sq2",
+        "source": "sq1",
         "target": "c7"
       },
       {
         "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
         "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
       },
       {
         "source": "sq3",
@@ -205,84 +214,12 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
         "source": "c1",
         "target": "a2"
       },
       {
         "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
         "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
       },
       {
         "source": "c2",
@@ -290,34 +227,50 @@
       },
       {
         "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
         "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
       },
       {
         "source": "c5",
-        "target": "a3"
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
       },
       {
         "source": "c6",
-        "target": "a3"
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
       },
       {
         "source": "c7",
-        "target": "a3"
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
       },
       {
         "source": "c8",
         "target": "a3"
       },
       {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
         "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
         "target": "a3"
       }
     ]

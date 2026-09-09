@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Combo Convection Oven Default): Get a compact countertop convection oven with air fry mode \u2014 it replaces your toaster, air fryer, and secondary oven in one footprint, which is the right trade-off for small kitchens even if peak air frying performance is slightly lower.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2375,
-    "output_tokens": 1809,
-    "llm_calls": 2,
+    "prompt_tokens": 1592,
+    "output_tokens": 1590,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,120 +40,103 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "I have a small kitchen. Should I get an air fryer or a countertop convection oven?",
-        "description": ""
+        "label": "Should I get an air fryer or a countertop convection oven for a small kitchen?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Space and versatility considerations",
-        "description": ""
+        "label": "Space and Versatility"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Cooking performance and efficiency",
-        "description": ""
+        "label": "Performance"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Practical considerations",
-        "description": ""
+        "label": "Practicality"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "countertop footprint size",
-        "description": ""
+        "label": "countertop footprint size"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "versatility for multiple cooking tasks",
-        "description": ""
+        "label": "versatility for multiple cooking tasks"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "peak air frying performance",
-        "description": ""
+        "label": "peak air frying performance"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "baking and roasting capability",
-        "description": ""
+        "label": "baking and roasting capability"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "energy efficiency for daily use",
-        "description": ""
+        "label": "energy efficiency for daily use"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "speed of cooking small batches",
-        "description": ""
+        "label": "speed of cooking small batches"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "ability to replace full-size oven",
-        "description": ""
+        "label": "ability to replace full-size oven"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "price and value",
-        "description": ""
+        "label": "price and value"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "household size and cooking volume",
-        "description": ""
+        "label": "household size and cooking volume"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "ease of cleaning",
-        "description": ""
+        "label": "ease of cleaning"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Get a compact countertop convection oven with air fry mode \u2014 it replaces your toaster, air fryer, and secondary oven in one footprint, which is the right trade-off for small kitchens even if peak air frying performance is slightly lower.",
-        "description": ""
+        "label": "Get a compact countertop convection oven with air fry mode"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Buy a dedicated air fryer if air frying is your primary use case \u2014 the higher fan speed and dedicated chamber produce noticeably crispier results than combo units for wings, fries, and vegetables.",
-        "description": ""
+        "label": "Buy a dedicated air fryer if air frying is your primary use case"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Choose a dedicated air fryer for energy efficiency and speed \u2014 for single-person or couple households cooking small batches daily, the faster heat-up time and lower energy use make it the more practical everyday appliance.",
-        "description": ""
+        "label": "Choose a dedicated air fryer for energy efficiency and speed"
       }
     ],
     "edges": [
@@ -191,11 +174,11 @@
       },
       {
         "source": "sq2",
-        "target": "c5"
+        "target": "c6"
       },
       {
-        "source": "sq2",
-        "target": "c6"
+        "source": "sq3",
+        "target": "c5"
       },
       {
         "source": "sq3",
@@ -222,10 +205,6 @@
         "target": "a1"
       },
       {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
         "source": "c4",
         "target": "a1"
       },
@@ -234,16 +213,8 @@
         "target": "a1"
       },
       {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
         "source": "c6",
         "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
       },
       {
         "source": "c7",
@@ -258,10 +229,6 @@
         "target": "a1"
       },
       {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
         "source": "c10",
         "target": "a1"
       },
@@ -270,15 +237,7 @@
         "target": "a2"
       },
       {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
         "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
         "target": "a2"
       },
       {

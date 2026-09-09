@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer B (PhD for Research Roles): Do a PhD if your goal is a research scientist role at a top AI lab \u2014 these positions are effectively closed to non-PhDs regardless of skill, and the credential is genuinely required for frontier ML work.",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2369,
-    "output_tokens": 1741,
-    "llm_calls": 2,
+    "prompt_tokens": 1586,
+    "output_tokens": 2025,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,49 +47,42 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Career goals and requirements",
+        "label": "Career implications of having a PhD in data science",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Financial considerations",
+        "label": "Financial implications of pursuing a PhD in data science",
         "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Alternative paths and specialization",
-        "description": ""
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "Research and intellectual contributions",
+        "label": "Alternative paths and motivations for pursuing a PhD in data science",
         "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "target role requiring PhD",
+        "label": "target role requiring PhD (research scientist)",
         "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "financial return over 10-year career",
+        "label": "access to frontier AI lab positions",
         "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "research vs industry application orientation",
+        "label": "academic career aspirations",
         "description": ""
       },
       {
@@ -103,21 +96,21 @@
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "access to frontier AI lab positions",
+        "label": "research vs industry application orientation",
         "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "academic career aspirations",
+        "label": "publication and intellectual contribution interest",
         "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "publication and intellectual contribution interest",
+        "label": "financial return over 10-year career",
         "description": ""
       },
       {
@@ -146,21 +139,21 @@
         "layer": "4",
         "type": "answer",
         "label": "Skip PhD for Industry Default",
-        "description": ""
+        "description": "Don't do a PhD for industry data science \u2014 a strong Master's plus projects gets you 90% of the roles at 25% of the time cost, and the financial break-even on a PhD takes over a decade."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "PhD for Research Roles",
-        "description": ""
+        "description": "Do a PhD if your goal is a research scientist role at a top AI lab \u2014 these positions are effectively closed to non-PhDs regardless of skill, and the credential is genuinely required for frontier ML work."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "PhD for Academic and Long-Term Specialization",
-        "description": ""
+        "description": "Consider a PhD if you're interested in academic careers or want to develop deep specialization in a narrow research area \u2014 the intrinsic value of research training justifies it independently of salary premium."
       }
     ],
     "edges": [
@@ -177,12 +170,12 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
+        "source": "sq1",
+        "target": "c1"
       },
       {
         "source": "sq1",
-        "target": "c1"
+        "target": "c2"
       },
       {
         "source": "sq1",
@@ -190,11 +183,7 @@
       },
       {
         "source": "sq1",
-        "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c2"
+        "target": "c5"
       },
       {
         "source": "sq2",
@@ -202,7 +191,15 @@
       },
       {
         "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
         "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
       },
       {
         "source": "sq3",
@@ -213,28 +210,12 @@
         "target": "c10"
       },
       {
-        "source": "sq4",
-        "target": "c5"
-      },
-      {
-        "source": "sq4",
-        "target": "c7"
-      },
-      {
         "source": "c1",
         "target": "a2"
       },
       {
         "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
         "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
       },
       {
         "source": "c3",
@@ -242,7 +223,7 @@
       },
       {
         "source": "c4",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c5",
@@ -253,16 +234,44 @@
         "target": "a2"
       },
       {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
         "source": "c7",
         "target": "a2"
       },
       {
-        "source": "c7",
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
         "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
       },
       {
         "source": "c8",
@@ -271,10 +280,6 @@
       {
         "source": "c9",
         "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
       }
     ]
   }

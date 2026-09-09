@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer C (REIT Allocation): Add a dedicated REIT allocation (15\u201320%) within your existing stock portfolio \u2014 you get real estate diversification, inflation hedging, and dividend income without giving up liquidity or taking on landlord risk.",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2234,
-    "output_tokens": 1811,
-    "llm_calls": 2,
+    "prompt_tokens": 1517,
+    "output_tokens": 1863,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,14 +47,21 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Investment benefits and risks",
+        "label": "Benefits and drawbacks of real estate investment",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Investment requirements and constraints",
+        "label": "Comparison to stock market investments",
+        "description": ""
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Financial benefits and drawbacks of real estate investment",
         "description": ""
       },
       {
@@ -96,35 +103,35 @@
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "concentration risk",
+        "label": "management and time commitment",
         "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "inflation hedging",
+        "label": "concentration risk",
         "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "correlation with stock market",
+        "label": "barrier to entry with $50k",
         "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "management and time commitment",
+        "label": "inflation hedging",
         "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "barrier to entry with $50k",
+        "label": "correlation with stock market",
         "description": ""
       },
       {
@@ -159,24 +166,12 @@
         "target": "sq2"
       },
       {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
         "source": "sq1",
         "target": "c1"
-      },
-      {
-        "source": "sq1",
-        "target": "c2"
-      },
-      {
-        "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "sq1",
-        "target": "c4"
-      },
-      {
-        "source": "sq1",
-        "target": "c5"
       },
       {
         "source": "sq1",
@@ -192,11 +187,27 @@
       },
       {
         "source": "sq2",
-        "target": "c9"
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
       },
       {
         "source": "sq2",
         "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
       },
       {
         "source": "c1",
@@ -248,7 +259,7 @@
       },
       {
         "source": "c7",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c7",
@@ -264,15 +275,15 @@
       },
       {
         "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
       },
       {
         "source": "c10",

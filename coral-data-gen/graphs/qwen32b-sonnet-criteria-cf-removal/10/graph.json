@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer C (REIT Allocation): Add a dedicated REIT allocation (15\u201320%) within your existing stock portfolio \u2014 you get real estate diversification, inflation hedging, and dividend income without giving up liquidity or taking on landlord risk.",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1519,
+    "output_tokens": 2583,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,77 +41,70 @@
         "layer": "1",
         "type": "question",
         "label": "Should I diversify into real estate or just keep investing in the stock market? I have about $50k saved.",
-        "description": "A question about diversification between real estate and the stock market with a $50k budget."
+        "description": "Decision between real estate and stock market with $50k."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the liquidity and accessibility implications of each investment option?",
-        "description": "Examines the liquidity and ease of entry for each investment type."
+        "label": "Liquidity and accessibility of the investment",
+        "description": "How liquid and accessible is the investment with $50k?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the risk and return characteristics of each investment?",
-        "description": "Compares the risk and return profiles of real estate and stock market options."
+        "label": "Risk and return characteristics",
+        "description": "What are the risk and return trade-offs of each option?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the tax and management trade-offs?",
-        "description": "Evaluates the tax advantages and management burden of each investment."
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "How does a $50k budget constrain or enable each investment?",
-        "description": "Assesses the feasibility of each investment with a $50k budget."
+        "label": "Inflation and macroeconomic factors",
+        "description": "How does each option perform in inflationary or macroeconomic shifts?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "portfolio liquidity",
-        "description": "How easily can you convert the investment into cash?"
+        "description": "How easily can the investment be converted to cash?"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "leverage and amplified returns",
-        "description": "Potential for higher returns through borrowed capital."
+        "description": "Ability to use borrowed capital to increase returns."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "passive income generation",
-        "description": "Ability to generate income without active involvement."
+        "description": "Ability to generate income with minimal active effort."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "diversification from equities",
-        "description": "How much the investment is uncorrelated with the stock market."
+        "description": "Reduces risk by not being correlated with the stock market."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "tax depreciation benefits",
-        "description": "Ability to reduce taxable income through depreciation."
+        "description": "Tax advantages from depreciating real estate assets."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "management and time commitment",
-        "description": "Level of ongoing effort required to maintain the investment."
+        "description": "How much time and effort is required to maintain the investment?"
       },
       {
         "id": "c7",
@@ -116,42 +118,42 @@
         "layer": "3",
         "type": "concept",
         "label": "barrier to entry with $50k",
-        "description": "How feasible is the investment with a $50k budget?"
+        "description": "Is $50k sufficient to start investing in this asset class?"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "inflation hedging",
-        "description": "Ability of the investment to retain value in inflationary environments."
+        "description": "Ability to preserve value in inflationary environments."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "correlation with stock market",
-        "description": "How closely the investment moves with the stock market."
+        "description": "How closely does the investment move with the stock market?"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (Stock Market Default): Keep investing in diversified index funds \u2014 REITs within your portfolio give real estate exposure without illiquidity, and $50k is too thin for meaningful direct real estate in most markets.",
-        "description": "Favors staying in the stock market with REITs for liquidity and simplicity."
+        "label": "Answer A (Stock Market Default)",
+        "description": "Keep investing in diversified index funds \u2014 REITs within your portfolio give real estate exposure without illiquidity, and $50k is too thin for meaningful direct real estate in most markets."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (Rental Property for Leverage): Buy a small rental property with $50k as a down payment \u2014 leverage, depreciation deductions, and rental income can generate superior risk-adjusted returns for investors willing to actively manage.",
-        "description": "Favors direct rental property for leverage and income."
+        "label": "Answer B (Rental Property for Leverage)",
+        "description": "Buy a small rental property with $50k as a down payment \u2014 leverage, depreciation deductions, and rental income can generate superior risk-adjusted returns for investors willing to actively manage."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (REIT Allocation): Add a dedicated REIT allocation (15\u201320%) within your existing stock portfolio \u2014 you get real estate diversification, inflation hedging, and dividend income without giving up liquidity or taking on landlord risk.",
-        "description": "Favors REITs within the stock portfolio for diversification and liquidity."
+        "label": "Answer C (REIT Allocation)",
+        "description": "Add a dedicated REIT allocation (15\u201320%) within your existing stock portfolio \u2014 you get real estate diversification, inflation hedging, and dividend income without giving up liquidity or taking on landlord risk."
       }
     ],
     "edges": [
@@ -168,12 +170,12 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
+        "source": "sq1",
+        "target": "c1"
       },
       {
         "source": "sq1",
-        "target": "c1"
+        "target": "c8"
       },
       {
         "source": "sq2",
@@ -193,15 +195,11 @@
       },
       {
         "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
         "target": "c7"
-      },
-      {
-        "source": "sq2",
-        "target": "c8"
-      },
-      {
-        "source": "sq2",
-        "target": "c9"
       },
       {
         "source": "sq2",
@@ -209,15 +207,11 @@
       },
       {
         "source": "sq3",
-        "target": "c5"
+        "target": "c9"
       },
       {
-        "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq4",
-        "target": "c8"
+        "source": "c1",
+        "target": "a1"
       },
       {
         "source": "c1",
@@ -225,7 +219,15 @@
       },
       {
         "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
         "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
       },
       {
         "source": "c3",
@@ -237,7 +239,15 @@
       },
       {
         "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
         "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
       },
       {
         "source": "c6",
@@ -245,7 +255,15 @@
       },
       {
         "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
         "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
       },
       {
         "source": "c8",
@@ -257,31 +275,11 @@
       },
       {
         "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
         "target": "a1"
       },
       {
         "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
+        "target": "a3"
       }
     ]
   }

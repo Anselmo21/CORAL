@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "A gentle clarifying shampoo",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3228,
-    "output_tokens": 1759,
-    "llm_calls": 2,
+    "prompt_tokens": 2005,
+    "output_tokens": 2570,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,97 +40,113 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What is the best clarifying shampoo to remove color?"
+        "label": "What is the best clarifying shampoo to remove color?",
+        "description": "The best clarifying shampoo to remove color"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most effective way to remove color from hair?"
+        "label": "What is the best clarifying shampoo for removing color, considering trustworthiness?",
+        "description": "Trustworthiness-based sub-question"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best approach for a specific hair type or situation?"
+        "label": "What is the best clarifying shampoo for removing color, considering perspective?",
+        "description": "Perspective-based sub-question"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: salon professional / stylist guidance"
+        "label": "trustworthiness: salon professional / stylist guidance",
+        "description": "Salon professional / stylist guidance"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: peer-reviewed cosmetic chemistry literature"
+        "label": "trustworthiness: peer-reviewed cosmetic chemistry literature",
+        "description": "Peer-reviewed cosmetic chemistry literature"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: DIY hair-care community forum"
+        "label": "trustworthiness: DIY hair-care community forum",
+        "description": "DIY hair-care community forum"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: beauty consumer reviews"
+        "label": "trustworthiness: beauty consumer reviews",
+        "description": "Beauty consumer reviews"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: product manufacturer documentation"
+        "label": "trustworthiness: product manufacturer documentation",
+        "description": "Product manufacturer documentation"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: client with damaged / dry hair"
+        "label": "perspective: client with damaged / dry hair",
+        "description": "Client with damaged / dry hair"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: client with semi-permanent dye to fade"
+        "label": "perspective: client with semi-permanent dye to fade",
+        "description": "Client with semi-permanent dye to fade"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: budget-conscious DIYer"
+        "label": "perspective: client with permanent dye",
+        "description": "Client with permanent dye"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: client with permanent dye"
+        "label": "perspective: color-fading-fast priority",
+        "description": "Color-fading-fast priority"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: color-fading-fast priority"
+        "label": "perspective: budget-conscious DIYer",
+        "description": "Budget-conscious DIYer"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "A high-strength sulfate-based clarifying shampoo"
+        "label": "A high-strength sulfate-based clarifying shampoo",
+        "description": "High-strength sulfate-based clarifying shampoo"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "A gentle clarifying shampoo"
+        "label": "A gentle clarifying shampoo",
+        "description": "Gentle clarifying shampoo"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "A baking-soda + vitamin-C DIY clarifying treatment"
+        "label": "A baking-soda + vitamin-C DIY clarifying treatment",
+        "description": "Baking-soda + vitamin-C DIY clarifying treatment"
       }
     ],
     "edges": [
@@ -192,75 +208,75 @@
       },
       {
         "source": "c3",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c4",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c5",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c6",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c7",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c8",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c10",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c1",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c3",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c4",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c5",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c6",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c7",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c10",
-        "target": "a2"
+        "target": "a3"
       }
     ]
   }

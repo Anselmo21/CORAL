@@ -19,18 +19,18 @@
     "A balanced THC/CBD hybrid strain for daytime pain management without overwhelming sedation",
     "A high-CBD, low-THC strain for pain, anxiety, and sleep relief without strong psychoactive effects or additional fatigue"
   ],
-  "baseline_answer": "A balanced THC/CBD hybrid strain for daytime pain management without overwhelming sedation",
-  "baseline_index": 1,
+  "baseline_answer": "A high-CBD, low-THC strain for pain, anxiety, and sleep relief without strong psychoactive effects or additional fatigue",
+  "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2594,
-    "output_tokens": 2414,
-    "llm_calls": 2,
+    "prompt_tokens": 1692,
+    "output_tokens": 2655,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "best weed for fibromyalgia",
-        "description": "suitable weed for fibromyalgia"
+        "description": "what type of cannabis is most effective for treating fibromyalgia symptoms"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "weed characteristics",
-        "description": "suitable weed characteristics for fibromyalgia"
+        "label": "strain characteristics",
+        "description": "what characteristics of the cannabis strain are most beneficial for treating fibromyalgia symptoms"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "consumption and dosages",
-        "description": "method of consumption and recommended dosages"
+        "label": "consumption methods",
+        "description": "how should the cannabis be consumed to effectively manage fibromyalgia symptoms"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "side effects and benefits",
-        "description": "potential side effects and benefits of using weed for fibromyalgia"
+        "label": "benefits and drawbacks",
+        "description": "what are the potential benefits and drawbacks of using cannabis for fibromyalgia treatment"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "cannabinoid profile",
-        "description": "cannabinoid profile of the weed"
+        "description": "the type and amount of cannabinoids present in the cannabis"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "strain type",
-        "description": "type of weed strain"
+        "description": "the specific type of cannabis strain"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "method of consumption",
-        "description": "method of consuming the weed"
+        "description": "how the cannabis is ingested or administered"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "dosage recommendations",
-        "description": "recommended dosages of the weed"
+        "description": "the recommended amount of cannabis to consume"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "side effects",
-        "description": "potential side effects of the weed"
+        "description": "the potential negative effects of using cannabis"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "patient testimonials",
-        "description": "patient testimonials about the weed"
+        "description": "the experiences and opinions of people who have used cannabis for fibromyalgia"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "legal status",
-        "description": "legal status of the weed"
+        "description": "the laws and regulations surrounding the use of cannabis"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "onset time",
-        "description": "time it takes for the weed to take effect"
+        "description": "how quickly the effects of the cannabis are felt"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "duration of effects",
-        "description": "duration of the weed's effects"
+        "description": "how long the effects of the cannabis last"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "treatment goals",
-        "description": "treatment goals of the weed"
+        "description": "the specific goals and outcomes of using cannabis for fibromyalgia treatment"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A high-THC indica strain for nighttime muscle pain and stiffness",
-        "description": "high-THC indica strain for nighttime use"
+        "description": "a specific type of cannabis strain for nighttime use"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A balanced THC/CBD hybrid strain for daytime pain management without overwhelming sedation",
-        "description": "balanced THC/CBD hybrid strain for daytime use"
+        "description": "a specific type of cannabis strain for daytime use"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A high-CBD, low-THC strain for pain, anxiety, and sleep relief without strong psychoactive effects or additional fatigue",
-        "description": "high-CBD, low-THC strain for pain and anxiety"
+        "description": "a specific type of cannabis strain for pain, anxiety, and sleep relief"
       }
     ],
     "edges": [
@@ -179,34 +179,6 @@
       },
       {
         "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "sq1",
-        "target": "c4"
-      },
-      {
-        "source": "sq1",
-        "target": "c5"
-      },
-      {
-        "source": "sq1",
-        "target": "c6"
-      },
-      {
-        "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq1",
         "target": "c10"
       },
       {
@@ -218,30 +190,6 @@
         "target": "c4"
       },
       {
-        "source": "sq2",
-        "target": "c5"
-      },
-      {
-        "source": "sq2",
-        "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
-        "target": "c8"
-      },
-      {
-        "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
         "source": "sq3",
         "target": "c5"
       },
@@ -252,18 +200,6 @@
       {
         "source": "sq3",
         "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c8"
-      },
-      {
-        "source": "sq3",
-        "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
       },
       {
         "source": "c1",
@@ -387,15 +323,123 @@
       },
       {
         "source": "a1",
-        "target": "a2"
+        "target": "c1"
       },
       {
         "source": "a1",
-        "target": "a3"
+        "target": "c2"
+      },
+      {
+        "source": "a1",
+        "target": "c10"
       },
       {
         "source": "a2",
-        "target": "a3"
+        "target": "c1"
+      },
+      {
+        "source": "a2",
+        "target": "c2"
+      },
+      {
+        "source": "a2",
+        "target": "c10"
+      },
+      {
+        "source": "a3",
+        "target": "c1"
+      },
+      {
+        "source": "a3",
+        "target": "c2"
+      },
+      {
+        "source": "a3",
+        "target": "c10"
+      },
+      {
+        "source": "a1",
+        "target": "c3"
+      },
+      {
+        "source": "a1",
+        "target": "c4"
+      },
+      {
+        "source": "a1",
+        "target": "c5"
+      },
+      {
+        "source": "a1",
+        "target": "c6"
+      },
+      {
+        "source": "a1",
+        "target": "c7"
+      },
+      {
+        "source": "a1",
+        "target": "c8"
+      },
+      {
+        "source": "a1",
+        "target": "c9"
+      },
+      {
+        "source": "a2",
+        "target": "c3"
+      },
+      {
+        "source": "a2",
+        "target": "c4"
+      },
+      {
+        "source": "a2",
+        "target": "c5"
+      },
+      {
+        "source": "a2",
+        "target": "c6"
+      },
+      {
+        "source": "a2",
+        "target": "c7"
+      },
+      {
+        "source": "a2",
+        "target": "c8"
+      },
+      {
+        "source": "a2",
+        "target": "c9"
+      },
+      {
+        "source": "a3",
+        "target": "c3"
+      },
+      {
+        "source": "a3",
+        "target": "c4"
+      },
+      {
+        "source": "a3",
+        "target": "c5"
+      },
+      {
+        "source": "a3",
+        "target": "c6"
+      },
+      {
+        "source": "a3",
+        "target": "c7"
+      },
+      {
+        "source": "a3",
+        "target": "c8"
+      },
+      {
+        "source": "a3",
+        "target": "c9"
       }
     ]
   }

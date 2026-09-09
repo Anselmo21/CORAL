@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Index-Fund Default): Put your money in a low-cost total market index fund \u2014 after fees, passive investing beats active management for the vast majority of retail investors over a 30-year horizon.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2196,
-    "output_tokens": 1982,
-    "llm_calls": 2,
+    "prompt_tokens": 1495,
+    "output_tokens": 2027,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -54,21 +54,21 @@
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How do different investment strategies perform in various market conditions?",
+        "label": "What are the historical performance and risk considerations?",
         "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the trade-offs between simplicity and potential returns?",
+        "label": "What are the management and diversification considerations?",
         "description": ""
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "How important is diversification in investing?",
+        "label": "What are the short-term and long-term return considerations?",
         "description": ""
       },
       {
@@ -145,22 +145,22 @@
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Put your money in a low-cost total market index fund \u2014 after fees, passive investing beats active management for the vast majority of retail investors over a 30-year horizon.",
-        "description": ""
+        "label": "Index-Fund Default",
+        "description": "Put your money in a low-cost total market index fund \u2014 after fees, passive investing beats active management for the vast majority of retail investors over a 30-year horizon."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Allocate 80% to index funds but dedicate 20% to actively managed small-cap or emerging market funds where active managers have a demonstrated edge.",
-        "description": ""
+        "label": "Active for Niche Allocation",
+        "description": "Allocate 80% to index funds but dedicate 20% to actively managed small-cap or emerging market funds where active managers have a demonstrated edge."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Choose a tactical active fund with a strong bear-market track record if capital preservation during downturns is your primary concern, accepting lower long-term average returns.",
-        "description": ""
+        "label": "Active Bear-Market Shield",
+        "description": "Choose a tactical active fund with a strong bear-market track record if capital preservation during downturns is your primary concern, accepting lower long-term average returns."
       }
     ],
     "edges": [
@@ -202,7 +202,7 @@
       },
       {
         "source": "sq2",
-        "target": "c8"
+        "target": "c10"
       },
       {
         "source": "sq3",
@@ -210,67 +210,71 @@
       },
       {
         "source": "sq3",
-        "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
-      },
-      {
-        "source": "sq4",
         "target": "c6"
       },
       {
-        "source": "c1",
-        "target": "a1"
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq4",
+        "target": "c9"
       },
       {
         "source": "c1",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c2",
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
         "source": "c3",
         "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
       },
       {
         "source": "c4",
         "target": "a1"
       },
       {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
         "source": "c5",
         "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
       },
       {
         "source": "c6",
         "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
       },
       {
         "source": "c6",
@@ -279,10 +283,6 @@
       {
         "source": "c7",
         "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
       },
       {
         "source": "c8",
@@ -295,6 +295,30 @@
       {
         "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

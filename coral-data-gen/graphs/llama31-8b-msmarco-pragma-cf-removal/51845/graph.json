@@ -19,18 +19,18 @@
     "Jimmy Fallon (The Tonight Show on NBC)",
     "Johnny Carson (The Tonight Show 1962-1992)"
   ],
-  "baseline_answer": "Stephen Colbert (Late Show on CBS)",
-  "baseline_index": 0,
+  "baseline_answer": "Jimmy Fallon (The Tonight Show on NBC)",
+  "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3380,
-    "output_tokens": 1592,
-    "llm_calls": 2,
+    "prompt_tokens": 2083,
+    "output_tokens": 1555,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,84 +47,84 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Evaluating the hosts based on their trustworthiness",
+        "label": "What are the criteria for evaluating the best late night talk show host?",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Evaluating the hosts based on their perspective",
+        "label": "Who is the best late night talk show host based on different perspectives and priorities?",
         "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "TV critic / Variety review",
+        "label": "trustworthiness: TV critic / Variety review",
         "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "Nielsen / TV ratings data",
+        "label": "trustworthiness: Nielsen / TV ratings data",
         "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "Emmy / industry award nominations",
+        "label": "trustworthiness: Emmy / industry award nominations",
         "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "fan / pop-culture forum",
+        "label": "trustworthiness: fan / pop-culture forum",
         "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "entertainment magazine",
+        "label": "trustworthiness: entertainment magazine",
         "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "viewer prioritizing political satire / news commentary",
+        "label": "perspective: viewer prioritizing political satire / news commentary",
         "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "viewer prioritizing celebrity-interview entertainment",
+        "label": "perspective: viewer prioritizing celebrity-interview entertainment",
         "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "older / nostalgic viewer",
+        "label": "perspective: older / nostalgic viewer",
         "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "millennial / Gen-Z viewer",
+        "label": "perspective: millennial / Gen-Z viewer",
         "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "comedy purist / stand-up sensibility",
+        "label": "perspective: comedy purist / stand-up sensibility",
         "description": ""
       },
       {
@@ -220,7 +220,7 @@
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c7",
@@ -232,11 +232,11 @@
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c10",
-        "target": "a1"
+        "target": "a2"
       }
     ]
   }

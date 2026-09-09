@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Beretta 1301 Tactical",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3334,
-    "output_tokens": 1755,
-    "llm_calls": 2,
+    "prompt_tokens": 2058,
+    "output_tokens": 1521,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,112 +41,112 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best Beretta for home defense?",
-        "description": "Determining the best Beretta for home defense based on reliability, accuracy, magazine capacity, and suitability for the task."
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most trustworthy source for information on Beretta firearms for home defense?",
-        "description": "Identifying the most trustworthy source for information on Beretta firearms for home defense."
+        "label": "What type of Beretta is best for home defense (pistol or shotgun)?",
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best Beretta for a specific type of homeowner (considering perspective and other factors)?",
-        "description": "Determining the best Beretta for a specific type of homeowner based on perspective and other factors."
+        "label": "What features should a Beretta for home defense have?",
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: firearms expert review publication",
-        "description": "Expert reviews from firearms publications."
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed personal defense literature",
-        "description": "Peer-reviewed personal defense literature."
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Beretta manufacturer documentation",
-        "description": "Beretta manufacturer documentation."
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: amateur firearms forum (Yahoo Answers)",
-        "description": "Amateur firearms forum (Yahoo Answers)."
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: shooting sports magazine",
-        "description": "Shooting sports magazine."
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: first-time gun owner",
-        "description": "First-time gun owner."
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: shotgun-preferring homeowner",
-        "description": "Shotgun-preferring homeowner."
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: apartment / compact-space dweller",
-        "description": "Apartment / compact-space dweller."
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: high-recoil-tolerant user",
-        "description": "High-recoil-tolerant user."
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: concealed-carry-aware homeowner",
-        "description": "Concealed-carry-aware homeowner."
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Beretta 92FS",
-        "description": "Beretta 92FS for home defense."
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Beretta 1301 Tactical",
-        "description": "Beretta 1301 Tactical for home defense."
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A compact Beretta (PX4 Storm Compact or APX Compact)",
-        "description": "A compact Beretta (PX4 Storm Compact or APX Compact) for home defense."
+        "description": ""
       }
     ],
     "edges": [
@@ -233,6 +233,14 @@
       {
         "source": "c9",
         "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
       },
       {
         "source": "c10",

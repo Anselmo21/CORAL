@@ -21,10 +21,20 @@
   ],
   "baseline_answer": "Answer A (Gap Year if Structured Default): Take a gap year if you have a clear plan \u2014 structured gap years (work abroad, volunteering, skill building) produce higher GPA and major satisfaction, and most universities support deferral.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 2,
+  "usage": {
+    "prompt_tokens": 7483,
+    "output_tokens": 5639,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,28 +42,21 @@
         "layer": "1",
         "type": "question",
         "label": "Should I take a gap year before starting university?",
-        "description": "Main question regarding the decision to take a gap year."
+        "description": "Main question regarding gap year decision."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the outcomes for students with a structured gap year plan?",
-        "description": "Focuses on benefits of structured plans and university support."
+        "label": "What are the general outcomes of structured vs unstructured gap years?",
+        "description": "Focuses on GPA, satisfaction, and momentum risks."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the risks of an unstructured gap year?",
-        "description": "Focuses on lack of growth and academic momentum loss."
-      },
-      {
-        "id": "sq3",
-        "layer": "2",
-        "type": "subq",
-        "label": "How does a gap year help students uncertain about their major?",
-        "description": "Focuses on career clarity and avoiding mid-degree changes."
+        "label": "Is a gap year beneficial for career clarity?",
+        "description": "Focuses on exploring careers when undecided."
       },
       {
         "id": "c1",
@@ -95,14 +98,14 @@
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student with structured plan for gap year",
-        "description": "Filters for the perspective of a student with a plan."
+        "description": "Filters for students with a clear plan."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student uncertain about major or career direction",
-        "description": "Filters for the perspective of an undecided student."
+        "description": "Filters for undecided students."
       },
       {
         "id": "c8",
@@ -123,7 +126,7 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Gap year community experience",
-        "description": "Filters for community experience sources."
+        "description": "Filters for community/Reddit sources."
       },
       {
         "id": "a1",
@@ -144,7 +147,7 @@
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Gap Year for Career Clarity)",
-        "description": "Take a gap year specifically to explore different career environments if you're undecided about your major."
+        "description": "Take a gap year specifically to explore different career environments if you're undecided."
       }
     ],
     "edges": [
@@ -155,10 +158,6 @@
       {
         "source": "q",
         "target": "sq2"
-      },
-      {
-        "source": "q",
-        "target": "sq3"
       },
       {
         "source": "sq1",
@@ -174,7 +173,7 @@
       },
       {
         "source": "sq1",
-        "target": "c5"
+        "target": "c4"
       },
       {
         "source": "sq1",
@@ -194,47 +193,11 @@
       },
       {
         "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
         "target": "c5"
       },
       {
         "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
-        "source": "sq3",
-        "target": "c2"
-      },
-      {
-        "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
-      },
-      {
-        "source": "sq3",
         "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
       },
       {
         "source": "c1",
@@ -281,11 +244,15 @@
         "target": "a2"
       },
       {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
         "source": "c4",
         "target": "a2"
       },
       {
-        "source": "c5",
+        "source": "c9",
         "target": "a2"
       },
       {
@@ -297,23 +264,11 @@
         "target": "a3"
       },
       {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
         "source": "c5",
         "target": "a3"
       },
       {
         "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
         "target": "a3"
       }
     ]

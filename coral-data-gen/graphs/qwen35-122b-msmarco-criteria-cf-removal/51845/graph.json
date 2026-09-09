@@ -21,10 +21,21 @@
   ],
   "baseline_answer": "Johnny Carson (The Tonight Show 1962-1992)",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 3,
+  "usage": {
+    "prompt_tokens": 12203,
+    "output_tokens": 8273,
+    "llm_calls": 3,
+    "finish_reasons": [
+      "length",
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,28 +43,28 @@
         "layer": "1",
         "type": "question",
         "label": "Who is the best late night talk show host?",
-        "description": "Identifying the top host among three candidates based on specific criteria."
+        "description": "The main question to be answered."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Legacy and Foundational Skills",
-        "description": "Evaluating historical impact, duration, and core hosting abilities."
+        "label": "Traditional Hosting Skills",
+        "description": "Evaluates core talk show mechanics like interviews and monologues."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Satire and Creative Formats",
-        "description": "Evaluating political commentary, sketch work, and timing."
+        "label": "Modern Entertainment Value",
+        "description": "Evaluates viral appeal, variety, and current popularity."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Modern Popularity and Entertainment",
-        "description": "Evaluating current metrics, guest lists, and cultural impact."
+        "label": "Political and Cultural Impact",
+        "description": "Evaluates political satire and cultural relevance."
       },
       {
         "id": "c1",
@@ -67,35 +78,35 @@
         "layer": "3",
         "type": "concept",
         "label": "interview skill",
-        "description": "The ability to draw out guests and conduct meaningful conversations."
+        "description": "The ability to conduct engaging and insightful interviews."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "monologue quality",
-        "description": "The strength of the opening stand-up segment."
+        "description": "The quality of the opening stand-up segment."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "ratings",
-        "description": "Viewership numbers and popularity metrics."
+        "description": "Viewership numbers and popularity."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "cultural relevance",
-        "description": "Impact on current events and societal conversation."
+        "description": "Impact on and reflection of current culture."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "guest variety",
-        "description": "The diversity and caliber of guests booked."
+        "description": "Range and diversity of guests invited."
       },
       {
         "id": "c7",
@@ -109,42 +120,42 @@
         "layer": "3",
         "type": "concept",
         "label": "political wit",
-        "description": "Sharpness of political satire and commentary."
+        "description": "Skill in political satire and commentary."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "audience rapport",
-        "description": "Connection and chemistry with the studio and home audience."
+        "description": "Connection and interaction with the studio audience."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "sketch creativity",
-        "description": "Innovation and quality of pre-recorded or live sketches."
+        "description": "Innovation in pre-recorded or live sketches."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Stephen Colbert (Late Show on CBS)",
-        "description": "The satirical host known for political commentary."
+        "description": "The political satirist."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Jimmy Fallon (The Tonight Show on NBC)",
-        "description": "The entertainment-focused host known for games and celebrity interviews."
+        "description": "The modern entertainer."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Johnny Carson (The Tonight Show 1962-1992)",
-        "description": "The legendary host known for longevity and defining the genre."
+        "description": "The traditional legend."
       }
     ],
     "edges": [
@@ -162,6 +173,10 @@
       },
       {
         "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
         "target": "c2"
       },
       {
@@ -173,16 +188,16 @@
         "target": "c7"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
         "target": "c9"
-      },
-      {
-        "source": "sq2",
-        "target": "c1"
-      },
-      {
-        "source": "sq2",
-        "target": "c8"
       },
       {
         "source": "sq2",
@@ -190,23 +205,11 @@
       },
       {
         "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
         "target": "c5"
       },
       {
         "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
+        "target": "c8"
       },
       {
         "source": "c1",
@@ -222,27 +225,11 @@
       },
       {
         "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
         "target": "a3"
       },
       {
         "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
         "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
       },
       {
         "source": "c6",
@@ -254,11 +241,7 @@
       },
       {
         "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c9",
@@ -266,7 +249,39 @@
       },
       {
         "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
         "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
       },
       {
         "source": "c10",

@@ -21,109 +21,118 @@
   ],
   "baseline_answer": "Answer B (Machine Plus Quality Grinder): Spend $200\u2013250 on a basic machine and $200\u2013250 on a quality burr grinder \u2014 the grinder has more impact on espresso quality than the machine, and this combination outperforms a $500 machine with a poor grinder.",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1679,
+    "output_tokens": 3260,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Best espresso machine under $500?",
-        "description": "Identify the optimal espresso machine for a home beginner under a $500 budget."
+        "label": "What's the best machine under $500?",
+        "description": "User wants to start making espresso at home with a budget constraint."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "Performance & Quality",
-        "description": "Criteria related to the espresso output, hardware quality, and durability."
+        "description": "Criteria related to the actual coffee output and machine mechanics."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "Usability & Convenience",
-        "description": "Criteria related to the daily user experience, speed, and skill requirements."
+        "description": "Criteria related to daily operation, ease of use, and physical constraints."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "Value & Future",
-        "description": "Criteria related to total cost, budget allocation, and long-term potential."
+        "description": "Criteria related to financial efficiency and long-term potential."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "espresso extraction quality",
-        "description": "The purity and flavor profile of the espresso shot produced."
+        "description": "The taste and consistency of the espresso shot."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "steam wand quality for milk drinks",
-        "description": "The capability to texture milk for lattes and cappuccinos."
+        "description": "Ability to texture milk for lattes and cappuccinos."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "speed and ease of daily use",
-        "description": "How quickly and effortlessly the machine operates for daily brewing."
+        "description": "How fast the machine heats up and how easy it is to operate."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "grinder quality and compatibility",
-        "description": "The importance of the grinder's burr quality and whether it is built-in or separate."
+        "description": "The importance of the grinder in the overall system."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "machine longevity and repairability",
-        "description": "How long the machine lasts and how easy it is to fix or maintain."
+        "description": "How long the machine lasts and how easy it is to fix."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "learning curve and barista skill required",
-        "description": "The amount of skill and practice needed to operate the machine effectively."
+        "description": "The difficulty level for a new user to get good results."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "countertop footprint",
-        "description": "The physical space the machine occupies on the kitchen counter."
+        "description": "The physical space the machine occupies."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "total system cost (machine plus grinder)",
-        "description": "The combined price of the machine and any necessary grinder to achieve quality."
+        "description": "The total financial investment required for a working setup."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "beginner-friendliness",
-        "description": "How intuitive and forgiving the machine is for a first-time user."
+        "description": "How suitable the machine is for someone with no experience."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "upgrade path for future improvement",
-        "description": "The ability to modify or upgrade the machine as skills improve."
+        "description": "The ability to modify or upgrade the machine later."
       },
       {
         "id": "a1",
@@ -233,6 +242,10 @@
         "target": "a2"
       },
       {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
         "source": "c4",
         "target": "a2"
       },
@@ -253,6 +266,10 @@
         "target": "a2"
       },
       {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
         "source": "c7",
         "target": "a1"
       },
@@ -266,7 +283,15 @@
       },
       {
         "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
         "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
       },
       {
         "source": "c9",
@@ -275,6 +300,10 @@
       {
         "source": "c9",
         "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",

@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Gradual lifestyle change",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2416,
+    "output_tokens": 3418,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,98 +41,98 @@
         "layer": "1",
         "type": "question",
         "label": "best ways to lose 50 pounds",
-        "description": "Main question asking for the optimal weight loss strategy."
+        "description": "The primary question asking for the optimal method to lose 50 pounds."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Methodology and Safety",
-        "description": "Evaluates the safety, diet, exercise, and health risks of the method."
+        "label": "Safety and Health Risks",
+        "description": "Evaluates the physical safety and medical implications of the weight loss method."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Timeline and Structure",
-        "description": "Evaluates the speed, meal timing, and motivational aspects of the plan."
+        "label": "Dietary and Exercise Mechanics",
+        "description": "Evaluates the specific nutritional and physical activity components of the plan."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Long-term Viability",
-        "description": "Evaluates the sustainability and external support required."
+        "label": "Psychology and Longevity",
+        "description": "Evaluates the mental aspects, motivation, and long-term viability of the plan."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "safety of methods",
-        "description": "Assesses the immediate physical risks of the weight loss approach."
+        "description": "Whether the method avoids dangerous practices like crash diets or pills."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "timeframe for weight loss",
-        "description": "Evaluates how quickly the 50-pound goal is achieved."
+        "description": "The duration required to lose the weight (e.g., 2 months vs 1 year)."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "dietary approach",
-        "description": "Considers the specific nutritional strategy employed."
+        "description": "The specific food choices and nutritional strategy employed."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "exercise intensity",
-        "description": "Evaluates the level of physical activity required."
+        "description": "The level of physical activity required to achieve the goal."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "sustainability of plan",
-        "description": "Determines if the weight loss can be maintained long-term."
+        "description": "The ability to maintain the weight loss and habits over years."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "support systems",
-        "description": "Assesses the role of external help like nutritionists or groups."
+        "description": "The availability of external help like nutritionists or support groups."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "motivation techniques",
-        "description": "Evaluates psychological strategies to stay on track."
+        "description": "Methods used to stay driven and avoid bad habits."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "health considerations",
-        "description": "Addresses underlying medical conditions and risks like diabetes."
+        "description": "Addressing underlying conditions like diabetes or high blood pressure."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "caloric intake",
-        "description": "Focuses on the specific calorie deficit required."
+        "description": "The management of daily calorie consumption to create a deficit."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "meal frequency",
-        "description": "Considers how often meals are eaten during the process."
+        "description": "How often meals are eaten (e.g., 3 big meals vs 2 large meals)."
       },
       {
         "id": "a1",
@@ -137,14 +146,14 @@
         "layer": "4",
         "type": "answer",
         "label": "Aggressive 3-4 month plan",
-        "description": "A fast-paced plan prioritizing speed over gradual adaptation."
+        "description": "A fast-paced approach aiming for rapid weight loss in a short time."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Doctor-supervised plan",
-        "description": "A medically monitored approach for safety and health management."
+        "description": "A medical approach involving professional oversight and intervention."
       }
     ],
     "edges": [
@@ -166,10 +175,6 @@
       },
       {
         "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "sq1",
         "target": "c4"
       },
       {
@@ -177,20 +182,20 @@
         "target": "c8"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
         "target": "c9"
       },
       {
         "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
         "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
       },
       {
         "source": "sq3",
@@ -201,16 +206,20 @@
         "target": "c6"
       },
       {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
         "source": "c1",
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a1"
+        "source": "c1",
+        "target": "a3"
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c3",
@@ -233,16 +242,20 @@
         "target": "a2"
       },
       {
-        "source": "c5",
-        "target": "a1"
+        "source": "c4",
+        "target": "a3"
       },
       {
         "source": "c5",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c6",
         "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
       },
       {
         "source": "c6",
@@ -254,7 +267,7 @@
       },
       {
         "source": "c7",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c8",

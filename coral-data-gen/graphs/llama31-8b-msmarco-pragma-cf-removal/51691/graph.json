@@ -19,18 +19,18 @@
     "Dairy-free / Cycle Diet",
     "Anti-inflammatory elimination diet"
   ],
-  "baseline_answer": "Mediterranean-style diet",
-  "baseline_index": 0,
+  "baseline_answer": "Dairy-free / Cycle Diet",
+  "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3254,
-    "output_tokens": 1956,
-    "llm_calls": 2,
+    "prompt_tokens": 2019,
+    "output_tokens": 1951,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,119 +41,112 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best diet for reducing PMS symptoms?",
-        "description": "Best diet for reducing PMS symptoms"
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the most trustworthy sources for diet recommendations?",
-        "description": "Trustworthy sources for diet recommendations"
+        "label": "What are the most trustworthy sources of dietary advice for reducing PMS symptoms?",
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best diet for women with severe PMS symptoms?",
-        "description": "Best diet for women with severe PMS symptoms"
-      },
-      {
-        "id": "sq3",
-        "layer": "2",
-        "type": "subq",
-        "label": "What is the best diet for women with specific PMS symptom profiles?",
-        "description": "Best diet for women with specific PMS symptom profiles"
+        "label": "What are the different perspectives on the best diet for reducing PMS symptoms?",
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: registered dietitian guidance",
-        "description": "Registered dietitian guidance"
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed gynecology / nutrition journal",
-        "description": "Peer-reviewed gynecology / nutrition journal"
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: integrative medicine source",
-        "description": "Integrative medicine source"
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: women's health magazine",
-        "description": "Women's health magazine"
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: wellness blog",
-        "description": "Wellness blog"
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: PMS sufferer with severe cramps",
-        "description": "PMS sufferer with severe cramps"
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: PMS sufferer with mood / fatigue dominant symptoms",
-        "description": "PMS sufferer with mood / fatigue dominant symptoms"
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: PMDD diagnosed patient",
-        "description": "PMDD diagnosed patient"
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: lactose-intolerant / dairy-averse woman",
-        "description": "Lactose-intolerant / dairy-averse woman"
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: vegan / plant-forward woman",
-        "description": "Vegan / plant-forward woman"
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Mediterranean-style diet",
-        "description": "Mediterranean-style diet"
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Dairy-free / Cycle Diet",
-        "description": "Dairy-free / Cycle Diet"
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Anti-inflammatory elimination diet",
-        "description": "Anti-inflammatory elimination diet"
+        "description": ""
       }
     ],
     "edges": [
@@ -164,10 +157,6 @@
       {
         "source": "q",
         "target": "sq2"
-      },
-      {
-        "source": "q",
-        "target": "sq3"
       },
       {
         "source": "sq1",
@@ -202,11 +191,11 @@
         "target": "c8"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c9"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c10"
       },
       {
@@ -223,11 +212,11 @@
       },
       {
         "source": "c4",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c5",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c6",
@@ -243,6 +232,46 @@
       },
       {
         "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
         "target": "a3"
       },
       {
@@ -250,11 +279,23 @@
         "target": "a3"
       },
       {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
         "source": "c4",
         "target": "a3"
       },
       {
-        "source": "c7",
+        "source": "c5",
         "target": "a3"
       }
     ]

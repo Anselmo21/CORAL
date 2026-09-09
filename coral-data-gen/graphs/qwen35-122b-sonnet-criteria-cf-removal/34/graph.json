@@ -21,46 +21,55 @@
   ],
   "baseline_answer": "Answer A (Computer Science Default): Study Computer Science at the best program you can access \u2014 it provides the broadest path to ML industry roles, includes dedicated ML coursework, and is the most recognized credential for ML engineering positions.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1550,
+    "output_tokens": 3046,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Best Undergraduate Degree for ML?",
-        "description": "What is the best undergraduate degree to study for a career in machine learning?"
+        "label": "What's the best undergraduate degree to study for machine learning?",
+        "description": "The primary question regarding the optimal undergraduate major for an ML career."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Industry Alignment & Engineering",
-        "description": "Which degree offers the best direct path to industry jobs, engineering skills, and program prestige?"
+        "label": "Industry and Engineering Readiness",
+        "description": "Criteria related to direct hiring, specific coursework, engineering skills, and network."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Research Depth & Theory",
-        "description": "Which degree provides the strongest theoretical foundation and preparation for research or PhD programs?"
+        "label": "Research and Theoretical Depth",
+        "description": "Criteria related to mathematical rigor, research orientation, and graduate school prep."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Flexibility & Alternative Paths",
-        "description": "Which degree offers the most flexibility for pivots and relies on self-study feasibility?"
+        "label": "Flexibility and Alternative Pathways",
+        "description": "Criteria related to self-study, career pivots, and breadth of application."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "direct alignment with ML industry hiring",
-        "description": "How well the degree aligns with current industry hiring practices."
+        "description": "How directly the degree aligns with current industry hiring practices."
       },
       {
         "id": "c2",
@@ -74,77 +83,77 @@
         "layer": "3",
         "type": "concept",
         "label": "access to ML-specific courses and research",
-        "description": "Availability of dedicated ML tracks and research opportunities."
+        "description": "Availability of dedicated machine learning tracks and research opportunities."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "industry vs research career orientation",
-        "description": "Whether the degree leans towards applied industry roles or academic research."
+        "description": "Whether the degree prepares one more for industry engineering or academic research."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "programming and systems engineering skills",
-        "description": "Strength in practical coding and system building."
+        "description": "The strength of practical coding and system-building skills taught."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "top program prestige and network",
-        "description": "The reputation of the program and its alumni network in the field."
+        "description": "The value of the university's brand and alumni network in the ML field."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "flexibility for non-ML career pivots",
-        "description": "Ability to pivot to other careers if ML doesn't work out."
+        "description": "The ability to pivot to other careers if ML does not work out."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "self-study supplement feasibility",
-        "description": "How easy it is to learn ML skills outside the curriculum."
+        "description": "How feasible it is to fill gaps in the degree through self-study."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "graduate school preparation",
-        "description": "Readiness for advanced academic study in the field."
+        "description": "How well the degree prepares a student for a PhD or advanced research degree."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "breadth of applicable problem domains",
-        "description": "The variety of problems the degree prepares you to solve."
+        "description": "The range of different problem areas the degree allows one to tackle."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Computer Science Default)",
-        "description": "Study Computer Science at the best program you can access \u2014 it provides the broadest path to ML industry roles, includes dedicated ML coursework, and is the most recognized credential for ML engineering positions."
+        "description": "Study Computer Science at the best program you can access."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Mathematics or Statistics for Research)",
-        "description": "Choose Mathematics or Statistics if your goal is ML research or a PhD \u2014 the theoretical depth produces stronger researchers, and frontier ML labs like DeepMind heavily recruit from mathematical backgrounds."
+        "description": "Choose Mathematics or Statistics if your goal is ML research or a PhD."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Any STEM with Self-Study)",
-        "description": "Choose the best-ranked STEM program available regardless of specific major and build your ML skills through courses, projects, and competitions \u2014 demonstrated skills increasingly outweigh degree field for industry ML roles."
+        "description": "Choose the best-ranked STEM program available regardless of specific major and build skills through self-study."
       }
     ],
     "edges": [
@@ -177,6 +186,10 @@
         "target": "c6"
       },
       {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
         "source": "sq2",
         "target": "c2"
       },
@@ -187,10 +200,6 @@
       {
         "source": "sq2",
         "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
       },
       {
         "source": "sq3",
@@ -209,12 +218,24 @@
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
         "source": "c3",
         "target": "a1"
       },
       {
         "source": "c4",
         "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
       },
       {
         "source": "c5",
@@ -229,48 +250,28 @@
         "target": "a1"
       },
       {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
         "source": "c7",
         "target": "a3"
       },
       {
         "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
         "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
       },
       {
         "source": "c10",

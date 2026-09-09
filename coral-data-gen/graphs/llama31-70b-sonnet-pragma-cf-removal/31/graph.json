@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Stanford GSB Default): Prioritize Stanford GSB for entrepreneurship \u2014 its VC network, Silicon Valley location, alumni founder density, and risk-tolerant culture make it the strongest launchpad for venture-backed tech startups.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2511,
-    "output_tokens": 1999,
-    "llm_calls": 2,
+    "prompt_tokens": 1667,
+    "output_tokens": 1789,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,21 +40,28 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Which MBA program should I prioritize for entrepreneurship \u2014 Stanford GSB, HBS, or Wharton?",
+        "label": "Which MBA program should I prioritize for starting a company after graduation?",
         "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the key factors that influence the choice of an MBA program for entrepreneurship?",
+        "label": "What are the strengths of each MBA program in terms of entrepreneurship?",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How do the different MBA programs (Stanford GSB, HBS, Wharton) compare in terms of their strengths and weaknesses for entrepreneurship?",
+        "label": "How do the locations and alumni networks of each program impact startup success?",
+        "description": ""
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the industry-specific advantages of each program?",
         "description": ""
       },
       {
@@ -159,28 +166,16 @@
         "target": "sq2"
       },
       {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
         "source": "sq1",
         "target": "c1"
       },
       {
         "source": "sq1",
         "target": "c2"
-      },
-      {
-        "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "sq1",
-        "target": "c4"
-      },
-      {
-        "source": "sq1",
-        "target": "c5"
-      },
-      {
-        "source": "sq1",
-        "target": "c6"
       },
       {
         "source": "sq1",
@@ -189,22 +184,6 @@
       {
         "source": "sq1",
         "target": "c8"
-      },
-      {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
-      },
-      {
-        "source": "sq2",
-        "target": "c1"
-      },
-      {
-        "source": "sq2",
-        "target": "c2"
       },
       {
         "source": "sq2",
@@ -216,26 +195,18 @@
       },
       {
         "source": "sq2",
-        "target": "c5"
-      },
-      {
-        "source": "sq2",
-        "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
-        "target": "c8"
-      },
-      {
-        "source": "sq2",
         "target": "c9"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
         "target": "c10"
       },
       {
@@ -252,7 +223,7 @@
       },
       {
         "source": "c4",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c5",
@@ -260,7 +231,7 @@
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c7",
@@ -276,7 +247,7 @@
       },
       {
         "source": "c10",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c1",
@@ -284,14 +255,6 @@
       },
       {
         "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
         "target": "a2"
       },
       {
@@ -303,23 +266,11 @@
         "target": "a2"
       },
       {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
         "source": "c1",
         "target": "a3"
       },
       {
         "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
         "target": "a3"
       },
       {

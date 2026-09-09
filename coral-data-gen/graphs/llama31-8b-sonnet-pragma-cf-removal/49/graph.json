@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Roomba j7+ Default): Get the iRobot Roomba j7+ \u2014 its pet waste obstacle avoidance, self-emptying base, and reliable navigation make it the most maintenance-free option for cat owners.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2553,
-    "output_tokens": 2058,
-    "llm_calls": 2,
+    "prompt_tokens": 1687,
+    "output_tokens": 2388,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,28 +41,28 @@
         "layer": "1",
         "type": "question",
         "label": "Best robot vacuum for pet hair",
-        "description": "What's the best robot vacuum for pet hair?"
+        "description": "Recommend a robot vacuum for pet hair"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Best robot vacuum for pet hair in terms of performance",
-        "description": "What is the best robot vacuum for pet hair in terms of performance?"
+        "label": "Best robot vacuum for pet hair in 2023",
+        "description": "Recommend a robot vacuum for pet hair in 2023"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Best robot vacuum for pet hair in terms of convenience and low maintenance",
-        "description": "What is the best robot vacuum for pet hair in terms of convenience and low maintenance?"
+        "label": "Best robot vacuum for pet hair in large home with mixed flooring",
+        "description": "Recommend a robot vacuum for pet hair in a large home with mixed flooring"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Best robot vacuum for pet hair in terms of budget-friendliness",
-        "description": "What is the best robot vacuum for pet hair in terms of budget-friendliness?"
+        "label": "Best robot vacuum for pet hair in smaller space on a budget",
+        "description": "Recommend a robot vacuum for pet hair in a smaller space on a budget"
       },
       {
         "id": "c1",
@@ -76,7 +76,7 @@
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Consider sources from 2021 and 2023"
+        "description": "Consider sources from 2021 to 2023"
       },
       {
         "id": "c3",
@@ -97,42 +97,42 @@
         "layer": "3",
         "type": "directive",
         "label": "perspective: Pet owner prioritizing convenience and low maintenance",
-        "description": "Prioritize sources from the perspective of pet owners who value convenience and low maintenance"
+        "description": "Prioritize convenience and low maintenance for pet owners"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Pet owner in large home with carpet and hard floors",
-        "description": "Prioritize sources from the perspective of pet owners in large homes with carpet and hard floors"
+        "description": "Consider the needs of pet owners in large homes with mixed flooring"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer product recommendation publication",
-        "description": "Prioritize sources from consumer product recommendation publications"
+        "description": "Only consider sources from consumer product recommendation publications"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Independent hardware testing site",
-        "description": "Prioritize sources from independent hardware testing sites"
+        "description": "Only consider sources from independent hardware testing sites"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Robot vacuum enthusiast community",
-        "description": "Prioritize sources from the robot vacuum enthusiast community"
+        "description": "Only consider sources from robot vacuum enthusiast communities"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Tech journalism",
-        "description": "Prioritize sources from tech journalism"
+        "description": "Only consider sources from tech journalism"
       },
       {
         "id": "a1",
@@ -171,7 +171,15 @@
       },
       {
         "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
         "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
       },
       {
         "source": "sq1",
@@ -179,7 +187,27 @@
       },
       {
         "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
         "target": "c10"
+      },
+      {
+        "source": "sq1",
+        "target": "a1"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
       },
       {
         "source": "sq2",
@@ -194,18 +222,46 @@
         "target": "c7"
       },
       {
-        "source": "sq3",
-        "target": "c1"
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "a2"
       },
       {
         "source": "sq3",
-        "target": "c3"
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
       },
       {
         "source": "sq3",
         "target": "c9"
       },
       {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "a3"
+      },
+      {
         "source": "c1",
         "target": "a1"
       },
@@ -214,12 +270,16 @@
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
         "source": "c3",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c4",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c5",
@@ -231,46 +291,6 @@
       },
       {
         "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
         "target": "a1"
       },
       {
@@ -279,7 +299,7 @@
       },
       {
         "source": "c9",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c10",

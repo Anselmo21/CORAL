@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (CompTIA Security+ Default): Start with CompTIA Security+ \u2014 it's the most recognized entry-level credential, vendor-neutral, DoD-approved, and appears in more entry-level job postings than any other certification.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1569,
+    "output_tokens": 3925,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,70 +41,70 @@
         "layer": "1",
         "type": "question",
         "label": "What certification should I get first?",
-        "description": "Determining the best entry-level cybersecurity certification."
+        "description": "Question asking for the best entry-level cybersecurity certification."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Market Access & Entry Requirements",
-        "description": "Evaluating factors related to getting hired as a beginner, including job recognition, government approval, and prerequisites."
+        "label": "Market Recognition & Accessibility",
+        "description": "Factors related to job market demand, cost, and ease of entry."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "Technical Depth & Career Path",
-        "description": "Evaluating the specific skills, hands-on nature, and career specialization offered by the certification."
+        "description": "Factors related to skill validation, specialization, and future growth."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Investment & Future Progression",
-        "description": "Evaluating the cost, time commitment, and role as a stepping stone to advanced credentials."
+        "label": "Prerequisites & Barriers",
+        "description": "Factors related to experience requirements and time investment."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "entry-level job market recognition",
-        "description": "How widely the cert is recognized by HR and employers for entry-level roles."
+        "description": "How widely the cert is recognized by HR and in job postings."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "DoD and government employer approval",
-        "description": "Whether the certification meets specific government or defense sector requirements."
+        "description": "Whether the cert meets specific government compliance standards."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "technical depth and practitioner respect",
-        "description": "The level of technical rigor and respect the certification holds among industry practitioners."
+        "description": "The level of technical rigor and respect among industry professionals."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "cost of certification exam",
-        "description": "The financial cost required to take the certification exam."
+        "description": "The financial cost to take the certification exam."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "offensive vs defensive security career path",
-        "description": "Alignment with offensive (penetration testing) or defensive (blue team) career trajectories."
+        "description": "Alignment with offensive (red team) or defensive (blue team) roles."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "prerequisite experience requirements",
-        "description": "The amount of prior work experience required before taking the exam."
+        "description": "Whether prior work experience is required to sit for the exam."
       },
       {
         "id": "c7",
@@ -109,21 +118,21 @@
         "layer": "3",
         "type": "concept",
         "label": "time to prepare and pass",
-        "description": "The estimated duration required to study for and pass the certification."
+        "description": "The estimated duration required to study and pass the exam."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "stepping stone to advanced certifications",
-        "description": "How well the certification prepares the candidate for higher-level credentials."
+        "description": "How well the cert serves as a foundation for higher-level credentials."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "practical hands-on skill validation",
-        "description": "The extent to which the exam validates actual hands-on technical skills."
+        "description": "The extent to which the exam tests practical, hands-on skills."
       },
       {
         "id": "a1",
@@ -170,11 +179,15 @@
       },
       {
         "source": "sq1",
-        "target": "c6"
+        "target": "c4"
       },
       {
         "source": "sq1",
         "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
       },
       {
         "source": "sq2",
@@ -186,19 +199,15 @@
       },
       {
         "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
         "target": "c10"
       },
       {
         "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c8"
-      },
-      {
-        "source": "sq3",
-        "target": "c9"
+        "target": "c6"
       },
       {
         "source": "c1",
@@ -213,14 +222,6 @@
         "target": "a1"
       },
       {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
         "source": "c4",
         "target": "a1"
       },
@@ -229,24 +230,12 @@
         "target": "a1"
       },
       {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
         "source": "c6",
         "target": "a1"
       },
       {
         "source": "c7",
         "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
       },
       {
         "source": "c8",
@@ -261,11 +250,35 @@
         "target": "a1"
       },
       {
-        "source": "c10",
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
         "target": "a2"
       },
       {
         "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
         "target": "a3"
       }
     ]

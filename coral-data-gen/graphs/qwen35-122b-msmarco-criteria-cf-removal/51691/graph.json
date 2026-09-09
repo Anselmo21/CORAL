@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Mediterranean-style diet",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1899,
+    "output_tokens": 3253,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,7 +41,7 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best diet for reducing PMS symptoms?",
-        "description": "The primary question asking for the optimal dietary approach for PMS."
+        "description": "Main question regarding dietary interventions for PMS."
       },
       {
         "id": "sq1",
@@ -45,106 +54,106 @@
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Inflammation & Fats",
-        "description": "Evaluates diets based on anti-inflammatory properties and fatty acid profiles."
+        "label": "Inflammation & Gut Health",
+        "description": "Evaluates diets based on anti-inflammatory properties and digestive health."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Triggers & Adherence",
-        "description": "Evaluates diets based on avoidance of irritants and practical ease of following the plan."
+        "label": "Trigger Avoidance & Practicality",
+        "description": "Evaluates diets based on avoiding specific irritants and ease of long-term adherence."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "magnesium content",
-        "description": "Diets rich in magnesium help reduce bloating and cramps."
+        "description": "Level of magnesium in the diet to reduce cramps and mood swings."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "vitamin B levels",
-        "description": "Vitamin B complex helps manage mood swings and fatigue."
+        "description": "Presence of B vitamins to regulate mood and energy."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "calcium intake",
-        "description": "Adequate calcium is crucial for reducing PMS severity."
+        "description": "Adequacy of calcium to reduce bloating and mood symptoms."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "fiber content",
-        "description": "High fiber helps regulate blood sugar and digestion."
+        "description": "Amount of fiber to support digestion and hormone regulation."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "anti-inflammatory foods",
-        "description": "Foods that reduce inflammation alleviate cramping and pain."
+        "description": "Inclusion of foods that reduce systemic inflammation."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "sugar reduction",
-        "description": "Reducing sugar stabilizes mood and energy levels."
+        "description": "Limiting sugar to stabilize blood sugar and mood."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "caffeine reduction",
-        "description": "Lowering caffeine intake reduces anxiety and irritability."
+        "description": "Limiting caffeine to reduce anxiety and irritability."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "omega-3 inclusion",
-        "description": "Omega-3 fatty acids inhibit prostaglandins to reduce cramps."
+        "description": "Presence of omega-3 fatty acids to reduce cramps and inflammation."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "hydration support",
-        "description": "Proper hydration helps manage bloating."
+        "description": "Adequate water intake to reduce bloating."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "ease of adherence",
-        "description": "The practicality and sustainability of the diet long-term."
+        "description": "How easy the diet is to maintain long-term."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Mediterranean-style diet",
-        "description": "A balanced diet rich in fruits, vegetables, whole grains, and healthy fats."
+        "description": "Balanced diet rich in whole foods, healthy fats, and vegetables."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Dairy-free / Cycle Diet",
-        "description": "A diet eliminating dairy and specific animal proteins to reduce hormonal triggers."
+        "description": "Diet eliminating dairy and specific animal proteins to address hormonal triggers."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Anti-inflammatory elimination diet",
-        "description": "A strict diet removing all potential inflammatory food groups."
+        "description": "Strict diet removing all potential inflammatory triggers."
       }
     ],
     "edges": [
@@ -281,6 +290,10 @@
         "target": "a3"
       },
       {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
         "source": "c5",
         "target": "a3"
       },
@@ -298,6 +311,10 @@
       },
       {
         "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
         "target": "a3"
       }
     ]

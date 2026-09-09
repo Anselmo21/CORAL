@@ -19,18 +19,18 @@
     "Answer B (Surgery for Structural Damage): Proceed to surgery if imaging confirms significant structural damage (complete ACL tear, severe OA, locked meniscus) \u2014 PT cannot repair structural deficits and delaying surgery risks further joint deterioration.",
     "Answer C (PT Then Reassess): Complete a full 8\u201312 week PT course then reassess with imaging \u2014 this approach exhausts conservative treatment, provides documented PT failure if surgery is later needed, and avoids unnecessary procedures."
   ],
-  "baseline_answer": "Answer A (Physical Therapy Default): Start with a structured physical therapy program \u2014 for most chronic knee conditions, PT produces outcomes equivalent to surgery without the risk, recovery time, or cost.",
-  "baseline_index": 0,
+  "baseline_answer": "Answer C (PT Then Reassess): Complete a full 8\u201312 week PT course then reassess with imaging \u2014 this approach exhausts conservative treatment, provides documented PT failure if surgery is later needed, and avoids unnecessary procedures.",
+  "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2510,
-    "output_tokens": 2138,
-    "llm_calls": 2,
+    "prompt_tokens": 1671,
+    "output_tokens": 2287,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,22 +40,22 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should I try physical therapy first or just get surgery for chronic knee pain?",
-        "description": "Chronic knee pain treatment options"
+        "label": "Should I try physical therapy first or just get surgery for my chronic knee pain?",
+        "description": "Chronic knee pain treatment"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "General recommendations for treating chronic knee pain",
-        "description": "General treatment options for knee pain"
+        "label": "General recommendation for treating chronic knee pain",
+        "description": "General treatment approach"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Effectiveness of physical therapy for patients with structural damage",
-        "description": "PT effectiveness for structural damage"
+        "label": "Effectiveness of physical therapy for knee conditions",
+        "description": "PT effectiveness"
       },
       {
         "id": "sq3",
@@ -68,77 +68,77 @@
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "Perspectives of different stakeholders on treating knee pain",
-        "description": "Stakeholder perspectives on knee pain treatment"
+        "label": "Determining if surgery or PT is necessary",
+        "description": "Determine surgery or PT"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "Temporal: 2023 only",
-        "description": "Sources from 2023"
+        "label": "temporal: 2023 only",
+        "description": "Sources from 2023 only"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "Temporal: 2021\u20132023",
-        "description": "Sources from 2021 and 2023"
+        "label": "temporal: 2021\u20132023",
+        "description": "Sources from 2021 to 2023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "Geographic: USA",
+        "label": "geographic: USA",
         "description": "Sources from the USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "Perspective: Patient with degenerative or non-structural condition",
-        "description": "Sources from patients with non-structural damage"
+        "label": "perspective: Patient with degenerative or non-structural condition",
+        "description": "Sources from patients with non-structural conditions"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "Perspective: Patient with confirmed structural damage (ACL tear, advanced OA)",
+        "label": "perspective: Patient with confirmed structural damage (ACL tear, advanced OA)",
         "description": "Sources from patients with structural damage"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "Perspective: Orthopedic surgeon or sports medicine physician",
-        "description": "Sources from orthopedic surgeons"
+        "label": "perspective: Orthopedic surgeon or sports medicine physician",
+        "description": "Sources from surgeons"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "Trustworthiness: Peer-reviewed clinical trials",
+        "label": "trustworthiness: Peer-reviewed clinical trials",
         "description": "Sources from peer-reviewed clinical trials"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "Trustworthiness: Medical institution guidance",
+        "label": "trustworthiness: Medical institution guidance",
         "description": "Sources from medical institutions"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "Trustworthiness: Consumer health information",
+        "label": "trustworthiness: Consumer health information",
         "description": "Sources from consumer health information"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "Trustworthiness: Patient community experience",
+        "label": "trustworthiness: Patient community experience",
         "description": "Sources from patient community experience"
       },
       {
@@ -146,7 +146,7 @@
         "layer": "4",
         "type": "answer",
         "label": "Physical Therapy Default",
-        "description": "Start with physical therapy"
+        "description": "Start with PT"
       },
       {
         "id": "a2",
@@ -189,6 +189,54 @@
         "target": "c2"
       },
       {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
         "source": "sq2",
         "target": "c5"
       },
@@ -197,11 +245,91 @@
         "target": "c6"
       },
       {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
         "source": "sq3",
         "target": "c7"
       },
       {
         "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "sq4",
+        "target": "c1"
+      },
+      {
+        "source": "sq4",
+        "target": "c2"
+      },
+      {
+        "source": "sq4",
+        "target": "c3"
+      },
+      {
+        "source": "sq4",
+        "target": "c4"
+      },
+      {
+        "source": "sq4",
+        "target": "c5"
+      },
+      {
+        "source": "sq4",
+        "target": "c6"
+      },
+      {
+        "source": "sq4",
+        "target": "c7"
+      },
+      {
+        "source": "sq4",
         "target": "c8"
       },
       {
@@ -214,10 +342,18 @@
       },
       {
         "source": "c1",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
         "target": "a1"
       },
       {
@@ -234,7 +370,7 @@
       },
       {
         "source": "c8",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c9",
@@ -242,7 +378,7 @@
       },
       {
         "source": "c10",
-        "target": "a3"
+        "target": "a1"
       }
     ]
   }

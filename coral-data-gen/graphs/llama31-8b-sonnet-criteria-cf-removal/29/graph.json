@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Skip Supplements Default): Don't bother with probiotic supplements if you're generally healthy \u2014 evidence for general gut health benefits is weak, the market is poorly regulated, and dietary fiber diversity produces more reliable microbiome improvements.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2302,
-    "output_tokens": 2494,
-    "llm_calls": 2,
+    "prompt_tokens": 1550,
+    "output_tokens": 1648,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,28 +47,21 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the evidence for general gut health benefits?",
+        "label": "General gut health benefits and regulation of the supplement market",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the specific conditions that probiotics have strong evidence for?",
+        "label": "Effectiveness of probiotics for specific medical conditions",
         "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "How reliable is the probiotic supplement market?",
-        "description": ""
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "What are the alternative approaches to probiotic supplements?",
+        "label": "Comparison to alternative approaches like dietary fiber diversity and fermented foods",
         "description": ""
       },
       {
@@ -177,12 +170,20 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
+        "source": "sq1",
+        "target": "c3"
       },
       {
         "source": "sq1",
-        "target": "c3"
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
       },
       {
         "source": "sq2",
@@ -190,187 +191,55 @@
       },
       {
         "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq4",
-        "target": "c7"
-      },
-      {
-        "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "a1",
         "target": "c6"
       },
       {
-        "source": "a1",
+        "source": "sq3",
         "target": "c7"
       },
       {
-        "source": "a1",
-        "target": "c9"
-      },
-      {
-        "source": "a1",
+        "source": "sq3",
         "target": "c10"
       },
       {
-        "source": "a2",
-        "target": "c1"
+        "source": "c1",
+        "target": "a2"
       },
       {
-        "source": "a2",
-        "target": "c2"
+        "source": "c2",
+        "target": "a2"
       },
       {
-        "source": "a2",
-        "target": "c8"
+        "source": "c3",
+        "target": "a1"
       },
       {
-        "source": "a2",
-        "target": "c9"
+        "source": "c4",
+        "target": "a1"
       },
       {
-        "source": "a3",
-        "target": "c1"
+        "source": "c5",
+        "target": "a1"
       },
       {
-        "source": "a3",
-        "target": "c2"
+        "source": "c6",
+        "target": "a3"
       },
       {
-        "source": "a3",
-        "target": "c6"
+        "source": "c7",
+        "target": "a3"
       },
       {
-        "source": "a3",
-        "target": "c7"
+        "source": "c8",
+        "target": "a2"
       },
       {
-        "source": "a3",
-        "target": "c8"
+        "source": "c9",
+        "target": "a2"
       },
       {
-        "source": "a3",
-        "target": "c9"
+        "source": "c10",
+        "target": "a1"
       }
     ]
   }

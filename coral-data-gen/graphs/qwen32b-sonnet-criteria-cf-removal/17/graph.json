@@ -19,131 +19,147 @@
     "Answer B (Surgery for Structural Damage): Proceed to surgery if imaging confirms significant structural damage (complete ACL tear, severe OA, locked meniscus) \u2014 PT cannot repair structural deficits and delaying surgery risks further joint deterioration.",
     "Answer C (PT Then Reassess): Complete a full 8\u201312 week PT course then reassess with imaging \u2014 this approach exhausts conservative treatment, provides documented PT failure if surgery is later needed, and avoids unnecessary procedures."
   ],
-  "baseline_answer": "Answer C (PT Then Reassess): Complete a full 8\u201312 week PT course then reassess with imaging \u2014 this approach exhausts conservative treatment, provides documented PT failure if surgery is later needed, and avoids unnecessary procedures.",
-  "baseline_index": 2,
+  "baseline_answer": "Answer A (Physical Therapy Default): Start with a structured physical therapy program \u2014 for most chronic knee conditions, PT produces outcomes equivalent to surgery without the risk, recovery time, or cost.",
+  "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1536,
+    "output_tokens": 2431,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Chronic Knee Pain Treatment",
-        "description": "Should I try physical therapy first or just get surgery?"
+        "label": "Should I try physical therapy first or just get surgery?",
+        "description": "I have chronic knee pain that's been getting worse for six months."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Efficacy and Evidence",
-        "description": "Evaluates the effectiveness and evidence for non-surgical treatments."
+        "label": "What is the clinical evidence for non-surgical outcomes?",
+        "description": "Evidence from trials and expert consensus on PT effectiveness."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Structural and Diagnostic Considerations",
-        "description": "Evaluates the presence and severity of structural damage."
+        "label": "What is the severity and type of knee damage?",
+        "description": "Imaging and clinical findings on structural vs. degenerative issues."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Patient and Practical Factors",
-        "description": "Evaluates patient-specific and practical considerations like risk, cost, and prior treatment."
+        "label": "What are the risks and recovery time associated with surgery?",
+        "description": "Surgical complications and post-op recovery duration."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the practical and financial considerations for physical therapy?",
+        "description": "Cost, access, and time investment for PT."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "clinical evidence for non-surgical outcomes",
-        "description": "Evidence that PT is effective for chronic knee pain without surgery."
+        "description": "Evidence from trials and expert consensus on PT effectiveness."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "severity and type of knee damage",
-        "description": "How severe and what type of damage the knee has."
+        "description": "Imaging and clinical findings on structural vs. degenerative issues."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "speed of return to activity",
-        "description": "How quickly the treatment allows return to daily or athletic activity."
+        "description": "How quickly one can resume normal activity post-treatment."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "surgical risk and recovery time",
-        "description": "The risks and recovery time associated with knee surgery."
+        "description": "Surgical complications and post-op recovery duration."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "long-term joint preservation",
-        "description": "The ability of the treatment to preserve joint function over time."
+        "description": "Effectiveness of treatment in preserving joint function over time."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "structural damage requiring repair",
-        "description": "Whether the knee damage is structural and requires surgical repair."
+        "description": "Whether the knee damage is repairable via surgery."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "patient age and activity level",
-        "description": "The age and activity level of the patient, which may affect treatment choice."
+        "description": "How age and activity level influence treatment choice."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "prior PT failure",
-        "description": "Whether previous PT attempts have failed."
+        "description": "Whether PT has already been attempted and failed."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "imaging findings (MRI/X-ray)",
-        "description": "Imaging results that confirm or rule out structural damage."
+        "description": "Imaging results that inform the type and severity of damage."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "cost and access to physical therapy",
-        "description": "The cost and availability of physical therapy."
+        "description": "Cost, insurance coverage, and availability of PT services."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Physical Therapy Default",
+        "label": "Answer A (Physical Therapy Default)",
         "description": "Start with a structured physical therapy program \u2014 for most chronic knee conditions, PT produces outcomes equivalent to surgery without the risk, recovery time, or cost."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Surgery for Structural Damage",
+        "label": "Answer B (Surgery for Structural Damage)",
         "description": "Proceed to surgery if imaging confirms significant structural damage (complete ACL tear, severe OA, locked meniscus) \u2014 PT cannot repair structural deficits and delaying surgery risks further joint deterioration."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "PT Then Reassess",
+        "label": "Answer C (PT Then Reassess)",
         "description": "Complete a full 8\u201312 week PT course then reassess with imaging \u2014 this approach exhausts conservative treatment, provides documented PT failure if surgery is later needed, and avoids unnecessary procedures."
       }
     ],
@@ -161,16 +177,12 @@
         "target": "sq3"
       },
       {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
         "source": "sq1",
         "target": "c1"
-      },
-      {
-        "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "sq1",
-        "target": "c5"
       },
       {
         "source": "sq2",
@@ -186,18 +198,26 @@
       },
       {
         "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
         "target": "c4"
       },
       {
-        "source": "sq3",
+        "source": "sq4",
+        "target": "c5"
+      },
+      {
+        "source": "sq4",
         "target": "c7"
       },
       {
-        "source": "sq3",
+        "source": "sq4",
         "target": "c8"
       },
       {
-        "source": "sq3",
+        "source": "sq4",
         "target": "c10"
       },
       {
@@ -213,20 +233,12 @@
         "target": "a2"
       },
       {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
         "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c4",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c4",
@@ -246,6 +258,10 @@
       },
       {
         "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
         "target": "a3"
       },
       {
@@ -255,10 +271,6 @@
       {
         "source": "c9",
         "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
       },
       {
         "source": "c10",

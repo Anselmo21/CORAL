@@ -19,18 +19,18 @@
     "A small companion breed (Cavalier King Charles Spaniel, Bichon Frise, Cockapoo)",
     "A trained psychiatric service dog (Standard Poodle / German Shepherd)"
   ],
-  "baseline_answer": "Labrador Retriever or Golden Retriever",
-  "baseline_index": 0,
+  "baseline_answer": "A small companion breed (Cavalier King Charles Spaniel, Bichon Frise, Cockapoo)",
+  "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3154,
-    "output_tokens": 2073,
-    "llm_calls": 2,
+    "prompt_tokens": 1983,
+    "output_tokens": 2071,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,21 +47,14 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most trustworthy source for information on dog breeds for anxiety and depression?",
+        "label": "What is the most trustworthy source of information for dog breeds that help with anxiety and depression?",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Which dog breed is best suited for a specific lifestyle or living situation?",
-        "description": ""
-      },
-      {
-        "id": "sq3",
-        "layer": "2",
-        "type": "subq",
-        "label": "Which dog breed is most suitable for a person with a severe or disabling mental health condition?",
+        "label": "What is the most suitable dog breed for someone with a specific lifestyle or living situation?",
         "description": ""
       },
       {
@@ -166,10 +159,6 @@
         "target": "sq2"
       },
       {
-        "source": "q",
-        "target": "sq3"
-      },
-      {
         "source": "sq1",
         "target": "c1"
       },
@@ -207,46 +196,6 @@
       },
       {
         "source": "sq2",
-        "target": "c10"
-      },
-      {
-        "source": "sq3",
-        "target": "c1"
-      },
-      {
-        "source": "sq3",
-        "target": "c2"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
-      },
-      {
-        "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c8"
-      },
-      {
-        "source": "sq3",
-        "target": "c9"
-      },
-      {
-        "source": "sq3",
         "target": "c10"
       },
       {
@@ -330,40 +279,44 @@
         "target": "a3"
       },
       {
+        "source": "c1",
+        "target": "a*"
+      },
+      {
         "source": "c2",
-        "target": "a1"
+        "target": "a*"
       },
       {
         "source": "c3",
-        "target": "a1"
+        "target": "a*"
       },
       {
         "source": "c4",
-        "target": "a1"
+        "target": "a*"
       },
       {
         "source": "c5",
-        "target": "a1"
+        "target": "a*"
       },
       {
         "source": "c6",
-        "target": "a2"
+        "target": "a*"
       },
       {
         "source": "c7",
-        "target": "a2"
+        "target": "a*"
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a*"
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a*"
       },
       {
         "source": "c10",
-        "target": "a2"
+        "target": "a*"
       }
     ]
   }

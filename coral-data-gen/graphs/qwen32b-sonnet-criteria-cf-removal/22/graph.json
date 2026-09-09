@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (CBT Default): Pursue CBT with a licensed therapist \u2014 it has the strongest evidence base for GAD, produces lasting remission, and builds self-management skills that persist without ongoing treatment.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1524,
+    "output_tokens": 2514,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -38,22 +47,22 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Effectiveness and long-term outcomes",
-        "description": "Criteria related to the effectiveness and long-term success of the treatment."
+        "label": "sq1",
+        "description": "What is the strength and duration of the treatment's effect?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Accessibility and patient engagement",
-        "description": "Criteria related to how accessible and engaging the treatment is for the patient."
+        "label": "sq2",
+        "description": "What are the practical and physical requirements for the treatment?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Sustainability and self-management",
-        "description": "Criteria related to the sustainability of the treatment and the development of self-management skills."
+        "label": "sq3",
+        "description": "What is the skill-building and self-management potential?"
       },
       {
         "id": "c1",
@@ -177,6 +186,10 @@
         "target": "c9"
       },
       {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
         "source": "sq2",
         "target": "c5"
       },
@@ -195,10 +208,6 @@
       {
         "source": "sq3",
         "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
       },
       {
         "source": "c1",
@@ -261,8 +270,16 @@
         "target": "a2"
       },
       {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
         "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
       },
       {
         "source": "c5",
@@ -273,15 +290,11 @@
         "target": "a3"
       },
       {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
         "source": "c8",
         "target": "a3"
       },
       {
-        "source": "c10",
+        "source": "c9",
         "target": "a3"
       }
     ]

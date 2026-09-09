@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Natural spray: white vinegar OR salt + soap + water solution",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2551,
+    "output_tokens": 2638,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -38,15 +47,22 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Removal Strategy and Efficacy",
-        "description": "Evaluates how well and how quickly different methods kill the plant and handle specific types."
+        "label": "Safety and Environmental Concerns",
+        "description": "Evaluates the safety of ingredients, environmental impact, and user experience regarding health and nature."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Safety, Cost, and User Impact",
-        "description": "Evaluates the risks, financial cost, and ease of use associated with each method."
+        "label": "Efficacy and Logistics",
+        "description": "Evaluates method effectiveness, long-term results, time required, ease of application, and plant type targeted."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Resource Requirements",
+        "description": "Evaluates the cost of materials and availability of tools needed for the method."
       },
       {
         "id": "c1",
@@ -60,84 +76,84 @@
         "layer": "3",
         "type": "concept",
         "label": "safety of ingredients",
-        "description": "Safety of the substances used for humans and pets."
+        "description": "Whether the method uses non-toxic, safe substances."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "environmental impact",
-        "description": "Effect on the surrounding ecosystem and non-target plants."
+        "description": "The effect of the method on the surrounding ecosystem and wildlife."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "cost of materials",
-        "description": "Financial expense required for the method."
+        "description": "The financial expense of the required materials."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "time required",
-        "description": "Duration needed to apply the method and see results."
+        "description": "The duration needed to see results or complete the task."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "ease of application",
-        "description": "Physical effort and complexity to execute the method."
+        "description": "How simple or difficult the method is to perform."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "long-term results",
-        "description": "Likelihood of the ivy regrowing after treatment."
+        "description": "Whether the ivy regrows after treatment."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "plant type targeted",
-        "description": "Suitability for specific ivy varieties or growth stages."
+        "description": "Specificity of the method to different ivy types."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "availability of tools",
-        "description": "How easy it is to acquire necessary equipment."
+        "description": "How easy it is to obtain the necessary equipment."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "user experience",
-        "description": "Overall satisfaction and comfort during the process."
+        "description": "The overall comfort and satisfaction of the user during the process."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Manual pulling with hand tools (snipper, ladder, saw, shovel)",
-        "description": "Physical removal of the plant."
+        "description": "Physical removal of ivy using tools."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Natural spray: white vinegar OR salt + soap + water solution",
-        "description": "Using household chemicals to kill the plant."
+        "description": "Using household chemicals to kill ivy."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Glyphosate (Roundup) or triclopyr (Brush-B-Gon) herbicide applied to leaves",
-        "description": "Using commercial herbicides to kill the plant."
+        "description": "Using synthetic herbicides to kill ivy."
       }
     ],
     "edges": [
@@ -150,36 +166,28 @@
         "target": "sq2"
       },
       {
-        "source": "sq1",
-        "target": "c1"
+        "source": "q",
+        "target": "sq3"
       },
       {
         "source": "sq1",
-        "target": "c5"
-      },
-      {
-        "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq2",
         "target": "c2"
       },
       {
-        "source": "sq2",
+        "source": "sq1",
         "target": "c3"
       },
       {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
         "source": "sq2",
-        "target": "c4"
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
       },
       {
         "source": "sq2",
@@ -187,7 +195,19 @@
       },
       {
         "source": "sq2",
-        "target": "c10"
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
       },
       {
         "source": "c1",
@@ -211,11 +231,15 @@
       },
       {
         "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
         "target": "a2"
       },
       {
-        "source": "c5",
-        "target": "a1"
+        "source": "c4",
+        "target": "a3"
       },
       {
         "source": "c5",
@@ -235,10 +259,6 @@
       },
       {
         "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
         "target": "a2"
       },
       {
@@ -272,38 +292,6 @@
       {
         "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
       }
     ]
   }

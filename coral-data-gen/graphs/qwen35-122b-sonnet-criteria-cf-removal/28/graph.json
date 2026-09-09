@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (DASH Plus Sodium Default): Follow the DASH diet with strict sodium reduction below 2,300 mg/day \u2014 the combination produces the largest evidence-based BP reduction (8\u201314 mmHg) equivalent to a medication dose.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 2,
+  "temperature": 0.0,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1611,
+    "output_tokens": 4096,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "length"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,98 +41,98 @@
         "layer": "1",
         "type": "question",
         "label": "What diet changes would most effectively lower my blood pressure without medication?",
-        "description": "The primary inquiry regarding non-pharmacological BP reduction strategies."
+        "description": "The primary inquiry regarding non-pharmacological blood pressure management."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Clinical Efficacy & Evidence",
-        "description": "Evaluates the strength of data, magnitude of reduction, and speed of results."
+        "label": "Maximizing Efficacy and Evidence",
+        "description": "Evaluates the magnitude, speed, and scientific backing of the interventions."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Practicality & Adherence",
-        "description": "Evaluates long-term feasibility, flexibility, and ease of implementation."
+        "label": "Feasibility and Adherence",
+        "description": "Evaluates how easy the diet is to maintain long-term and its flexibility."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Holistic Integration",
-        "description": "Evaluates synergy with exercise and relevance to baseline severity."
+        "label": "Holistic and Contextual Factors",
+        "description": "Evaluates the role of exercise, specialist support, and baseline severity."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "magnitude of blood pressure reduction",
-        "description": "The total mmHg drop achieved by the intervention."
+        "description": "The total mmHg drop achievable by the intervention."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "long-term dietary adherence feasibility",
-        "description": "The likelihood of maintaining the diet over time."
+        "description": "The likelihood a patient can stick to the diet over years."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "speed of BP reduction",
-        "description": "How quickly the blood pressure lowers after starting."
+        "description": "How quickly the blood pressure drops after starting the diet."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "sodium restriction as primary lever",
-        "description": "Whether sodium reduction is the main mechanism of action."
+        "description": "The extent to which sodium reduction is the main driver of the result."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "potassium and mineral intake optimization",
-        "description": "The focus on increasing beneficial minerals like potassium."
+        "description": "The inclusion of potassium, magnesium, and fiber in the diet."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "combination with exercise",
-        "description": "The synergy between the diet and aerobic activity."
+        "description": "Whether the plan explicitly integrates aerobic activity."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "evidence base strength",
-        "description": "The robustness of clinical trials supporting the diet."
+        "description": "The robustness of clinical trials supporting the specific diet."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "flexibility of dietary approach",
-        "description": "How adaptable the diet is to different foods and lifestyles."
+        "description": "How rigid the food choices and rules are."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "applicability without specialist support",
-        "description": "Whether the diet can be followed without a dietitian."
+        "description": "Whether the diet can be followed without a dietitian or doctor."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "severity of hypertension baseline",
-        "description": "Suitability for patients with varying levels of high blood pressure."
+        "description": "How the diet performs across different starting blood pressure levels."
       },
       {
         "id": "a1",
@@ -209,36 +218,16 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
         "source": "c3",
         "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
       },
       {
         "source": "c4",
         "target": "a1"
       },
       {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
         "source": "c5",
         "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
       },
       {
         "source": "c6",
@@ -253,8 +242,64 @@
         "target": "a1"
       },
       {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
         "source": "c8",
         "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
       },
       {
         "source": "c8",
@@ -262,23 +307,7 @@
       },
       {
         "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
         "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
       },
       {
         "source": "c10",

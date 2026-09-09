@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (QLED for Bright Room Default): Get a QLED TV \u2014 in a sunlit living room, QLED's 1,500\u20132,000 nit brightness overwhelmingly outperforms OLED, which loses its contrast advantage completely when ambient light washes out dark scenes.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2379,
-    "output_tokens": 2876,
-    "llm_calls": 2,
+    "prompt_tokens": 1594,
+    "output_tokens": 3295,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,103 +40,120 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should I get an OLED or a QLED TV for my sunlit living room?"
+        "label": "Should I get an OLED or a QLED TV for a sunlit living room?",
+        "description": "TV choice for sunlit living room"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "How well does the TV perform in bright rooms?"
+        "label": "How does the TV perform in bright rooms?",
+        "description": "TV performance in bright rooms"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How does the TV perform in dark or controlled lighting?"
+        "label": "How does the TV perform in dark or controlled lighting environments?",
+        "description": "TV performance in dark or controlled lighting environments"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Are there any other factors that might influence my decision?"
+        "label": "What are the trade-offs between QLED and OLED TVs?",
+        "description": "Trade-offs between QLED and OLED TVs"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "peak brightness in ambient light"
+        "label": "peak brightness in ambient light",
+        "description": "TV peak brightness in ambient light"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "contrast and black level performance"
+        "label": "contrast and black level performance",
+        "description": "TV contrast and black level performance"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "anti-reflective screen coating quality"
+        "label": "anti-reflective screen coating quality",
+        "description": "TV anti-reflective screen coating quality"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "burn-in risk for mixed content use"
+        "label": "burn-in risk for mixed content use",
+        "description": "TV burn-in risk for mixed content use"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "color accuracy and wide color gamut"
+        "label": "color accuracy and wide color gamut",
+        "description": "TV color accuracy and wide color gamut"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "viewing angle performance"
+        "label": "viewing angle performance",
+        "description": "TV viewing angle performance"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "response time for gaming"
+        "label": "response time for gaming",
+        "description": "TV response time for gaming"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "price at equivalent screen size"
+        "label": "price at equivalent screen size",
+        "description": "TV price at equivalent screen size"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "longevity and panel lifespan"
+        "label": "longevity and panel lifespan",
+        "description": "TV longevity and panel lifespan"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "HDR performance in dark scenes"
+        "label": "HDR performance in dark scenes",
+        "description": "TV HDR performance in dark scenes"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Get a QLED TV \u2014 in a sunlit living room, QLED's 1,500\u20132,000 nit brightness overwhelmingly outperforms OLED, which loses its contrast advantage completely when ambient light washes out dark scenes."
+        "label": "Get a QLED TV \u2014 in a sunlit living room, QLED's 1,500\u20132,000 nit brightness overwhelmingly outperforms OLED, which loses its contrast advantage completely when ambient light washes out dark scenes.",
+        "description": "QLED TV for bright room"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Consider an MLA-equipped OLED (LG G3 or similar) if you want the best picture quality and your room isn't in direct sunlight \u2014 new MLA technology pushes brightness high enough to handle most bright room conditions."
+        "label": "Consider an MLA-equipped OLED (LG G3 or similar) if you want the best picture quality and your room isn't in direct sunlight \u2014 new MLA technology pushes brightness high enough to handle most bright room conditions.",
+        "description": "MLA OLED for bright room exception"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Choose OLED if most of your TV watching happens in the evening with controlled lighting \u2014 the infinite contrast and perfect blacks provide a dramatically superior picture that justifies accepting the bright-room limitation."
+        "label": "Choose OLED if most of your TV watching happens in the evening with controlled lighting \u2014 the infinite contrast and perfect blacks provide a dramatically superior picture that justifies accepting the bright-room limitation.",
+        "description": "OLED for dark/evening use"
       }
     ],
     "edges": [
@@ -233,6 +250,46 @@
         "target": "c10"
       },
       {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
         "source": "c1",
         "target": "a1"
       },
@@ -471,6 +528,30 @@
       {
         "source": "a3",
         "target": "c10"
+      },
+      {
+        "source": "a1",
+        "target": "a2"
+      },
+      {
+        "source": "a1",
+        "target": "a3"
+      },
+      {
+        "source": "a2",
+        "target": "a1"
+      },
+      {
+        "source": "a2",
+        "target": "a3"
+      },
+      {
+        "source": "a3",
+        "target": "a1"
+      },
+      {
+        "source": "a3",
+        "target": "a2"
       }
     ]
   }

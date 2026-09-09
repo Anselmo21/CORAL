@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Term Life Default): Get a 20-year term policy worth 10\u201312x your income \u2014 it's dramatically cheaper than whole life, covers your mortgage and children's dependency years, and you invest the premium difference separately.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2244,
-    "output_tokens": 2016,
-    "llm_calls": 2,
+    "prompt_tokens": 1522,
+    "output_tokens": 1849,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,126 +41,126 @@
         "layer": "1",
         "type": "question",
         "label": "Should I get whole life or term life insurance?",
-        "description": "Considering life insurance options for a 34-year-old with two kids and a mortgage"
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Cost and Affordability",
-        "description": "Considering the cost and affordability of life insurance options"
+        "label": "Cost and coverage considerations",
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Coverage and Protection",
-        "description": "Considering the coverage and protection offered by life insurance options"
+        "label": "Investment and wealth-building opportunities",
+        "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Investment and Wealth Building",
-        "description": "Considering the investment and wealth building potential of life insurance options"
+        "label": "Suitability and flexibility considerations",
+        "description": ""
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "Special Considerations",
-        "description": "Considering special circumstances and needs when choosing life insurance"
+        "label": "Special circumstances and estate planning considerations",
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "lowest monthly premium cost",
-        "description": "The cost of premiums per month"
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "maximum death benefit per dollar",
-        "description": "The amount of death benefit received per dollar spent on premiums"
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "simplicity of product",
-        "description": "The ease of understanding and managing the life insurance product"
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "coverage during peak financial obligation years",
-        "description": "The coverage provided during years of high financial obligations"
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "cash value accumulation",
-        "description": "The growth of cash value over time"
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "tax-sheltered wealth building",
-        "description": "The ability to build wealth in a tax-sheltered environment"
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "estate planning utility",
-        "description": "The usefulness of the life insurance product in estate planning"
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "lifetime coverage guarantee",
-        "description": "The guarantee of coverage for the lifetime of the policyholder"
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "suitability for average income earners",
-        "description": "The suitability of the life insurance product for individuals with average incomes"
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "flexibility to cancel without loss",
-        "description": "The ability to cancel the policy without incurring losses"
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Get a 20-year term policy worth 10\u201312x your income \u2014 it's dramatically cheaper than whole life, covers your mortgage and children's dependency years, and you invest the premium difference separately.",
-        "description": "Term life insurance option"
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "If you've maxed your 401k and Roth IRA and have estate planning needs, a whole life policy provides lifetime coverage, tax-sheltered cash value growth, and a tool for wealth transfer.",
-        "description": "Whole life insurance option for permanence"
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Whole life is justified if you have a special-needs dependent requiring lifetime financial support, where a permanent guaranteed death benefit outweighs the premium cost.",
-        "description": "Whole life insurance option for special circumstances"
+        "description": ""
       }
     ],
     "edges": [
@@ -190,31 +190,31 @@
       },
       {
         "source": "sq1",
-        "target": "c10"
-      },
-      {
-        "source": "sq2",
         "target": "c4"
       },
       {
-        "source": "sq2",
+        "source": "sq1",
         "target": "c8"
       },
       {
         "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
         "target": "c9"
       },
       {
         "source": "sq3",
-        "target": "c5"
-      },
-      {
-        "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq4",
-        "target": "c3"
+        "target": "c10"
       },
       {
         "source": "sq4",
@@ -277,11 +277,7 @@
         "target": "a2"
       },
       {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
+        "source": "c7",
         "target": "a3"
       },
       {

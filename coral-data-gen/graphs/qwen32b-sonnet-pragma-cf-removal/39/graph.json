@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (Vocational for Early Career Default): Choose a vocational or professional degree for clearer job market entry and significantly higher early-career earnings \u2014 the liberal arts earnings convergence in mid-career is real but requires weathering a difficult first 5\u201310 years.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1659,
+    "output_tokens": 2683,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "Is a liberal arts degree worth it, or should I do something more vocational with better job prospects?",
-        "description": "Weighing the long-term flexibility of a liberal arts degree against the early-career advantages of vocational or technical degrees."
+        "description": "A question about the long-term and short-term value of liberal arts vs. vocational degrees."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the early-career earnings and job market outcomes for vocational vs. liberal arts degrees?",
-        "description": "Focuses on first 5\u201310 years after graduation."
+        "label": "Early-career earnings and job prospects for vocational vs. liberal arts degrees",
+        "description": "What are the immediate financial and employment outcomes for each degree type?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the long-term career flexibility and adaptability benefits of a liberal arts education?",
-        "description": "Focuses on 10+ years post-graduation and adaptability in a changing job market."
+        "label": "Long-term career outcomes and adaptability of liberal arts degrees",
+        "description": "What are the long-term benefits and flexibility of a liberal arts education?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the employer and student perspectives on the value of each degree type?",
-        "description": "Includes perspectives from employers, students, and researchers."
+        "label": "Perspectives of students, employers, and researchers on degree value",
+        "description": "What do different stakeholders say about the value of these degrees?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Only include sources published in 2023."
+        "description": "Only consider sources from 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Include sources published from 2021 to 2023."
+        "description": "Only consider sources from 2021 to 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Only include sources focused on the U.S. education and labor market."
+        "description": "Only consider sources focused on the U.S. context."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student prioritizing immediate employment and earnings",
-        "description": "Sources from students or research focused on early-career outcomes."
+        "description": "Only consider sources from the perspective of students focused on early job outcomes."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student prioritizing intellectual engagement and long-term flexibility",
-        "description": "Sources from students or research focused on adaptability and long-term career flexibility."
+        "description": "Only consider sources from the perspective of students focused on long-term adaptability."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Employer or HR perspective",
-        "description": "Sources from employers or HR professionals on hiring and skill preferences."
+        "description": "Only consider sources from the perspective of employers or HR professionals."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Higher education advocacy organization",
-        "description": "Sources from organizations that advocate for liberal arts education."
+        "description": "Only consider sources from higher education advocacy groups."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Education labor market research",
-        "description": "Sources from labor market and education research institutions."
+        "description": "Only consider sources from labor market research institutions."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Student peer community",
-        "description": "Sources from student communities (e.g., Reddit)."
+        "description": "Only consider sources from student communities or forums."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Business management publication",
-        "description": "Sources from business and leadership publications."
+        "description": "Only consider sources from business or management publications."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (Vocational for Early Career Default): Choose a vocational or professional degree for clearer job market entry and significantly higher early-career earnings \u2014 the liberal arts earnings convergence in mid-career is real but requires weathering a difficult first 5\u201310 years.",
-        "description": "Prioritizes early-career earnings and job market clarity."
+        "label": "Vocational for Early Career Default",
+        "description": "Choose a vocational or professional degree for clearer job market entry and significantly higher early-career earnings \u2014 the liberal arts earnings convergence in mid-career is real but requires weathering a difficult first 5\u201310 years."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (Liberal Arts for Long-Term Flexibility): A liberal arts degree is worth it if you're genuinely uncertain about your career direction \u2014 the adaptability, communication skills, and intellectual breadth it develops become more valuable as careers advance and automate.",
-        "description": "Emphasizes long-term flexibility and adaptability."
+        "label": "Liberal Arts for Long-Term Flexibility",
+        "description": "A liberal arts degree is worth it if you're genuinely uncertain about your career direction \u2014 the adaptability, communication skills, and intellectual breadth it develops become more valuable as careers advance and automate."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (Hybrid Approach): Double-major in a liberal arts field and a vocational or technical discipline \u2014 you develop the critical thinking of the humanities alongside marketable technical skills, capturing both career flexibility and early employment leverage.",
-        "description": "Balances both approaches."
+        "label": "Hybrid Approach",
+        "description": "Double-major in a liberal arts field and a vocational or technical discipline \u2014 you develop the critical thinking of the humanities alongside marketable technical skills, capturing both career flexibility and early employment leverage."
       }
     ],
     "edges": [
@@ -178,6 +187,14 @@
       },
       {
         "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
         "target": "c8"
       },
       {
@@ -198,11 +215,19 @@
       },
       {
         "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
         "target": "c10"
       },
       {
         "source": "sq3",
-        "target": "c3"
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
       },
       {
         "source": "sq3",
@@ -210,18 +235,86 @@
       },
       {
         "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
         "target": "c9"
       },
       {
         "source": "sq3",
-        "target": "c7"
+        "target": "c10"
       },
       {
         "source": "c1",
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
         "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
         "target": "a2"
       },
       {
@@ -230,134 +323,22 @@
       },
       {
         "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
         "target": "a3"
       },
       {
         "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
         "target": "a3"
       },
       {
         "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
         "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
       },
       {
         "source": "c7",
         "target": "a3"
       },
       {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
         "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
         "target": "a3"
       }
     ]

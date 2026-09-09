@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Tesla Model 3 Default): Get a Tesla Model 3 \u2014 the Supercharger network, range, and overall ownership experience make it the most reliable first EV, and the premium over competitors is justified by the reduced anxiety of long-distance travel.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2355,
-    "output_tokens": 1948,
-    "llm_calls": 2,
+    "prompt_tokens": 1579,
+    "output_tokens": 1889,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,120 +40,103 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Which EV should I get?",
-        "description": ""
+        "label": "I want to buy my first electric vehicle. Which EV should I get?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Reliable and convenient EV ownership experience",
-        "description": ""
+        "label": "What are the key factors for a reliable and convenient EV ownership experience?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Range and performance",
-        "description": ""
+        "label": "What are the key factors for a cost-effective EV purchase?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Financial factors",
-        "description": ""
+        "label": "What are the key factors for a high-performance EV?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "charging network access for road trips",
-        "description": ""
+        "label": "charging network access for road trips"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "federal tax credit eligibility",
-        "description": ""
+        "label": "federal tax credit eligibility"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "driving range on a single charge",
-        "description": ""
+        "label": "driving range on a single charge"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "total purchase price after incentives",
-        "description": ""
+        "label": "total purchase price after incentives"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "home charging setup feasibility",
-        "description": ""
+        "label": "home charging setup feasibility"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "charging speed at DC fast chargers",
-        "description": ""
+        "label": "charging speed at DC fast chargers"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "first-time EV ease of ownership",
-        "description": ""
+        "label": "first-time EV ease of ownership"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "software and over-the-air update reliability",
-        "description": ""
+        "label": "software and over-the-air update reliability"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "cargo space and practicality",
-        "description": ""
+        "label": "cargo space and practicality"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "long-term reliability and resale value",
-        "description": ""
+        "label": "long-term reliability and resale value"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Get a Tesla Model 3 \u2014 the Supercharger network, range, and overall ownership experience make it the most reliable first EV, and the premium over competitors is justified by the reduced anxiety of long-distance travel.",
-        "description": ""
+        "label": "Get a Tesla Model 3 \u2014 the Supercharger network, range, and overall ownership experience make it the most reliable first EV, and the premium over competitors is justified by the reduced anxiety of long-distance travel."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Choose the Hyundai Ioniq 6 if range and charging speed are priorities \u2014 its 361-mile range and 800V ultra-fast charging rival Tesla at a lower price, with improving non-Tesla charging networks.",
-        "description": ""
+        "label": "Choose the Hyundai Ioniq 6 if range and charging speed are priorities \u2014 its 361-mile range and 800V ultra-fast charging rival Tesla at a lower price, with improving non-Tesla charging networks."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Buy a tax credit-eligible EV (Chevy Equinox EV, VW ID.4) \u2014 the $7,500 federal credit meaningfully reduces the effective purchase price and makes these vehicles better value than their sticker suggests.",
-        "description": ""
+        "label": "Buy a tax credit-eligible EV (Chevy Equinox EV, VW ID.4) \u2014 the $7,500 federal credit meaningfully reduces the effective purchase price and makes these vehicles better value than their sticker suggests."
       }
     ],
     "edges": [
@@ -191,19 +174,19 @@
       },
       {
         "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
-        "target": "c6"
-      },
-      {
-        "source": "sq3",
         "target": "c2"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
       },
       {
         "source": "sq3",
@@ -255,7 +238,7 @@
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c10",

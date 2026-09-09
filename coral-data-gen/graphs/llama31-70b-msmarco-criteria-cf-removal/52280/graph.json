@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Garbage management + remove food sources",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3896,
-    "output_tokens": 1649,
-    "llm_calls": 2,
+    "prompt_tokens": 2328,
+    "output_tokens": 1770,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,21 +47,21 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "practical considerations",
+        "label": "Practical considerations",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "effectiveness and safety",
+        "label": "Effectiveness and safety",
         "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "environmental and social impact",
+        "label": "Environmental and social impact",
         "description": ""
       },
       {
@@ -179,10 +179,6 @@
       },
       {
         "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
         "target": "c8"
       },
       {
@@ -200,6 +196,10 @@
       {
         "source": "sq3",
         "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
       },
       {
         "source": "sq3",
@@ -223,15 +223,15 @@
       },
       {
         "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
         "target": "a3"
       },
       {
         "source": "c3",
         "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
       },
       {
         "source": "c3",
@@ -259,11 +259,11 @@
       },
       {
         "source": "c6",
-        "target": "a3"
+        "target": "a2"
       },
       {
-        "source": "c7",
-        "target": "a2"
+        "source": "c6",
+        "target": "a3"
       },
       {
         "source": "c7",
@@ -271,11 +271,11 @@
       },
       {
         "source": "c8",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c9",

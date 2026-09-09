@@ -21,10 +21,20 @@
   ],
   "baseline_answer": "Answer A (Paralegal First Default): Start as a paralegal \u2014 it lets you test whether you genuinely enjoy legal work before committing $150\u2013250k to law school, and paralegal careers are stable, growing, and financially reasonable for those not targeting BigLaw.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 2,
+  "usage": {
+    "prompt_tokens": 7731,
+    "output_tokens": 5963,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +42,119 @@
         "layer": "1",
         "type": "question",
         "label": "Should I become a paralegal instead of law school?",
-        "description": "User is interested in legal work but uncertain about committing to law school."
+        "description": "Main question regarding career path for uncertain legal aspirant."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "How can I test legal work without debt?",
-        "description": "Focuses on the 'uncertain student' perspective and community advice for a low-risk entry."
+        "label": "Testing the Waters",
+        "description": "Focuses on uncertainty, debt avoidance, and using paralegal work as a trial."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Is law school worth it for high earnings?",
-        "description": "Focuses on the 'BigLaw' perspective and industry data on salary stratification."
+        "label": "The Elite Path",
+        "description": "Focuses on high-earning potential, BigLaw, and top-tier school rankings."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Can paralegal work be a long-term career?",
-        "description": "Focuses on 'debt avoidance', government stats on growth, and specialization paths."
+        "label": "Career Stability",
+        "description": "Focuses on long-term growth, specialization, and debt-free stability."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Filters for most recent data only."
+        "description": "Filters for 2023 data only."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Filters for recent 3-year trend data."
+        "description": "Filters for data from 2021 to 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Filters for US-specific legal market data."
+        "description": "Filters for US-based sources."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student uncertain about commitment to law",
-        "description": "Prioritizes sources addressing hesitation and testing the field."
+        "description": "Prioritizes sources for those unsure about law school."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student targeting BigLaw or high-earning legal careers",
-        "description": "Prioritizes sources discussing high-salary legal paths."
+        "description": "Prioritizes sources for high-earning goals."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student focused on work-life balance and debt avoidance",
-        "description": "Prioritizes sources discussing financial risk and stability."
+        "description": "Prioritizes sources avoiding debt."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Education ranking publication",
-        "description": "Prioritizes sources like US News regarding school value."
+        "description": "Prioritizes ranking publications."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Government labor statistics",
-        "description": "Prioritizes BLS/NALP data on employment and salary."
+        "description": "Prioritizes government stats."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Law student and practitioner community",
-        "description": "Prioritizes peer advice and community experiences (e.g., Reddit)."
+        "description": "Prioritizes community advice."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Legal industry publication",
-        "description": "Prioritizes professional industry analysis (e.g., Above the Law)."
+        "description": "Prioritizes industry publications."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Paralegal First Default)",
-        "description": "Start as a paralegal to test the field before committing to law school debt."
+        "description": "Start as a paralegal to test the waters before law school."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Law School for Big Earnings)",
-        "description": "Go to a top-20 law school if targeting BigLaw or federal clerkships."
+        "description": "Go to a top-20 law school for BigLaw salaries."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Paralegal as Career, Not Stepping Stone)",
-        "description": "Build a specialized paralegal career as a debt-free, fulfilling alternative."
+        "description": "Build a specialized paralegal career permanently."
       }
     ],
     "edges": [
@@ -162,7 +172,7 @@
       },
       {
         "source": "sq1",
-        "target": "c1"
+        "target": "c2"
       },
       {
         "source": "sq1",
@@ -174,11 +184,23 @@
       },
       {
         "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
         "target": "c9"
       },
       {
         "source": "sq2",
-        "target": "c2"
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
       },
       {
         "source": "sq2",
@@ -218,111 +240,91 @@
       },
       {
         "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
         "target": "a2"
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
       },
       {
         "source": "c3",
         "target": "a2"
       },
       {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
         "source": "c4",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c5",
         "target": "a1"
       },
       {
-        "source": "c6",
+        "source": "c5",
         "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
       },
       {
         "source": "c7",
         "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
       },
       {
         "source": "c8",
         "target": "a1"
       },
       {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
         "source": "c9",
         "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
+        "source": "c10",
+        "target": "a2"
       },
       {
         "source": "c10",

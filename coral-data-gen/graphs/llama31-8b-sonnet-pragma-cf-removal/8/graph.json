@@ -19,19 +19,18 @@
     "Answer B (Max 401k First): Max the 401k entirely before the IRA if you're a high earner seeking maximum pre-tax deductions \u2014 the tax benefit outweighs the fee disadvantage at high income levels.",
     "Answer C (IRA Only After Match): After capturing the match, skip the 401k entirely until the IRA is maxed \u2014 the investment flexibility and lower costs of a self-directed IRA deliver better long-term outcomes for most investors."
   ],
-  "baseline_answer": "Answer A (Match Then IRA Default): Contribute just enough to get the 1% match, then direct all remaining retirement savings to a Roth or traditional IRA \u2014 better investment options and lower fees in the IRA outweigh the minimal 401k match beyond the free money.",
-  "baseline_index": 0,
+  "baseline_answer": "Answer C (IRA Only After Match): After capturing the match, skip the 401k entirely until the IRA is maxed \u2014 the investment flexibility and lower costs of a self-directed IRA deliver better long-term outcomes for most investors.",
+  "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 2,
+  "temperature": 0.0,
+  "attempts": 1,
   "usage": {
-    "prompt_tokens": 8276,
-    "output_tokens": 6038,
-    "llm_calls": 3,
+    "prompt_tokens": 1645,
+    "output_tokens": 2471,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
-      "length",
       "stop"
     ]
   },
@@ -41,103 +40,120 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should I still max out my employer 401k match that is only 1%?"
+        "label": "Should I still max out my employer 401k match, which is only 1%, before contributing elsewhere?",
+        "description": "The question is: Should I still max out my employer 401k match, which is only 1%, before contributing elsewhere?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Optimal order of contributions to the 401k and IRA"
+        "label": "Should I prioritize the 401k match over other retirement savings options?",
+        "description": "We can group the Layer 3 seeds into the following sub-questions: Should I prioritize the 401k match over other retirement savings options?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Income level's effect on contribution priority"
+        "label": "What are the implications of having a high or low income on my retirement savings strategy?",
+        "description": "We can group the Layer 3 seeds into the following sub-questions: What are the implications of having a high or low income on my retirement savings strategy?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Key factors in deciding between 401k and IRA"
+        "label": "How do fees and investment options impact my retirement savings decisions?",
+        "description": "We can group the Layer 3 seeds into the following sub-questions: How do fees and investment options impact my retirement savings decisions?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "Temporal: 2023 only"
+        "label": "temporal: 2023 only",
+        "description": "Should I prioritize the 401k match over other retirement savings options?"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "Temporal: 2021\u20132023"
+        "label": "temporal: 2021\u20132023",
+        "description": "What are the implications of having a high or low income on my retirement savings strategy?"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "Geographic: USA"
+        "label": "geographic: USA",
+        "description": "How do fees and investment options impact my retirement savings decisions?"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "Perspective: Average income earner below Roth limits"
+        "label": "perspective: Average income earner below Roth limits",
+        "description": "Should I prioritize the 401k match over other retirement savings options?"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "Perspective: High earner above Roth income limits"
+        "label": "perspective: High earner above Roth income limits",
+        "description": "What are the implications of having a high or low income on my retirement savings strategy?"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "Perspective: Fee-sensitive optimizer"
+        "label": "perspective: Fee-sensitive optimizer",
+        "description": "How do fees and investment options impact my retirement savings decisions?"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "Trustworthiness: Institutional financial research"
+        "label": "trustworthiness: Institutional financial research",
+        "description": "Should I prioritize the 401k match over other retirement savings options?"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "Trustworthiness: Consumer financial advisory"
+        "label": "trustworthiness: Consumer financial advisory",
+        "description": "What are the implications of having a high or low income on my retirement savings strategy?"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "Trustworthiness: Community peer advice"
+        "label": "trustworthiness: Community peer advice",
+        "description": "How do fees and investment options impact my retirement savings decisions?"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "Trustworthiness: Brokerage/investment platform guidance"
+        "label": "trustworthiness: Brokerage/investment platform guidance",
+        "description": "Should I prioritize the 401k match over other retirement savings options?"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Match Then IRA Default"
+        "label": "Answer A (Match Then IRA Default)",
+        "description": "Contribute just enough to get the 1% match, then direct all remaining retirement savings to a Roth or traditional IRA \u2014 better investment options and lower fees in the IRA outweigh the minimal 401k match beyond the free money."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Max 401k First"
+        "label": "Answer B (Max 401k First)",
+        "description": "Max the 401k entirely before the IRA if you're a high earner seeking maximum pre-tax deductions \u2014 the tax benefit outweighs the fee disadvantage at high income levels."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "IRA Only After Match"
+        "label": "Answer C (IRA Only After Match)",
+        "description": "After capturing the match, skip the 401k entirely until the IRA is maxed \u2014 the investment flexibility and lower costs of a self-directed IRA deliver better long-term outcomes for most investors."
       }
     ],
     "edges": [
@@ -159,23 +175,7 @@
       },
       {
         "source": "sq1",
-        "target": "c2"
-      },
-      {
-        "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "sq1",
         "target": "c4"
-      },
-      {
-        "source": "sq1",
-        "target": "c5"
-      },
-      {
-        "source": "sq1",
-        "target": "c6"
       },
       {
         "source": "sq1",
@@ -183,19 +183,7 @@
       },
       {
         "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq1",
         "target": "c10"
-      },
-      {
-        "source": "sq2",
-        "target": "c1"
       },
       {
         "source": "sq2",
@@ -203,43 +191,11 @@
       },
       {
         "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
         "target": "c5"
       },
       {
         "source": "sq2",
-        "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
         "target": "c8"
-      },
-      {
-        "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
-        "source": "sq3",
-        "target": "c1"
-      },
-      {
-        "source": "sq3",
-        "target": "c2"
       },
       {
         "source": "sq3",
@@ -247,31 +203,11 @@
       },
       {
         "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
-      },
-      {
-        "source": "sq3",
         "target": "c6"
       },
       {
         "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c8"
-      },
-      {
-        "source": "sq3",
         "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
       },
       {
         "source": "c1",
@@ -314,16 +250,28 @@
         "target": "a3"
       },
       {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
         "source": "c4",
         "target": "a3"
       },
       {
         "source": "c5",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c7",

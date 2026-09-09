@@ -21,106 +21,125 @@
   ],
   "baseline_answer": "Answer B (Standing Desk With Proper Setup): Get a sit-stand desk with anti-fatigue mat and proper ergonomic setup \u2014 used correctly with alternating postures every 30 minutes, it reduces upper back pain and prolonged sitting with meaningful evidence from long-term RCTs.",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1552,
+    "output_tokens": 2867,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Would a standing desk actually help?",
-        "description": "I work at a desk all day and have been having back pain."
+        "label": "Would a standing desk actually help with back pain?",
+        "description": "I work at a desk all day and have been having back pain. Would a standing desk actually help?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "Evidence for back pain reduction",
-        "description": "What is the evidence that a standing desk reduces back pain?"
+        "description": "What is the evidence for the effectiveness of each solution in reducing back pain?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Risks and limitations",
-        "description": "What are the risks or limitations of using a standing desk?"
+        "label": "Practical and ergonomic considerations",
+        "description": "What are the practical and ergonomic considerations for each solution?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Cost-effective alternatives",
-        "description": "Are there more cost-effective or behavior-based alternatives to a standing desk?"
+        "label": "Long-term sustainability and cost",
+        "description": "What are the long-term sustainability and cost implications of each solution?"
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "Usage and compliance",
-        "description": "What role do proper usage and long-term habits play in effectiveness?"
+        "label": "Root causes and secondary effects",
+        "description": "How do the solutions compare in terms of addressing root causes and secondary effects?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "evidence for back pain reduction"
+        "label": "evidence for back pain reduction",
+        "description": "Strength of evidence that the solution reduces back pain."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "reduction of total daily sitting time"
+        "label": "reduction of total daily sitting time",
+        "description": "How much the solution reduces overall sitting time."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "correct usage and ergonomic setup"
+        "label": "correct usage and ergonomic setup",
+        "description": "Whether the solution requires proper setup and usage to be effective."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "combination with movement breaks"
+        "label": "combination with movement breaks",
+        "description": "Whether the solution works best when combined with movement breaks."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "cost of desk vs cheaper alternatives"
+        "label": "cost of desk vs cheaper alternatives",
+        "description": "Cost comparison between the solution and cheaper alternatives."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "upper vs lower back pain distinction"
+        "label": "upper vs lower back pain distinction",
+        "description": "Whether the solution is more effective for upper or lower back pain."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "standing fatigue and new pain risks"
+        "label": "standing fatigue and new pain risks",
+        "description": "Risk of new pain or fatigue from the solution."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "workplace feasibility"
+        "label": "workplace feasibility",
+        "description": "How feasible the solution is in a typical workplace."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "long-term compliance and usage habits"
+        "label": "long-term compliance and usage habits",
+        "description": "How likely the solution is to be used consistently over time."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "comparison to exercise and movement breaks"
+        "label": "comparison to exercise and movement breaks",
+        "description": "How the solution compares to exercise and movement breaks in effectiveness."
       },
       {
         "id": "a1",
@@ -170,6 +189,10 @@
         "target": "c6"
       },
       {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
         "source": "sq2",
         "target": "c3"
       },
@@ -195,15 +218,19 @@
       },
       {
         "source": "sq3",
-        "target": "c10"
-      },
-      {
-        "source": "sq4",
-        "target": "c3"
-      },
-      {
-        "source": "sq4",
         "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c1"
+      },
+      {
+        "source": "sq4",
+        "target": "c6"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -246,6 +273,18 @@
         "target": "a2"
       },
       {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
         "source": "c4",
         "target": "a1"
       },
@@ -258,7 +297,15 @@
         "target": "a1"
       },
       {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
         "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
         "target": "a1"
       },
       {
@@ -270,11 +317,35 @@
         "target": "a3"
       },
       {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
         "source": "c5",
         "target": "a3"
       },
       {
         "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
         "target": "a3"
       },
       {

@@ -21,137 +21,139 @@
   ],
   "baseline_answer": "Answer A (Tesla Model 3 Default): Get a Tesla Model 3 \u2014 the Supercharger network, range, and overall ownership experience make it the most reliable first EV, and the premium over competitors is justified by the reduced anxiety of long-distance travel.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1583,
+    "output_tokens": 2537,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Which EV should I get as a first-time buyer?",
-        "description": "A first-time EV buyer is looking for a recommendation on which electric vehicle to purchase."
+        "label": "q",
+        "description": "I want to buy my first electric vehicle. Which EV should I get?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Long-distance travel and charging convenience",
-        "description": "Factors related to charging infrastructure and long-distance usability."
+        "label": "sq1",
+        "description": "Charging and Road Trip Readiness"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Cost-related factors",
-        "description": "Considerations such as purchase price and tax credits."
+        "label": "sq2",
+        "description": "Cost and Affordability"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Vehicle performance and reliability",
-        "description": "Performance, software, and long-term value."
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "Practicality and usability",
-        "description": "Daily usability and cargo space."
+        "label": "sq3",
+        "description": "Performance and Practicality"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "charging network access for road trips",
-        "description": "Access to a reliable charging network for long-distance travel."
+        "label": "1. charging network access for road trips",
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "federal tax credit eligibility",
-        "description": "Eligibility for federal tax credits that reduce effective purchase price."
+        "label": "2. federal tax credit eligibility",
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "driving range on a single charge",
-        "description": "How far the EV can go on a single full charge."
+        "label": "3. driving range on a single charge",
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "total purchase price after incentives",
-        "description": "The final cost after all applicable incentives and credits."
+        "label": "4. total purchase price after incentives",
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "home charging setup feasibility",
-        "description": "How easy it is to install and use a home charging station."
+        "label": "5. home charging setup feasibility",
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "charging speed at DC fast chargers",
-        "description": "How quickly the EV can charge at public DC fast charging stations."
+        "label": "6. charging speed at DC fast chargers",
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "first-time EV ease of ownership",
-        "description": "How easy the EV is to maintain and use for a first-time buyer."
+        "label": "7. first-time EV ease of ownership",
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "software and over-the-air update reliability",
-        "description": "The quality and frequency of software updates and features."
+        "label": "8. software and over-the-air update reliability",
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "cargo space and practicality",
-        "description": "How practical the EV is for daily use and hauling."
+        "label": "9. cargo space and practicality",
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "long-term reliability and resale value",
-        "description": "The vehicle's expected durability and future resale potential."
+        "label": "10. long-term reliability and resale value",
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (Tesla Model 3 Default)",
-        "description": "Get a Tesla Model 3 \u2014 the Supercharger network, range, and overall ownership experience make it the most reliable first EV, and the premium over competitors is justified by the reduced anxiety of long-distance travel."
+        "label": "1. Answer A (Tesla Model 3 Default): Get a Tesla Model 3 \u2014 the Supercharger network, range, and overall ownership experience make it the most reliable first EV, and the premium over competitors is justified by the reduced anxiety of long-distance travel.",
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (Ioniq 6 for Range and Speed)",
-        "description": "Choose the Hyundai Ioniq 6 if range and charging speed are priorities \u2014 its 361-mile range and 800V ultra-fast charging rival Tesla at a lower price, with improving non-Tesla charging networks."
+        "label": "2. Answer B (Ioniq 6 for Range and Speed): Choose the Hyundai Ioniq 6 if range and charging speed are priorities \u2014 its 361-mile range and 800V ultra-fast charging rival Tesla at a lower price, with improving non-Tesla charging networks.",
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (Tax Credit Vehicle for Value)",
-        "description": "Buy a tax credit-eligible EV (Chevy Equinox EV, VW ID.4) \u2014 the $7,500 federal credit meaningfully reduces the effective purchase price and makes these vehicles better value than their sticker suggests."
+        "label": "3. Answer C (Tax Credit Vehicle for Value): Buy a tax credit-eligible EV (Chevy Equinox EV, VW ID.4) \u2014 the $7,500 federal credit meaningfully reduces the effective purchase price and makes these vehicles better value than their sticker suggests.",
+        "description": ""
       }
     ],
     "edges": [
@@ -168,20 +170,20 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
-      },
-      {
         "source": "sq1",
         "target": "c1"
       },
       {
         "source": "sq1",
-        "target": "c5"
+        "target": "c6"
       },
       {
         "source": "sq1",
-        "target": "c6"
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
       },
       {
         "source": "sq2",
@@ -192,24 +194,20 @@
         "target": "c4"
       },
       {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
         "source": "sq3",
         "target": "c3"
       },
       {
         "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c8"
+        "target": "c9"
       },
       {
         "source": "sq3",
         "target": "c10"
-      },
-      {
-        "source": "sq4",
-        "target": "c9"
       },
       {
         "source": "c1",
@@ -217,27 +215,15 @@
       },
       {
         "source": "c2",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c3",
         "target": "a1"
       },
       {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
         "source": "c4",
         "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
       },
       {
         "source": "c5",
@@ -246,10 +232,6 @@
       {
         "source": "c6",
         "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
       },
       {
         "source": "c7",
@@ -266,6 +248,54 @@
       {
         "source": "c10",
         "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       }
     ]
   }

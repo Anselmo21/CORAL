@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Bird netting",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 4128,
-    "output_tokens": 1738,
-    "llm_calls": 2,
+    "prompt_tokens": 2454,
+    "output_tokens": 2054,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,118 +41,133 @@
         "layer": "1",
         "type": "question",
         "label": "best way to deter seagulls",
-        "description": ""
+        "description": "What is the best way to deter seagulls?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "most effective way to deter seagulls",
-        "description": ""
+        "label": "most effective method to deter seagulls",
+        "description": "What is the most effective method to deter seagulls?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "best way to deter seagulls from a specific location or perspective",
-        "description": ""
+        "label": "most environmentally friendly method to deter seagulls",
+        "description": "What is the most environmentally friendly method to deter seagulls?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "most feasible method to deter seagulls for a specific location",
+        "description": "What is the most feasible method to deter seagulls for a specific location?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: pest control industry publication",
-        "description": ""
+        "description": "trustworthiness: pest control industry publication"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed ornithology journal",
-        "description": ""
+        "description": "trustworthiness: peer-reviewed ornithology journal"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: wildlife management agency",
-        "description": ""
+        "description": "trustworthiness: wildlife management agency"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: bird control product retailer",
-        "description": ""
+        "description": "trustworthiness: bird control product retailer"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: horticultural / gardening publication",
-        "description": ""
+        "description": "trustworthiness: horticultural / gardening publication"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: restaurant or outdoor-event owner",
-        "description": ""
+        "description": "perspective: restaurant or outdoor-event owner"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: rooftop homeowner",
-        "description": ""
+        "description": "perspective: rooftop homeowner"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: public park or harbor manager",
-        "description": ""
+        "description": "perspective: public park or harbor manager"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: wildlife-friendly advocate",
-        "description": ""
+        "description": "perspective: wildlife-friendly advocate"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: aesthetic-first homeowner",
-        "description": ""
+        "description": "perspective: aesthetic-first homeowner"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Bird netting",
-        "description": ""
+        "description": "Bird netting"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Predator decoys + Osprey / Eagle Jackite kite",
-        "description": ""
+        "description": "Predator decoys + Osprey / Eagle Jackite kite"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Garbage management + remove food sources",
-        "description": ""
+        "description": "Garbage management + remove food sources"
       }
     ],
     "edges": [
       {
         "source": "q",
         "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
       },
       {
         "source": "sq1",
@@ -175,27 +190,43 @@
         "target": "c5"
       },
       {
-        "source": "q",
-        "target": "sq2"
+        "source": "sq2",
+        "target": "c1"
       },
       {
         "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
         "target": "c6"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c7"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c8"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c9"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c10"
       },
       {
@@ -259,7 +290,23 @@
         "target": "a3"
       },
       {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
         "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
         "target": "a3"
       }
     ]

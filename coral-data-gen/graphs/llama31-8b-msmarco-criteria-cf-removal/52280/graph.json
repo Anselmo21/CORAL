@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Bird netting",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3892,
-    "output_tokens": 1964,
-    "llm_calls": 2,
+    "prompt_tokens": 2324,
+    "output_tokens": 1730,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,112 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "best way to deter seagulls",
-        "description": "effective methods to deter seagulls"
+        "description": "effective methods to repel seagulls"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "effective methods",
-        "description": "methods that are effective in deterring seagulls"
+        "label": "Effectiveness and Durability",
+        "description": "evaluating methods based on effectiveness and durability"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "considerations",
-        "description": "factors to consider when deterring seagulls"
+        "label": "Practicality and Cost",
+        "description": "evaluating methods based on practicality and cost"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Environmental and Social Impact",
+        "description": "evaluating methods based on environmental and social impact"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "effectiveness against seagulls",
-        "description": "how effective the method is in deterring seagulls"
+        "description": "ability to deter seagulls"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "cost of implementation",
-        "description": "the cost of implementing the method"
+        "description": "financial cost of implementing the method"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "ease of installation",
-        "description": "how easy it is to install the method"
+        "description": "ease of setting up the method"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "environmental impact",
-        "description": "the impact of the method on the environment"
+        "description": "impact on the environment"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "duration of effectiveness",
-        "description": "how long the method remains effective"
+        "description": "length of time the method remains effective"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "safety for other wildlife",
-        "description": "the safety of other wildlife when using the method"
+        "description": "impact on other animals"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "visibility of deterrent",
-        "description": "how visible the deterrent is to seagulls"
+        "description": "visibility of the deterrent"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "maintenance requirements",
-        "description": "the maintenance required for the method"
+        "description": "effort required to maintain the method"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "legal considerations",
-        "description": "the legal implications of using the method"
+        "description": "legal implications of the method"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "user satisfaction",
-        "description": "the satisfaction of users with the method"
+        "description": "satisfaction of users with the method"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Bird netting",
-        "description": "using netting to block seagulls from areas"
+        "label": "Predator decoys + Osprey / Eagle Jackite kite",
+        "description": "using decoys and a kite to deter seagulls"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Predator decoys + Osprey / Eagle Jackite kite",
-        "description": "using decoys and a kite to scare seagulls away"
+        "label": "Garbage management + remove food sources",
+        "description": "managing garbage and removing food sources to deter seagulls"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Garbage management + remove food sources",
-        "description": "managing garbage and removing food sources to deter seagulls"
+        "label": "Bird netting",
+        "description": "using netting to block seagulls"
       }
     ],
     "edges": [
@@ -159,20 +166,12 @@
         "target": "sq2"
       },
       {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
         "source": "sq1",
         "target": "c1"
-      },
-      {
-        "source": "sq1",
-        "target": "c2"
-      },
-      {
-        "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "sq1",
-        "target": "c4"
       },
       {
         "source": "sq1",
@@ -181,26 +180,6 @@
       {
         "source": "sq1",
         "target": "c6"
-      },
-      {
-        "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
-      },
-      {
-        "source": "sq2",
-        "target": "c1"
       },
       {
         "source": "sq2",
@@ -212,22 +191,6 @@
       },
       {
         "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
-        "target": "c5"
-      },
-      {
-        "source": "sq2",
-        "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
         "target": "c8"
       },
       {
@@ -235,7 +198,15 @@
         "target": "c9"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
         "target": "c10"
       },
       {
@@ -243,79 +214,7 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
         "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
         "target": "a2"
       },
       {
@@ -324,15 +223,19 @@
       },
       {
         "source": "c2",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c3",
-        "target": "a3"
+        "target": "a2"
       },
       {
-        "source": "c4",
-        "target": "a3"
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
       },
       {
         "source": "c5",
@@ -347,16 +250,32 @@
         "target": "a3"
       },
       {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
         "source": "c10",
         "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "a1",
+        "target": "c7"
+      },
+      {
+        "source": "a1",
+        "target": "c10"
+      },
+      {
+        "source": "a2",
+        "target": "c1"
+      },
+      {
+        "source": "a2",
+        "target": "c5"
+      },
+      {
+        "source": "a2",
+        "target": "c6"
       }
     ]
   }

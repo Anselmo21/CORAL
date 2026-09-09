@@ -21,109 +21,118 @@
   ],
   "baseline_answer": "Answer A (Bootcamp Default): Do a coding bootcamp \u2014 at 29 with a career to build, the 6\u201312 month path to employment vastly outweighs a 4-year degree's opportunity cost for most software development roles outside top-tier companies.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1619,
+    "output_tokens": 2352,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "CS Degree vs Bootcamp for 29yo",
-        "description": "Should a 29-year-old marketing professional get a CS degree or do a coding bootcamp to switch careers?"
+        "label": "Should I get a CS degree or do a coding bootcamp?",
+        "description": "Decision for a 29-year-old marketing professional switching to software development."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Speed & Immediate ROI",
-        "description": "How quickly can I start earning and what are the immediate financial trade-offs?"
+        "label": "Speed, Cost, and Timeline",
+        "description": "Evaluates how quickly one can start earning and the financial impact of the choice."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Long-Term Ceiling & Specialization",
-        "description": "What are the long-term career trajectories and requirements for top-tier roles?"
+        "label": "Career Ceiling and Technical Depth",
+        "description": "Evaluates long-term earning potential and access to elite roles."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Execution & Support",
-        "description": "What level of personal discipline and external support is required?"
+        "label": "Execution, Support, and Signals",
+        "description": "Evaluates the learner's ability to succeed and the external validation received."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "time to first employment",
-        "description": "Duration until the first job offer."
+        "description": "How quickly the path leads to a paid job."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "total cost including opportunity cost",
-        "description": "Tuition plus lost wages during study."
+        "description": "Tuition plus lost wages during the study period."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "long-term earnings trajectory",
-        "description": "Earnings potential over a 10+ year career."
+        "description": "Earning potential over a 10+ year career."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "suitability for FAANG/top-tier companies",
-        "description": "Likelihood of getting hired by elite tech firms."
+        "description": "Likelihood of being hired by elite tech firms."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "depth of computer science fundamentals",
-        "description": "Mastery of algorithms, systems, and theory."
+        "description": "Breadth and depth of theoretical knowledge gained."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "age and career timeline considerations",
-        "description": "Impact of starting a new career at age 29."
+        "description": "Impact of starting a new career path at age 29."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "current employer reputation signals",
-        "description": "How credentials signal value to future employers."
+        "description": "How the credential signals competence to future employers."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "self-directed learning ability",
-        "description": "Capacity to learn without structured guidance."
+        "description": "The learner's capacity to study without a structured curriculum."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "networking and career support quality",
-        "description": "Access to mentors, peers, and job placement help."
+        "description": "Access to mentors, peers, and job placement assistance."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "flexibility to work while learning",
-        "description": "Ability to maintain current income during study."
+        "description": "Ability to maintain current employment during education."
       },
       {
         "id": "a1",
@@ -189,7 +198,7 @@
         "target": "c5"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c7"
       },
       {
@@ -257,11 +266,11 @@
         "target": "a2"
       },
       {
-        "source": "c9",
+        "source": "c8",
         "target": "a2"
       },
       {
-        "source": "c10",
+        "source": "c9",
         "target": "a2"
       },
       {
@@ -269,7 +278,23 @@
         "target": "a3"
       },
       {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
         "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
         "target": "a3"
       },
       {

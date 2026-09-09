@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "A multiple-plant strategy: one 10-12 inch potted plant per 100 sq ft of living space, per NASA/Wolverton guidance",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2999,
-    "output_tokens": 1619,
-    "llm_calls": 2,
+    "prompt_tokens": 1903,
+    "output_tokens": 1538,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,14 +47,14 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Trusted sources for air-purifying house plants",
+        "label": "What are the most trustworthy sources for air-purifying house plants?",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Considerations for different types of house plant owners",
+        "label": "What are the best house plants for specific needs or preferences?",
         "description": ""
       },
       {
@@ -131,14 +131,14 @@
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Spider plant (Chlorophytum comosum)",
+        "label": "Spider plant (Chlorophytum comosum) \u2014 easy to grow, NASA-listed, filters benzene/formaldehyde/CO/xylene; best single-plant pick",
         "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Match a NASA Clean Air Study plant to your dominant VOC",
+        "label": "Match a NASA Clean Air Study plant to your dominant VOC (e.g., formaldehyde-targeted vs benzene-targeted choice)",
         "description": ""
       },
       {
@@ -171,11 +171,11 @@
         "target": "c3"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c4"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c5"
       },
       {
@@ -212,7 +212,15 @@
       },
       {
         "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
         "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
       },
       {
         "source": "c3",
@@ -220,27 +228,19 @@
       },
       {
         "source": "c4",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
         "target": "a1"
       },
       {
         "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
         "target": "a2"
       },
       {
         "source": "c7",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c8",
@@ -251,16 +251,8 @@
         "target": "a1"
       },
       {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
         "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
+        "target": "a2"
       }
     ]
   }

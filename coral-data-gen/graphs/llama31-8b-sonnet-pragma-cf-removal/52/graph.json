@@ -21,16 +21,17 @@
   ],
   "baseline_answer": "Answer A (QLED for Bright Room Default): Get a QLED TV \u2014 in a sunlit living room, QLED's 1,500\u20132,000 nit brightness overwhelmingly outperforms OLED, which loses its contrast advantage completely when ambient light washes out dark scenes.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 2,
   "usage": {
-    "prompt_tokens": 2573,
-    "output_tokens": 1978,
+    "prompt_tokens": 7553,
+    "output_tokens": 6112,
     "llm_calls": 2,
     "finish_reasons": [
-      "stop",
+      "length",
       "stop"
     ]
   },
@@ -40,28 +41,28 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should I get an OLED or a QLED TV for my sunlit living room?",
+        "label": "Should I get an OLED or a QLED TV for a living room with a lot of sunlight?",
         "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best TV type for a sunlit living room?",
+        "label": "What is the best TV for a bright room?",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How do MLA-equipped OLEDs compare to QLEDs in bright rooms?",
+        "label": "What is the best TV for a room with controlled lighting?",
         "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the viewing conditions for which OLEDs outperform QLEDs?",
+        "label": "What is the best TV for a buyer with specific priorities?",
         "description": ""
       },
       {
@@ -69,91 +70,91 @@
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Sources from 2023 only"
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132022",
-        "description": "Sources from 2021\u20132022 only"
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Sources from the USA only"
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Canada / Global",
-        "description": "Sources from Canada or globally"
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Buyer with bright living room and daytime viewing",
-        "description": "Sources from a buyer with a bright living room and daytime viewing"
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Buyer with controlled lighting and cinephile priorities",
-        "description": "Sources from a buyer with controlled lighting and cinephile priorities"
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Independent display testing site",
-        "description": "Sources from an independent display testing site"
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Tech journalism",
-        "description": "Sources from tech journalism"
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Home theater enthusiast community",
-        "description": "Sources from a home theater enthusiast community"
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Display science testing lab",
-        "description": "Sources from a display science testing lab"
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (QLED for Bright Room Default): Get a QLED TV \u2014 in a sunlit living room, QLED's 1,500\u20132,000 nit brightness overwhelmingly outperforms OLED, which loses its contrast advantage completely when ambient light washes out dark scenes.",
-        "description": ""
+        "label": "QLED for Bright Room Default",
+        "description": "Get a QLED TV \u2014 in a sunlit living room, QLED's 1,500\u20132,000 nit brightness overwhelmingly outperforms OLED, which loses its contrast advantage completely when ambient light washes out dark scenes."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (MLA OLED as Exception): Consider an MLA-equipped OLED (LG G3 or similar) if you want the best picture quality and your room isn't in direct sunlight \u2014 new MLA technology pushes brightness high enough to handle most bright room conditions.",
-        "description": ""
+        "label": "MLA OLED as Exception",
+        "description": "Consider an MLA-equipped OLED (LG G3 or similar) if you want the best picture quality and your room isn't in direct sunlight \u2014 new MLA technology pushes brightness high enough to handle most bright room conditions."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (OLED for Dark/Evening Use): Choose OLED if most of your TV watching happens in the evening with controlled lighting \u2014 the infinite contrast and perfect blacks provide a dramatically superior picture that justifies accepting the bright-room limitation.",
-        "description": ""
+        "label": "OLED for Dark/Evening Use",
+        "description": "Choose OLED if most of your TV watching happens in the evening with controlled lighting \u2014 the infinite contrast and perfect blacks provide a dramatically superior picture that justifies accepting the bright-room limitation."
       }
     ],
     "edges": [
@@ -187,6 +188,10 @@
       },
       {
         "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
         "target": "c9"
       },
       {
@@ -198,16 +203,8 @@
         "target": "a1"
       },
       {
-        "source": "sq1",
-        "target": "a2"
-      },
-      {
-        "source": "sq1",
-        "target": "a3"
-      },
-      {
         "source": "sq2",
-        "target": "c1"
+        "target": "c2"
       },
       {
         "source": "sq2",
@@ -219,11 +216,19 @@
       },
       {
         "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
         "target": "c8"
       },
       {
         "source": "sq2",
-        "target": "a1"
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
       },
       {
         "source": "sq2",
@@ -231,7 +236,11 @@
       },
       {
         "source": "sq3",
-        "target": "c2"
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
       },
       {
         "source": "sq3",
@@ -239,11 +248,19 @@
       },
       {
         "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
         "target": "c9"
       },
       {
         "source": "sq3",
-        "target": "a1"
+        "target": "c10"
       },
       {
         "source": "sq3",
@@ -255,7 +272,7 @@
       },
       {
         "source": "c2",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c3",
@@ -267,11 +284,11 @@
       },
       {
         "source": "c5",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c6",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c7",
@@ -279,11 +296,11 @@
       },
       {
         "source": "c8",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c10",

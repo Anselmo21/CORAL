@@ -21,10 +21,20 @@
   ],
   "baseline_answer": "Answer A (CS50 Default): Start with Harvard's CS50 on edX \u2014 it's free, teaches real computer science fundamentals rather than just syntax, and produces learners who can problem-solve across any language or technology.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 2,
+  "usage": {
+    "prompt_tokens": 7507,
+    "output_tokens": 6057,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +42,119 @@
         "layer": "1",
         "type": "question",
         "label": "What's the best online platform for learning programming from scratch?",
-        "description": "Main inquiry"
+        "description": "Main inquiry about the best programming learning platform."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Which platform is best for foundational concepts and community consensus?",
-        "description": "Targets Answer A"
+        "label": "Best for fundamentals and community consensus?",
+        "description": "Focuses on deep CS concepts and community validation."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Which platform is best for immediate engagement and zero setup friction?",
-        "description": "Targets Answer B"
+        "label": "Best for zero-friction, immediate coding?",
+        "description": "Focuses on browser-based ease and removing setup barriers."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Which platform is best for job readiness and real development environments?",
-        "description": "Targets Answer C"
+        "label": "Best for job readiness and real-world projects?",
+        "description": "Focuses on employment outcomes and real environment setup."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Filters for 2023 sources"
+        "description": "Filters for sources published in 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Filters for 2021-2023 sources"
+        "description": "Filters for sources published between 2021 and 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Global",
-        "description": "Filters for global sources"
+        "description": "Filters for sources with a global perspective."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Filters for USA sources"
+        "description": "Filters for sources with a USA perspective."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Absolute beginner seeking free resource",
-        "description": "Filters for free resources"
+        "description": "Filters for free resources suitable for beginners."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Learner willing to pay for structured guidance",
-        "description": "Filters for paid/structured options"
+        "description": "Filters for paid or structured guidance options."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Bootcamp outcome reporting",
-        "description": "Filters for job-outcome data"
+        "description": "Filters for data on job outcomes and bootcamp-style results."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Developer community consensus",
-        "description": "Filters for community consensus"
+        "description": "Filters for broad developer community agreement."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Learning platform self-reported data",
-        "description": "Filters for platform data"
+        "description": "Filters for data reported directly by the platforms."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Learner community advice",
-        "description": "Filters for learner advice"
+        "description": "Filters for advice from learner communities."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (CS50 Default)",
-        "description": "Harvard's CS50 on edX"
+        "description": "Start with Harvard's CS50 on edX for fundamentals."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Codecademy for Zero Friction)",
-        "description": "Codecademy browser-based entry"
+        "description": "Use Codecademy for immediate, no-setup coding."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (The Odin Project for Job Readiness)",
-        "description": "The Odin Project real environment"
+        "description": "Follow The Odin Project for job-ready skills."
       }
     ],
     "edges": [
@@ -178,15 +188,7 @@
       },
       {
         "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
         "target": "c8"
-      },
-      {
-        "source": "sq1",
-        "target": "c9"
       },
       {
         "source": "sq1",
@@ -194,7 +196,15 @@
       },
       {
         "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
         "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
       },
       {
         "source": "sq2",
@@ -202,19 +212,15 @@
       },
       {
         "source": "sq2",
-        "target": "c5"
-      },
-      {
-        "source": "sq2",
         "target": "c6"
       },
       {
         "source": "sq2",
-        "target": "c7"
+        "target": "c9"
       },
       {
-        "source": "sq2",
-        "target": "c9"
+        "source": "sq3",
+        "target": "c1"
       },
       {
         "source": "sq3",
@@ -230,15 +236,11 @@
       },
       {
         "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq3",
         "target": "c7"
       },
       {
         "source": "sq3",
-        "target": "c9"
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -249,56 +251,24 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
         "source": "c3",
         "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
       },
       {
         "source": "c4",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c5",
         "target": "a1"
       },
       {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
         "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
         "target": "a1"
       },
       {
         "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c8",
@@ -309,8 +279,56 @@
         "target": "a1"
       },
       {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
         "source": "c9",
         "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
       },
       {
         "source": "c9",
@@ -318,7 +336,7 @@
       },
       {
         "source": "c10",
-        "target": "a1"
+        "target": "a3"
       }
     ]
   }

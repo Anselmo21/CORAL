@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "A high-strength sulfate-based clarifying shampoo",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1879,
+    "output_tokens": 2478,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,84 +41,77 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best clarifying shampoo to remove color?",
-        "description": "The question asks for the best clarifying shampoo for removing hair color, with distinct options in strength and ingredients."
+        "description": "The question asks for the best clarifying shampoo to remove hair color, with a focus on effectiveness and safety."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "How effective is the shampoo at removing color and buildup?",
-        "description": "Evaluates the shampoo's ability to strip color and remove residue."
+        "label": "Effectiveness in removing color and buildup",
+        "description": "Criteria related to how well the shampoo removes color and buildup."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How safe and suitable is the shampoo for regular or sensitive use?",
-        "description": "Evaluates the product's safety and compatibility with different hair types."
+        "label": "Safety and hair health impact",
+        "description": "Criteria related to the safety and health effects of the shampoo on the hair and scalp."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the economic and ethical value of the shampoo?",
-        "description": "Evaluates cost, brand reputation, and ingredient transparency."
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "How often can it be used and how long does it last?",
-        "description": "Evaluates usage frequency and longevity."
+        "label": "Practicality and accessibility",
+        "description": "Criteria related to cost, brand, and how often the shampoo can be used."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "sulfate concentration",
-        "description": "Sulfates are strong cleansing agents that can strip color effectively but may be harsh."
+        "description": "The level of sulfates in the shampoo, which affects its strength and potential for dryness."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "color-stripping strength",
-        "description": "How effectively the shampoo removes hair dye and color buildup."
+        "description": "How effectively the shampoo removes hair color."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "scalp irritation risk",
-        "description": "Potential for the shampoo to cause irritation or dryness on the scalp."
+        "description": "The likelihood of the shampoo causing irritation to the scalp."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "hair type compatibility",
-        "description": "Suitability for different hair types (e.g., oily, dry, curly)."
+        "description": "How well the shampoo works for different hair types (e.g., oily, dry, curly)."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "price per ounce",
-        "description": "Cost-effectiveness of the shampoo."
+        "description": "The cost-effectiveness of the shampoo."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "brand reputation",
-        "description": "Trustworthiness and popularity of the brand."
+        "description": "The trustworthiness and popularity of the shampoo's brand."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "ingredient transparency",
-        "description": "Clarity and safety of listed ingredients."
+        "description": "How clear the shampoo's ingredients are listed and sourced."
       },
       {
         "id": "c8",
@@ -123,35 +125,35 @@
         "layer": "3",
         "type": "concept",
         "label": "residue removal effectiveness",
-        "description": "How well the shampoo removes product buildup."
+        "description": "How well the shampoo removes product buildup and residue."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "post-wash hair feel",
-        "description": "The texture and condition of hair after washing."
+        "description": "The texture and feel of the hair after using the shampoo."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A high-strength sulfate-based clarifying shampoo",
-        "description": "Top choice when all criteria are considered."
+        "description": "A commercial, sulfate-based clarifying shampoo with strong color-stripping properties."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A gentle clarifying shampoo",
-        "description": "Better for frequent or sensitive use, but less effective at color removal."
+        "description": "A milder, sulfate-free clarifying shampoo that is less harsh on the hair and scalp."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A baking-soda + vitamin-C DIY clarifying treatment",
-        "description": "Natural and low-cost, but less effective and not for frequent use."
+        "description": "A homemade clarifying treatment using baking soda and vitamin C."
       }
     ],
     "edges": [
@@ -168,16 +170,16 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
-      },
-      {
         "source": "sq1",
         "target": "c2"
       },
       {
         "source": "sq1",
         "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
       },
       {
         "source": "sq2",
@@ -204,12 +206,8 @@
         "target": "c7"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c8"
-      },
-      {
-        "source": "sq4",
-        "target": "c1"
       },
       {
         "source": "c1",
@@ -284,15 +282,19 @@
         "target": "a2"
       },
       {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
         "source": "c3",
         "target": "a3"
       },
       {
         "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
         "target": "a3"
       },
       {

@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Tesla Model 3 Default): Get a Tesla Model 3 \u2014 the Supercharger network, range, and overall ownership experience make it the most reliable first EV, and the premium over competitors is justified by the reduced anxiety of long-distance travel.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2537,
-    "output_tokens": 1929,
-    "llm_calls": 2,
+    "prompt_tokens": 1682,
+    "output_tokens": 1943,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,120 +40,120 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Which electric vehicle should I buy for my first time?",
-        "description": ""
+        "label": "Which electric vehicle should I get as my first purchase?",
+        "description": "First-time EV buyer seeking recommendations"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "Best electric vehicle for first-time buyers prioritizing ease and reliability",
-        "description": ""
+        "description": "Prioritizing ease and reliability for first-time EV buyers"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Best electric vehicle for budget-conscious buyers maximizing tax credit value",
-        "description": ""
+        "label": "Best electric vehicle for value considering tax credit eligibility",
+        "description": "Maximizing tax credit value for EV purchase"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Best electric vehicle for buyers prioritizing range and charging speed",
-        "description": ""
+        "label": "Most reliable electric vehicle for long-distance travel",
+        "description": "Reliability for long-distance travel"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": ""
+        "description": "Sources from 2023 only"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": ""
+        "description": "Sources from 2021 to 2023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": ""
+        "description": "Sources from the USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Canada / Global",
-        "description": ""
+        "description": "Sources from Canada or globally"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: First-time EV buyer prioritizing ease and reliability",
-        "description": ""
+        "description": "Prioritizing ease and reliability for first-time EV buyers"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Budget-conscious buyer maximizing tax credit value",
-        "description": ""
+        "description": "Maximizing tax credit value for EV purchase"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer product testing organization",
-        "description": ""
+        "description": "Sources from consumer product testing organizations"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Tech journalism",
-        "description": ""
+        "description": "Sources from tech journalism"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: EV owner community advice",
-        "description": ""
+        "description": "Sources from EV owner community advice"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: EV industry publication",
-        "description": ""
+        "description": "Sources from EV industry publications"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Tesla Model 3 Default",
-        "description": "Get a Tesla Model 3 \u2014 the Supercharger network, range, and overall ownership experience make it the most reliable first EV, and the premium over competitors is justified by the reduced anxiety of long-distance travel."
+        "label": "Answer A (Tesla Model 3 Default)",
+        "description": "Get a Tesla Model 3 \u2014 the Supercharger network, range, and overall ownership experience make it the most reliable first EV"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Ioniq 6 for Range and Speed",
-        "description": "Choose the Hyundai Ioniq 6 if range and charging speed are priorities \u2014 its 361-mile range and 800V ultra-fast charging rival Tesla at a lower price, with improving non-Tesla charging networks."
+        "label": "Answer B (Ioniq 6 for Range and Speed)",
+        "description": "Choose the Hyundai Ioniq 6 if range and charging speed are priorities"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Tax Credit Vehicle for Value",
-        "description": "Buy a tax credit-eligible EV (Chevy Equinox EV, VW ID.4) \u2014 the $7,500 federal credit meaningfully reduces the effective purchase price and makes these vehicles better value than their sticker suggests."
+        "label": "Answer C (Tax Credit Vehicle for Value)",
+        "description": "Buy a tax credit-eligible EV (Chevy Equinox EV, VW ID.4) \u2014 the $7,500 federal credit meaningfully reduces the effective purchase price"
       }
     ],
     "edges": [
@@ -171,59 +171,15 @@
       },
       {
         "source": "sq1",
-        "target": "c1"
-      },
-      {
-        "source": "sq1",
         "target": "c5"
-      },
-      {
-        "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq1",
-        "target": "a1"
-      },
-      {
-        "source": "sq2",
-        "target": "c2"
       },
       {
         "source": "sq2",
         "target": "c6"
       },
       {
-        "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
-        "source": "sq2",
-        "target": "a3"
-      },
-      {
         "source": "sq3",
-        "target": "c2"
-      },
-      {
-        "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c8"
-      },
-      {
-        "source": "sq3",
-        "target": "a2"
+        "target": "c1"
       },
       {
         "source": "c1",
@@ -234,16 +190,12 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
         "source": "c3",
         "target": "a1"
       },
       {
         "source": "c4",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c5",
@@ -251,7 +203,7 @@
       },
       {
         "source": "c6",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c7",
@@ -259,7 +211,7 @@
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c9",
@@ -267,6 +219,66 @@
       },
       {
         "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
         "target": "a3"
       }
     ]

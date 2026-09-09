@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Dermalogica adjustable-strength enzyme peel (pumpkin/cranberry/cherry-berry, 5\u201320% selectable concentration)",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2335,
+    "output_tokens": 2352,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -38,50 +47,50 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "effectiveness for extractions",
-        "description": "What is the effectiveness of the enzyme product for extractions?"
+        "label": "product features for extractions",
+        "description": "What are the key product features that support effective extractions?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "customization for skin types",
-        "description": "How customizable is the product for different skin types and needs?"
+        "label": "treatment process for extractions",
+        "description": "How does the treatment process affect extraction effectiveness?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "value and user experience",
-        "description": "What is the overall value and user experience?"
+        "label": "practical considerations for extractions",
+        "description": "What are the practical and personal considerations for choosing a product?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "skin type",
-        "description": "Relevance of the product to different skin types."
+        "description": "The type of skin the product is suitable for."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "enzyme concentration",
-        "description": "Strength or concentration of the enzyme in the product."
+        "description": "The strength of the enzyme in the product."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "treatment duration",
-        "description": "How long the treatment takes or lasts."
+        "description": "The length of the treatment session."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "additional ingredients",
-        "description": "Other ingredients in the product besides enzymes."
+        "description": "Other components in the product that may enhance or interfere with extractions."
       },
       {
         "id": "c5",
@@ -95,56 +104,56 @@
         "layer": "3",
         "type": "concept",
         "label": "treatment cost",
-        "description": "The price or cost of the treatment."
+        "description": "The price of the treatment or product."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "therapist expertise",
-        "description": "Level of skill or training of the therapist using the product."
+        "description": "The skill level of the professional administering the treatment."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "customer reviews",
-        "description": "Feedback or ratings from users who have used the product."
+        "description": "Feedback from users about the product or treatment."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "treatment goals",
-        "description": "The intended outcome of using the enzyme product."
+        "description": "The intended outcome of the treatment (e.g., acne, general skin health)."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "facial technique",
-        "description": "The method or approach used to apply the enzyme product."
+        "description": "The method used to apply the enzyme product during the facial."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Dermalogica adjustable-strength enzyme peel (pumpkin/cranberry/cherry-berry, 5\u201320% selectable concentration)",
-        "description": "Adjustable enzyme concentration peel for extraction-focused facials."
+        "description": "A customizable enzyme peel with multiple fruit enzymes and concentration options."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Glo Therapeutics / Sanitas enzyme masque used in a professional European facial",
-        "description": "Enzyme masque used in European facial treatments."
+        "description": "A European facial using a branded enzyme masque for general skin rejuvenation."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Salicylic-acid-paired enzyme exfoliation in an acne-control facial regimen",
-        "description": "Enzyme exfoliation combined with salicylic acid for acne-prone skin."
+        "description": "An acne-focused facial combining salicylic acid and enzyme exfoliation."
       }
     ],
     "edges": [
@@ -166,31 +175,27 @@
       },
       {
         "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "sq1",
         "target": "c4"
       },
       {
         "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
-      },
-      {
-        "source": "sq2",
-        "target": "c1"
-      },
-      {
-        "source": "sq2",
         "target": "c5"
       },
       {
         "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
         "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
       },
       {
         "source": "sq3",
@@ -201,18 +206,34 @@
         "target": "c8"
       },
       {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
         "source": "c1",
         "target": "a1"
       },
       {
         "source": "c1",
         "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
       },
       {
         "source": "c2",
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
         "source": "c3",
         "target": "a1"
       },
@@ -245,6 +266,10 @@
         "target": "a2"
       },
       {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
         "source": "c6",
         "target": "a1"
       },
@@ -263,6 +288,10 @@
       {
         "source": "c7",
         "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
       },
       {
         "source": "c8",
@@ -279,6 +308,14 @@
       {
         "source": "c9",
         "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",

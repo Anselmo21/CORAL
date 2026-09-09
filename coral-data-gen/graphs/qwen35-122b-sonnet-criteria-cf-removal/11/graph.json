@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (DIY Default): Self-manage with a simple three-fund index portfolio \u2014 at $150k with a straightforward situation, the 0.5\u20131% advisor fee compounds into tens of thousands of dollars of unnecessary cost over time.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1615,
+    "output_tokens": 4037,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,63 +41,63 @@
         "layer": "1",
         "type": "question",
         "label": "Should I use a financial advisor or just manage my investments myself?",
-        "description": "Decision point for a user with $150k savings regarding investment management strategy."
+        "description": "Decision on investment management style for a $150k portfolio."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "Cost and Efficiency Trade-offs",
-        "description": "Evaluates the financial impact of fees, tax benefits, and time investment."
+        "description": "Evaluating fees, tax benefits, and strategy simplicity."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Complexity and Specific Needs",
-        "description": "Assesses the need for specialized planning due to life circumstances."
+        "label": "Complexity and Expertise Requirements",
+        "description": "Assessing the need for specialized planning and complex situation handling."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "Behavioral and Psychological Factors",
-        "description": "Considers the investor's emotional discipline and need for accountability."
+        "description": "Considering investor confidence, time availability, and need for accountability."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "annual fee cost relative to portfolio size",
-        "description": "The percentage cost of advice relative to the $150k balance."
+        "description": "The impact of advisor fees (0.5-1%) vs DIY (0%) vs Robo (0.25%)."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "complexity of financial situation",
-        "description": "Presence of business ownership, equity comp, or complex assets."
+        "description": "Whether the portfolio involves business ownership, equity, or complex assets."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "behavioral coaching during volatility",
-        "description": "Value of preventing panic selling during market downturns."
+        "description": "The value of preventing panic selling during market downturns."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "tax optimization value",
-        "description": "Benefit from tax-loss harvesting and asset location strategies."
+        "description": "Benefits of tax-loss harvesting and asset location strategies."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "estate and retirement planning needs",
-        "description": "Requirement for detailed long-term withdrawal and legacy planning."
+        "description": "Requirements for long-term withdrawal strategies and estate documents."
       },
       {
         "id": "c6",
@@ -102,49 +111,49 @@
         "layer": "3",
         "type": "concept",
         "label": "access to specialized expertise",
-        "description": "Need for deep, nuanced advice beyond standard algorithms."
+        "description": "Need for niche knowledge in tax law, estate, or business planning."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "simplicity of investment strategy",
-        "description": "Preference for a straightforward three-fund portfolio approach."
+        "description": "Whether a three-fund portfolio is sufficient for the user's goals."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "time and interest in self-management",
-        "description": "Willingness to dedicate time to research and rebalancing."
+        "description": "The user's willingness to spend time rebalancing and monitoring."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "value of accountability partner",
-        "description": "Benefit of having an external party to keep the investor on track."
+        "description": "The benefit of having a professional to keep the user on track."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (DIY Default)",
-        "description": "Self-manage with a simple three-fund index portfolio to avoid unnecessary fees."
+        "description": "Self-manage with a simple three-fund index portfolio."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Fee-Only Advisor for Complexity)",
-        "description": "Hire a fee-only fiduciary for complex situations or behavioral issues."
+        "description": "Hire a fee-only fiduciary advisor for complex situations."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Robo-Advisor Middle Ground)",
-        "description": "Use a robo-advisor for automation at a fraction of human advisor costs."
+        "description": "Use a robo-advisor for automated rebalancing and tax-loss harvesting."
       }
     ],
     "edges": [
@@ -173,10 +182,6 @@
         "target": "c8"
       },
       {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
         "source": "sq2",
         "target": "c2"
       },
@@ -195,6 +200,10 @@
       {
         "source": "sq3",
         "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
       },
       {
         "source": "sq3",
@@ -221,6 +230,10 @@
         "target": "a2"
       },
       {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
         "source": "c4",
         "target": "a1"
       },
@@ -283,10 +296,6 @@
       {
         "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
       }
     ]
   }

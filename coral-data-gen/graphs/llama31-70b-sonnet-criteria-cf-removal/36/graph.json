@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Self-Taught with Portfolio Default): You can absolutely be self-taught \u2014 UX is portfolio-driven and a strong case study portfolio from a bootcamp or self-directed projects will outperform a degree without portfolio work at most employers.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2357,
-    "output_tokens": 1945,
-    "llm_calls": 2,
+    "prompt_tokens": 1579,
+    "output_tokens": 1967,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,127 +40,103 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Do I need a formal degree or can I be self-taught to become a UX designer?",
-        "description": ""
+        "label": "Do I need a formal degree or can I be self-taught to become a UX designer?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Key factors influencing hiring decisions in UX design",
-        "description": ""
+        "label": "What are the key factors that influence hiring decisions in UX design?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Impact of educational approaches on career growth and opportunities",
-        "description": ""
+        "label": "How do formal education and self-taught approaches differ in terms of their benefits and drawbacks?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Practical considerations and trade-offs of educational approaches",
-        "description": ""
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "Effect of employer types and roles on formal education importance",
-        "description": ""
+        "label": "What are the implications of choosing a formal degree or self-taught approach for career growth and specialization?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "portfolio quality as primary hiring signal",
-        "description": ""
+        "label": "portfolio quality as primary hiring signal"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "theoretical depth in HCI and research methods",
-        "description": ""
+        "label": "theoretical depth in HCI and research methods"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "time and cost to first employment",
-        "description": ""
+        "label": "time and cost to first employment"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "target employer type (agency, startup, enterprise)",
-        "description": ""
+        "label": "target employer type (agency, startup, enterprise)"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "self-discipline for self-directed learning",
-        "description": ""
+        "label": "self-discipline for self-directed learning"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "networking through educational programs",
-        "description": ""
+        "label": "networking through educational programs"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "seniority level and career growth",
-        "description": ""
+        "label": "seniority level and career growth"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "specialization in UX research vs design",
-        "description": ""
+        "label": "specialization in UX research vs design"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "tool proficiency vs conceptual depth",
-        "description": ""
+        "label": "tool proficiency vs conceptual depth"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "recognition at design consultancies",
-        "description": ""
+        "label": "recognition at design consultancies"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Self-Taught with Portfolio Default",
-        "description": ""
+        "label": "You can absolutely be self-taught \u2014 UX is portfolio-driven and a strong case study portfolio from a bootcamp or self-directed projects will outperform a degree without portfolio work at most employers."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Formal Degree for Research and Consulting",
-        "description": ""
+        "label": "Pursue a formal degree in HCI, Cognitive Psychology, or Interaction Design if your goal is UX research, design consultancy, or senior roles \u2014 the theoretical depth is difficult to replicate through self-study."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Bootcamp as Middle Ground",
-        "description": ""
+        "label": "Take a structured UX bootcamp (3\u20136 months) \u2014 it's faster and cheaper than a degree, provides mentorship and portfolio guidance, and produces comparable job placement rates to formal education for entry-level roles."
       }
     ],
     "edges": [
@@ -177,10 +153,6 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
-      },
-      {
         "source": "sq1",
         "target": "c1"
       },
@@ -190,7 +162,7 @@
       },
       {
         "source": "sq1",
-        "target": "c8"
+        "target": "c10"
       },
       {
         "source": "sq2",
@@ -198,35 +170,31 @@
       },
       {
         "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
-        "source": "sq3",
         "target": "c3"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c5"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c6"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c4"
       },
       {
-        "source": "c1",
-        "target": "a1"
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
       },
       {
         "source": "c1",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c2",
@@ -253,16 +221,16 @@
         "target": "a2"
       },
       {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
         "source": "c5",
         "target": "a1"
       },
       {
         "source": "c5",
         "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
       },
       {
         "source": "c6",
@@ -274,15 +242,7 @@
       },
       {
         "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
         "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
       },
       {
         "source": "c8",

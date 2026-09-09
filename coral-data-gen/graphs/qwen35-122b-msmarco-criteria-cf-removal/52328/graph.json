@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Whole-family lifestyle change with the choosemyplate.gov plate method (half fruits/veggies, quarter lean protein, quarter whole grains) plus aerobic exercise",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2327,
+    "output_tokens": 2204,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "best way to lose weight for a child",
-        "description": "The main question asking for the optimal weight loss strategy for children."
+        "description": "The primary question regarding pediatric weight loss strategies."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Methodology & Diet Structure",
-        "description": "How should the diet and daily habits be structured for the child?"
+        "label": "Foundational Health & Diet",
+        "description": "Criteria related to nutrition, activity, and long-term habits."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Medical & Goal Management",
-        "description": "How should progress be tracked, goals set, and medical oversight provided?"
+        "label": "Psychological & Goal Management",
+        "description": "Criteria related to mental well-being and goal setting."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Context & Scope of Intervention",
-        "description": "What is the scope of the intervention and who must be involved?"
+        "label": "Clinical Oversight & Safety",
+        "description": "Criteria related to medical supervision and monitoring."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "age-appropriate methods",
-        "description": "Methods must suit the child's developmental stage and metabolism."
+        "description": "Methods suitable for a child's developmental stage."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "family involvement",
-        "description": "The entire family must participate in lifestyle changes, not just the child."
+        "description": "Active participation of the entire family unit."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "dietary balance",
-        "description": "Focus on a well-balanced, proportioned diet rather than strict restriction."
+        "description": "Ensuring a well-balanced, proportioned diet."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "physical activity level",
-        "description": "Incorporation of aerobic activity and exercise."
+        "description": "Incorporating aerobic exercise and movement."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "goal setting",
-        "description": "Setting small, attainable weight loss goals to avoid discouragement."
+        "description": "Setting attainable, small weight loss goals."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "professional guidance",
-        "description": "Involvement of registered dietitians, doctors, or psychologists."
+        "description": "Access to dietitians, doctors, and specialists."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "long-term sustainability",
-        "description": "Creating lifetime modifications rather than temporary fixes."
+        "description": "Ability to maintain changes over a lifetime."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "emotional support",
-        "description": "Preventing discouragement and managing the emotional impact of weight loss."
+        "description": "Preventing discouragement and managing stress."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "health monitoring",
-        "description": "Regular weight checks and blood tests to ensure safety."
+        "description": "Regular weight checks and blood tests."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "cultural considerations",
-        "description": "Adapting diet and habits to fit the family's cultural background."
+        "description": "Adapting to family cultural food practices."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Whole-family lifestyle change with the choosemyplate.gov plate method (half fruits/veggies, quarter lean protein, quarter whole grains) plus aerobic exercise",
-        "description": "A holistic home-based approach focusing on diet balance and family habits."
+        "description": "Baseline answer A*."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Pediatrician-led monitoring with attainable goals (1-4 lb/month), a food diary, and biweekly weight checks",
-        "description": "A medical monitoring approach focusing on specific metrics and tracking."
+        "description": "Medical monitoring approach."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A formal multi-disciplinary weight loss program for children whose home efforts fail",
-        "description": "A clinical program for severe cases where home interventions are unsuccessful."
+        "description": "Formal clinical program."
       }
     ],
     "edges": [
@@ -177,28 +186,28 @@
         "target": "c7"
       },
       {
-        "source": "sq2",
-        "target": "c5"
+        "source": "sq1",
+        "target": "c10"
       },
       {
         "source": "sq2",
-        "target": "c6"
+        "target": "c5"
       },
       {
         "source": "sq2",
         "target": "c8"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
         "target": "c9"
       },
       {
-        "source": "sq3",
+        "source": "sq1",
         "target": "c2"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
       },
       {
         "source": "c1",
@@ -207,10 +216,6 @@
       {
         "source": "c1",
         "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
       },
       {
         "source": "c2",
@@ -233,40 +238,68 @@
         "target": "a2"
       },
       {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
         "source": "c4",
         "target": "a3"
       },
       {
         "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
         "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
       },
       {
         "source": "c7",
@@ -274,38 +307,6 @@
       },
       {
         "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
         "target": "a3"
       }
     ]

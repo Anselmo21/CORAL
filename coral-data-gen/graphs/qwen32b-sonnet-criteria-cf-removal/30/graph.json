@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (Bootcamp Default): Do a coding bootcamp \u2014 at 29 with a career to build, the 6\u201312 month path to employment vastly outweighs a 4-year degree's opportunity cost for most software development roles outside top-tier companies.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1578,
+    "output_tokens": 2251,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -38,92 +47,92 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "How long and how costly is each path in terms of time and money?",
-        "description": "Includes time to employment, cost, and flexibility."
+        "label": "How quickly can I get a job in software development?",
+        "description": "Time to first employment is a key factor for a career switch at 29."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the long-term career implications of each path?",
-        "description": "Includes long-term earnings, FAANG suitability, and CS depth."
+        "label": "What is the financial and time cost of each path?",
+        "description": "Total cost including tuition and opportunity cost must be weighed."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the personal and situational factors that influence the decision?",
-        "description": "Includes age, learning style, and networking."
+        "label": "What are the long-term career implications and company fit?",
+        "description": "Long-term earnings and suitability for top-tier companies are important."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "time to first employment",
-        "description": "How quickly can you get a job in software development."
+        "description": "How quickly can one start working in software development."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "total cost including opportunity cost",
-        "description": "Cost of education and lost income during training."
+        "description": "Financial and time costs of the path, including lost income."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "long-term earnings trajectory",
-        "description": "Expected income growth over a 10-year career."
+        "description": "Earnings potential over a 10-year career."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "suitability for FAANG/top-tier companies",
-        "description": "Whether the path prepares for top-tier roles."
+        "description": "Whether the path prepares one for top-tier tech roles."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "depth of computer science fundamentals",
-        "description": "How much theory and foundational knowledge is taught."
+        "description": "How deep the technical knowledge is."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "age and career timeline considerations",
-        "description": "How age and existing career impact the choice."
+        "description": "How the path fits with a 29-year-old's career timeline."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "current employer reputation signals",
-        "description": "Whether the path provides recognizable credentials."
+        "description": "How much the path helps in getting hired at new companies."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "self-directed learning ability",
-        "description": "Capacity to learn independently without structured support."
+        "description": "How well one can learn independently."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "networking and career support quality",
-        "description": "Access to mentors, job placements, and industry connections."
+        "description": "Quality of mentorship and job placement support."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "flexibility to work while learning",
-        "description": "Whether the path allows part-time or remote learning."
+        "description": "Whether one can work while transitioning."
       },
       {
         "id": "a1",
@@ -165,23 +174,23 @@
         "target": "c1"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c2"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c10"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c3"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c4"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c5"
       },
       {
@@ -194,11 +203,11 @@
       },
       {
         "source": "sq3",
-        "target": "c8"
+        "target": "c9"
       },
       {
-        "source": "sq3",
-        "target": "c9"
+        "source": "sq2",
+        "target": "c8"
       },
       {
         "source": "c1",
@@ -265,27 +274,11 @@
         "target": "a2"
       },
       {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
         "source": "c5",
         "target": "a3"
       },
       {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
         "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
         "target": "a3"
       }
     ]

@@ -21,10 +21,20 @@
   ],
   "baseline_answer": "New compact SUV (2015 Mazda CX-5, Subaru Forester, or Mitsubishi Outlander AWD)",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 3,
+  "temperature": 0.0,
+  "attempts": 2,
+  "usage": {
+    "prompt_tokens": 8117,
+    "output_tokens": 5933,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +42,119 @@
         "layer": "1",
         "type": "question",
         "label": "list of the best suv cars for teens",
-        "description": "Main question regarding optimal SUV choices for teenage drivers."
+        "description": "Identify the top SUV recommendations for teenage drivers."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Highest official safety rankings",
-        "description": "Identify vehicles with top-tier safety certifications."
+        "label": "Which new SUVs have the highest verified safety ratings?",
+        "description": "Focuses on IIHS, NHTSA, and Consumer Reports data."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Budget and insurance constraints",
-        "description": "Identify vehicles that are affordable and have low insurance rates."
+        "label": "Which SUVs balance safety with regional and cost factors?",
+        "description": "Focuses on insurance, winter, and urban driving constraints."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Specific environmental and reliability needs",
-        "description": "Identify vehicles suitable for specific regions, reliability standards, and community opinions."
+        "label": "Which used SUVs fit a strict budget while maintaining safety?",
+        "description": "Focuses on used-car lists and budget constraints."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: IIHS Top Safety Pick rankings",
-        "description": "Prioritize sources with IIHS Top Safety Pick+ status."
+        "description": "Prioritizes vehicles with IIHS Top Safety Pick+ status."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: NHTSA 5-star safety ratings",
-        "description": "Prioritize sources with NHTSA 5-star overall ratings."
+        "description": "Prioritizes vehicles with 5-star NHTSA overall ratings."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: CarInsurance.com used-car list",
-        "description": "Prioritize the specific used-car list from CarInsurance.com."
+        "description": "Prioritizes vehicles from the specific used-car list."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer Reports reliability",
-        "description": "Prioritize vehicles with high reliability ratings."
+        "description": "Prioritizes vehicles with high reliability scores."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: parent automotive forum",
-        "description": "Prioritize consensus from parent automotive forums."
+        "description": "Prioritizes consensus from parent forums."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: budget-conscious parent",
-        "description": "Prioritize lower-cost options."
+        "description": "Prioritizes lower cost options."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: safety-first parent",
-        "description": "Prioritize maximum safety features above all else."
+        "description": "Prioritizes maximum safety features above all else."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: winter / snow-region parent",
-        "description": "Prioritize AWD and winter capability."
+        "description": "Prioritizes AWD and winter capability."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: insurance-cost-conscious parent",
-        "description": "Prioritize vehicles with low insurance premiums."
+        "description": "Prioritizes vehicles with low teen insurance rates."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: urban / suburban driver",
-        "description": "Prioritize compact size for maneuverability and parking."
+        "description": "Prioritizes maneuverability and parking ease."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "New compact SUV (2015 Mazda CX-5, Subaru Forester, or Mitsubishi Outlander AWD)",
-        "description": "The top pick when all safety and use-case filters are applied."
+        "description": "Top pick when all safety and cost filters are active."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "New midsize SUV (2015 Toyota Highlander)",
-        "description": "The top pick when winter and urban constraints are removed."
+        "description": "Top pick when insurance and urban constraints are relaxed."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Used 2009-model-year SUV at ~$15,000",
-        "description": "The top pick when strict new-car safety ratings and winter constraints are removed."
+        "description": "Top pick when high safety rating filters are removed."
       }
     ],
     "edges": [
@@ -170,23 +180,27 @@
       },
       {
         "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
         "target": "c7"
       },
       {
         "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
-        "target": "c6"
+        "target": "c8"
       },
       {
         "source": "sq2",
         "target": "c9"
       },
       {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
         "source": "sq3",
-        "target": "c4"
+        "target": "c3"
       },
       {
         "source": "sq3",
@@ -194,107 +208,99 @@
       },
       {
         "source": "sq3",
-        "target": "c8"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
+        "target": "c6"
       },
       {
         "source": "c1",
         "target": "a1"
       },
       {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
         "source": "c2",
         "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
       },
       {
         "source": "c3",
         "target": "a1"
       },
       {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
         "source": "c4",
         "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
       },
       {
         "source": "c5",
         "target": "a1"
       },
       {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
         "source": "c6",
         "target": "a1"
       },
       {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
         "source": "c7",
         "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
       },
       {
         "source": "c8",
         "target": "a1"
       },
       {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
         "source": "c9",
         "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",
         "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
       },
       {
         "source": "c10",

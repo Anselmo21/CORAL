@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (3 Months Default): Keep 3 months of essential expenses \u2014 your stable government job and lack of dependents puts you at the low end of the standard range, and cash beyond that is better invested.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2387,
-    "output_tokens": 1778,
-    "llm_calls": 2,
+    "prompt_tokens": 1603,
+    "output_tokens": 1860,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,113 +47,103 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Recommended amount based on job stability and dependents",
-        "description": ""
+        "label": "Recommended emergency fund amount for government employees with stable jobs"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Geographic and financial perspective influences",
-        "description": ""
+        "label": "Perspective influence on emergency fund recommendations"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Trustworthiness and temporal considerations",
-        "description": ""
+        "label": "Geographic location impact on emergency fund recommendations"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Source impact on emergency fund recommendations"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "temporal: 2023 only",
-        "description": ""
+        "label": "temporal: 2023 only"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "temporal: 2021\u20132023",
-        "description": ""
+        "label": "temporal: 2021\u20132023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "geographic: USA",
-        "description": ""
+        "label": "geographic: USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "geographic: Canada",
-        "description": ""
+        "label": "geographic: Canada"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: Conservative risk-averse saver",
-        "description": ""
+        "label": "perspective: Conservative risk-averse saver"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: Optimizing investor minimizing idle cash",
-        "description": ""
+        "label": "perspective: Optimizing investor minimizing idle cash"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: Government/public sector employee",
-        "description": ""
+        "label": "perspective: Government/public sector employee"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Consumer financial advisory",
-        "description": ""
+        "label": "trustworthiness: Consumer financial advisory"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Institutional financial research",
-        "description": ""
+        "label": "trustworthiness: Institutional financial research"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Community peer advice",
-        "description": ""
+        "label": "trustworthiness: Community peer advice"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "3 Months Default",
-        "description": "Keep 3 months of essential expenses"
+        "label": "3 Months Default"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "6 Months for Security",
-        "description": "Maintain 6 months regardless of job stability"
+        "label": "6 Months for Security"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "1\u20132 Months Plus Credit",
-        "description": "With strong government employment protections and available credit lines, 1\u20132 months of liquid savings is sufficient"
+        "label": "1\u20132 Months Plus Credit"
       }
     ],
     "edges": [
@@ -170,6 +160,10 @@
         "target": "sq3"
       },
       {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
         "source": "sq1",
         "target": "c1"
       },
@@ -183,14 +177,6 @@
       },
       {
         "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
         "target": "c5"
       },
       {
@@ -199,14 +185,22 @@
       },
       {
         "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq4",
         "target": "c8"
       },
       {
-        "source": "sq3",
+        "source": "sq4",
         "target": "c9"
       },
       {
-        "source": "sq3",
+        "source": "sq4",
         "target": "c10"
       },
       {
@@ -250,10 +244,6 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
         "source": "c2",
         "target": "a2"
       },
@@ -270,15 +260,27 @@
         "target": "a2"
       },
       {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
         "source": "c8",
         "target": "a2"
       },
       {
-        "source": "c10",
+        "source": "c9",
         "target": "a2"
       },
       {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
         "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
         "target": "a3"
       },
       {
@@ -286,19 +288,15 @@
         "target": "a3"
       },
       {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
         "source": "c7",
         "target": "a3"
       },
       {
-        "source": "c9",
+        "source": "c8",
         "target": "a3"
       },
       {
-        "source": "c10",
+        "source": "c9",
         "target": "a3"
       }
     ]

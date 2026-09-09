@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "University of Wisconsin-Madison",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3180,
-    "output_tokens": 1733,
-    "llm_calls": 2,
+    "prompt_tokens": 1981,
+    "output_tokens": 1581,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,113 +40,97 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What is the best engineering college in Wisconsin?",
-        "description": ""
+        "label": "What is the best engineering college in Wisconsin?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the most trustworthy sources for evaluating engineering colleges in Wisconsin?",
-        "description": ""
+        "label": "What are the most trustworthy sources for evaluating engineering colleges in Wisconsin?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the different perspectives on the best engineering college in Wisconsin?",
-        "description": ""
+        "label": "What are the different perspectives that students may have when choosing an engineering college in Wisconsin?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: US News & World Report engineering rankings",
-        "description": ""
+        "label": "trustworthiness: US News & World Report engineering rankings"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: ABET accreditation database",
-        "description": ""
+        "label": "trustworthiness: ABET accreditation database"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: peer-reviewed engineering education journal",
-        "description": ""
+        "label": "trustworthiness: peer-reviewed engineering education journal"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: college ranking aggregator (Cappex / Niche)",
-        "description": ""
+        "label": "trustworthiness: college ranking aggregator (Cappex / Niche)"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: student / alumni review forum",
-        "description": ""
+        "label": "trustworthiness: student / alumni review forum"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: research-career-focused student",
-        "description": ""
+        "label": "perspective: research-career-focused student"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: industry-job-focused undergraduate",
-        "description": ""
+        "label": "perspective: industry-job-focused undergraduate"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: in-state cost-conscious student",
-        "description": ""
+        "label": "perspective: in-state cost-conscious student"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: small-class-size-preferring student",
-        "description": ""
+        "label": "perspective: small-class-size-preferring student"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: computer engineering specialist",
-        "description": ""
+        "label": "perspective: computer engineering specialist"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "University of Wisconsin-Madison",
-        "description": ""
+        "label": "University of Wisconsin-Madison"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Milwaukee School of Engineering (MSOE)",
-        "description": ""
+        "label": "Milwaukee School of Engineering (MSOE)"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "University of Wisconsin-Milwaukee",
-        "description": ""
+        "label": "University of Wisconsin-Milwaukee"
       }
     ],
     "edges": [
@@ -239,22 +223,6 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
         "source": "c7",
         "target": "a2"
       },
@@ -287,11 +255,11 @@
         "target": "a3"
       },
       {
-        "source": "c7",
+        "source": "c8",
         "target": "a3"
       },
       {
-        "source": "c8",
+        "source": "c9",
         "target": "a3"
       }
     ]

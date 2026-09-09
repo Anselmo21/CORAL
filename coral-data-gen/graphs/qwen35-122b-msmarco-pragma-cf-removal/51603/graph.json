@@ -21,10 +21,21 @@
   ],
   "baseline_answer": "Beretta 1301 Tactical",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 3,
+  "usage": {
+    "prompt_tokens": 12515,
+    "output_tokens": 7929,
+    "llm_calls": 3,
+    "finish_reasons": [
+      "length",
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +43,119 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best beretta for home defense?",
-        "description": "Identify the optimal Beretta firearm for home defense scenarios."
+        "description": "Identify the optimal Beretta firearm for home defense."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Which Beretta offers the highest tactical reliability and stopping power?",
-        "description": "Focuses on expert reviews, manufacturer specs, and shotgun preferences."
+        "label": "Best for beginners and general reliability",
+        "description": "Which Beretta is most suitable for a first-time gun owner prioritizing ease of use?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Which Beretta is best for beginners and general ease of use?",
-        "description": "Focuses on first-time owner needs and amateur consensus."
+        "label": "Best for tactical power and shotgun preference",
+        "description": "Which Beretta offers the highest stopping power for a dedicated home defense role?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Which Beretta fits compact living and concealed carry needs?",
-        "description": "Focuses on apartment dwellers and concealed carry awareness."
+        "label": "Best for space-constrained environments",
+        "description": "Which Beretta is most appropriate for apartment dwellers or those needing concealability?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: firearms expert review publication",
-        "description": "Prioritizes professional magazine reviews and expert consensus."
+        "description": "Prioritize sources from established firearms experts."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed personal defense literature",
-        "description": "Prioritizes academic or formal defense literature."
+        "description": "Prioritize peer-reviewed personal defense literature."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Beretta manufacturer documentation",
-        "description": "Prioritizes official Beretta product descriptions and specs."
+        "description": "Prioritize official documentation from Beretta."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: amateur firearms forum (Yahoo Answers)",
-        "description": "Prioritizes user experiences from forums like Yahoo Answers."
+        "description": "Prioritize opinions from amateur forums."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: shooting sports magazine",
-        "description": "Prioritizes content from shooting sports publications."
+        "description": "Prioritize content from shooting sports magazines."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: first-time gun owner",
-        "description": "Prioritizes ease of use and beginner-friendly features."
+        "description": "Prioritize the needs of a first-time gun owner."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: shotgun-preferring homeowner",
-        "description": "Prioritizes the advantages of shotguns for home defense."
+        "description": "Prioritize the perspective of a homeowner who prefers shotguns."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: apartment / compact-space dweller",
-        "description": "Prioritizes maneuverability in tight spaces."
+        "description": "Prioritize the needs of someone living in a small space."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: high-recoil-tolerant user",
-        "description": "Prioritizes users who can handle high recoil (shotguns)."
+        "description": "Prioritize a user who can tolerate high recoil."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: concealed-carry-aware homeowner",
-        "description": "Prioritizes firearms suitable for concealment or small homes."
+        "description": "Prioritize a homeowner who values concealability."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Beretta 92FS",
-        "description": "Full-size pistol, recommended for beginners and general defense."
+        "description": "A full-size 9mm pistol recommended for beginners."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Beretta 1301 Tactical",
-        "description": "Semi-automatic shotgun, recommended by experts and manufacturer as top tactical choice."
+        "description": "A semi-automatic tactical shotgun."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A compact Beretta (PX4 Storm Compact or APX Compact)",
-        "description": "Smaller pistols recommended for apartments and concealed carry."
+        "description": "A smaller pistol designed for concealment."
       }
     ],
     "edges": [
@@ -166,7 +177,11 @@
       },
       {
         "source": "sq1",
-        "target": "c3"
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
       },
       {
         "source": "sq1",
@@ -174,23 +189,19 @@
       },
       {
         "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
         "target": "c7"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c9"
-      },
-      {
-        "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
-        "target": "c6"
       },
       {
         "source": "sq3",
@@ -202,11 +213,27 @@
       },
       {
         "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
         "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
       },
       {
         "source": "c2",
         "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
       },
       {
         "source": "c3",
@@ -217,12 +244,32 @@
         "target": "a1"
       },
       {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
         "source": "c5",
         "target": "a2"
       },
       {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
         "source": "c6",
         "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
       },
       {
         "source": "c7",

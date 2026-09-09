@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Breville Bambino Plus Default): Get the Breville Bambino Plus \u2014 it produces genuine espresso quality, has a powerful steam wand, and heats up in 3 seconds, making it the best balance of quality and ease for new home baristas.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2619,
-    "output_tokens": 1749,
-    "llm_calls": 2,
+    "prompt_tokens": 1726,
+    "output_tokens": 1869,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,14 +47,21 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the best sources to consider for this question?",
+        "label": "Key characteristics of a good espresso machine for a beginner",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What type of user am I?",
+        "label": "Importance of grinder in espresso quality",
+        "description": ""
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Trade-offs between ease of use, quality, and longevity",
         "description": ""
       },
       {
@@ -159,12 +166,12 @@
         "target": "sq2"
       },
       {
-        "source": "sq1",
-        "target": "c1"
+        "source": "q",
+        "target": "sq3"
       },
       {
         "source": "sq1",
-        "target": "c2"
+        "target": "c1"
       },
       {
         "source": "sq1",
@@ -172,31 +179,35 @@
       },
       {
         "source": "sq1",
-        "target": "c4"
+        "target": "c5"
       },
       {
         "source": "sq1",
         "target": "c7"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
         "target": "c8"
       },
       {
-        "source": "sq1",
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
         "target": "c9"
       },
       {
-        "source": "sq1",
+        "source": "sq3",
         "target": "c10"
-      },
-      {
-        "source": "sq2",
-        "target": "c5"
-      },
-      {
-        "source": "sq2",
-        "target": "c6"
       },
       {
         "source": "c1",
@@ -207,24 +218,12 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
         "source": "c3",
         "target": "a1"
       },
       {
         "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c5",
@@ -232,11 +231,7 @@
       },
       {
         "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c7",
@@ -244,11 +239,59 @@
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c9",
         "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",

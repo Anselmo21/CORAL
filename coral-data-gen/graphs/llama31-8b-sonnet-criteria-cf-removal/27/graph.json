@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer C (Lifestyle Plus Acute): Prioritize identifying and eliminating personal triggers (sleep, diet, stress) alongside acute triptans before adding daily medication \u2014 many patients reduce frequency below treatment threshold through lifestyle modification alone.",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2335,
-    "output_tokens": 2582,
-    "llm_calls": 2,
+    "prompt_tokens": 1566,
+    "output_tokens": 1845,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,120 +40,103 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should I take preventive medication for migraines?",
-        "description": "Managing migraines with preventive medication or acute treatment only"
+        "label": "Should I take something preventively or just treat each migraine when it happens, given that I get migraines about twice a month?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "How often do migraines occur and what is the threshold for preventive therapy?",
-        "description": "Migraine frequency and preventive therapy threshold"
+        "label": "What is the ideal frequency of migraines for preventive therapy?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the potential benefits and drawbacks of preventive therapy, including side effects, efficacy, and risk of progression to chronic migraine?",
-        "description": "Preventive therapy benefits and drawbacks"
+        "label": "How effective are acute treatments, and what are the risks of overuse?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the practical considerations for implementing preventive therapy, including cost, insurance coverage, and patient preference?",
-        "description": "Practical considerations for preventive therapy"
+        "label": "What are the benefits and drawbacks of preventive therapy, including side effects and cost?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "monthly migraine frequency threshold",
-        "description": "Migraine frequency and preventive therapy threshold"
+        "label": "monthly migraine frequency threshold"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "impact on quality of life and productivity",
-        "description": "Migraine impact on quality of life and productivity"
+        "label": "impact on quality of life and productivity"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "acute medication overuse risk",
-        "description": "Risk of overusing acute medication"
+        "label": "acute medication overuse risk"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "side effect burden of daily preventives",
-        "description": "Side effects of daily preventive medication"
+        "label": "side effect burden of daily preventives"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "efficacy of triptans for acute treatment",
-        "description": "Efficacy of triptans for acute treatment"
+        "label": "efficacy of triptans for acute treatment"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "risk of progression to chronic migraine",
-        "description": "Risk of progression to chronic migraine"
+        "label": "risk of progression to chronic migraine"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "cost and insurance coverage of CGRP inhibitors",
-        "description": "Cost and insurance coverage of CGRP inhibitors"
+        "label": "cost and insurance coverage of CGRP inhibitors"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "patient preference for daily medication",
-        "description": "Patient preference for daily medication"
+        "label": "patient preference for daily medication"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "lifestyle trigger management potential",
-        "description": "Lifestyle trigger management potential"
+        "label": "lifestyle trigger management potential"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "prior acute treatment failure",
-        "description": "Prior acute treatment failure"
+        "label": "prior acute treatment failure"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Acute Treatment Default",
-        "description": "Manage 2 migraines per month with triptans as needed"
+        "label": "Manage 2 migraines per month with triptans as needed \u2014 daily preventive medication adds side effect burden that isn't justified at this frequency, and most patients manage well with acute-only treatment."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Start Preventives Early",
-        "description": "Begin preventive therapy even at 2/month if your attacks are severely disabling"
+        "label": "Begin preventive therapy even at 2/month if your attacks are severely disabling \u2014 preventing progression to chronic migraine justifies earlier preventive intervention, and newer CGRP inhibitors have minimal side effects."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Lifestyle Plus Acute",
-        "description": "Prioritize identifying and eliminating personal triggers (sleep, diet, stress) alongside acute triptans before adding daily medication"
+        "label": "Prioritize identifying and eliminating personal triggers (sleep, diet, stress) alongside acute triptans before adding daily medication \u2014 many patients reduce frequency below treatment threshold through lifestyle modification alone."
       }
     ],
     "edges": [
@@ -179,102 +162,38 @@
       },
       {
         "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
         "target": "c3"
-      },
-      {
-        "source": "sq2",
-        "target": "c4"
       },
       {
         "source": "sq2",
         "target": "c5"
       },
       {
-        "source": "sq2",
-        "target": "c6"
+        "source": "sq3",
+        "target": "c4"
       },
       {
         "source": "sq3",
         "target": "c7"
       },
       {
-        "source": "sq3",
-        "target": "c8"
-      },
-      {
-        "source": "sq3",
-        "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
-      },
-      {
         "source": "c1",
         "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
       },
       {
         "source": "c2",
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
         "source": "c3",
         "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
       },
       {
         "source": "c4",
         "target": "a1"
       },
       {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
         "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
         "target": "a1"
       },
       {
@@ -282,39 +201,11 @@
         "target": "a2"
       },
       {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
         "source": "c7",
         "target": "a2"
       },
       {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
         "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
         "target": "a2"
       },
       {
@@ -323,85 +214,47 @@
       },
       {
         "source": "c10",
-        "target": "a1"
+        "target": "a3"
       },
       {
-        "source": "c10",
-        "target": "a2"
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",
         "target": "a3"
-      },
-      {
-        "source": "a1",
-        "target": "c1"
-      },
-      {
-        "source": "a1",
-        "target": "c5"
-      },
-      {
-        "source": "a1",
-        "target": "c9"
-      },
-      {
-        "source": "a2",
-        "target": "c1"
-      },
-      {
-        "source": "a2",
-        "target": "c4"
-      },
-      {
-        "source": "a2",
-        "target": "c9"
-      },
-      {
-        "source": "a3",
-        "target": "c1"
-      },
-      {
-        "source": "a3",
-        "target": "c2"
-      },
-      {
-        "source": "a3",
-        "target": "c5"
-      },
-      {
-        "source": "a3",
-        "target": "c9"
-      },
-      {
-        "source": "a1",
-        "target": "c1",
-        "reason": "frequency below 4 days/month"
-      },
-      {
-        "source": "a1",
-        "target": "c7",
-        "reason": "less concerned about cost and insurance coverage"
-      },
-      {
-        "source": "a1",
-        "target": "c8",
-        "reason": "prioritizes patient preference for daily medication"
-      },
-      {
-        "source": "a2",
-        "target": "c1",
-        "reason": "frequency below 4 days/month"
-      },
-      {
-        "source": "a2",
-        "target": "c4",
-        "reason": "less concerned about side effect burden"
-      },
-      {
-        "source": "a2",
-        "target": "c8",
-        "reason": "prioritizes starting preventive therapy early"
       }
     ]
   }

@@ -21,10 +21,20 @@
   ],
   "baseline_answer": "Answer A (Pixel 7a Default): Get the Google Pixel 7a \u2014 its camera quality, guaranteed multi-year updates, and clean Android experience make it the best overall mid-range Android when discounted to the $350\u2013400 range.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 2,
+  "usage": {
+    "prompt_tokens": 7547,
+    "output_tokens": 6096,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,28 +42,28 @@
         "layer": "1",
         "type": "question",
         "label": "What's the best budget Android phone in 2024 under $400?",
-        "description": "Main inquiry about the top budget Android phone."
+        "description": "Main inquiry about budget Android phones."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Best for camera and software updates in USA/2023",
-        "description": "Focuses on camera performance and software longevity in the US market."
+        "label": "Best for camera and software updates",
+        "description": "Focuses on camera performance and long-term OS support."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Best for display quality and balance in Canada/Global",
-        "description": "Focuses on display technology and balanced features outside the US."
+        "label": "Best for display quality and hardware balance",
+        "description": "Focuses on screen quality and balanced hardware specs."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "Best for battery life and value",
-        "description": "Focuses on battery performance and cost-effectiveness."
+        "description": "Focuses on battery endurance and low cost."
       },
       {
         "id": "c1",
@@ -88,35 +98,35 @@
         "layer": "3",
         "type": "directive",
         "label": "perspective: Camera-focused buyer",
-        "description": "Prioritizes camera performance in the evaluation."
+        "description": "Prioritizes camera performance in evaluation."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Battery-life prioritizing buyer",
-        "description": "Prioritizes battery life in the evaluation."
+        "description": "Prioritizes battery life in evaluation."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Tech journalism",
-        "description": "Prioritizes mainstream tech journalism sources."
+        "description": "Prioritizes established tech journalism outlets."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Independent display and hardware testing",
-        "description": "Prioritizes independent testing labs."
+        "description": "Prioritizes independent hardware testing labs."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Android community peer recommendations",
-        "description": "Prioritizes community feedback."
+        "description": "Prioritizes community forums and peer reviews."
       },
       {
         "id": "c10",
@@ -166,7 +176,15 @@
       },
       {
         "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
         "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
       },
       {
         "source": "sq1",
@@ -179,6 +197,14 @@
       {
         "source": "sq1",
         "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
       },
       {
         "source": "sq2",
@@ -213,10 +239,6 @@
         "target": "c9"
       },
       {
-        "source": "sq3",
-        "target": "c10"
-      },
-      {
         "source": "c1",
         "target": "a1"
       },
@@ -225,24 +247,12 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
         "source": "c3",
         "target": "a1"
       },
       {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
         "source": "c4",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c5",
@@ -253,35 +263,51 @@
         "target": "a1"
       },
       {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
         "source": "c7",
         "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
       },
       {
         "source": "c8",
         "target": "a2"
       },
       {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
         "source": "c10",
         "target": "a2"
       },
       {
-        "source": "c10",
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
         "target": "a3"
       }
     ]

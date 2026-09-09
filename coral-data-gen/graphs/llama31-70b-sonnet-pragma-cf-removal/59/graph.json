@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Apple Watch Default): Get the Apple Watch Series 9 if you're on iPhone \u2014 the best health sensor accuracy, ECG, and tightest app ecosystem make it the default choice for general health and fitness tracking.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2528,
-    "output_tokens": 1785,
-    "llm_calls": 2,
+    "prompt_tokens": 1675,
+    "output_tokens": 1967,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,103 +40,120 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What's the best smartwatch for fitness tracking?"
+        "label": "What's the best smartwatch for fitness tracking?",
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the best sources for general health and fitness tracking?"
+        "label": "What are the best smartwatches for general health and lifestyle tracking?",
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the best sources for serious athletes and performance sports?"
+        "label": "What are the best smartwatches for serious athletes who need precise training data?",
+        "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the best sources for budget-friendly and long-term health trend monitoring?"
+        "label": "What are the best smartwatches for long-term health trend monitoring and sleep quality?",
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "temporal: 2023 only"
+        "label": "temporal: 2023 only",
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "temporal: 2021\u20132023"
+        "label": "temporal: 2021\u20132023",
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "geographic: USA"
+        "label": "geographic: USA",
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "geographic: Canada / Global"
+        "label": "geographic: Canada / Global",
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: iPhone user focused on general health and lifestyle tracking"
+        "label": "perspective: iPhone user focused on general health and lifestyle tracking",
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: Serious endurance athlete needing precise training data"
+        "label": "perspective: Serious endurance athlete needing precise training data",
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Consumer product recommendation publication"
+        "label": "trustworthiness: Consumer product recommendation publication",
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Independent hardware testing site"
+        "label": "trustworthiness: Independent hardware testing site",
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Fitness community peer advice"
+        "label": "trustworthiness: Fitness community peer advice",
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Sports technology reviewer"
+        "label": "trustworthiness: Sports technology reviewer",
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Get the Apple Watch Series 9 if you're on iPhone \u2014 the best health sensor accuracy, ECG, and tightest app ecosystem make it the default choice for general health and fitness tracking."
+        "label": "Get the Apple Watch Series 9 if you're on iPhone \u2014 the best health sensor accuracy, ECG, and tightest app ecosystem make it the default choice for general health and fitness tracking.",
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Choose a Garmin Forerunner or Fenix if you're a serious runner, cyclist, or triathlete \u2014 multi-band GPS, 2-week battery, and advanced training metrics are unmatched by Apple or Samsung for performance sports."
+        "label": "Choose a Garmin Forerunner or Fenix if you're a serious runner, cyclist, or triathlete \u2014 multi-band GPS, 2-week battery, and advanced training metrics are unmatched by Apple or Samsung for performance sports.",
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Get a Fitbit if your priority is long-term health trend monitoring and sleep quality \u2014 its sleep tracking and wellness insights are more detailed than Apple Watch at a lower price point, ideal for general health over athletic performance."
+        "label": "Get a Fitbit if your priority is long-term health trend monitoring and sleep quality \u2014 its sleep tracking and wellness insights are more detailed than Apple Watch at a lower price point, ideal for general health over athletic performance.",
+        "description": ""
       }
     ],
     "edges": [
@@ -186,6 +203,14 @@
       },
       {
         "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
         "target": "c9"
       },
       {
@@ -201,12 +226,24 @@
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
         "source": "c3",
         "target": "a1"
       },
       {
         "source": "c4",
-        "target": "a1"
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
       },
       {
         "source": "c5",
@@ -233,35 +270,31 @@
         "target": "a2"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
         "source": "c1",
-        "target": "a3"
+        "target": "a2"
       },
       {
-        "source": "c3",
-        "target": "a3"
+        "source": "c5",
+        "target": "a2"
       },
       {
         "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
         "target": "a3"
       },
       {
-        "source": "c9",
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
         "target": "a3"
       }
     ]

@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (Pixel 7a Default): Get the Google Pixel 7a \u2014 its camera quality, guaranteed multi-year updates, and clean Android experience make it the best overall mid-range Android when discounted to the $350\u2013400 range.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1664,
+    "output_tokens": 2647,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -38,22 +47,22 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What phone is best for camera quality and long-term software support?",
-        "description": "What phone is best for camera quality and long-term software support?"
+        "label": "Camera quality and software support",
+        "description": "What is the best budget Android phone for camera quality and software support?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What phone is best for display quality and software longevity?",
-        "description": "What phone is best for display quality and software longevity?"
+        "label": "Display quality and software longevity",
+        "description": "What is the best budget Android phone for display quality and software longevity?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What phone is best for battery life and basic functionality?",
-        "description": "What phone is best for battery life and basic functionality?"
+        "label": "Battery life and basic functionality",
+        "description": "What is the best budget Android phone for battery life and basic functionality?"
       },
       {
         "id": "c1",
@@ -67,7 +76,7 @@
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Consider sources from 2021 through 2023."
+        "description": "Consider sources from 2021 to 2023."
       },
       {
         "id": "c3",
@@ -81,69 +90,69 @@
         "layer": "3",
         "type": "directive",
         "label": "geographic: Canada / Global",
-        "description": "Consider sources from Canada or globally."
+        "description": "Consider sources from Canada or global."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Camera-focused buyer",
-        "description": "Consider sources from a camera-focused buyer's perspective."
+        "description": "Prioritize sources for camera-focused buyers."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Battery-life prioritizing buyer",
-        "description": "Consider sources from a battery-life prioritizing buyer's perspective."
+        "description": "Prioritize sources for battery-life prioritizing buyers."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Tech journalism",
-        "description": "Only consider sources from trusted tech journalism."
+        "description": "Prioritize sources from tech journalism."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Independent display and hardware testing",
-        "description": "Only consider sources from independent display and hardware testing."
+        "description": "Prioritize sources from independent display and hardware testing."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Android community peer recommendations",
-        "description": "Only consider sources from the Android community peer recommendations."
+        "description": "Prioritize sources from Android community peer recommendations."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Global phone specs database",
-        "description": "Only consider sources from a global phone specs database."
+        "description": "Prioritize sources from a global phone specs database."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (Pixel 7a Default)",
+        "label": "Pixel 7a Default",
         "description": "Get the Google Pixel 7a \u2014 its camera quality, guaranteed multi-year updates, and clean Android experience make it the best overall mid-range Android when discounted to the $350\u2013400 range."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (Samsung Galaxy A54 for Display)",
+        "label": "Samsung Galaxy A54 for Display",
         "description": "Choose the Samsung Galaxy A54 if display quality is your priority \u2014 its AMOLED panel and 4 years of OS updates make it the best balance of screen quality and software longevity."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (Motorola for Battery)",
+        "label": "Motorola for Battery",
         "description": "Buy a Motorola G Power if all-day battery life is your main concern \u2014 nothing in the sub-$300 range comes close to its battery performance, even at the cost of camera and display quality."
       }
     ],
@@ -209,6 +218,10 @@
         "target": "c7"
       },
       {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
         "source": "c1",
         "target": "a1"
       },
@@ -217,24 +230,12 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
         "source": "c3",
         "target": "a1"
       },
       {
         "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c5",
@@ -242,23 +243,55 @@
       },
       {
         "source": "c6",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c7",
         "target": "a1"
       },
       {
-        "source": "c7",
-        "target": "a3"
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
       },
       {
         "source": "c8",
         "target": "a2"
       },
       {
-        "source": "c9",
-        "target": "a1"
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
       },
       {
         "source": "c10",

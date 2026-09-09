@@ -21,10 +21,20 @@
   ],
   "baseline_answer": "An affordable drugstore-tier mineral foundation labeled paraben-free (~$10-20)",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 2,
+  "usage": {
+    "prompt_tokens": 7207,
+    "output_tokens": 4117,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,126 +42,119 @@
         "layer": "1",
         "type": "question",
         "label": "best mineral foundation without parabens",
-        "description": "A 14-year-old with fair, oily, sensitive skin seeks a paraben-free mineral foundation."
+        "description": "What is the best mineral foundation without parabens for a 14-year-old with fair, oily, sensitive skin and a cooler undertone?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Product suitability for sensitive, oily skin",
-        "description": "Criteria related to skin compatibility and allergen sensitivity."
+        "label": "Product formulation and safety",
+        "description": "Criteria related to the ingredients, safety, and suitability for sensitive skin."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Performance and coverage",
-        "description": "How the product performs in terms of coverage and wear."
+        "label": "Performance and usability",
+        "description": "Criteria related to how the product performs and is applied."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "Brand and cost considerations",
-        "description": "Brand reputation, price, and shade availability."
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "Application and availability",
-        "description": "Ease of application and tool requirements."
+        "description": "Criteria related to brand reputation, cost, and availability of shades."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "skin type compatibility",
-        "description": "How well the product suits oily and sensitive skin."
+        "description": "How well the product works for oily, fair, sensitive skin."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "coverage level",
-        "description": "The amount of coverage the product provides."
+        "description": "How much the product covers imperfections."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "finish type",
-        "description": "The texture and appearance of the product on skin."
+        "description": "The look of the product on the skin (e.g., matte, dewy)."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "ingredient sourcing",
-        "description": "Ethical or natural sourcing of ingredients."
+        "description": "Where and how the ingredients are sourced."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "brand reputation",
-        "description": "How well-known or trusted the brand is."
+        "description": "The trustworthiness and popularity of the brand."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "price range",
-        "description": "Cost of the product."
+        "description": "The cost of the product."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "shade variety",
-        "description": "Availability of different shades."
+        "description": "The number of available shades for different skin tones."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "sensitivity to allergens",
-        "description": "Whether the product avoids common allergens like parabens."
+        "description": "How likely the product is to cause allergic reactions."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "wear duration",
-        "description": "How long the product lasts on skin."
+        "description": "How long the product lasts on the skin."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "application method",
-        "description": "Ease and method of applying the product."
+        "description": "How the product is applied (e.g., brush, sponge)."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "An affordable drugstore-tier mineral foundation labeled paraben-free (~$10-20)",
-        "description": "A cost-effective, paraben-free option suitable for sensitive, oily skin."
+        "description": "A budget-friendly option that is paraben-free and suitable for sensitive skin."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A premium 'multi-free' mineral foundation",
-        "description": "A high-end paraben-free foundation with additional 'free' ingredients."
+        "description": "A high-end product free of parabens and other common irritants."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A professional makeup-artist-grade paraben-free mineral foundation",
-        "description": "A high-performance, paraben-free foundation used by professionals."
+        "description": "A top-tier product used by professionals, free of parabens and with high performance."
       }
     ],
     "edges": [
@@ -166,10 +169,6 @@
       {
         "source": "q",
         "target": "sq3"
-      },
-      {
-        "source": "q",
-        "target": "sq4"
       },
       {
         "source": "sq1",
@@ -196,6 +195,10 @@
         "target": "c9"
       },
       {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
         "source": "sq3",
         "target": "c5"
       },
@@ -208,99 +211,123 @@
         "target": "c7"
       },
       {
-        "source": "sq4",
-        "target": "c10"
+        "source": "c1",
+        "target": "a1"
       },
       {
         "source": "c1",
-        "target": "a1"
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
       },
       {
         "source": "c2",
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
         "source": "c3",
         "target": "a1"
       },
       {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
         "source": "c4",
         "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
       },
       {
         "source": "c5",
         "target": "a1"
       },
       {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
         "source": "c6",
         "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
       },
       {
         "source": "c7",
         "target": "a1"
       },
       {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
         "source": "c8",
         "target": "a1"
       },
       {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
         "source": "c9",
         "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
         "source": "c10",
         "target": "a2"
       },
       {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
+        "source": "c10",
         "target": "a3"
       }
     ]

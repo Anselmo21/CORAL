@@ -21,109 +21,119 @@
   ],
   "baseline_answer": "Answer C (Risk Calculator First): Use a cardiovascular risk calculator with your physician before deciding \u2014 statin benefit depends on baseline risk, not cholesterol level alone, and the decision should be individualized to your complete risk profile.",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 2,
+  "usage": {
+    "prompt_tokens": 7564,
+    "output_tokens": 6346,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should I start statins or try lifestyle changes first?",
-        "description": "Decision on cholesterol management for borderline high levels."
+        "label": "My doctor says my cholesterol is borderline high. Should I start statins or try to manage it with lifestyle changes first?",
+        "description": "The main question regarding treatment strategy for borderline cholesterol."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the approach for a low-risk, motivated patient?",
-        "description": "Focuses on lifestyle efficacy and low-risk scenarios."
+        "label": "What is the best approach for low-risk patients?",
+        "description": "Focuses on lifestyle interventions for patients with low cardiovascular risk."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the approach for a high-risk or family-history patient?",
-        "description": "Focuses on statin efficacy and high-risk scenarios."
+        "label": "When are statins necessary for high-risk patients?",
+        "description": "Focuses on the necessity of statins for patients with family history or elevated risk."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "How should the decision be made for borderline cholesterol?",
-        "description": "Focuses on risk calculation, professional guidance, and individualization."
+        "label": "How should the decision be individualized?",
+        "description": "Focuses on using risk calculators and physician discussion to guide the choice."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Prioritizes the most recent guidelines (e.g., Mayo 2023)."
+        "description": "Filters for the most recent guidelines."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Prioritizes recent research within a 3-year window."
+        "description": "Filters for recent clinical research including 2021 studies."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Prioritizes US-based guidelines and data."
+        "description": "Filters for US-based medical context."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Low-risk patient with high lifestyle motivation",
-        "description": "Filters for sources addressing low-risk, motivated patients."
+        "description": "Filters for sources addressing low-risk scenarios."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient with family history or elevated cardiovascular risk",
-        "description": "Filters for sources addressing high-risk patients."
+        "description": "Filters for sources addressing high-risk scenarios."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Cardiologist or preventive medicine physician",
-        "description": "Filters for professional medical guidance."
+        "description": "Filters for expert medical opinion."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Peer-reviewed clinical research",
-        "description": "Prioritizes academic journals (NEJM, JAMA)."
+        "description": "Filters for high-trust scientific studies."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Medical institution guidance",
-        "description": "Prioritizes major health organizations (Mayo Clinic)."
+        "description": "Filters for guidance from major medical institutions."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer health information",
-        "description": "Prioritizes patient-facing health sites (WebMD)."
+        "description": "Filters for general consumer health resources."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Patient community experience",
-        "description": "Prioritizes anecdotal patient reports (Reddit)."
+        "description": "Filters for patient-reported experiences."
       },
       {
         "id": "a1",
@@ -137,7 +147,7 @@
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Statins for Elevated Risk)",
-        "description": "Start statins now if you have a family history or elevated risk."
+        "description": "Start statins now if you have a family history of early heart disease, multiple risk factors, or a 10-year cardiovascular risk above 7.5%."
       },
       {
         "id": "a3",
@@ -166,6 +176,10 @@
       },
       {
         "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
         "target": "c4"
       },
       {
@@ -177,8 +191,16 @@
         "target": "c9"
       },
       {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
         "source": "sq2",
         "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
       },
       {
         "source": "sq2",
@@ -190,7 +212,11 @@
       },
       {
         "source": "sq2",
-        "target": "c10"
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
       },
       {
         "source": "sq3",
@@ -242,10 +268,6 @@
       },
       {
         "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
         "target": "a2"
       },
       {
@@ -287,10 +309,6 @@
       {
         "source": "c6",
         "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
       },
       {
         "source": "c7",
@@ -303,6 +321,10 @@
       {
         "source": "c8",
         "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
       },
       {
         "source": "c8",
@@ -318,7 +340,7 @@
       },
       {
         "source": "c10",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c10",

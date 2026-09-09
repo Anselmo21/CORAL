@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Guerlain Terracotta Bronzing Powder",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3768,
-    "output_tokens": 1795,
-    "llm_calls": 2,
+    "prompt_tokens": 2277,
+    "output_tokens": 1748,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,120 +40,103 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What is the best bronzer for older skin?",
-        "description": ""
+        "label": "What is the best bronzer for older skin?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the characteristics of a good bronzer for older skin?",
-        "description": ""
+        "label": "What are the trusted sources for recommending bronzers for older skin?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Which bronzers are recommended by trusted sources?",
-        "description": ""
+        "label": "What are the specific skin concerns that need to be addressed when choosing a bronzer for older skin?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the specific needs of different skin types and tones?",
-        "description": ""
+        "label": "What are the preferred characteristics of a bronzer for older skin?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: professional makeup artist endorsement",
-        "description": ""
+        "label": "trustworthiness: professional makeup artist endorsement"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: beauty editor review",
-        "description": ""
+        "label": "trustworthiness: beauty editor review"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Sephora customer forum",
-        "description": ""
+        "label": "trustworthiness: Sephora customer forum"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: dermatology-recommended brand list",
-        "description": ""
+        "label": "trustworthiness: dermatology-recommended brand list"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: EWG cosmetics database",
-        "description": ""
+        "label": "trustworthiness: EWG cosmetics database"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: dry mature skin",
-        "description": ""
+        "label": "perspective: dry mature skin"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: oily mature skin",
-        "description": ""
+        "label": "perspective: oily mature skin"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: fair complexion mature user",
-        "description": ""
+        "label": "perspective: fair complexion mature user"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: warm / peach undertones user",
-        "description": ""
+        "label": "perspective: warm / peach undertones user"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: shimmer-averse user",
-        "description": ""
+        "label": "perspective: shimmer-averse user"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Guerlain Terracotta Bronzing Powder",
-        "description": ""
+        "label": "Guerlain Terracotta Bronzing Powder"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Smashbox Bronze Lights in Sunkissed",
-        "description": ""
+        "label": "Smashbox Bronze Lights in Sunkissed"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Hourglass Superficial Waterproof Bronzer",
-        "description": ""
+        "label": "Hourglass Superficial Waterproof Bronzer"
       }
     ],
     "edges": [
@@ -182,23 +165,23 @@
         "target": "c3"
       },
       {
-        "source": "sq2",
+        "source": "sq1",
         "target": "c4"
       },
       {
-        "source": "sq2",
+        "source": "sq1",
         "target": "c5"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c6"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c7"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c8"
       },
       {
@@ -250,19 +233,11 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
         "source": "c2",
         "target": "a2"
       },
       {
         "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
         "target": "a2"
       },
       {
@@ -286,15 +261,11 @@
         "target": "a2"
       },
       {
-        "source": "c2",
+        "source": "c1",
         "target": "a3"
       },
       {
         "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
         "target": "a3"
       },
       {
@@ -303,10 +274,6 @@
       },
       {
         "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
         "target": "a3"
       },
       {

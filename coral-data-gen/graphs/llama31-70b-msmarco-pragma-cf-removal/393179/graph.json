@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Top Tier Detergent Gasoline (Shell V-Power, Esso, Chevron)",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 4422,
-    "output_tokens": 1782,
-    "llm_calls": 2,
+    "prompt_tokens": 2608,
+    "output_tokens": 1802,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,120 +40,103 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "In Ontario, what is the best gasoline for your vehicle?",
-        "description": ""
+        "label": "In Ontario, what is the best gasoline for your vehicle?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Geographic and trustworthiness considerations",
-        "description": ""
+        "label": "Geographic and trustworthiness considerations"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Perspectives of different vehicle owners",
-        "description": ""
+        "label": "Perspectives of different vehicle owners"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Recommendations from automakers and owner's manuals",
-        "description": ""
+        "label": "Technical specifications and recommendations"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "geographic: Ontario",
-        "description": ""
+        "label": "geographic: Ontario"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: SAE / automotive engineering technical report",
-        "description": ""
+        "label": "trustworthiness: SAE / automotive engineering technical report"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: CBC Marketplace consumer reporting",
-        "description": ""
+        "label": "trustworthiness: CBC Marketplace consumer reporting"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: owner's manual specification",
-        "description": ""
+        "label": "trustworthiness: owner's manual specification"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: automaker official recommendation",
-        "description": ""
+        "label": "trustworthiness: automaker official recommendation"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: local automotive forum",
-        "description": ""
+        "label": "trustworthiness: local automotive forum"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: luxury car owner",
-        "description": ""
+        "label": "perspective: luxury car owner"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: regular sedan owner",
-        "description": ""
+        "label": "perspective: regular sedan owner"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: performance enthusiast",
-        "description": ""
+        "label": "perspective: performance enthusiast"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: long-term keep-vehicle owner",
-        "description": ""
+        "label": "perspective: long-term keep-vehicle owner"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Top Tier Detergent Gasoline (Shell V-Power, Esso, Chevron)",
-        "description": ""
+        "label": "Top Tier Detergent Gasoline (Shell V-Power, Esso, Chevron)"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Petro-Canada Ultra 94",
-        "description": ""
+        "label": "Petro-Canada Ultra 94"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Regular 87-octane unleaded at any reputable station",
-        "description": ""
+        "label": "Regular 87-octane unleaded at any reputable station"
       }
     ],
     "edges": [
@@ -182,6 +165,18 @@
         "target": "c3"
       },
       {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
         "source": "sq2",
         "target": "c7"
       },
@@ -199,15 +194,15 @@
       },
       {
         "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
         "target": "c4"
       },
       {
         "source": "sq3",
         "target": "c5"
-      },
-      {
-        "source": "sq3",
-        "target": "c6"
       },
       {
         "source": "c1",
@@ -250,6 +245,18 @@
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
         "source": "c6",
         "target": "a2"
       },
@@ -262,11 +269,27 @@
         "target": "a2"
       },
       {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
         "source": "c4",
         "target": "a3"
       },
       {
-        "source": "c5",
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
         "target": "a3"
       },
       {

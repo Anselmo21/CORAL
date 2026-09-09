@@ -21,109 +21,118 @@
   ],
   "baseline_answer": "Answer A (Index-Fund Default): Put your money in a low-cost total market index fund \u2014 after fees, passive investing beats active management for the vast majority of retail investors over a 30-year horizon.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 2,
+  "temperature": 0.0,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1548,
+    "output_tokens": 2099,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should I put my money in index funds or actively managed funds?",
-        "description": "Investment choice for a 30-year-old beginner."
+        "label": "Index vs Active Funds",
+        "description": "Should a 30-year-old beginner invest in index funds or actively managed funds?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "Long-Term Growth & Cost Efficiency",
-        "description": "Evaluating fees, compounding, and historical returns over decades."
+        "description": "Which option maximizes wealth over 30 years considering fees and compounding?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Management Style & Complexity",
-        "description": "Evaluating simplicity, diversification breadth, and niche skills."
+        "label": "Risk Management & Market Conditions",
+        "description": "Which option better handles bear markets and short-term volatility?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Risk & Protection",
-        "description": "Evaluating downside protection and tolerance for underperformance."
+        "label": "Manager Capability & Strategy",
+        "description": "Which option leverages manager skill and diversification best?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "low expense ratios",
-        "description": "Lower fees lead to higher net returns."
+        "description": "Lower fees preserve more capital over time."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "long-term compounding",
-        "description": "Growth over 30 years magnifies fee differences."
+        "description": "The power of compounding returns over decades."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "historical outperformance evidence",
-        "description": "Data showing passive beats active over time."
+        "description": "Data showing passive funds beat active funds historically."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "simplicity of management",
-        "description": "Ease of maintaining a passive portfolio."
+        "description": "Ease of maintaining a portfolio without active decisions."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "tax efficiency",
-        "description": "Lower turnover reduces tax drag."
+        "description": "Minimizing tax drag through low turnover."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "diversification breadth",
-        "description": "Access to a wide range of assets."
+        "description": "Spreading risk across a wide range of assets."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "downside protection in bear markets",
-        "description": "Ability to reduce losses during market crashes."
+        "description": "Ability to reduce losses during market downturns."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "active manager skill in niche markets",
-        "description": "Edge in small-cap or emerging markets."
+        "description": "Potential for active managers to outperform in small-cap/emerging markets."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "short-term return maximization",
-        "description": "Focus on immediate gains rather than long-term stability."
+        "description": "Focus on immediate gains rather than long-term averages."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "tolerance for manager underperformance risk",
-        "description": "Willingness to accept active manager failure."
+        "description": "Willingness to accept that active managers may underperform."
       },
       {
         "id": "a1",
@@ -177,28 +186,28 @@
         "target": "c5"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
         "target": "c9"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c10"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c4"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c6"
       },
       {
-        "source": "sq2",
-        "target": "c8"
-      },
-      {
         "source": "sq3",
-        "target": "c7"
+        "target": "c8"
       },
       {
         "source": "c1",
@@ -241,11 +250,43 @@
         "target": "a1"
       },
       {
-        "source": "c8",
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
         "target": "a2"
       },
       {
         "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
         "target": "a3"
       }
     ]

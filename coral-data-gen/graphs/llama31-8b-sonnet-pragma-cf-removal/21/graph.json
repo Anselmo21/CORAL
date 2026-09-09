@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Lifestyle First Default): Try dietary changes and exercise for 3\u20136 months first \u2014 for borderline cholesterol with low cardiovascular risk, lifestyle intervention can achieve meaningful LDL reduction without medication side effects.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2511,
-    "output_tokens": 2262,
-    "llm_calls": 2,
+    "prompt_tokens": 1664,
+    "output_tokens": 2596,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,144 +41,132 @@
         "layer": "1",
         "type": "question",
         "label": "Should I start statins or try to manage it with lifestyle changes first for borderline high cholesterol?",
-        "description": ""
+        "description": "The question is: Should I start statins or try to manage it with lifestyle changes first for borderline high cholesterol?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "What is the recommended approach for patients with borderline cholesterol and low 10-year cardiovascular risk?",
-        "description": ""
+        "description": "The recommended approach for patients with borderline cholesterol and low 10-year cardiovascular risk is lifestyle modification."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How effective are lifestyle changes in reducing LDL cholesterol?",
-        "description": ""
+        "label": "How effective are statins in reducing cardiovascular events, especially for patients with modest baseline risk?",
+        "description": "Statins reduce LDL cholesterol by 30\u201350% and significantly reduce cardiovascular events even in patients with modest baseline risk."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the role of statins in reducing cardiovascular events, especially for patients with modest baseline risk?",
-        "description": ""
+        "label": "What are the considerations for patients with family history or multiple risk factors?",
+        "description": "Patients with family history or multiple risk factors may benefit from statin therapy."
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "How should the decision to start statins be made, considering individual risk profiles and potential side effects?",
-        "description": ""
+        "label": "How should the decision to start statins be made, especially considering the potential side effects?",
+        "description": "The decision to start statins should be individualized to the patient's complete risk profile."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": ""
+        "description": "Sources from 2023 only."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": ""
+        "description": "Sources from 2021 to 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": ""
+        "description": "Sources from the USA."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Low-risk patient with high lifestyle motivation",
-        "description": ""
+        "description": "Sources from a low-risk patient with high lifestyle motivation."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient with family history or elevated cardiovascular risk",
-        "description": ""
+        "description": "Sources from a patient with family history or elevated cardiovascular risk."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Cardiologist or preventive medicine physician",
-        "description": ""
+        "description": "Sources from a cardiologist or preventive medicine physician."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Peer-reviewed clinical research",
-        "description": ""
+        "description": "Sources from peer-reviewed clinical research."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Medical institution guidance",
-        "description": ""
+        "description": "Sources from medical institutions."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer health information",
-        "description": ""
+        "description": "Sources from consumer health websites."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Patient community experience",
-        "description": ""
+        "description": "Sources from patient communities."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Lifestyle First Default): Try dietary changes and exercise for 3\u20136 months first \u2014 for borderline cholesterol with low cardiovascular risk, lifestyle intervention can achieve meaningful LDL reduction without medication side effects.",
-        "description": ""
+        "description": "Try dietary changes and exercise for 3\u20136 months first."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Statins for Elevated Risk): Start statins now if you have a family history of early heart disease, multiple risk factors, or a 10-year cardiovascular risk above 7.5% \u2014 the absolute risk reduction from statins outweighs side effect concerns.",
-        "description": ""
+        "description": "Start statins now if you have a family history of early heart disease, multiple risk factors, or a 10-year cardiovascular risk above 7.5%."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Risk Calculator First): Use a cardiovascular risk calculator with your physician before deciding \u2014 statin benefit depends on baseline risk, not cholesterol level alone, and the decision should be individualized to your complete risk profile.",
-        "description": ""
+        "description": "Use a cardiovascular risk calculator with your physician before deciding."
       }
     ],
     "edges": [
       {
         "source": "q",
         "target": "sq1"
-      },
-      {
-        "source": "q",
-        "target": "sq2"
-      },
-      {
-        "source": "q",
-        "target": "sq3"
-      },
-      {
-        "source": "q",
-        "target": "sq4"
       },
       {
         "source": "sq1",
@@ -189,12 +177,24 @@
         "target": "c2"
       },
       {
-        "source": "sq2",
-        "target": "c3"
+        "source": "sq1",
+        "target": "a1"
       },
       {
         "source": "sq2",
-        "target": "c4"
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "a2"
       },
       {
         "source": "sq3",
@@ -205,20 +205,24 @@
         "target": "c6"
       },
       {
-        "source": "sq4",
-        "target": "c7"
+        "source": "sq3",
+        "target": "a2"
       },
       {
         "source": "sq4",
-        "target": "c8"
+        "target": "c2"
       },
       {
         "source": "sq4",
-        "target": "c9"
+        "target": "c5"
       },
       {
         "source": "sq4",
-        "target": "c10"
+        "target": "c6"
+      },
+      {
+        "source": "sq4",
+        "target": "a3"
       },
       {
         "source": "c1",
@@ -227,12 +231,28 @@
       {
         "source": "c2",
         "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
       },
       {
         "source": "c3",
         "target": "a1"
       },
       {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
         "source": "c4",
         "target": "a1"
       },
@@ -241,51 +261,39 @@
         "target": "a2"
       },
       {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
         "source": "c5",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
       },
       {
         "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
         "target": "a1"
       },
       {
         "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
         "target": "a1"
       },
       {
@@ -293,8 +301,20 @@
         "target": "a2"
       },
       {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
         "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

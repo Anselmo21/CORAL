@@ -21,10 +21,21 @@
   ],
   "baseline_answer": "Guerlain Terracotta Bronzing Powder",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 3,
+  "usage": {
+    "prompt_tokens": 12871,
+    "output_tokens": 7783,
+    "llm_calls": 3,
+    "finish_reasons": [
+      "length",
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,91 +43,91 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best bronzer for older skin?",
-        "description": "Main question regarding bronzer selection for mature skin."
+        "description": "Main inquiry regarding bronzer selection for mature skin."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Best for dry mature skin with professional endorsement",
-        "description": "Focuses on moisturizing properties and MUA recommendations."
+        "label": "Best for anti-aging and professional endorsement",
+        "description": "Focuses on moisturizing, fine-line filling, and makeup artist recommendations."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Best for fair mature skin with matte finish",
-        "description": "Focuses on fair complexion, sheer coverage, and matte texture."
+        "label": "Best for fair or oily mature skin",
+        "description": "Focuses on matte finishes, sheer coverage, and suitability for fair complexions."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Best for natural blend and waterproof durability",
-        "description": "Focuses on seamless blending and longevity for mature skin."
+        "label": "Best for waterproofing and seamless blending",
+        "description": "Focuses on natural bronze color and blending capabilities from customer reviews."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: professional makeup artist endorsement",
-        "description": "Prioritizes sources citing makeup artist preferences."
+        "description": "Prioritizes sources citing professional makeup artist usage."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: beauty editor review",
-        "description": "Prioritizes editorial reviews from beauty publications."
+        "description": "Prioritizes sources from beauty editors (e.g., Popsugar)."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Sephora customer forum",
-        "description": "Prioritizes user discussions on the Sephora community."
+        "description": "Prioritizes user discussions on Sephora community."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: dermatology-recommended brand list",
-        "description": "Prioritizes brands recommended by dermatologists."
+        "description": "Prioritizes dermatologist-recommended brands."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: EWG cosmetics database",
-        "description": "Prioritizes safety ratings from the Environmental Working Group."
+        "description": "Prioritizes safety ratings from EWG."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: dry mature skin",
-        "description": "Focuses on products for dry, aging skin needing moisture."
+        "description": "Focuses on moisturizing properties for dry mature skin."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: oily mature skin",
-        "description": "Focuses on products for oily, aging skin."
+        "description": "Focuses on oil control and matte finishes for oily skin."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: fair complexion mature user",
-        "description": "Focuses on shades suitable for fair skin tones."
+        "description": "Focuses on sheer, non-orange shades for fair skin."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: warm / peach undertones user",
-        "description": "Focuses on products with warm or peach undertones."
+        "description": "Focuses on peach or honey tones."
       },
       {
         "id": "c10",
@@ -130,21 +141,21 @@
         "layer": "4",
         "type": "answer",
         "label": "Guerlain Terracotta Bronzing Powder",
-        "description": "Moisturizing bronzer favored by makeup artists for mature skin."
+        "description": "Top pick when all filters are applied."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Smashbox Bronze Lights in Sunkissed",
-        "description": "Sheer, matte bronzer ideal for fair skin."
+        "description": "Top pick when pro endorsement and dry skin filters are dropped."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Hourglass Superficial Waterproof Bronzer",
-        "description": "Waterproof bronzer known for natural blending."
+        "description": "Top pick when pro endorsement, dry skin, and beauty editor filters are dropped."
       }
     ],
     "edges": [
@@ -166,61 +177,13 @@
       },
       {
         "source": "sq1",
-        "target": "c2"
-      },
-      {
-        "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "sq1",
         "target": "c4"
-      },
-      {
-        "source": "sq1",
-        "target": "c5"
       },
       {
         "source": "sq1",
         "target": "c6"
       },
       {
-        "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
-      },
-      {
-        "source": "sq2",
-        "target": "c1"
-      },
-      {
-        "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
-        "target": "c5"
-      },
-      {
         "source": "sq2",
         "target": "c7"
       },
@@ -230,15 +193,7 @@
       },
       {
         "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq2",
         "target": "c10"
-      },
-      {
-        "source": "sq3",
-        "target": "c1"
       },
       {
         "source": "sq3",
@@ -250,27 +205,11 @@
       },
       {
         "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
         "target": "c5"
       },
       {
         "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c8"
-      },
-      {
-        "source": "sq3",
         "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
       },
       {
         "source": "c1",
@@ -281,40 +220,20 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
         "source": "c3",
         "target": "a1"
       },
       {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
         "source": "c4",
         "target": "a1"
       },
       {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
         "source": "c5",
         "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
       },
       {
         "source": "c6",
@@ -325,10 +244,6 @@
         "target": "a2"
       },
       {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
         "source": "c8",
         "target": "a2"
       },
@@ -337,16 +252,40 @@
         "target": "a1"
       },
       {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
         "source": "c10",
         "target": "a2"
       },
       {
-        "source": "c10",
+        "source": "c1",
         "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
       }
     ]
   }

@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Online Default): Choose an online degree from an accredited university \u2014 for a working adult, the ability to maintain your income and schedule while earning a credential that employers now largely treat equally outweighs the networking disadvantages.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2258,
-    "output_tokens": 1770,
-    "llm_calls": 2,
+    "prompt_tokens": 1527,
+    "output_tokens": 1830,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,28 +40,35 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should a working adult do their university degree online or in person?",
+        "label": "Should I do my university degree online or in person?",
         "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the advantages and disadvantages of online degrees in terms of flexibility and career outcomes?",
+        "label": "What are the benefits and drawbacks of online degrees in terms of flexibility and career outcomes?",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How important are networking opportunities for career advancement, and which format provides more opportunities?",
+        "label": "How important are networking opportunities and career relationships in my field?",
         "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Are there alternative formats that combine the benefits of online and in-person degrees?",
+        "label": "What are the advantages and limitations of in-person attendance?",
+        "description": ""
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Are there alternative options that combine the benefits of online and in-person degrees?",
         "description": ""
       },
       {
@@ -138,22 +145,22 @@
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Choose an online degree from an accredited university \u2014 for a working adult, the ability to maintain your income and schedule while earning a credential that employers now largely treat equally outweighs the networking disadvantages.",
-        "description": ""
+        "label": "Online Default",
+        "description": "Choose an online degree from an accredited university \u2014 for a working adult, the ability to maintain your income and schedule while earning a credential that employers now largely treat equally outweighs the networking disadvantages."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Attend in-person if you're in a field where professional networks directly drive career outcomes (consulting, finance, law) \u2014 the relationship-building advantages of physical presence are worth the scheduling sacrifice.",
-        "description": ""
+        "label": "In-Person for Networking Fields",
+        "description": "Attend in-person if you're in a field where professional networks directly drive career outcomes (consulting, finance, law) \u2014 the relationship-building advantages of physical presence are worth the scheduling sacrifice."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Seek a hybrid or HyFlex program if available \u2014 attending key classes in person while completing most coursework online preserves your work schedule while capturing the high-value networking interactions that purely online programs miss.",
-        "description": ""
+        "label": "Hybrid Program",
+        "description": "Seek a hybrid or HyFlex program if available \u2014 attending key classes in person while completing most coursework online preserves your work schedule while capturing the high-value networking interactions that purely online programs miss."
       }
     ],
     "edges": [
@@ -168,6 +175,10 @@
       {
         "source": "q",
         "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
       },
       {
         "source": "sq1",
@@ -187,10 +198,6 @@
       },
       {
         "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
         "target": "c9"
       },
       {
@@ -207,6 +214,10 @@
       },
       {
         "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq4",
         "target": "c10"
       },
       {
@@ -226,16 +237,20 @@
         "target": "a1"
       },
       {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
         "source": "c4",
         "target": "a1"
       },
       {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
         "source": "c5",
         "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
       },
       {
         "source": "c6",
@@ -247,7 +262,7 @@
       },
       {
         "source": "c8",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c9",

@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Delay to 70 Default): Wait until 70 to claim Social Security \u2014 the 8% annual delayed credit is an unbeatable risk-free return for healthy individuals, and maximizes inflation-adjusted lifetime income if you live past 82.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2543,
-    "output_tokens": 1600,
-    "llm_calls": 2,
+    "prompt_tokens": 1685,
+    "output_tokens": 1892,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,28 +40,28 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "When should I start taking Social Security?",
+        "label": "When should I start taking Social Security \u2014 at 62, full retirement age, or wait until 70?",
         "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "General guidelines for claiming Social Security",
+        "label": "What are the general guidelines for claiming Social Security benefits?",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Individual circumstances affecting the decision",
+        "label": "How do individual circumstances (health, longevity, marital status) affect the decision?",
         "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Benefits and drawbacks of delaying claims",
+        "label": "What are the trustworthiness and credibility of the sources providing guidance on Social Security benefits?",
         "description": ""
       },
       {
@@ -139,21 +139,21 @@
         "layer": "4",
         "type": "answer",
         "label": "Delay to 70 Default",
-        "description": "Wait until 70 to claim Social Security"
+        "description": "Wait until 70 to claim Social Security \u2014 the 8% annual delayed credit is an unbeatable risk-free return for healthy individuals, and maximizes inflation-adjusted lifetime income if you live past 82."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Claim at 62 for Immediate Need",
-        "description": "Claim at 62 if you have health concerns or need the income"
+        "description": "Claim at 62 if you have health concerns, need the income to avoid portfolio withdrawals, or lack other retirement income \u2014 the breakeven math favors early claiming for shorter life expectancies."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Full Retirement Age Compromise",
-        "description": "Claim at full retirement age as a compromise"
+        "description": "Claim at full retirement age (66\u201367) as a compromise \u2014 you avoid the 30% early reduction while not tying up capital until 70, suitable when longevity is uncertain and some portfolio flexibility is needed."
       }
     ],
     "edges": [
@@ -247,7 +247,7 @@
       },
       {
         "source": "c10",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c1",

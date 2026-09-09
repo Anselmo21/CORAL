@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer C (Hybrid Approach): Double-major in a liberal arts field and a vocational or technical discipline \u2014 you develop the critical thinking of the humanities alongside marketable technical skills, capturing both career flexibility and early employment leverage.",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1533,
+    "output_tokens": 2693,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,98 +41,98 @@
         "layer": "1",
         "type": "question",
         "label": "Is a liberal arts degree worth it, or should I do something more vocational with better job prospects?",
-        "description": "Evaluating the trade-offs between liberal arts and vocational degrees in terms of career outcomes, earnings, and adaptability."
+        "description": "Evaluating the trade-offs between liberal arts and vocational degrees based on career outcomes, adaptability, and personal fit."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the short-term financial and employment implications of choosing a liberal arts vs. vocational degree?",
-        "description": "Comparing early-career earnings, job market demand, and debt."
+        "label": "What are the financial and job market implications of the degree choice in the early career?",
+        "description": "Evaluates early-career earnings, job market demand, debt, and clarity of employment path."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How do long-term career flexibility and adaptability compare between liberal arts and vocational degrees?",
-        "description": "Assessing adaptability, leadership development, and risk of automation."
+        "label": "How does the degree support long-term career development and adaptability?",
+        "description": "Evaluates adaptability, communication/critical thinking, automation risk, and leadership development."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Are there hybrid strategies that combine the strengths of both liberal arts and vocational education?",
-        "description": "Evaluating dual-degree or hybrid pathways for career flexibility and marketability."
+        "label": "What are the personal and intellectual considerations in choosing a degree?",
+        "description": "Evaluates passion, intellectual engagement, and graduate school pathways."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "early career earnings potential",
-        "description": "Earnings in the first 5\u201310 years after graduation."
+        "description": "The expected income in the first 5\u201310 years after graduation."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "long-term career adaptability",
-        "description": "Ability to pivot or adapt as industries and job markets change."
+        "description": "Ability to pivot or evolve in a changing job market."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "specific job market demand for credential",
-        "description": "Immediate job availability and demand for the degree."
+        "description": "Immediate demand for the degree in the job market."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "development of communication and critical thinking",
-        "description": "Skills in writing, speaking, and analytical reasoning."
+        "description": "Skills in communication, analysis, and problem-solving."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "passion and intellectual engagement",
-        "description": "Interest and fulfillment from the field of study."
+        "description": "Personal interest and satisfaction in the field of study."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "risk of automation of vocational skills",
-        "description": "How likely the field is to be displaced by automation."
+        "description": "How likely the skills are to be replaced by automation."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "graduate school pathway availability",
-        "description": "Ease of transitioning into advanced degrees."
+        "description": "Opportunities for further education after graduation."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "debt relative to earning potential",
-        "description": "Financial burden in relation to future earnings."
+        "description": "The financial burden of student debt compared to expected earnings."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "management and leadership development",
-        "description": "Preparation for supervisory or executive roles."
+        "description": "Preparation for leadership and managerial roles."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "clarity of post-graduation employment path",
-        "description": "How clear the job options are after graduation."
+        "description": "How clear the job prospects are after graduation."
       },
       {
         "id": "a1",
@@ -186,15 +195,7 @@
       },
       {
         "source": "sq2",
-        "target": "c5"
-      },
-      {
-        "source": "sq2",
         "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c7"
       },
       {
         "source": "sq2",
@@ -202,43 +203,15 @@
       },
       {
         "source": "sq3",
-        "target": "c1"
-      },
-      {
-        "source": "sq3",
-        "target": "c2"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
         "target": "c5"
-      },
-      {
-        "source": "sq3",
-        "target": "c6"
       },
       {
         "source": "sq3",
         "target": "c7"
       },
       {
-        "source": "sq3",
-        "target": "c8"
-      },
-      {
-        "source": "sq3",
-        "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
+        "source": "c1",
+        "target": "a1"
       },
       {
         "source": "c1",
@@ -246,79 +219,75 @@
       },
       {
         "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
       },
       {
         "source": "c4",
         "target": "a2"
       },
       {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
         "source": "c5",
         "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
       },
       {
         "source": "c6",
         "target": "a2"
       },
       {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
         "source": "c7",
         "target": "a2"
       },
       {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
         "source": "c9",
         "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

@@ -21,109 +21,119 @@
   ],
   "baseline_answer": "Answer A (Apple Watch Default): Get the Apple Watch Series 9 if you're on iPhone \u2014 the best health sensor accuracy, ECG, and tightest app ecosystem make it the default choice for general health and fitness tracking.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 2,
+  "usage": {
+    "prompt_tokens": 7569,
+    "output_tokens": 6016,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Best smartwatch for fitness tracking?",
-        "description": "What is the best smartwatch for tracking workouts and health metrics?"
+        "label": "What's the best smartwatch for fitness tracking?",
+        "description": "User wants to track workouts and health metrics."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "General iPhone Health Tracking",
-        "description": "Which watch is best for an iPhone user focused on general health, ECG, and ecosystem?"
+        "label": "Best for general health and lifestyle on iPhone",
+        "description": "Focuses on consumer recommendations, 2023 data, USA market, and iPhone users."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Serious Endurance Athlete",
-        "description": "Which watch is best for serious runners/cyclists needing precise GPS and training data?"
+        "label": "Best for serious endurance athletes",
+        "description": "Focuses on hardware testing, sports tech reviews, global data, and athlete perspectives."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Sleep and Wellness Focus",
-        "description": "Which watch is best for long-term health trends, sleep tracking, and value?"
+        "label": "Best for community and wellness trends",
+        "description": "Focuses on peer advice and general wellness tracking."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Prioritize sources published in 2023."
+        "description": "Prioritizes sources from 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Prioritize sources published between 2021 and 2023."
+        "description": "Prioritizes sources from 2021 to 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Prioritize sources from the USA."
+        "description": "Prioritizes sources from the USA."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Canada / Global",
-        "description": "Prioritize sources from Canada or Global perspectives."
+        "description": "Prioritizes sources from Canada or Global."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: iPhone user focused on general health and lifestyle tracking",
-        "description": "Prioritize the perspective of an iPhone user focused on lifestyle."
+        "description": "Prioritizes the iPhone user perspective."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Serious endurance athlete needing precise training data",
-        "description": "Prioritize the perspective of a serious endurance athlete."
+        "description": "Prioritizes the serious athlete perspective."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer product recommendation publication",
-        "description": "Prioritize consumer product recommendation publications."
+        "description": "Prioritizes consumer recommendation publications."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Independent hardware testing site",
-        "description": "Prioritize independent hardware testing sites."
+        "description": "Prioritizes independent hardware testing sites."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Fitness community peer advice",
-        "description": "Prioritize fitness community peer advice."
+        "description": "Prioritizes fitness community peer advice."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Sports technology reviewer",
-        "description": "Prioritize sports technology reviewers."
+        "description": "Prioritizes sports technology reviewers."
       },
       {
         "id": "a1",
@@ -166,15 +176,7 @@
       },
       {
         "source": "sq1",
-        "target": "c2"
-      },
-      {
-        "source": "sq1",
         "target": "c3"
-      },
-      {
-        "source": "sq1",
-        "target": "c4"
       },
       {
         "source": "sq1",
@@ -183,18 +185,6 @@
       {
         "source": "sq1",
         "target": "c7"
-      },
-      {
-        "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
       },
       {
         "source": "sq2",
@@ -214,23 +204,7 @@
       },
       {
         "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq2",
         "target": "c10"
-      },
-      {
-        "source": "sq3",
-        "target": "c2"
-      },
-      {
-        "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
       },
       {
         "source": "sq3",
@@ -249,24 +223,12 @@
         "target": "a2"
       },
       {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
         "source": "c3",
         "target": "a1"
       },
       {
         "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
         "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
       },
       {
         "source": "c5",
@@ -286,27 +248,11 @@
       },
       {
         "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
         "target": "a2"
       },
       {
         "source": "c9",
         "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
       },
       {
         "source": "c10",

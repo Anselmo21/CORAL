@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Barcelona",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2223,
+    "output_tokens": 2594,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,126 +41,126 @@
         "layer": "1",
         "type": "question",
         "label": "best places in spain to see for backpackers",
-        "description": "Which cities or regions in Spain are most recommended for backpackers based on cultural, social, and practical criteria?"
+        "description": "What are the best places in Spain to see for backpackers?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "cultural experiences and historical significance",
-        "description": "Which places in Spain offer the most immersive cultural and historical experiences for backpackers?"
+        "label": "cultural experiences",
+        "description": "Which cities offer the most cultural and historical experiences?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "affordability and backpacker community",
-        "description": "Which regions in Spain are most affordable and have the strongest backpacker communities?"
+        "label": "affordability",
+        "description": "Which destinations are most affordable and have good backpacker infrastructure?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "nightlife and local cuisine",
-        "description": "Where in Spain is the nightlife and local cuisine most appealing to backpackers?"
+        "label": "nightlife options",
+        "description": "Where are the best nightlife and social opportunities for backpackers?"
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "natural attractions and seasonal events",
-        "description": "Which areas in Spain offer the best natural attractions and seasonal events for backpackers?"
+        "label": "natural attractions",
+        "description": "Which areas offer unique natural or seasonal attractions?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "cultural experiences",
-        "description": "Availability of museums, festivals, and cultural immersion opportunities."
+        "description": "Exposure to local culture, museums, and historical sites."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "affordability",
-        "description": "Cost of accommodation and daily expenses for backpackers."
+        "description": "Cost of accommodation and daily expenses."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "nightlife options",
-        "description": "Variety and accessibility of bars, clubs, and late-night venues."
+        "description": "Availability and quality of nightlife and social venues."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "natural attractions",
-        "description": "Proximity to parks, beaches, and scenic landscapes."
+        "description": "Proximity to and access to natural landscapes."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "historical significance",
-        "description": "Presence of UNESCO sites and historical landmarks."
+        "description": "Presence of historically significant sites and architecture."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "local cuisine",
-        "description": "Availability and affordability of traditional Spanish food."
+        "description": "Quality and variety of local food and dining experiences."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "transportation access",
-        "description": "Ease of getting around the city and to other destinations."
+        "description": "Ease of travel to and within the city."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "backpacker community",
-        "description": "Presence and activity of a backpacker-friendly social network."
+        "description": "Size and vibrancy of the backpacker community."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "seasonal events",
-        "description": "Major festivals or events that occur seasonally."
+        "description": "Availability of festivals, events, and seasonal activities."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "safety for travelers",
-        "description": "Perceived and actual safety for solo and budget travelers."
+        "description": "Perceived and actual safety for tourists."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Barcelona",
-        "description": "Barcelona is the top choice for backpackers due to its vibrant culture, nightlife, and accessibility."
+        "description": "Top city for backpackers with rich culture, nightlife, and accessibility."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Madrid + Granada",
-        "description": "A combination of urban Madrid and historical Granada offers a balanced backpacking experience."
+        "description": "Affordable and culturally rich, with a mix of history and tradition."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Basque Country (Bilbao)",
-        "description": "Bilbao in the Basque Country offers modern architecture and a growing backpacker scene."
+        "description": "Modern and scenic, with a strong local culture and food scene."
       }
     ],
     "edges": [
@@ -185,7 +194,7 @@
       },
       {
         "source": "sq2",
-        "target": "c8"
+        "target": "c7"
       },
       {
         "source": "sq3",
@@ -193,7 +202,7 @@
       },
       {
         "source": "sq3",
-        "target": "c6"
+        "target": "c8"
       },
       {
         "source": "sq4",
@@ -202,14 +211,6 @@
       {
         "source": "sq4",
         "target": "c9"
-      },
-      {
-        "source": "sq4",
-        "target": "c10"
-      },
-      {
-        "source": "sq4",
-        "target": "c7"
       },
       {
         "source": "c1",
@@ -276,12 +277,16 @@
         "target": "a2"
       },
       {
-        "source": "c8",
+        "source": "c9",
         "target": "a2"
       },
       {
         "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
       },
       {
         "source": "c2",
@@ -292,11 +297,19 @@
         "target": "a3"
       },
       {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
         "source": "c7",
         "target": "a3"
       },
       {
-        "source": "c8",
+        "source": "c9",
         "target": "a3"
       },
       {

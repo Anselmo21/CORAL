@@ -21,16 +21,18 @@
   ],
   "baseline_answer": "Guerlain Terracotta Bronzing Powder",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 3,
   "usage": {
-    "prompt_tokens": 3514,
-    "output_tokens": 2127,
-    "llm_calls": 2,
+    "prompt_tokens": 12519,
+    "output_tokens": 7439,
+    "llm_calls": 3,
     "finish_reasons": [
-      "stop",
+      "length",
+      "length",
       "stop"
     ]
   },
@@ -47,21 +49,28 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best bronzer for older skin in terms of finish type?",
+        "label": "What type of finish should a bronzer for older skin have?",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best bronzer for older skin in terms of shade range?",
+        "label": "What characteristics should a bronzer for older skin have in terms of shade range, blendability, and longevity?",
         "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best bronzer for older skin in terms of blendability and longevity?",
+        "label": "What ingredients and features should a bronzer for older skin have to ensure skin health and safety?",
+        "description": ""
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What other factors should be considered when choosing a bronzer for older skin?",
         "description": ""
       },
       {
@@ -170,6 +179,10 @@
         "target": "sq3"
       },
       {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
         "source": "sq1",
         "target": "c1"
       },
@@ -178,12 +191,40 @@
         "target": "c2"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c3"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "sq4",
+        "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c8"
+      },
+      {
+        "source": "sq4",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
       },
       {
         "source": "a1",
@@ -227,11 +268,19 @@
       },
       {
         "source": "a2",
+        "target": "c1"
+      },
+      {
+        "source": "a2",
         "target": "c2"
       },
       {
         "source": "a2",
-        "target": "c6"
+        "target": "c3"
+      },
+      {
+        "source": "a2",
+        "target": "c4"
       },
       {
         "source": "a2",
@@ -244,10 +293,6 @@
       {
         "source": "a2",
         "target": "c9"
-      },
-      {
-        "source": "a2",
-        "target": "c10"
       },
       {
         "source": "a3",
@@ -255,11 +300,15 @@
       },
       {
         "source": "a3",
+        "target": "c2"
+      },
+      {
+        "source": "a3",
         "target": "c3"
       },
       {
         "source": "a3",
-        "target": "c5"
+        "target": "c4"
       },
       {
         "source": "a3",
@@ -272,10 +321,6 @@
       {
         "source": "a3",
         "target": "c9"
-      },
-      {
-        "source": "a3",
-        "target": "c10"
       }
     ]
   }

@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "OMBRELLE for kids by L'Oreal",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 2,
+  "temperature": 0.0,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1834,
+    "output_tokens": 2708,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -38,113 +47,113 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Which specific product is explicitly labeled as peanut-free in North America?",
-        "description": "Focuses on specific brand claims and regional labeling."
+        "label": "Which specific product is explicitly labeled nut-free by the manufacturer in North America?",
+        "description": "Focuses on specific brand claims and geographic availability."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What category of sunscreen is generally safest for allergy-prone skin?",
+        "label": "What general category of sunscreen is safest for children with skin sensitivities and allergies?",
         "description": "Focuses on ingredient safety and dermatological guidelines."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "How can a parent verify the safety of a chemical sunscreen if no specific brand is pre-labeled?",
-        "description": "Focuses on the verification process and direct manufacturer contact."
+        "label": "How can a parent verify the safety of a chemical sunscreen if no pre-labeled option is available?",
+        "description": "Focuses on the verification process and alternative strategies."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Canada",
-        "description": "Prioritizes sources from Canada where Ombrelle labels are confirmed."
+        "description": "Prioritizes sources from Canada where Ombrelle is confirmed."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Prioritizes sources from the USA to check availability and labeling differences."
+        "description": "Prioritizes sources from the USA."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: allergy / peanut-free product database",
-        "description": "Prioritizes specialized allergy databases for product verification."
+        "description": "Prioritizes specialized allergy databases."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: EWG cosmetics database",
-        "description": "Prioritizes EWG ratings which often favor mineral sunscreens."
+        "description": "Prioritizes EWG safety ratings."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: pediatric dermatology guideline",
-        "description": "Prioritizes medical guidelines which often recommend mineral filters for sensitive skin."
+        "description": "Prioritizes medical guidelines for skin safety."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: parent peanut-allergy forum",
-        "description": "Prioritizes community consensus and anecdotal evidence from parents."
+        "description": "Prioritizes community experiences and forum discussions."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: manufacturer product documentation",
-        "description": "Prioritizes official product labels and documentation."
+        "description": "Prioritizes official label statements and product docs."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: child with severe peanut allergy",
-        "description": "Focuses on the needs of a child with severe reactions, requiring high safety."
+        "description": "Prioritizes the most stringent safety requirements."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: parent of eczema-prone child",
-        "description": "Focuses on skin sensitivity and irritation risks, favoring mineral options."
+        "description": "Prioritizes non-irritating, gentle formulations."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: parent doing direct manufacturer verification",
-        "description": "Focuses on the proactive step of contacting manufacturers for confirmation."
+        "description": "Prioritizes active verification workflows over passive label reading."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "OMBRELLE for kids by L'Oreal",
-        "description": "Specific brand explicitly labeled nut-free in Canada."
+        "description": "Specific brand with nut-free label."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A mineral (zinc oxide / titanium dioxide) children's sunscreen",
-        "description": "General category of sunscreens safer for sensitive skin."
+        "description": "General category of inert mineral sunscreens."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A chemical sunscreen verified peanut-free by direct manufacturer-contact workflow",
-        "description": "Chemical sunscreen confirmed safe through direct verification."
+        "description": "Chemical option verified via direct contact."
       }
     ],
     "edges": [
@@ -178,6 +187,10 @@
       },
       {
         "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
         "target": "c4"
       },
       {
@@ -186,15 +199,11 @@
       },
       {
         "source": "sq2",
-        "target": "c8"
-      },
-      {
-        "source": "sq2",
         "target": "c9"
       },
       {
         "source": "sq3",
-        "target": "c3"
+        "target": "c8"
       },
       {
         "source": "sq3",
@@ -214,7 +223,7 @@
       },
       {
         "source": "c3",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c4",
@@ -223,10 +232,6 @@
       {
         "source": "c4",
         "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
       },
       {
         "source": "c5",
@@ -246,23 +251,11 @@
       },
       {
         "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
         "target": "a3"
       },
       {
         "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
         "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
       },
       {
         "source": "c10",

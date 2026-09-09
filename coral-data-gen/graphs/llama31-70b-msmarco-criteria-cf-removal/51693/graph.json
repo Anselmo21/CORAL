@@ -19,18 +19,18 @@
     "Whole-foods anti-inflammatory elimination diet",
     "Supplement-supported regimen"
   ],
-  "baseline_answer": "Whole-foods anti-inflammatory elimination diet",
-  "baseline_index": 1,
+  "baseline_answer": "High-iodine seafood-rich diet",
+  "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3050,
-    "output_tokens": 1574,
-    "llm_calls": 2,
+    "prompt_tokens": 1905,
+    "output_tokens": 1760,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,120 +40,103 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What is the best diet to improve thyroid function?",
-        "description": ""
+        "label": "What is the best diet to improve thyroid function?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What nutrients are essential for thyroid function?",
-        "description": ""
+        "label": "What nutrients are essential for thyroid function?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How can diet help manage thyroid-related inflammation?",
-        "description": ""
+        "label": "What dietary factors can negatively impact thyroid function?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What other dietary considerations are important for thyroid function?",
-        "description": ""
+        "label": "What dietary approaches can support thyroid function?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "iodine content",
-        "description": ""
+        "label": "iodine content"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "selenium content",
-        "description": ""
+        "label": "selenium content"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "anti-inflammatory profile",
-        "description": ""
+        "label": "anti-inflammatory profile"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "gluten avoidance",
-        "description": ""
+        "label": "gluten avoidance"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "processed food avoidance",
-        "description": ""
+        "label": "processed food avoidance"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "omega-3 inclusion",
-        "description": ""
+        "label": "omega-3 inclusion"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "zinc levels",
-        "description": ""
+        "label": "zinc levels"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "goitrogen avoidance",
-        "description": ""
+        "label": "goitrogen avoidance"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "carbohydrate balance",
-        "description": ""
+        "label": "carbohydrate balance"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "micronutrient density",
-        "description": ""
+        "label": "micronutrient density"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "High-iodine seafood-rich diet",
-        "description": ""
+        "label": "High-iodine seafood-rich diet"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Whole-foods anti-inflammatory elimination diet",
-        "description": ""
+        "label": "Whole-foods anti-inflammatory elimination diet"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Supplement-supported regimen",
-        "description": ""
+        "label": "Supplement-supported regimen"
       }
     ],
     "edges": [
@@ -187,10 +170,6 @@
       },
       {
         "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
         "target": "c4"
       },
       {
@@ -200,6 +179,10 @@
       {
         "source": "sq2",
         "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
       },
       {
         "source": "sq3",
@@ -214,16 +197,40 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
         "source": "c2",
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
       },
       {
         "source": "c3",
@@ -238,22 +245,6 @@
         "target": "a2"
       },
       {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
         "source": "c8",
         "target": "a2"
       },
@@ -262,15 +253,27 @@
         "target": "a2"
       },
       {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
         "source": "c10",
         "target": "a2"
       },
       {
-        "source": "c10",
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
         "target": "a3"
       }
     ]

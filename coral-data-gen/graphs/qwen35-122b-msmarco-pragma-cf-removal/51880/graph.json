@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "A premium 'multi-free' mineral foundation",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 3,
+  "temperature": 0.0,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2524,
+    "output_tokens": 3426,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "best mineral foundation without parabens",
-        "description": "Identify the best mineral foundation free of parabens."
+        "description": "The user seeks a mineral foundation free of parabens, considering specific skin type and age."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Safety and Ingredient Purity",
-        "description": "Which foundation meets strict safety and multi-free standards?"
+        "label": "Safety and Allergy Requirements",
+        "description": "What foundation meets the strict safety and allergy needs of a teen with sensitive skin?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Professional Performance",
-        "description": "Which foundation is endorsed by professionals?"
+        "label": "Professional Performance and Validation",
+        "description": "Which foundation offers professional-grade quality and is endorsed by experts?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Accessibility and User Experience",
-        "description": "Which foundation is accessible and suitable for the user?"
+        "label": "Budget and Lifestyle Fit",
+        "description": "What option fits a budget-conscious consumer or clean-beauty lifestyle?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: dermatology-recommended product list",
-        "description": "Prioritize derm-recommended products."
+        "description": "Prioritizes products recommended by dermatologists."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: EWG cosmetics database (clean ingredients)",
-        "description": "Prioritize EWG-rated clean products."
+        "description": "Prioritizes products with clean ingredients per EWG standards."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: beauty consumer reviews",
-        "description": "Prioritize positive consumer reviews."
+        "description": "Prioritizes products with high ratings from general consumers."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: professional makeup artist endorsement",
-        "description": "Prioritize MUA endorsements."
+        "description": "Prioritizes products endorsed by professional makeup artists."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: FDA cosmetic safety guidance",
-        "description": "Prioritize FDA-compliant safety."
+        "description": "Prioritizes products compliant with FDA safety guidance."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: teen with paraben allergy starting makeup",
-        "description": "Prioritize teen-friendly options."
+        "description": "Prioritizes the specific needs of a teen starting makeup with allergies."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: sensitive-skin adult",
-        "description": "Prioritize sensitive skin needs."
+        "description": "Prioritizes the needs of adults with sensitive skin."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: budget-first consumer",
-        "description": "Prioritize affordability."
+        "description": "Prioritizes low-cost options."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: professional makeup artist",
-        "description": "Prioritize professional quality standards."
+        "description": "Prioritizes the viewpoint of a professional makeup artist."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: clean-beauty enthusiast",
-        "description": "Prioritize clean beauty standards."
+        "description": "Prioritizes products aligned with clean beauty values."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "An affordable drugstore-tier mineral foundation labeled paraben-free (~$10-20)",
-        "description": "Low-cost drugstore option."
+        "description": "A low-cost option that is paraben-free but may lack other premium features."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A premium 'multi-free' mineral foundation",
-        "description": "Premium multi-ingredient-free option."
+        "description": "A high-end product free of parabens, talc, and other irritants."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A professional makeup-artist-grade paraben-free mineral foundation",
-        "description": "Professional MUA-grade option."
+        "description": "A product designed for professional use, paraben-free, but not necessarily 'multi-free'."
       }
     ],
     "edges": [
@@ -174,11 +183,15 @@
       },
       {
         "source": "sq1",
-        "target": "c7"
+        "target": "c6"
       },
       {
         "source": "sq1",
-        "target": "c10"
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
       },
       {
         "source": "sq2",
@@ -190,27 +203,27 @@
       },
       {
         "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq3",
         "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
       },
       {
         "source": "c1",
         "target": "a2"
       },
       {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
         "source": "c2",
         "target": "a2"
       },
       {
-        "source": "c3",
-        "target": "a1"
+        "source": "c2",
+        "target": "a3"
       },
       {
         "source": "c3",
@@ -230,10 +243,6 @@
       },
       {
         "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
         "target": "a2"
       },
       {
@@ -242,19 +251,11 @@
       },
       {
         "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
         "target": "a2"
       },
       {
         "source": "c6",
         "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
       },
       {
         "source": "c7",
@@ -287,6 +288,10 @@
       {
         "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Microsoft Surface Pro or Surface Laptop with Office pre-activated",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3295,
-    "output_tokens": 1720,
-    "llm_calls": 2,
+    "prompt_tokens": 2041,
+    "output_tokens": 1534,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,14 +47,14 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the most trustworthy sources of information about laptops with Microsoft Office pre-installed?",
+        "label": "What are the most trustworthy sources for laptop recommendations?",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the different perspectives on the best laptop with Microsoft Office pre-installed?",
+        "label": "What are the perspectives of different users on laptops with Microsoft Office pre-installed?",
         "description": ""
       },
       {
@@ -215,24 +215,28 @@
         "target": "a2"
       },
       {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
         "source": "c3",
         "target": "a1"
       },
       {
         "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
         "target": "a2"
       },
       {
         "source": "c4",
-        "target": "a1"
+        "target": "a3"
       },
       {
-        "source": "c4",
-        "target": "a3"
+        "source": "c5",
+        "target": "a1"
       },
       {
         "source": "c5",
@@ -253,6 +257,10 @@
       {
         "source": "c7",
         "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
       },
       {
         "source": "c8",

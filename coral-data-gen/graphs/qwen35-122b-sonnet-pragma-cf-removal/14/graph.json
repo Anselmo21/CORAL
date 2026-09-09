@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (Delay to 70 Default): Wait until 70 to claim Social Security \u2014 the 8% annual delayed credit is an unbeatable risk-free return for healthy individuals, and maximizes inflation-adjusted lifetime income if you live past 82.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 2,
+  "temperature": 0.0,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1747,
+    "output_tokens": 2652,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,98 +41,98 @@
         "layer": "1",
         "type": "question",
         "label": "When should I start taking Social Security?",
-        "description": "Decision point for a 62-year-old: claim at 62, FRA, or 70."
+        "description": "Decision on claiming age (62, FRA, or 70) for a 62-year-old."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Maximize for Longevity",
-        "description": "Which strategy maximizes lifetime income for a healthy individual?"
+        "label": "How do health and longevity affect the optimal claim age?",
+        "description": "Focuses on individual health status and life expectancy projections."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Address Health & Immediate Need",
-        "description": "Which strategy fits health concerns or immediate income needs?"
+        "label": "How do household dynamics and financial risks influence the decision?",
+        "description": "Focuses on marital status, survivor benefits, and investment risks."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Navigate Uncertainty",
-        "description": "Which strategy balances risk when longevity is uncertain?"
+        "label": "What do peer experiences and immediate needs suggest?",
+        "description": "Focuses on community advice, immediate income needs, and non-institutional perspectives."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Filter for 2023 sources only."
+        "description": "Prioritizes the most recent data emphasizing the 8% delayed credit."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Filter for sources from 2021 to 2023."
+        "description": "Includes a broader window of recent data including breakeven analysis."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA federal Social Security system",
-        "description": "Filter for US federal system context."
+        "description": "Confines scope to US federal rules and benefits."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Healthy individual with long family longevity",
-        "description": "Filter for healthy/long-lived perspective."
+        "description": "Filters for scenarios where long life expectancy is assumed."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Individual with health concerns or below-average longevity",
-        "description": "Filter for health-concern perspective."
+        "description": "Filters for scenarios where early death or poor health is a risk."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Married couple optimizing survivor benefits",
-        "description": "Filter for married couple perspective."
+        "description": "Filters for strategies maximizing spousal survivor income."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Government/SSA official guidance",
-        "description": "Filter for official government sources."
+        "description": "Prioritizes official SSA rules and calculations."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Institutional retirement research",
-        "description": "Filter for institutional research sources."
+        "description": "Prioritizes analysis from financial institutions and research firms."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Community peer advice",
-        "description": "Filter for community advice."
+        "description": "Prioritizes anecdotal evidence and community consensus."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Financial journalism",
-        "description": "Filter for financial journalism."
+        "description": "Prioritizes analysis from major financial news outlets."
       },
       {
         "id": "a1",
@@ -144,7 +153,7 @@
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Full Retirement Age Compromise)",
-        "description": "Claim at full retirement age as a compromise."
+        "description": "Claim at full retirement age (66\u201367) as a compromise."
       }
     ],
     "edges": [
@@ -170,39 +179,23 @@
       },
       {
         "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "sq1",
         "target": "c4"
       },
       {
         "source": "sq1",
-        "target": "c6"
-      },
-      {
-        "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
         "target": "c5"
       },
       {
         "source": "sq2",
-        "target": "c9"
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
       },
       {
         "source": "sq2",
@@ -210,19 +203,11 @@
       },
       {
         "source": "sq3",
-        "target": "c2"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
+        "target": "c7"
       },
       {
         "source": "sq3",
         "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
       },
       {
         "source": "c1",
@@ -233,8 +218,24 @@
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
         "source": "c3",
         "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
       },
       {
         "source": "c4",
@@ -242,63 +243,51 @@
       },
       {
         "source": "c5",
-        "target": "a1"
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
       },
       {
         "source": "c6",
         "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
       },
       {
         "source": "c7",
         "target": "a1"
       },
       {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
         "source": "c8",
         "target": "a1"
       },
       {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
         "source": "c9",
-        "target": "a1"
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
         "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
       },
       {
         "source": "c10",

@@ -21,10 +21,20 @@
   ],
   "baseline_answer": "Answer C (Motorized with Presets): Get a motorized desk specifically with programmable memory presets \u2014 one-touch height switching between sitting and standing positions is the feature most associated with frequent transitions and actual health benefit.",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 2,
+  "usage": {
+    "prompt_tokens": 7393,
+    "output_tokens": 6244,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +42,119 @@
         "layer": "1",
         "type": "question",
         "label": "Is the price difference between motorized and manual standing desks worth it?",
-        "description": "Main question evaluating the value proposition of motorized vs manual desks."
+        "description": "Main question regarding value proposition of motorized vs manual desks."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "How effectively does the desk promote frequent position changes?",
-        "description": "Focuses on usage habits, ease of adjustment, and health outcomes."
+        "label": "Usage Mechanics and Health Impact",
+        "description": "How desk type affects frequency of movement and ease of use."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the financial implications of the choice?",
-        "description": "Focuses on upfront cost, budget constraints, and long-term value."
+        "label": "Financial Considerations",
+        "description": "Upfront and long-term cost implications."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the physical and practical constraints?",
-        "description": "Focuses on reliability, noise, capacity, and workspace fit."
+        "label": "Durability and Physical Specifications",
+        "description": "Reliability, weight capacity, and space requirements."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "frequency of position changes during workday",
-        "description": "Critical health metric; motorized desks significantly increase transition frequency."
+        "description": "How often the user switches between sitting and standing."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "price and budget",
-        "description": "Manual desks are $200-300, motorized are $500-700."
+        "description": "Initial purchase cost relative to user budget."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "ease and speed of height adjustment",
-        "description": "Motorized is instant; manual takes 30-40 seconds."
+        "description": "How quickly and easily the desk height can be changed."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "long-term reliability and warranty",
-        "description": "Motorized has more failure points but warranties cover them; manual is simpler."
+        "description": "Durability of the mechanism and warranty coverage."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "weight capacity and stability",
-        "description": "Structural integrity and load bearing of the desk frame."
+        "description": "Maximum load the desk can hold without wobbling."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "desk preset memory for instant switching",
-        "description": "One-touch height change; specific to high-end motorized models."
+        "description": "Ability to save and recall specific height settings."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "noise level of motorized mechanism",
-        "description": "Motorized desks generate noise; manual desks are silent."
+        "description": "Audible sound produced during height adjustment."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "physical effort required for manual cranking",
-        "description": "Manual cranking requires physical exertion, creating friction."
+        "description": "Physical exertion needed to adjust a manual desk."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "total cost of ownership over 5 years",
-        "description": "Includes initial price and potential maintenance/replacement costs."
+        "description": "Long-term financial value including potential repairs."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "available space and cable management",
-        "description": "Physical footprint and organization of cables under the desk."
+        "description": "Desk footprint and organization of cables."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Motorized Default)",
-        "description": "Get a motorized desk; price premium is worth it to avoid manual friction."
+        "description": "Get a motorized desk \u2014 the price premium over manual is $200\u2013400, but research clearly shows that manual cranking friction causes users to change positions far less often, defeating the health purpose of the desk entirely."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Manual for Budget)",
-        "description": "Buy manual if budget is hard constraint; disciplined users can manage."
+        "description": "Buy a manual crank desk if budget is the hard constraint \u2014 a $250 IKEA SKARSTA is vastly better than no standing desk, and disciplined users who set timers can achieve adequate position variety even with manual adjustment."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Motorized with Presets)",
-        "description": "Get motorized with memory presets for maximum transition frequency."
+        "description": "Get a motorized desk specifically with programmable memory presets \u2014 one-touch height switching between sitting and standing positions is the feature most associated with frequent transitions and actual health benefit."
       }
     ],
     "edges": [
@@ -174,6 +184,10 @@
       },
       {
         "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
         "target": "c8"
       },
       {
@@ -194,10 +208,6 @@
       },
       {
         "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
         "target": "c10"
       },
       {
@@ -210,15 +220,7 @@
       },
       {
         "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
         "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
       },
       {
         "source": "c3",

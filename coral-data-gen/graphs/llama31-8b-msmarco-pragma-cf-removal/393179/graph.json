@@ -19,18 +19,18 @@
     "Petro-Canada Ultra 94\u2122",
     "Regular 87-octane unleaded at any reputable station"
   ],
-  "baseline_answer": "Top Tier Detergent Gasoline (Shell V-Power, Esso, Chevron)",
-  "baseline_index": 0,
+  "baseline_answer": "Petro-Canada Ultra 94\u2122",
+  "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 4422,
-    "output_tokens": 2026,
-    "llm_calls": 2,
+    "prompt_tokens": 2598,
+    "output_tokens": 2048,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,120 +40,113 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "in Ontario what is the best gasoline for your vehicle",
-        "description": "The best gasoline for a vehicle in Ontario is the topic of discussion."
+        "label": "in Ontario, what is the best gasoline for your vehicle?",
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "best gasoline for a vehicle in Ontario based on geographic location",
-        "description": "The best gasoline for a vehicle in Ontario based on geographic location is the topic of discussion."
+        "label": "best gasoline for a vehicle in Ontario, considering geographic location",
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "best gasoline for a vehicle in Ontario based on trustworthiness of sources",
-        "description": "The best gasoline for a vehicle in Ontario based on the trustworthiness of sources is the topic of discussion."
-      },
-      {
-        "id": "sq3",
-        "layer": "2",
-        "type": "subq",
-        "label": "best gasoline for a vehicle in Ontario based on the owner's perspective",
-        "description": "The best gasoline for a vehicle in Ontario based on the owner's perspective is the topic of discussion."
+        "label": "best gasoline for a vehicle in Ontario, considering trustworthiness of the source",
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Ontario",
-        "description": "The best gasoline for a vehicle in Ontario is the topic of discussion."
+        "description": "considering geographic location"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: SAE / automotive engineering technical report",
-        "description": "The best gasoline for a vehicle in Ontario is the topic of discussion."
+        "description": "considering trustworthiness of the source"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: CBC Marketplace consumer reporting",
-        "description": "The best gasoline for a vehicle in Ontario is the topic of discussion."
+        "description": "considering trustworthiness of the source"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: owner's manual specification",
-        "description": "The best gasoline for a vehicle in Ontario is the topic of discussion."
+        "description": "considering trustworthiness of the source"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: automaker official recommendation",
-        "description": "The best gasoline for a vehicle in Ontario is the topic of discussion."
+        "description": "considering trustworthiness of the source"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: local automotive forum",
-        "description": "The best gasoline for a vehicle in Ontario is the topic of discussion."
+        "description": "considering trustworthiness of the source"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: luxury car owner",
-        "description": "The best gasoline for a vehicle in Ontario is the topic of discussion."
+        "description": "considering perspective of luxury car owner"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: regular sedan owner",
-        "description": "The best gasoline for a vehicle in Ontario is the topic of discussion."
+        "description": "considering perspective of regular sedan owner"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: performance enthusiast",
-        "description": "The best gasoline for a vehicle in Ontario is the topic of discussion."
+        "description": "considering perspective of performance enthusiast"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: long-term keep-vehicle owner",
-        "description": "The best gasoline for a vehicle in Ontario is the topic of discussion."
+        "description": "considering perspective of long-term keep-vehicle owner"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Petro-Canada Ultra 94\u2122",
-        "description": "Petro-Canada Ultra 94\u2122 is a high-octane gasoline option available in Ontario."
+        "label": "Top Tier Detergent Gasoline (Shell V-Power, Esso, Chevron)",
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Regular 87-octane unleaded at any reputable station",
-        "description": "Regular 87-octane unleaded gasoline is a cost-effective option available at most stations in Ontario."
+        "label": "Petro-Canada Ultra 94\u2122",
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Top Tier Detergent Gasoline (Shell V-Power, Esso, Chevron)",
-        "description": "Top Tier Detergent Gasoline is a high-quality gasoline option available at Shell, Esso, and Chevron stations in Ontario."
+        "label": "Regular 87-octane unleaded at any reputable station",
+        "description": ""
       }
     ],
     "edges": [
@@ -164,10 +157,6 @@
       {
         "source": "q",
         "target": "sq2"
-      },
-      {
-        "source": "q",
-        "target": "sq3"
       },
       {
         "source": "sq1",
@@ -211,6 +200,10 @@
       },
       {
         "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
         "target": "c2"
       },
       {
@@ -246,24 +239,8 @@
         "target": "c10"
       },
       {
-        "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c8"
-      },
-      {
-        "source": "sq3",
-        "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
-      },
-      {
         "source": "c1",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c2",
@@ -275,11 +252,11 @@
       },
       {
         "source": "c4",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c5",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c6",
@@ -300,6 +277,70 @@
       {
         "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
       }
     ]
   }

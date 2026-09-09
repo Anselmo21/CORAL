@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Hybrid Medium-Firm Default): Get a hybrid medium-firm mattress like the Saatva Classic \u2014 innerspring support with foam comfort layers provides the spinal alignment most associated with back pain relief, and a 100-night trial lets you verify it works for you.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2329,
-    "output_tokens": 1860,
-    "llm_calls": 2,
+    "prompt_tokens": 1569,
+    "output_tokens": 1742,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,28 +40,28 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What mattress should I get?",
-        "description": "Finding the best mattress for back pain"
+        "label": "What mattress should I get for back pain relief?",
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Key characteristics for back pain relief",
+        "label": "What features are essential for a mattress to provide back pain relief?",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Features for evaluating and ensuring a good night's sleep",
+        "label": "What factors contribute to a comfortable and supportive sleeping experience?",
         "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Practical considerations for choosing a mattress",
+        "label": "How can I ensure that the mattress I choose is suitable for my needs?",
         "description": ""
       },
       {
@@ -131,29 +131,29 @@
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "suitability for sleep position (side, back, stomach)",
+        "label": "suitability for sleep position",
         "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Hybrid Medium-Firm Default",
-        "description": "Get a hybrid medium-firm mattress like the Saatva Classic \u2014 innerspring support with foam comfort layers provides the spinal alignment most associated with back pain relief, and a 100-night trial lets you verify it works for you."
+        "label": "Get a hybrid medium-firm mattress like the Saatva Classic",
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Latex for Responsiveness",
-        "description": "Choose a latex mattress if you move frequently during sleep \u2014 latex's immediate responsiveness and pressure relief without heat retention is superior to memory foam for combination sleepers with back pain."
+        "label": "Choose a latex mattress if you move frequently during sleep",
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Buy with Long Trial First",
-        "description": "Prioritize a mattress with at least a 100-night sleep trial above all other factors \u2014 back pain response is highly individual and no recommendation is reliable without the ability to test it for at least 6\u20138 weeks."
+        "label": "Prioritize a mattress with at least a 100-night sleep trial above all other factors",
+        "description": ""
       }
     ],
     "edges": [
@@ -191,10 +191,6 @@
       },
       {
         "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
         "target": "c5"
       },
       {
@@ -207,15 +203,15 @@
       },
       {
         "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
         "target": "c8"
       },
       {
         "source": "c1",
         "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
       },
       {
         "source": "c2",
@@ -226,11 +222,31 @@
         "target": "a1"
       },
       {
-        "source": "c3",
-        "target": "a3"
+        "source": "c4",
+        "target": "a1"
       },
       {
-        "source": "c4",
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
         "target": "a1"
       },
       {
@@ -242,48 +258,20 @@
         "target": "a2"
       },
       {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
         "source": "c7",
         "target": "a2"
       },
       {
         "source": "c8",
-        "target": "a1"
+        "target": "a2"
       },
       {
-        "source": "c8",
-        "target": "a2"
+        "source": "c3",
+        "target": "a3"
       },
       {
         "source": "c8",
         "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
       }
     ]
   }

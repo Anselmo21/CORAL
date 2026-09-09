@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Zinc ascorbate supplement",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2431,
+    "output_tokens": 2728,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,126 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "best zinc brand for acne",
-        "description": "What is the best zinc brand for treating acne?"
+        "description": "What is the best zinc brand for acne?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "What is the most effective form of zinc for acne?",
-        "description": "Evaluates the best zinc form for acne based on efficacy and scientific support."
+        "description": "Evaluates the form of zinc (e.g., ascorbate, gluconate) and its effectiveness in treating acne."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most appropriate dosage and formulation for acne treatment?",
-        "description": "Evaluates zinc dosage and formulation for acne treatment."
+        "label": "What is the most trusted source of zinc for acne?",
+        "description": "Evaluates the credibility of the source recommending the zinc form."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most cost-effective or accessible zinc option for acne?",
-        "description": "Evaluates zinc options based on affordability and availability."
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "What zinc form is best for specific acne conditions?",
-        "description": "Evaluates zinc forms for conditions like hormonal or antibiotic-resistant acne."
+        "label": "What is the most accessible or affordable zinc option for acne?",
+        "description": "Evaluates the cost and availability of the zinc form."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed dermatology journal",
-        "description": "Prioritizes zinc forms supported by peer-reviewed dermatology research."
+        "description": "Prioritizes sources from peer-reviewed dermatology journals."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: registered dietitian guidance",
-        "description": "Prioritizes zinc forms recommended by registered dietitians."
+        "description": "Prioritizes sources from registered dietitians."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: nutritionist recommendation",
-        "description": "Prioritizes zinc forms recommended by nutritionists."
+        "description": "Prioritizes sources from nutritionists."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: consumer health blog",
-        "description": "Prioritizes zinc forms recommended in consumer health blogs."
+        "description": "Prioritizes sources from consumer health blogs."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: patient acne forum",
-        "description": "Prioritizes zinc forms discussed in acne patient forums."
+        "description": "Prioritizes sources from patient acne forums."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: zinc-deficient confirmed patient",
-        "description": "Prioritizes zinc forms for confirmed zinc-deficient acne patients."
+        "description": "Prioritizes sources from patients confirmed to be zinc-deficient."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: antibiotic-resistant acne sufferer",
-        "description": "Prioritizes zinc forms for antibiotic-resistant acne sufferers."
+        "description": "Prioritizes sources from patients with antibiotic-resistant acne."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: hormonal acne sufferer",
-        "description": "Prioritizes zinc forms for hormonal acne sufferers."
+        "description": "Prioritizes sources from patients with hormonal acne."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: clean-supplement preference",
-        "description": "Prioritizes single-ingredient, clean zinc supplements."
+        "description": "Prioritizes sources that emphasize clean or bioavailable supplements."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: budget-conscious consumer",
-        "description": "Prioritizes affordable and accessible zinc options."
+        "description": "Prioritizes sources that emphasize affordability."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Zinc ascorbate supplement",
-        "description": "Zinc ascorbate is the best zinc form for acne due to its effectiveness and bioavailability."
+        "description": "Zinc ascorbate is the most effective and bioavailable form of zinc for acne."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Oral zinc gluconate at the trial-validated 200 mg/day dose (~30 mg elemental zinc)",
-        "description": "Zinc gluconate is effective when taken at the 200 mg/day dose for acne reduction."
+        "description": "Zinc gluconate at a 200 mg/day dose is effective in reducing acne inflammation."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Multivitamin with high-potency zinc plus Vitamins A / B6 / C / E",
-        "description": "A multivitamin containing high-potency zinc and other acne-supporting vitamins is a comprehensive option."
+        "description": "A multivitamin with zinc and other acne-supporting vitamins is a comprehensive option."
       }
     ],
     "edges": [
@@ -168,12 +170,12 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
+        "source": "sq1",
+        "target": "c1"
       },
       {
         "source": "sq1",
-        "target": "c1"
+        "target": "c2"
       },
       {
         "source": "sq1",
@@ -181,11 +183,31 @@
       },
       {
         "source": "sq1",
-        "target": "c9"
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
       },
       {
         "source": "sq1",
         "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
       },
       {
         "source": "sq2",
@@ -197,11 +219,23 @@
       },
       {
         "source": "sq2",
-        "target": "c8"
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
       },
       {
         "source": "sq3",
         "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
       },
       {
         "source": "sq3",
@@ -210,14 +244,6 @@
       {
         "source": "sq3",
         "target": "c5"
-      },
-      {
-        "source": "sq4",
-        "target": "c7"
-      },
-      {
-        "source": "sq4",
-        "target": "c8"
       },
       {
         "source": "c1",
@@ -260,10 +286,6 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
         "source": "c2",
         "target": "a2"
       },
@@ -281,10 +303,6 @@
       },
       {
         "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
         "target": "a2"
       },
       {
@@ -296,10 +314,6 @@
         "target": "a2"
       },
       {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
         "source": "c2",
         "target": "a3"
       },
@@ -320,11 +334,11 @@
         "target": "a3"
       },
       {
-        "source": "c7",
+        "source": "c8",
         "target": "a3"
       },
       {
-        "source": "c8",
+        "source": "c10",
         "target": "a3"
       }
     ]

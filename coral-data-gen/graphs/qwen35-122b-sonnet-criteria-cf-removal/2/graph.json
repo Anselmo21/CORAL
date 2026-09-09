@@ -21,81 +21,90 @@
   ],
   "baseline_answer": "Answer A (Term Life Default): Get a 20-year term policy worth 10\u201312x your income \u2014 it's dramatically cheaper than whole life, covers your mortgage and children's dependency years, and you invest the premium difference separately.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1570,
+    "output_tokens": 2650,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "I'm 34 with two kids and a mortgage. Should I get whole life or term life insurance?",
-        "description": "Primary decision node regarding insurance type for a specific demographic."
+        "label": "Should I get whole life or term life insurance?",
+        "description": "Decision for a 34-year-old with two kids and a mortgage."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Cost and Efficiency Comparison",
-        "description": "Evaluates affordability, coverage ratio, and suitability for average earners."
+        "label": "Cost and Efficiency",
+        "description": "Evaluates premiums, value per dollar, and suitability for average earners."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Wealth Building and Estate Utility",
-        "description": "Evaluates long-term financial growth, tax benefits, and estate planning capabilities."
+        "label": "Coverage Scope and Duration",
+        "description": "Evaluates timing, lifetime guarantees, and flexibility."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Coverage Duration and Specific Needs",
-        "description": "Evaluates the timeline of coverage and suitability for specific dependency types."
+        "label": "Wealth and Estate Utility",
+        "description": "Evaluates cash value, tax benefits, and estate planning."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "lowest monthly premium cost",
-        "description": "Term life is significantly cheaper than whole life."
+        "description": "Term is 5-10x cheaper than whole life."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "maximum death benefit per dollar",
-        "description": "Term life offers higher coverage for the same premium."
+        "description": "Term provides higher leverage for the same premium."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "simplicity of product",
-        "description": "Term life is straightforward; whole life is complex with fees."
+        "description": "Term is straightforward; whole life is complex."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "coverage during peak financial obligation years",
-        "description": "Term life aligns with mortgage and child-rearing years."
+        "description": "Term aligns with mortgage and child-rearing years."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "cash value accumulation",
-        "description": "Whole life builds cash value; term life does not."
+        "description": "Whole life builds cash value; term does not."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "tax-sheltered wealth building",
-        "description": "Whole life offers tax advantages for high-net-worth individuals."
+        "description": "Whole life offers tax-advantaged growth for high-net-worth."
       },
       {
         "id": "c7",
@@ -109,42 +118,42 @@
         "layer": "3",
         "type": "concept",
         "label": "lifetime coverage guarantee",
-        "description": "Whole life provides coverage for life; term expires."
+        "description": "Whole life never expires; term expires."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "suitability for average income earners",
-        "description": "Term life is recommended for average earners; whole life is often too expensive."
+        "description": "Term is recommended for average earners; whole life is not."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "flexibility to cancel without loss",
-        "description": "Term life can be cancelled easily; whole life has surrender charges."
+        "description": "Term can be dropped easily; whole life has surrender charges."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Term Life Default)",
-        "description": "Get a 20-year term policy worth 10\u201312x your income \u2014 it's dramatically cheaper than whole life, covers your mortgage and children's dependency years, and you invest the premium difference separately."
+        "description": "Get a 20-year term policy worth 10\u201312x your income."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Whole Life for Permanence)",
-        "description": "If you've maxed your 401k and Roth IRA and have estate planning needs, a whole life policy provides lifetime coverage, tax-sheltered cash value growth, and a tool for wealth transfer."
+        "description": "Whole life for estate planning and tax-sheltered wealth building."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Whole Life for Special Circumstances)",
-        "description": "Whole life is justified if you have a special-needs dependent requiring lifetime financial support, where a permanent guaranteed death benefit outweighs the premium cost."
+        "description": "Whole life for special-needs dependents requiring lifetime support."
       }
     ],
     "edges": [
@@ -177,28 +186,28 @@
         "target": "c9"
       },
       {
-        "source": "sq1",
-        "target": "c10"
-      },
-      {
         "source": "sq2",
-        "target": "c5"
-      },
-      {
-        "source": "sq2",
-        "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
         "target": "c4"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
       },
       {
         "source": "c1",
@@ -221,16 +230,44 @@
         "target": "a1"
       },
       {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
         "source": "c6",
         "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
       },
       {
         "source": "c7",
         "target": "a1"
       },
       {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
         "source": "c8",
         "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
       },
       {
         "source": "c9",
@@ -239,42 +276,6 @@
       {
         "source": "c10",
         "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
       }
     ]
   }

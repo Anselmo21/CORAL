@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Bootcamp Default): Do a coding bootcamp \u2014 at 29 with a career to build, the 6\u201312 month path to employment vastly outweighs a 4-year degree's opportunity cost for most software development roles outside top-tier companies.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2334,
-    "output_tokens": 1955,
-    "llm_calls": 2,
+    "prompt_tokens": 1569,
+    "output_tokens": 1983,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "Should I get a CS degree or do a coding bootcamp to switch into software development at 29?",
-        "description": "Trade-offs between time to employment, cost, long-term earnings, and suitability for top-tier companies."
+        "description": "Switching into software development at 29"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the key factors to consider when choosing between a CS degree and a coding bootcamp?",
-        "description": "Time to employment, cost, long-term earnings, and suitability for top-tier companies."
+        "label": "What is the most efficient path to employment in software development?",
+        "description": "Efficient path to employment"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How do the costs and benefits of a CS degree compare to those of a coding bootcamp?",
-        "description": "Costs and benefits of each option."
+        "label": "What are the long-term implications of each option for my career?",
+        "description": "Long-term implications"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the long-term career implications of each option?",
-        "description": "Long-term career implications of each option."
+        "label": "What are the key factors to consider when choosing between a CS degree and a coding bootcamp?",
+        "description": "Key factors to consider"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "time to first employment",
-        "description": "Time to employment after completing education."
+        "description": "Time to first employment"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "total cost including opportunity cost",
-        "description": "Cost of education, including opportunity cost."
+        "description": "Total cost including opportunity cost"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "long-term earnings trajectory",
-        "description": "Long-term career earnings potential."
+        "description": "Long-term earnings trajectory"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "suitability for FAANG/top-tier companies",
-        "description": "Suitability for top-tier companies."
+        "description": "Suitability for FAANG/top-tier companies"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "depth of computer science fundamentals",
-        "description": "Depth of computer science knowledge."
+        "description": "Depth of computer science fundamentals"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "age and career timeline considerations",
-        "description": "Career timeline and age considerations."
+        "description": "Age and career timeline considerations"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "current employer reputation signals",
-        "description": "Employer reputation and signals."
+        "description": "Current employer reputation signals"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "self-directed learning ability",
-        "description": "Ability to learn independently."
+        "description": "Self-directed learning ability"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "networking and career support quality",
-        "description": "Quality of career support and networking opportunities."
+        "description": "Networking and career support quality"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "flexibility to work while learning",
-        "description": "Flexibility to work while learning."
+        "description": "Flexibility to work while learning"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Bootcamp Default",
-        "description": "Do a coding bootcamp \u2014 at 29 with a career to build, the 6\u201312 month path to employment vastly outweighs a 4-year degree's opportunity cost for most software development roles outside top-tier companies."
+        "label": "Answer A (Bootcamp Default): Do a coding bootcamp \u2014 at 29 with a career to build, the 6\u201312 month path to employment vastly outweighs a 4-year degree's opportunity cost for most software development roles outside top-tier companies.",
+        "description": "Bootcamp default"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "CS Degree for Long-Term",
-        "description": "Get a CS degree if your goal is to work at top-tier tech companies or move into machine learning, systems engineering, or other roles where foundational depth is genuinely required."
+        "label": "Answer B (CS Degree for Long-Term): Get a CS degree if your goal is to work at top-tier tech companies or move into machine learning, systems engineering, or other roles where foundational depth is genuinely required.",
+        "description": "CS degree for long-term"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Self-Taught with Portfolio",
-        "description": "Skip both and self-teach using free resources while building a strong GitHub portfolio \u2014 it takes longer but costs nothing and many employers care more about demonstrable skills than credentials."
+        "label": "Answer C (Self-Taught with Portfolio): Skip both and self-teach using free resources while building a strong GitHub portfolio \u2014 it takes longer but costs nothing and many employers care more about demonstrable skills than credentials.",
+        "description": "Self-taught with portfolio"
       }
     ],
     "edges": [
@@ -162,6 +162,14 @@
         "target": "sq1"
       },
       {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
         "source": "sq1",
         "target": "c1"
       },
@@ -174,68 +182,32 @@
         "target": "c3"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c4"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c5"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c6"
       },
       {
-        "source": "sq1",
+        "source": "sq3",
         "target": "c7"
       },
       {
-        "source": "sq1",
+        "source": "sq3",
         "target": "c8"
       },
       {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
-      },
-      {
-        "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c1"
-      },
-      {
-        "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
-        "target": "c5"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
-      },
-      {
         "source": "sq3",
         "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -247,7 +219,7 @@
       },
       {
         "source": "c3",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c4",
@@ -259,6 +231,46 @@
       },
       {
         "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
         "target": "a1"
       },
       {
@@ -267,30 +279,15 @@
       },
       {
         "source": "c8",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c10",
         "target": "a1"
-      },
-      {
-        "source": "a1",
-        "target": "a2",
-        "label": "R1"
-      },
-      {
-        "source": "a2",
-        "target": "a3",
-        "label": "R2"
-      },
-      {
-        "source": "a3",
-        "target": "a1",
-        "label": "R3"
       }
     ]
   }

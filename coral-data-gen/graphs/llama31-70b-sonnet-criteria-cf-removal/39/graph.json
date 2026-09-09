@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer C (Hybrid Approach): Double-major in a liberal arts field and a vocational or technical discipline \u2014 you develop the critical thinking of the humanities alongside marketable technical skills, capturing both career flexibility and early employment leverage.",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2284,
-    "output_tokens": 1954,
-    "llm_calls": 2,
+    "prompt_tokens": 1540,
+    "output_tokens": 1762,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,127 +40,109 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Is a liberal arts degree worth it, or should I do something more vocational with better job prospects?",
-        "description": ""
+        "label": "Is a liberal arts degree worth it, or should I do something more vocational with better job prospects?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Career Prospects",
-        "description": ""
+        "label": "Career Prospects"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Long-term Value",
-        "description": ""
+        "label": "Skill Development"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Personal Development",
-        "description": ""
+        "label": "Long-term Value"
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "Financial Considerations",
-        "description": ""
+        "label": "Personal Considerations"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "early career earnings potential",
-        "description": ""
+        "label": "early career earnings potential"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "long-term career adaptability",
-        "description": ""
+        "label": "long-term career adaptability"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "specific job market demand for credential",
-        "description": ""
+        "label": "specific job market demand for credential"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "development of communication and critical thinking",
-        "description": ""
+        "label": "development of communication and critical thinking"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "passion and intellectual engagement",
-        "description": ""
+        "label": "passion and intellectual engagement"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "risk of automation of vocational skills",
-        "description": ""
+        "label": "risk of automation of vocational skills"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "graduate school pathway availability",
-        "description": ""
+        "label": "graduate school pathway availability"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "debt relative to earning potential",
-        "description": ""
+        "label": "debt relative to earning potential"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "management and leadership development",
-        "description": ""
+        "label": "management and leadership development"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "clarity of post-graduation employment path",
-        "description": ""
+        "label": "clarity of post-graduation employment path"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Vocational for Early Career Default",
-        "description": "Choose a vocational or professional degree for clearer job market entry and significantly higher early-career earnings \u2014 the liberal arts earnings convergence in mid-career is real but requires weathering a difficult first 5\u201310 years."
+        "label": "Vocational for Early Career Default"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Liberal Arts for Long-Term Flexibility",
-        "description": "A liberal arts degree is worth it if you're genuinely uncertain about your career direction \u2014 the adaptability, communication skills, and intellectual breadth it develops become more valuable as careers advance and automate."
+        "label": "Liberal Arts for Long-Term Flexibility"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Hybrid Approach",
-        "description": "Double-major in a liberal arts field and a vocational or technical discipline \u2014 you develop the critical thinking of the humanities alongside marketable technical skills, capturing both career flexibility and early employment leverage."
+        "label": "Hybrid Approach"
       }
     ],
     "edges": [
@@ -194,11 +176,7 @@
       },
       {
         "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c6"
+        "target": "c4"
       },
       {
         "source": "sq2",
@@ -206,14 +184,18 @@
       },
       {
         "source": "sq3",
-        "target": "c4"
+        "target": "c2"
       },
       {
         "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq4",
         "target": "c5"
       },
       {
-        "source": "sq3",
+        "source": "sq4",
         "target": "c7"
       },
       {
@@ -279,10 +261,6 @@
       {
         "source": "c8",
         "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
       },
       {
         "source": "c9",

@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (Therapy First Default): Start with CBT or another evidence-based therapy \u2014 for mild to moderate symptoms it's as effective as medication without side effects, builds lasting coping skills, and is recommended as first-line by most clinical guidelines.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1520,
+    "output_tokens": 2386,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,98 +41,105 @@
         "layer": "1",
         "type": "question",
         "label": "Should I try therapy or antidepressants first?",
-        "description": "I've been feeling low and anxious for a few months."
+        "description": "I've been feeling low and anxious for a few months. Should I try therapy or antidepressants first?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Effectiveness and appropriateness based on symptom severity and evidence",
-        "description": "Which treatment is more appropriate and effective given symptom severity and clinical evidence?"
+        "label": "What is the severity of the symptoms and how does that affect treatment choice?",
+        "description": "Assessing symptom severity to determine whether therapy, medication, or both are appropriate."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Trade-offs between speed, side effects, and long-term skill development",
-        "description": "What are the trade-offs in terms of speed of relief, side effects, and long-term outcomes?"
+        "label": "How important is the speed of symptom relief in this decision?",
+        "description": "Evaluating the urgency of symptom relief and how quickly each treatment can act."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Practical and personal factors like access, cost, and treatment preference",
-        "description": "What are the practical and personal factors like cost, access, and preference influencing the choice?"
+        "label": "What are the long-term benefits and risks of each treatment?",
+        "description": "Considering the long-term outcomes, including skill development and dependency risks."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the personal and clinical preferences and access factors?",
+        "description": "Evaluating access, cost, and personal or clinical preference for non-pharmacological vs. pharmacological approaches."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "severity of symptoms",
-        "description": "How severe are the symptoms of depression and anxiety?"
+        "description": "The level of depression and anxiety symptoms, which influences treatment recommendations."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "speed of symptom relief",
-        "description": "How quickly does the treatment provide symptom relief?"
+        "description": "How quickly the treatment begins to alleviate symptoms."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "long-term coping skill development",
-        "description": "Does the treatment help build lasting coping skills?"
+        "description": "Whether the treatment helps build skills for managing symptoms over time."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "side effect tolerance",
-        "description": "How well are side effects tolerated?"
+        "description": "The presence and severity of side effects associated with the treatment."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "avoidance of medication dependency",
-        "description": "Does the treatment avoid long-term medication dependency?"
+        "description": "Whether the treatment avoids the need for ongoing medication use."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "clinical evidence base",
-        "description": "What is the strength of clinical evidence for the treatment?"
+        "description": "The strength of clinical evidence supporting the treatment as first-line."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "access and cost of therapy",
-        "description": "Is therapy accessible and affordable?"
+        "description": "The availability and affordability of therapy as a treatment option."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "preference for non-pharmacological treatment",
-        "description": "Is there a preference for non-drug treatment?"
+        "description": "Personal or clinical preference for non-drug-based treatment approaches."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "prior treatment history",
-        "description": "Has therapy or medication been tried before?"
+        "description": "Whether the individual has previously tried and failed with a treatment."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "comorbid anxiety management",
-        "description": "How well does the treatment address comorbid anxiety?"
+        "description": "Whether the treatment effectively addresses both depression and anxiety."
       },
       {
         "id": "a1",
@@ -161,56 +177,52 @@
         "target": "sq3"
       },
       {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
         "source": "sq1",
         "target": "c1"
-      },
-      {
-        "source": "sq1",
-        "target": "c6"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
       },
       {
         "source": "sq2",
         "target": "c2"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c3"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c4"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c5"
       },
       {
-        "source": "sq3",
+        "source": "sq4",
+        "target": "c6"
+      },
+      {
+        "source": "sq4",
         "target": "c7"
       },
       {
-        "source": "sq3",
+        "source": "sq4",
         "target": "c8"
       },
       {
-        "source": "sq3",
+        "source": "sq4",
         "target": "c9"
       },
       {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
         "source": "c1",
         "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
       },
       {
         "source": "c2",
@@ -221,84 +233,40 @@
         "target": "a2"
       },
       {
-        "source": "c3",
-        "target": "a1"
+        "source": "c2",
+        "target": "a3"
       },
       {
         "source": "c3",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c4",
         "target": "a1"
       },
       {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
         "source": "c5",
         "target": "a1"
       },
       {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
         "source": "c6",
         "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
       },
       {
         "source": "c7",
         "target": "a1"
       },
       {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
         "source": "c8",
         "target": "a1"
       },
       {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
         "source": "c9",
         "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
       },
       {
         "source": "c10",
         "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
       },
       {
         "source": "c10",

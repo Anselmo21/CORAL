@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Keychron TKL Linear Default): Get a Keychron Q or V series in TKL with linear switches \u2014 the combination of hot-swap customizability, quiet linears for shared spaces, and compact layout is the best all-around choice for daily programming.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2357,
-    "output_tokens": 2822,
-    "llm_calls": 2,
+    "prompt_tokens": 1582,
+    "output_tokens": 2056,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,7 +47,7 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What type of switch is best for long typing sessions?",
+        "label": "What switch type is best for long typing sessions?",
         "description": "A sub-question about switch type for long typing sessions."
       },
       {
@@ -61,106 +61,106 @@
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "How important is noise level for office or shared space?",
+        "label": "What noise level is suitable for office or shared space?",
         "description": "A sub-question about noise level for office or shared space."
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "What level of customizability and programmability is required?",
-        "description": "A sub-question about customizability and programmability."
+        "label": "What customizability and programmability features are essential?",
+        "description": "A sub-question about customizability and programmability features."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "switch type for long typing sessions",
-        "description": "The type of switch best suited for long typing sessions."
+        "description": "A criterion for switch type in long typing sessions."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "form factor for desk space efficiency",
-        "description": "The form factor that is most efficient for desk space."
+        "description": "A criterion for form factor in desk space efficiency."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "noise level for office or shared space",
-        "description": "The noise level that is suitable for office or shared space."
+        "description": "A criterion for noise level in office or shared space."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "customizability and programmability",
-        "description": "The level of customizability and programmability required."
+        "description": "A criterion for customizability and programmability features."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "build quality and longevity",
-        "description": "The build quality and longevity of the keyboard."
+        "description": "A criterion for build quality and longevity."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "hot-swap socket for switch experimentation",
-        "description": "The presence of a hot-swap socket for switch experimentation."
+        "description": "A criterion for hot-swap socket in switch experimentation."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "wired vs wireless connectivity",
-        "description": "The type of connectivity (wired or wireless)."
+        "description": "A criterion for wired vs wireless connectivity."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "price and value",
-        "description": "The price and value of the keyboard."
+        "description": "A criterion for price and value."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "compatibility with macOS and Windows",
-        "description": "The compatibility of the keyboard with macOS and Windows."
+        "description": "A criterion for compatibility with macOS and Windows."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "arrow key and navigation key retention",
-        "description": "The retention of arrow keys and navigation keys."
+        "description": "A criterion for arrow key and navigation key retention."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (Keychron TKL Linear Default)",
-        "description": "Get a Keychron Q or V series in TKL with linear switches."
+        "label": "Get a Keychron Q or V series in TKL with linear switches",
+        "description": "A recommended answer for daily programming."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (Tactile for Touch Typing)",
-        "description": "Choose tactile switches (Boba U4 or Topre) on a 65% if you're a touch typist."
+        "label": "Choose tactile switches (Boba U4 or Topre) on a 65% if you're a touch typist",
+        "description": "A recommended answer for touch typists."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (65% for Desk Efficiency)",
-        "description": "Prioritize a 65% form factor above switch choice."
+        "label": "Prioritize a 65% form factor above switch choice",
+        "description": "A recommended answer for desk efficiency."
       }
     ],
     "edges": [
@@ -242,39 +242,39 @@
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c3",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c4",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c5",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c6",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c7",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c10",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c1",
@@ -314,138 +314,6 @@
       },
       {
         "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "a1",
-        "target": "c1"
-      },
-      {
-        "source": "a1",
-        "target": "c2"
-      },
-      {
-        "source": "a1",
-        "target": "c3"
-      },
-      {
-        "source": "a1",
-        "target": "c4"
-      },
-      {
-        "source": "a1",
-        "target": "c5"
-      },
-      {
-        "source": "a1",
-        "target": "c6"
-      },
-      {
-        "source": "a1",
-        "target": "c7"
-      },
-      {
-        "source": "a1",
-        "target": "c8"
-      },
-      {
-        "source": "a1",
-        "target": "c9"
-      },
-      {
-        "source": "a1",
-        "target": "c10"
-      },
-      {
-        "source": "a2",
-        "target": "c1"
-      },
-      {
-        "source": "a2",
-        "target": "c2"
-      },
-      {
-        "source": "a2",
-        "target": "c3"
-      },
-      {
-        "source": "a2",
-        "target": "c4"
-      },
-      {
-        "source": "a2",
-        "target": "c5"
-      },
-      {
-        "source": "a2",
-        "target": "c6"
-      },
-      {
-        "source": "a2",
-        "target": "c7"
-      },
-      {
-        "source": "a2",
-        "target": "c8"
-      },
-      {
-        "source": "a2",
-        "target": "c9"
-      },
-      {
-        "source": "a2",
-        "target": "c10"
-      },
-      {
-        "source": "a3",
-        "target": "c1"
-      },
-      {
-        "source": "a3",
-        "target": "c2"
-      },
-      {
-        "source": "a3",
-        "target": "c3"
-      },
-      {
-        "source": "a3",
-        "target": "c4"
-      },
-      {
-        "source": "a3",
-        "target": "c5"
-      },
-      {
-        "source": "a3",
-        "target": "c6"
-      },
-      {
-        "source": "a3",
-        "target": "c7"
-      },
-      {
-        "source": "a3",
-        "target": "c8"
-      },
-      {
-        "source": "a3",
-        "target": "c9"
-      },
-      {
-        "source": "a3",
-        "target": "c10"
-      },
-      {
-        "source": "a1",
-        "target": "a2"
-      },
-      {
-        "source": "a1",
-        "target": "a3"
-      },
-      {
-        "source": "a2",
         "target": "a3"
       }
     ]

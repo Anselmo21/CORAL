@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Whole-family lifestyle change with the choosemyplate.gov plate method (half fruits/veggies, quarter lean protein, quarter whole grains) plus aerobic exercise",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2429,
+    "output_tokens": 2479,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,112 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "best way to lose weight for a child",
-        "description": "What is the best way to lose weight for a child?"
+        "description": "What is the best way for a child to lose weight?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Trustworthy guidance sources",
-        "description": "Which sources are most trustworthy for child weight loss?"
+        "label": "initial approach",
+        "description": "What is the most effective and safe initial approach for a child to lose weight?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Appropriate perspective",
-        "description": "Which perspective is most relevant for determining the best approach?"
+        "label": "monitoring and support",
+        "description": "What is the best way to monitor and support a child's weight loss progress?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "next step if home efforts fail",
+        "description": "What is the appropriate next step if home efforts fail?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "1. trustworthiness: AAP / pediatric clinical guideline",
-        "description": "Filter for American Academy of Pediatrics or pediatric clinical guidelines."
+        "label": "trustworthiness: AAP / pediatric clinical guideline",
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "2. trustworthiness: peer-reviewed pediatric nutrition journal",
-        "description": "Filter for peer-reviewed pediatric nutrition journals."
+        "label": "trustworthiness: peer-reviewed pediatric nutrition journal",
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "3. trustworthiness: registered dietitian guidance",
-        "description": "Filter for guidance from registered dietitians."
+        "label": "trustworthiness: registered dietitian guidance",
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "4. trustworthiness: choosemyplate.gov",
-        "description": "Filter for guidance from choosemyplate.gov."
+        "label": "trustworthiness: choosemyplate.gov",
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "5. trustworthiness: commercial weight loss program",
-        "description": "Filter for commercial weight loss programs."
+        "label": "trustworthiness: commercial weight loss program",
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "6. trustworthiness: parent / mom blog",
-        "description": "Filter for parent or mom blog sources."
+        "label": "trustworthiness: parent / mom blog",
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "7. perspective: parent of mildly overweight child",
-        "description": "Filter for the perspective of a parent of a mildly overweight child."
+        "label": "perspective: parent of mildly overweight child",
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "8. perspective: parent of obese child with health risk",
-        "description": "Filter for the perspective of a parent of an obese child with health risks."
+        "label": "perspective: parent of obese child with health risk",
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "9. perspective: pediatrician-led case",
-        "description": "Filter for pediatrician-led case perspectives."
+        "label": "perspective: pediatrician-led case",
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "10. perspective: family-engaged household",
-        "description": "Filter for family-engaged household perspectives."
+        "label": "perspective: family-engaged household",
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Whole-family lifestyle change with the choosemyplate.gov plate method (half fruits/veggies, quarter lean protein, quarter whole grains) plus aerobic exercise",
-        "description": "A1: Whole-family lifestyle change with plate method and aerobic exercise."
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Pediatrician-led monitoring with attainable goals (1-4 lb/month), a food diary, and biweekly weight checks",
-        "description": "A2: Pediatrician-led monitoring with small goals and food diary."
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A formal multi-disciplinary weight loss program for children whose home efforts fail",
-        "description": "A3: Formal multi-disciplinary program for children whose home efforts fail."
+        "description": ""
       }
     ],
     "edges": [
@@ -148,6 +164,10 @@
       {
         "source": "q",
         "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
       },
       {
         "source": "sq1",
@@ -174,6 +194,46 @@
         "target": "c6"
       },
       {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
         "source": "sq2",
         "target": "c7"
       },
@@ -187,6 +247,46 @@
       },
       {
         "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
         "target": "c10"
       },
       {
@@ -230,11 +330,19 @@
         "target": "a1"
       },
       {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
         "source": "c2",
         "target": "a2"
       },
       {
         "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
         "target": "a2"
       },
       {
@@ -258,6 +366,10 @@
         "target": "a2"
       },
       {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
         "source": "c2",
         "target": "a3"
       },
@@ -266,11 +378,19 @@
         "target": "a3"
       },
       {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
         "source": "c5",
         "target": "a3"
       },
       {
         "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
         "target": "a3"
       },
       {

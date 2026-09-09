@@ -21,10 +21,21 @@
   ],
   "baseline_answer": "Bupropion (Wellbutrin)",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 3,
+  "usage": {
+    "prompt_tokens": 13691,
+    "output_tokens": 7353,
+    "llm_calls": 3,
+    "finish_reasons": [
+      "length",
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +43,119 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best antidepressant for energy and mood?",
-        "description": "Primary question regarding optimal treatment for depression symptoms of low energy and mood."
+        "description": "Main question regarding optimal treatment for energy and mood."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Pharmacological Efficacy & Energy",
-        "description": "Focuses on clinical guidelines and pharmacology to identify the most activating drug."
+        "label": "Pharmacologic efficacy for energy, anxiety, and weight",
+        "description": "Evaluates drugs based on clinical guidelines, pharmacology, and specific symptom needs."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Safety, Comorbidities & Specific Populations",
-        "description": "Focuses on weight, pregnancy, and avoiding drugs."
+        "label": "Integrative and lifestyle approaches",
+        "description": "Evaluates non-pharmacologic options and wellness perspectives."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Lifestyle & Patient Experience",
-        "description": "Focuses on non-clinical sources and patient forums."
+        "label": "Special populations and patient experiences",
+        "description": "Evaluates constraints like pregnancy and anecdotal patient forums."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: psychiatry clinical practice guideline",
-        "description": "Prioritizes official clinical guidelines."
+        "description": "Prioritizes sources from clinical guidelines."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed pharmacology literature",
-        "description": "Prioritizes scientific literature on drug mechanisms."
+        "description": "Prioritizes peer-reviewed pharmacological studies."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: integrative medicine source",
-        "description": "Prioritizes sources combining conventional and alternative medicine."
+        "description": "Prioritizes integrative and holistic medicine sources."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: patient mental-health forum",
-        "description": "Prioritizes anecdotal evidence and patient discussions."
+        "description": "Prioritizes anecdotal evidence from patient forums."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: wellness / lifestyle publication",
-        "description": "Prioritizes general health and lifestyle advice."
+        "description": "Prioritizes wellness and lifestyle publications."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: low-energy depression patient",
-        "description": "Prioritizes solutions specifically addressing fatigue."
+        "description": "Prioritizes the needs of patients with low energy."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: anxious patient",
-        "description": "Prioritizes treatments effective for comorbid anxiety."
+        "description": "Prioritizes the needs of patients with anxiety."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: patient avoiding pharmacologic intervention",
-        "description": "Prioritizes non-drug treatments."
+        "description": "Prioritizes patients who wish to avoid drugs."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: patient with comorbid weight concerns",
-        "description": "Prioritizes treatments that do not cause weight gain."
+        "description": "Prioritizes patients concerned about weight gain."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: pregnant patient",
-        "description": "Prioritizes safety during pregnancy."
+        "description": "Prioritizes safety for pregnant patients."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Bupropion (Wellbutrin)",
-        "description": "A specific antidepressant known for increasing energy and causing weight loss."
+        "description": "Atypical antidepressant known for energy and weight loss."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "SSRI (Prozac, Zoloft)",
-        "description": "Standard first-line antidepressants effective for mood and anxiety."
+        "description": "Standard antidepressants for mood and anxiety."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Natural supplements (St John's Wort, SAM-e, Omega-3, B vitamins) + exercise",
-        "description": "Non-pharmacological approaches using supplements and physical activity."
+        "description": "Non-pharmacologic interventions for mood and energy."
       }
     ],
     "edges": [
@@ -177,64 +188,48 @@
         "target": "c7"
       },
       {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
         "source": "sq2",
         "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
       },
       {
         "source": "sq2",
         "target": "c8"
       },
       {
-        "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
         "source": "sq3",
         "target": "c4"
       },
       {
-        "source": "sq3",
-        "target": "c5"
-      },
-      {
         "source": "c1",
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
         "source": "c2",
         "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
       },
       {
         "source": "c3",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c4",
         "target": "a1"
       },
       {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
         "source": "c5",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c6",
@@ -242,11 +237,11 @@
       },
       {
         "source": "c7",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c8",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c9",
@@ -257,7 +252,51 @@
         "target": "a1"
       },
       {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
         "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
         "target": "a3"
       }
     ]

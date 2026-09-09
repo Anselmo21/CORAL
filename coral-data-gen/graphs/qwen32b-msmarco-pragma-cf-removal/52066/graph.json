@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "OMBRELLE for kids by L'Oreal",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1793,
+    "output_tokens": 2662,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -38,113 +47,98 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Which geographic region is the source relevant to?",
-        "description": "Determine if the information pertains to Canada or the USA."
+        "label": "Which sunscreens are explicitly labeled as peanut/nut-free in Canada?",
+        "description": "Focuses on geographic and manufacturer documentation."
       },
       {
         "id": "sq2",
-        "layer": "2",
         "type": "subq",
-        "label": "Which sources are most trustworthy in evaluating allergy safety?",
-        "description": "Identify reliable sources such as manufacturer documentation, forums, and databases."
+        "label": "Which sunscreens are considered safe for children with peanut allergies based on trusted databases or guidelines?",
+        "description": "Focuses on databases and guidelines for safety."
       },
       {
         "id": "sq3",
-        "layer": "2",
         "type": "subq",
-        "label": "Which perspectives should be considered in evaluating the product?",
-        "description": "Consider the child's allergy severity, parent experience with eczema, and verification practices."
+        "label": "What do parents of children with peanut allergies recommend or report as safe?",
+        "description": "Focuses on parent experiences and forums."
       },
       {
-        "id": "1",
-        "layer": "3",
+        "id": "c1",
         "type": "directive",
         "label": "geographic: Canada",
-        "description": "Focus on sources relevant to Canada."
+        "description": "Sources from Canada."
       },
       {
-        "id": "2",
-        "layer": "3",
+        "id": "c2",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Focus on sources relevant to the USA."
+        "description": "Sources from the USA."
       },
       {
-        "id": "3",
-        "layer": "3",
+        "id": "c3",
         "type": "directive",
         "label": "trustworthiness: allergy / peanut-free product database",
-        "description": "Use databases that track peanut-free products."
+        "description": "Sources from allergy/peanut-free product databases."
       },
       {
-        "id": "4",
-        "layer": "3",
+        "id": "c4",
         "type": "directive",
         "label": "trustworthiness: EWG cosmetics database",
-        "description": "Use the Environmental Working Guide (EWG) for safety ratings."
+        "description": "Sources from the Environmental Working Group cosmetics database."
       },
       {
-        "id": "5",
-        "layer": "3",
+        "id": "c5",
         "type": "directive",
         "label": "trustworthiness: pediatric dermatology guideline",
-        "description": "Use guidelines from pediatric dermatology experts."
+        "description": "Sources from pediatric dermatology guidelines."
       },
       {
-        "id": "6",
-        "layer": "3",
+        "id": "c6",
         "type": "directive",
         "label": "trustworthiness: parent peanut-allergy forum",
-        "description": "Use insights from forums for parents of children with peanut allergies."
+        "description": "Sources from parent forums discussing peanut allergies."
       },
       {
-        "id": "7",
-        "layer": "3",
+        "id": "c7",
         "type": "directive",
         "label": "trustworthiness: manufacturer product documentation",
-        "description": "Use product labels and manufacturer claims."
+        "description": "Sources from manufacturer product labels and documentation."
       },
       {
-        "id": "8",
-        "layer": "3",
+        "id": "c8",
         "type": "directive",
         "label": "perspective: child with severe peanut allergy",
-        "description": "Consider the needs of a child with a severe peanut allergy."
+        "description": "Sources from the perspective of a child with severe peanut allergy."
       },
       {
-        "id": "9",
-        "layer": "3",
+        "id": "c9",
         "type": "directive",
         "label": "perspective: parent of eczema-prone child",
-        "description": "Consider the needs of a parent with a child who has eczema."
+        "description": "Sources from the perspective of a parent of a child with eczema."
       },
       {
-        "id": "10",
-        "layer": "3",
+        "id": "c10",
         "type": "directive",
         "label": "perspective: parent doing direct manufacturer verification",
-        "description": "Consider the verification practices of parents who contact manufacturers directly."
+        "description": "Sources from the perspective of a parent verifying product safety directly with manufacturers."
       },
       {
         "id": "a1",
-        "layer": "4",
         "type": "answer",
         "label": "OMBRELLE for kids by L'Oreal",
-        "description": "A sunscreen explicitly labeled peanut-free in Canada."
+        "description": "A sunscreen explicitly labeled as peanut/nut-free in Canada."
       },
       {
         "id": "a2",
-        "layer": "4",
         "type": "answer",
         "label": "A mineral (zinc oxide / titanium dioxide) children's sunscreen",
-        "description": "A broad category of sunscreens that are generally considered safe for allergies."
+        "description": "A general category of sunscreens considered safe for sensitive skin and allergies."
       },
       {
         "id": "a3",
-        "layer": "4",
         "type": "answer",
         "label": "A chemical sunscreen verified peanut-free by direct manufacturer-contact workflow",
-        "description": "A sunscreen verified through direct communication with the manufacturer."
+        "description": "A sunscreen verified as peanut-free through direct manufacturer contact."
       }
     ],
     "edges": [
@@ -162,146 +156,126 @@
       },
       {
         "source": "sq1",
-        "target": "1"
+        "target": "c1"
       },
       {
         "source": "sq1",
-        "target": "2"
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
       },
       {
         "source": "sq2",
-        "target": "3"
+        "target": "c3"
       },
       {
         "source": "sq2",
-        "target": "4"
+        "target": "c4"
       },
       {
         "source": "sq2",
-        "target": "5"
+        "target": "c5"
       },
       {
         "source": "sq2",
-        "target": "6"
-      },
-      {
-        "source": "sq2",
-        "target": "7"
+        "target": "c9"
       },
       {
         "source": "sq3",
-        "target": "8"
+        "target": "c6"
       },
       {
         "source": "sq3",
-        "target": "9"
+        "target": "c8"
       },
       {
-        "source": "sq3",
-        "target": "10"
-      },
-      {
-        "source": "1",
+        "source": "c1",
         "target": "a1"
       },
       {
-        "source": "2",
+        "source": "c2",
         "target": "a1"
       },
       {
-        "source": "3",
+        "source": "c3",
         "target": "a1"
       },
       {
-        "source": "4",
+        "source": "c4",
         "target": "a1"
       },
       {
-        "source": "5",
+        "source": "c5",
         "target": "a1"
       },
       {
-        "source": "6",
+        "source": "c6",
         "target": "a1"
       },
       {
-        "source": "7",
+        "source": "c7",
         "target": "a1"
       },
       {
-        "source": "8",
+        "source": "c8",
         "target": "a1"
       },
       {
-        "source": "9",
+        "source": "c9",
         "target": "a1"
       },
       {
-        "source": "10",
+        "source": "c10",
         "target": "a1"
       },
       {
-        "source": "1",
+        "source": "c3",
         "target": "a2"
       },
       {
-        "source": "2",
+        "source": "c4",
         "target": "a2"
       },
       {
-        "source": "3",
+        "source": "c5",
         "target": "a2"
       },
       {
-        "source": "4",
+        "source": "c6",
         "target": "a2"
       },
       {
-        "source": "5",
+        "source": "c8",
         "target": "a2"
       },
       {
-        "source": "6",
+        "source": "c9",
         "target": "a2"
       },
       {
-        "source": "8",
+        "source": "c10",
         "target": "a2"
       },
       {
-        "source": "9",
-        "target": "a2"
-      },
-      {
-        "source": "10",
-        "target": "a2"
-      },
-      {
-        "source": "2",
+        "source": "c6",
         "target": "a3"
       },
       {
-        "source": "3",
+        "source": "c8",
         "target": "a3"
       },
       {
-        "source": "4",
+        "source": "c9",
         "target": "a3"
       },
       {
-        "source": "5",
-        "target": "a3"
-      },
-      {
-        "source": "6",
-        "target": "a3"
-      },
-      {
-        "source": "8",
-        "target": "a3"
-      },
-      {
-        "source": "9",
+        "source": "c10",
         "target": "a3"
       }
     ]

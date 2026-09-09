@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (CS50 Default): Start with Harvard's CS50 on edX \u2014 it's free, teaches real computer science fundamentals rather than just syntax, and produces learners who can problem-solve across any language or technology.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2269,
-    "output_tokens": 1932,
-    "llm_calls": 2,
+    "prompt_tokens": 1533,
+    "output_tokens": 2005,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,28 +47,28 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Beginner-friendly learning experience",
+        "label": "Key characteristics of an ideal online learning platform for beginners",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Structured curriculum and real-world application",
+        "label": "Depth and breadth of the curriculum",
         "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Community support and instructor quality",
+        "label": "Essential skills and outcomes for a learner",
         "description": ""
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "Primary goals of the learner",
+        "label": "Role of instructors and content updates",
         "description": ""
       },
       {
@@ -198,23 +198,19 @@
       },
       {
         "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
         "target": "c6"
       },
       {
         "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
         "target": "c8"
       },
       {
         "source": "sq3",
-        "target": "c9"
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
       },
       {
         "source": "sq3",
@@ -222,11 +218,7 @@
       },
       {
         "source": "sq4",
-        "target": "c1"
-      },
-      {
-        "source": "sq4",
-        "target": "c4"
+        "target": "c9"
       },
       {
         "source": "c1",
@@ -235,6 +227,10 @@
       {
         "source": "c1",
         "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
       },
       {
         "source": "c2",
@@ -270,10 +266,6 @@
       },
       {
         "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
         "target": "a3"
       },
       {
@@ -289,23 +281,7 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c1",
+        "source": "c10",
         "target": "a3"
       }
     ]

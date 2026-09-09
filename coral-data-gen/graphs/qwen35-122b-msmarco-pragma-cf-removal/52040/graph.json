@@ -21,10 +21,20 @@
   ],
   "baseline_answer": "Murad Redness Therapy 3-part system",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 2,
+  "usage": {
+    "prompt_tokens": 7743,
+    "output_tokens": 5966,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +42,119 @@
         "layer": "1",
         "type": "question",
         "label": "best skin care for redness",
-        "description": "Determining the optimal skincare solution for facial redness."
+        "description": "The main question asking for the best skin care solution for redness."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Comprehensive clinical regimen",
-        "description": "What is the best approach when prioritizing clinical evidence and treating rosacea as a complex condition?"
+        "label": "What is the most clinically validated comprehensive system?",
+        "description": "Focuses on trustworthiness and structured routines for rosacea."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Targeted ingredient solution",
-        "description": "What is the best approach when prioritizing specific active ingredients and consumer efficacy reports?"
+        "label": "Which specific ingredient or product offers direct redness reduction?",
+        "description": "Focuses on mechanism, active ingredients, and consumer reviews."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Minimalist DIY approach",
-        "description": "What is the best approach when prioritizing budget, simplicity, and self-curated routines?"
+        "label": "How to manage redness with a simple, non-branded approach?",
+        "description": "Focuses on DIY, minimalism, and budget constraints."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: dermatology clinical practice",
-        "description": "Prioritize sources from clinical dermatology practices."
+        "description": "Prioritizes sources from clinical dermatology practice."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed cosmetic dermatology journal",
-        "description": "Prioritize sources from peer-reviewed journals."
+        "description": "Prioritizes peer-reviewed journal articles."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: beauty industry publication",
-        "description": "Prioritize sources from beauty industry magazines."
+        "description": "Prioritizes established beauty industry publications."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: consumer skincare reviews",
-        "description": "Prioritize user reviews and testimonials."
+        "description": "Prioritizes user reviews and consumer feedback."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: DIY / minimalist skincare blog",
-        "description": "Prioritize DIY and minimalist lifestyle blogs."
+        "description": "Prioritizes DIY and minimalist blog sources."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: rosacea sufferer",
-        "description": "Prioritize the viewpoint of someone actively suffering from rosacea."
+        "description": "Prioritizes the perspective of someone living with rosacea."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: sensitive-skin minimalist",
-        "description": "Prioritize the viewpoint of someone seeking minimal product use."
+        "description": "Prioritizes the minimalist approach to sensitive skin."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: mechanism / ingredient-focused user",
-        "description": "Prioritize the viewpoint of someone focused on specific active ingredients."
+        "description": "Prioritizes users focused on specific active ingredients."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: aging skin with redness",
-        "description": "Prioritize the viewpoint of someone with aging skin experiencing redness."
+        "description": "Prioritizes the perspective of aging skin with redness."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: budget-conscious consumer",
-        "description": "Prioritize the viewpoint of someone with budget constraints."
+        "description": "Prioritizes budget-friendly solutions."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Murad Redness Therapy 3-part system",
-        "description": "A branded, three-step system designed for sensitive skin and redness."
+        "description": "A specific branded clinical system."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A caffeine-based anti-redness serum",
-        "description": "A single-product solution using caffeine to constrict blood vessels."
+        "description": "A single product focused on vasoconstriction."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Build-your-own minimalist routine",
-        "description": "A custom routine assembled from simple, low-cost, or natural products."
+        "description": "A DIY approach focusing on eliminating irritants."
       }
     ],
     "edges": [
@@ -189,16 +199,16 @@
         "target": "c8"
       },
       {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
         "source": "sq3",
         "target": "c5"
       },
       {
         "source": "sq3",
         "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
       },
       {
         "source": "c1",
@@ -217,8 +227,16 @@
         "target": "a1"
       },
       {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
         "source": "c5",
         "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
       },
       {
         "source": "c6",
@@ -229,32 +247,12 @@
         "target": "a1"
       },
       {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
         "source": "c8",
         "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
       },
       {
         "source": "c8",
@@ -262,23 +260,19 @@
       },
       {
         "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
         "target": "a2"
       },
       {
         "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
       },
       {
         "source": "c10",

@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "North lakeshore (Riva del Garda, Torbole)",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 4494,
-    "output_tokens": 1861,
-    "llm_calls": 2,
+    "prompt_tokens": 2641,
+    "output_tokens": 1621,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,119 +41,112 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best area to stay in Lake Garda, Italy?",
-        "description": "Best area to stay in Lake Garda, Italy"
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Best geographical location to stay in Lake Garda",
-        "description": "Best geographical location to stay in Lake Garda"
+        "label": "What is the best area to stay in Lake Garda, considering geographical location?",
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Most trustworthy sources for recommending places to stay in Lake Garda",
-        "description": "Most trustworthy sources for recommending places to stay in Lake Garda"
-      },
-      {
-        "id": "sq3",
-        "layer": "2",
-        "type": "subq",
-        "label": "Best options for travelers with specific preferences",
-        "description": "Best options for travelers with specific preferences"
+        "label": "What is the best area to stay in Lake Garda, considering trustworthiness and perspective?",
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "geographic: northern Italy / Trentino",
-        "description": "geographic: northern Italy / Trentino"
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Veneto (eastern shore)",
-        "description": "geographic: Veneto (eastern shore)"
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Lombardy (southern shore)",
-        "description": "geographic: Lombardy (southern shore)"
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Lonely Planet Italy guide",
-        "description": "trustworthiness: Lonely Planet Italy guide"
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Italian national tourism board",
-        "description": "trustworthiness: Italian national tourism board"
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: TripAdvisor traveler reviews",
-        "description": "trustworthiness: TripAdvisor traveler reviews"
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Walks of Italy blog",
-        "description": "trustworthiness: Walks of Italy blog"
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: family with children",
-        "description": "perspective: family with children"
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: windsurfer / watersports traveler",
-        "description": "perspective: windsurfer / watersports traveler"
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: off-the-beaten-path traveler",
-        "description": "perspective: off-the-beaten-path traveler"
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "North lakeshore (Riva del Garda, Torbole)",
-        "description": "North lakeshore (Riva del Garda, Torbole)"
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "South lakeshore (Sirmione, Peschiera, Desenzano)",
-        "description": "South lakeshore (Sirmione, Peschiera, Desenzano)"
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "East lakeshore (Bardolino, Garda, Torri del Benaco)",
-        "description": "East lakeshore (Bardolino, Garda, Torri del Benaco)"
+        "description": ""
       }
     ],
     "edges": [
@@ -164,10 +157,6 @@
       {
         "source": "q",
         "target": "sq2"
-      },
-      {
-        "source": "q",
-        "target": "sq3"
       },
       {
         "source": "sq1",
@@ -198,15 +187,15 @@
         "target": "c7"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c8"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c9"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c10"
       },
       {
@@ -215,11 +204,11 @@
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c3",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c4",
@@ -231,7 +220,7 @@
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c7",
@@ -243,11 +232,11 @@
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c10",
-        "target": "a2"
+        "target": "a3"
       }
     ]
   }

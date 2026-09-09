@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Keep the blister intact, dry, and protected with a loose bandage",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1810,
+    "output_tokens": 2226,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,56 +41,56 @@
         "layer": "1",
         "type": "question",
         "label": "best remedy to dry out feet blisters",
-        "description": "What is the best home remedy to dry out foot blisters?"
+        "description": "What is the best remedy to dry out foot blisters?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "application method",
-        "description": "How is the treatment applied?"
+        "label": "Application and ease",
+        "description": "What is the method of application and how easy is it to perform?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "ingredient type",
-        "description": "What ingredients are used in the treatment?"
+        "label": "Ingredients and healing",
+        "description": "What ingredients are used and how effective are they in drying and healing?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "healing speed",
-        "description": "How quickly does the treatment dry or heal the blister?"
+        "label": "Skin and duration",
+        "description": "How does the treatment affect the skin and how long does it take?"
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "risks and side effects",
-        "description": "What are the risks or side effects of the treatment?"
+        "label": "User and availability",
+        "description": "What are the user's preferences and how accessible is the treatment?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "application method",
-        "description": "How the treatment is applied (e.g., swab, bandage, needle)."
+        "description": "How the treatment is applied."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "ingredient type",
-        "description": "The ingredients used in the treatment (e.g., vinegar, oil, aloe)."
+        "description": "What ingredients are used in the treatment."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "healing speed",
-        "description": "How fast the blister dries and heals."
+        "description": "How quickly the treatment promotes healing."
       },
       {
         "id": "c4",
@@ -95,63 +104,63 @@
         "layer": "3",
         "type": "concept",
         "label": "skin sensitivity",
-        "description": "How likely the treatment is to cause irritation or allergic reactions."
+        "description": "How the treatment affects skin sensitivity."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "moisture control",
-        "description": "How well the treatment manages moisture to prevent blister worsening."
+        "description": "How the treatment affects moisture levels."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "ease of use",
-        "description": "How easy the treatment is to apply and maintain."
+        "description": "How easy the treatment is to perform."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "availability",
-        "description": "How accessible the treatment is (e.g., over-the-counter, common household)."
+        "description": "How accessible the treatment is."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "user preference",
-        "description": "Personal or cultural preferences influencing treatment choice."
+        "description": "What the user prefers in a treatment."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "treatment duration",
-        "description": "How long the treatment must be applied or maintained."
+        "description": "How long the treatment takes to work."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Keep the blister intact, dry, and protected with a loose bandage",
-        "description": "The best method to dry blisters is to leave them intact and use a loose bandage."
+        "description": "Non-invasive method to protect and dry the blister."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Apple cider vinegar swab",
-        "description": "Apply apple cider vinegar to the blister to help dry it."
+        "description": "Apply apple cider vinegar to the blister to dry it."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Carefully drain a large painful blister with a sterilized needle",
-        "description": "Drain large blisters using a sterilized needle to relieve pain and dry them."
+        "description": "Puncture the blister to drain it and reduce pain."
       }
     ],
     "edges": [
@@ -176,39 +185,39 @@
         "target": "c1"
       },
       {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
         "source": "sq2",
         "target": "c2"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c3"
       },
       {
-        "source": "sq4",
+        "source": "sq2",
         "target": "c4"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c5"
-      },
-      {
-        "source": "sq4",
-        "target": "c7"
       },
       {
         "source": "sq3",
         "target": "c6"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c10"
       },
       {
-        "source": "sq2",
+        "source": "sq4",
         "target": "c8"
       },
       {
-        "source": "sq2",
+        "source": "sq4",
         "target": "c9"
       },
       {
@@ -217,10 +226,6 @@
       },
       {
         "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
         "target": "a3"
       },
       {
@@ -238,18 +243,22 @@
       {
         "source": "c3",
         "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
       },
       {
         "source": "c4",
         "target": "a1"
       },
       {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
         "source": "c5",
         "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
       },
       {
         "source": "c6",
@@ -258,16 +267,16 @@
       {
         "source": "c6",
         "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
       },
       {
         "source": "c7",
         "target": "a1"
       },
       {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
         "source": "c8",
         "target": "a1"
       },
@@ -288,20 +297,12 @@
         "target": "a2"
       },
       {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
         "source": "c10",
         "target": "a1"
       },
       {
         "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
       }
     ]
   }

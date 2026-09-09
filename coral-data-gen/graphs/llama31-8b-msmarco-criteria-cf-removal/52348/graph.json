@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Gradual taper using progressive decaf mixing over 4-5 weeks",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2841,
-    "output_tokens": 2263,
-    "llm_calls": 2,
+    "prompt_tokens": 1804,
+    "output_tokens": 1739,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,126 +41,126 @@
         "layer": "1",
         "type": "question",
         "label": "best way to quit caffeine",
-        "description": "effective strategies for quitting caffeine"
+        "description": "The best approach to quitting caffeine."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "most effective method to quit caffeine",
-        "description": "favors gradual tapering, cold turkey, and alternatives"
+        "label": "Quitting methods",
+        "description": "Methods for quitting caffeine."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "prepare for and manage withdrawal symptoms",
-        "description": "favors gradual tapering, scheduled cold turkey, and pain relievers"
+        "label": "Support and motivation",
+        "description": "Factors that support and motivate quitting caffeine."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "support systems for quitting caffeine",
-        "description": "favors alternatives and quit-buddy/accountability partner"
+        "label": "Preparation and planning",
+        "description": "Factors that involve preparation and planning for quitting caffeine."
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "maintain motivation and avoid relapse",
-        "description": "favors alternatives and quit-buddy/accountability partner"
+        "label": "Alternative solutions",
+        "description": "Alternative solutions for quitting caffeine."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "withdrawal symptoms",
-        "description": "reduction of withdrawal symptoms"
+        "description": "The physical symptoms of quitting caffeine."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "detox method",
-        "description": "effective detox method"
+        "description": "The approach to quitting caffeine."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "support systems",
-        "description": "external support for quitting"
+        "description": "The people and resources that support quitting caffeine."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "caffeine alternatives",
-        "description": "substituting alternatives"
+        "description": "Alternative sources of caffeine."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "gradual reduction",
-        "description": "gradual tapering"
+        "description": "A gradual decrease in caffeine intake."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "commitment level",
-        "description": "required commitment"
+        "label": "cold turkey",
+        "description": "Quitting caffeine abruptly."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "time frame",
-        "description": "specific time frame"
+        "label": "commitment level",
+        "description": "The level of commitment to quitting caffeine."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "health considerations",
-        "description": "healthy approach"
+        "label": "time frame",
+        "description": "The amount of time it takes to quit caffeine."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "personal motivation",
-        "description": "structured plan"
+        "label": "health considerations",
+        "description": "The health risks of quitting caffeine."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "environmental triggers",
-        "description": "reduction of environmental triggers"
+        "description": "The environmental factors that trigger caffeine cravings."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Substitute with caffeine-free alternatives plus a quit-buddy / accountability partner",
-        "description": "effective strategy for quitting caffeine"
+        "label": "Gradual taper using progressive decaf mixing over 4-5 weeks",
+        "description": "A gradual decrease in caffeine intake over 4-5 weeks."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Gradual taper using progressive decaf mixing over 4-5 weeks",
-        "description": "effective strategy for quitting caffeine"
+        "label": "Cold turkey scheduled on a weekend / holiday with pain relievers on hand",
+        "description": "Quitting caffeine abruptly on a weekend or holiday with pain relievers on hand."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Cold turkey scheduled on a weekend / holiday with pain relievers on hand",
-        "description": "effective strategy for quitting caffeine"
+        "label": "Substitute with caffeine-free alternatives plus a quit-buddy / accountability partner",
+        "description": "Substituting caffeine-free alternatives and having a quit-buddy or accountability partner."
       }
     ],
     "edges": [
@@ -182,19 +182,7 @@
       },
       {
         "source": "sq1",
-        "target": "c1"
-      },
-      {
-        "source": "sq1",
         "target": "c2"
-      },
-      {
-        "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "sq1",
-        "target": "c4"
       },
       {
         "source": "sq1",
@@ -205,71 +193,63 @@
         "target": "c6"
       },
       {
-        "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
-      },
-      {
         "source": "sq2",
-        "target": "c1"
-      },
-      {
-        "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
         "target": "c3"
       },
       {
-        "source": "sq3",
-        "target": "c4"
+        "source": "sq2",
+        "target": "c7"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c10"
       },
       {
-        "source": "sq4",
-        "target": "c4"
+        "source": "sq3",
+        "target": "c8"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c9"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c10"
+      },
+      {
+        "source": "sq4",
+        "target": "c4"
       },
       {
         "source": "c1",
         "target": "a2"
       },
       {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
         "source": "c2",
         "target": "a2"
       },
       {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
         "source": "c3",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
         "target": "a1"
       },
       {
@@ -278,11 +258,15 @@
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c7",
-        "target": "a2"
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
       },
       {
         "source": "c8",
@@ -290,50 +274,10 @@
       },
       {
         "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
         "target": "a2"
       },
       {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
         "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
         "target": "a3"
       }
     ]

@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Combo Convection Oven Default): Get a compact countertop convection oven with air fry mode \u2014 it replaces your toaster, air fryer, and secondary oven in one footprint, which is the right trade-off for small kitchens even if peak air frying performance is slightly lower.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2375,
-    "output_tokens": 1905,
-    "llm_calls": 2,
+    "prompt_tokens": 1592,
+    "output_tokens": 1913,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,120 +40,109 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should I get an air fryer or a countertop convection oven for a small kitchen?",
-        "description": "Trade-offs between peak air frying performance, versatility, energy efficiency, and footprint size"
+        "label": "Should I get an air fryer or a countertop convection oven for a small kitchen?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "How important is peak air frying performance and crispiness?",
-        "description": "Air frying performance and crispiness"
+        "label": "What is the best option for peak air frying performance?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the primary use case for the appliance (air frying, multiple tasks, or daily efficiency)?",
-        "description": "Primary use case"
+        "label": "Which option is more versatile for multiple cooking tasks?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the constraints on kitchen space and household size?",
-        "description": "Kitchen space and household size"
+        "label": "What is the most energy-efficient option for daily use?"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which option is best suited for small kitchens with limited space?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "countertop footprint size",
-        "description": "Space taken up by the appliance"
+        "label": "countertop footprint size"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "versatility for multiple cooking tasks",
-        "description": "Number of tasks the appliance can perform"
+        "label": "versatility for multiple cooking tasks"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "peak air frying performance",
-        "description": "Air frying performance at its best"
+        "label": "peak air frying performance"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "baking and roasting capability",
-        "description": "Baking and roasting performance"
+        "label": "baking and roasting capability"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "energy efficiency for daily use",
-        "description": "Energy usage for daily tasks"
+        "label": "energy efficiency for daily use"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "speed of cooking small batches",
-        "description": "Cooking speed for small batches"
+        "label": "speed of cooking small batches"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "ability to replace full-size oven",
-        "description": "Ability to replace a full-size oven"
+        "label": "ability to replace full-size oven"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "price and value",
-        "description": "Price and value of the appliance"
+        "label": "price and value"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "household size and cooking volume",
-        "description": "Household size and cooking volume"
+        "label": "household size and cooking volume"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "ease of cleaning",
-        "description": "Ease of cleaning the appliance"
+        "label": "ease of cleaning"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Get a compact countertop convection oven with air fry mode",
-        "description": "Combo unit for small kitchens"
+        "label": "Get a compact countertop convection oven with air fry mode"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Buy a dedicated air fryer if air frying is your primary use case",
-        "description": "Dedicated air fryer for best results"
+        "label": "Buy a dedicated air fryer if air frying is your primary use case"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Choose a dedicated air fryer for energy efficiency and speed",
-        "description": "Air fryer for efficiency"
+        "label": "Choose a dedicated air fryer for energy efficiency and speed"
       }
     ],
     "edges": [
@@ -170,28 +159,24 @@
         "target": "sq3"
       },
       {
-        "source": "sq1",
-        "target": "c3"
+        "source": "q",
+        "target": "sq4"
       },
       {
         "source": "sq1",
-        "target": "c10"
+        "target": "c3"
       },
       {
         "source": "sq2",
         "target": "c2"
       },
       {
-        "source": "sq2",
-        "target": "c8"
+        "source": "sq3",
+        "target": "c5"
       },
       {
-        "source": "sq3",
+        "source": "sq4",
         "target": "c1"
-      },
-      {
-        "source": "sq3",
-        "target": "c9"
       },
       {
         "source": "c1",
@@ -203,10 +188,78 @@
       },
       {
         "source": "c3",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
         "target": "a1"
       },
       {
@@ -222,10 +275,6 @@
         "target": "a1"
       },
       {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
         "source": "c9",
         "target": "a1"
       },
@@ -234,31 +283,19 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
         "source": "c2",
         "target": "a3"
       },
       {
-        "source": "c5",
+        "source": "c4",
         "target": "a3"
       },
       {
-        "source": "c6",
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
         "target": "a3"
       },
       {

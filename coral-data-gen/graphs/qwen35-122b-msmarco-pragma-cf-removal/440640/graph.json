@@ -21,10 +21,20 @@
   ],
   "baseline_answer": "Education Week Quality Counts state grade ranking \u2014 academic-policy-depth ranking used by researchers and policymakers",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 2,
+  "usage": {
+    "prompt_tokens": 8128,
+    "output_tokens": 5823,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +42,119 @@
         "layer": "1",
         "type": "question",
         "label": "list of best to worst states for education",
-        "description": "The main question requiring a ranked list of states."
+        "description": "Ranking US states by education quality"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Consumer/General View",
-        "description": "Rankings suitable for general readers and broad multi-metric blends."
+        "label": "Which ranking is most authoritative for academic policy and research depth?",
+        "description": "Focuses on expert analysis and policy metrics"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Child Welfare Focus",
-        "description": "Rankings prioritizing outcomes for children and families."
+        "label": "Which ranking best reflects child welfare and family outcomes?",
+        "description": "Focuses on metrics relevant to parents and children"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Academic/Policy Depth",
-        "description": "Rankings based on rigorous academic indicators and policy analysis."
+        "label": "Which ranking offers the broadest multi-metric view for general consumers?",
+        "description": "Focuses on accessible, broad data for the public"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Education Week / Quality Counts",
-        "description": "Prioritizes the Education Week report."
+        "description": "Prioritizes the academic policy report"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Annie E. Casey Foundation",
-        "description": "Prioritizes the Annie E. Casey Foundation report."
+        "description": "Prioritizes the child welfare foundation report"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: WalletHub research",
-        "description": "Prioritizes WalletHub research."
+        "description": "Prioritizes the consumer research report"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: ALEC (American Legislative Exchange Council) report",
-        "description": "Prioritizes ALEC reports."
+        "description": "Prioritizes the policy advocacy report"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed education policy journal",
-        "description": "Prioritizes peer-reviewed academic journals."
+        "description": "Prioritizes academic rigor"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: parent of K-12 child",
-        "description": "Prioritizes the perspective of parents."
+        "description": "Prioritizes family-centric outcomes"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: education policy researcher",
-        "description": "Prioritizes the perspective of policy researchers."
+        "description": "Prioritizes expert analysis"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: consumer / general reader",
-        "description": "Prioritizes the perspective of general consumers."
+        "description": "Prioritizes general public accessibility"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: equity-focused critic",
-        "description": "Prioritizes the perspective of equity-focused critics."
+        "description": "Prioritizes equity and social justice metrics"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: school-choice advocate",
-        "description": "Prioritizes the perspective of school-choice advocates."
+        "description": "Prioritizes school choice and competition metrics"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "WalletHub composite ranking (MA, NJ, VT, NH, CT top; Nevada, Louisiana, Mississippi bottom) \u2014 broad multi-metric blend for general readership",
-        "description": "The WalletHub ranking."
+        "description": "Consumer-focused ranking"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Annie E. Casey Foundation Kids Count ranking \u2014 child-welfare-focused metric weighting outcomes for kids",
-        "description": "The Annie E. Casey ranking."
+        "description": "Child-welfare-focused ranking"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Education Week Quality Counts state grade ranking \u2014 academic-policy-depth ranking used by researchers and policymakers",
-        "description": "The Education Week ranking (Baseline A*)."
+        "description": "Academic policy-focused ranking (Baseline A*)"
       }
     ],
     "edges": [
@@ -162,15 +172,23 @@
       },
       {
         "source": "sq1",
-        "target": "c3"
+        "target": "c1"
       },
       {
         "source": "sq1",
-        "target": "c8"
+        "target": "c4"
       },
       {
         "source": "sq1",
-        "target": "c10"
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
       },
       {
         "source": "sq2",
@@ -186,19 +204,15 @@
       },
       {
         "source": "sq3",
-        "target": "c1"
+        "target": "c3"
       },
       {
         "source": "sq3",
-        "target": "c4"
+        "target": "c8"
       },
       {
         "source": "sq3",
-        "target": "c5"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -206,31 +220,11 @@
       },
       {
         "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
         "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
       },
       {
         "source": "c3",
         "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
       },
       {
         "source": "c4",
@@ -242,15 +236,7 @@
       },
       {
         "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
         "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
       },
       {
         "source": "c7",
@@ -261,28 +247,12 @@
         "target": "a1"
       },
       {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
         "source": "c9",
         "target": "a3"
       },
       {
         "source": "c10",
         "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
       }
     ]
   }

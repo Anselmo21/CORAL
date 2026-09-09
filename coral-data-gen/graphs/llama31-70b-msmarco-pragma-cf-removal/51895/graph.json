@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Omega-3 fatty acids (fish oil / flax oil)",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3302,
-    "output_tokens": 1868,
-    "llm_calls": 2,
+    "prompt_tokens": 2045,
+    "output_tokens": 1660,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,97 +40,113 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Which natural remedy best eases teenage depression?"
+        "label": "Which natural remedy best eases teenage depression?",
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the most trustworthy sources for information on natural remedies for teenage depression?"
+        "label": "What are the most trustworthy sources for information on natural remedies for teenage depression?",
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the perspectives of teenagers with different experiences with depression?"
+        "label": "What are the perspectives of teenagers with different experiences of depression on natural remedies?",
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: pediatric psychiatry clinical guideline"
+        "label": "trustworthiness: pediatric psychiatry clinical guideline",
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: peer-reviewed adolescent mental health journal"
+        "label": "trustworthiness: peer-reviewed adolescent mental health journal",
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: naturopath / integrative practitioner"
+        "label": "trustworthiness: naturopath / integrative practitioner",
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: WebMD / consumer health platform"
+        "label": "trustworthiness: WebMD / consumer health platform",
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: teen-focused mental health resource"
+        "label": "trustworthiness: teen-focused mental health resource",
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: teen with mild depression"
+        "label": "perspective: teen with mild depression",
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: teen with moderate / persistent depression"
+        "label": "perspective: teen with moderate / persistent depression",
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: teen on prescription SSRI (interaction concerns)"
+        "label": "perspective: teen on prescription SSRI (interaction concerns)",
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: teen with insomnia / sleep issues"
+        "label": "perspective: teen with insomnia / sleep issues",
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: supplement-averse teen / parent"
+        "label": "perspective: supplement-averse teen / parent",
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "St. John's Wort herbal supplement"
+        "label": "St. John's Wort herbal supplement",
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Omega-3 fatty acids (fish oil / flax oil)"
+        "label": "Omega-3 fatty acids (fish oil / flax oil)",
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Lifestyle intervention: exercise, yoga, diet, sleep hygiene"
+        "label": "Lifestyle intervention: exercise, yoga, diet, sleep hygiene",
+        "description": ""
       }
     ],
     "edges": [
@@ -184,15 +200,7 @@
       },
       {
         "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c1",
         "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a1"
       },
       {
         "source": "c2",
@@ -203,24 +211,12 @@
         "target": "a2"
       },
       {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
         "source": "c4",
         "target": "a2"
       },
       {
         "source": "c5",
         "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
       },
       {
         "source": "c6",
@@ -228,15 +224,7 @@
       },
       {
         "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
         "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
       },
       {
         "source": "c8",
@@ -248,11 +236,55 @@
       },
       {
         "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
         "target": "a1"
       },
       {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
         "source": "c10",
-        "target": "a2"
+        "target": "a3"
       }
     ]
   }

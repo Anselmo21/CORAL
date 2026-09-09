@@ -21,102 +21,111 @@
   ],
   "baseline_answer": "Answer A (MacBook Default): Get a MacBook with Apple Silicon \u2014 the Unix environment, Docker performance, battery life, and build quality make it the dominant choice for web and mobile developers, and Apple Silicon's performance-per-watt is unmatched.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1533,
+    "output_tokens": 2456,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should I get a MacBook or stick with Windows for software development?",
-        "description": "Which operating system is better for software development based on key criteria like performance, compatibility, and platform requirements?"
+        "label": "Should I get a MacBook or stick with Windows?",
+        "description": "A decision for software developers weighing macOS and Windows for development."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Development environment and Unix/Linux compatibility",
-        "description": "How does the development environment and Unix/Linux compatibility affect the choice between macOS and Windows?"
+        "label": "Development environment compatibility and performance",
+        "description": "Which OS offers better Unix compatibility, Docker performance, and battery life?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Performance, battery life, and cost considerations",
-        "description": "What about performance, battery life, and cost when choosing between macOS and Windows for development?"
+        "label": "Cost and hardware flexibility",
+        "description": "Which OS offers better performance per dollar and hardware choice?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Target platform and ecosystem compatibility",
-        "description": "How does the target platform (e.g., iOS, .NET) influence the choice of OS?"
+        "label": "Target platform and ecosystem alignment",
+        "description": "Which OS aligns better with your target platform and team standards?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "Unix-based environment for server compatibility",
-        "description": "Whether the OS provides a Unix-like environment for Linux server compatibility."
+        "description": "Unix compatibility for easier Linux server workflows."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "raw performance per dollar",
-        "description": "How much performance you get for the cost of the machine."
+        "description": "How much performance you get for your money."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "battery life during development work",
-        "description": "Battery endurance during typical development tasks."
+        "description": "Battery endurance during long coding sessions."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "target platform (iOS/macOS development requirement)",
-        "description": "Whether the target application platform is macOS or iOS."
+        "description": "Whether you're targeting Apple platforms."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "Docker and container performance",
-        "description": "Performance of Docker and containerization tools on the OS."
+        "description": "Performance of Docker and container tools."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "hardware choice and upgrade flexibility",
-        "description": "How much hardware variety and upgrade flexibility is available."
+        "description": "How much hardware choice and upgradeability you get."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "team and employer standard compatibility",
-        "description": "Whether the team or employer uses a specific OS as a standard."
+        "description": "Whether the OS aligns with team or employer standards."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "Windows Subsystem for Linux viability",
-        "description": "Whether WSL2 provides a viable Linux development environment on Windows."
+        "description": "How viable WSL2 is for Linux development on Windows."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "long-term resale and longevity",
-        "description": "How well the machine retains value over time."
+        "description": "How well the device holds up and resells over time."
       },
       {
         "id": "c10",
@@ -129,22 +138,22 @@
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (MacBook Default): Get a MacBook with Apple Silicon \u2014 the Unix environment, Docker performance, battery life, and build quality make it the dominant choice for web and mobile developers, and Apple Silicon's performance-per-watt is unmatched.",
-        "description": "MacBook with Apple Silicon is the top choice for most developers due to Unix compatibility, battery life, and performance."
+        "label": "Answer A (MacBook Default)",
+        "description": "Get a MacBook with Apple Silicon \u2014 the Unix environment, Docker performance, battery life, and build quality make it the dominant choice for web and mobile developers, and Apple Silicon's performance-per-watt is unmatched."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (Windows for Value and Flexibility): Choose a high-spec Windows laptop if you want more performance per dollar and hardware flexibility \u2014 WSL2 has made Windows a fully viable development environment for most workflows.",
-        "description": "Windows is a better choice for value, hardware flexibility, and WSL2 viability."
+        "label": "Answer B (Windows for Value and Flexibility)",
+        "description": "Choose a high-spec Windows laptop if you want more performance per dollar and hardware flexibility \u2014 WSL2 has made Windows a fully viable development environment for most workflows."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (Windows Required for Platform): Stick with Windows if you're in a .NET, game development, or enterprise environment where Windows is the target platform \u2014 macOS creates friction where the stack is Windows-native.",
-        "description": "Windows is better if your target platform is Windows-native (e.g., .NET, enterprise)."
+        "label": "Answer C (Windows Required for Platform)",
+        "description": "Stick with Windows if you're in a .NET, game development, or enterprise environment where Windows is the target platform \u2014 macOS creates friction where the stack is Windows-native."
       }
     ],
     "edges": [
@@ -166,7 +175,7 @@
       },
       {
         "source": "sq1",
-        "target": "c4"
+        "target": "c3"
       },
       {
         "source": "sq1",
@@ -174,7 +183,7 @@
       },
       {
         "source": "sq1",
-        "target": "c8"
+        "target": "c9"
       },
       {
         "source": "sq2",
@@ -182,15 +191,7 @@
       },
       {
         "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
         "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c9"
       },
       {
         "source": "sq2",
@@ -205,12 +206,20 @@
         "target": "c7"
       },
       {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
         "source": "c1",
         "target": "a1"
       },
       {
         "source": "c2",
         "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
       },
       {
         "source": "c3",
@@ -221,6 +230,10 @@
         "target": "a1"
       },
       {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
         "source": "c5",
         "target": "a1"
       },
@@ -229,12 +242,28 @@
         "target": "a1"
       },
       {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
         "source": "c7",
         "target": "a1"
       },
       {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
         "source": "c8",
         "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
       },
       {
         "source": "c9",
@@ -245,27 +274,11 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
         "source": "c10",
         "target": "a2"
       },
       {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
+        "source": "c10",
         "target": "a3"
       }
     ]

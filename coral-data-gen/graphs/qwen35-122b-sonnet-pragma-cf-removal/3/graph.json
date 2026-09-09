@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (Rent and Invest Default): Rent in Toronto and invest your down payment capital in a diversified portfolio \u2014 the city's extreme price-to-rent ratio means buying only makes financial sense with a 7+ year horizon and strong income stability.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 2,
+  "temperature": 0.0,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1667,
+    "output_tokens": 2474,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,125 +41,118 @@
         "layer": "1",
         "type": "question",
         "label": "Should I buy or rent in Toronto?",
-        "description": "Decision on housing tenure in Toronto given financial capacity."
+        "description": "Decision on housing strategy in Toronto given equal affordability."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Temporal Context",
-        "description": "Which timeframes and market trends are relevant?"
+        "label": "What does the financial data say about buying vs. renting?",
+        "description": "Evaluates price-to-rent ratios, interest rates, and investment returns."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Geographic Scope",
-        "description": "Should we focus on Toronto or broader Canada?"
+        "label": "How does career stability and time horizon affect the decision?",
+        "description": "Assesses the impact of job mobility and length of stay on housing choice."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Career Profile",
-        "description": "What stability or mobility assumptions apply?"
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "Source Credibility",
-        "description": "Which authority types are most trusted?"
+        "label": "Which sources provide the most reliable and relevant context?",
+        "description": "Filters data by trustworthiness and geographic specificity."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Focus strictly on 2023 market data."
+        "description": "Prioritizes only the most recent market data."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Include recent interest rate hikes and price trends."
+        "description": "Includes data from the recent interest rate hike period."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2010\u20132022",
-        "description": "Include long-term historical equity data."
+        "description": "Includes long-term historical data on equity growth."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Toronto, Ontario",
-        "description": "Focus on local Toronto specific conditions."
+        "description": "Focuses strictly on the Toronto market."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Canada broadly",
-        "description": "Include national housing trends."
+        "description": "Includes national housing trends."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Long-term resident with stable career",
-        "description": "Assume high stability and long horizon."
+        "description": "Assumes the user plans to stay 10+ years with a stable job."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Mobile professional or career-changer",
-        "description": "Assume potential relocation and need for liquidity."
+        "description": "Assumes the user may need to relocate soon."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Government housing authority",
-        "description": "Prioritize official government data."
+        "description": "Prioritizes official government data (CMHC)."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Community peer advice",
-        "description": "Prioritize crowd-sourced or forum opinions."
+        "description": "Prioritizes crowd-sourced opinions (Reddit)."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Financial journalism",
-        "description": "Prioritize professional financial analysis."
+        "description": "Prioritizes professional financial analysis (MoneySense, Globe)."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (Rent and Invest Default)",
+        "label": "Rent and Invest Default",
         "description": "Rent in Toronto and invest your down payment capital in a diversified portfolio \u2014 the city's extreme price-to-rent ratio means buying only makes financial sense with a 7+ year horizon and strong income stability."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (Buy for Long-Term Equity)",
+        "label": "Buy for Long-Term Equity",
         "description": "Buy if you have a stable career, plan to stay 10+ years, and value forced savings \u2014 Toronto homeowners with long horizons have historically built substantial wealth despite high entry costs."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (Rent for Flexibility)",
+        "label": "Rent for Flexibility",
         "description": "Rent indefinitely if your career or personal situation may require relocation \u2014 the optionality and liquidity of renting outweighs real estate upside when mobility has value."
       }
     ],
@@ -168,10 +170,6 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
-      },
-      {
         "source": "sq1",
         "target": "c1"
       },
@@ -184,32 +182,32 @@
         "target": "c3"
       },
       {
-        "source": "sq2",
+        "source": "sq1",
         "target": "c4"
       },
       {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
         "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
         "target": "c5"
       },
       {
         "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq4",
         "target": "c8"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c9"
-      },
-      {
-        "source": "sq4",
-        "target": "c10"
       },
       {
         "source": "c1",
@@ -224,60 +222,24 @@
         "target": "a1"
       },
       {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
         "source": "c4",
         "target": "a1"
       },
       {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
         "source": "c5",
         "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
       },
       {
         "source": "c6",
         "target": "a1"
       },
       {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
         "source": "c7",
         "target": "a1"
       },
       {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
         "source": "c8",
         "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
       },
       {
         "source": "c9",
@@ -288,8 +250,60 @@
         "target": "a1"
       },
       {
-        "source": "c10",
+        "source": "c3",
         "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",

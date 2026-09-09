@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Active Multimodal Default): Pursue a combination of supervised strength training, pain neuroscience education, and CBT \u2014 this multimodal active approach has the strongest long-term evidence for non-specific chronic back pain.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2448,
-    "output_tokens": 1911,
-    "llm_calls": 2,
+    "prompt_tokens": 1634,
+    "output_tokens": 1947,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,120 +40,120 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Best approach for chronic lower back pain",
-        "description": "What's the best approach to finally get relief from chronic lower back pain?"
+        "label": "What's the best approach to finally get relief from chronic lower back pain?",
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Effective approach for non-specific chronic low back pain",
-        "description": "What is the most effective approach for non-specific chronic low back pain?"
+        "label": "What are the most effective treatments for chronic lower back pain?",
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Importance of structural investigation",
-        "description": "How important is structural investigation in determining the best course of treatment?"
+        "label": "How important is it to investigate structural causes of back pain?",
+        "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Role of mind-body approaches",
-        "description": "What role do mind-body approaches play in managing chronic back pain?"
+        "label": "What role do psychological factors play in chronic back pain?",
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Only consider sources from 2023"
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Only consider sources from 2021 to 2023"
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Only consider sources from the USA"
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient with non-specific chronic pain",
-        "description": "Only consider sources from the perspective of patients with non-specific chronic pain"
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient with confirmed structural pathology",
-        "description": "Only consider sources from the perspective of patients with confirmed structural pathology"
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Pain management specialist or physiotherapist",
-        "description": "Only consider sources from the perspective of pain management specialists or physiotherapists"
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Peer-reviewed clinical research",
-        "description": "Only consider peer-reviewed clinical research sources"
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Medical institution guidance",
-        "description": "Only consider sources from medical institutions"
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer health information",
-        "description": "Only consider consumer health information sources"
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Patient community experience",
-        "description": "Only consider sources from patient communities"
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Active Multimodal Default",
-        "description": "Pursue a combination of supervised strength training, pain neuroscience education, and CBT"
+        "label": "Pursue a combination of supervised strength training, pain neuroscience education, and CBT \u2014 this multimodal active approach has the strongest long-term evidence for non-specific chronic back pain.",
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Structural Investigation First",
-        "description": "Get updated imaging and a specialist referral before committing to conservative management"
+        "label": "Get updated imaging and a specialist referral before committing to conservative management \u2014 if a structural cause (herniated disc, stenosis) is confirmed, targeted interventions or surgery may be warranted.",
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Mind-Body Focus",
-        "description": "Prioritize CBT and pain neuroscience education alongside gentle movement"
+        "label": "Prioritize CBT and pain neuroscience education alongside gentle movement \u2014 for chronic pain with central sensitization features, addressing psychological factors often produces more relief than physical interventions alone.",
+        "description": ""
       }
     ],
     "edges": [
@@ -187,6 +187,10 @@
       },
       {
         "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
         "target": "c7"
       },
       {
@@ -194,12 +198,48 @@
         "target": "c8"
       },
       {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
         "source": "sq2",
         "target": "c5"
       },
       {
         "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
         "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
       },
       {
         "source": "sq3",
@@ -207,11 +247,11 @@
       },
       {
         "source": "sq3",
-        "target": "c9"
+        "target": "c7"
       },
       {
         "source": "sq3",
-        "target": "c10"
+        "target": "c9"
       },
       {
         "source": "c1",
@@ -222,15 +262,39 @@
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
         "source": "c3",
         "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
       },
       {
         "source": "c4",
         "target": "a1"
       },
       {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
         "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
         "target": "a2"
       },
       {
@@ -250,35 +314,19 @@
         "target": "a1"
       },
       {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
         "source": "c9",
         "target": "a3"
       },
       {
         "source": "c10",
-        "target": "a3"
+        "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
+        "source": "c10",
         "target": "a3"
       }
     ]

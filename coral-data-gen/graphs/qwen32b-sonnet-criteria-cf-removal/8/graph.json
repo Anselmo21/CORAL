@@ -19,41 +19,50 @@
     "Answer B (Max 401k First): Max the 401k entirely before the IRA if you're a high earner seeking maximum pre-tax deductions \u2014 the tax benefit outweighs the fee disadvantage at high income levels.",
     "Answer C (IRA Only After Match): After capturing the match, skip the 401k entirely until the IRA is maxed \u2014 the investment flexibility and lower costs of a self-directed IRA deliver better long-term outcomes for most investors."
   ],
-  "baseline_answer": "Answer C (IRA Only After Match): After capturing the match, skip the 401k entirely until the IRA is maxed \u2014 the investment flexibility and lower costs of a self-directed IRA deliver better long-term outcomes for most investors.",
-  "baseline_index": 2,
+  "baseline_answer": "Answer A (Match Then IRA Default): Contribute just enough to get the 1% match, then direct all remaining retirement savings to a Roth or traditional IRA \u2014 better investment options and lower fees in the IRA outweigh the minimal 401k match beyond the free money.",
+  "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1568,
+    "output_tokens": 2704,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should I max out my 401k with only a 1% match before contributing elsewhere?",
-        "description": "Evaluating whether to prioritize 401k or IRA after a small employer match."
+        "label": "Should I still max out my 401k with a 1% employer match before contributing elsewhere?",
+        "description": "Evaluating whether to prioritize 401k contributions with a small employer match or shift to other retirement accounts."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Financial and investment advantages",
-        "description": "Which account provides better returns, lower fees, and more investment options?"
+        "label": "What are the financial incentives and penalties of the 401k match and its alternatives?",
+        "description": "Evaluates the value of the match, investment quality, fees, and tax treatment."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Tax and income considerations",
-        "description": "How do tax treatment and income levels affect the decision?"
+        "label": "What are the personal and structural factors that influence account choice?",
+        "description": "Evaluates income, flexibility, limits, and account management."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Simplicity and flexibility",
-        "description": "How do account management and withdrawal rules influence the choice?"
+        "label": "What are the long-term financial implications of account choice?",
+        "description": "Evaluates the value of pre-tax deductions and long-term growth."
       },
       {
         "id": "c1",
@@ -67,63 +76,63 @@
         "layer": "3",
         "type": "concept",
         "label": "investment option quality in 401k",
-        "description": "The variety and quality of investment options available in the 401k."
+        "description": "401k plans often have limited investment options."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "expense ratio minimization",
-        "description": "Lower expense ratios lead to higher net returns."
+        "description": "Lower expense ratios improve long-term returns."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "tax-advantaged space maximization",
-        "description": "Maximizing retirement accounts with tax benefits."
+        "description": "Maximizing tax-advantaged accounts increases retirement savings."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "Roth vs traditional tax treatment",
-        "description": "The tax implications of Roth vs traditional accounts."
+        "description": "Roth accounts offer tax-free growth, while traditional accounts offer tax-deferred growth."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "income level and Roth eligibility",
-        "description": "Higher income may affect Roth IRA eligibility and 401k strategy."
+        "description": "High earners may be ineligible for Roth IRA contributions."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "flexibility of IRA withdrawal rules",
-        "description": "IRAs often offer more flexibility in withdrawals compared to 401k."
+        "description": "IRAs offer more flexibility in withdrawal timing and amounts."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "401k contribution limits vs IRA limits",
-        "description": "401k allows higher annual contributions than IRAs."
+        "description": "401k limits are higher than IRA limits."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "simplicity of single account management",
-        "description": "Having all retirement savings in one account simplifies management."
+        "description": "Managing one account is simpler than managing multiple accounts."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "pre-tax deduction value",
-        "description": "The tax savings from pre-tax contributions."
+        "description": "Pre-tax contributions reduce taxable income."
       },
       {
         "id": "a1",
@@ -178,14 +187,6 @@
       },
       {
         "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq2",
         "target": "c5"
       },
       {
@@ -194,13 +195,21 @@
       },
       {
         "source": "sq2",
-        "target": "c10"
+        "target": "c7"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
         "target": "c9"
       },
       {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
         "source": "c1",
         "target": "a1"
       },
@@ -214,7 +223,7 @@
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c2",
@@ -222,7 +231,7 @@
       },
       {
         "source": "c3",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c3",
@@ -230,11 +239,11 @@
       },
       {
         "source": "c4",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c4",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c5",
@@ -245,16 +254,12 @@
         "target": "a2"
       },
       {
-        "source": "c5",
-        "target": "a3"
+        "source": "c6",
+        "target": "a1"
       },
       {
         "source": "c6",
         "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
       },
       {
         "source": "c7",
@@ -266,7 +271,7 @@
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c8",
@@ -278,19 +283,15 @@
       },
       {
         "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
         "target": "a3"
       },
       {
         "source": "c10",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c10",
-        "target": "a3"
+        "target": "a2"
       }
     ]
   }

@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "A typographer-grade font with tabular figures",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2373,
+    "output_tokens": 2257,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -38,113 +47,113 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "formatting for clarity and alignment",
-        "description": "What formatting features are most important for clarity and alignment in Excel?"
+        "label": "How well does the font support the display of numbers in Excel?",
+        "description": "Evaluates how well the font handles numeric data in Excel."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "style and appearance",
-        "description": "How does the font style and appearance affect professional use in Excel?"
+        "label": "How compatible is the font with Excel's formatting and styling features?",
+        "description": "Evaluates how well the font works with Excel's formatting tools."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "visual customization",
-        "description": "What visual customization options are important for Excel fonts?"
+        "label": "How professional and visually appropriate is the font for Excel reports?",
+        "description": "Evaluates the font's suitability for professional Excel reports."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "readability",
-        "description": "Clarity of numbers in Excel"
+        "description": "How easy it is to read the numbers in the font."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "alignment",
-        "description": "Consistent column alignment of numbers"
+        "description": "How well the font aligns numbers in columns."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "style compatibility",
-        "description": "Font style fits Excel interface and professional documents"
+        "description": "How well the font integrates with Excel's formatting tools."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "size options",
-        "description": "Availability of font sizes for different Excel views"
+        "description": "Availability of different font sizes."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "character spacing",
-        "description": "Spacing between characters affects readability"
+        "description": "How characters are spaced in the font."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "font weight",
-        "description": "Boldness or thinness of the font"
+        "description": "How bold or light the font appears."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "professional appearance",
-        "description": "Font looks appropriate for business contexts"
+        "description": "How professional the font looks in reports."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "color options",
-        "description": "Ability to apply color to font for highlighting"
+        "description": "How well the font supports color formatting."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "tabular figures",
-        "description": "Numbers have fixed width for column alignment"
+        "description": "Whether the font uses fixed-width numbers for alignment."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "proportional figures",
-        "description": "Numbers have variable width for natural text flow"
+        "description": "Whether the font uses variable-width numbers for text."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A typographer-grade font with tabular figures",
-        "description": "Best for precise alignment and professional formatting"
+        "description": "A font designed for precision and alignment in numeric data."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Calibri",
-        "description": "A widely used sans-serif font in Excel"
+        "description": "A modern, default font in Excel with proportional figures."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A monospaced font",
-        "description": "Each character has the same width"
+        "description": "A font with equal-width characters for strict alignment."
       }
     ],
     "edges": [
@@ -194,13 +203,13 @@
       },
       {
         "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
         "target": "c8"
       },
       {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
         "source": "c1",
         "target": "a1"
       },
@@ -281,12 +290,12 @@
         "target": "a2"
       },
       {
-        "source": "c9",
-        "target": "a1"
+        "source": "c8",
+        "target": "a3"
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c10",

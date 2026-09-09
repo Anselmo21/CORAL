@@ -21,10 +21,21 @@
   ],
   "baseline_answer": "A symptom-matched multi-drug regimen",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 3,
+  "usage": {
+    "prompt_tokens": 12931,
+    "output_tokens": 7593,
+    "llm_calls": 3,
+    "finish_reasons": [
+      "length",
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -38,43 +49,43 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Symptom Specificity & Safety",
-        "description": "Which drug best targets specific symptoms while adhering to safety constraints like blood pressure and age?"
+        "label": "Symptom and Mechanism Matching",
+        "description": "Evaluating how well the drug matches specific symptoms and its active mechanism."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Side Effects & Tolerance",
-        "description": "How do side effects like drowsiness and duration of action influence the choice?"
+        "label": "Safety and Side Effects",
+        "description": "Assessing health risks, side effects, and interactions."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Practicality & Preference",
-        "description": "What role do formulation type and user preference play in the selection?"
+        "label": "User Context and Preferences",
+        "description": "Considering demographic factors and user-specific needs."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "symptom relief focus",
-        "description": "The primary goal of alleviating specific cold symptoms."
+        "description": "The primary goal of relieving cold symptoms."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "active ingredient type",
-        "description": "The specific chemical agent responsible for the therapeutic effect."
+        "description": "The specific chemical compound used in the medication."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "safety for high blood pressure",
-        "description": "Whether the medication is safe for patients with hypertension."
+        "description": "Whether the medication is safe for individuals with hypertension."
       },
       {
         "id": "c4",
@@ -88,21 +99,21 @@
         "layer": "3",
         "type": "concept",
         "label": "targeted symptom",
-        "description": "The specific symptom the medication is designed to treat."
+        "description": "Specificity of the drug to the user's exact symptoms."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "formulation type",
-        "description": "The physical form of the medication (e.g., pill, spray)."
+        "description": "The physical form of the medication (pill, liquid, spray)."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "age appropriateness",
-        "description": "Suitability of the medication for different age groups."
+        "description": "Suitability of the medication for the user's age group."
       },
       {
         "id": "c8",
@@ -116,14 +127,14 @@
         "layer": "3",
         "type": "concept",
         "label": "combination with other medications",
-        "description": "The ability to safely combine with other drugs or the nature of multi-drug formulations."
+        "description": "Ability to combine with other drugs for multi-symptom relief."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "user preference",
-        "description": "Personal choice based on brand, taste, or past experience."
+        "description": "Individual user needs and preferences regarding treatment."
       },
       {
         "id": "a1",
@@ -137,14 +148,14 @@
         "layer": "4",
         "type": "answer",
         "label": "A first-generation antihistamine (chlorpheniramine or diphenhydramine)",
-        "description": "A specific antihistamine effective for runny nose and sneezing but causes drowsiness."
+        "description": "A specific antihistamine effective for runny nose and sneezing."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A symptom-matched multi-drug regimen",
-        "description": "A flexible approach selecting specific drugs based on the patient's unique symptom profile."
+        "description": "A flexible strategy combining drugs based on specific symptoms."
       }
     ],
     "edges": [
@@ -170,15 +181,15 @@
       },
       {
         "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "sq1",
         "target": "c5"
       },
       {
         "source": "sq1",
-        "target": "c7"
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
       },
       {
         "source": "sq2",
@@ -194,7 +205,7 @@
       },
       {
         "source": "sq3",
-        "target": "c6"
+        "target": "c7"
       },
       {
         "source": "sq3",
@@ -242,10 +253,6 @@
       },
       {
         "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
         "target": "a3"
       },
       {
@@ -286,19 +293,7 @@
       },
       {
         "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
         "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
       },
       {
         "source": "c10",

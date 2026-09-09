@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Bupropion (Wellbutrin)",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2692,
+    "output_tokens": 2742,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,126 +41,126 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best antidepressant for energy and mood?",
-        "description": "Which treatment is most effective for improving energy and mood in depression?"
+        "description": "Identify the most effective antidepressant for improving energy and mood."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Clinical and pharmacological effectiveness for energy and mood",
-        "description": "Which antidepressant is most effective at boosting energy and mood according to clinical and pharmacological evidence?"
+        "label": "What antidepressant is most effective for energy and mood in a clinical or pharmacological context?",
+        "description": "Focus on clinical guidelines and pharmacological evidence."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Patient perspective on energy and mood",
-        "description": "Which antidepressant is most effective at boosting energy and mood from the patient's perspective, including lifestyle and weight concerns?"
+        "label": "What antidepressant is most effective for energy and mood from a non-pharmacologic or integrative perspective?",
+        "description": "Focus on integrative and lifestyle-based approaches."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Non-pharmacological effectiveness for energy and mood",
-        "description": "Which non-pharmacological or integrative approach is most effective at boosting energy and mood?"
+        "label": "What antidepressant is most effective for energy and mood in a patient with anxiety or other comorbidities?",
+        "description": "Consider comorbid conditions like anxiety."
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "Effectiveness in anxious or pregnant patients",
-        "description": "Which antidepressant is most effective for mood and energy in anxious or pregnant patients?"
+        "label": "What antidepressant is most effective for energy and mood in a vulnerable or special population?",
+        "description": "Consider special populations like pregnant patients."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: psychiatry clinical practice guideline",
-        "description": ""
+        "description": "Prioritize sources from clinical practice guidelines."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed pharmacology literature",
-        "description": ""
+        "description": "Prioritize peer-reviewed pharmacology research."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: integrative medicine source",
-        "description": ""
+        "description": "Prioritize integrative and alternative medicine sources."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: patient mental-health forum",
-        "description": ""
+        "description": "Prioritize patient-reported experiences from mental health forums."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: wellness / lifestyle publication",
-        "description": ""
+        "description": "Prioritize wellness and lifestyle-focused content."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: low-energy depression patient",
-        "description": ""
+        "description": "Prioritize the perspective of patients with low energy."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: anxious patient",
-        "description": ""
+        "description": "Prioritize the perspective of patients with anxiety."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: patient avoiding pharmacologic intervention",
-        "description": ""
+        "description": "Prioritize the perspective of patients avoiding medication."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: patient with comorbid weight concerns",
-        "description": ""
+        "description": "Prioritize the perspective of patients with weight concerns."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: pregnant patient",
-        "description": ""
+        "description": "Prioritize the perspective of pregnant patients."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Bupropion (Wellbutrin)",
-        "description": "Most activating antidepressant, supports energy and mood, and may cause weight loss."
+        "description": "Most activating antidepressant with weight-neutral profile."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "SSRI (Prozac, Zoloft)",
-        "description": "Common antidepressants that may help with mood and energy, though less activating than Bupropion."
+        "description": "Common antidepressants with moderate energy effects."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Natural supplements (St John's Wort, SAM-e, Omega-3, B vitamins) + exercise",
-        "description": "Non-pharmacological approach to improve energy and mood through lifestyle and supplements."
+        "description": "Non-pharmacologic approach with lifestyle and supplements."
       }
     ],
     "edges": [
@@ -180,32 +189,32 @@
         "target": "c2"
       },
       {
-        "source": "sq2",
+        "source": "sq1",
         "target": "c6"
       },
       {
-        "source": "sq2",
+        "source": "sq1",
         "target": "c9"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c3"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c8"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
       },
       {
         "source": "sq4",
         "target": "c5"
-      },
-      {
-        "source": "sq4",
-        "target": "c7"
       },
       {
         "source": "sq4",
@@ -228,8 +237,64 @@
         "target": "a1"
       },
       {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
         "source": "c4",
         "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
       },
       {
         "source": "c4",
@@ -241,35 +306,15 @@
       },
       {
         "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
         "target": "a3"
       },
       {
         "source": "c7",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c8",
         "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
       },
       {
         "source": "c10",

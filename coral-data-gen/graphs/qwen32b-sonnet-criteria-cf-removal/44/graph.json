@@ -21,109 +21,118 @@
   ],
   "baseline_answer": "Answer A (CompTIA Security+ Default): Start with CompTIA Security+ \u2014 it's the most recognized entry-level credential, vendor-neutral, DoD-approved, and appears in more entry-level job postings than any other certification.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1529,
+    "output_tokens": 2327,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "q",
-        "description": "I want to get into cybersecurity. What certification should I get first?"
+        "label": "I want to get into cybersecurity. What certification should I get first?",
+        "description": "A question about choosing the first cybersecurity certification to pursue."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "sq1",
-        "description": "What is the best entry-level certification for general cybersecurity job market recognition and accessibility?"
+        "label": "What is the best certification for entry-level job market recognition and accessibility?",
+        "description": "Focuses on recognition, cost, and accessibility for entry-level roles."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "sq2",
-        "description": "Which certification is best suited for a specific career path (offensive or technical roles)?"
+        "label": "What is the best certification for technical depth and practitioner respect?",
+        "description": "Focuses on technical rigor and respect from practitioners."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "sq3",
-        "description": "Which certification is a good stepping stone to more advanced credentials?"
+        "label": "What is the best certification for a specific career path (offensive vs. defensive)?",
+        "description": "Focuses on aligning the certification with offensive or defensive security goals."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "entry-level job market recognition",
-        "description": ""
+        "description": "How well the certification is recognized in entry-level cybersecurity job postings."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "DoD and government employer approval",
-        "description": ""
+        "description": "Whether the certification is approved by the Department of Defense or government agencies."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "technical depth and practitioner respect",
-        "description": ""
+        "description": "The level of technical rigor and respect from cybersecurity professionals."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "cost of certification exam",
-        "description": ""
+        "description": "The financial cost of obtaining the certification."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "offensive vs defensive security career path",
-        "description": ""
+        "description": "Whether the certification is better suited for offensive or defensive security roles."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "prerequisite experience requirements",
-        "description": ""
+        "description": "Whether the certification requires prior work experience."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "vendor neutrality",
-        "description": ""
+        "description": "Whether the certification is tied to a specific vendor or is vendor-neutral."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "time to prepare and pass",
-        "description": ""
+        "description": "The amount of time required to study and pass the certification."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "stepping stone to advanced certifications",
-        "description": ""
+        "description": "Whether the certification serves as a foundation for more advanced credentials."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "practical hands-on skill validation",
-        "description": ""
+        "description": "Whether the certification includes hands-on or practical skill assessments."
       },
       {
         "id": "a1",
@@ -194,15 +203,11 @@
       },
       {
         "source": "sq2",
-        "target": "c5"
-      },
-      {
-        "source": "sq2",
         "target": "c10"
       },
       {
         "source": "sq3",
-        "target": "c9"
+        "target": "c5"
       },
       {
         "source": "c1",
@@ -254,11 +259,11 @@
       },
       {
         "source": "c10",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c10",
-        "target": "a3"
+        "target": "a2"
       }
     ]
   }

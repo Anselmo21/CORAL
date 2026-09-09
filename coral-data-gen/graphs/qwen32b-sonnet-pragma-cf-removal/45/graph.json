@@ -21,10 +21,20 @@
   ],
   "baseline_answer": "Answer A (Lenovo IdeaPad Default): Get the Lenovo IdeaPad Flex 5 or Acer Aspire 5 in the $500\u2013700 range \u2014 they offer adequate performance, good battery life, and strong value for standard college coursework without stretching the budget.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 2,
+  "usage": {
+    "prompt_tokens": 6806,
+    "output_tokens": 5555,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,28 +42,28 @@
         "layer": "1",
         "type": "question",
         "label": "What's the best laptop for a college student on a budget under $1,000?",
-        "description": "The best laptop for a student with a tight budget under $1,000."
+        "description": "A question about the best laptop for a student with a budget under $1,000."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Best for a student on a tight budget",
-        "description": "What laptop is most affordable and meets basic college needs?"
+        "label": "What is the best laptop for a student on a tight budget?",
+        "description": "Focuses on price and immediate affordability."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Best for long-term use and cost of ownership",
-        "description": "What laptop will last the longest and save money over time?"
+        "label": "What is the best laptop for a student prioritizing longevity and total cost of ownership?",
+        "description": "Focuses on long-term value and durability."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Best for performance and reliability within budget",
-        "description": "What laptop offers the best performance and reliability under $1,000?"
+        "label": "What is the best laptop for a student who wants a durable, repairable, and business-grade device?",
+        "description": "Focuses on build quality and repairability."
       },
       {
         "id": "c1",
@@ -81,21 +91,21 @@
         "layer": "3",
         "type": "directive",
         "label": "geographic: Canada / Global",
-        "description": "Consider sources from Canada or global communities."
+        "description": "Consider sources from Canada or globally."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student on tight budget prioritizing price",
-        "description": "Only consider sources from the perspective of a student prioritizing low upfront cost."
+        "description": "Only consider sources from the perspective of a student on a tight budget."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student prioritizing longevity and total cost of ownership",
-        "description": "Only consider sources from the perspective of a student prioritizing long-term value."
+        "description": "Only consider sources from the perspective of a student prioritizing longevity."
       },
       {
         "id": "c7",
@@ -109,42 +119,42 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Tech journalism",
-        "description": "Only consider sources from tech journalism outlets."
+        "description": "Only consider sources from tech journalism."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer community recommendations",
-        "description": "Only consider sources from consumer communities like Reddit."
+        "description": "Only consider sources from consumer community recommendations."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Independent product testing site",
-        "description": "Only consider sources from independent product testing sites like RTINGS."
+        "description": "Only consider sources from independent product testing sites."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (Lenovo IdeaPad Default)",
-        "description": "Get the Lenovo IdeaPad Flex 5 or Acer Aspire 5 in the $500\u2013700 range \u2014 they offer adequate performance, good battery life, and strong value for standard college coursework without stretching the budget."
+        "label": "Answer A (Lenovo IdeaPad Default): Get the Lenovo IdeaPad Flex 5 or Acer Aspire 5 in the $500\u2013700 range \u2014 they offer adequate performance, good battery life, and strong value for standard college coursework without stretching the budget.",
+        "description": "Budget-friendly laptops for standard coursework."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (Refurbished MacBook Air)",
-        "description": "Stretch to a refurbished M1 MacBook Air at $800\u2013900 \u2014 the unmatched battery life, build quality, and 5+ year longevity make it the best total cost of ownership under $1,000."
+        "label": "Answer B (Refurbished MacBook Air): Stretch to a refurbished M1 MacBook Air at $800\u2013900 \u2014 the unmatched battery life, build quality, and 5+ year longevity make it the best total cost of ownership under $1,000.",
+        "description": "Long-term investment with high performance and durability."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (ThinkPad for Durability)",
-        "description": "Choose a Lenovo ThinkPad E-series \u2014 business-grade durability, excellent keyboard, and strong repairability make it the best laptop to actually survive 4 years of college without degradation."
+        "label": "Answer C (ThinkPad for Durability): Choose a Lenovo ThinkPad E-series \u2014 business-grade durability, excellent keyboard, and strong repairability make it the best laptop to actually survive 4 years of college without degradation.",
+        "description": "Durable and repairable business-grade laptop."
       }
     ],
     "edges": [
@@ -285,16 +295,48 @@
         "target": "a1"
       },
       {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
         "source": "c2",
         "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
       },
       {
         "source": "c3",
         "target": "a1"
       },
       {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
         "source": "c4",
         "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
       },
       {
         "source": "c5",
@@ -305,71 +347,59 @@
         "target": "a1"
       },
       {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
         "source": "c7",
         "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
       },
       {
         "source": "c8",
         "target": "a1"
       },
       {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
         "source": "c9",
         "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",
         "target": "a1"
       },
       {
-        "source": "c1",
+        "source": "c10",
         "target": "a2"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
+        "source": "c10",
         "target": "a3"
       }
     ]

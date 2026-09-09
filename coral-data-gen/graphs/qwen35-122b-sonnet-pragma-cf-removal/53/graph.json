@@ -21,10 +21,21 @@
   ],
   "baseline_answer": "Answer A (Keychron TKL Linear Default): Get a Keychron Q or V series in TKL with linear switches \u2014 the combination of hot-swap customizability, quiet linears for shared spaces, and compact layout is the best all-around choice for daily programming.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 3,
+  "usage": {
+    "prompt_tokens": 11689,
+    "output_tokens": 8856,
+    "llm_calls": 3,
+    "finish_reasons": [
+      "length",
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +43,119 @@
         "layer": "1",
         "type": "question",
         "label": "I write code all day. What mechanical keyboard should I get?",
-        "description": "Main inquiry about keyboard recommendation for developers."
+        "description": "Main question regarding keyboard recommendation for developers."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Best all-around choice for shared office",
-        "description": "Focuses on brand, quietness, and office suitability."
+        "label": "Switch Type & Noise Profile",
+        "description": "Determining the best switch type (Linear, Tactile, Clicky) and noise constraints."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Best choice for touch typist at home",
-        "description": "Focuses on tactile feedback and home environment."
+        "label": "Form Factor & Layout",
+        "description": "Determining the optimal size (TKL, 65%) and layout for desk efficiency."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Best choice for desk efficiency",
-        "description": "Focuses on form factor (65%) over other specs."
+        "label": "Brand & Value",
+        "description": "Identifying the best specific brand or product line for developers."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Filters for 2023 sources only."
+        "description": "Filters for sources published in 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Filters for sources from 2021 to 2023."
+        "description": "Filters for sources published between 2021 and 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Filters for US-based sources."
+        "description": "Filters for sources based in the USA."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Global",
-        "description": "Filters for global perspective sources."
+        "description": "Filters for sources with a global perspective."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Developer in open office or shared space",
-        "description": "Prioritizes noise-reduction and office suitability."
+        "description": "Filters for advice considering noise constraints in shared spaces."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Developer working from home with no noise constraint",
-        "description": "Prioritizes personal preference over noise."
+        "description": "Filters for advice assuming a quiet home environment."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer product recommendation publication",
-        "description": "Prioritizes consumer review sites like Wirecutter."
+        "description": "Filters for sources like Wirecutter."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Mechanical keyboard enthusiast community",
-        "description": "Prioritizes community forums like Reddit."
+        "description": "Filters for community sources like Reddit."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Tech journalism",
-        "description": "Prioritizes tech news sites like Ars Technica."
+        "description": "Filters for tech journalism sources like Ars Technica."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Keyboard manufacturer",
-        "description": "Prioritizes manufacturer advice."
+        "description": "Filters for manufacturer sources like Das Keyboard."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Keychron TKL Linear Default)",
-        "description": "Keychron Q/V series, TKL, linear switches."
+        "description": "Get a Keychron Q or V series in TKL with linear switches."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Tactile for Touch Typing)",
-        "description": "Tactile switches (Boba/Topre) on 65%."
+        "description": "Choose tactile switches (Boba U4 or Topre) on a 65% if you're a touch typist."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (65% for Desk Efficiency)",
-        "description": "65% form factor prioritized above switch type."
+        "description": "Prioritize a 65% form factor above switch choice."
       }
     ],
     "edges": [
@@ -329,6 +340,10 @@
         "target": "a2"
       },
       {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
         "source": "c6",
         "target": "a2"
       },
@@ -341,6 +356,10 @@
         "target": "a2"
       },
       {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
         "source": "c2",
         "target": "a3"
       },
@@ -349,19 +368,15 @@
         "target": "a3"
       },
       {
-        "source": "c4",
+        "source": "c5",
         "target": "a3"
       },
       {
-        "source": "c8",
+        "source": "c6",
         "target": "a3"
       },
       {
         "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
         "target": "a3"
       }
     ]

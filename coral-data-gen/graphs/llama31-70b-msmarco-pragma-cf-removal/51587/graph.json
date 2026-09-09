@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "East lakeshore (Bardolino, Garda, Torri del Benaco)",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 4499,
-    "output_tokens": 1653,
-    "llm_calls": 2,
+    "prompt_tokens": 2646,
+    "output_tokens": 1785,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -46,7 +46,7 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Geographical regions to consider"
+        "label": "Geographical characteristics"
       },
       {
         "id": "sq2",
@@ -58,7 +58,7 @@
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Perspectives to consider"
+        "label": "Traveler perspectives"
       },
       {
         "id": "c1",
@@ -194,7 +194,15 @@
       },
       {
         "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
         "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
       },
       {
         "source": "c2",
@@ -205,8 +213,28 @@
         "target": "a1"
       },
       {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
         "source": "c4",
         "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
       },
       {
         "source": "c5",
@@ -214,7 +242,23 @@
       },
       {
         "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
         "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
       },
       {
         "source": "c7",
@@ -231,38 +275,6 @@
       {
         "source": "c10",
         "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
       }
     ]
   }

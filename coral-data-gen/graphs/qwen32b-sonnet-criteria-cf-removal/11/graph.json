@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (DIY Default): Self-manage with a simple three-fund index portfolio \u2014 at $150k with a straightforward situation, the 0.5\u20131% advisor fee compounds into tens of thousands of dollars of unnecessary cost over time.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1575,
+    "output_tokens": 2769,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "Should I use a financial advisor or just manage my investments myself? I have about $150k in savings.",
-        "description": "Decision on whether to self-manage or hire a financial advisor for a $150k portfolio."
+        "description": "Decision between DIY, fee-only advisor, or robo-advisor for a $150k portfolio."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the financial and cost considerations?",
-        "description": "Criteria related to cost, fees, and tax efficiency."
+        "label": "Cost and efficiency of investment management",
+        "description": "Evaluates the cost and simplicity of managing a $150k portfolio."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the complexity and behavioral readiness of the investor?",
-        "description": "Criteria related to investor behavior, financial literacy, and complexity of the situation."
+        "label": "Complexity and need for specialized support",
+        "description": "Evaluates the complexity of the financial situation and need for expert help."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the value of external support and automation?",
-        "description": "Criteria related to automation, accountability, and access to expertise."
+        "label": "Behavioral and psychological factors",
+        "description": "Evaluates emotional and behavioral aspects of investing."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "annual fee cost relative to portfolio size",
-        "description": "How much the advisor's fee impacts the portfolio over time."
+        "description": "The cost of advisory services as a percentage of the $150k portfolio."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "complexity of financial situation",
-        "description": "Whether the investor has a simple or complex financial life."
+        "description": "Whether the situation involves business, estate, or tax complexity."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "behavioral coaching during volatility",
-        "description": "Advisor's ability to prevent panic selling during market downturns."
+        "description": "Ability to prevent panic selling during market downturns."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "tax optimization value",
-        "description": "Advisor's ability to optimize tax strategies."
+        "description": "Value of tax-loss harvesting and asset location strategies."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "estate and retirement planning needs",
-        "description": "Need for planning around retirement and estate distribution."
+        "description": "Need for estate planning, withdrawal strategies, and retirement coordination."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "investor confidence and financial literacy",
-        "description": "How comfortable and knowledgeable the investor is."
+        "description": "Confidence in managing investments and understanding financial concepts."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "access to specialized expertise",
-        "description": "Whether the investor benefits from expert advice."
+        "description": "Need for expert advice on complex financial matters."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "simplicity of investment strategy",
-        "description": "Whether a simple strategy (like a three-fund portfolio) is sufficient."
+        "description": "Whether a simple index fund strategy is sufficient."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "time and interest in self-management",
-        "description": "Whether the investor has the time and interest to manage their own investments."
+        "description": "Willingness to spend time managing investments."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "value of accountability partner",
-        "description": "Whether the investor benefits from an external accountability partner."
+        "description": "Whether having a financial advisor improves discipline and planning."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (DIY Default): Self-manage with a simple three-fund index portfolio \u2014 at $150k with a straightforward situation, the 0.5\u20131% advisor fee compounds into tens of thousands of dollars of unnecessary cost over time.",
-        "description": "The default recommendation when all 10 criteria are considered."
+        "description": "Best for simple, low-cost, and low-complexity situations."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Fee-Only Advisor for Complexity): Hire a fee-only fiduciary advisor if your situation involves business ownership, equity compensation, estate planning, or you've historically made emotional investing decisions during market downturns.",
-        "description": "Recommended when the investor has a complex financial situation and behavioral challenges."
+        "description": "Best for complex or emotionally challenging situations."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Robo-Advisor Middle Ground): Use a robo-advisor at 0.25% AUM for automated rebalancing and tax-loss harvesting \u2014 you get most of the value of active management at a fraction of the cost of a human advisor.",
-        "description": "Recommended for a middle ground between DIY and full advisor services."
+        "description": "Best for moderate complexity and cost-conscious investors."
       }
     ],
     "edges": [
@@ -166,7 +175,7 @@
       },
       {
         "source": "sq1",
-        "target": "c4"
+        "target": "c8"
       },
       {
         "source": "sq2",
@@ -174,27 +183,27 @@
       },
       {
         "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
         "target": "c5"
       },
       {
         "source": "sq2",
-        "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq3",
         "target": "c7"
       },
       {
         "source": "sq3",
-        "target": "c8"
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
       },
       {
         "source": "sq3",
@@ -206,107 +215,107 @@
       },
       {
         "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
         "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       },
       {
         "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
         "target": "a1"
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c3",
         "target": "a1"
       },
       {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
         "source": "c4",
         "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
       },
       {
         "source": "c5",
         "target": "a1"
       },
       {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
         "source": "c6",
         "target": "a1"
       },
       {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
         "source": "c7",
         "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
       },
       {
         "source": "c8",
         "target": "a1"
       },
       {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
         "source": "c9",
         "target": "a1"
       },
       {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
         "source": "c10",
         "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
       }
     ]
   }

@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Lifestyle intervention: exercise, yoga, diet, sleep hygiene",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1917,
+    "output_tokens": 3405,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,112 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "Which natural remedy best eases teenage depression?",
-        "description": "The primary question asking for the optimal natural intervention for adolescent depression."
+        "description": "The primary question asking for the best natural remedy for teenage depression."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Clinical efficacy and safety profile",
-        "description": "Evaluates how well the remedy works and its safety risks for teens."
+        "label": "Safety and Medical Risk Profile",
+        "description": "Evaluates the safety, side effects, and drug interaction risks of the remedies for adolescents."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Practical implementation and accessibility",
-        "description": "Evaluates the cost, ease, and convenience of adopting the remedy."
+        "label": "Efficacy and Evidence Base",
+        "description": "Evaluates the scientific evidence, mood improvement efficacy, and speed of onset."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Practicality and Accessibility",
+        "description": "Evaluates ease of use, cost, accessibility, and dosing convenience."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "scientific evidence",
-        "description": "Strength of research backing the remedy's effectiveness."
+        "description": "The strength and consensus of research supporting the remedy."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "mood improvement efficacy",
-        "description": "The actual ability of the remedy to alleviate depressive symptoms."
+        "description": "The ability of the remedy to effectively reduce depressive symptoms."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "safety in adolescents",
-        "description": "Risk of harm or adverse developmental effects in teenagers."
+        "description": "The safety profile specifically for teenage physiology and development."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "drug interactions",
-        "description": "Potential for negative interactions with other medications."
+        "description": "The risk of negative interactions with other medications."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "side effect profile",
-        "description": "Frequency and severity of unwanted side effects."
+        "description": "The frequency and severity of adverse side effects."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "ease of use",
-        "description": "How simple the remedy is to integrate into daily life."
+        "description": "How simple the remedy is to incorporate into daily life."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "cost",
-        "description": "Financial burden of the remedy."
+        "description": "The financial expense of the remedy."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "accessibility",
-        "description": "Availability of the remedy to the general population."
+        "description": "How easy it is to obtain the remedy."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "dosing convenience",
-        "description": "Simplicity of the dosing schedule (e.g., one pill vs multiple habits)."
+        "description": "The simplicity of the dosing schedule."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "time to onset",
-        "description": "How quickly the remedy produces noticeable results."
+        "description": "How quickly the remedy begins to show effects."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "St. John's Wort herbal supplement",
-        "description": "Herbal supplement often used for mild depression."
+        "description": "An herbal supplement often used for depression."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Omega-3 fatty acids (fish oil / flax oil)",
-        "description": "Nutritional supplement known for brain health."
+        "description": "Essential fatty acids used as a supplement for mood."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Lifestyle intervention: exercise, yoga, diet, sleep hygiene",
-        "description": "Holistic behavioral changes including physical activity and diet."
+        "description": "Non-pharmacological changes to daily habits."
       }
     ],
     "edges": [
@@ -150,12 +166,12 @@
         "target": "sq2"
       },
       {
-        "source": "sq1",
-        "target": "c1"
+        "source": "q",
+        "target": "sq3"
       },
       {
         "source": "sq1",
-        "target": "c2"
+        "target": "c1"
       },
       {
         "source": "sq1",
@@ -170,7 +186,11 @@
         "target": "c5"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
         "target": "c10"
       },
       {
@@ -178,15 +198,15 @@
         "target": "c6"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c7"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c8"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c9"
       },
       {
@@ -212,6 +232,10 @@
       {
         "source": "c4",
         "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
       },
       {
         "source": "c5",
@@ -268,10 +292,6 @@
       {
         "source": "c10",
         "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
       },
       {
         "source": "c10",

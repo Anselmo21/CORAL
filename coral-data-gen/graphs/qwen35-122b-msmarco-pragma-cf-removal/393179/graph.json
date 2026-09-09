@@ -21,10 +21,21 @@
   ],
   "baseline_answer": "Top Tier Detergent Gasoline (Shell V-Power, Esso, Chevron)",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 3,
+  "usage": {
+    "prompt_tokens": 13561,
+    "output_tokens": 7202,
+    "llm_calls": 3,
+    "finish_reasons": [
+      "length",
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +43,119 @@
         "layer": "1",
         "type": "question",
         "label": "in Ontario what is the best gasoline for your vehicle",
-        "description": "Primary question regarding optimal fuel choice in Ontario."
+        "description": "Main question regarding optimal fuel choice in Ontario."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What do technical standards and automakers say about fuel quality?",
-        "description": "Focuses on engineering specs, manual requirements, and long-term engine health."
+        "label": "Quality and Long-Term Engine Health",
+        "description": "Focuses on detergent standards, automaker endorsements, and long-term vehicle maintenance."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What do consumer reports and typical owners say about fuel necessity?",
-        "description": "Focuses on myths, cost, and the reality for standard vehicles."
+        "label": "Regional High-Octane and Performance Needs",
+        "description": "Focuses on Ontario-specific high-octane availability and luxury/performance requirements."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is available locally and desired by enthusiasts?",
-        "description": "Focuses on Ontario-specific supply and high-performance preferences."
+        "label": "Economy and Standard Usage",
+        "description": "Focuses on the sufficiency of regular fuel for standard vehicles and consumer skepticism of premium myths."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Ontario",
-        "description": "Prioritizes sources discussing fuel availability and regulations in Ontario."
+        "description": "Filters sources to those relevant to the Ontario market."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: SAE / automotive engineering technical report",
-        "description": "Prioritizes technical reports on engine design and fuel standards."
+        "description": "Prioritizes technical engineering reports on fuel standards."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: CBC Marketplace consumer reporting",
-        "description": "Prioritizes consumer investigations into fuel marketing and value."
+        "description": "Prioritizes consumer investigative reporting on fuel myths."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: owner's manual specification",
-        "description": "Prioritizes the vehicle manufacturer's specific fuel requirements."
+        "description": "Prioritizes manufacturer specifications found in owner's manuals."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: automaker official recommendation",
-        "description": "Prioritizes official endorsements from major car manufacturers (e.g., Top Tier)."
+        "description": "Prioritizes official recommendations from car manufacturers."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: local automotive forum",
-        "description": "Prioritizes anecdotal evidence and discussions from local drivers."
+        "description": "Prioritizes consensus from local driver forums."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: luxury car owner",
-        "description": "Prioritizes the viewpoint of owners of high-end vehicles."
+        "description": "Filters for the viewpoint of luxury vehicle owners."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: regular sedan owner",
-        "description": "Prioritizes the viewpoint of owners of standard, non-performance vehicles."
+        "description": "Filters for the viewpoint of standard sedan owners."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: performance enthusiast",
-        "description": "Prioritizes the viewpoint of drivers seeking maximum power."
+        "description": "Filters for the viewpoint of performance driving enthusiasts."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: long-term keep-vehicle owner",
-        "description": "Prioritizes the viewpoint of owners focused on vehicle longevity and cleanliness."
+        "description": "Filters for the viewpoint of owners planning to keep vehicles for many years."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Top Tier Detergent Gasoline (Shell V-Power, Esso, Chevron)",
-        "description": "Best choice based on detergent quality and manufacturer endorsements."
+        "description": "Best choice based on detergent standards and automaker endorsements."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Petro-Canada Ultra 94\u2122",
-        "description": "Best choice based on high octane and specific Ontario availability."
+        "description": "Best choice for high-performance and luxury vehicles in specific Ontario regions."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Regular 87-octane unleaded at any reputable station",
-        "description": "Best choice based on cost-effectiveness for standard engines."
+        "description": "Best choice for standard vehicles where premium offers no benefit."
       }
     ],
     "edges": [
@@ -182,6 +193,10 @@
       },
       {
         "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
         "target": "c3"
       },
       {
@@ -190,7 +205,11 @@
       },
       {
         "source": "sq2",
-        "target": "c8"
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
       },
       {
         "source": "sq3",
@@ -198,7 +217,7 @@
       },
       {
         "source": "sq3",
-        "target": "c9"
+        "target": "c8"
       },
       {
         "source": "c1",
@@ -245,14 +264,6 @@
         "target": "a2"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
         "source": "c7",
         "target": "a2"
       },
@@ -269,15 +280,7 @@
         "target": "a3"
       },
       {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
         "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
         "target": "a3"
       },
       {

@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer C (Certified Pre-Owned): Buy a manufacturer Certified Pre-Owned vehicle \u2014 it combines used car pricing with factory warranty extension and vehicle inspection, providing the best balance of value and reliability certainty.",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1535,
+    "output_tokens": 2616,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,63 +41,63 @@
         "layer": "1",
         "type": "question",
         "label": "Should I buy a new car or a used one? I have about $25,000 to spend.",
-        "description": "A decision between new, used, or certified pre-owned cars based on budget and long-term value."
+        "description": "Decision between new and used car purchase with a $25k budget."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the long-term financial implications of the purchase?",
-        "description": "Focuses on cost, depreciation, and financial risk over time."
+        "label": "Cost and depreciation considerations",
+        "description": "Evaluates financial aspects like depreciation, total cost, and financing."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the reliability and risk factors?",
-        "description": "Focuses on vehicle condition, warranty, and maintenance history."
+        "label": "Warranty, reliability, and risk",
+        "description": "Evaluates reliability, warranty, and risk of unknown maintenance history."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the technology and peace of mind considerations?",
-        "description": "Focuses on safety, brand reputation, and CPO programs."
+        "label": "Technology and safety",
+        "description": "Evaluates access to the latest safety technology."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "total cost of ownership over 5 years",
-        "description": "The overall cost of the car including purchase, maintenance, insurance, and depreciation."
+        "description": "Overall cost including maintenance, fuel, and insurance over five years."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "depreciation avoidance",
-        "description": "The ability to avoid the steepest depreciation curve by buying older."
+        "description": "Avoiding the steepest depreciation curve by not buying new."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "warranty and reliability coverage",
-        "description": "The extent of manufacturer or extended warranty protection."
+        "description": "Coverage of mechanical failures and reliability over time."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "access to latest safety technology",
-        "description": "Whether the vehicle has the most recent safety features."
+        "description": "Availability of the most recent safety features."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "unknown maintenance history risk",
-        "description": "Risk of hidden issues in a used car with unknown past."
+        "description": "Risk of hidden mechanical issues in used cars."
       },
       {
         "id": "c6",
@@ -102,28 +111,28 @@
         "layer": "3",
         "type": "concept",
         "label": "brand and model reliability record",
-        "description": "The track record of the car's brand and model for reliability."
+        "description": "Historical reliability of the car's make and model."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "CPO program availability",
-        "description": "Whether the car is part of a manufacturer's certified pre-owned program."
+        "description": "Availability of manufacturer-certified pre-owned programs."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "financing rate differences (new vs used)",
-        "description": "Interest rates vary between new and used car loans."
+        "description": "Interest rate differences between new and used car loans."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "insurance cost differential",
-        "description": "Used cars often cost less to insure than new cars."
+        "description": "Difference in insurance costs between new and used cars."
       },
       {
         "id": "a1",
@@ -186,19 +195,27 @@
       },
       {
         "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
         "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
       },
       {
         "source": "sq3",
         "target": "c4"
       },
       {
-        "source": "sq3",
-        "target": "c6"
+        "source": "c1",
+        "target": "a1"
       },
       {
-        "source": "sq3",
-        "target": "c8"
+        "source": "c1",
+        "target": "a2"
       },
       {
         "source": "c1",
@@ -206,7 +223,19 @@
       },
       {
         "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
         "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
       },
       {
         "source": "c3",
@@ -214,7 +243,19 @@
       },
       {
         "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
         "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
       },
       {
         "source": "c5",
@@ -222,7 +263,15 @@
       },
       {
         "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
         "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
       },
       {
         "source": "c7",
@@ -234,75 +283,27 @@
       },
       {
         "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
         "target": "a1"
       },
       {
         "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
         "target": "a2"
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
       },
       {
         "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

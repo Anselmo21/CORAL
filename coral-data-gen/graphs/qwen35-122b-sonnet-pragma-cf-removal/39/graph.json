@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer C (Hybrid Approach): Double-major in a liberal arts field and a vocational or technical discipline \u2014 you develop the critical thinking of the humanities alongside marketable technical skills, capturing both career flexibility and early employment leverage.",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1689,
+    "output_tokens": 2803,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "Is a liberal arts degree worth it, or should I do something more vocational with better job prospects?",
-        "description": "The core inquiry weighing immediate vocational benefits against long-term liberal arts value."
+        "description": "Core question weighing liberal arts vs. vocational degrees."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What does the data say about early-career earnings and immediate employment prospects?",
-        "description": "Focuses on the financial trade-offs in the first 5-10 years."
+        "label": "Early Career Earnings & Employment",
+        "description": "Focuses on immediate job prospects, early salary data, and student experiences in the first 5 years."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How do employers and long-term trends value liberal arts skills like adaptability?",
-        "description": "Focuses on the delayed value, leadership potential, and future-proofing."
+        "label": "Long-Term Flexibility & Adaptability",
+        "description": "Focuses on mid-career convergence, leadership skills, and value in an automated future."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Can a hybrid strategy mitigate the downsides of both paths?",
-        "description": "Explores the feasibility of combining technical skills with liberal arts breadth."
+        "label": "Strategic Synthesis",
+        "description": "Evaluates the feasibility and benefits of combining both educational paths."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Filters for the most recent data."
+        "description": "Filters for the most recent data from 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Filters for data covering the recent multi-year trend."
+        "description": "Filters for data spanning the last three years."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Restricts analysis to the US market context."
+        "description": "Filters for data specific to the United States."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student prioritizing immediate employment and earnings",
-        "description": "Prioritizes the viewpoint of those needing income now."
+        "description": "Prioritizes sources reflecting the view of students needing quick ROI."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student prioritizing intellectual engagement and long-term flexibility",
-        "description": "Prioritizes the viewpoint of those valuing long-term growth."
+        "description": "Prioritizes sources reflecting the view of students valuing long-term growth."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Employer or HR perspective",
-        "description": "Prioritizes the viewpoint of hiring managers."
+        "description": "Prioritizes sources reflecting employer hiring and skill valuation."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Higher education advocacy organization",
-        "description": "Prioritizes sources like AAC&U."
+        "description": "Prioritizes sources from groups advocating for liberal arts."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Education labor market research",
-        "description": "Prioritizes sources like Georgetown Center."
+        "description": "Prioritizes objective data on earnings and employment trends."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Student peer community",
-        "description": "Prioritizes sources like Reddit."
+        "description": "Prioritizes anecdotal evidence from student forums."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Business management publication",
-        "description": "Prioritizes sources like HBR."
+        "description": "Prioritizes analysis from business leaders on future skills."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Vocational for Early Career Default)",
-        "description": "Choose vocational for higher early earnings, accepting a difficult first decade."
+        "description": "Choose vocational for immediate earnings; liberal arts convergence is real but requires weathering a difficult start."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Liberal Arts for Long-Term Flexibility)",
-        "description": "Choose liberal arts for adaptability and long-term value in automation."
+        "description": "Liberal arts is worth it for uncertainty; adaptability and breadth become more valuable as careers advance."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Hybrid Approach)",
-        "description": "Double-major to capture both technical skills and critical thinking."
+        "description": "Double-major to capture critical thinking and technical skills for both flexibility and early leverage."
       }
     ],
     "edges": [
@@ -190,6 +199,10 @@
       },
       {
         "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
         "target": "c3"
       },
       {
@@ -253,88 +266,88 @@
         "target": "a1"
       },
       {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
         "source": "c2",
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
         "source": "c3",
         "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
       },
       {
         "source": "c4",
         "target": "a1"
       },
       {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
+        "source": "c4",
+        "target": "a3"
       },
       {
         "source": "c5",
         "target": "a2"
       },
       {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
         "source": "c6",
         "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
       },
       {
         "source": "c7",
         "target": "a2"
       },
       {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
         "source": "c9",
-        "target": "a2"
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
       },
       {
         "source": "c10",

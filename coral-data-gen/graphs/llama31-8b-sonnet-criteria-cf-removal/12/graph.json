@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (529 Default): Open a 529 plan immediately and contribute regularly \u2014 tax-free growth, state deductions, and the new Roth IRA rollover option make it the clear best vehicle for college savings with a 15-year horizon.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2303,
-    "output_tokens": 1941,
-    "llm_calls": 2,
+    "prompt_tokens": 1551,
+    "output_tokens": 2035,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,106 +40,99 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Best way to save for college",
-        "description": "College savings for a 3-year-old"
+        "label": "What's the best way to save for my child's college education?",
+        "description": "Best college savings option for a 3-year-old child"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "529 plan benefits",
-        "description": "Benefits of a 529 plan"
+        "label": "Tax benefits and financial aid impact",
+        "description": "Tax-free growth, state income tax deduction, and financial aid impact"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "529 plan limitations",
-        "description": "Limitations of a 529 plan"
+        "label": "Flexibility and estate planning",
+        "description": "Flexibility if child does not attend college, estate planning utility, and contribution limit flexibility"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Alternative savings options",
-        "description": "Alternative savings options"
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "Interactions with other goals",
-        "description": "Interactions with other financial goals"
+        "label": "Investment quality and simplicity",
+        "description": "Investment option quality, simplicity of account management, and K-12 expense coverage"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "Tax-free growth on contributions",
-        "description": "Growth on contributions is tax-free"
+        "label": "tax-free growth on contributions",
+        "description": "Contributions grow tax-free"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "State income tax deduction",
-        "description": "Contributions may be deductible on state taxes"
+        "label": "state income tax deduction",
+        "description": "State income tax deduction on contributions"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "Financial aid impact minimization",
+        "label": "financial aid impact minimization",
         "description": "529 assets count less heavily against financial aid"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "Roth IRA rollover option",
-        "description": "Unused 529 funds can be rolled into a Roth IRA"
+        "label": "flexibility if child does not attend college",
+        "description": "Unused funds can be rolled to a Roth IRA"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "Contribution limit flexibility",
-        "description": "Contribution limits may vary by state or institution"
+        "label": "investment option quality",
+        "description": "Low-cost index fund option"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "K-12 expense coverage",
-        "description": "529 plans may not cover K-12 expenses"
+        "label": "contribution limit flexibility",
+        "description": "No contribution limit"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "Estate planning utility",
-        "description": "529 plans may be useful for estate planning"
+        "label": "K-12 expense coverage",
+        "description": "Coverdell ESA offers more flexibility for K-12 expenses"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "Investment option quality",
-        "description": "Quality of investment options in a 529 plan"
+        "label": "Roth IRA rollover option",
+        "description": "Up to $35,000 of unused 529 funds can be rolled into a Roth IRA"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "Simplicity of account management",
-        "description": "Ease of managing a 529 account"
+        "label": "estate planning utility",
+        "description": "529 assets are not subject to estate tax"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "Flexibility if child does not attend college",
-        "description": "Flexibility if the child does not attend college"
+        "label": "simplicity of account management",
+        "description": "Easy account management"
       },
       {
         "id": "a1",
@@ -169,6 +162,14 @@
         "target": "sq1"
       },
       {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
         "source": "sq1",
         "target": "c1"
       },
@@ -181,16 +182,8 @@
         "target": "c3"
       },
       {
-        "source": "sq1",
-        "target": "c4"
-      },
-      {
-        "source": "q",
-        "target": "sq2"
-      },
-      {
         "source": "sq2",
-        "target": "c5"
+        "target": "c4"
       },
       {
         "source": "sq2",
@@ -198,26 +191,18 @@
       },
       {
         "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "q",
-        "target": "sq3"
-      },
-      {
-        "source": "sq3",
-        "target": "c8"
-      },
-      {
-        "source": "sq3",
         "target": "c9"
       },
       {
-        "source": "q",
-        "target": "sq4"
+        "source": "sq3",
+        "target": "c5"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
         "target": "c10"
       },
       {
@@ -234,6 +219,30 @@
       },
       {
         "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
         "target": "a1"
       },
       {
@@ -245,19 +254,7 @@
         "target": "a2"
       },
       {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
+        "source": "c3",
         "target": "a2"
       },
       {
@@ -265,31 +262,27 @@
         "target": "a2"
       },
       {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
         "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
       },
       {
         "source": "c4",
         "target": "a3"
       },
       {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
         "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
         "target": "a3"
       },
       {

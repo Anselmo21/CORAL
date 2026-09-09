@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer C (Motorized with Presets): Get a motorized desk specifically with programmable memory presets \u2014 one-touch height switching between sitting and standing positions is the feature most associated with frequent transitions and actual health benefit.",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2535,
-    "output_tokens": 2084,
-    "llm_calls": 2,
+    "prompt_tokens": 1677,
+    "output_tokens": 2188,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,113 +40,120 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Is the price difference worth it when deciding between a motorized and a manual standing desk?",
-        "description": "Should I get a motorized or manual standing desk?"
+        "label": "Is the price difference worth it when choosing between a motorized and a manual crank standing desk?",
+        "description": "Trade-off between cost and health benefits"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the health benefits of motorized vs manual standing desks?",
-        "description": "What are the health benefits of motorized vs manual standing desks?"
+        "label": "Is a motorized desk worth the price premium?",
+        "description": "Cost-benefit analysis"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Are motorized desks worth the price premium?",
-        "description": "Are motorized desks worth the price premium?"
+        "label": "Is a manual crank desk a viable option for budget-constrained buyers?",
+        "description": "Budget constraint and desk type"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the health benefit of frequent position changes, and how does it relate to the type of desk?",
+        "description": "Health benefits and desk type"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Only consider sources from 2023"
+        "description": "Sources from 2023 only"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Consider sources from 2021 and 2023"
+        "description": "Sources from 2021 to 2023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Only consider sources from the USA"
+        "description": "Sources from the USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: UK",
-        "description": "Only consider sources from the UK"
+        "description": "Sources from the UK"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: User prioritizing health benefit over cost",
-        "description": "Only consider sources that prioritize health benefit over cost"
+        "description": "User prioritizing health benefits"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Budget-constrained buyer willing to accept manual adjustment",
-        "description": "Only consider sources that prioritize budget over health benefit"
+        "description": "Budget-constrained buyer"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer product recommendation publication",
-        "description": "Only consider sources from consumer product recommendation publications"
+        "description": "Consumer product recommendations"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Tech journalism",
-        "description": "Only consider sources from tech journalism"
+        "description": "Tech journalism"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Standing desk user community",
-        "description": "Only consider sources from standing desk user communities"
+        "description": "Standing desk user community"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Occupational health research",
-        "description": "Only consider sources from occupational health research"
+        "description": "Occupational health research"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Motorized Default): Get a motorized desk \u2014 the price premium over manual is $200\u2013400, but research clearly shows that manual cranking friction causes users to change positions far less often, defeating the health purpose of the desk entirely.",
-        "description": "Get a motorized desk"
+        "description": "Motorized desk recommended"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Manual for Budget): Buy a manual crank desk if budget is the hard constraint \u2014 a $250 IKEA SKARSTA is vastly better than no standing desk, and disciplined users who set timers can achieve adequate position variety even with manual adjustment.",
-        "description": "Buy a manual crank desk"
+        "description": "Manual desk recommended for budget"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Motorized with Presets): Get a motorized desk specifically with programmable memory presets \u2014 one-touch height switching between sitting and standing positions is the feature most associated with frequent transitions and actual health benefit.",
-        "description": "Get a motorized desk with presets"
+        "description": "Motorized desk with presets recommended"
       }
     ],
     "edges": [
@@ -159,6 +166,10 @@
         "target": "sq2"
       },
       {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
         "source": "sq1",
         "target": "c1"
       },
@@ -168,7 +179,11 @@
       },
       {
         "source": "sq1",
-        "target": "c5"
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
       },
       {
         "source": "sq1",
@@ -199,6 +214,22 @@
         "target": "c8"
       },
       {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
         "source": "c1",
         "target": "a1"
       },
@@ -208,11 +239,11 @@
       },
       {
         "source": "c3",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c4",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c5",
@@ -232,11 +263,11 @@
       },
       {
         "source": "c9",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c10",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c1",
@@ -277,6 +308,34 @@
       {
         "source": "c10",
         "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
       }
     ]
   }

@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Keychron TKL Linear Default): Get a Keychron Q or V series in TKL with linear switches \u2014 the combination of hot-swap customizability, quiet linears for shared spaces, and compact layout is the best all-around choice for daily programming.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2535,
-    "output_tokens": 2122,
-    "llm_calls": 2,
+    "prompt_tokens": 1683,
+    "output_tokens": 2286,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,36 +40,36 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What mechanical keyboard should I get for daily programming?",
-        "description": ""
+        "label": "What mechanical keyboard should I get?",
+        "description": "Recommended keyboard for daily programming"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What type of switches should I choose (linear, tactile, clicky)?",
-        "description": ""
+        "label": "What type of switches should I choose?",
+        "description": "Linear, tactile, or clicky switches"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What form factor should I prioritize (TKL, 65%)?",
-        "description": ""
+        "label": "What form factor should I prioritize?",
+        "description": "65% or TKL"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What type of publication/source should I trust (consumer product recommendation, mechanical keyboard enthusiast community, tech journalism, keyboard manufacturer)?",
-        "description": ""
+        "label": "What is the preferred keyboard for a developer in a shared office space?",
+        "description": "Keyboard for shared office space"
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "What is my specific situation (working from home, open office, shared space)?",
-        "description": ""
+        "label": "What is the preferred keyboard for a developer working from home?",
+        "description": "Keyboard for home use"
       },
       {
         "id": "c1",
@@ -90,42 +90,42 @@
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Sources from the USA"
+        "description": "Sources from USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Global",
-        "description": "Sources from the Global"
+        "description": "Sources from global"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Developer in open office or shared space",
-        "description": "Sources from developers in open office or shared space"
+        "description": "Sources from shared office space"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Developer working from home with no noise constraint",
-        "description": "Sources from developers working from home with no noise constraint"
+        "description": "Sources from home use"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer product recommendation publication",
-        "description": "Sources from consumer product recommendation publications"
+        "description": "Sources from consumer product recommendation publication"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Mechanical keyboard enthusiast community",
-        "description": "Sources from mechanical keyboard enthusiast communities"
+        "description": "Sources from keyboard enthusiast community"
       },
       {
         "id": "c9",
@@ -139,28 +139,28 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Keyboard manufacturer",
-        "description": "Sources from keyboard manufacturers"
+        "description": "Sources from keyboard manufacturer"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Keychron TKL Linear Default",
-        "description": "Get a Keychron Q or V series in TKL with linear switches \u2014 the combination of hot-swap customizability, quiet linears for shared spaces, and compact layout is the best all-around choice for daily programming."
+        "description": "Get a Keychron Q or V series in TKL with linear switches"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Tactile for Touch Typing",
-        "description": "Choose tactile switches (Boba U4 or Topre) on a 65% if you're a touch typist \u2014 the actuation feedback reduces errors and finger fatigue during marathon coding sessions without the noise of clicky switches."
+        "description": "Choose tactile switches on a 65% if you're a touch typist"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "65% for Desk Efficiency",
-        "description": "Prioritize a 65% form factor above switch choice \u2014 keeping your mouse closer and eliminating numpad bulk reduces shoulder strain during long development sessions more than any switch selection."
+        "description": "Prioritize a 65% form factor above switch choice"
       }
     ],
     "edges": [
@@ -202,10 +202,6 @@
       },
       {
         "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq3",
         "target": "c7"
       },
       {
@@ -222,71 +218,123 @@
       },
       {
         "source": "sq4",
-        "target": "c5"
+        "target": "c6"
       },
       {
         "source": "sq4",
-        "target": "c6"
-      },
-      {
-        "source": "a1",
-        "target": "c1"
-      },
-      {
-        "source": "a1",
-        "target": "c2"
-      },
-      {
-        "source": "a1",
-        "target": "c3"
-      },
-      {
-        "source": "a1",
-        "target": "c4"
-      },
-      {
-        "source": "a1",
-        "target": "c5"
-      },
-      {
-        "source": "a1",
-        "target": "c6"
-      },
-      {
-        "source": "a1",
         "target": "c7"
       },
       {
-        "source": "a1",
+        "source": "sq4",
         "target": "c8"
       },
       {
-        "source": "a1",
+        "source": "sq4",
         "target": "c9"
       },
       {
-        "source": "a1",
+        "source": "sq4",
         "target": "c10"
       },
       {
-        "source": "a2",
-        "target": "c2"
+        "source": "c1",
+        "target": "a1"
       },
       {
-        "source": "a2",
-        "target": "c7"
+        "source": "c2",
+        "target": "a1"
       },
       {
-        "source": "a2",
-        "target": "c8"
+        "source": "c3",
+        "target": "a1"
       },
       {
-        "source": "a3",
-        "target": "c4"
+        "source": "c4",
+        "target": "a1"
       },
       {
-        "source": "a3",
-        "target": "c9"
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

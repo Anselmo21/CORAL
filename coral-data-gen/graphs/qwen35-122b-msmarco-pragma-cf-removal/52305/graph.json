@@ -21,10 +21,21 @@
   ],
   "baseline_answer": "Natural spray: white vinegar OR salt + soap + water solution",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 3,
+  "usage": {
+    "prompt_tokens": 13623,
+    "output_tokens": 7373,
+    "llm_calls": 3,
+    "finish_reasons": [
+      "length",
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,98 +43,98 @@
         "layer": "1",
         "type": "question",
         "label": "best way to get rid of ivy",
-        "description": "The primary inquiry regarding the most effective method for ivy removal."
+        "description": "The primary question asking for the optimal method to remove ivy."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Safety and Environmental Impact",
-        "description": "Which methods prioritize non-toxic, organic, and pet/child-safe outcomes?"
+        "label": "What is the safest, non-toxic method for general home use?",
+        "description": "Focuses on organic, safe, and DIY-friendly approaches."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Context and Scale of Infestation",
-        "description": "Which methods are best suited for specific scenarios like buildings, rentals, or large patches?"
+        "label": "What is the most effective method for large-scale or established infestations?",
+        "description": "Focuses on potency, speed, and handling large areas."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Source Authority and Methodology",
-        "description": "Which methods are supported by agricultural, scientific, or industry-standard guidelines?"
+        "label": "What is the best method for specific constraints like rental properties or building structures?",
+        "description": "Focuses on safety, structural integrity, and tenant restrictions."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: agricultural extension service guideline",
-        "description": "Prioritizes advice from official agricultural extensions."
+        "description": "Prioritizes official agricultural guidelines."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed weed science journal",
-        "description": "Prioritizes advice from scientific, peer-reviewed literature."
+        "description": "Prioritizes scientific research and peer-reviewed data."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: organic gardening publication",
-        "description": "Prioritizes organic and non-synthetic methods."
+        "description": "Prioritizes organic and non-chemical methods."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: home & garden DIY blog",
-        "description": "Prioritizes accessible, do-it-yourself home remedies."
+        "description": "Prioritizes accessible, home-based DIY solutions."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: pesticide industry documentation",
-        "description": "Prioritizes commercial herbicide efficacy and safety data."
+        "description": "Prioritizes chemical herbicide effectiveness and usage."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: homeowner with established ivy on building",
-        "description": "Focuses on methods safe for structures and long-term control."
+        "description": "Focuses on structural safety and removal from buildings."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: pet / child-safe priority gardener",
-        "description": "Focuses on non-toxic solutions for families."
+        "description": "Prioritizes non-toxic methods safe for pets and children."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: small-area weekend gardener",
-        "description": "Focuses on manageable, low-effort solutions for small patches."
+        "description": "Focuses on manageable, small-scale removal techniques."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: rental tenant",
-        "description": "Focuses on non-destructive, landlord-approved methods."
+        "description": "Focuses on methods allowed for tenants (often non-chemical)."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: large-area ivy patch owner",
-        "description": "Focuses on high-efficiency methods for large infestations."
+        "description": "Focuses on efficiency for large infestations."
       },
       {
         "id": "a1",
@@ -137,14 +148,14 @@
         "layer": "4",
         "type": "answer",
         "label": "Natural spray: white vinegar OR salt + soap + water solution",
-        "description": "Non-toxic chemical application."
+        "description": "Natural chemical removal using household items."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Glyphosate (Roundup) or triclopyr (Brush-B-Gon) herbicide applied to leaves",
-        "description": "Synthetic herbicide application."
+        "description": "Synthetic chemical herbicide application."
       }
     ],
     "edges": [
@@ -162,7 +173,19 @@
       },
       {
         "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
         "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
       },
       {
         "source": "sq1",
@@ -170,15 +193,7 @@
       },
       {
         "source": "sq2",
-        "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c8"
-      },
-      {
-        "source": "sq2",
-        "target": "c9"
+        "target": "c5"
       },
       {
         "source": "sq2",
@@ -186,47 +201,27 @@
       },
       {
         "source": "sq3",
-        "target": "c1"
+        "target": "c6"
       },
       {
         "source": "sq3",
-        "target": "c2"
+        "target": "c8"
       },
       {
         "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
+        "target": "c9"
       },
       {
         "source": "c1",
         "target": "a2"
       },
       {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
         "source": "c2",
         "target": "a2"
       },
       {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
         "source": "c3",
         "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
       },
       {
         "source": "c4",
@@ -237,20 +232,8 @@
         "target": "a2"
       },
       {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
         "source": "c6",
         "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
       },
       {
         "source": "c7",
@@ -258,15 +241,7 @@
       },
       {
         "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
         "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
       },
       {
         "source": "c9",
@@ -275,6 +250,38 @@
       {
         "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
       },
       {
         "source": "c10",

@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "A Storm of Swords",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3246,
-    "output_tokens": 1767,
-    "llm_calls": 2,
+    "prompt_tokens": 2013,
+    "output_tokens": 1885,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,113 +40,97 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What is the best Game of Thrones book?",
-        "description": ""
+        "label": "What is the best Game of Thrones book?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What sources are trustworthy for evaluating the quality of Game of Thrones books?",
-        "description": ""
+        "label": "What sources are trustworthy for evaluating the quality of Game of Thrones books?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What perspectives are relevant for evaluating the quality of Game of Thrones books?",
-        "description": ""
+        "label": "What perspectives are relevant for evaluating the quality of Game of Thrones books?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Goodreads aggregated ratings",
-        "description": ""
+        "label": "trustworthiness: Goodreads aggregated ratings"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: professional literary critic review",
-        "description": ""
+        "label": "trustworthiness: professional literary critic review"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: fan / fantasy community forum (r/asoiaf)",
-        "description": ""
+        "label": "trustworthiness: fan / fantasy community forum (r/asoiaf)"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: publisher-curated reading guide",
-        "description": ""
+        "label": "trustworthiness: publisher-curated reading guide"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: general bookseller bestseller list",
-        "description": ""
+        "label": "trustworthiness: general bookseller bestseller list"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: new reader / series newcomer",
-        "description": ""
+        "label": "perspective: new reader / series newcomer"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: longtime hardcore fan",
-        "description": ""
+        "label": "perspective: longtime hardcore fan"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: reader who prefers action / dramatic plot",
-        "description": ""
+        "label": "perspective: reader who prefers action / dramatic plot"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: reader who prefers character study",
-        "description": ""
+        "label": "perspective: reader who prefers character study"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: TV-series watcher exploring books",
-        "description": ""
+        "label": "perspective: TV-series watcher exploring books"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "A Storm of Swords",
-        "description": ""
+        "label": "A Storm of Swords"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "A Game of Thrones",
-        "description": ""
+        "label": "A Game of Thrones"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "A Dance with Dragons",
-        "description": ""
+        "label": "A Dance with Dragons"
       }
     ],
     "edges": [
@@ -203,100 +187,104 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
+        "source": "c1",
+        "target": "a2"
       },
       {
         "source": "c1",
         "target": "a3"
       },
       {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
+        "source": "c2",
+        "target": "a1"
       },
       {
         "source": "c2",
         "target": "a2"
       },
       {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
         "source": "c3",
         "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
       },
       {
         "source": "c4",
         "target": "a2"
       },
       {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
         "source": "c5",
-        "target": "a2"
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
       },
       {
         "source": "c6",
         "target": "a2"
       },
       {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
         "source": "c7",
         "target": "a2"
       },
       {
-        "source": "c9",
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
         "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
       },
       {
         "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

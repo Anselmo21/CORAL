@@ -22,10 +22,19 @@
   ],
   "baseline_answer": "RBC Royal Bank Esso Visa",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2141,
+    "output_tokens": 3026,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -33,126 +42,133 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best gas loyalty points card in Canada?",
-        "description": "Determine the top gas loyalty program in Canada based on multiple criteria."
+        "description": "Identify the top gas loyalty card in Canada based on spending habits and source trustworthiness."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "Best for low-spend driver",
-        "description": "What is the best gas loyalty program for a low-spend driver in Canada?"
+        "description": "What is the best gas loyalty card for a low-spend driver in Canada?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "Best for high-spend driver",
-        "description": "What is the best gas loyalty program for a high-spend driver in Canada?"
+        "description": "What is the best gas loyalty card for a high-spend driver in Canada?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "Best for credit-card-averse consumer",
-        "description": "What is the best gas loyalty program for a credit-card-averse consumer in Canada?"
+        "description": "What is the best gas loyalty card for a credit-card-averse consumer in Canada?"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Best based on trustworthiness",
+        "description": "What is the best gas loyalty card in Canada based on trustworthiness of the source?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Canada (national)",
-        "description": "Focus on national coverage."
+        "description": "Filter for national Canadian sources."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Ontario / GTA",
-        "description": "Focus on Ontario/GTA region."
+        "description": "Filter for Ontario/GTA-specific sources."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Western Canada (Alberta / BC)",
-        "description": "Focus on Western Canada."
+        "description": "Filter for Western Canadian sources."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: MoneySense / personal finance publication",
-        "description": "Prioritize content from MoneySense."
+        "description": "Filter for MoneySense and similar publications."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: RateSupermarket.ca rewards comparison",
-        "description": "Prioritize RateSupermarket.ca."
+        "description": "Filter for RateSupermarket.ca."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Canadian consumer finance blog",
-        "description": "Prioritize Canadian finance blogs."
+        "description": "Filter for Canadian finance blogs."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: bank product documentation",
-        "description": "Prioritize bank documentation."
+        "description": "Filter for bank product documentation."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: low-spend driver (~$200/mo)",
-        "description": "Focus on low-spend consumers."
+        "description": "Filter for low-spend drivers."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: high-spend driver (~$500/mo)",
-        "description": "Focus on high-spend consumers."
+        "description": "Filter for high-spend drivers."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: credit-card-averse consumer",
-        "description": "Focus on non-credit-card users."
+        "description": "Filter for credit-card-averse consumers."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Esso Extra",
-        "description": "Esso's standalone loyalty program."
+        "description": "Esso Extra loyalty program."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Petro-Points (Petro-Canada)",
-        "description": "Petro-Canada's loyalty program."
+        "description": "Petro-Points loyalty program."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "RBC Royal Bank Esso Visa",
-        "description": "Credit card with Esso rewards."
+        "description": "RBC Royal Bank Esso Visa credit card."
       },
       {
         "id": "a4",
         "layer": "4",
         "type": "answer",
         "label": "CIBC Costco Gas Mastercard",
-        "description": "CIBC's credit card with Costco gas rewards."
+        "description": "CIBC Costco Gas Mastercard."
       }
     ],
     "edges": [
@@ -167,6 +183,10 @@
       {
         "source": "q",
         "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
       },
       {
         "source": "sq1",
@@ -193,76 +213,24 @@
         "target": "c10"
       },
       {
-        "source": "sq1",
+        "source": "sq4",
+        "target": "c1"
+      },
+      {
+        "source": "sq4",
         "target": "c4"
       },
       {
-        "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq1",
-        "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c6"
-      },
-      {
-        "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
+        "source": "sq4",
         "target": "c5"
       },
       {
-        "source": "sq2",
-        "target": "c5"
+        "source": "sq4",
+        "target": "c6"
       },
       {
-        "source": "sq3",
-        "target": "c5"
-      },
-      {
-        "source": "sq1",
-        "target": "c2"
-      },
-      {
-        "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c2"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
+        "source": "sq4",
+        "target": "c7"
       },
       {
         "source": "c1",
@@ -329,10 +297,6 @@
         "target": "a1"
       },
       {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
         "source": "c1",
         "target": "a2"
       },
@@ -357,10 +321,6 @@
         "target": "a2"
       },
       {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
         "source": "c1",
         "target": "a4"
       },
@@ -378,14 +338,6 @@
       },
       {
         "source": "c6",
-        "target": "a4"
-      },
-      {
-        "source": "c8",
-        "target": "a4"
-      },
-      {
-        "source": "c10",
         "target": "a4"
       }
     ]

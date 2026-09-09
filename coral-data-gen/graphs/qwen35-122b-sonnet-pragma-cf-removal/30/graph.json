@@ -21,109 +21,119 @@
   ],
   "baseline_answer": "Answer A (Bootcamp Default): Do a coding bootcamp \u2014 at 29 with a career to build, the 6\u201312 month path to employment vastly outweighs a 4-year degree's opportunity cost for most software development roles outside top-tier companies.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 2,
+  "usage": {
+    "prompt_tokens": 7617,
+    "output_tokens": 6141,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "CS Degree vs. Bootcamp for 29yo Career Changer",
+        "label": "CS Degree vs Bootcamp at 29?",
         "description": "Should a 29-year-old marketing professional get a CS degree or do a coding bootcamp?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Fastest path to employment for a career changer?",
-        "description": "Evaluates speed, ROI, and immediate hiring potential."
+        "label": "Speed & ROI for Career Changers",
+        "description": "What is the best path for quick employment and ROI for a late-20s career changer?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Path to top-tier companies and long-term ceiling?",
-        "description": "Evaluates foundational depth, FAANG access, and seniority progression."
+        "label": "Long-Term Ceiling & Top-Tier Roles",
+        "description": "Which path offers better long-term earnings and access to FAANG/senior roles?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Viability of self-teaching without formal credentials?",
-        "description": "Evaluates cost, flexibility, and portfolio-based hiring."
+        "label": "Viability of Non-Structured Paths",
+        "description": "Is self-teaching a viable alternative to formal education or bootcamps?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Filters for the most recent data, prioritizing current market trends."
+        "description": "Prioritize sources from 2023 only."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Broader temporal window including recent historical trends."
+        "description": "Prioritize sources from 2021 to 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Focuses on the US job market where credentials are highly valued."
+        "description": "Prioritize sources focused on the USA."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Global tech industry",
-        "description": "Focuses on the global market where skills often outweigh degrees."
+        "description": "Prioritize sources focused on the global tech industry."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Career changer prioritizing speed to employment",
-        "description": "Prioritizes short time-to-hire over long-term academic depth."
+        "description": "Prioritize perspectives valuing speed to employment."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Aspiring FAANG/top-tier company engineer",
-        "description": "Prioritizes roles requiring deep theoretical foundations."
+        "description": "Prioritize perspectives valuing FAANG/top-tier engineering roles."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Developer community survey",
-        "description": "Prioritizes large-scale developer sentiment data."
+        "description": "Prioritize developer community survey data."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Bootcamp outcome reporting",
-        "description": "Prioritizes data specifically tracking bootcamp placement and salaries."
+        "description": "Prioritize bootcamp outcome reporting."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Community peer advice",
-        "description": "Prioritizes anecdotal advice from forums like Reddit."
+        "description": "Prioritize community peer advice."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Career research organization",
-        "description": "Prioritizes structured analysis from career impact organizations."
+        "description": "Prioritize career research organization data."
       },
       {
         "id": "a1",
@@ -166,6 +176,10 @@
       },
       {
         "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
         "target": "c3"
       },
       {
@@ -185,8 +199,16 @@
         "target": "c9"
       },
       {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
         "source": "sq2",
         "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
       },
       {
         "source": "sq2",
@@ -198,11 +220,15 @@
       },
       {
         "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
         "target": "c10"
       },
       {
         "source": "sq3",
-        "target": "c2"
+        "target": "c1"
       },
       {
         "source": "sq3",
@@ -213,14 +239,6 @@
         "target": "c7"
       },
       {
-        "source": "sq3",
-        "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
-      },
-      {
         "source": "c1",
         "target": "a1"
       },
@@ -229,24 +247,12 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
         "source": "c3",
         "target": "a1"
       },
       {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
         "source": "c4",
         "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
       },
       {
         "source": "c5",
@@ -254,15 +260,11 @@
       },
       {
         "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
         "target": "a1"
       },
       {
         "source": "c7",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c8",
@@ -273,15 +275,43 @@
         "target": "a1"
       },
       {
-        "source": "c9",
-        "target": "a3"
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
       },
       {
         "source": "c10",
         "target": "a2"
       },
       {
-        "source": "c10",
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
         "target": "a3"
       }
     ]

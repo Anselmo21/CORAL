@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Dairy-free / Cycle Diet",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3256,
-    "output_tokens": 1704,
-    "llm_calls": 2,
+    "prompt_tokens": 2019,
+    "output_tokens": 1615,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,113 +40,97 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What is the best diet for reducing PMS symptoms?",
-        "description": ""
+        "label": "What is the best diet for reducing PMS symptoms?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the most trustworthy sources for diet advice?",
-        "description": ""
+        "label": "What are the most trustworthy sources for dietary advice on reducing PMS symptoms?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the perspectives of women with different PMS symptoms and dietary needs?",
-        "description": ""
+        "label": "What are the perspectives of women with different experiences of PMS symptoms on the best diet for reducing symptoms?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: registered dietitian guidance",
-        "description": ""
+        "label": "trustworthiness: registered dietitian guidance"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: peer-reviewed gynecology / nutrition journal",
-        "description": ""
+        "label": "trustworthiness: peer-reviewed gynecology / nutrition journal"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: integrative medicine source",
-        "description": ""
+        "label": "trustworthiness: integrative medicine source"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: women's health magazine",
-        "description": ""
+        "label": "trustworthiness: women's health magazine"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: wellness blog",
-        "description": ""
+        "label": "trustworthiness: wellness blog"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: PMS sufferer with severe cramps",
-        "description": ""
+        "label": "perspective: PMS sufferer with severe cramps"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: PMS sufferer with mood / fatigue dominant symptoms",
-        "description": ""
+        "label": "perspective: PMS sufferer with mood / fatigue dominant symptoms"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: PMDD diagnosed patient",
-        "description": ""
+        "label": "perspective: PMDD diagnosed patient"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: lactose-intolerant / dairy-averse woman",
-        "description": ""
+        "label": "perspective: lactose-intolerant / dairy-averse woman"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: vegan / plant-forward woman",
-        "description": ""
+        "label": "perspective: vegan / plant-forward woman"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Mediterranean-style diet",
-        "description": ""
+        "label": "Mediterranean-style diet"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Dairy-free / Cycle Diet",
-        "description": ""
+        "label": "Dairy-free / Cycle Diet"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Anti-inflammatory elimination diet",
-        "description": ""
+        "label": "Anti-inflammatory elimination diet"
       }
     ],
     "edges": [
@@ -208,11 +192,11 @@
       },
       {
         "source": "c2",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c3",
@@ -236,11 +220,15 @@
       },
       {
         "source": "c5",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c6",
         "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
       },
       {
         "source": "c7",
@@ -260,31 +248,7 @@
       },
       {
         "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c10",

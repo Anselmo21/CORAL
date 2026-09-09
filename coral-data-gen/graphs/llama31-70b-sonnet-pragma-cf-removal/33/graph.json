@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Community College Default): Start at community college if you're paying out-of-pocket \u2014 2 years of CC followed by transfer saves $40\u201380k in tuition with comparable graduation outcomes when transfer is executed with formal articulation agreements.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2498,
-    "output_tokens": 1912,
-    "llm_calls": 2,
+    "prompt_tokens": 1661,
+    "output_tokens": 1757,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,120 +40,103 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Is it smarter to start at a community college and transfer, or go straight to a 4-year university?",
-        "description": ""
+        "label": "Is it smarter to start at a community college and transfer, or go straight to a 4-year university?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Financial implications of attending a community college versus a 4-year university",
-        "description": ""
+        "label": "General pros and cons of community college vs 4-year university"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Articulation agreements and transfer outcomes",
-        "description": ""
+        "label": "Effect of specific circumstances on the decision"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Implications of attending a selective institution on career earnings and networking opportunities",
-        "description": ""
+        "label": "Perspectives of different stakeholders"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "temporal: 2023 only",
-        "description": ""
+        "label": "temporal: 2023 only"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "temporal: 2021\u20132023",
-        "description": ""
+        "label": "temporal: 2021\u20132023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "geographic: USA",
-        "description": ""
+        "label": "geographic: USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "geographic: California (CC transfer agreements)",
-        "description": ""
+        "label": "geographic: California (CC transfer agreements)"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: Cost-conscious student without scholarship funding",
-        "description": ""
+        "label": "perspective: Cost-conscious student without scholarship funding"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: Student targeting selective or brand-name institutions",
-        "description": ""
+        "label": "perspective: Student targeting selective or brand-name institutions"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Education research foundation",
-        "description": ""
+        "label": "trustworthiness: Education research foundation"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Education ranking publication",
-        "description": ""
+        "label": "trustworthiness: Education ranking publication"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Student community advice",
-        "description": ""
+        "label": "trustworthiness: Student community advice"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: State university system documentation",
-        "description": ""
+        "label": "trustworthiness: State university system documentation"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Start at community college if you're paying out-of-pocket \u2014 2 years of CC followed by transfer saves $40\u201380k in tuition with comparable graduation outcomes when transfer is executed with formal articulation agreements.",
-        "description": ""
+        "label": "Start at community college if you're paying out-of-pocket \u2014 2 years of CC followed by transfer saves $40\u201380k in tuition with comparable graduation outcomes when transfer is executed with formal articulation agreements."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Go straight to the best 4-year university you can access \u2014 the career earnings premium and networking benefits of attending a selective institution are not achievable through transfer, as top schools rarely admit transfer students.",
-        "description": ""
+        "label": "Go straight to the best 4-year university you can access \u2014 the career earnings premium and networking benefits of attending a selective institution are not achievable through transfer, as top schools rarely admit transfer students."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Community college is the right choice only if a formal transfer articulation agreement exists with your target school \u2014 structured TAG programs produce transfer outcomes comparable to direct entry, while unstructured transfers carry significant credit loss risk.",
-        "description": ""
+        "label": "Community college is the right choice only if a formal transfer articulation agreement exists with your target school \u2014 structured TAG programs produce transfer outcomes comparable to direct entry, while unstructured transfers carry significant credit loss risk."
       }
     ],
     "edges": [
@@ -182,31 +165,15 @@
         "target": "c3"
       },
       {
-        "source": "sq1",
-        "target": "c5"
-      },
-      {
-        "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
         "source": "sq2",
         "target": "c4"
       },
       {
         "source": "sq2",
-        "target": "c10"
+        "target": "c5"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c6"
       },
       {
@@ -216,6 +183,14 @@
       {
         "source": "sq3",
         "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -258,6 +233,10 @@
         "target": "a1"
       },
       {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
         "source": "c2",
         "target": "a2"
       },
@@ -282,27 +261,15 @@
         "target": "a3"
       },
       {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
         "source": "c5",
         "target": "a3"
       },
       {
-        "source": "c7",
+        "source": "c9",
         "target": "a3"
       },
       {
-        "source": "c9",
+        "source": "c10",
         "target": "a3"
       }
     ]

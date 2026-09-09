@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (Combo Convection Oven Default): Get a compact countertop convection oven with air fry mode \u2014 it replaces your toaster, air fryer, and secondary oven in one footprint, which is the right trade-off for small kitchens even if peak air frying performance is slightly lower.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1585,
+    "output_tokens": 2238,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -39,90 +48,90 @@
         "layer": "2",
         "type": "subq",
         "label": "sq1",
-        "description": "What is the most important factor for a small kitchen \u2014 size, versatility, or efficiency?"
+        "description": "What is the best use of limited kitchen space?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "sq2",
-        "description": "How important is peak performance for air frying?"
+        "description": "What cooking tasks and performance matter most?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "sq3",
-        "description": "How important is energy efficiency and speed for daily use?"
+        "description": "What about efficiency and practicality for daily use?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "1. countertop footprint size",
+        "label": "countertop footprint size",
         "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "2. versatility for multiple cooking tasks",
+        "label": "versatility for multiple cooking tasks",
         "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "3. peak air frying performance",
+        "label": "peak air frying performance",
         "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "4. baking and roasting capability",
+        "label": "baking and roasting capability",
         "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "5. energy efficiency for daily use",
+        "label": "energy efficiency for daily use",
         "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "6. speed of cooking small batches",
+        "label": "speed of cooking small batches",
         "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "7. ability to replace full-size oven",
+        "label": "ability to replace full-size oven",
         "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "8. price and value",
+        "label": "price and value",
         "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "9. household size and cooking volume",
+        "label": "household size and cooking volume",
         "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "10. ease of cleaning",
+        "label": "ease of cleaning",
         "description": ""
       },
       {
@@ -166,27 +175,19 @@
       },
       {
         "source": "sq1",
-        "target": "c2"
-      },
-      {
-        "source": "sq1",
-        "target": "c4"
-      },
-      {
-        "source": "sq1",
         "target": "c7"
       },
       {
-        "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
+        "source": "sq2",
+        "target": "c2"
       },
       {
         "source": "sq2",
         "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
       },
       {
         "source": "sq2",
@@ -198,7 +199,15 @@
       },
       {
         "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
         "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -241,15 +250,11 @@
         "target": "a1"
       },
       {
-        "source": "c2",
+        "source": "c1",
         "target": "a2"
       },
       {
         "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
         "target": "a2"
       },
       {
@@ -261,18 +266,6 @@
         "target": "a2"
       },
       {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
         "source": "c5",
         "target": "a3"
       },
@@ -281,7 +274,15 @@
         "target": "a3"
       },
       {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
         "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
         "target": "a3"
       }
     ]

@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer C (NAS Plus Cloud for 3-2-1): Combine a NAS for local backups with Backblaze B2 for offsite cloud replication \u2014 this implements the proper 3-2-1 backup strategy and is the only approach that protects against both local hardware failure and physical disaster.",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2422,
-    "output_tokens": 1906,
-    "llm_calls": 2,
+    "prompt_tokens": 1617,
+    "output_tokens": 1929,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,85 +47,99 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Cost-effectiveness and setup complexity",
-        "description": ""
+        "label": "Cost and Maintenance",
+        "description": "upfront cost vs recurring monthly cost, total cost over 5-year ownership, setup and maintenance complexity"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Data protection and management",
-        "description": ""
+        "label": "Data Protection and Access",
+        "description": "offsite protection from physical disaster, data access speed for local files, remote access from outside home network"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Data Management and Control",
+        "description": "storage capacity for large data volumes, vendor lock-in and service continuity risk, privacy and control over personal data"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Backup Strategy",
+        "description": "automatic and passive backup operation"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "upfront cost vs recurring monthly cost",
-        "description": ""
+        "description": "cost comparison between NAS and cloud storage"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "offsite protection from physical disaster",
-        "description": ""
+        "label": "total cost over 5-year ownership",
+        "description": "long-term cost comparison between NAS and cloud storage"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "storage capacity for large data volumes",
-        "description": ""
+        "label": "setup and maintenance complexity",
+        "description": "ease of setup and maintenance for NAS and cloud storage"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "data access speed for local files",
-        "description": ""
+        "label": "offsite protection from physical disaster",
+        "description": "protection against physical disasters for NAS and cloud storage"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "setup and maintenance complexity",
-        "description": ""
+        "label": "data access speed for local files",
+        "description": "speed of accessing local files for NAS and cloud storage"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "vendor lock-in and service continuity risk",
-        "description": ""
+        "label": "remote access from outside home network",
+        "description": "ability to access files from outside the home network for NAS and cloud storage"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "total cost over 5-year ownership",
-        "description": ""
+        "label": "storage capacity for large data volumes",
+        "description": "storage capacity for large data volumes for NAS and cloud storage"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "remote access from outside home network",
-        "description": ""
+        "label": "vendor lock-in and service continuity risk",
+        "description": "risk of vendor lock-in and service continuity for cloud storage"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "privacy and control over personal data",
-        "description": ""
+        "description": "privacy and control over personal data for NAS and cloud storage"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "automatic and passive backup operation",
-        "description": ""
+        "description": "automatic and passive backup operation for NAS and cloud storage"
       },
       {
         "id": "a1",
@@ -159,6 +173,14 @@
         "target": "sq2"
       },
       {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
         "source": "sq1",
         "target": "c1"
       },
@@ -168,14 +190,6 @@
       },
       {
         "source": "sq1",
-        "target": "c5"
-      },
-      {
-        "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
         "target": "c3"
       },
       {
@@ -184,14 +198,26 @@
       },
       {
         "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
         "target": "c6"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
         "target": "c9"
       },
       {
-        "source": "sq2",
+        "source": "sq4",
         "target": "c10"
       },
       {
@@ -199,31 +225,11 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
         "source": "c2",
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
         "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
         "target": "a1"
       },
       {
@@ -232,15 +238,7 @@
       },
       {
         "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
         "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
       },
       {
         "source": "c6",
@@ -251,39 +249,15 @@
         "target": "a2"
       },
       {
-        "source": "c7",
-        "target": "a3"
+        "source": "c8",
+        "target": "a1"
       },
       {
         "source": "c9",
         "target": "a1"
       },
       {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
         "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "a1",
-        "target": "a3"
-      },
-      {
-        "source": "a2",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
         "target": "a3"
       }
     ]

@@ -21,116 +21,118 @@
   ],
   "baseline_answer": "Answer A (Part-Time Default for Professional Degrees): Do a part-time program if you're pursuing a professional degree (MBA, MPA, MS) \u2014 you maintain income, apply learning immediately, avoid employment gaps, and outcomes are largely equivalent to full-time.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1659,
+    "output_tokens": 2681,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "q",
-        "description": "I'm considering graduate school but I can't afford to quit my job. Should I do part-time or full-time?"
+        "label": "Should I do part-time or full-time graduate school if I can't quit my job?",
+        "description": "Considering financial and practical constraints, which option is better for a working professional."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "sq1",
-        "description": "What is the best option for someone pursuing a professional degree while working full-time?"
+        "label": "Outcomes for professional degrees (MBA, MPA, MS)",
+        "description": "What are the outcomes and feasibility of part-time vs. full-time for professional degrees?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "sq2",
-        "description": "What is the best option for someone pursuing a research-based or academic degree while working full-time?"
+        "label": "Outcomes for research-based degrees (PhD, academic MA)",
+        "description": "What are the outcomes and feasibility of part-time vs. full-time for research-based degrees?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "sq3",
-        "description": "What is the best option for someone who cannot afford to quit their job and lacks employer support?"
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "sq4",
-        "description": "What is the best option for someone who has employer tuition reimbursement?"
+        "label": "Financial and practical implications for working professionals",
+        "description": "What are the financial and practical implications of part-time study for working professionals?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": ""
+        "description": "Only consider sources from 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": ""
+        "description": "Consider sources from 2021 to 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": ""
+        "description": "Only consider sources from the USA."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Working professional pursuing a professional degree",
-        "description": ""
+        "description": "Only consider sources from the perspective of a working professional pursuing a professional degree."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student pursuing a research-based or academic degree",
-        "description": ""
+        "description": "Only consider sources from the perspective of a student pursuing a research-based or academic degree."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student with employer tuition reimbursement",
-        "description": ""
+        "description": "Only consider sources from the perspective of a student with employer tuition reimbursement."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Education ranking publication",
-        "description": ""
+        "description": "Only consider sources from education ranking publications."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Education research foundation",
-        "description": ""
+        "description": "Only consider sources from education research foundations."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Graduate student community",
-        "description": ""
+        "description": "Only consider sources from graduate student communities."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Business school enrollment data",
-        "description": ""
+        "description": "Only consider sources from business school enrollment data."
       },
       {
         "id": "a1",
@@ -168,12 +170,12 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
+        "source": "sq1",
+        "target": "c1"
       },
       {
         "source": "sq1",
-        "target": "c1"
+        "target": "c2"
       },
       {
         "source": "sq1",
@@ -185,7 +187,19 @@
       },
       {
         "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
         "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
       },
       {
         "source": "sq1",
@@ -197,6 +211,10 @@
       },
       {
         "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
         "target": "c3"
       },
       {
@@ -205,11 +223,19 @@
       },
       {
         "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
         "target": "c8"
       },
       {
         "source": "sq2",
         "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
       },
       {
         "source": "sq3",
@@ -225,30 +251,22 @@
       },
       {
         "source": "sq3",
-        "target": "c5"
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
       },
       {
         "source": "sq3",
         "target": "c9"
       },
       {
-        "source": "sq4",
-        "target": "c1"
-      },
-      {
-        "source": "sq4",
-        "target": "c3"
-      },
-      {
-        "source": "sq4",
-        "target": "c4"
-      },
-      {
-        "source": "sq4",
-        "target": "c6"
-      },
-      {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c10"
       },
       {
@@ -304,7 +322,7 @@
         "target": "a2"
       },
       {
-        "source": "c6",
+        "source": "c5",
         "target": "a2"
       },
       {
@@ -332,7 +350,11 @@
         "target": "a3"
       },
       {
-        "source": "c5",
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
         "target": "a3"
       },
       {

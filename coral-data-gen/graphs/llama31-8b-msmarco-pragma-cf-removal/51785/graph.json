@@ -19,18 +19,18 @@
     "A Game of Thrones",
     "A Dance with Dragons"
   ],
-  "baseline_answer": "A Storm of Swords",
-  "baseline_index": 0,
+  "baseline_answer": "A Game of Thrones",
+  "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3246,
-    "output_tokens": 1706,
-    "llm_calls": 2,
+    "prompt_tokens": 2013,
+    "output_tokens": 1886,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,112 +41,112 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best game of thrones book?",
-        "description": "The best game of thrones book is determined by various factors."
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "What is the best game of thrones book based on trustworthiness?",
-        "description": "The best game of thrones book based on trustworthiness is determined by various sources."
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "What is the best game of thrones book based on perspective?",
-        "description": "The best game of thrones book based on perspective is determined by various readers."
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Goodreads aggregated ratings",
-        "description": "A measure of trustworthiness based on Goodreads ratings."
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: professional literary critic review",
-        "description": "A measure of trustworthiness based on professional literary critic reviews."
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: fan / fantasy community forum (r/asoiaf)",
-        "description": "A measure of trustworthiness based on fan / fantasy community forums."
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: publisher-curated reading guide",
-        "description": "A measure of trustworthiness based on publisher-curated reading guides."
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: general bookseller bestseller list",
-        "description": "A measure of trustworthiness based on general bookseller bestseller lists."
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: new reader / series newcomer",
-        "description": "A measure of perspective based on new readers and series newcomers."
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: longtime hardcore fan",
-        "description": "A measure of perspective based on longtime hardcore fans."
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: reader who prefers action / dramatic plot",
-        "description": "A measure of perspective based on readers who prefer action / dramatic plots."
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: reader who prefers character study",
-        "description": "A measure of perspective based on readers who prefer character studies."
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: TV-series watcher exploring books",
-        "description": "A measure of perspective based on TV-series watchers exploring books."
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A Storm of Swords",
-        "description": "A Storm of Swords is considered the best game of thrones book by various sources."
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A Game of Thrones",
-        "description": "A Game of Thrones is considered the best game of thrones book by new readers and TV-series watchers."
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A Dance with Dragons",
-        "description": "A Dance with Dragons is considered the best game of thrones book by readers who prefer action / dramatic plots."
+        "description": ""
       }
     ],
     "edges": [
@@ -203,31 +203,79 @@
         "target": "a1"
       },
       {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
         "source": "c2",
         "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
       },
       {
         "source": "c3",
         "target": "a1"
       },
       {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
         "source": "c4",
         "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
       },
       {
         "source": "c5",
         "target": "a1"
       },
       {
-        "source": "c6",
+        "source": "c5",
         "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
       },
       {
         "source": "c10",
         "target": "a2"
       },
       {
-        "source": "c8",
+        "source": "c10",
         "target": "a3"
       }
     ]

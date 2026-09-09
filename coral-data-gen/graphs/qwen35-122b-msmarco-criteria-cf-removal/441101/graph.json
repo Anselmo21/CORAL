@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "New compact SUV (2015 Mazda CX-5, Subaru Forester, or Mitsubishi Outlander AWD)",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1841,
+    "output_tokens": 2500,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "list of the best suv cars for teens",
-        "description": "Identify the top SUV options for teenage drivers."
+        "description": "Identify the optimal SUV choice for a teenage driver based on safety, cost, and suitability."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Safety and Suitability",
-        "description": "Evaluates physical safety, vehicle size, and driving dynamics for novices."
+        "label": "Safety and Risk Mitigation",
+        "description": "Evaluates how well the vehicle protects the teen driver and prevents accidents."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "Financial and Long-term Value",
-        "description": "Assesses cost of ownership, reliability, and depreciation."
+        "description": "Assesses the ongoing costs, efficiency, and durability of the vehicle."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "User and Modern Appeal",
-        "description": "Considers technology, user satisfaction, and subjective experience."
+        "label": "Market Availability and User Validation",
+        "description": "Considers the age of the vehicle and public perception/reviews."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "safety ratings",
-        "description": "Crash test scores and safety awards."
+        "description": "Official crash test scores from IIHS and NHTSA."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "insurance costs",
-        "description": "Premium rates for teen drivers."
+        "description": "The premium rates associated with insuring the vehicle for a teen driver."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "reliability",
-        "description": "Likelihood of mechanical failure and repair frequency."
+        "description": "The likelihood of the vehicle requiring repairs or breaking down."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "size",
-        "description": "Vehicle dimensions and weight impacting safety."
+        "description": "The physical dimensions and weight of the vehicle affecting stability."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "fuel efficiency",
-        "description": "Miles per gallon and fuel economy."
+        "description": "Miles per gallon and overall fuel economy."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "technology features",
-        "description": "Modern safety and infotainment systems."
+        "description": "Modern safety aids like Electronic Stability Control (ESC) and crash avoidance."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "resale value",
-        "description": "Retention of value over time."
+        "description": "The expected value retention of the vehicle over time."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "user reviews",
-        "description": "Owner satisfaction and feedback."
+        "description": "Feedback from other owners regarding satisfaction and performance."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "age of model",
-        "description": "Model year and associated safety tech generation."
+        "description": "The model year and how recent the design is."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "driving experience",
-        "description": "Handling, comfort, and driver engagement."
+        "description": "Ease of handling, maneuverability, and driver comfort."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "New compact SUV (2015 Mazda CX-5, Subaru Forester, or Mitsubishi Outlander AWD)",
-        "description": "Baseline answer: New, compact, high safety ratings."
+        "description": "The baseline top pick offering the best balance of modern safety and efficiency."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "New midsize SUV (2015 Toyota Highlander)",
-        "description": "Alternative: New, larger, potentially higher cost."
+        "description": "A larger, safer option that sacrifices some efficiency and maneuverability."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Used 2009-model-year SUV at ~$15,000",
-        "description": "Alternative: Older, budget-friendly, lower tech."
+        "description": "A budget option that lacks modern safety tech and has higher age-related risks."
       }
     ],
     "edges": [
@@ -170,6 +179,10 @@
       },
       {
         "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
         "target": "c10"
       },
       {
@@ -189,19 +202,51 @@
         "target": "c7"
       },
       {
-        "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c6"
-      },
-      {
         "source": "sq3",
         "target": "c8"
       },
       {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
         "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
         "target": "a1"
       },
       {
@@ -210,83 +255,51 @@
       },
       {
         "source": "c2",
-        "target": "a1"
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
       },
       {
         "source": "c2",
         "target": "a3"
       },
       {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
         "source": "c4",
         "target": "a3"
       },
       {
         "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
         "target": "a3"
       },
       {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
         "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c8",
         "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
       },
       {
         "source": "c10",

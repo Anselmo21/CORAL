@@ -21,129 +21,138 @@
   ],
   "baseline_answer": "Answer A (Therapy First Default): Start with CBT or another evidence-based therapy \u2014 for mild to moderate symptoms it's as effective as medication without side effects, builds lasting coping skills, and is recommended as first-line by most clinical guidelines.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1639,
+    "output_tokens": 2384,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "q",
-        "description": "I've been feeling low and anxious for a few months. Should I try therapy or antidepressants first?"
+        "label": "Should I try therapy or antidepressants first?",
+        "description": "I've been feeling low and anxious for a few months."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "sq1",
-        "description": "What is the recommended first-line treatment for mild to moderate depression and anxiety?"
+        "label": "What is the recommended first-line treatment for mild to moderate depression and anxiety?",
+        "description": "Identify the primary clinical recommendation for initial treatment."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "sq2",
-        "description": "What is the most effective approach for moderate-to-severe symptoms or when rapid relief is needed?"
+        "label": "What are the comparative benefits and drawbacks of therapy versus SSRIs in terms of speed, side effects, and long-term outcomes?",
+        "description": "Compare therapy and medication on key outcome metrics."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "sq3",
-        "description": "What do patient experiences and clinical research suggest about the combination of therapy and medication?"
+        "label": "What is the preferred approach for persistent or moderate-severe symptoms?",
+        "description": "Determine the best strategy for more severe or ongoing symptoms."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Only include sources from 2023"
+        "description": "Only consider sources from 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Include sources from 2021 to 2023"
+        "description": "Only consider sources from 2021 to 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Only include sources from the USA"
+        "description": "Only consider sources from the USA."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient preferring non-medication approach",
-        "description": "Only include sources from the perspective of a patient preferring non-medication"
+        "description": "Only consider sources from the perspective of a patient preferring non-medication."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient needing rapid symptom relief",
-        "description": "Only include sources from the perspective of a patient needing rapid symptom relief"
+        "description": "Only consider sources from the perspective of a patient needing rapid symptom relief."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Clinical psychiatrist or GP",
-        "description": "Only include sources from the perspective of a clinical psychiatrist or general practitioner"
+        "description": "Only consider sources from the perspective of a clinical psychiatrist or general practitioner."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Peer-reviewed clinical research",
-        "description": "Only include peer-reviewed clinical research"
+        "description": "Only consider peer-reviewed clinical research."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Medical institution guidance",
-        "description": "Only include guidance from medical institutions"
+        "description": "Only consider guidance from medical institutions."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer health information",
-        "description": "Only include consumer health information"
+        "description": "Only consider consumer health information."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Patient community experience",
-        "description": "Only include patient community experience"
+        "description": "Only consider patient community experience."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (Therapy First Default)",
+        "label": "Therapy First Default",
         "description": "Start with CBT or another evidence-based therapy \u2014 for mild to moderate symptoms it's as effective as medication without side effects, builds lasting coping skills, and is recommended as first-line by most clinical guidelines."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (Medication for Speed)",
+        "label": "Medication for Speed",
         "description": "Start with an SSRI if you need faster relief or have moderate-to-severe symptoms \u2014 antidepressants typically show effect in 2\u20134 weeks versus months for therapy to fully work."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (Combined Approach)",
+        "label": "Combined Approach",
         "description": "Pursue therapy and medication simultaneously \u2014 the combination outperforms either alone for persistent or moderate-severe cases and is recommended when symptoms are significantly impairing daily function."
       }
     ],
@@ -174,10 +183,6 @@
       },
       {
         "source": "sq1",
-        "target": "c4"
-      },
-      {
-        "source": "sq1",
         "target": "c6"
       },
       {
@@ -193,30 +198,34 @@
         "target": "c9"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
         "target": "c10"
       },
       {
-        "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
-        "target": "c5"
-      },
-      {
-        "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
-        "target": "c9"
-      },
-      {
         "source": "sq3",
         "target": "c2"
       },
@@ -230,11 +239,15 @@
       },
       {
         "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
         "target": "c7"
       },
       {
         "source": "sq3",
-        "target": "c9"
+        "target": "c8"
       },
       {
         "source": "sq3",
@@ -281,15 +294,15 @@
         "target": "a1"
       },
       {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
         "source": "c2",
         "target": "a2"
       },
       {
         "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
         "target": "a2"
       },
       {
@@ -313,6 +326,10 @@
         "target": "a2"
       },
       {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
         "source": "c2",
         "target": "a3"
       },
@@ -321,11 +338,11 @@
         "target": "a3"
       },
       {
-        "source": "c4",
+        "source": "c5",
         "target": "a3"
       },
       {
-        "source": "c5",
+        "source": "c6",
         "target": "a3"
       },
       {

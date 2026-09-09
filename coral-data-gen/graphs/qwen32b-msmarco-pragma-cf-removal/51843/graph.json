@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "A mainstream 15\" Dell or ASUS Vivobook touchscreen with large screen + ample RAM",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2100,
+    "output_tokens": 2439,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,126 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best laptop for under $1000?",
-        "description": "Identify the top laptop under $1000 based on source trustworthiness and user perspective."
+        "description": "Identify the best laptop under $1000 based on use case and source credibility."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "General use (productivity, portability, screen size, RAM)",
-        "description": "What is the best laptop for general use under $1000?"
+        "label": "What is the best laptop for general productivity and portability?",
+        "description": "Focus on business, productivity, and portability needs."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Gaming under $1000",
-        "description": "What is the best gaming laptop under $1000?"
+        "label": "What is the best laptop for gaming under $1000?",
+        "description": "Focus on gaming performance and GPU."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Premium ultrabook / portability",
-        "description": "What is the best ultrabook under $1000?"
+        "label": "What is the best laptop for casual or budget use?",
+        "description": "Focus on affordability and general use."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best laptop for a premium experience under $1000?",
+        "description": "Focus on premium design and performance."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: PCMag editor recommendation",
-        "description": ""
+        "description": "Sources from PCMag with editor recommendations."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: PCWorld review",
-        "description": ""
+        "description": "Sources from PCWorld with product reviews."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: gaming-focused review site",
-        "description": ""
+        "description": "Sources from gaming-focused review sites."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Reddit r/SuggestALaptop community",
-        "description": ""
+        "description": "Sources from Reddit's laptop suggestion community."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: consumer aggregator (CNET / Tom's Guide)",
-        "description": ""
+        "description": "Sources from consumer review aggregators."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: PC gamer",
-        "description": ""
+        "description": "Sources from the perspective of a PC gamer."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: business / productivity user",
-        "description": ""
+        "description": "Sources from the perspective of a business or productivity user."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: college student / general use",
-        "description": ""
+        "description": "Sources from the perspective of a college student or general user."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: frequent traveler / portability priority",
-        "description": ""
+        "description": "Sources from the perspective of a frequent traveler or portability-focused user."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: casual home user with kids",
-        "description": ""
+        "description": "Sources from the perspective of a casual home user with kids."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A premium ultrabook (Dell XPS 13, ASUS Zenbook, or MacBook Air)",
-        "description": ""
+        "description": "A high-end ultrabook for portability and performance."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A 15\" gaming laptop with dedicated GPU (Acer Aspire / Lenovo IdeaPad Gaming)",
-        "description": ""
+        "description": "A gaming laptop with a dedicated GPU for performance."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A mainstream 15\" Dell or ASUS Vivobook touchscreen with large screen + ample RAM",
-        "description": ""
+        "description": "A budget-friendly 15\" laptop with a touchscreen and good specs."
       }
     ],
     "edges": [
@@ -161,6 +177,10 @@
         "target": "sq3"
       },
       {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
         "source": "sq1",
         "target": "c1"
       },
@@ -170,23 +190,11 @@
       },
       {
         "source": "sq1",
-        "target": "c5"
-      },
-      {
-        "source": "sq1",
         "target": "c7"
       },
       {
         "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
         "target": "c9"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
       },
       {
         "source": "sq2",
@@ -198,11 +206,27 @@
       },
       {
         "source": "sq3",
-        "target": "c1"
+        "target": "c5"
       },
       {
         "source": "sq3",
-        "target": "c9"
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "sq4",
+        "target": "c1"
+      },
+      {
+        "source": "sq4",
+        "target": "c7"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
       },
       {
         "source": "c1",
@@ -217,10 +241,6 @@
         "target": "a2"
       },
       {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
         "source": "c5",
         "target": "a3"
       },
@@ -230,47 +250,7 @@
       },
       {
         "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
         "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
       },
       {
         "source": "c7",
@@ -279,10 +259,6 @@
       {
         "source": "c8",
         "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
       },
       {
         "source": "c9",

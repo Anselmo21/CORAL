@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "A budget Dell or HP laptop with Office Home & Student bundled at checkout",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3039,
-    "output_tokens": 1922,
-    "llm_calls": 2,
+    "prompt_tokens": 1903,
+    "output_tokens": 1777,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,125 +41,122 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best laptop with Microsoft Office pre-installed?",
-        "description": "Considering various factors"
+        "description": "The best laptop with Microsoft Office pre-installed."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Essential features for a laptop with Microsoft Office pre-installed",
-        "description": "processor speed, RAM size, storage capacity, screen size, battery life, price"
+        "label": "What are the key features to consider when buying a laptop with Microsoft Office pre-installed?",
+        "description": "Key features to consider."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Laptop quality and user experience",
-        "description": "brand reliability, weight and portability, keyboard quality"
-      },
-      {
-        "id": "sq3",
-        "layer": "2",
-        "type": "subq",
-        "label": "Office version and pre-activation considerations",
-        "description": "Office version included"
+        "label": "What are the practical considerations for a laptop with Microsoft Office pre-installed?",
+        "description": "Practical considerations."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "processor speed",
-        "description": "essential for smooth performance"
+        "label": "Office version included",
+        "description": "Office version included."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "RAM size",
-        "description": "essential for multitasking"
+        "label": "processor speed",
+        "description": "Processor speed."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "storage capacity",
-        "description": "essential for storing files"
+        "label": "RAM size",
+        "description": "RAM size."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "screen size",
-        "description": "essential for visibility"
+        "label": "storage capacity",
+        "description": "Storage capacity."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "battery life",
-        "description": "essential for mobility"
+        "label": "screen size",
+        "description": "Screen size."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "price",
-        "description": "essential for budget consideration"
+        "label": "battery life",
+        "description": "Battery life."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "brand reliability",
-        "description": "essential for durability"
+        "label": "price",
+        "description": "Price."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "weight and portability",
-        "description": "essential for mobility"
+        "label": "brand reliability",
+        "description": "Brand reliability."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "keyboard quality",
-        "description": "essential for typing experience"
+        "label": "weight and portability",
+        "description": "Weight and portability."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "Office version included",
-        "description": "essential for Office functionality"
+        "label": "keyboard quality",
+        "description": "Keyboard quality."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A budget Dell or HP laptop with Office Home & Student bundled at checkout",
-        "description": "budget-friendly option"
+        "description": "A budget Dell or HP laptop with Office Home & Student bundled at checkout."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Microsoft Surface Pro or Surface Laptop with Office pre-activated",
-        "description": "premium option"
+        "description": "Microsoft Surface Pro or Surface Laptop with Office pre-activated."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A higher-end Lenovo ThinkPad with Office Professional pre-installed",
-        "description": "high-end option"
+        "description": "A higher-end Lenovo ThinkPad with Office Professional pre-installed."
       }
     ],
     "edges": [
       {
         "source": "q",
         "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
       },
       {
         "source": "sq1",
@@ -182,7 +179,7 @@
         "target": "c5"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c6"
       },
       {
@@ -198,7 +195,7 @@
         "target": "c9"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c10"
       },
       {
@@ -223,7 +220,7 @@
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c7",
@@ -280,18 +277,6 @@
       {
         "source": "c10",
         "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
       }
     ]
   }

@@ -21,109 +21,118 @@
   ],
   "baseline_answer": "Answer A (Term Life Default): Get a 20-year term policy worth 10\u201312x your income \u2014 it's dramatically cheaper than whole life, covers your mortgage and children's dependency years, and you invest the premium difference separately.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1656,
+    "output_tokens": 2555,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "q",
-        "description": "I'm 34 with two kids and a mortgage. Should I get whole life or term life insurance?"
+        "label": "I'm 34 with two kids and a mortgage. Should I get whole life or term life insurance?",
+        "description": "A 34-year-old with dependents and a mortgage is deciding between term and whole life insurance."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "sq1",
-        "description": "What is the best life insurance for an average-income family with dependents?"
+        "label": "What is the general recommendation for life insurance for a 34-year-old with dependents and a mortgage?",
+        "description": "Focuses on the most common scenario for a middle-income family with dependents."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "sq2",
-        "description": "What is the best life insurance for high-net-worth individuals with estate planning needs?"
+        "label": "Under what special circumstances might whole life insurance be appropriate?",
+        "description": "Explores niche scenarios where whole life may be justified."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "sq3",
-        "description": "What is the best life insurance for business owners or special-needs dependent caregivers?"
+        "label": "What do peer and community sources recommend for life insurance in this situation?",
+        "description": "Looks at community-based or peer-driven advice for life insurance."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Filter sources to only those published in 2023."
+        "description": "Only consider sources from 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Filter sources to those published between 2021 and 2023."
+        "description": "Consider sources from 2021 to 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Filter sources to only those from the USA."
+        "description": "Only consider sources from the USA."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Average-income family with dependents",
-        "description": "Filter sources to those addressing average-income families with dependents."
+        "description": "Sources that address the needs of a typical family with dependents."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: High-net-worth individual with estate planning needs",
-        "description": "Filter sources to those addressing high-net-worth individuals with estate planning needs."
+        "description": "Sources that address estate planning for high-net-worth individuals."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Business owner or special-needs dependent caregiver",
-        "description": "Filter sources to those addressing business owners or special-needs dependent caregivers."
+        "description": "Sources that address business or special-needs scenarios."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer financial advocacy",
-        "description": "Filter sources to those from consumer financial advocacy platforms."
+        "description": "Sources from consumer financial advocacy platforms."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Community peer advice",
-        "description": "Filter sources to those from community peer advice platforms."
+        "description": "Sources from community or peer-based advice."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Financial journalism",
-        "description": "Filter sources to those from financial journalism."
+        "description": "Sources from financial journalism outlets."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Industry/insurance publication",
-        "description": "Filter sources to those from industry or insurance publications."
+        "description": "Sources from industry or insurance publications."
       },
       {
         "id": "a1",
@@ -162,10 +171,6 @@
       },
       {
         "source": "sq1",
-        "target": "c1"
-      },
-      {
-        "source": "sq1",
         "target": "c2"
       },
       {
@@ -182,15 +187,7 @@
       },
       {
         "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
         "target": "c9"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
       },
       {
         "source": "sq2",
@@ -206,7 +203,15 @@
       },
       {
         "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
         "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
       },
       {
         "source": "sq3",
@@ -218,15 +223,7 @@
       },
       {
         "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq3",
-        "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
+        "target": "c8"
       },
       {
         "source": "c1",
@@ -246,11 +243,11 @@
       },
       {
         "source": "c5",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c7",
@@ -267,54 +264,6 @@
       {
         "source": "c10",
         "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
       }
     ]
   }

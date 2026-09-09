@@ -21,39 +21,49 @@
   ],
   "baseline_answer": "Answer C (IRA Only After Match): After capturing the match, skip the 401k entirely until the IRA is maxed \u2014 the investment flexibility and lower costs of a self-directed IRA deliver better long-term outcomes for most investors.",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 2,
+  "usage": {
+    "prompt_tokens": 7347,
+    "output_tokens": 5870,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should I max my 1% 401k match before contributing elsewhere?",
-        "description": "The core question regarding 401k vs IRA prioritization with a low match."
+        "label": "My employer 401k match is only 1%. Should I still max it out before contributing elsewhere?",
+        "description": "Main question regarding 401k vs IRA prioritization with low match."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Immediate Returns & Tax Efficiency",
-        "description": "Evaluates match capture, tax deductions, and contribution limits."
+        "label": "Immediate Return and Tax Efficiency",
+        "description": "Evaluates the value of the match and immediate tax benefits."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Investment Quality & Costs",
-        "description": "Evaluates investment options, expense ratios, and long-term returns."
+        "label": "Investment Quality and Cost Structure",
+        "description": "Evaluates fees, options, and long-term growth potential."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Flexibility & Management",
-        "description": "Evaluates withdrawal rules, account simplicity, and management ease."
+        "label": "Flexibility, Limits, and Management",
+        "description": "Evaluates withdrawal rules, contribution limits, and account simplicity."
       },
       {
         "id": "c1",
@@ -74,49 +84,49 @@
         "layer": "3",
         "type": "concept",
         "label": "expense ratio minimization",
-        "description": "The importance of low fees for long-term growth."
+        "description": "The cost efficiency of the investment vehicles."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "tax-advantaged space maximization",
-        "description": "Utilizing the full tax-advantaged contribution limits."
+        "description": "Utilizing the maximum amount of tax-protected growth."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "Roth vs traditional tax treatment",
-        "description": "The strategic choice between Roth and Traditional accounts."
+        "description": "The choice between tax-free growth and tax-deferred growth."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "income level and Roth eligibility",
-        "description": "How income affects account choice and tax strategy."
+        "description": "How income affects the ability to contribute to Roth accounts."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "flexibility of IRA withdrawal rules",
-        "description": "The ability to access funds before retirement age."
+        "description": "The ease of accessing funds before retirement age."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "401k contribution limits vs IRA limits",
-        "description": "Comparing the maximum contribution amounts allowed."
+        "description": "The difference in maximum annual contribution amounts."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "simplicity of single account management",
-        "description": "The ease of managing one versus multiple accounts."
+        "description": "The ease of managing a single account versus multiple."
       },
       {
         "id": "c10",
@@ -174,14 +184,6 @@
       },
       {
         "source": "sq1",
-        "target": "c6"
-      },
-      {
-        "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
         "target": "c10"
       },
       {
@@ -193,8 +195,16 @@
         "target": "c3"
       },
       {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
         "source": "sq3",
         "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
       },
       {
         "source": "sq3",
@@ -246,10 +256,6 @@
       },
       {
         "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
         "target": "a2"
       },
       {
@@ -258,15 +264,7 @@
       },
       {
         "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
         "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
       },
       {
         "source": "c8",
@@ -278,11 +276,7 @@
       },
       {
         "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c10",

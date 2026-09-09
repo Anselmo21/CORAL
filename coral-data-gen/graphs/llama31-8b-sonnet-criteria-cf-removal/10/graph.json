@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer C (REIT Allocation): Add a dedicated REIT allocation (15\u201320%) within your existing stock portfolio \u2014 you get real estate diversification, inflation hedging, and dividend income without giving up liquidity or taking on landlord risk.",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2234,
-    "output_tokens": 1904,
-    "llm_calls": 2,
+    "prompt_tokens": 1517,
+    "output_tokens": 2011,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,21 +47,28 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Liquidity and risk",
+        "label": "Liquidity and Risk",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Financial benefits",
+        "label": "Financial Benefits",
         "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Passive income and diversification",
+        "label": "Management and Returns",
+        "description": ""
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Diversification",
         "description": ""
       },
       {
@@ -75,63 +82,63 @@
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "management and time commitment",
+        "label": "concentration risk",
         "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "concentration risk",
+        "label": "barrier to entry with $50k",
         "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "barrier to entry with $50k",
+        "label": "leverage and amplified returns",
         "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "leverage and amplified returns",
+        "label": "tax depreciation benefits",
         "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "tax depreciation benefits",
+        "label": "management and time commitment",
         "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "passive income generation",
+        "label": "diversification from equities",
         "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "diversification from equities",
+        "label": "inflation hedging",
         "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "inflation hedging",
+        "label": "correlation with stock market",
         "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "correlation with stock market",
+        "label": "passive income generation",
         "description": ""
       },
       {
@@ -170,6 +177,10 @@
         "target": "sq3"
       },
       {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
         "source": "sq1",
         "target": "c1"
       },
@@ -182,7 +193,7 @@
         "target": "c3"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c4"
       },
       {
@@ -191,23 +202,67 @@
       },
       {
         "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
         "target": "c6"
       },
       {
-        "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c10"
       },
       {
         "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
         "target": "c7"
       },
       {
-        "source": "sq3",
-        "target": "c8"
+        "source": "sq4",
+        "target": "c9"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
       },
       {
         "source": "c1",
@@ -223,46 +278,30 @@
       },
       {
         "source": "c4",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c5",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c6",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c7",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
         "target": "a3"
       }
     ]

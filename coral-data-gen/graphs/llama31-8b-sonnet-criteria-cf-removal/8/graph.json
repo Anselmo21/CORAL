@@ -19,18 +19,18 @@
     "Answer B (Max 401k First): Max the 401k entirely before the IRA if you're a high earner seeking maximum pre-tax deductions \u2014 the tax benefit outweighs the fee disadvantage at high income levels.",
     "Answer C (IRA Only After Match): After capturing the match, skip the 401k entirely until the IRA is maxed \u2014 the investment flexibility and lower costs of a self-directed IRA deliver better long-term outcomes for most investors."
   ],
-  "baseline_answer": "Answer A (Match Then IRA Default): Contribute just enough to get the 1% match, then direct all remaining retirement savings to a Roth or traditional IRA \u2014 better investment options and lower fees in the IRA outweigh the minimal 401k match beyond the free money.",
-  "baseline_index": 0,
+  "baseline_answer": "Answer C (IRA Only After Match): After capturing the match, skip the 401k entirely until the IRA is maxed \u2014 the investment flexibility and lower costs of a self-directed IRA deliver better long-term outcomes for most investors.",
+  "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2292,
-    "output_tokens": 1761,
-    "llm_calls": 2,
+    "prompt_tokens": 1541,
+    "output_tokens": 1742,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,113 +40,120 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Prioritize 401k match over IRA?",
-        "description": "Should I prioritize maxing out my employer 401k match of 1% over contributing to other retirement accounts?"
+        "label": "401k Match Priority",
+        "description": "Should I still max out my employer 401k match, which is only 1%, before contributing elsewhere?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Considerations for prioritizing 401k match",
-        "description": "Key factors to consider when deciding whether to prioritize the 401k match"
+        "label": "Is the 1% employer match worth prioritizing?",
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Impact of 401k plan characteristics",
-        "description": "How do the characteristics of the 401k plan impact the decision to prioritize it"
+        "label": "What are the key differences between 401k and IRA investment options?",
+        "description": ""
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "How do income level and tax treatment impact retirement savings decisions?",
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "capture of free employer match",
-        "description": "Contribute enough to get the employer match"
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "investment option quality in 401k",
-        "description": "Quality of investment options in the 401k plan"
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "expense ratio minimization",
-        "description": "Minimize expense ratios in the 401k plan"
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "tax-advantaged space maximization",
-        "description": "Maximize tax-advantaged space"
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "Roth vs traditional tax treatment",
-        "description": "Roth vs traditional tax treatment"
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "income level and Roth eligibility",
-        "description": "Income level and Roth eligibility"
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "flexibility of IRA withdrawal rules",
-        "description": "Flexibility of IRA withdrawal rules"
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "401k contribution limits vs IRA limits",
-        "description": "Comparison of 401k contribution limits and IRA limits"
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "simplicity of single account management",
-        "description": "Simplicity of single account management"
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "pre-tax deduction value",
-        "description": "Pre-tax deduction value"
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (Match Then IRA Default)",
-        "description": "Contribute just enough to get the 1% match, then direct all remaining retirement savings to a Roth or traditional IRA"
+        "label": "Match Then IRA Default",
+        "description": "Contribute just enough to get the 1% match, then direct all remaining retirement savings to a Roth or traditional IRA \u2014 better investment options and lower fees in the IRA outweigh the minimal 401k match beyond the free money."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (Max 401k First)",
-        "description": "Max the 401k entirely before the IRA if you're a high earner seeking maximum pre-tax deductions"
+        "label": "Max 401k First",
+        "description": "Max the 401k entirely before the IRA if you're a high earner seeking maximum pre-tax deductions \u2014 the tax benefit outweighs the fee disadvantage at high income levels."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (IRA Only After Match)",
-        "description": "After capturing the match, skip the 401k entirely until the IRA is maxed"
+        "label": "IRA Only After Match",
+        "description": "After capturing the match, skip the 401k entirely until the IRA is maxed \u2014 the investment flexibility and lower costs of a self-directed IRA deliver better long-term outcomes for most investors."
       }
     ],
     "edges": [
@@ -159,16 +166,16 @@
         "target": "sq2"
       },
       {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
         "source": "sq1",
         "target": "c1"
       },
       {
         "source": "sq1",
-        "target": "c4"
-      },
-      {
-        "source": "sq1",
-        "target": "c5"
+        "target": "c10"
       },
       {
         "source": "sq2",
@@ -180,23 +187,27 @@
       },
       {
         "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
         "target": "c6"
       },
       {
-        "source": "sq2",
-        "target": "c8"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
+        "source": "sq3",
+        "target": "c7"
       },
       {
         "source": "c1",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c3",
@@ -208,7 +219,7 @@
       },
       {
         "source": "c5",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c6",
@@ -216,7 +227,7 @@
       },
       {
         "source": "c7",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c8",
@@ -224,7 +235,7 @@
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c10",
@@ -232,43 +243,15 @@
       },
       {
         "source": "a1",
-        "target": "c9"
-      },
-      {
-        "source": "a1",
-        "target": "c7"
+        "target": "c1"
       },
       {
         "source": "a2",
         "target": "c1"
       },
       {
-        "source": "a2",
-        "target": "c9"
-      },
-      {
         "source": "a3",
-        "target": "c2"
-      },
-      {
-        "source": "a3",
-        "target": "c3"
-      },
-      {
-        "source": "a3",
-        "target": "c4"
-      },
-      {
-        "source": "a3",
-        "target": "c5"
-      },
-      {
-        "source": "a3",
-        "target": "c8"
-      },
-      {
-        "source": "a3",
-        "target": "c10"
+        "target": "c1"
       }
     ]
   }

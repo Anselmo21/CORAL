@@ -19,18 +19,18 @@
     "Omega-3 fatty acids (fish oil / flax oil)",
     "Lifestyle intervention: exercise, yoga, diet, sleep hygiene"
   ],
-  "baseline_answer": "St. John's Wort herbal supplement",
-  "baseline_index": 0,
+  "baseline_answer": "Omega-3 fatty acids (fish oil / flax oil)",
+  "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3297,
-    "output_tokens": 1803,
-    "llm_calls": 2,
+    "prompt_tokens": 2045,
+    "output_tokens": 2116,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,15 +47,15 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Trustworthiness of sources",
-        "description": "Trustworthiness of sources recommending natural remedies"
+        "label": "What is the trustworthiness of the sources recommending natural remedies for teenage depression?",
+        "description": "Trustworthiness of sources"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Perspective of the individual",
-        "description": "Perspective of the individual recommending or using the natural remedy"
+        "label": "What is the perspective of the individual with teenage depression, and how does it affect the choice of natural remedy?",
+        "description": "Perspective of individual with teenage depression"
       },
       {
         "id": "c1",
@@ -131,22 +131,22 @@
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Omega-3 fatty acids (fish oil / flax oil)",
-        "description": "Omega-3 fatty acids for teenage depression"
+        "label": "St. John's Wort herbal supplement",
+        "description": "St. John's Wort herbal supplement"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Lifestyle intervention: exercise, yoga, diet, sleep hygiene",
-        "description": "Lifestyle intervention for teenage depression"
+        "label": "Omega-3 fatty acids (fish oil / flax oil)",
+        "description": "Omega-3 fatty acids (fish oil / flax oil)"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "St. John's Wort herbal supplement",
-        "description": "St. John's Wort for teenage depression"
+        "label": "Lifestyle intervention: exercise, yoga, diet, sleep hygiene",
+        "description": "Lifestyle intervention: exercise, yoga, diet, sleep hygiene"
       }
     ],
     "edges": [
@@ -200,23 +200,23 @@
       },
       {
         "source": "c1",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c2",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c3",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c4",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c5",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c6",
@@ -240,23 +240,83 @@
       },
       {
         "source": "c1",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c2",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c3",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c4",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c5",
-        "target": "a1"
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

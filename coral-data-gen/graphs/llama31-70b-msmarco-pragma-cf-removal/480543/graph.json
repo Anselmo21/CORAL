@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Smart Electric Drive ($25,750 sticker / ~$18,250 post-rebate)",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2927,
-    "output_tokens": 1785,
-    "llm_calls": 2,
+    "prompt_tokens": 1860,
+    "output_tokens": 1710,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,113 +40,97 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "price of best hybrid electric vehicles ranked by price",
-        "description": ""
+        "label": "price of best hybrid electric vehicles ranked by price"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "trusted sources for pricing and fuel economy data",
-        "description": ""
+        "label": "trustworthy sources for pricing and rankings"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "perspectives of different types of buyers",
-        "description": ""
+        "label": "key factors for different types of buyers"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Kelley Blue Book / Edmunds pricing",
-        "description": ""
+        "label": "trustworthiness: Kelley Blue Book / Edmunds pricing"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Consumer Reports hybrid rankings",
-        "description": ""
+        "label": "trustworthiness: Consumer Reports hybrid rankings"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: EPA fuel economy data",
-        "description": ""
+        "label": "trustworthiness: EPA fuel economy data"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: automotive review publication",
-        "description": ""
+        "label": "trustworthiness: automotive review publication"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: federal tax credit eligibility documentation",
-        "description": ""
+        "label": "trustworthiness: federal tax credit eligibility documentation"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: budget-first buyer",
-        "description": ""
+        "label": "perspective: budget-first buyer"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: daily commuter (range-concerned)",
-        "description": ""
+        "label": "perspective: daily commuter (range-concerned)"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: eco-first all-electric advocate",
-        "description": ""
+        "label": "perspective: eco-first all-electric advocate"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: urban / city driver",
-        "description": ""
+        "label": "perspective: urban / city driver"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: family / sedan-need buyer",
-        "description": ""
+        "label": "perspective: family / sedan-need buyer"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Smart Electric Drive ($25,750 sticker / ~$18,250 post-rebate)",
-        "description": ""
+        "label": "Smart Electric Drive ($25,750 sticker / ~$18,250 post-rebate)"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Honda Civic Hybrid (~$25K, 44/47 mpg)",
-        "description": ""
+        "label": "Honda Civic Hybrid (~$25K, 44/47 mpg)"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Ford Focus Electric ($29,170 / ~$22K post-rebate)",
-        "description": ""
+        "label": "Ford Focus Electric ($29,170 / ~$22K post-rebate)"
       }
     ],
     "edges": [
@@ -227,16 +211,16 @@
         "target": "a1"
       },
       {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
         "source": "c9",
         "target": "a1"
       },
       {
         "source": "c10",
         "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
       },
       {
         "source": "c2",
@@ -252,10 +236,6 @@
       },
       {
         "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
         "target": "a2"
       },
       {
@@ -279,6 +259,10 @@
         "target": "a3"
       },
       {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
         "source": "c4",
         "target": "a3"
       },
@@ -292,10 +276,6 @@
       },
       {
         "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
         "target": "a3"
       },
       {

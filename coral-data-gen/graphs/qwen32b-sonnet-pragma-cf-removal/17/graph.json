@@ -21,129 +21,145 @@
   ],
   "baseline_answer": "Answer A (Physical Therapy Default): Start with a structured physical therapy program \u2014 for most chronic knee conditions, PT produces outcomes equivalent to surgery without the risk, recovery time, or cost.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1659,
+    "output_tokens": 2065,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Chronic Knee Pain Treatment",
+        "label": "q",
         "description": "I have chronic knee pain that's been getting worse for six months. Should I try physical therapy first or just get surgery?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Best initial treatment for chronic knee pain",
-        "description": "What is the best initial treatment for chronic knee pain based on recent clinical evidence and guidelines?"
+        "label": "sq1",
+        "description": "What is the best initial treatment for chronic knee pain based on the most recent and trustworthy medical evidence?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Treatment for confirmed structural damage",
-        "description": "How does the treatment approach change for patients with confirmed structural damage (e.g., ACL tear, advanced OA)?"
+        "label": "sq2",
+        "description": "How does the presence of structural damage affect the treatment recommendation?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Patient experiences and community insights",
-        "description": "What do patient experiences and community insights suggest about PT and surgery for chronic knee pain?"
+        "label": "sq3",
+        "description": "What do patient experiences and community insights suggest about the effectiveness of PT versus surgery?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Limit sources to those published in 2023."
+        "description": "temporal: 2023 only"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Limit sources to those published between 2021 and 2023."
+        "description": "temporal: 2021\u20132023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Limit sources to those originating in the United States."
+        "description": "geographic: USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient with degenerative or non-structural condition",
-        "description": "Limit sources to those from the perspective of a patient with degenerative or non-structural knee issues."
+        "description": "perspective: Patient with degenerative or non-structural condition"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient with confirmed structural damage (ACL tear, advanced OA)",
-        "description": "Limit sources to those from the perspective of a patient with confirmed structural knee damage."
+        "description": "perspective: Patient with confirmed structural damage (ACL tear, advanced OA)"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Orthopedic surgeon or sports medicine physician",
-        "description": "Limit sources to those from the perspective of orthopedic surgeons or sports medicine physicians."
+        "description": "perspective: Orthopedic surgeon or sports medicine physician"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Peer-reviewed clinical trials",
-        "description": "Limit sources to peer-reviewed clinical trials."
+        "description": "trustworthiness: Peer-reviewed clinical trials"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Medical institution guidance",
-        "description": "Limit sources to guidance from medical institutions."
+        "description": "trustworthiness: Medical institution guidance"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer health information",
-        "description": "Limit sources to consumer health information platforms."
+        "description": "trustworthiness: Consumer health information"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Patient community experience",
-        "description": "Limit sources to patient community experiences and anecdotal reports."
+        "description": "trustworthiness: Patient community experience"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Physical Therapy Default",
+        "label": "Answer A (Physical Therapy Default)",
         "description": "Start with a structured physical therapy program \u2014 for most chronic knee conditions, PT produces outcomes equivalent to surgery without the risk, recovery time, or cost."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Surgery for Structural Damage",
+        "label": "Answer B (Surgery for Structural Damage)",
         "description": "Proceed to surgery if imaging confirms significant structural damage (complete ACL tear, severe OA, locked meniscus) \u2014 PT cannot repair structural deficits and delaying surgery risks further joint deterioration."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "directive",
+        "label": "geographic: USA",
+        "description": "geographic: USA"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "PT Then Reassess",
+        "label": "Answer C (PT Then Reassess)",
         "description": "Complete a full 8\u201312 week PT course then reassess with imaging \u2014 this approach exhausts conservative treatment, provides documented PT failure if surgery is later needed, and avoids unnecessary procedures."
       }
     ],
@@ -174,10 +190,6 @@
       },
       {
         "source": "sq1",
-        "target": "c6"
-      },
-      {
-        "source": "sq1",
         "target": "c7"
       },
       {
@@ -190,11 +202,7 @@
       },
       {
         "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c3"
+        "target": "c4"
       },
       {
         "source": "sq2",
@@ -203,30 +211,6 @@
       {
         "source": "sq2",
         "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
-        "target": "c8"
-      },
-      {
-        "source": "sq3",
-        "target": "c2"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
       },
       {
         "source": "sq3",
@@ -250,11 +234,11 @@
       },
       {
         "source": "c5",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c7",
@@ -270,51 +254,23 @@
       },
       {
         "source": "c10",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c2",
         "target": "a2"
       },
       {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
         "source": "c5",
         "target": "a3"
       },
       {
-        "source": "c9",
+        "source": "c6",
         "target": "a3"
       },
       {
         "source": "c10",
-        "target": "a3"
+        "target": "a2"
       }
     ]
   }

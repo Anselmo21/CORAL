@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "OMBRELLE for kids by L'Oreal",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1656,
+    "output_tokens": 2180,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,28 +41,28 @@
         "layer": "1",
         "type": "question",
         "label": "best sunscreen for kids with peanut allergies",
-        "description": "What is the best sunscreen for children with peanut allergies?"
+        "description": "What is the best sunscreen for kids with peanut allergies?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What ingredients are safe for kids with peanut allergies?",
-        "description": "Evaluates ingredients and skin safety for children with peanut allergies."
+        "label": "What are the key safety and allergy-related features of the sunscreen?",
+        "description": "Evaluates ingredient safety, label transparency, and skin sensitivity."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What brands and products are reliable and widely trusted?",
+        "label": "How reliable and trustworthy is the product and its brand?",
         "description": "Evaluates brand reputation and parent reviews."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Where is the product available and at what cost?",
-        "description": "Evaluates regional availability and price point."
+        "label": "What about practical and regional considerations?",
+        "description": "Evaluates availability in region and price point."
       },
       {
         "id": "sq4",
@@ -67,14 +76,14 @@
         "layer": "3",
         "type": "concept",
         "label": "ingredient safety",
-        "description": "Whether the product contains ingredients that trigger peanut or tree nut allergies."
+        "description": "Whether the product contains allergens or irritants."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "brand reputation",
-        "description": "Trustworthiness and recognition of the brand."
+        "description": "Trustworthiness and reliability of the brand."
       },
       {
         "id": "c3",
@@ -88,70 +97,70 @@
         "layer": "3",
         "type": "concept",
         "label": "skin sensitivity",
-        "description": "Whether the product is suitable for sensitive or allergy-prone skin."
+        "description": "Suitability for sensitive or allergy-prone skin."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "label transparency",
-        "description": "Clarity and honesty in labeling about allergens and ingredients."
+        "description": "Clarity of allergen and ingredient labeling."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "parent reviews",
-        "description": "Feedback from other parents about the product."
+        "description": "Feedback from other parents on product safety and effectiveness."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "price point",
-        "description": "Cost of the product and value for money."
+        "description": "Affordability of the product."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "SPF rating",
-        "description": "Level of sun protection provided by the sunscreen."
+        "description": "Level of sun protection offered."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "water resistance",
-        "description": "Ability to remain effective after water exposure."
+        "description": "Ability to remain effective after swimming or sweating."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "eco-friendliness",
-        "description": "Environmental impact and sustainability of the product."
+        "description": "Environmental impact of the product."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "OMBRELLE for kids by L'Oreal",
-        "description": "Sunscreen by L'Oreal labeled as peanut- and tree nut-free."
+        "description": "A sunscreen explicitly labeled as peanut and tree nut-free."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A mineral (zinc oxide / titanium dioxide) children's sunscreen",
-        "description": "Sunscreen using mineral filters, suitable for sensitive skin."
+        "description": "A mineral-based sunscreen that is less likely to contain allergens."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A chemical sunscreen verified peanut-free by direct manufacturer-contact workflow",
-        "description": "Sunscreen verified as peanut-free via direct contact with the manufacturer."
+        "description": "A chemical sunscreen confirmed as peanut-free through direct verification."
       }
     ],
     "edges": [
@@ -216,14 +225,6 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
         "source": "c2",
         "target": "a1"
       },
@@ -236,16 +237,8 @@
         "target": "a1"
       },
       {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
         "source": "c5",
         "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
       },
       {
         "source": "c6",
@@ -260,8 +253,60 @@
         "target": "a1"
       },
       {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
         "source": "c8",
         "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
       },
       {
         "source": "c8",
@@ -269,23 +314,7 @@
       },
       {
         "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
         "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
       },
       {
         "source": "c10",

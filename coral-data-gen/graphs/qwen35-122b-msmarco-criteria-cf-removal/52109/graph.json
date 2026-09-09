@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Treat the underlying condition + lifestyle change (cardiovascular fitness, weight, glucose control)",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2253,
+    "output_tokens": 2511,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "best thing for impotence",
-        "description": "Selecting the optimal intervention for erectile dysfunction."
+        "description": "The primary question asking for the optimal treatment for erectile dysfunction."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Pharmacologic vs. Holistic Trade-offs",
-        "description": "Evaluating immediate drug efficacy against long-term root cause resolution and safety."
+        "label": "Medical & Physiological Factors",
+        "description": "Evaluates treatments based on physical causes, efficacy, side effects, and biological mechanisms."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Root Cause Demographics and Prevention",
-        "description": "Assessing the impact of age, underlying physical conditions, and natural prevention strategies."
+        "label": "Psychological & Behavioral Factors",
+        "description": "Evaluates treatments based on mental health causes and behavioral interventions."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Psychological and Contextual Factors",
-        "description": "Determining the role of mental health, stress, and specific therapeutic availability."
+        "label": "Practical & Economic Factors",
+        "description": "Evaluates treatments based on cost, availability, and accessibility."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "treatment type",
-        "description": "The specific modality of intervention (drug, lifestyle, therapy)."
+        "description": "The category of intervention (pharmacologic, lifestyle, or psychological)."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "underlying causes",
-        "description": "Addressing the root physical or psychological origin of ED."
+        "description": "Whether the treatment addresses the root physical or psychological cause."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "age group",
-        "description": "Relevance of the patient's age to the primary cause of ED."
+        "description": "Suitability of the treatment for different age demographics, particularly older men."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "side effects",
-        "description": "Adverse reactions associated with the intervention."
+        "description": "The risk and severity of adverse reactions associated with the treatment."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "effectiveness",
-        "description": "The overall success rate of the intervention for the general population."
+        "description": "The success rate of the treatment in restoring erectile function."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "natural remedies",
-        "description": "Preference for non-synthetic, lifestyle-based approaches."
+        "description": "Preference for non-synthetic or lifestyle-based interventions over drugs."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "psychological factors",
-        "description": "The influence of stress, anxiety, and relationship issues."
+        "description": "The relevance of stress, anxiety, or relationship issues to the condition."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "duration of use",
-        "description": "Whether the treatment is a one-time fix, lifelong habit, or temporary aid."
+        "description": "Whether the treatment is a short-term fix or a long-term solution."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "cost",
-        "description": "Financial burden of the treatment option."
+        "description": "The financial expense associated with the treatment."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "availability",
-        "description": "Ease of access to the treatment method."
+        "description": "How easily the treatment can be accessed by the patient."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A PDE5 inhibitor (Viagra, Cialis, or Levitra) for direct pharmacologic restoration of erectile function",
-        "description": "Pharmacologic intervention."
+        "description": "Pharmacologic intervention for immediate symptom relief."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Treat the underlying condition + lifestyle change (cardiovascular fitness, weight, glucose control)",
-        "description": "Holistic root-cause intervention (A*)."
+        "description": "Root-cause resolution and preventative lifestyle modification."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Psychological treatment: sensate focus and counseling for stress / anxiety / relationship-driven cases",
-        "description": "Psychological intervention."
+        "description": "Behavioral and mental health intervention for psychogenic ED."
       }
     ],
     "edges": [
@@ -166,6 +175,14 @@
       },
       {
         "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
         "target": "c4"
       },
       {
@@ -174,35 +191,15 @@
       },
       {
         "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
-      },
-      {
-        "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
         "target": "c6"
       },
       {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
         "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq3",
         "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
       },
       {
         "source": "sq3",
@@ -230,10 +227,6 @@
       },
       {
         "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
         "target": "a2"
       },
       {
@@ -257,32 +250,20 @@
         "target": "a2"
       },
       {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
         "source": "c7",
         "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
       },
       {
         "source": "c8",
         "target": "a2"
       },
       {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
         "source": "c9",
         "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",

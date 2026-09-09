@@ -21,32 +21,48 @@
   ],
   "baseline_answer": "Answer A (Sony XM5 Default): Get the Sony WH-1000XM5 \u2014 the best ANC performance available, excellent call quality, and 30-hour battery make it the top work-from-home headphone for blocking out household noise.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 2,
+  "temperature": 0.0,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1725,
+    "output_tokens": 2866,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What should I get for WFH noise blocking?",
-        "description": "Main question regarding work-from-home headphones."
+        "label": "I work from home and need headphones that block out noise from my family. What should I get?",
+        "description": "Main question regarding WFH noise-blocking headphones."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Best overall noise isolation and performance",
-        "description": "Focuses on maximum ANC and general WFH suitability."
+        "label": "Best noise isolation and general performance",
+        "description": "Focuses on ANC, battery, and general top picks."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Best for specific constraints (comfort or calls)",
-        "description": "Focuses on all-day comfort or professional call clarity."
+        "label": "Best for long-duration comfort",
+        "description": "Focuses on ergonomics for 6+ hour daily use."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Best for call clarity and business use",
+        "description": "Focuses on microphone quality and professional features."
       },
       {
         "id": "c1",
@@ -67,56 +83,56 @@
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Filters for USA-based sources."
+        "description": "Filters for US-based sources."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Global",
-        "description": "Filters for Global sources."
+        "description": "Filters for global sources."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: WFH user prioritizing maximum noise isolation",
-        "description": "Prioritizes maximum ANC performance."
+        "description": "Prioritizes ANC performance above all else."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: WFH user on many calls prioritizing microphone quality",
-        "description": "Prioritizes microphone clarity for calls."
+        "description": "Prioritizes microphone quality above all else."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer product recommendation publication",
-        "description": "Prioritizes recommendation publications."
+        "description": "Prioritizes consumer recommendation sites (e.g., Wirecutter)."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Independent hardware testing site",
-        "description": "Prioritizes independent testing sites."
+        "description": "Prioritizes independent testing labs (e.g., RTINGS)."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Headphone enthusiast community",
-        "description": "Prioritizes enthusiast communities."
+        "description": "Prioritizes community consensus (e.g., Reddit)."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer product testing organization",
-        "description": "Prioritizes consumer testing organizations."
+        "description": "Prioritizes formal testing organizations (e.g., Consumer Reports)."
       },
       {
         "id": "a1",
@@ -150,6 +166,10 @@
         "target": "sq2"
       },
       {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
         "source": "sq1",
         "target": "c1"
       },
@@ -168,10 +188,6 @@
       {
         "source": "sq1",
         "target": "c5"
-      },
-      {
-        "source": "sq1",
-        "target": "c6"
       },
       {
         "source": "sq1",
@@ -191,10 +207,6 @@
       },
       {
         "source": "sq2",
-        "target": "c1"
-      },
-      {
-        "source": "sq2",
         "target": "c2"
       },
       {
@@ -211,10 +223,6 @@
       },
       {
         "source": "sq2",
-        "target": "c6"
-      },
-      {
-        "source": "sq2",
         "target": "c7"
       },
       {
@@ -227,6 +235,38 @@
       },
       {
         "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
         "target": "c10"
       },
       {
@@ -238,12 +278,36 @@
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
         "source": "c3",
         "target": "a1"
       },
       {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
         "source": "c4",
         "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
       },
       {
         "source": "c5",
@@ -251,7 +315,7 @@
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c7",
@@ -262,59 +326,27 @@
         "target": "a1"
       },
       {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
         "source": "c8",
         "target": "a2"
       },
       {
         "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
         "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
       },
       {
         "source": "c10",
         "target": "a2"
       },
       {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
+        "source": "c10",
         "target": "a3"
       }
     ]

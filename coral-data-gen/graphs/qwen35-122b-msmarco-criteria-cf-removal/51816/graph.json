@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Spider plant (Chlorophytum comosum) \u2014 easy to grow, NASA-listed, filters benzene/formaldehyde/CO/xylene; best single-plant pick",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1814,
+    "output_tokens": 2879,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,56 +41,49 @@
         "layer": "1",
         "type": "question",
         "label": "best house plant to clean air",
-        "description": "Identifying the optimal houseplant for indoor air purification."
+        "description": "Identifying the optimal houseplant for air purification."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Ease of care and environmental constraints",
-        "description": "How easy is the plant to maintain, and what are its light, space, and growth needs?"
+        "label": "Which plant offers the best balance of ease and general effectiveness?",
+        "description": "Evaluates maintenance, light, growth, aesthetics, cost, and availability."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Pollutant removal performance",
-        "description": "How effectively does the plant remove specific harmful chemicals?"
+        "label": "How should plants be selected based on specific pollutant targets?",
+        "description": "Focuses on the efficiency of removing specific VOCs."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Accessibility and economic factors",
-        "description": "Is the plant easy to find and affordable?"
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "Physical fit and visual impact",
-        "description": "Does the plant fit the home's size and look good?"
+        "label": "What is the optimal spatial strategy for air purification?",
+        "description": "Focuses on plant size, space requirements, and toxicity in a multi-plant context."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "plant maintenance level",
-        "description": "The effort required to keep the plant alive and healthy."
+        "description": "How easy the plant is to care for."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "pollutant removal efficiency",
-        "description": "The percentage of air pollutants removed within a set time."
+        "description": "The ability to remove specific VOCs."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "light requirements",
-        "description": "The amount and type of sunlight needed for growth."
+        "description": "The amount of light the plant needs to survive."
       },
       {
         "id": "c4",
@@ -95,28 +97,28 @@
         "layer": "3",
         "type": "concept",
         "label": "growth rate",
-        "description": "How quickly the plant matures and fills out."
+        "description": "How quickly the plant grows and reproduces."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "toxicity to pets",
-        "description": "Whether the plant is safe for cats and dogs."
+        "description": "Whether the plant is safe for animals."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "aesthetic appeal",
-        "description": "The visual beauty and decor compatibility of the plant."
+        "description": "The visual attractiveness of the plant."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "availability",
-        "description": "How easily the plant can be purchased locally or online."
+        "description": "How easy it is to find the plant in stores."
       },
       {
         "id": "c9",
@@ -130,28 +132,28 @@
         "layer": "3",
         "type": "concept",
         "label": "space requirements",
-        "description": "The floor or surface area needed to house the plant."
+        "description": "The amount of floor or shelf space needed."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Spider plant (Chlorophytum comosum) \u2014 easy to grow, NASA-listed, filters benzene/formaldehyde/CO/xylene; best single-plant pick",
-        "description": "The top-ranked answer when all criteria are considered."
+        "description": "The baseline top pick considering all factors."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Match a NASA Clean Air Study plant to your dominant VOC (e.g., formaldehyde-targeted vs benzene-targeted choice)",
-        "description": "A targeted approach selecting plants based on specific chemical threats."
+        "description": "A customized approach based on specific pollutants."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A multiple-plant strategy: one 10-12 inch potted plant per 100 sq ft of living space, per NASA/Wolverton guidance",
-        "description": "A density-based approach maximizing total biomass for air cleaning."
+        "description": "A density-based strategy ignoring specific species traits."
       }
     ],
     "edges": [
@@ -168,10 +170,6 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
-      },
-      {
         "source": "sq1",
         "target": "c1"
       },
@@ -185,15 +183,15 @@
       },
       {
         "source": "sq1",
-        "target": "c6"
-      },
-      {
-        "source": "sq1",
         "target": "c7"
       },
       {
         "source": "sq1",
-        "target": "c10"
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
       },
       {
         "source": "sq2",
@@ -201,15 +199,15 @@
       },
       {
         "source": "sq3",
-        "target": "c8"
+        "target": "c4"
       },
       {
         "source": "sq3",
-        "target": "c9"
+        "target": "c6"
       },
       {
-        "source": "sq4",
-        "target": "c4"
+        "source": "sq3",
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -260,31 +258,23 @@
         "target": "a2"
       },
       {
-        "source": "c8",
+        "source": "c6",
         "target": "a2"
       },
       {
-        "source": "c9",
+        "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
       },
       {
         "source": "c4",
         "target": "a3"
       },
       {
-        "source": "c7",
+        "source": "c6",
         "target": "a3"
       },
       {
-        "source": "c8",
+        "source": "c10",
         "target": "a3"
       }
     ]

@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Barcelona",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3943,
-    "output_tokens": 1809,
-    "llm_calls": 2,
+    "prompt_tokens": 2360,
+    "output_tokens": 1674,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,21 +47,21 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "best regions to visit in Spain for backpackers",
+        "label": "What are the best geographic regions to visit in Spain for backpackers?",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "trusted sources for recommendations",
+        "label": "What are the most trustworthy sources for recommendations on places to visit in Spain?",
         "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "type of experience for backpackers",
+        "label": "What are the best places to visit in Spain based on different perspectives (party, culture, off-the-beaten-path)?",
         "description": ""
       },
       {
@@ -246,10 +246,6 @@
         "target": "a2"
       },
       {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
         "source": "c6",
         "target": "a1"
       },
@@ -258,20 +254,12 @@
         "target": "a2"
       },
       {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
         "source": "c7",
         "target": "a1"
       },
       {
         "source": "c7",
         "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
       },
       {
         "source": "c8",

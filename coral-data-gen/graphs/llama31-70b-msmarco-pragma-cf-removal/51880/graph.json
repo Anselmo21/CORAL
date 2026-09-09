@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "A professional makeup-artist-grade paraben-free mineral foundation",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 4245,
-    "output_tokens": 1881,
-    "llm_calls": 2,
+    "prompt_tokens": 2516,
+    "output_tokens": 1546,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,103 +40,113 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "best mineral foundation without parabens"
+        "label": "best mineral foundation without parabens",
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the trustworthy sources for finding paraben-free mineral foundations?"
+        "label": "trusted sources for paraben-free mineral foundations",
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the perspectives of different users on paraben-free mineral foundations?"
-      },
-      {
-        "id": "sq3",
-        "layer": "2",
-        "type": "subq",
-        "label": "What are the key characteristics of a good paraben-free mineral foundation?"
+        "label": "perspectives of different users on paraben-free mineral foundations",
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: dermatology-recommended product list"
+        "label": "trustworthiness: dermatology-recommended product list",
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: EWG cosmetics database (clean ingredients)"
+        "label": "trustworthiness: EWG cosmetics database (clean ingredients)",
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: beauty consumer reviews"
+        "label": "trustworthiness: beauty consumer reviews",
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: professional makeup artist endorsement"
+        "label": "trustworthiness: professional makeup artist endorsement",
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: FDA cosmetic safety guidance"
+        "label": "trustworthiness: FDA cosmetic safety guidance",
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: teen with paraben allergy starting makeup"
+        "label": "perspective: teen with paraben allergy starting makeup",
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: sensitive-skin adult"
+        "label": "perspective: sensitive-skin adult",
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: budget-first consumer"
+        "label": "perspective: budget-first consumer",
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: professional makeup artist"
+        "label": "perspective: professional makeup artist",
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: clean-beauty enthusiast"
+        "label": "perspective: clean-beauty enthusiast",
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "An affordable drugstore-tier mineral foundation labeled paraben-free (~$10-20)"
+        "label": "An affordable drugstore-tier mineral foundation labeled paraben-free (~$10-20)",
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "A premium 'multi-free' mineral foundation"
+        "label": "A premium 'multi-free' mineral foundation",
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "A professional makeup-artist-grade paraben-free mineral foundation"
+        "label": "A professional makeup-artist-grade paraben-free mineral foundation",
+        "description": ""
       }
     ],
     "edges": [
@@ -147,10 +157,6 @@
       {
         "source": "q",
         "target": "sq2"
-      },
-      {
-        "source": "q",
-        "target": "sq3"
       },
       {
         "source": "sq1",
@@ -191,22 +197,6 @@
       {
         "source": "sq2",
         "target": "c10"
-      },
-      {
-        "source": "sq3",
-        "target": "c1"
-      },
-      {
-        "source": "sq3",
-        "target": "c2"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "c1",
-        "target": "a1"
       },
       {
         "source": "c1",

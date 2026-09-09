@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (Reapply in Canada Default): Strengthen your Canadian medical school application and reapply \u2014 improving your MCAT, gaining clinical experience, and applying more broadly has higher expected value than the financial and career risk of most foreign medical programs.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1659,
+    "output_tokens": 2830,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,118 +41,118 @@
         "layer": "1",
         "type": "question",
         "label": "Should I study medicine abroad if I didn't get into medical school in Canada?",
-        "description": "A student who didn't get into medical school in Canada is considering studying abroad."
+        "description": "I want to become a doctor but didn't get into medical school in Canada. Should I study medicine abroad?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Geographic Risk and Match Rates",
-        "description": "What are the residency match outcomes for students attending different international medical schools (Caribbean vs. UK/AU/IR)?"
+        "label": "What are the residency match outcomes for different international medical schools?",
+        "description": "Compare match rates for Caribbean, UK, and Australian medical schools."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Canadian Context and Trustworthiness",
-        "description": "What does the Canadian medical training authority and trusted pre-med communities say about studying abroad for Canadian residency?"
+        "label": "What are the financial and career risks of studying abroad?",
+        "description": "Assess the cost and match rate risk of international medical schools."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Personal Commitment and Risk Tolerance",
-        "description": "Should a student who is committed to practicing in Canada pursue an international medical education, and under what conditions?"
+        "label": "What is the credibility of the information about international medical schools?",
+        "description": "Evaluate the trustworthiness of sources discussing international medical school outcomes."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Filter to only 2023 data."
+        "description": "Only consider data from 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Filter to data between 2021 and 2023."
+        "description": "Consider data from 2021 to 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Canada \u2014 residency matching context",
-        "description": "Filter to sources discussing Canada\u2019s residency matching system."
+        "description": "Focus on residency match rates in Canada."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Caribbean medical schools",
-        "description": "Filter to sources discussing Caribbean medical schools."
+        "description": "Focus on Caribbean medical schools."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "geographic: UK / Australia / Ireland",
-        "description": "Filter to sources discussing UK, Australia, or Ireland medical schools."
+        "description": "Focus on UK, Australia, and Ireland medical schools."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student with strong MCAT willing to reapply in Canada",
-        "description": "Filter to sources relevant to a student with a strong MCAT score who is willing to reapply to Canadian schools."
+        "description": "Consider the perspective of a student with strong academic credentials who is willing to reapply in Canada."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student committed to practicing in Canada at any cost",
-        "description": "Filter to sources relevant to a student committed to practicing in Canada."
+        "description": "Consider the perspective of a student who is committed to practicing in Canada."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Canadian medical training authority",
-        "description": "Filter to sources from Canadian medical training authorities."
+        "description": "Prioritize sources from Canadian medical training authorities."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Medical education journalism",
-        "description": "Filter to sources from medical education journalism."
+        "description": "Prioritize sources from medical education journalism."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Pre-med student community advice",
-        "description": "Filter to sources from pre-med student communities."
+        "description": "Prioritize advice from pre-med student communities."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Reapply in Canada Default",
-        "description": "Strengthen your Canadian medical school application and reapply \u2014 improving your MCAT, gaining clinical experience, and applying more broadly has higher expected value than the financial and career risk of most foreign medical programs."
+        "label": "Answer A (Reapply in Canada Default)",
+        "description": "Strengthen your Canadian medical school application and reapply \u2014 improving your MCAT, gaining clinical experience, and applying more broadly has higher expected value than the financial and career risk of most foreign programs."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "UK or Australia if Committed",
+        "label": "Answer B (UK or Australia if Committed)",
         "description": "If you're committed to studying abroad, choose an accredited UK or Australian program over Caribbean schools \u2014 their graduates have substantially higher North American residency match rates and globally recognized degrees."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Caribbean as Last Resort Only",
+        "label": "Answer C (Caribbean as Last Resort Only)",
         "description": "Consider a Caribbean school only as an absolute last resort with full understanding of the match rate risk \u2014 the financial cost of attending without matching to residency is catastrophic and affects approximately 50% of Caribbean graduates."
       }
     ],
@@ -170,6 +179,10 @@
       },
       {
         "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
         "target": "c4"
       },
       {
@@ -177,24 +190,12 @@
         "target": "c5"
       },
       {
-        "source": "sq1",
-        "target": "c9"
+        "source": "sq2",
+        "target": "c6"
       },
       {
         "source": "sq2",
-        "target": "c1"
-      },
-      {
-        "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
-        "target": "c8"
+        "target": "c7"
       },
       {
         "source": "sq2",
@@ -202,11 +203,11 @@
       },
       {
         "source": "sq3",
-        "target": "c6"
+        "target": "c8"
       },
       {
         "source": "sq3",
-        "target": "c7"
+        "target": "c9"
       },
       {
         "source": "c1",
@@ -257,7 +258,7 @@
         "target": "a2"
       },
       {
-        "source": "c4",
+        "source": "c3",
         "target": "a2"
       },
       {
@@ -270,6 +271,10 @@
       },
       {
         "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
         "target": "a2"
       },
       {
@@ -294,10 +299,6 @@
       },
       {
         "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
         "target": "a3"
       }
     ]

@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Zolpidem (Ambien)",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 4379,
-    "output_tokens": 1794,
-    "llm_calls": 2,
+    "prompt_tokens": 2581,
+    "output_tokens": 1641,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,14 +47,14 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "trusted sources for prescription sleep aid recommendations",
+        "label": "trustworthy sources",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "considerations for different types of insomnia patients",
+        "label": "patient perspectives",
         "description": ""
       },
       {
@@ -239,11 +239,11 @@
         "target": "a1"
       },
       {
-        "source": "c2",
+        "source": "c4",
         "target": "a2"
       },
       {
-        "source": "c4",
+        "source": "c5",
         "target": "a2"
       },
       {
@@ -275,11 +275,15 @@
         "target": "a3"
       },
       {
-        "source": "c5",
+        "source": "c4",
         "target": "a3"
       },
       {
-        "source": "c8",
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
         "target": "a3"
       },
       {

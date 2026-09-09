@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Therapy First Default): Start with CBT or another evidence-based therapy \u2014 for mild to moderate symptoms it's as effective as medication without side effects, builds lasting coping skills, and is recommended as first-line by most clinical guidelines.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2256,
-    "output_tokens": 2445,
-    "llm_calls": 2,
+    "prompt_tokens": 1529,
+    "output_tokens": 2127,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,98 +41,98 @@
         "layer": "1",
         "type": "question",
         "label": "Should I try therapy or antidepressants first for mild to moderate depression and anxiety?",
-        "description": ""
+        "description": "Determine the best initial treatment approach for mild to moderate depression and anxiety."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the characteristics of the treatment approach?",
-        "description": ""
+        "label": "What is the severity of my symptoms?",
+        "description": "Assess the severity of symptoms to determine the best treatment approach."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the evidence-based recommendations for treatment?",
-        "description": ""
+        "label": "How quickly do I need symptom relief?",
+        "description": "Determine the urgency of symptom relief to choose the best treatment approach."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the factors that influence the choice of treatment?",
-        "description": ""
+        "label": "What are my long-term treatment goals?",
+        "description": "Consider long-term treatment goals to choose the best treatment approach."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "severity of symptoms",
-        "description": ""
+        "description": "Assess the severity of symptoms to determine the best treatment approach."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "speed of symptom relief",
-        "description": ""
+        "description": "Determine the urgency of symptom relief to choose the best treatment approach."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "long-term coping skill development",
-        "description": ""
+        "description": "Consider long-term treatment goals to choose the best treatment approach."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "side effect tolerance",
-        "description": ""
+        "description": "Assess the risk of side effects to choose the best treatment approach."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "avoidance of medication dependency",
-        "description": ""
+        "description": "Consider the risk of medication dependency to choose the best treatment approach."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "clinical evidence base",
-        "description": ""
+        "description": "Evaluate the clinical evidence to choose the best treatment approach."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "access and cost of therapy",
-        "description": ""
+        "description": "Consider the accessibility and affordability of therapy to choose the best treatment approach."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "preference for non-pharmacological treatment",
-        "description": ""
+        "description": "Assess the preference for non-pharmacological treatment to choose the best approach."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "prior treatment history",
-        "description": ""
+        "description": "Consider prior treatment history to choose the best treatment approach."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "comorbid anxiety management",
-        "description": ""
+        "description": "Evaluate the management of comorbid anxiety to choose the best treatment approach."
       },
       {
         "id": "a1",
@@ -174,48 +174,100 @@
         "target": "c1"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c2"
       },
       {
-        "source": "sq1",
+        "source": "sq3",
         "target": "c3"
       },
       {
-        "source": "sq1",
-        "target": "c4"
-      },
-      {
-        "source": "sq1",
-        "target": "c5"
-      },
-      {
-        "source": "sq2",
-        "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
-        "target": "c8"
-      },
-      {
-        "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
-      },
-      {
         "source": "c1",
         "target": "a1"
       },
       {
         "source": "c2",
         "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
       },
       {
         "source": "c3",
@@ -248,100 +300,6 @@
       {
         "source": "c10",
         "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2",
-        "removed": true
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2",
-        "removed": true
-      },
-      {
-        "source": "c4",
-        "target": "a2",
-        "removed": true
-      },
-      {
-        "source": "c5",
-        "target": "a2",
-        "removed": true
-      },
-      {
-        "source": "c6",
-        "target": "a2",
-        "removed": true
-      },
-      {
-        "source": "c7",
-        "target": "a2",
-        "removed": true
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2",
-        "removed": true
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3",
-        "removed": true
-      },
-      {
-        "source": "c2",
-        "target": "a3",
-        "removed": true
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3",
-        "removed": true
-      },
-      {
-        "source": "c5",
-        "target": "a3",
-        "removed": true
-      },
-      {
-        "source": "c6",
-        "target": "a3",
-        "removed": true
-      },
-      {
-        "source": "c7",
-        "target": "a3",
-        "removed": true
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3",
-        "removed": true
-      },
-      {
-        "source": "c10",
-        "target": "a3"
       }
     ]
   }

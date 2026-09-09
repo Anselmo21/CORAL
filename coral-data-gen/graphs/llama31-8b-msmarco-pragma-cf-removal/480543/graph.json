@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Smart Electric Drive ($25,750 sticker / ~$18,250 post-rebate)",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2927,
-    "output_tokens": 1811,
-    "llm_calls": 2,
+    "prompt_tokens": 1860,
+    "output_tokens": 2031,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,113 +40,113 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Price of best hybrid electric vehicles ranked by price",
-        "description": "What is the price of the best hybrid electric vehicles ranked by price?"
+        "label": "price of best hybrid electric vehicles ranked by price",
+        "description": "What are the best hybrid electric vehicles ranked by price?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Trustworthy sources for pricing and ranking hybrid electric vehicles",
-        "description": "What are the trustworthy sources for pricing and ranking hybrid electric vehicles?"
+        "label": "What are the most trustworthy sources for pricing and ranking hybrid electric vehicles?",
+        "description": "What are the most trustworthy sources for pricing and ranking hybrid electric vehicles?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Perspectives of different buyers",
-        "description": "What are the perspectives of different buyers that influence their choice of hybrid electric vehicles?"
+        "label": "What are the perspectives of different types of buyers that influence their choice of hybrid electric vehicles?",
+        "description": "What are the perspectives of different types of buyers that influence their choice of hybrid electric vehicles?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "Trustworthiness: Kelley Blue Book / Edmunds pricing",
-        "description": "Trustworthy sources for pricing and ranking hybrid electric vehicles"
+        "label": "trustworthiness: Kelley Blue Book / Edmunds pricing",
+        "description": "Trustworthiness: Kelley Blue Book / Edmunds pricing"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "Trustworthiness: Consumer Reports hybrid rankings",
-        "description": "Trustworthy sources for pricing and ranking hybrid electric vehicles"
+        "label": "trustworthiness: Consumer Reports hybrid rankings",
+        "description": "Trustworthiness: Consumer Reports hybrid rankings"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "Trustworthiness: EPA fuel economy data",
-        "description": "Trustworthy sources for pricing and ranking hybrid electric vehicles"
+        "label": "trustworthiness: EPA fuel economy data",
+        "description": "Trustworthiness: EPA fuel economy data"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "Trustworthiness: automotive review publication",
-        "description": "Trustworthy sources for pricing and ranking hybrid electric vehicles"
+        "label": "trustworthiness: automotive review publication",
+        "description": "Trustworthiness: automotive review publication"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "Trustworthiness: federal tax credit eligibility documentation",
+        "label": "trustworthiness: federal tax credit eligibility documentation",
         "description": "Trustworthiness: federal tax credit eligibility documentation"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "Perspective: budget-first buyer",
-        "description": "Perspective of budget-first buyer"
+        "label": "perspective: budget-first buyer",
+        "description": "Perspective: budget-first buyer"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "Perspective: daily commuter (range-concerned)",
-        "description": "Perspective of daily commuter"
+        "label": "perspective: daily commuter (range-concerned)",
+        "description": "Perspective: daily commuter (range-concerned)"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "Perspective: eco-first all-electric advocate",
-        "description": "Perspective of eco-first all-electric advocate"
+        "label": "perspective: eco-first all-electric advocate",
+        "description": "Perspective: eco-first all-electric advocate"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "Perspective: urban / city driver",
-        "description": "Perspective of urban/city driver"
+        "label": "perspective: urban / city driver",
+        "description": "Perspective: urban / city driver"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "Perspective: family / sedan-need buyer",
-        "description": "Perspective of family/sedan-need buyer"
+        "label": "perspective: family / sedan-need buyer",
+        "description": "Perspective: family / sedan-need buyer"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Smart Electric Drive ($25,750 sticker / ~$18,250 post-rebate)",
-        "description": "Smart Electric Drive"
+        "description": "Smart Electric Drive ($25,750 sticker / ~$18,250 post-rebate)"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Honda Civic Hybrid (~$25K, 44/47 mpg)",
-        "description": "Honda Civic Hybrid"
+        "description": "Honda Civic Hybrid (~$25K, 44/47 mpg)"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Ford Focus Electric ($29,170 / ~$22K post-rebate)",
-        "description": "Ford Focus Electric"
+        "description": "Ford Focus Electric ($29,170 / ~$22K post-rebate)"
       }
     ],
     "edges": [
@@ -220,43 +220,43 @@
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c7",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c8",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c9",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c10",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c1",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c3",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c4",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c5",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c6",

@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Labrador Retriever or Golden Retriever",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2870,
-    "output_tokens": 2374,
-    "llm_calls": 2,
+    "prompt_tokens": 1816,
+    "output_tokens": 2176,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,97 +40,113 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Which dog breed helps most with anxiety and depression?"
+        "label": "Which dog breed helps most with anxiety and depression?",
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What characteristics make a dog breed suitable for anxiety and depression?"
+        "label": "What characteristics make a dog suitable for anxiety and depression?",
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What type of dog breed is best for anxiety and depression?"
+        "label": "What are the key factors to consider when choosing a dog breed for anxiety and depression?",
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "affectionate temperament"
+        "label": "affectionate temperament",
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "energy level"
+        "label": "energy level",
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "trainability"
+        "label": "trainability",
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "grooming needs"
+        "label": "grooming needs",
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "size"
+        "label": "size",
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "exercise requirements"
+        "label": "exercise requirements",
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "hypoallergenic coat"
+        "label": "hypoallergenic coat",
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "lifespan"
+        "label": "lifespan",
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "child-friendliness"
+        "label": "child-friendliness",
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "apartment adaptability"
+        "label": "apartment adaptability",
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Labrador Retriever or Golden Retriever"
+        "label": "Labrador Retriever or Golden Retriever",
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "A small companion breed (Cavalier King Charles Spaniel, Bichon Frise, Cockapoo)"
+        "label": "A small companion breed (Cavalier King Charles Spaniel, Bichon Frise, Cockapoo)",
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "A trained psychiatric service dog (Standard Poodle / German Shepherd)"
+        "label": "A trained psychiatric service dog (Standard Poodle / German Shepherd)",
+        "description": ""
       }
     ],
     "edges": [
@@ -184,255 +200,147 @@
       },
       {
         "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
         "target": "a1"
       },
       {
-        "source": "sq2",
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
         "target": "a2"
       },
       {
-        "source": "sq2",
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
         "target": "a3"
       },
       {
-        "source": "a1",
-        "target": "c1"
+        "source": "c2",
+        "target": "a3"
       },
       {
-        "source": "a1",
-        "target": "c2"
+        "source": "c3",
+        "target": "a3"
       },
       {
-        "source": "a1",
-        "target": "c3"
+        "source": "c4",
+        "target": "a3"
       },
       {
-        "source": "a1",
-        "target": "c4"
+        "source": "c5",
+        "target": "a3"
       },
       {
-        "source": "a1",
-        "target": "c5"
+        "source": "c6",
+        "target": "a3"
       },
       {
-        "source": "a1",
-        "target": "c6"
+        "source": "c7",
+        "target": "a3"
       },
       {
-        "source": "a1",
-        "target": "c7"
+        "source": "c8",
+        "target": "a3"
       },
       {
-        "source": "a1",
-        "target": "c8"
+        "source": "c9",
+        "target": "a3"
       },
       {
-        "source": "a1",
-        "target": "c9"
-      },
-      {
-        "source": "a1",
-        "target": "c10"
-      },
-      {
-        "source": "a2",
-        "target": "c1"
-      },
-      {
-        "source": "a2",
-        "target": "c2"
-      },
-      {
-        "source": "a2",
-        "target": "c3"
-      },
-      {
-        "source": "a2",
-        "target": "c4"
-      },
-      {
-        "source": "a2",
-        "target": "c5"
-      },
-      {
-        "source": "a2",
-        "target": "c6"
-      },
-      {
-        "source": "a2",
-        "target": "c7"
-      },
-      {
-        "source": "a2",
-        "target": "c8"
-      },
-      {
-        "source": "a2",
-        "target": "c9"
-      },
-      {
-        "source": "a2",
-        "target": "c10"
-      },
-      {
-        "source": "a3",
-        "target": "c1"
-      },
-      {
-        "source": "a3",
-        "target": "c2"
-      },
-      {
-        "source": "a3",
-        "target": "c3"
-      },
-      {
-        "source": "a3",
-        "target": "c4"
-      },
-      {
-        "source": "a3",
-        "target": "c5"
-      },
-      {
-        "source": "a3",
-        "target": "c6"
-      },
-      {
-        "source": "a3",
-        "target": "c7"
-      },
-      {
-        "source": "a3",
-        "target": "c8"
-      },
-      {
-        "source": "a3",
-        "target": "c9"
-      },
-      {
-        "source": "a3",
-        "target": "c10"
-      },
-      {
-        "source": "a1",
-        "target": "c1"
-      },
-      {
-        "source": "a2",
-        "target": "c1"
-      },
-      {
-        "source": "a3",
-        "target": "c1"
-      },
-      {
-        "source": "a1",
-        "target": "c2"
-      },
-      {
-        "source": "a2",
-        "target": "c2"
-      },
-      {
-        "source": "a3",
-        "target": "c2"
-      },
-      {
-        "source": "a1",
-        "target": "c3"
-      },
-      {
-        "source": "a2",
-        "target": "c3"
-      },
-      {
-        "source": "a3",
-        "target": "c3"
-      },
-      {
-        "source": "a1",
-        "target": "c4"
-      },
-      {
-        "source": "a2",
-        "target": "c4"
-      },
-      {
-        "source": "a3",
-        "target": "c4"
-      },
-      {
-        "source": "a1",
-        "target": "c5"
-      },
-      {
-        "source": "a2",
-        "target": "c5"
-      },
-      {
-        "source": "a3",
-        "target": "c5"
-      },
-      {
-        "source": "a1",
-        "target": "c6"
-      },
-      {
-        "source": "a2",
-        "target": "c6"
-      },
-      {
-        "source": "a3",
-        "target": "c6"
-      },
-      {
-        "source": "a1",
-        "target": "c7"
-      },
-      {
-        "source": "a2",
-        "target": "c7"
-      },
-      {
-        "source": "a3",
-        "target": "c7"
-      },
-      {
-        "source": "a1",
-        "target": "c8"
-      },
-      {
-        "source": "a2",
-        "target": "c8"
-      },
-      {
-        "source": "a3",
-        "target": "c8"
-      },
-      {
-        "source": "a1",
-        "target": "c9"
-      },
-      {
-        "source": "a2",
-        "target": "c9"
-      },
-      {
-        "source": "a3",
-        "target": "c9"
-      },
-      {
-        "source": "a1",
-        "target": "c10"
-      },
-      {
-        "source": "a2",
-        "target": "c10"
-      },
-      {
-        "source": "a3",
-        "target": "c10"
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

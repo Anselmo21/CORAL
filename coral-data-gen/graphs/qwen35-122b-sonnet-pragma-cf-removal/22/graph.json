@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (CBT Default): Pursue CBT with a licensed therapist \u2014 it has the strongest evidence base for GAD, produces lasting remission, and builds self-management skills that persist without ongoing treatment.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1680,
+    "output_tokens": 3542,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -38,106 +47,113 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the clinically superior, evidence-based treatment for GAD?",
-        "description": "Focuses on high-trust, professional, and broad temporal sources."
+        "label": "What does high-trust clinical evidence say?",
+        "description": "Focuses on professional, peer-reviewed, and medical institution sources."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are effective, accessible options for mild-to-moderate anxiety?",
-        "description": "Focuses on patient perspectives, specific severity, and broader source types."
+        "label": "What do patients with mild-moderate anxiety find accessible?",
+        "description": "Focuses on patient perspectives, community experience, and consumer health info."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the most current and geographically relevant data?",
+        "description": "Focuses on temporal recency and US-based sources."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Filters for most recent data."
+        "description": "Filters for sources published strictly in 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Filters for recent 3-year data."
+        "description": "Filters for sources published between 2021 and 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Filters for US-based sources."
+        "description": "Filters for sources based in the United States."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient with mild-moderate GAD",
-        "description": "Focuses on mild-moderate severity."
+        "description": "Filters for advice relevant to mild-to-moderate severity."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient with severe or functionally impairing anxiety",
-        "description": "Focuses on severe anxiety."
+        "description": "Filters for advice relevant to severe anxiety cases."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Psychologist or psychiatrist",
-        "description": "Focuses on professional clinical perspective."
+        "description": "Filters for professional clinical perspectives."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Peer-reviewed clinical research",
-        "description": "Prioritizes academic journals."
+        "description": "Filters for peer-reviewed journal articles."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Medical institution guidance",
-        "description": "Prioritizes hospital/clinic guidelines."
+        "description": "Filters for guidance from major medical institutions."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer health information",
-        "description": "Includes health websites like WebMD."
+        "description": "Filters for consumer-facing health websites."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Patient community experience",
-        "description": "Includes forums like Reddit."
+        "description": "Filters for patient forums and community discussions."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (CBT Default)",
-        "description": "Pursue CBT with a licensed therapist."
+        "description": "Pursue CBT with a licensed therapist \u2014 it has the strongest evidence base for GAD, produces lasting remission, and builds self-management skills that persist without ongoing treatment."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Exercise Plus Mindfulness)",
-        "description": "Combine regular aerobic exercise with a mindfulness-based program."
+        "description": "Combine regular aerobic exercise with a mindfulness-based program like MBSR \u2014 these are accessible, low-cost, and produce clinically meaningful anxiety reduction for mild-to-moderate symptoms."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Digital CBT-I First)",
-        "description": "Start with a structured digital CBT program."
+        "description": "Start with a structured digital CBT program (like those based on the Worry Hill model) for immediate access while waiting for a therapist \u2014 evidence-based apps can produce meaningful benefit for mild anxiety without a waitlist."
       }
     ],
     "edges": [
@@ -150,12 +166,8 @@
         "target": "sq2"
       },
       {
-        "source": "sq1",
-        "target": "c2"
-      },
-      {
-        "source": "sq1",
-        "target": "c3"
+        "source": "q",
+        "target": "sq3"
       },
       {
         "source": "sq1",
@@ -168,10 +180,6 @@
       {
         "source": "sq1",
         "target": "c8"
-      },
-      {
-        "source": "sq2",
-        "target": "c1"
       },
       {
         "source": "sq2",
@@ -190,6 +198,18 @@
         "target": "c10"
       },
       {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
         "source": "c1",
         "target": "a1"
       },
@@ -220,10 +240,6 @@
       {
         "source": "c3",
         "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
       },
       {
         "source": "c4",

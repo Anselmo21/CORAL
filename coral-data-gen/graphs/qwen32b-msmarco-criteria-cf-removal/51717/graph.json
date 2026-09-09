@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "University of Wisconsin-Madison",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1849,
+    "output_tokens": 2008,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,35 +41,35 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best engineering college in Wisconsin?",
-        "description": "Evaluating the best engineering college in Wisconsin based on academic, financial, and career criteria."
+        "description": "Identify the top engineering college in Wisconsin based on multiple criteria."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Academic Quality and Reputation",
-        "description": "Evaluates the academic strength, research, and institutional reputation of the engineering program."
+        "label": "Academic and Program Quality",
+        "description": "Criteria related to the academic strength and program quality of the engineering school."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Student Experience and Resources",
-        "description": "Evaluates student support, campus infrastructure, and learning environment."
+        "label": "Cost and Student Experience",
+        "description": "Criteria related to the cost of attendance and the student experience."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Cost and Career Outcomes",
-        "description": "Evaluates financial considerations and post-graduation success."
+        "label": "Outcomes and Demographics",
+        "description": "Criteria related to student outcomes and campus life."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "program reputation",
-        "description": "Reputation of the engineering program among peers and employers."
+        "description": "Reputation of the engineering program nationally and within the state."
       },
       {
         "id": "c2",
@@ -74,77 +83,77 @@
         "layer": "3",
         "type": "concept",
         "label": "faculty research output",
-        "description": "Research productivity and quality of the engineering faculty."
+        "description": "Volume and impact of research conducted by faculty."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "student-to-faculty ratio",
-        "description": "Ratio of students to engineering faculty."
+        "description": "Ratio of students to faculty members."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "graduation rate",
-        "description": "Percentage of engineering students who graduate on time."
+        "description": "Percentage of students who graduate within 6 years."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "post-grad employment rate",
-        "description": "Percentage of engineering graduates employed within a year of graduation."
+        "description": "Percentage of graduates employed in engineering-related fields."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "campus facilities",
-        "description": "Quality and availability of engineering labs and equipment."
+        "description": "Quality and availability of campus infrastructure and labs."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "internship opportunities",
-        "description": "Availability of internships for engineering students."
+        "description": "Availability and quality of internships for engineering students."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "location and campus life",
-        "description": "Quality of campus life and location for engineering students."
+        "description": "Geographic location and overall campus environment."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "accreditation",
-        "description": "Whether the engineering program is ABET-accredited."
+        "description": "Whether the engineering program is accredited by ABET or similar."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "University of Wisconsin-Madison",
-        "description": "Largest engineering school in Wisconsin with strong reputation and research output."
+        "description": "Largest engineering school in Wisconsin with strong program reputation and high graduation rates."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Milwaukee School of Engineering (MSOE)",
-        "description": "Smaller school with strong internship and student-to-faculty ratio."
+        "description": "Known for strong student-to-faculty ratio and internship opportunities."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "University of Wisconsin-Milwaukee",
-        "description": "Offers a solid engineering program with good graduation rate and campus life."
+        "description": "Offers a more affordable option with a good location and campus life."
       }
     ],
     "edges": [
@@ -174,11 +183,11 @@
       },
       {
         "source": "sq2",
-        "target": "c4"
+        "target": "c2"
       },
       {
         "source": "sq2",
-        "target": "c5"
+        "target": "c4"
       },
       {
         "source": "sq2",
@@ -190,7 +199,7 @@
       },
       {
         "source": "sq3",
-        "target": "c2"
+        "target": "c5"
       },
       {
         "source": "sq3",
@@ -249,14 +258,6 @@
         "target": "a2"
       },
       {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
         "source": "c7",
         "target": "a2"
       },
@@ -269,15 +270,11 @@
         "target": "a2"
       },
       {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
+        "source": "c2",
         "target": "a3"
       },
       {
-        "source": "c5",
+        "source": "c4",
         "target": "a3"
       },
       {

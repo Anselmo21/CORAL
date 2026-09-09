@@ -21,10 +21,21 @@
   ],
   "baseline_answer": "A mainstream 15\" Dell or ASUS Vivobook touchscreen with large screen + ample RAM",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 3,
+  "usage": {
+    "prompt_tokens": 12543,
+    "output_tokens": 8043,
+    "llm_calls": 3,
+    "finish_reasons": [
+      "length",
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +43,119 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best laptop for under $1000?",
-        "description": "The primary inquiry regarding the best laptop purchase under a specific budget."
+        "description": "Identify the optimal laptop category under $1000 based on diverse user needs and source reviews."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Best for general use, students, and value",
-        "description": "Focuses on large screens, touch, and RAM for general productivity and media."
+        "label": "General Value & Mainstream Specs",
+        "description": "What is the best laptop for general users, students, and families prioritizing screen size and RAM?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Best for gaming and performance",
-        "description": "Focuses on dedicated GPUs and gaming-specific hardware requirements."
+        "label": "Gaming Performance",
+        "description": "What is the best laptop for gamers prioritizing dedicated GPUs and performance?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Best for portability and business",
-        "description": "Focuses on ultrabooks, battery life, and lightweight form factors."
+        "label": "Portability & Business",
+        "description": "What is the best laptop for travelers and business users prioritizing thinness and battery life?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: PCMag editor recommendation",
-        "description": "Prioritizes PCMag's editorial choice, which favors the ultrabook as a 'safe bet'."
+        "description": "Prioritize PCMag's editorial stance, which often favors ultrabooks and premium builds."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: PCWorld review",
-        "description": "Prioritizes PCWorld reviews, which highlight the 15-inch mainstream options."
+        "description": "Prioritize PCWorld's technical reviews covering a wide range of specs."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: gaming-focused review site",
-        "description": "Prioritizes sources like PCGamerHome and Heavy.com focused on gaming specs."
+        "description": "Prioritize sources dedicated to gaming hardware performance."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Reddit r/SuggestALaptop community",
-        "description": "Prioritizes community consensus from Reddit."
+        "description": "Prioritize community consensus from a general tech forum."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: consumer aggregator (CNET / Tom's Guide)",
-        "description": "Prioritizes aggregated scores from major consumer tech sites."
+        "description": "Prioritize aggregated consumer reviews and buying guides."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: PC gamer",
-        "description": "Filters for user needs focused on gaming performance."
+        "description": "Filter for the specific needs and preferences of a PC gamer."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: business / productivity user",
-        "description": "Filters for user needs focused on work, battery, and reliability."
+        "description": "Filter for the needs of business users prioritizing reliability and portability."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: college student / general use",
-        "description": "Filters for user needs focused on versatility and screen size."
+        "description": "Filter for the needs of students and general users balancing price and performance."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: frequent traveler / portability priority",
-        "description": "Filters for user needs focused on weight and battery life."
+        "description": "Filter for users prioritizing weight and battery life above all else."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: casual home user with kids",
-        "description": "Filters for user needs focused on durability and ease of use."
+        "description": "Filter for casual users prioritizing screen size and ease of use."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A premium ultrabook (Dell XPS 13, ASUS Zenbook, or MacBook Air)",
-        "description": "Best choice when portability and build quality are prioritized over screen size."
+        "description": "Best for portability and premium build quality."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A 15\" gaming laptop with dedicated GPU (Acer Aspire / Lenovo IdeaPad Gaming)",
-        "description": "Best choice when gaming performance and dedicated graphics are prioritized."
+        "description": "Best for high-performance gaming and graphics."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A mainstream 15\" Dell or ASUS Vivobook touchscreen with large screen + ample RAM",
-        "description": "Best choice when balancing screen size, touch, RAM, and value for general use."
+        "description": "Best overall value for general use, screen size, and specs."
       }
     ],
     "edges": [
@@ -162,7 +173,15 @@
       },
       {
         "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
         "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
       },
       {
         "source": "sq1",
@@ -178,11 +197,11 @@
       },
       {
         "source": "sq2",
-        "target": "c6"
+        "target": "c4"
       },
       {
-        "source": "sq3",
-        "target": "c1"
+        "source": "sq2",
+        "target": "c6"
       },
       {
         "source": "sq3",
@@ -193,20 +212,20 @@
         "target": "c9"
       },
       {
-        "source": "sq1",
-        "target": "c4"
-      },
-      {
-        "source": "sq1",
-        "target": "c5"
-      },
-      {
         "source": "c1",
         "target": "a1"
       },
       {
         "source": "c1",
         "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
       },
       {
         "source": "c2",
@@ -222,7 +241,15 @@
       },
       {
         "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
         "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
       },
       {
         "source": "c5",
@@ -259,54 +286,6 @@
       {
         "source": "c10",
         "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
       }
     ]
   }

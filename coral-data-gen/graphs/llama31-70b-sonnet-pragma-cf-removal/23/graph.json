@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer C (Discuss with Physician): Make a shared decision with your doctor based on your specific sexual history and risk profile \u2014 the benefit is highly individual at age 28 and depends on factors your physician can assess.",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2540,
-    "output_tokens": 1751,
-    "llm_calls": 2,
+    "prompt_tokens": 1679,
+    "output_tokens": 2001,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,21 +47,21 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the general benefits and risks of the HPV vaccine for adults over 26?",
+        "label": "What is the general recommendation for HPV vaccination in adults?",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How does the vaccine's effectiveness vary depending on individual circumstances?",
+        "label": "How does the individual's risk profile and sexual history affect the decision to get vaccinated?",
         "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the cost-effectiveness and practical considerations of vaccinating adults in different relationship scenarios?",
+        "label": "What are the cost-effectiveness and potential benefits of HPV vaccination for adults over 26?",
         "description": ""
       },
       {
@@ -182,14 +182,6 @@
         "target": "c3"
       },
       {
-        "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
-        "target": "c8"
-      },
-      {
         "source": "sq2",
         "target": "c4"
       },
@@ -202,12 +194,16 @@
         "target": "c6"
       },
       {
-        "source": "sq2",
-        "target": "c9"
+        "source": "sq3",
+        "target": "c7"
       },
       {
         "source": "sq3",
-        "target": "c5"
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
       },
       {
         "source": "sq3",
@@ -271,6 +267,10 @@
       },
       {
         "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
         "target": "a3"
       },
       {
@@ -291,7 +291,7 @@
       },
       {
         "source": "c8",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c9",
@@ -299,7 +299,11 @@
       },
       {
         "source": "c10",
-        "target": "a2"
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

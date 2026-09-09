@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (Breville Bambino Plus Default): Get the Breville Bambino Plus \u2014 it produces genuine espresso quality, has a powerful steam wand, and heats up in 3 seconds, making it the best balance of quality and ease for new home baristas.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1747,
+    "output_tokens": 2693,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -39,21 +48,21 @@
         "layer": "2",
         "type": "subq",
         "label": "sq1",
-        "description": "What is the best machine for a beginner who wants easy daily espresso?"
+        "description": "What is the best machine for a beginner who wants to make espresso easily at home?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "sq2",
-        "description": "What is the best machine for someone serious about espresso and long-term quality?"
+        "description": "What is the best machine for someone who is serious about espresso and wants long-term value?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "sq3",
-        "description": "What is the best machine when considering the balance between cost and quality components (grinder vs. machine)?"
+        "description": "What is the best value for money when considering both machine and grinder?"
       },
       {
         "id": "c1",
@@ -206,10 +215,6 @@
       },
       {
         "source": "sq3",
-        "target": "c2"
-      },
-      {
-        "source": "sq3",
         "target": "c4"
       },
       {
@@ -218,19 +223,7 @@
       },
       {
         "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
         "target": "c8"
-      },
-      {
-        "source": "sq3",
-        "target": "c9"
       },
       {
         "source": "sq3",
@@ -277,11 +270,23 @@
         "target": "a1"
       },
       {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
         "source": "c2",
         "target": "a2"
       },
       {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
         "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
         "target": "a2"
       },
       {
@@ -297,7 +302,15 @@
         "target": "a2"
       },
       {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
         "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
         "target": "a3"
       },
       {

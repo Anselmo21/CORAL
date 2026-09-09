@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Cool (not cold) water bath or compress for 10-20 minutes, then aloe vera gel",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2654,
+    "output_tokens": 2451,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "best thing for a sunburn",
-        "description": "Identifying the optimal treatment for sunburn based on provided sources."
+        "description": "The primary question asking for the optimal treatment for sunburn."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "Immediate Relief & Safety",
-        "description": "Evaluating speed of pain relief, application simplicity, and safety for sensitive skin/children."
+        "description": "Evaluates cooling, pain management, and safety for sensitive groups."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Ingredient & Hydration Efficacy",
-        "description": "Evaluating the effectiveness, duration, hydration, and availability of the active ingredients."
+        "label": "Ingredient Efficacy & Logistics",
+        "description": "Evaluates how well ingredients work, their availability, and hydration properties."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "Long-term & Holistic Health",
-        "description": "Evaluating the impact on long-term skin health and future prevention."
+        "description": "Evaluates the impact on future skin health and overall care."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "type of treatment",
-        "description": "The category of intervention (e.g., water bath vs. cream vs. oil)."
+        "description": "The category of intervention used (e.g., bath, cream, oil)."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "application method",
-        "description": "How the treatment is applied (e.g., simple bath vs. mixing cream)."
+        "description": "How the treatment is applied (e.g., compress, bath, smear)."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "ingredient effectiveness",
-        "description": "How well the specific ingredients work to soothe the burn."
+        "description": "The proven ability of the active ingredients to treat the burn."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "duration of relief",
-        "description": "How long the soothing effects last."
+        "description": "How long the treatment provides pain relief and soothing."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "skin sensitivity",
-        "description": "Risk of irritation for sensitive skin types."
+        "description": "The risk of irritation or adverse reaction on sensitive skin."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "hydration level",
-        "description": "Ability of the treatment to restore moisture to the skin."
+        "description": "The ability of the treatment to restore moisture to the skin."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "pain relief",
-        "description": "Immediate reduction of burning pain."
+        "description": "The immediate reduction of burning and stinging sensations."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "availability of ingredients",
-        "description": "Ease of obtaining the required items."
+        "description": "How easy it is to obtain the necessary components."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "safety for children",
-        "description": "Suitability and safety for pediatric use."
+        "description": "The safety profile of the treatment when used on children."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "long-term skin health",
-        "description": "Impact on preventing long-term damage like wrinkles or cancer."
+        "description": "The impact of the treatment on preventing long-term damage like wrinkles or cancer."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Cool (not cold) water bath or compress for 10-20 minutes, then aloe vera gel",
-        "description": "Standard medical recommendation using water and aloe."
+        "description": "The baseline answer supported by all criteria."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "DIY burn cream: aloe vera + witch hazel + mint + baking soda + water",
-        "description": "Homemade mixture of multiple soothing agents."
+        "description": "Alternative answer requiring removal of availability, sensitivity, child safety, long-term, and duration criteria."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Lavender oil bath plus milk compresses",
-        "description": "Natural remedy using specific oils and dairy."
+        "description": "Alternative answer requiring removal of availability, child safety, sensitivity, long-term, pain, and hydration criteria."
       }
     ],
     "edges": [
@@ -245,11 +254,11 @@
         "target": "a2"
       },
       {
-        "source": "c3",
+        "source": "c2",
         "target": "a2"
       },
       {
-        "source": "c4",
+        "source": "c3",
         "target": "a2"
       },
       {
@@ -258,10 +267,6 @@
       },
       {
         "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
         "target": "a2"
       },
       {
@@ -269,23 +274,15 @@
         "target": "a3"
       },
       {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
         "source": "c3",
         "target": "a3"
       },
       {
         "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
         "target": "a3"
       }
     ]

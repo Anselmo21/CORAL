@@ -20,16 +20,16 @@
   ],
   "baseline_answer": "An NSAID (ibuprofen / Advil or naproxen / Aleve)",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3713,
-    "output_tokens": 1920,
-    "llm_calls": 2,
+    "prompt_tokens": 2252,
+    "output_tokens": 1692,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -39,91 +39,106 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Which medication best relieves a common cold?"
+        "label": "Which medication best relieves a common cold?",
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Which medication is trustworthy?"
+        "label": "What is the most trustworthy source for recommending a medication for a common cold?",
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Which medication best relieves a common cold from a specific perspective?"
+        "label": "Which medication is best suited for a common cold with specific symptoms or patient characteristics?",
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: clinical practice guideline"
+        "label": "trustworthiness: clinical practice guideline",
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Consumer Reports OTC ranking"
+        "label": "trustworthiness: Consumer Reports OTC ranking",
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: pharmacist-curated drug guide"
+        "label": "trustworthiness: pharmacist-curated drug guide",
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: patient OTC forum"
+        "label": "trustworthiness: patient OTC forum",
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: consumer health platform"
+        "label": "trustworthiness: consumer health platform",
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: pain / fever dominant symptoms"
+        "label": "perspective: pain / fever dominant symptoms",
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: multi-symptom cold (cough + congestion + sore throat)"
+        "label": "perspective: multi-symptom cold (cough + congestion + sore throat)",
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: high-blood-pressure patient avoiding decongestants"
+        "label": "perspective: high-blood-pressure patient avoiding decongestants",
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: nighttime sleep-disturbance dominant"
+        "label": "perspective: nighttime sleep-disturbance dominant",
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: minimize-side-effects user"
+        "label": "perspective: minimize-side-effects user",
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "An NSAID (ibuprofen / Advil or naproxen / Aleve)"
+        "label": "An NSAID (ibuprofen / Advil or naproxen / Aleve)",
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "A multi-symptom OTC like NyQuil or Tylenol Cold Multi Symptom Nighttime"
+        "label": "A multi-symptom OTC like NyQuil or Tylenol Cold Multi Symptom Nighttime",
+        "description": ""
       }
     ],
     "edges": [
@@ -205,7 +220,7 @@
       },
       {
         "source": "c8",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c9",

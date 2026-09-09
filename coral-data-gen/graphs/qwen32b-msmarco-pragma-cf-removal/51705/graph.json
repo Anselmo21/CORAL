@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "A trained psychiatric service dog (Standard Poodle / German Shepherd)",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1959,
+    "output_tokens": 2385,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "Which dog breed helps most with anxiety and depression?",
-        "description": "Identify the dog breed that is most effective in alleviating symptoms of anxiety and depression."
+        "description": "Which dog breed is most effective for treating anxiety and depression, based on source credibility and user perspective?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Which breeds are most recommended by trustworthy sources for anxiety and depression?",
-        "description": "Focus on recommendations from trusted organizations and health platforms."
+        "label": "What dog breed is most effective for treating anxiety and depression based on trustworthiness of the source?",
+        "description": "Evaluates breed effectiveness based on source credibility."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Which breeds are best suited to specific living or mental health conditions?",
-        "description": "Consider the living situation and mental health severity of the owner."
+        "label": "What dog breed is most suitable for people with specific living or lifestyle conditions?",
+        "description": "Evaluates breed suitability based on user lifestyle and living conditions."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Which breeds are best for those with severe or disabling mental health conditions?",
-        "description": "Prioritize breeds that provide structured support for severe mental health."
+        "label": "What dog breed is most appropriate for people with specific mental health severity or age?",
+        "description": "Evaluates breed appropriateness based on mental health severity and age."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: psychiatric service dog organization",
-        "description": "Prioritize sources from organizations that train psychiatric service dogs."
+        "label": "1. trustworthiness: psychiatric service dog organization",
+        "description": "Sources from psychiatric service dog organizations."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: peer-reviewed psychology / animal-assisted therapy journal",
-        "description": "Prioritize academic or clinical research on animal-assisted therapy."
+        "label": "2. trustworthiness: peer-reviewed psychology / animal-assisted therapy journal",
+        "description": "Sources from peer-reviewed psychology or animal-assisted therapy journals."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: WebMD / consumer health platform",
-        "description": "Prioritize mainstream health information from WebMD."
+        "label": "3. trustworthiness: WebMD / consumer health platform",
+        "description": "Sources from WebMD or similar consumer health platforms."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: AKC (American Kennel Club) breed guide",
-        "description": "Prioritize breed-specific information from the AKC."
+        "label": "4. trustworthiness: AKC (American Kennel Club) breed guide",
+        "description": "Sources from AKC breed guides."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: dog owner / mental health forum",
-        "description": "Prioritize anecdotal or community-based advice from dog owners and mental health forums."
+        "label": "5. trustworthiness: dog owner / mental health forum",
+        "description": "Sources from dog owner or mental health forums."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: apartment dweller with limited space",
-        "description": "Prioritize breeds suitable for small living spaces."
+        "label": "6. perspective: apartment dweller with limited space",
+        "description": "Sources from the perspective of apartment dwellers with limited space."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: highly active outdoor exerciser",
-        "description": "Prioritize breeds that match an active outdoor lifestyle."
+        "label": "7. perspective: highly active outdoor exerciser",
+        "description": "Sources from the perspective of highly active outdoor exercisers."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: first-time dog owner",
-        "description": "Prioritize breeds that are good for new dog owners."
+        "label": "8. perspective: first-time dog owner",
+        "description": "Sources from the perspective of first-time dog owners."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: severe / disabling mental health condition",
-        "description": "Prioritize breeds that are effective for severe mental health challenges."
+        "label": "9. perspective: severe / disabling mental health condition",
+        "description": "Sources from the perspective of people with severe or disabling mental health conditions."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: child or teen with anxiety",
-        "description": "Prioritize breeds that are appropriate for children or teenagers with anxiety."
+        "label": "10. perspective: child or teen with anxiety",
+        "description": "Sources from the perspective of children or teens with anxiety."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Labrador Retriever or Golden Retriever",
-        "description": "Recommended for their calm and affectionate nature."
+        "description": "Large, affectionate breeds known for their calming presence."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A small companion breed (Cavalier King Charles Spaniel, Bichon Frise, Cockapoo)",
-        "description": "Suitable for apartment living and emotional support."
+        "description": "Small, gentle breeds ideal for apartment living and emotional support."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A trained psychiatric service dog (Standard Poodle / German Shepherd)",
-        "description": "Best for severe mental health conditions and structured support."
+        "description": "Highly trained dogs for individuals with severe mental health conditions."
       }
     ],
     "edges": [
@@ -222,67 +231,19 @@
       },
       {
         "source": "c6",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c7",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c8",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c9",
         "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
       },
       {
         "source": "c10",

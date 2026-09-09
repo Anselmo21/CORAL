@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Term Life Default): Get a 20-year term policy worth 10\u201312x your income \u2014 it's dramatically cheaper than whole life, covers your mortgage and children's dependency years, and you invest the premium difference separately.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2458,
-    "output_tokens": 2005,
-    "llm_calls": 2,
+    "prompt_tokens": 1641,
+    "output_tokens": 1889,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,19 +47,19 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the general recommendations for life insurance for someone with dependents and a mortgage?"
+        "label": "What type of insurance is generally recommended for individuals with dependents and a mortgage?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the specific circumstances under which whole life insurance might be preferred over term life insurance?"
+        "label": "Are there any specific circumstances under which whole life insurance is justified?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the trusted sources of information for making this decision?"
+        "label": "What are the key factors to consider when choosing between term life and whole life insurance?"
       },
       {
         "id": "c1",
@@ -195,19 +195,27 @@
       },
       {
         "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
         "target": "c7"
       },
       {
         "source": "sq3",
         "target": "c8"
-      },
-      {
-        "source": "sq3",
-        "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
       },
       {
         "source": "c1",
@@ -247,18 +255,10 @@
       },
       {
         "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
         "target": "a2"
       },
       {
@@ -270,27 +270,7 @@
         "target": "a2"
       },
       {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
         "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
         "target": "a3"
       },
       {

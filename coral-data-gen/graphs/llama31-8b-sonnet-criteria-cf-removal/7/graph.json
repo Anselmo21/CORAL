@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (HYSA Default): Keep everything in a high-yield savings account \u2014 current rates of 4.5\u20135%+ with full liquidity make HYSAs superior to CDs for most savers, especially for emergency funds.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2262,
-    "output_tokens": 1859,
-    "llm_calls": 2,
+    "prompt_tokens": 1531,
+    "output_tokens": 1933,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,119 +47,119 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Liquidity and rate lock-in",
-        "description": ""
+        "label": "Liquidity and Rate Management",
+        "description": "full liquidity preservation, rate lock-in during declining rate environment, protection against rate drops"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Simplicity and management",
-        "description": ""
+        "label": "Management Complexity and Suitability",
+        "description": "simplicity of management, suitability for emergency fund, medium-term savings goal optimization"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Yield and suitability",
-        "description": ""
+        "label": "Yield and Penalty Considerations",
+        "description": "maximum current yield, penalty-free early access"
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "Additional considerations",
-        "description": ""
+        "label": "Risk and Insurance",
+        "description": "FDIC insurance coverage"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "full liquidity preservation",
-        "description": ""
+        "description": "preserving full liquidity"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "rate lock-in during declining rate environment",
-        "description": ""
+        "description": "locking in rates during declining rate environment"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "protection against rate drops",
-        "description": ""
+        "label": "simplicity of management",
+        "description": "simple management"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "simplicity of management",
-        "description": ""
+        "label": "maximum current yield",
+        "description": "maximum current yield"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "minimal account management overhead",
-        "description": ""
+        "label": "protection against rate drops",
+        "description": "protection against rate drops"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "penalty-free early access",
-        "description": ""
+        "label": "suitability for emergency fund",
+        "description": "suitability for emergency fund"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "maximum current yield",
-        "description": ""
+        "label": "medium-term savings goal optimization",
+        "description": "optimization for medium-term savings goals"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "suitability for emergency fund",
-        "description": ""
+        "label": "minimal account management overhead",
+        "description": "minimal account management overhead"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "medium-term savings goal optimization",
-        "description": ""
+        "label": "penalty-free early access",
+        "description": "penalty-free early access"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "FDIC insurance coverage",
-        "description": ""
+        "description": "FDIC insurance coverage"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "HYSA Default",
+        "label": "Answer A (HYSA Default)",
         "description": "Keep everything in a high-yield savings account \u2014 current rates of 4.5\u20135%+ with full liquidity make HYSAs superior to CDs for most savers, especially for emergency funds."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "CD Ladder for Rate Lock",
+        "label": "Answer B (CD Ladder for Rate Lock)",
         "description": "Build a CD ladder across 3\u201318 month maturities to lock in current high rates if you expect the Fed to cut rates \u2014 you'll preserve yield longer than a HYSA as rates decline."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Split for Goals",
+        "label": "Answer C (Split for Goals)",
         "description": "Keep your emergency fund in a HYSA for liquidity and ladder CDs with any surplus savings earmarked for specific medium-term goals where you know the time horizon."
       }
     ],
@@ -167,6 +167,18 @@
       {
         "source": "q",
         "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
       },
       {
         "source": "sq1",
@@ -178,43 +190,27 @@
       },
       {
         "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "q",
-        "target": "sq2"
-      },
-      {
-        "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
         "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
       },
       {
         "source": "sq2",
         "target": "c6"
       },
       {
-        "source": "q",
-        "target": "sq3"
-      },
-      {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c7"
       },
       {
         "source": "sq3",
-        "target": "c8"
+        "target": "c4"
       },
       {
         "source": "sq3",
         "target": "c9"
-      },
-      {
-        "source": "q",
-        "target": "sq4"
       },
       {
         "source": "sq4",
@@ -222,15 +218,15 @@
       },
       {
         "source": "c1",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c3",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c4",
@@ -238,7 +234,7 @@
       },
       {
         "source": "c5",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c6",
@@ -254,23 +250,43 @@
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c10",
         "target": "a1"
       },
       {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
         "source": "c2",
-        "target": "a3"
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
       },
       {
         "source": "c3",
         "target": "a3"
       },
       {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
         "source": "c9",
-        "target": "a2"
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

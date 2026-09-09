@@ -21,10 +21,20 @@
   ],
   "baseline_answer": "Exclusion: seal entry points around the house / attic",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 2,
+  "usage": {
+    "prompt_tokens": 8005,
+    "output_tokens": 5965,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +42,119 @@
         "layer": "1",
         "type": "question",
         "label": "the best way to get rid of squarrels",
-        "description": "The primary question asking for the optimal squirrel removal method."
+        "description": "Main question regarding squirrel removal methods."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most reliable method for a homeowner dealing with an attic infestation?",
-        "description": "Focuses on structural solutions and professional consensus for indoor infestations."
+        "label": "Expert consensus for attic/property protection",
+        "description": "Focuses on permanent structural solutions and expert advice."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How should one handle squirrels in the yard or garden, considering seasonal behavior?",
-        "description": "Focuses on active removal, trapping, and timing in outdoor contexts."
+        "label": "Garden/yard handling with timing and bait",
+        "description": "Focuses on active capture methods in outdoor settings."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the immediate deterrent options for property protection or DIY scenarios?",
-        "description": "Focuses on repellents, products, and quick fixes."
+        "label": "DIY and product-based deterrents",
+        "description": "Focuses on chemical or device-based immediate relief."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: wildlife control professional",
-        "description": "Prioritizes expert consensus on exclusion as the only sure way."
+        "description": "Prioritizes professional expert opinion."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed mammalogy literature",
-        "description": "Prioritizes scientific consensus on exclusion."
+        "description": "Prioritizes scientific literature."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: pest control product retailer",
-        "description": "Prioritizes commercial products like the Squirrel Evictor."
+        "description": "Prioritizes commercial product availability."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: DIY homeowner blog",
-        "description": "Prioritizes homemade solutions and user experiences."
+        "description": "Prioritizes amateur home remedies."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: wildlife rehabilitation guidance",
-        "description": "Prioritizes humane methods and safety for baby squirrels (favoring exclusion)."
+        "description": "Prioritizes animal welfare and rehabilitation."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: homeowner with attic squirrel infestation",
-        "description": "Focuses on the specific context of attic removal where exclusion is critical."
+        "description": "Focuses on indoor attic problems."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: garden / yard squirrel problem",
-        "description": "Focuses on outdoor removal and trapping."
+        "description": "Focuses on outdoor garden problems."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: wildlife-friendly advocate",
-        "description": "Prioritizes non-lethal methods like repellents or live traps."
+        "description": "Prioritizes non-lethal, humane methods."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: property protection priority",
-        "description": "Prioritizes permanent solutions that prevent damage (exclusion)."
+        "description": "Prioritizes preventing structural damage."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: seasonal-timing-aware homeowner",
-        "description": "Prioritizes timing-specific actions like trapping after hibernation."
+        "description": "Prioritizes timing of removal (e.g., post-hibernation)."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Exclusion: seal entry points around the house / attic",
-        "description": "Blocking entry is the only sure way."
+        "description": "Permanent structural prevention."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Live or kill trapping with corn / peanut butter bait, timed for just after hibernation",
-        "description": "Active removal using traps and specific timing."
+        "description": "Active capture with specific bait and timing."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Repellents: mothballs, homemade water-based spray, or the Squirrel Evictor product",
-        "description": "Deterrence using smell or devices."
+        "description": "Chemical or device-based deterrence."
       }
     ],
     "edges": [
@@ -182,23 +192,19 @@
       },
       {
         "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
         "target": "c7"
       },
       {
         "source": "sq2",
         "target": "c10"
-      },
-      {
-        "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c4"
       },
       {
         "source": "sq3",
@@ -211,6 +217,10 @@
       {
         "source": "c2",
         "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
       },
       {
         "source": "c3",
@@ -235,6 +245,10 @@
       {
         "source": "c7",
         "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
       },
       {
         "source": "c8",

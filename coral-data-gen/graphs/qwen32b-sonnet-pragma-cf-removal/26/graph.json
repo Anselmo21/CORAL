@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer B (Standing Desk With Proper Setup): Get a sit-stand desk with anti-fatigue mat and proper ergonomic setup \u2014 used correctly with alternating postures every 30 minutes, it reduces upper back pain and prolonged sitting with meaningful evidence from long-term RCTs.",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1662,
+    "output_tokens": 2883,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -46,84 +55,84 @@
         "layer": "2",
         "type": "subq",
         "label": "sq2",
-        "description": "What are the best-supported interventions based on recent and high-quality evidence?"
+        "description": "What are the risks and benefits of using a standing desk for back pain?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "sq3",
-        "description": "What do cost-conscious individuals or professionals recommend for long-term pain relief?"
+        "description": "What is the best cost-effective solution for someone with back pain and a sedentary job?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Only sources published in 2023"
+        "description": "Only consider sources from 2023"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Sources published between 2021 and 2023"
+        "description": "Only consider sources from 2021 to 2023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Sources from the United States"
+        "description": "Only consider sources from the USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: UK",
-        "description": "Sources from the United Kingdom"
+        "description": "Only consider sources from the UK"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Individual focused on cost-effective solutions",
-        "description": "Perspective of an individual prioritizing cost-effectiveness"
+        "description": "Only consider sources from the perspective of cost-effective solutions for individuals"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Ergonomics specialist or occupational therapist",
-        "description": "Perspective of a professional in ergonomics or occupational therapy"
+        "description": "Only consider sources from the perspective of ergonomics specialists or occupational therapists"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Peer-reviewed clinical research",
-        "description": "Sources from peer-reviewed clinical research"
+        "description": "Only consider peer-reviewed clinical research"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Medical institution guidance",
-        "description": "Guidance from medical institutions"
+        "description": "Only consider guidance from medical institutions"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer health information",
-        "description": "Consumer-focused health information sources"
+        "description": "Only consider consumer health information"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Community ergonomics experience",
-        "description": "Experience-based insights from ergonomics communities"
+        "description": "Only consider community ergonomics experience"
       },
       {
         "id": "a1",
@@ -218,6 +227,14 @@
       },
       {
         "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
         "target": "c7"
       },
       {
@@ -246,6 +263,10 @@
       },
       {
         "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
         "target": "c5"
       },
       {
@@ -254,7 +275,19 @@
       },
       {
         "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
         "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -321,6 +354,10 @@
         "target": "a1"
       },
       {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
         "source": "c9",
         "target": "a1"
       },
@@ -329,7 +366,15 @@
         "target": "a1"
       },
       {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
         "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
         "target": "a3"
       },
       {
@@ -342,6 +387,18 @@
       },
       {
         "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
         "target": "a3"
       }
     ]

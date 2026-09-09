@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Murad Redness Therapy 3-part system",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2520,
-    "output_tokens": 2159,
-    "llm_calls": 2,
+    "prompt_tokens": 1641,
+    "output_tokens": 2099,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,119 +41,126 @@
         "layer": "1",
         "type": "question",
         "label": "best skin care for redness",
-        "description": "The best approach to addressing redness in the skin"
+        "description": "effective skin care for redness"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What type of skin condition is being targeted?",
-        "description": "The specific type of skin condition being addressed"
+        "label": "skin care for redness type",
+        "description": "skin condition type, skin type compatibility"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the key characteristics of the product or treatment that will address redness?",
-        "description": "The specific characteristics of the product or treatment"
+        "label": "avoiding irritating ingredients",
+        "description": "ingredient sensitivity"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the approach to addressing redness?",
-        "description": "The approach to addressing redness"
+        "label": "effective skin care features",
+        "description": "product formulation, targeted treatment, sun protection"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "practical considerations",
+        "description": "application method, brand reputation, price range, user experience"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "skin condition type",
-        "description": "The specific type of skin condition being addressed"
+        "description": "type of skin condition"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "ingredient sensitivity",
-        "description": "The sensitivity of the skin to certain ingredients"
+        "description": "sensitivity to ingredients"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "product formulation",
-        "description": "The specific formulation of the product"
+        "description": "product ingredients and composition"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "application method",
-        "description": "The method of application"
+        "description": "method of applying products"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "sun protection",
-        "description": "The protection from the sun"
+        "description": "protection from sun damage"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "targeted treatment",
-        "description": "The specific treatment for the condition"
+        "description": "specific treatment for redness"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "skin type compatibility",
-        "description": "The compatibility of the product with the skin type"
+        "description": "compatibility with skin type"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "brand reputation",
-        "description": "The reputation of the brand"
+        "description": "reputation of the brand"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "price range",
-        "description": "The price range of the product"
+        "description": "price range of products"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "user experience",
-        "description": "The experience of the user"
+        "description": "user experience with products"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Murad Redness Therapy 3-part system",
-        "description": "A comprehensive 3-part system for addressing redness"
+        "description": "Murad Redness Therapy 3-part system"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A caffeine-based anti-redness serum",
-        "description": "A serum that targets redness with caffeine"
+        "description": "caffeine-based anti-redness serum"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Build-your-own minimalist routine",
-        "description": "A minimalist routine that can be tailored to individual needs"
+        "description": "build-your-own minimalist routine"
       }
     ],
     "edges": [
@@ -170,6 +177,10 @@
         "target": "sq3"
       },
       {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
         "source": "sq1",
         "target": "c1"
       },
@@ -182,24 +193,8 @@
         "target": "c2"
       },
       {
-        "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
-        "target": "c8"
-      },
-      {
-        "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
         "source": "sq3",
-        "target": "c4"
+        "target": "c3"
       },
       {
         "source": "sq3",
@@ -210,120 +205,136 @@
         "target": "c6"
       },
       {
+        "source": "sq4",
+        "target": "c4"
+      },
+      {
+        "source": "sq4",
+        "target": "c8"
+      },
+      {
+        "source": "sq4",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
         "source": "c1",
         "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
       },
       {
         "source": "c2",
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
         "source": "c3",
         "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
       },
       {
         "source": "c4",
         "target": "a1"
       },
       {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
         "source": "c5",
         "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
       },
       {
         "source": "c6",
         "target": "a1"
       },
       {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
         "source": "c7",
         "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
       },
       {
         "source": "c8",
         "target": "a1"
       },
       {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
         "source": "c9",
         "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
       },
       {
         "source": "c10",
         "target": "a1"
       },
       {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
         "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",

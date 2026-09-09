@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Zolpidem (Ambien)",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2458,
+    "output_tokens": 3051,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,56 +41,56 @@
         "layer": "1",
         "type": "question",
         "label": "best prescription sleep aid for insomnia",
-        "description": "Identify the optimal prescription medication for treating insomnia based on available evidence."
+        "description": "Select the optimal prescription medication for treating insomnia."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "Efficacy and Suitability",
-        "description": "How well does the drug address the specific sleep complaint and patient constraints?"
+        "description": "How well does the drug address the specific symptoms and type of insomnia?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "Safety and Tolerability",
-        "description": "What are the risks, side effects, and long-term viability of the medication?"
+        "description": "What are the risks, side effects, and long-term viability of the drug?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "Practicality and Access",
-        "description": "What are the economic and administrative factors influencing the choice?"
+        "description": "What are the economic and procedural factors of using the drug?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "duration of action",
-        "description": "How long the medication remains active in the system."
+        "description": "How long the medication remains effective in the body."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "onset time",
-        "description": "How quickly the medication induces sleep."
+        "description": "How quickly the medication helps the patient fall asleep."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "side effects profile",
-        "description": "The range and severity of adverse reactions."
+        "description": "The nature and severity of adverse reactions."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "cost-effectiveness",
-        "description": "The financial value of the treatment relative to its benefit."
+        "description": "The financial value of the medication relative to its benefits."
       },
       {
         "id": "c5",
@@ -95,14 +104,14 @@
         "layer": "3",
         "type": "concept",
         "label": "specific insomnia type",
-        "description": "Suitability for specific conditions like sleepwalking or difficulty falling asleep."
+        "description": "Suitability for specific conditions like sleepwalking or anxiety-induced insomnia."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "patient age",
-        "description": "Safety and efficacy considerations based on the patient's age group."
+        "description": "Safety and efficacy considerations based on the patient's age."
       },
       {
         "id": "c8",
@@ -123,28 +132,28 @@
         "layer": "3",
         "type": "concept",
         "label": "FDA approval status",
-        "description": "Whether the drug is officially approved by the FDA for the specific indication."
+        "description": "Whether the drug is officially approved by the FDA for insomnia treatment."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Zolpidem (Ambien)",
-        "description": "A sedative-hypnotic approved for sleep onset, noted as a 'Best Buy' due to low cost and efficacy."
+        "description": "The baseline top pick based on all criteria."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Trazodone or low-dose mirtazapine",
-        "description": "Antidepressants used off-label for insomnia, often preferred for comorbid anxiety or long-term use."
+        "description": "Antidepressants used for sleep, favored when cost and strict FDA status are ignored."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Temazepam (Restoril)",
-        "description": "A benzodiazepine useful for sleep maintenance and specific parasomnias like sleepwalking."
+        "description": "Benzodiazepine favored for duration and parasomnias when onset, cost, and FDA status are ignored."
       }
     ],
     "edges": [
@@ -221,84 +230,40 @@
         "target": "a2"
       },
       {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
         "source": "c3",
         "target": "a3"
       },
       {
         "source": "c4",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c5",
-        "target": "a3"
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
       },
       {
         "source": "c6",
         "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
       },
       {
         "source": "c7",
@@ -306,7 +271,23 @@
       },
       {
         "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
         "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
       },
       {
         "source": "c9",
@@ -314,7 +295,7 @@
       },
       {
         "source": "c10",
-        "target": "a3"
+        "target": "a1"
       }
     ]
   }

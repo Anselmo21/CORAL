@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (Acute Treatment Default): Manage 2 migraines per month with triptans as needed \u2014 daily preventive medication adds side effect burden that isn't justified at this frequency, and most patients manage well with acute-only treatment.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 2,
+  "temperature": 0.0,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1710,
+    "output_tokens": 3613,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "I get migraines about twice a month. Should I take something preventively or just treat each one when it happens?",
-        "description": "Main question regarding preventive vs acute treatment for low-frequency migraines."
+        "description": "The core question regarding treatment strategy for low-frequency migraines."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What do clinical guidelines and peer-reviewed research say about preventive thresholds?",
-        "description": "Focus on medical standards and evidence."
+        "label": "What do current medical guidelines and peer-reviewed research say about treating 2 migraines/month?",
+        "description": "Focuses on institutional and clinical evidence."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How do patient experiences and community stories influence the decision?",
-        "description": "Focus on real-world burden and community outcomes."
+        "label": "How do patients with low-frequency migraines and community experiences view the risk of progression vs. medication burden?",
+        "description": "Focuses on patient perspective and community anecdotes."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What does the most recent data and specific severity perspective suggest?",
-        "description": "Focus on temporal recency and severity nuance."
+        "label": "What does the most recent (2023) data and specific patient perspective (high impairment) suggest about early intervention?",
+        "description": "Focuses on temporal recency and high-impact scenarios."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Filters for 2023 sources only."
+        "description": "Filters for sources published in 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2022\u20132023",
-        "description": "Filters for 2022-2023 sources."
+        "description": "Filters for sources published in 2022 or 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Filters for USA-based sources."
+        "description": "Filters for sources based in the USA."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient with low-frequency episodic migraine",
-        "description": "Prioritizes low-frequency patient views."
+        "description": "Prioritizes the viewpoint of patients with low frequency."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient with high functional impairment from attacks",
-        "description": "Prioritizes high-impairment patient views."
+        "description": "Prioritizes the viewpoint of patients with high impairment."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Neurologist or headache specialist",
-        "description": "Prioritizes specialist views."
+        "description": "Prioritizes the viewpoint of medical specialists."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Peer-reviewed clinical research",
-        "description": "Prioritizes peer-reviewed research."
+        "description": "Prioritizes peer-reviewed journals."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Medical institution guidance",
-        "description": "Prioritizes medical institution guidance."
+        "description": "Prioritizes guidance from medical institutions."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer health information",
-        "description": "Prioritizes consumer health info."
+        "description": "Prioritizes consumer health websites."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Patient community experience",
-        "description": "Prioritizes patient community experience."
+        "description": "Prioritizes patient community forums."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Acute Treatment Default)",
-        "description": "Manage with triptans; preventives add burden not justified at 2/month."
+        "description": "Manage 2 migraines per month with triptans as needed \u2014 daily preventive medication adds side effect burden that isn't justified at this frequency, and most patients manage well with acute-only treatment."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Start Preventives Early)",
-        "description": "Start preventives if disabling or to prevent progression; CGRP has minimal side effects."
+        "description": "Begin preventive therapy even at 2/month if your attacks are severely disabling \u2014 preventing progression to chronic migraine justifies earlier preventive intervention, and newer CGRP inhibitors have minimal side effects."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Lifestyle Plus Acute)",
-        "description": "Prioritize lifestyle triggers and acute triptans before adding daily medication."
+        "description": "Prioritize identifying and eliminating personal triggers (sleep, diet, stress) alongside acute triptans before adding daily medication \u2014 many patients reduce frequency below treatment threshold through lifestyle modification alone."
       }
     ],
     "edges": [
@@ -182,6 +191,10 @@
       },
       {
         "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
         "target": "c4"
       },
       {
@@ -198,6 +211,10 @@
       },
       {
         "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
         "target": "c5"
       },
       {
@@ -205,72 +222,28 @@
         "target": "a1"
       },
       {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
         "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
         "target": "a1"
       },
       {
         "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
         "target": "a2"
       },
       {
         "source": "c2",
         "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
       },
       {
         "source": "c3",
@@ -278,11 +251,47 @@
       },
       {
         "source": "c4",
-        "target": "a3"
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
       },
       {
         "source": "c9",
         "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
       },
       {
         "source": "c10",

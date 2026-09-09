@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Whole-family lifestyle change with the choosemyplate.gov plate method (half fruits/veggies, quarter lean protein, quarter whole grains) plus aerobic exercise",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 3,
+  "temperature": 0.0,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2469,
+    "output_tokens": 2487,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "best way to lose weight for a child",
-        "description": "The primary inquiry regarding pediatric weight loss strategies."
+        "description": "The primary question regarding pediatric weight loss strategies."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the primary dietary and lifestyle strategy?",
-        "description": "Focuses on general diet, family involvement, and plate methods."
+        "label": "What is the most appropriate dietary and lifestyle framework?",
+        "description": "Focuses on general dietary structure and family involvement."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the clinical monitoring parameters and goals?",
-        "description": "Focuses on medical supervision, weight loss rates, and tracking."
+        "label": "What are the specific clinical monitoring protocols and goal metrics?",
+        "description": "Focuses on numerical goals, diaries, and doctor visits."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "When is a formal program indicated?",
-        "description": "Focuses on escalation after home efforts fail and high-risk scenarios."
+        "label": "When is a formal multi-disciplinary intervention required?",
+        "description": "Focuses on cases where home efforts fail or health risks are high."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: AAP / pediatric clinical guideline",
-        "description": "Prioritizes American Academy of Pediatrics clinical guidelines."
+        "description": "Prioritizes official clinical guidelines."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed pediatric nutrition journal",
-        "description": "Prioritizes academic nutrition research."
+        "description": "Prioritizes academic research."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: registered dietitian guidance",
-        "description": "Prioritizes advice from registered dietitians."
+        "description": "Prioritizes professional nutritionist advice."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: choosemyplate.gov",
-        "description": "Prioritizes the federal plate method resource."
+        "description": "Prioritizes the specific USDA plate method resource."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: commercial weight loss program",
-        "description": "Prioritizes commercial program characteristics."
+        "description": "Prioritizes structured commercial programs."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: parent / mom blog",
-        "description": "Prioritizes informal parent blog advice."
+        "description": "Prioritizes anecdotal parent experiences."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: parent of mildly overweight child",
-        "description": "Prioritizes the view of parents with mildly overweight children."
+        "description": "Prioritizes the view of parents with mild cases."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: parent of obese child with health risk",
-        "description": "Prioritizes the view of parents with obese children facing health risks."
+        "description": "Prioritizes the view of parents with severe cases."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: pediatrician-led case",
-        "description": "Prioritizes the perspective of pediatrician-led cases."
+        "description": "Prioritizes the clinical perspective."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: family-engaged household",
-        "description": "Prioritizes the family-engaged household perspective."
+        "description": "Prioritizes the family unit approach."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Whole-family lifestyle change with the choosemyplate.gov plate method (half fruits/veggies, quarter lean protein, quarter whole grains) plus aerobic exercise",
-        "description": "Baseline answer A* supported by all directives."
+        "description": "Baseline answer A*."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Pediatrician-led monitoring with attainable goals (1-4 lb/month), a food diary, and biweekly weight checks",
-        "description": "Alternative answer supported when c4 and c10 are dropped."
+        "description": "Alternative answer focusing on clinical metrics."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A formal multi-disciplinary weight loss program for children whose home efforts fail",
-        "description": "Alternative answer supported when c1, c4, c6, c7, and c10 are dropped."
+        "description": "Alternative answer focusing on formal intervention."
       }
     ],
     "edges": [
@@ -159,6 +168,18 @@
       {
         "source": "q",
         "target": "sq3"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
       },
       {
         "source": "sq1",
@@ -190,7 +211,23 @@
       },
       {
         "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
         "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
       },
       {
         "source": "sq3",
@@ -201,6 +238,10 @@
         "target": "c8"
       },
       {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
         "source": "c1",
         "target": "a1"
       },
@@ -215,6 +256,10 @@
       {
         "source": "c2",
         "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
       },
       {
         "source": "c3",
@@ -229,8 +274,12 @@
         "target": "a1"
       },
       {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
         "source": "c5",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c5",
@@ -246,7 +295,7 @@
       },
       {
         "source": "c8",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c8",
@@ -254,11 +303,11 @@
       },
       {
         "source": "c9",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c10",

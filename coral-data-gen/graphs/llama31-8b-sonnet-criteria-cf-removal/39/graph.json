@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer B (Liberal Arts for Long-Term Flexibility): A liberal arts degree is worth it if you're genuinely uncertain about your career direction \u2014 the adaptability, communication skills, and intellectual breadth it develops become more valuable as careers advance and automate.",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2291,
-    "output_tokens": 2143,
-    "llm_calls": 2,
+    "prompt_tokens": 1547,
+    "output_tokens": 2533,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,126 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "Is a liberal arts degree worth it, or should I do something more vocational with better job prospects?",
-        "description": "Plausible answers differ in their emphasis on early career earnings, long-term adaptability, and job market demand."
+        "description": "Short-term job prospects vs. long-term adaptability and career flexibility"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Early Career and Financial Considerations",
-        "description": "Evaluating early career earnings, debt, and post-graduation pathway."
+        "label": "What are the short-term career prospects and earnings potential of a liberal arts degree?",
+        "description": "Short-term job prospects and earnings"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Long-term Career Prospects and Flexibility",
-        "description": "Evaluating long-term adaptability, risk of automation, and graduate school pathway availability."
+        "label": "What are the long-term career adaptability and flexibility benefits of a liberal arts degree?",
+        "description": "Long-term adaptability and career flexibility"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Job Market and Skill Development",
-        "description": "Evaluating specific job market demand, communication and critical thinking skills, and management and leadership development."
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "Debt and Post-Graduation Pathway",
-        "description": "Evaluating debt relative to earning potential and clarity of post-graduation employment path."
+        "label": "What are the potential drawbacks and limitations of a liberal arts degree, such as debt and automation risk?",
+        "description": "Drawbacks and limitations of a liberal arts degree"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "early career earnings potential",
-        "description": "Evaluating potential earnings in the first 5-10 years after graduation."
+        "description": "Short-term job prospects and earnings"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "long-term career adaptability",
-        "description": "Evaluating ability to adapt to changing career landscapes."
+        "description": "Long-term adaptability and career flexibility"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "specific job market demand for credential",
-        "description": "Evaluating demand for specific skills and credentials in the job market."
+        "description": "Job market demand and career paths"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "development of communication and critical thinking",
-        "description": "Evaluating development of essential skills for management and leadership roles."
+        "description": "Practical skills and intellectual breadth"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "passion and intellectual engagement",
-        "description": "Evaluating personal fulfillment and engagement with the chosen field."
+        "description": "Personal fulfillment and career satisfaction"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "risk of automation of vocational skills",
-        "description": "Evaluating susceptibility of vocational skills to automation."
+        "description": "Automation risk and job stability"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "graduate school pathway availability",
-        "description": "Evaluating availability of graduate school pathways for further education."
+        "description": "Career paths and graduate school options"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "debt relative to earning potential",
-        "description": "Evaluating debt-to-earning potential ratio."
+        "description": "Financial practicality and debt"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "management and leadership development",
-        "description": "Evaluating development of essential skills for management and leadership roles."
+        "description": "Practical skills and leadership development"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "clarity of post-graduation employment path",
-        "description": "Evaluating clarity of job market entry and career prospects."
+        "description": "Career clarity and job market entry"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (Vocational for Early Career Default)",
-        "description": "Choose a vocational or professional degree for clearer job market entry and significantly higher early-career earnings."
+        "label": "Vocational for Early Career Default",
+        "description": "Choose a vocational or professional degree for clearer job market entry and significantly higher early-career earnings"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (Liberal Arts for Long-Term Flexibility)",
-        "description": "A liberal arts degree is worth it if you're genuinely uncertain about your career direction."
+        "label": "Liberal Arts for Long-Term Flexibility",
+        "description": "A liberal arts degree is worth it if you're genuinely uncertain about your career direction"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (Hybrid Approach)",
-        "description": "Double-major in a liberal arts field and a vocational or technical discipline."
+        "label": "Hybrid Approach",
+        "description": "Double-major in a liberal arts field and a vocational or technical discipline"
       }
     ],
     "edges": [
@@ -169,12 +162,44 @@
         "target": "sq1"
       },
       {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
         "source": "sq1",
         "target": "c1"
       },
       {
         "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
         "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
       },
       {
         "source": "sq1",
@@ -186,6 +211,14 @@
       },
       {
         "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
         "target": "c6"
       },
       {
@@ -193,124 +226,136 @@
         "target": "c7"
       },
       {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c9"
-      },
-      {
-        "source": "sq4",
-        "target": "c1"
-      },
-      {
-        "source": "sq4",
+        "source": "sq2",
         "target": "c8"
       },
       {
-        "source": "sq4",
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
         "target": "c10"
       },
       {
-        "source": "c1",
-        "target": "a1"
+        "source": "sq3",
+        "target": "c6"
       },
       {
-        "source": "c2",
-        "target": "a3"
+        "source": "sq3",
+        "target": "c8"
       },
       {
-        "source": "c3",
-        "target": "a1"
+        "source": "sq3",
+        "target": "c10"
       },
       {
-        "source": "c4",
-        "target": "a3"
+        "source": "a1",
+        "target": "c1"
       },
       {
-        "source": "c5",
-        "target": "a2"
+        "source": "a1",
+        "target": "c3"
       },
       {
-        "source": "c6",
-        "target": "a1"
+        "source": "a1",
+        "target": "c4"
       },
       {
-        "source": "c7",
-        "target": "a2"
+        "source": "a1",
+        "target": "c5"
       },
       {
-        "source": "c8",
-        "target": "a1"
+        "source": "a1",
+        "target": "c6"
       },
       {
-        "source": "c9",
-        "target": "a3"
+        "source": "a1",
+        "target": "c7"
       },
       {
-        "source": "c10",
-        "target": "a1"
+        "source": "a1",
+        "target": "c8"
       },
       {
-        "source": "c1",
-        "target": "a2"
+        "source": "a1",
+        "target": "c9"
       },
       {
-        "source": "c3",
-        "target": "a3"
+        "source": "a1",
+        "target": "c10"
       },
       {
-        "source": "c4",
-        "target": "a3"
+        "source": "a2",
+        "target": "c2"
       },
       {
-        "source": "c5",
-        "target": "a3"
+        "source": "a2",
+        "target": "c4"
       },
       {
-        "source": "c6",
-        "target": "a3"
+        "source": "a2",
+        "target": "c5"
       },
       {
-        "source": "c7",
-        "target": "a3"
+        "source": "a2",
+        "target": "c6"
       },
       {
-        "source": "c8",
-        "target": "a3"
+        "source": "a2",
+        "target": "c7"
       },
       {
-        "source": "c9",
-        "target": "a3"
+        "source": "a2",
+        "target": "c8"
       },
       {
-        "source": "c10",
-        "target": "a3"
+        "source": "a2",
+        "target": "c9"
       },
       {
-        "source": "c2",
-        "target": "a2"
+        "source": "a2",
+        "target": "c10"
       },
       {
-        "source": "c4",
-        "target": "a2"
+        "source": "a3",
+        "target": "c1"
       },
       {
-        "source": "c5",
-        "target": "a2"
+        "source": "a3",
+        "target": "c2"
       },
       {
-        "source": "c7",
-        "target": "a2"
+        "source": "a3",
+        "target": "c3"
       },
       {
-        "source": "c9",
-        "target": "a2"
+        "source": "a3",
+        "target": "c4"
+      },
+      {
+        "source": "a3",
+        "target": "c5"
+      },
+      {
+        "source": "a3",
+        "target": "c6"
+      },
+      {
+        "source": "a3",
+        "target": "c7"
+      },
+      {
+        "source": "a3",
+        "target": "c8"
+      },
+      {
+        "source": "a3",
+        "target": "c9"
+      },
+      {
+        "source": "a3",
+        "target": "c10"
       }
     ]
   }

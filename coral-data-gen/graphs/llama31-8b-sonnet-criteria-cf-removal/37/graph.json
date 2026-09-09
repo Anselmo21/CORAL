@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Reapply in Canada Default): Strengthen your Canadian medical school application and reapply \u2014 improving your MCAT, gaining clinical experience, and applying more broadly has higher expected value than the financial and career risk of most foreign medical programs.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2309,
-    "output_tokens": 2343,
-    "llm_calls": 2,
+    "prompt_tokens": 1555,
+    "output_tokens": 1680,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,21 +47,21 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the key factors to consider when evaluating foreign medical education options?",
+        "label": "What are the chances of matching to Canadian residency?",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How do different foreign medical education options compare in terms of matching to Canadian residency and associated costs?",
+        "label": "What are the costs and benefits of studying abroad?",
         "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the potential risks and benefits of studying medicine abroad?",
+        "label": "What are the alternatives to studying abroad?",
         "description": ""
       },
       {
@@ -138,22 +138,22 @@
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (Reapply in Canada Default): Strengthen your Canadian medical school application and reapply",
-        "description": ""
+        "label": "Reapply in Canada Default",
+        "description": "Strengthen your Canadian medical school application and reapply \u2014 improving your MCAT, gaining clinical experience, and applying more broadly has higher expected value than the financial and career risk of most foreign medical programs."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (UK or Australia if Committed): If you're committed to studying abroad, choose an accredited UK or Australian program",
-        "description": ""
+        "label": "UK or Australia if Committed",
+        "description": "If you're committed to studying abroad, choose an accredited UK or Australian program over Caribbean schools \u2014 their graduates have substantially higher North American residency match rates and globally recognized degrees."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (Caribbean as Last Resort Only): Consider a Caribbean school only as an absolute last resort",
-        "description": ""
+        "label": "Caribbean as Last Resort Only",
+        "description": "Consider a Caribbean school only as an absolute last resort with full understanding of the match rate risk \u2014 the financial cost of attending without matching to residency is catastrophic and affects approximately 50% of Caribbean graduates."
       }
     ],
     "edges": [
@@ -175,43 +175,7 @@
       },
       {
         "source": "sq1",
-        "target": "c2"
-      },
-      {
-        "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "sq1",
-        "target": "c4"
-      },
-      {
-        "source": "sq1",
-        "target": "c5"
-      },
-      {
-        "source": "sq1",
-        "target": "c6"
-      },
-      {
-        "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
         "target": "c8"
-      },
-      {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
-      },
-      {
-        "source": "sq2",
-        "target": "c1"
       },
       {
         "source": "sq2",
@@ -228,18 +192,6 @@
       {
         "source": "sq2",
         "target": "c5"
-      },
-      {
-        "source": "sq2",
-        "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
-        "target": "c8"
       },
       {
         "source": "sq2",
@@ -248,26 +200,6 @@
       {
         "source": "sq2",
         "target": "c10"
-      },
-      {
-        "source": "sq3",
-        "target": "c1"
-      },
-      {
-        "source": "sq3",
-        "target": "c2"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
       },
       {
         "source": "sq3",
@@ -299,62 +231,14 @@
       },
       {
         "source": "c3",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
         "target": "a2"
       },
       {
@@ -375,10 +259,6 @@
       },
       {
         "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
         "target": "a3"
       }
     ]

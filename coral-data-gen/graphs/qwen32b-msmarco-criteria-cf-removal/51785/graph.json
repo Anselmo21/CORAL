@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "A Storm of Swords",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1871,
+    "output_tokens": 2235,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best Game of Thrones book?",
-        "description": "A question about which Game of Thrones book is considered the best."
+        "description": "Evaluating the best Game of Thrones book based on narrative, emotional, and practical criteria."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "How complex and impactful is the story and character arcs?",
-        "description": "Evaluates the depth of plot, character development, and emotional impact."
+        "label": "Narrative and Structural Quality",
+        "description": "Criteria related to the structure, pacing, and complexity of the narrative."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How well is the book written and received?",
-        "description": "Evaluates prose quality, fan reception, and reread value."
+        "label": "Emotional and Thematic Depth",
+        "description": "Criteria related to character development, world-building, and emotional impact."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "How long is the book and how does it pace?",
-        "description": "Evaluates pacing, length, and world-building depth."
+        "label": "Practical and Reusability Factors",
+        "description": "Criteria related to the book's length and re-readability."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "plot complexity",
-        "description": "How intricate and layered the story is."
+        "description": "How intricate and layered the story's plot is."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "character development",
-        "description": "How well characters are developed and change over time."
+        "description": "How well and deeply characters are developed."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "pacing",
-        "description": "How quickly or slowly the story unfolds."
+        "description": "The speed and rhythm of the narrative."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "narrative scope",
-        "description": "The breadth and number of perspectives or storylines."
+        "description": "The breadth and scale of the story."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "prose quality",
-        "description": "The quality and clarity of the writing style."
+        "description": "The quality and style of the writing."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "world-building depth",
-        "description": "How detailed and immersive the fictional world is."
+        "description": "How richly and thoroughly the fictional world is constructed."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "emotional impact",
-        "description": "How emotionally engaging or moving the story is."
+        "description": "The emotional resonance and effect of the story."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "fan reception",
-        "description": "How well the book is received by readers and critics."
+        "description": "How well the book is received by fans and critics."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "reread value",
-        "description": "How enjoyable the book is upon multiple reads."
+        "description": "How rewarding the book is on a second or third read."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "length",
-        "description": "The number of pages or overall size of the book."
+        "description": "The length of the book in terms of pages or reading time."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A Storm of Swords",
-        "description": "The third book in the Game of Thrones series, known for its complexity and impact."
+        "description": "The third book in the series, known for its complexity and epic scope."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A Game of Thrones",
-        "description": "The first book in the Game of Thrones series, known for its accessibility and pacing."
+        "description": "The first book in the series, introducing the world and characters."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A Dance with Dragons",
-        "description": "The fifth book in the Game of Thrones series, known for its length and sprawling narrative."
+        "description": "The fifth book in the series, known for its length and narrative fragmentation."
       }
     ],
     "edges": [
@@ -166,7 +175,7 @@
       },
       {
         "source": "sq1",
-        "target": "c2"
+        "target": "c3"
       },
       {
         "source": "sq1",
@@ -174,27 +183,27 @@
       },
       {
         "source": "sq1",
-        "target": "c7"
+        "target": "c5"
       },
       {
         "source": "sq2",
-        "target": "c5"
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
       },
       {
         "source": "sq2",
         "target": "c8"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c6"
       },
       {
         "source": "sq3",
@@ -241,6 +250,10 @@
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
         "source": "c3",
         "target": "a2"
       },
@@ -250,6 +263,10 @@
       },
       {
         "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
         "target": "a2"
       },
       {
@@ -265,7 +282,7 @@
         "target": "a2"
       },
       {
-        "source": "c3",
+        "source": "c2",
         "target": "a3"
       },
       {
@@ -273,15 +290,15 @@
         "target": "a3"
       },
       {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
         "source": "c6",
         "target": "a3"
       },
       {
-        "source": "c8",
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
         "target": "a3"
       },
       {

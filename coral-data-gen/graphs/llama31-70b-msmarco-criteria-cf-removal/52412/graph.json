@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "A balanced THC/CBD hybrid strain for daytime pain management without overwhelming sedation",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2594,
-    "output_tokens": 1753,
-    "llm_calls": 2,
+    "prompt_tokens": 1681,
+    "output_tokens": 1998,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,28 +47,28 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "strain characteristics",
+        "label": "What are the key characteristics of the strain?",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "usage guidelines",
+        "label": "How is the strain consumed and what are its effects?",
         "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "benefits and drawbacks",
+        "label": "What are the potential benefits and drawbacks of the strain?",
         "description": ""
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "accessibility",
+        "label": "What are the practical considerations of using the strain?",
         "description": ""
       },
       {
@@ -190,11 +190,11 @@
       },
       {
         "source": "sq1",
-        "target": "c3"
+        "target": "c10"
       },
       {
         "source": "sq2",
-        "target": "c4"
+        "target": "c3"
       },
       {
         "source": "sq2",
@@ -206,15 +206,15 @@
       },
       {
         "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
         "target": "c5"
       },
       {
         "source": "sq3",
         "target": "c6"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
       },
       {
         "source": "sq4",
@@ -242,11 +242,11 @@
       },
       {
         "source": "c3",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c3",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c4",
@@ -255,6 +255,10 @@
       {
         "source": "c4",
         "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
       },
       {
         "source": "c5",
@@ -263,10 +267,6 @@
       {
         "source": "c5",
         "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
       },
       {
         "source": "c6",
@@ -286,15 +286,7 @@
       },
       {
         "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
         "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
       },
       {
         "source": "c9",

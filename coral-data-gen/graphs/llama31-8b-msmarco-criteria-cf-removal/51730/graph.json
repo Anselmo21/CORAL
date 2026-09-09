@@ -19,18 +19,18 @@
     "Strength training with bands or light weights",
     "Range-of-motion / flexibility work (yoga, tai chi, dancing)"
   ],
-  "baseline_answer": "Low-impact aerobic exercise (walking, swimming, cycling)",
-  "baseline_index": 0,
+  "baseline_answer": "Strength training with bands or light weights",
+  "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3112,
-    "output_tokens": 1840,
-    "llm_calls": 2,
+    "prompt_tokens": 1934,
+    "output_tokens": 2022,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "Which type of exercise best protects aging joints?",
-        "description": ""
+        "description": "Protecting aging joints with exercise"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What type of exercise has a low-impact intensity, cardiovascular benefit, and flexibility improvement?",
-        "description": ""
+        "label": "What type of exercise has a low-impact intensity and reduces joint stress?",
+        "description": "Low-impact exercise for joint health"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What type of exercise has a muscle-strengthening effect, balance training, and sustainability over time?",
-        "description": ""
+        "label": "What type of exercise provides a muscle-strengthening effect and improves joint health?",
+        "description": "Muscle-strengthening exercise for joint health"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What type of exercise has a range-of-motion benefit, accessibility for beginners, and equipment requirements?",
-        "description": ""
+        "label": "What type of exercise is accessible for beginners and has a sustainability over time?",
+        "description": "Accessible and sustainable exercise for joint health"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "low-impact intensity",
-        "description": ""
+        "description": "Exercise intensity that reduces joint stress"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "cardiovascular benefit",
-        "description": ""
+        "label": "range-of-motion benefit",
+        "description": "Exercise that improves joint mobility"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "flexibility improvement",
-        "description": ""
+        "label": "muscle-strengthening effect",
+        "description": "Exercise that strengthens muscles around joints"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "muscle-strengthening effect",
-        "description": ""
+        "label": "accessibility for beginners",
+        "description": "Exercise that is easy to learn and perform"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "balance training",
-        "description": ""
+        "label": "equipment requirements",
+        "description": "Exercise that requires minimal equipment"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "sustainability over time",
-        "description": ""
+        "label": "cardiovascular benefit",
+        "description": "Exercise that improves cardiovascular health"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "range-of-motion benefit",
-        "description": ""
+        "label": "joint stress level",
+        "description": "Exercise that reduces joint stress"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "accessibility for beginners",
-        "description": ""
+        "label": "balance training",
+        "description": "Exercise that improves balance and stability"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "equipment requirements",
-        "description": ""
+        "label": "flexibility improvement",
+        "description": "Exercise that improves flexibility and range of motion"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "joint stress level",
-        "description": ""
+        "label": "sustainability over time",
+        "description": "Exercise that can be sustained over time"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Low-impact aerobic exercise (walking, swimming, cycling)",
-        "description": ""
+        "description": "Low-impact exercise for joint health"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Strength training with bands or light weights",
-        "description": ""
+        "description": "Muscle-strengthening exercise for joint health"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Range-of-motion / flexibility work (yoga, tai chi, dancing)",
-        "description": ""
+        "description": "Exercise that improves flexibility and range of motion"
       }
     ],
     "edges": [
@@ -175,35 +175,23 @@
       },
       {
         "source": "sq1",
-        "target": "c2"
+        "target": "c7"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c3"
       },
       {
         "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
-        "target": "c5"
-      },
-      {
-        "source": "sq2",
-        "target": "c6"
-      },
-      {
-        "source": "sq3",
         "target": "c7"
       },
       {
         "source": "sq3",
-        "target": "c8"
+        "target": "c4"
       },
       {
         "source": "sq3",
-        "target": "c9"
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -211,7 +199,47 @@
       },
       {
         "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
         "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
       },
       {
         "source": "c3",
@@ -231,63 +259,19 @@
       },
       {
         "source": "c7",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c8",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
         "target": "a1"
       },
       {
         "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "a1",
-        "target": "c1"
-      },
-      {
-        "source": "a1",
-        "target": "c2"
-      },
-      {
-        "source": "a1",
-        "target": "c3"
-      },
-      {
-        "source": "a2",
-        "target": "c4"
-      },
-      {
-        "source": "a2",
-        "target": "c5"
-      },
-      {
-        "source": "a2",
-        "target": "c6"
-      },
-      {
-        "source": "a3",
-        "target": "c7"
-      },
-      {
-        "source": "a3",
-        "target": "c8"
-      },
-      {
-        "source": "a3",
-        "target": "c9"
       }
     ]
   }

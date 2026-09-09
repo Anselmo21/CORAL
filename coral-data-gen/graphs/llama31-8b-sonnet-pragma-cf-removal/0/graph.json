@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Index-Fund Default): Put your money in a low-cost total market index fund \u2014 after fees, passive investing beats active management for the vast majority of retail investors over a 30-year horizon.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2386,
-    "output_tokens": 1702,
-    "llm_calls": 2,
+    "prompt_tokens": 1602,
+    "output_tokens": 1934,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,111 +41,111 @@
         "layer": "1",
         "type": "question",
         "label": "Should I put my money in index funds or actively managed funds?",
-        "description": "Investment strategy for a 30-year-old"
+        "description": "Investment strategy for a 30-year-old retail investor"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "What is the historical performance of index funds vs. actively managed funds?",
-        "description": "Investment performance over time"
+        "description": "Performance comparison"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How do different investor perspectives and trustworthiness sources influence the investment decision?",
-        "description": "Investor perspectives and trustworthiness sources"
+        "label": "What are the implications of different investment strategies for a 30-year-old retail investor?",
+        "description": "Investment strategy implications"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Consider only 2023 data"
+        "description": "Sources from 2023 only"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2022\u20132023",
-        "description": "Consider 2022 and 2023 data"
+        "description": "Sources from 2022-2023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Consider only US-based data"
+        "description": "Sources from the USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Global/emerging markets",
-        "description": "Consider global and emerging markets data"
+        "description": "Sources from global/emerging markets"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: DIY retail investor",
-        "description": "Consider retail investor perspective"
+        "description": "Sources from a DIY retail investor perspective"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Professional financial advisor",
-        "description": "Consider professional financial advisor perspective"
+        "description": "Sources from a professional financial advisor perspective"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Peer-reviewed institutional research",
-        "description": "Consider peer-reviewed research"
+        "description": "Sources from peer-reviewed institutional research"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Financial journalism",
-        "description": "Consider financial journalism"
+        "description": "Sources from financial journalism"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Community consensus",
-        "description": "Consider community consensus"
+        "description": "Sources from community consensus"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Industry-sponsored research",
-        "description": "Consider industry-sponsored research"
+        "description": "Sources from industry-sponsored research"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (Index-Fund Default)",
+        "label": "Index-Fund Default",
         "description": "Put your money in a low-cost total market index fund"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (Active for Niche Allocation)",
-        "description": "Allocate 80% to index funds and 20% to actively managed funds"
+        "label": "Active for Niche Allocation",
+        "description": "Allocate 80% to index funds but dedicate 20% to actively managed small-cap or emerging market funds"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (Active Bear-Market Shield)",
+        "label": "Active Bear-Market Shield",
         "description": "Choose a tactical active fund with a strong bear-market track record"
       }
     ],
@@ -168,10 +168,14 @@
       },
       {
         "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
         "target": "c3"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c4"
       },
       {
@@ -181,10 +185,6 @@
       {
         "source": "sq2",
         "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c7"
       },
       {
         "source": "sq2",
@@ -216,19 +216,19 @@
       },
       {
         "source": "c5",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c6",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c7",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c8",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c9",
@@ -239,19 +239,51 @@
         "target": "a1"
       },
       {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
         "source": "c2",
         "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
       },
       {
         "source": "c4",
         "target": "a3"
       },
       {
-        "source": "c7",
-        "target": "a2"
+        "source": "c8",
+        "target": "a3"
       },
       {
         "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
         "target": "a3"
       }
     ]

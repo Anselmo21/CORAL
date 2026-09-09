@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Butterbur (Petasites hybridus) extract",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2100,
+    "output_tokens": 2242,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best herb to relieve headaches?",
-        "description": "Identify the most effective herb for headache relief based on source credibility and patient preferences."
+        "description": "Identify the most effective herb for headache relief based on evidence and patient context."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the most scientifically or professionally supported herbs for headaches?",
-        "description": "Focus on clinical, peer-reviewed, and expert-based evidence."
+        "label": "Which herb is most supported by scientific and clinical evidence for headache relief?",
+        "description": "Evaluate herbs based on clinical and scientific backing."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the most recommended herbs based on patient experience or preference?",
-        "description": "Consider chronic, occasional, and stress-related headache sufferers' preferences."
+        "label": "Which herb is most recommended for specific headache types or patient conditions?",
+        "description": "Consider patient-specific factors like pregnancy, stress, or chronic migraines."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the most recommended herbs for non-oral or alternative delivery?",
-        "description": "Focus on topical or inhaled treatments, like essential oils."
+        "label": "Which herb is most suitable for non-oral or topical use?",
+        "description": "Evaluate herbs based on administration method."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: neurology / headache clinical guideline",
-        "description": "Prioritize sources with clinical guidelines from neurology or headache medicine."
+        "description": "Prioritize sources from neurology or headache clinical guidelines."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed herbal medicine journal",
-        "description": "Prioritize peer-reviewed herbal medicine research."
+        "description": "Prioritize peer-reviewed herbal medicine journals."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: certified herbalist / naturopath",
-        "description": "Prioritize advice from certified herbalists or naturopaths."
+        "description": "Prioritize sources from certified herbalists or naturopaths."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: wellness aromatherapy publication",
-        "description": "Prioritize wellness or aromatherapy-focused publications."
+        "description": "Prioritize wellness or aromatherapy publications."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: consumer health blog",
-        "description": "Prioritize consumer health blogs and websites."
+        "description": "Prioritize consumer health blogs."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: chronic migraine sufferer",
-        "description": "Prioritize recommendations from chronic migraine sufferers."
+        "description": "Prioritize sources from chronic migraine sufferers."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: occasional tension headache sufferer",
-        "description": "Prioritize recommendations from occasional headache sufferers."
+        "description": "Prioritize sources from occasional tension headache sufferers."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: pregnant / nursing patient",
-        "description": "Prioritize recommendations for pregnant or nursing patients."
+        "description": "Prioritize sources from pregnant or nursing patients."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: stress / sleep-related headache sufferer",
-        "description": "Prioritize recommendations for stress- or sleep-related headaches."
+        "description": "Prioritize sources from stress or sleep-related headache sufferers."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: topical / non-oral preference",
-        "description": "Prioritize non-oral or topical remedies."
+        "description": "Prioritize sources from users preferring topical or non-oral remedies."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Feverfew",
-        "description": "A flowering plant historically used for migraines and inflammation."
+        "description": "A traditional herb with some clinical support for migraine and headache relief."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Butterbur (Petasites hybridus) extract",
-        "description": "Recent studies point to butterbur extract as a migraine treatment."
+        "description": "Recently recommended for migraine with strong recent study support."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Lavender oil (inhaled or topical)",
-        "description": "Lavender oil can be inhaled or applied topically for headache relief."
+        "description": "A non-oral, aromatic remedy for headache relief."
       }
     ],
     "edges": [
@@ -190,11 +199,15 @@
       },
       {
         "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
         "target": "c4"
       },
       {
         "source": "sq3",
-        "target": "c10"
+        "target": "c5"
       },
       {
         "source": "c1",
@@ -210,11 +223,11 @@
       },
       {
         "source": "c4",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c5",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c6",
@@ -231,74 +244,6 @@
       {
         "source": "c9",
         "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
       },
       {
         "source": "c10",

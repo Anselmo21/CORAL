@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Dairy-free / Cycle Diet",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2010,
+    "output_tokens": 2452,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,98 +41,98 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best diet for reducing PMS symptoms?",
-        "description": "Which dietary strategy is most effective for reducing PMS symptoms based on source trustworthiness and symptom-specific perspectives?"
+        "description": "Identify the most effective dietary approach for reducing PMS symptoms based on source credibility and symptom profiles."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Which dietary strategies are recommended by trustworthy sources?",
-        "description": "Focus on dietary strategies supported by trusted sources such as dietitians, peer-reviewed journals, and reputable health magazines."
+        "label": "What dietary recommendations are supported by trusted health professionals or scientific journals?",
+        "description": "Focus on sources with high trustworthiness, such as peer-reviewed journals and registered dietitians."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Which dietary strategies align with the perspective of specific PMS symptoms or conditions?",
-        "description": "Focus on dietary strategies tailored to symptom profiles such as cramps, mood/fatigue, or PMDD."
+        "label": "What dietary recommendations are tailored to specific PMS symptom profiles or conditions?",
+        "description": "Consider perspectives of individuals with specific PMS symptoms or conditions like PMDD or cramps."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Which dietary strategies are most supported by both trustworthiness and symptom-specific perspectives?",
-        "description": "Combine both trusted sources and symptom-specific perspectives to determine the most broadly supported dietary strategy."
+        "label": "What dietary recommendations are influenced by personal dietary restrictions or preferences?",
+        "description": "Include perspectives of individuals with dietary restrictions like lactose intolerance or veganism."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: registered dietitian guidance",
-        "description": "Prioritize sources that provide guidance from registered dietitians."
+        "description": "Sources from registered dietitians or health professionals."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed gynecology / nutrition journal",
-        "description": "Prioritize sources from peer-reviewed gynecology or nutrition journals."
+        "description": "Sources from peer-reviewed journals in gynecology or nutrition."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: integrative medicine source",
-        "description": "Prioritize sources from integrative medicine platforms."
+        "description": "Sources from integrative or holistic medicine."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: women's health magazine",
-        "description": "Prioritize sources from women's health magazines."
+        "description": "Sources from women's health magazines."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: wellness blog",
-        "description": "Prioritize sources from wellness blogs."
+        "description": "Sources from wellness blogs."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: PMS sufferer with severe cramps",
-        "description": "Prioritize sources that address PMS with severe cramps."
+        "description": "Sources from the perspective of women with severe cramps."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: PMS sufferer with mood / fatigue dominant symptoms",
-        "description": "Prioritize sources that address PMS with mood and fatigue symptoms."
+        "description": "Sources from the perspective of women with mood or fatigue symptoms."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: PMDD diagnosed patient",
-        "description": "Prioritize sources that address PMDD."
+        "description": "Sources from the perspective of women diagnosed with PMDD."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: lactose-intolerant / dairy-averse woman",
-        "description": "Prioritize sources for lactose-intolerant or dairy-averse women."
+        "description": "Sources from the perspective of women who avoid dairy."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: vegan / plant-forward woman",
-        "description": "Prioritize sources for vegan or plant-forward women."
+        "description": "Sources from the perspective of women following a plant-based diet."
       },
       {
         "id": "a1",
@@ -137,14 +146,14 @@
         "layer": "4",
         "type": "answer",
         "label": "Dairy-free / Cycle Diet",
-        "description": "A structured, dairy-free diet focused on hormone balance and PMS symptom management."
+        "description": "A diet that avoids dairy and conventional animal protein, tailored to hormonal cycles."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Anti-inflammatory elimination diet",
-        "description": "A diet that eliminates inflammatory foods and emphasizes omega-3s."
+        "description": "A diet that eliminates potential irritants like sugar, caffeine, and alcohol to reduce inflammation."
       }
     ],
     "edges": [
@@ -190,46 +199,6 @@
       },
       {
         "source": "sq2",
-        "target": "c8"
-      },
-      {
-        "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
-        "source": "sq3",
-        "target": "c1"
-      },
-      {
-        "source": "sq3",
-        "target": "c2"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
-      },
-      {
-        "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
         "target": "c8"
       },
       {
@@ -282,10 +251,38 @@
       },
       {
         "source": "c1",
-        "target": "a1"
+        "target": "a3"
       },
       {
-        "source": "c2",
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
         "target": "a1"
       },
       {
@@ -305,20 +302,16 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a3"
+        "source": "c8",
+        "target": "a1"
       },
       {
-        "source": "c3",
-        "target": "a3"
+        "source": "c9",
+        "target": "a1"
       },
       {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
+        "source": "c10",
+        "target": "a1"
       }
     ]
   }

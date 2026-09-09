@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (CBT-I Default): Pursue cognitive behavioral therapy for insomnia (CBT-I) \u2014 it's the gold standard first-line treatment, outperforms medication at 3 and 12 months, and produces lasting improvement without dependency risk.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1589,
+    "output_tokens": 4096,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "length"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,98 +41,98 @@
         "layer": "1",
         "type": "question",
         "label": "Should I try melatonin or ask my doctor for a prescription sleep aid?",
-        "description": "User has chronic insomnia (3 months) and is choosing between melatonin and prescription sleep aids."
+        "description": "Patient with 3 months of insomnia seeking treatment advice."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Long-term efficacy, safety, and root cause resolution",
-        "description": "Evaluates the treatment's ability to provide lasting improvement, safety over time, and addressing the underlying cause."
+        "label": "Efficacy and Mechanism",
+        "description": "How well does the treatment address the root cause and provide long-term results?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Immediate relief, cognitive impact, and access logistics",
-        "description": "Evaluates speed of action, side effects on daytime function, and practical barriers like cost or prescription needs."
+        "label": "Safety and Side Effects",
+        "description": "What are the risks regarding dependency, cognitive function, and long-term safety?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Specific circadian rhythm alignment",
-        "description": "Evaluates whether the insomnia is specifically related to sleep timing or phase shifts."
+        "label": "Practicality and Access",
+        "description": "How fast is the relief, and what are the barriers to access or patient preferences?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "long-term sleep improvement",
-        "description": "Sustained improvement in sleep quality over months or years."
+        "description": "Sustained improvement over months/years."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "dependency and withdrawal risk",
-        "description": "Risk of becoming physically or psychologically dependent on the treatment."
+        "description": "Risk of becoming dependent or suffering withdrawal."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "speed of initial symptom relief",
-        "description": "How quickly the treatment helps the user fall or stay asleep."
+        "description": "How quickly the treatment works."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "addressing root cause of insomnia",
-        "description": "Whether the treatment fixes the behavioral or psychological drivers of insomnia."
+        "description": "Treating the underlying behavioral/psychological cause."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "next-day cognitive performance",
-        "description": "Impact on alertness, memory, and reaction time the following day."
+        "description": "Impact on alertness and cognition the next day."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "circadian rhythm disruption component",
-        "description": "Relevance of the treatment for sleep timing issues like jet lag or delayed sleep phase."
+        "description": "Relevance to sleep timing issues like jet lag."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "access and cost of CBT-I",
-        "description": "Availability and affordability of cognitive behavioral therapy options."
+        "description": "Availability and affordability of therapy."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "safety for long-term use",
-        "description": "Safety profile when the treatment is used for extended periods."
+        "description": "Safety profile for extended treatment duration."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "prescription requirement and physician access",
-        "description": "Whether a doctor's visit and prescription are needed to obtain the treatment."
+        "description": "Need for a doctor's visit and prescription."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "patient preference for non-pharmacological treatment",
-        "description": "User's desire to avoid medication in favor of behavioral interventions."
+        "description": "Desire to avoid medication."
       },
       {
         "id": "a1",
@@ -166,23 +175,15 @@
       },
       {
         "source": "sq1",
-        "target": "c2"
-      },
-      {
-        "source": "sq1",
         "target": "c4"
       },
       {
         "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
+        "target": "c6"
       },
       {
         "source": "sq2",
-        "target": "c3"
+        "target": "c2"
       },
       {
         "source": "sq2",
@@ -190,15 +191,23 @@
       },
       {
         "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
         "target": "c7"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c9"
       },
       {
         "source": "sq3",
-        "target": "c6"
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -209,19 +218,11 @@
         "target": "a1"
       },
       {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
         "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
         "target": "a1"
       },
       {
@@ -229,7 +230,15 @@
         "target": "a1"
       },
       {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
         "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
         "target": "a1"
       },
       {
@@ -237,35 +246,11 @@
         "target": "a1"
       },
       {
-        "source": "c6",
+        "source": "c10",
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
         "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
         "target": "a2"
       },
       {
@@ -285,7 +270,23 @@
         "target": "a3"
       },
       {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
         "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
         "target": "a3"
       },
       {
@@ -293,15 +294,11 @@
         "target": "a3"
       },
       {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
         "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
         "target": "a3"
       }
     ]

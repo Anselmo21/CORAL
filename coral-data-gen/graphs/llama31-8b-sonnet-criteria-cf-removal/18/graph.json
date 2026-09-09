@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Active Multimodal Default): Pursue a combination of supervised strength training, pain neuroscience education, and CBT \u2014 this multimodal active approach has the strongest long-term evidence for non-specific chronic back pain.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2254,
-    "output_tokens": 1804,
-    "llm_calls": 2,
+    "prompt_tokens": 1525,
+    "output_tokens": 1933,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,127 +40,109 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Best approach to relieve chronic lower back pain",
-        "description": "Multimodal treatment combining exercise, cognitive behavioral therapy, and pain education"
+        "label": "What's the best approach to finally get relief from chronic lower back pain?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Long-term effectiveness and evidence",
-        "description": "Does the approach have strong long-term pain reduction evidence?"
+        "label": "What is the best approach for long-term pain reduction?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Safety and risk",
-        "description": "Does the approach avoid unnecessary procedures?"
+        "label": "How to address central sensitization and avoid unnecessary procedures?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Prioritization and approach",
-        "description": "Does the approach address central sensitization?"
+        "label": "What is the most effective way to restore function and strength?"
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "Efficiency and feasibility",
-        "description": "Is the approach cost-effective and accessible?"
+        "label": "What is the best approach for patients with a history of prior treatment failure or those at risk of dependency on opioids or passive treatments?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "long-term pain reduction evidence",
-        "description": "Does the approach have strong long-term pain reduction evidence?"
+        "label": "long-term pain reduction evidence"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "speed of symptom relief",
-        "description": "How quickly does the approach provide symptom relief?"
+        "label": "speed of symptom relief"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "addressing central sensitization",
-        "description": "Does the approach address central sensitization?"
+        "label": "addressing central sensitization"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "avoidance of unnecessary procedures",
-        "description": "Does the approach avoid unnecessary procedures?"
+        "label": "avoidance of unnecessary procedures"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "functional restoration and strength",
-        "description": "Does the approach prioritize functional restoration and strength?"
+        "label": "functional restoration and strength"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "presence of clear structural pathology",
-        "description": "Is there clear structural pathology?"
+        "label": "presence of clear structural pathology"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "prior treatment failure history",
-        "description": "Has the patient experienced prior treatment failure?"
+        "label": "prior treatment failure history"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "patient engagement with active treatment",
-        "description": "Does the approach prioritize patient engagement with active treatment?"
+        "label": "patient engagement with active treatment"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "cost and access to multidisciplinary care",
-        "description": "Is the approach cost-effective and accessible?"
+        "label": "cost and access to multidisciplinary care"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "risk of opioid or passive treatment dependency",
-        "description": "Is there a risk of opioid or passive treatment dependency?"
+        "label": "risk of opioid or passive treatment dependency"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Active Multimodal Default",
-        "description": "Pursue a combination of supervised strength training, pain neuroscience education, and CBT"
+        "label": "Active Multimodal Default"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Structural Investigation First",
-        "description": "Get updated imaging and a specialist referral before committing to conservative management"
+        "label": "Structural Investigation First"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Mind-Body Focus",
-        "description": "Prioritize CBT and pain neuroscience education alongside gentle movement"
+        "label": "Mind-Body Focus"
       }
     ],
     "edges": [
@@ -190,39 +172,43 @@
       },
       {
         "source": "sq2",
-        "target": "c4"
+        "target": "c3"
       },
       {
         "source": "sq2",
-        "target": "c10"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
+        "target": "c4"
       },
       {
         "source": "sq3",
         "target": "c5"
       },
       {
-        "source": "sq4",
-        "target": "c9"
+        "source": "sq3",
+        "target": "c8"
       },
       {
         "source": "sq4",
-        "target": "c8"
+        "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
       },
       {
         "source": "c1",
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
         "source": "c3",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c4",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c5",
@@ -238,15 +224,93 @@
       },
       {
         "source": "c8",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c9",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "a1",
+        "target": "a2",
+        "R": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c8",
+          "c9",
+          "c10"
+        ]
+      },
+      {
+        "source": "a1",
+        "target": "a3",
+        "R": [
+          "c1",
+          "c2",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c9",
+          "c10"
+        ]
+      },
+      {
+        "source": "a2",
+        "target": "a1",
+        "R": [
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
+        ]
+      },
+      {
+        "source": "a3",
+        "target": "a1",
+        "R": [
+          "c3",
+          "c6",
+          "c7",
+          "c9",
+          "c10"
+        ]
       }
     ]
   }

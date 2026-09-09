@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Tesla Model 3 Default): Get a Tesla Model 3 \u2014 the Supercharger network, range, and overall ownership experience make it the most reliable first EV, and the premium over competitors is justified by the reduced anxiety of long-distance travel.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2537,
-    "output_tokens": 1953,
-    "llm_calls": 2,
+    "prompt_tokens": 1682,
+    "output_tokens": 1990,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,113 +40,103 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Which EV should I get as a first-time buyer?",
-        "description": ""
+        "label": "I want to buy my first electric vehicle. Which EV should I get?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Key factors for first-time EV buyers",
-        "description": ""
+        "label": "What are the key factors to consider when buying a first electric vehicle?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Recommended EV models based on priorities",
-        "description": ""
+        "label": "Which electric vehicles offer the best value for money?"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the trade-offs between different electric vehicle models?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "temporal: 2023 only",
-        "description": ""
+        "label": "temporal: 2023 only"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "temporal: 2021\u20132023",
-        "description": ""
+        "label": "temporal: 2021\u20132023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "geographic: USA",
-        "description": ""
+        "label": "geographic: USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "geographic: Canada / Global",
-        "description": ""
+        "label": "geographic: Canada / Global"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: First-time EV buyer prioritizing ease and reliability",
-        "description": ""
+        "label": "perspective: First-time EV buyer prioritizing ease and reliability"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: Budget-conscious buyer maximizing tax credit value",
-        "description": ""
+        "label": "perspective: Budget-conscious buyer maximizing tax credit value"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Consumer product testing organization",
-        "description": ""
+        "label": "trustworthiness: Consumer product testing organization"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Tech journalism",
-        "description": ""
+        "label": "trustworthiness: Tech journalism"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: EV owner community advice",
-        "description": ""
+        "label": "trustworthiness: EV owner community advice"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: EV industry publication",
-        "description": ""
+        "label": "trustworthiness: EV industry publication"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Get a Tesla Model 3 \u2014 the Supercharger network, range, and overall ownership experience make it the most reliable first EV, and the premium over competitors is justified by the reduced anxiety of long-distance travel.",
-        "description": ""
+        "label": "Get a Tesla Model 3 \u2014 the Supercharger network, range, and overall ownership experience make it the most reliable first EV, and the premium over competitors is justified by the reduced anxiety of long-distance travel."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Choose the Hyundai Ioniq 6 if range and charging speed are priorities \u2014 its 361-mile range and 800V ultra-fast charging rival Tesla at a lower price, with improving non-Tesla charging networks.",
-        "description": ""
+        "label": "Choose the Hyundai Ioniq 6 if range and charging speed are priorities \u2014 its 361-mile range and 800V ultra-fast charging rival Tesla at a lower price, with improving non-Tesla charging networks."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Buy a tax credit-eligible EV (Chevy Equinox EV, VW ID.4) \u2014 the $7,500 federal credit meaningfully reduces the effective purchase price and makes these vehicles better value than their sticker suggests.",
-        "description": ""
+        "label": "Buy a tax credit-eligible EV (Chevy Equinox EV, VW ID.4) \u2014 the $7,500 federal credit meaningfully reduces the effective purchase price and makes these vehicles better value than their sticker suggests."
       }
     ],
     "edges": [
@@ -159,6 +149,10 @@
         "target": "sq2"
       },
       {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
         "source": "sq1",
         "target": "c1"
       },
@@ -200,15 +194,7 @@
       },
       {
         "source": "sq2",
-        "target": "c1"
-      },
-      {
-        "source": "sq2",
         "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c3"
       },
       {
         "source": "sq2",
@@ -216,27 +202,31 @@
       },
       {
         "source": "sq2",
-        "target": "c5"
-      },
-      {
-        "source": "sq2",
         "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c7"
       },
       {
         "source": "sq2",
         "target": "c8"
       },
       {
-        "source": "sq2",
-        "target": "c9"
+        "source": "sq3",
+        "target": "c1"
       },
       {
-        "source": "sq2",
-        "target": "c10"
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
       },
       {
         "source": "c1",
@@ -247,12 +237,24 @@
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
         "source": "c3",
         "target": "a1"
       },
       {
         "source": "c4",
-        "target": "a1"
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
       },
       {
         "source": "c5",
@@ -260,7 +262,7 @@
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c7",
@@ -268,31 +270,15 @@
       },
       {
         "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
         "target": "a2"
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
       },
       {
         "source": "c9",
@@ -303,23 +289,31 @@
         "target": "a2"
       },
       {
-        "source": "c2",
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
         "target": "a3"
       },
       {
-        "source": "c4",
+        "source": "c3",
         "target": "a3"
       },
       {
-        "source": "c6",
+        "source": "c5",
         "target": "a3"
       },
       {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
+        "source": "c7",
         "target": "a3"
       }
     ]

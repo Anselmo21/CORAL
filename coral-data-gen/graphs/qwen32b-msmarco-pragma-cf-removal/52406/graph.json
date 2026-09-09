@@ -19,12 +19,21 @@
     "Aggressive 3-4 month plan",
     "Doctor-supervised plan"
   ],
-  "baseline_answer": "Gradual lifestyle change",
-  "baseline_index": 0,
+  "baseline_answer": "Doctor-supervised plan",
+  "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2512,
+    "output_tokens": 2392,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "best ways to lose 50 pounds",
-        "description": "What are the best approaches to losing 50 pounds?"
+        "description": "What are the best ways to lose 50 pounds?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "most medically and scientifically recommended approach",
-        "description": "What is the most medically and scientifically recommended approach to losing 50 pounds?"
+        "label": "What is the most effective and safe method for losing 50 pounds?",
+        "description": "Identifies the top method based on effectiveness and safety."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "most effective approach for rapid results",
-        "description": "What is the most effective approach for someone seeking rapid results?"
+        "label": "What method is best suited for someone with health conditions or long-term goals?",
+        "description": "Identifies the method best for health-conscious or long-term seekers."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "most effective approach for someone with comorbidities",
-        "description": "What is the most effective approach for someone with comorbidities or health concerns?"
+        "label": "What method is best for someone seeking rapid results?",
+        "description": "Identifies the method best for those prioritizing speed."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: clinical practice guideline",
-        "description": ""
+        "description": "Prioritizes clinical guidelines for weight loss."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed obesity medicine journal",
-        "description": ""
+        "description": "Prioritizes peer-reviewed research in obesity medicine."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: University of Maryland Medical Center",
-        "description": ""
+        "description": "Prioritizes medical center recommendations."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: online fitness influencer",
-        "description": ""
+        "description": "Prioritizes advice from online fitness influencers."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: commercial diet program",
-        "description": ""
+        "description": "Prioritizes commercial diet programs."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: rapid-results-seeker (event-driven)",
-        "description": ""
+        "description": "Prioritizes methods for those seeking fast results."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: comorbid conditions patient",
-        "description": ""
+        "description": "Prioritizes methods for those with health conditions."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: sustainable-habits seeker",
-        "description": ""
+        "description": "Prioritizes methods for long-term lifestyle change."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: older adult patient",
-        "description": ""
+        "description": "Prioritizes methods for older adults."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: gym enthusiast",
-        "description": ""
+        "description": "Prioritizes methods for gym-focused individuals."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Gradual lifestyle change",
-        "description": "Adopting a slow, sustainable, and medically supported lifestyle change to lose 50 pounds."
+        "description": "Emphasizes long-term, sustainable habits."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Aggressive 3-4 month plan",
-        "description": "A structured, faster-paced plan to lose 50 pounds in 3-4 months."
+        "description": "Focuses on structured, time-bound results."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Doctor-supervised plan",
-        "description": "A medically supervised approach to losing 50 pounds, especially for those with comorbidities."
+        "description": "Prioritizes safety and medical oversight."
       }
     ],
     "edges": [
@@ -174,6 +183,18 @@
       },
       {
         "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
         "target": "c7"
       },
       {
@@ -181,30 +202,74 @@
         "target": "c8"
       },
       {
-        "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
-        "target": "c5"
-      },
-      {
-        "source": "sq2",
-        "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
+        "source": "sq1",
         "target": "c9"
       },
       {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
         "source": "c1",
         "target": "a1"
       },
@@ -225,10 +290,6 @@
         "target": "a1"
       },
       {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
         "source": "c7",
         "target": "a1"
       },
@@ -241,11 +302,15 @@
         "target": "a1"
       },
       {
-        "source": "c10",
-        "target": "a1"
+        "source": "c1",
+        "target": "a2"
       },
       {
         "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
         "target": "a2"
       },
       {
@@ -261,40 +326,8 @@
         "target": "a2"
       },
       {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
         "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
       }
     ]
   }

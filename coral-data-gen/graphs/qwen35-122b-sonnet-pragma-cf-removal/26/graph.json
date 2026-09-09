@@ -21,10 +21,21 @@
   ],
   "baseline_answer": "Answer B (Standing Desk With Proper Setup): Get a sit-stand desk with anti-fatigue mat and proper ergonomic setup \u2014 used correctly with alternating postures every 30 minutes, it reduces upper back pain and prolonged sitting with meaningful evidence from long-term RCTs.",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 2,
+  "temperature": 0.0,
+  "attempts": 3,
+  "usage": {
+    "prompt_tokens": 11647,
+    "output_tokens": 10535,
+    "llm_calls": 3,
+    "finish_reasons": [
+      "length",
+      "length",
+      "length"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,49 +43,49 @@
         "layer": "1",
         "type": "question",
         "label": "Would a standing desk actually help?",
-        "description": "Main question regarding standing desks for back pain."
+        "description": "User asks about standing desk efficacy for back pain."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What does high-trust clinical evidence say?",
-        "description": "Focus on peer-reviewed and medical guidance regarding efficacy."
+        "label": "Recent Clinical & Institutional Consensus",
+        "description": "What does high-trust, recent research say about pain reduction?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How do geography and specialist views refine the advice?",
-        "description": "Focus on regional data and expert ergonomic perspectives."
+        "label": "Practical Safety & Real-World Usage",
+        "description": "What are the risks and necessary setup requirements?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What do community and consumer sources suggest?",
-        "description": "Focus on practical experience and consumer health info."
+        "label": "Cost & Alternative Perspectives",
+        "description": "Are there cheaper or non-equipment solutions?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Filters for most recent data."
+        "description": "Filters for 2023 sources only."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Filters for recent multi-year data."
+        "description": "Filters for sources from 2021 to 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Filters for US-based sources."
+        "description": "Filters for USA-based sources."
       },
       {
         "id": "c4",
@@ -95,56 +106,56 @@
         "layer": "3",
         "type": "directive",
         "label": "perspective: Ergonomics specialist or occupational therapist",
-        "description": "Prioritizes expert ergonomic setup advice."
+        "description": "Prioritizes expert ergonomic advice."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Peer-reviewed clinical research",
-        "description": "Prioritizes RCTs and journals."
+        "description": "Prioritizes peer-reviewed studies."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Medical institution guidance",
-        "description": "Prioritizes hospital/clinic advice."
+        "description": "Prioritizes medical institution advice."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer health information",
-        "description": "Prioritizes general health websites."
+        "description": "Prioritizes consumer health info."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Community ergonomics experience",
-        "description": "Prioritizes community forums and user reports."
+        "description": "Prioritizes community experience."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Movement Breaks Default)",
-        "description": "Skip desk, focus on movement breaks."
+        "description": "Focus on movement breaks instead of equipment."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Standing Desk With Proper Setup)",
-        "description": "Get desk with mat and proper setup."
+        "description": "Get a desk with proper setup and alternating postures."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Exercise Over Equipment)",
-        "description": "Invest in strength training, not desk."
+        "description": "Invest in strength training instead of equipment."
       }
     ],
     "edges": [
@@ -170,6 +181,10 @@
       },
       {
         "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
         "target": "c7"
       },
       {
@@ -178,29 +193,25 @@
       },
       {
         "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
         "target": "c4"
-      },
-      {
-        "source": "sq2",
-        "target": "c5"
       },
       {
         "source": "sq2",
         "target": "c6"
       },
       {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
         "source": "sq3",
         "target": "c9"
       },
       {
-        "source": "sq3",
-        "target": "c10"
-      },
-      {
         "source": "c1",
         "target": "a2"
       },
@@ -213,12 +224,12 @@
         "target": "a2"
       },
       {
-        "source": "c4",
-        "target": "a2"
+        "source": "c5",
+        "target": "a1"
       },
       {
         "source": "c5",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c6",
@@ -234,10 +245,18 @@
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
         "target": "a2"
       },
       {
@@ -253,12 +272,8 @@
         "target": "a1"
       },
       {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
         "source": "c5",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c6",
@@ -274,10 +289,14 @@
       },
       {
         "source": "c9",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
         "target": "a1"
       },
       {
@@ -293,10 +312,6 @@
         "target": "a3"
       },
       {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
         "source": "c5",
         "target": "a3"
       },
@@ -318,6 +333,10 @@
       },
       {
         "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
         "target": "a3"
       }
     ]

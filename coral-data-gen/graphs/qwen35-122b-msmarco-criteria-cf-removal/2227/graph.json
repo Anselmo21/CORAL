@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "A high-strength sulfate-based clarifying shampoo",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1924,
+    "output_tokens": 2418,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,77 +41,77 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best clarifying shampoo to remove color?",
-        "description": "Primary inquiry seeking the optimal product for hair color removal."
+        "description": "The primary question asking for the optimal product choice for color removal."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Efficacy and Stripping Mechanism",
-        "description": "How effectively does the product strip color and buildup?"
+        "label": "How effective is the product at stripping color and buildup?",
+        "description": "Evaluates the raw power of the shampoo to remove dye and residue."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Safety and Hair Health",
-        "description": "What are the risks to the scalp and hair condition?"
+        "label": "How safe and compatible is the product for the user's hair and scalp?",
+        "description": "Evaluates the potential for irritation and damage to hair texture."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Practicality and Trust",
-        "description": "What are the cost, usage, and reliability factors?"
+        "label": "What are the practical and trust factors of the product?",
+        "description": "Evaluates cost, brand reliability, and usage frequency."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "sulfate concentration",
-        "description": "Level of sulfates which drive cleaning power but increase harshness."
+        "description": "The level of sulfates which drives cleaning power but increases harshness."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "color-stripping strength",
-        "description": "Ability to actively fade or remove hair dye molecules."
+        "description": "The ability to fade or remove permanent and semi-permanent hair dye."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "scalp irritation risk",
-        "description": "Likelihood of causing burning or itching on the scalp."
+        "description": "The likelihood of the product causing itching or burning on the scalp."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "hair type compatibility",
-        "description": "Suitability for different textures and conditions of hair."
+        "description": "How well the formula suits different hair textures and conditions."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "price per ounce",
-        "description": "Cost efficiency of the product."
+        "description": "The cost efficiency of the product."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "brand reputation",
-        "description": "Trustworthiness and track record of the manufacturer."
+        "description": "The trustworthiness and market standing of the manufacturer."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "ingredient transparency",
-        "description": "Clarity of the ingredient list and formulation details."
+        "description": "How clearly the product lists and explains its components."
       },
       {
         "id": "c8",
@@ -116,35 +125,35 @@
         "layer": "3",
         "type": "concept",
         "label": "residue removal effectiveness",
-        "description": "Ability to remove product buildup and silicone."
+        "description": "The ability to strip silicone and product buildup from strands."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "post-wash hair feel",
-        "description": "Texture and condition of hair immediately after washing."
+        "description": "The texture and condition of hair immediately after washing."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A high-strength sulfate-based clarifying shampoo",
-        "description": "Commercial shampoo with high sulfate levels for maximum stripping."
+        "description": "Commercial product with high sulfate content for maximum stripping."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A gentle clarifying shampoo",
-        "description": "Commercial shampoo with mild surfactants to minimize damage."
+        "description": "Commercial product formulated to be mild and less damaging."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A baking-soda + vitamin-C DIY clarifying treatment",
-        "description": "Home-mixed paste using alkaline and acidic agents to strip color."
+        "description": "Home remedy using common ingredients to strip color."
       }
     ],
     "edges": [
@@ -213,60 +222,24 @@
         "target": "a1"
       },
       {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
         "source": "c4",
         "target": "a1"
       },
       {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
         "source": "c5",
         "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
       },
       {
         "source": "c6",
         "target": "a1"
       },
       {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
         "source": "c7",
         "target": "a1"
       },
       {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
         "source": "c8",
         "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
       },
       {
         "source": "c9",
@@ -277,11 +250,55 @@
         "target": "a1"
       },
       {
-        "source": "c10",
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
         "target": "a2"
       },
       {
         "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
         "target": "a3"
       }
     ]

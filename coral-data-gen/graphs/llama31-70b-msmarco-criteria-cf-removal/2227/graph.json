@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "A high-strength sulfate-based clarifying shampoo",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2986,
-    "output_tokens": 1608,
-    "llm_calls": 2,
+    "prompt_tokens": 1874,
+    "output_tokens": 1755,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,127 +40,109 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What is the best clarifying shampoo to remove color?",
-        "description": ""
+        "label": "What is the best clarifying shampoo to remove color?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Effectiveness",
-        "description": ""
+        "label": "Effectiveness in removing color and residue"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Safety and compatibility",
-        "description": ""
+        "label": "Safety and compatibility"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Practicality",
-        "description": ""
+        "label": "Practical considerations"
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "Composition",
-        "description": ""
+        "label": "Ingredient and formulation considerations"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "sulfate concentration",
-        "description": ""
+        "label": "sulfate concentration"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "color-stripping strength",
-        "description": ""
+        "label": "color-stripping strength"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "scalp irritation risk",
-        "description": ""
+        "label": "scalp irritation risk"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "hair type compatibility",
-        "description": ""
+        "label": "hair type compatibility"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "price per ounce",
-        "description": ""
+        "label": "price per ounce"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "brand reputation",
-        "description": ""
+        "label": "brand reputation"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "ingredient transparency",
-        "description": ""
+        "label": "ingredient transparency"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "frequency of use",
-        "description": ""
+        "label": "frequency of use"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "residue removal effectiveness",
-        "description": ""
+        "label": "residue removal effectiveness"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "post-wash hair feel",
-        "description": ""
+        "label": "post-wash hair feel"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "A high-strength sulfate-based clarifying shampoo",
-        "description": ""
+        "label": "A high-strength sulfate-based clarifying shampoo"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "A gentle clarifying shampoo",
-        "description": ""
+        "label": "A gentle clarifying shampoo"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "A baking-soda + vitamin-C DIY clarifying treatment",
-        "description": ""
+        "label": "A baking-soda + vitamin-C DIY clarifying treatment"
       }
     ],
     "edges": [
@@ -197,10 +179,6 @@
         "target": "c4"
       },
       {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
         "source": "sq3",
         "target": "c5"
       },
@@ -210,15 +188,19 @@
       },
       {
         "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
         "target": "c8"
       },
       {
         "source": "sq4",
         "target": "c1"
+      },
+      {
+        "source": "sq4",
+        "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -285,6 +267,10 @@
         "target": "a2"
       },
       {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
         "source": "c10",
         "target": "a2"
       },
@@ -294,6 +280,14 @@
       },
       {
         "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
         "target": "a3"
       },
       {

@@ -21,109 +21,118 @@
   ],
   "baseline_answer": "Answer A (Lifestyle First Default): Try intensive diet and exercise for 3\u20136 months before starting medication if your HbA1c is below 8\u20139% \u2014 lifestyle intervention can achieve comparable glucose control and potentially full remission without medication side effects.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 2,
+  "temperature": 0.0,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1604,
+    "output_tokens": 3962,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Lifestyle First or Immediate Medication?",
-        "description": "Should a newly diagnosed type 2 diabetes patient try diet/exercise first or start medication right away?"
+        "label": "Should I try to manage it with diet and exercise first, or start medication right away?",
+        "description": "Primary question regarding initial management strategy for newly diagnosed type 2 diabetes."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Clinical Urgency & Severity",
-        "description": "What are the immediate physiological risks and markers?"
+        "label": "Clinical Severity & Urgency",
+        "description": "Evaluates the immediate medical necessity based on HbA1c levels, symptoms, and speed of glucose control required."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Lifestyle Viability & Outcomes",
-        "description": "Can the patient sustain lifestyle changes and achieve remission?"
+        "label": "Lifestyle Viability & Long-term Outcomes",
+        "description": "Assesses the potential for remission, sustainability of changes, and avoidance of medication side effects."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Treatment Logistics & Safety",
-        "description": "What are the costs, side effects, and monitoring needs?"
+        "label": "Practical & Safety Considerations",
+        "description": "Considers cost, accessibility, monitoring needs, and cardiovascular risk reduction strategies."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "initial HbA1c severity",
-        "description": "The starting level of blood sugar control."
+        "description": "The starting blood sugar level which dictates whether lifestyle alone is safe or medication is mandatory."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "patient motivation for lifestyle change",
-        "description": "The patient's drive to adhere to diet and exercise."
+        "description": "The patient's willingness and ability to adhere to strict diet and exercise regimens."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "speed of glucose normalization needed",
-        "description": "How quickly blood sugar must be lowered."
+        "description": "How quickly blood sugar must be lowered to prevent acute complications."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "long-term remission potential",
-        "description": "The chance of reversing diabetes without medication."
+        "description": "The likelihood of achieving a state where diabetes is no longer present without medication."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "medication side effect avoidance",
-        "description": "The desire to avoid drug-related adverse effects."
+        "description": "The desire to avoid potential adverse reactions associated with pharmaceutical interventions."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "cardiovascular risk reduction",
-        "description": "The need to protect heart health."
+        "description": "The need to lower heart disease risk, which may require rapid or specific glucose control."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "sustainability of lifestyle intervention",
-        "description": "The long-term feasibility of maintaining diet/exercise."
+        "description": "The long-term feasibility of maintaining diet and exercise changes without burnout."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "presence of diabetes symptoms",
-        "description": "Existence of acute symptoms like thirst or fatigue."
+        "description": "Whether the patient is experiencing significant symptoms like excessive thirst or fatigue."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "cost and accessibility of medication",
-        "description": "Financial and logistical barriers to obtaining drugs."
+        "description": "The financial and logistical barriers to obtaining and using medication."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "physician monitoring availability",
-        "description": "Access to medical supervision."
+        "description": "The ability to track progress and adjust treatment plans under medical supervision."
       },
       {
         "id": "a1",
@@ -182,11 +191,11 @@
       },
       {
         "source": "sq2",
-        "target": "c7"
+        "target": "c5"
       },
       {
-        "source": "sq3",
-        "target": "c5"
+        "source": "sq2",
+        "target": "c7"
       },
       {
         "source": "sq3",
@@ -253,11 +262,7 @@
         "target": "a2"
       },
       {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
+        "source": "c9",
         "target": "a2"
       },
       {
@@ -270,10 +275,6 @@
       },
       {
         "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
         "target": "a3"
       }
     ]

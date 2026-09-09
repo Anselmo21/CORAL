@@ -21,102 +21,111 @@
   ],
   "baseline_answer": "Answer A (Stanford GSB Default): Prioritize Stanford GSB for entrepreneurship \u2014 its VC network, Silicon Valley location, alumni founder density, and risk-tolerant culture make it the strongest launchpad for venture-backed tech startups.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1542,
+    "output_tokens": 2491,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Which MBA program should I prioritize for starting a company after graduation \u2014 Stanford GSB, HBS, or Wharton?",
-        "description": "Seeking advice on the best MBA program for entrepreneurship based on startup goals."
+        "label": "Which MBA program should I prioritize for starting a company?",
+        "description": "Stanford GSB, HBS, or Wharton?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the key network and location advantages for starting a venture-backed tech startup?",
-        "description": "Evaluates location, network, and culture for tech startups."
+        "label": "What is the strength of the school\u2019s entrepreneurial ecosystem and VC network?",
+        "description": "VC network, founder density, Silicon Valley proximity, and risk culture."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the key network and brand advantages for starting a non-tech or global venture?",
-        "description": "Evaluates global brand and non-tech networks."
+        "label": "What is the school\u2019s brand strength and global reach for non-tech ventures?",
+        "description": "Global brand, industry focus, and corporate exit options."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the key financial and cross-disciplinary advantages for capital-intensive ventures?",
-        "description": "Evaluates finance, capital structuring, and interdisciplinary support."
+        "label": "What is the school\u2019s support for capital-intensive or finance-driven startups?",
+        "description": "Finance expertise, cross-disciplinary resources, and application competitiveness."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "VC and angel investor network access",
-        "description": "Access to venture capital and angel investors for early-stage funding."
+        "description": "Access to venture capital and angel investors."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "alumni founder density",
-        "description": "Number of alumni who have founded successful startups."
+        "description": "Density of alumni who have founded successful companies."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "proximity to Silicon Valley tech ecosystem",
-        "description": "Geographic advantage for accessing tech talent and innovation."
+        "description": "Geographic access to Silicon Valley."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "global brand and alumni network breadth",
-        "description": "Reputation and reach of the MBA program's alumni network."
+        "description": "Reputation and reach of the school\u2019s alumni network."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "industry focus of intended startup",
-        "description": "Whether the startup is in tech, healthcare, finance, etc."
+        "description": "Whether the startup is tech, healthcare, consumer goods, etc."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "finance and capital-raising expertise",
-        "description": "Strength in financial modeling, fundraising, and capital structuring."
+        "description": "Strength in financial modeling and capital structuring."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "culture of risk-taking and failure tolerance",
-        "description": "Institutional support for innovation and failure."
+        "description": "Support for entrepreneurial risk and failure."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "cross-disciplinary resources",
-        "description": "Access to engineering, design, and other fields for innovation."
+        "description": "Access to non-MBA departments and innovation labs."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "post-MBA corporate exit optionality",
-        "description": "Opportunities to join or start a company after graduation."
+        "description": "Opportunities for traditional corporate jobs after MBA."
       },
       {
         "id": "c10",
@@ -129,22 +138,22 @@
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (Stanford GSB Default): Prioritize Stanford GSB for entrepreneurship \u2014 its VC network, Silicon Valley location, alumni founder density, and risk-tolerant culture make it the strongest launchpad for venture-backed tech startups.",
-        "description": "Default top choice for venture-backed tech startups."
+        "label": "Answer A (Stanford GSB Default)",
+        "description": "Prioritize Stanford GSB for entrepreneurship \u2014 its VC network, Silicon Valley location, alumni founder density, and risk-tolerant culture make it the strongest launchpad for venture-backed tech startups."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (HBS for Non-Tech Ventures): Choose HBS if your startup targets industries beyond tech \u2014 its unmatched global alumni network and brand recognition opens doors in healthcare, consumer goods, emerging markets, and institutional fundraising.",
-        "description": "Best for non-tech or global ventures."
+        "label": "Answer B (HBS for Non-Tech Ventures)",
+        "description": "Choose HBS if your startup targets industries beyond tech \u2014 its unmatched global alumni network and brand recognition opens doors in healthcare, consumer goods, emerging markets, and institutional fundraising."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (Wharton for Capital-Intensive Startups): Choose Wharton if your venture is in fintech, healthtech, or requires sophisticated capital structuring \u2014 its finance depth and cross-disciplinary Penn ecosystem are particularly strong for capital-intensive business models.",
-        "description": "Best for capital-intensive or finance-focused ventures."
+        "label": "Answer C (Wharton for Capital-Intensive Startups)",
+        "description": "Choose Wharton if your venture is in fintech, healthtech, or requires sophisticated capital structuring \u2014 its finance depth and cross-disciplinary Penn ecosystem are particularly strong for capital-intensive business models."
       }
     ],
     "edges": [
@@ -177,14 +186,6 @@
         "target": "c7"
       },
       {
-        "source": "sq1",
-        "target": "c10"
-      },
-      {
-        "source": "sq2",
-        "target": "c1"
-      },
-      {
         "source": "sq2",
         "target": "c4"
       },
@@ -197,20 +198,16 @@
         "target": "c9"
       },
       {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
-      },
-      {
         "source": "sq3",
         "target": "c6"
       },
       {
         "source": "sq3",
         "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -253,10 +250,6 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
         "source": "c4",
         "target": "a2"
       },
@@ -269,19 +262,15 @@
         "target": "a2"
       },
       {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
         "source": "c6",
         "target": "a3"
       },
       {
         "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
         "target": "a3"
       }
     ]

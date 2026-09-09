@@ -19,18 +19,18 @@
     "Treat the underlying condition + lifestyle change (cardiovascular fitness, weight, glucose control)",
     "Psychological treatment: sensate focus and counseling for stress / anxiety / relationship-driven cases"
   ],
-  "baseline_answer": "A PDE5 inhibitor (Viagra, Cialis, or Levitra) for direct pharmacologic restoration of erectile function",
-  "baseline_index": 0,
+  "baseline_answer": "Treat the underlying condition + lifestyle change (cardiovascular fitness, weight, glucose control)",
+  "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3683,
-    "output_tokens": 1299,
-    "llm_calls": 2,
+    "prompt_tokens": 2224,
+    "output_tokens": 1947,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,112 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "best thing for impotence",
-        "description": ""
+        "description": "Treatment options for impotence"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What type of treatment is best?",
-        "description": ""
+        "label": "What is the best approach to treating impotence?",
+        "description": "Treatment type, underlying causes, and effectiveness"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What factors should be considered when choosing a treatment?",
-        "description": ""
+        "label": "What are the potential drawbacks of treating impotence?",
+        "description": "Side effects, duration of use, and cost"
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the alternative options for treating impotence?",
+        "description": "Natural remedies, psychological factors, and availability"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "treatment type",
-        "description": ""
+        "description": "Pharmacologic restoration or lifestyle change"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "underlying causes",
-        "description": ""
+        "description": "Cardiovascular disease, diabetes, or psychological factors"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "age group",
-        "description": ""
+        "description": "Older males"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "side effects",
-        "description": ""
+        "description": "Nasal congestion, headache, or vision changes"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "effectiveness",
-        "description": ""
+        "description": "Restoration of erectile function"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "natural remedies",
-        "description": ""
+        "description": "Ginkgo, horny goat weed, or other herbs"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "psychological factors",
-        "description": ""
+        "description": "Stress, anxiety, or relationship issues"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "duration of use",
-        "description": ""
+        "description": "Long-term or short-term"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "cost",
-        "description": ""
+        "description": "Expensive or affordable"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "availability",
-        "description": ""
+        "description": "Widely available or hard to find"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A PDE5 inhibitor (Viagra, Cialis, or Levitra) for direct pharmacologic restoration of erectile function",
-        "description": ""
+        "description": "Direct pharmacologic restoration"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Treat the underlying condition + lifestyle change",
-        "description": ""
+        "label": "Treat the underlying condition + lifestyle change (cardiovascular fitness, weight, glucose control)",
+        "description": "Lifestyle change and underlying condition treatment"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Psychological treatment: sensate focus and counseling for stress / anxiety / relationship-driven cases",
-        "description": ""
+        "description": "Psychological treatment"
       }
     ],
     "edges": [
@@ -159,6 +166,10 @@
         "target": "sq2"
       },
       {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
         "source": "sq1",
         "target": "c1"
       },
@@ -168,19 +179,7 @@
       },
       {
         "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "sq1",
         "target": "c5"
-      },
-      {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
       },
       {
         "source": "sq2",
@@ -188,15 +187,23 @@
       },
       {
         "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
         "target": "c6"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c7"
       },
       {
-        "source": "sq2",
-        "target": "c8"
+        "source": "sq3",
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -207,12 +214,32 @@
         "target": "a2"
       },
       {
-        "source": "c3",
-        "target": "a3"
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
       },
       {
         "source": "c8",
         "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       },
       {
         "source": "c1",
@@ -221,6 +248,34 @@
       {
         "source": "c2",
         "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
       }
     ]
   }

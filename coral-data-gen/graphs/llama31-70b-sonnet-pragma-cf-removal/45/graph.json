@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Lenovo IdeaPad Default): Get the Lenovo IdeaPad Flex 5 or Acer Aspire 5 in the $500\u2013700 range \u2014 they offer adequate performance, good battery life, and strong value for standard college coursework without stretching the budget.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2504,
-    "output_tokens": 1965,
-    "llm_calls": 2,
+    "prompt_tokens": 1666,
+    "output_tokens": 1720,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,120 +40,103 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What's the best laptop for a college student on a budget under $1,000?",
-        "description": ""
+        "label": "What's the best laptop for a college student on a budget under $1,000?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Recent reviews and recommendations",
-        "description": ""
+        "label": "Recent reviews and recommendations"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Trustworthy sources",
-        "description": ""
+        "label": "Longevity, total cost of ownership, and durability"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Key factors to consider",
-        "description": ""
+        "label": "Tight budget"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "temporal: 2023 only",
-        "description": ""
+        "label": "temporal: 2023 only"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "temporal: 2021\u20132023",
-        "description": ""
+        "label": "temporal: 2021\u20132023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "geographic: USA",
-        "description": ""
+        "label": "geographic: USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "geographic: Canada / Global",
-        "description": ""
+        "label": "geographic: Canada / Global"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: Student on tight budget prioritizing price",
-        "description": ""
+        "label": "perspective: Student on tight budget prioritizing price"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: Student prioritizing longevity and total cost of ownership",
-        "description": ""
+        "label": "perspective: Student prioritizing longevity and total cost of ownership"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Consumer product testing publication",
-        "description": ""
+        "label": "trustworthiness: Consumer product testing publication"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Tech journalism",
-        "description": ""
+        "label": "trustworthiness: Tech journalism"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Consumer community recommendations",
-        "description": ""
+        "label": "trustworthiness: Consumer community recommendations"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Independent product testing site",
-        "description": ""
+        "label": "trustworthiness: Independent product testing site"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Lenovo IdeaPad Default",
-        "description": "Get the Lenovo IdeaPad Flex 5 or Acer Aspire 5 in the $500\u2013700 range \u2014 they offer adequate performance, good battery life, and strong value for standard college coursework without stretching the budget."
+        "label": "Get the Lenovo IdeaPad Flex 5 or Acer Aspire 5 in the $500\u2013700 range"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Refurbished MacBook Air",
-        "description": "Stretch to a refurbished M1 MacBook Air at $800\u2013900 \u2014 the unmatched battery life, build quality, and 5+ year longevity make it the best total cost of ownership under $1,000."
+        "label": "Stretch to a refurbished M1 MacBook Air at $800\u2013900"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "ThinkPad for Durability",
-        "description": "Choose a Lenovo ThinkPad E-series \u2014 business-grade durability, excellent keyboard, and strong repairability make it the best laptop to actually survive 4 years of college without degradation."
+        "label": "Choose a Lenovo ThinkPad E-series"
       }
     ],
     "edges": [
@@ -186,6 +169,34 @@
         "target": "c4"
       },
       {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
         "source": "sq2",
         "target": "c7"
       },
@@ -194,12 +205,12 @@
         "target": "c8"
       },
       {
-        "source": "sq2",
-        "target": "c9"
+        "source": "sq3",
+        "target": "c1"
       },
       {
-        "source": "sq2",
-        "target": "c10"
+        "source": "sq3",
+        "target": "c3"
       },
       {
         "source": "sq3",
@@ -207,7 +218,7 @@
       },
       {
         "source": "sq3",
-        "target": "c6"
+        "target": "c7"
       },
       {
         "source": "c1",
@@ -218,12 +229,20 @@
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
         "source": "c3",
         "target": "a1"
       },
       {
         "source": "c4",
-        "target": "a1"
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
       },
       {
         "source": "c5",
@@ -231,7 +250,11 @@
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
       },
       {
         "source": "c7",
@@ -239,51 +262,7 @@
       },
       {
         "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
         "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
       },
       {
         "source": "c9",
@@ -291,7 +270,7 @@
       },
       {
         "source": "c10",
-        "target": "a3"
+        "target": "a1"
       }
     ]
   }

@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Pigment-based inkjet ink in a rear-feed printer",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2704,
-    "output_tokens": 1504,
-    "llm_calls": 2,
+    "prompt_tokens": 1734,
+    "output_tokens": 2095,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,119 +41,112 @@
         "layer": "1",
         "type": "question",
         "label": "best ink for prints on cardstock",
-        "description": ""
+        "description": "best ink for prints on cardstock"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "ink type compatibility",
-        "description": ""
+        "label": "What printer feeding method is best for printing on cardstock?",
+        "description": "What printer feeding method is best for printing on cardstock?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "printer feeding method",
-        "description": ""
-      },
-      {
-        "id": "sq3",
-        "layer": "2",
-        "type": "subq",
-        "label": "other characteristics",
-        "description": ""
+        "label": "What type of ink is best for printing on cardstock?",
+        "description": "What type of ink is best for printing on cardstock?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "ink type compatibility",
-        "description": ""
+        "description": "ink type compatibility"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "finish quality",
-        "description": ""
+        "label": "printer feeding method",
+        "description": "printer feeding method"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "color vibrancy",
-        "description": ""
+        "label": "paper weight range",
+        "description": "paper weight range"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "printer feeding method",
-        "description": ""
+        "label": "finish quality",
+        "description": "finish quality"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "paper weight range",
-        "description": ""
+        "label": "cost-effectiveness",
+        "description": "cost-effectiveness"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "cost-effectiveness",
-        "description": ""
+        "label": "brand reliability",
+        "description": "brand reliability"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "brand reliability",
-        "description": ""
+        "label": "color vibrancy",
+        "description": "color vibrancy"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "drying time",
-        "description": ""
+        "description": "drying time"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "ease of use",
-        "description": ""
+        "description": "ease of use"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "availability of replacement ink",
-        "description": ""
+        "description": "availability of replacement ink"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Pigment-based inkjet ink in a rear-feed printer",
-        "description": ""
+        "description": "Pigment-based inkjet ink in a rear-feed printer"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Standard dye-based inkjet ink in a top/rear-loading Epson or Canon",
-        "description": ""
+        "description": "Standard dye-based inkjet ink in a top/rear-loading Epson or Canon"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Toner (laser printing)",
-        "description": ""
+        "description": "Toner (laser printing)"
       }
     ],
     "edges": [
@@ -166,19 +159,51 @@
         "target": "sq2"
       },
       {
-        "source": "q",
-        "target": "sq3"
-      },
-      {
-        "source": "sq1",
-        "target": "c1"
-      },
-      {
         "source": "sq1",
         "target": "c2"
       },
       {
         "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
         "target": "c3"
       },
       {
@@ -190,23 +215,23 @@
         "target": "c5"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c6"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c7"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c8"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c9"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c10"
       },
       {
@@ -214,39 +239,7 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
+        "source": "c1",
         "target": "a2"
       },
       {
@@ -255,7 +248,23 @@
       },
       {
         "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
         "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
       },
       {
         "source": "c3",
@@ -263,7 +272,23 @@
       },
       {
         "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
         "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
       },
       {
         "source": "c5",
@@ -271,7 +296,23 @@
       },
       {
         "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
         "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
       },
       {
         "source": "c7",
@@ -279,7 +320,23 @@
       },
       {
         "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
         "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
       },
       {
         "source": "c9",
@@ -287,6 +344,26 @@
       },
       {
         "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "a1",
+        "target": "a2"
+      },
+      {
+        "source": "a1",
+        "target": "a3"
+      },
+      {
+        "source": "a2",
         "target": "a3"
       }
     ]

@@ -21,10 +21,21 @@
   ],
   "baseline_answer": "A high-CBD, low-THC strain for pain, anxiety, and sleep relief without strong psychoactive effects or additional fatigue",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 3,
+  "usage": {
+    "prompt_tokens": 11937,
+    "output_tokens": 8298,
+    "llm_calls": 3,
+    "finish_reasons": [
+      "length",
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +43,119 @@
         "layer": "1",
         "type": "question",
         "label": "best weed for fibromyalgia",
-        "description": "The primary question asking for the optimal cannabis strain for fibromyalgia."
+        "description": "Identifying the optimal cannabis strain profile for fibromyalgia symptoms."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Safety and non-psychoactive relief",
-        "description": "Sub-question focusing on safety, avoiding psychoactive effects, and managing fatigue."
+        "label": "Optimal strain for severe muscle pain and nighttime stiffness",
+        "description": "Focuses on high-potency solutions for debilitating pain and sleep issues."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Severe muscle stiffness and sleep aid",
-        "description": "Sub-question focusing on potent muscle relaxation and sleep induction."
+        "label": "Optimal strain for daytime pain management without sedation",
+        "description": "Focuses on functional relief that allows for daily activities."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Daytime pain management",
-        "description": "Sub-question focusing on pain relief while maintaining alertness."
+        "label": "Optimal strain for safety, anxiety, and sleep without psychoactive effects",
+        "description": "Focuses on non-intoxicating relief for naive or sensitive patients."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed cannabis research",
-        "description": "Prioritizes scientific studies on cannabis efficacy."
+        "description": "Prioritizes scientific studies over anecdotal evidence."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: medical marijuana clinical practice",
-        "description": "Prioritizes clinical guidelines and medical practice standards."
+        "description": "Prioritizes established medical guidelines and clinical experience."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: patient cannabis forum",
-        "description": "Prioritizes anecdotal evidence from patient communities."
+        "description": "Prioritizes real-world patient experiences and community reports."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: state cannabis program guidelines",
-        "description": "Prioritizes official state program recommendations."
+        "description": "Prioritizes official state-level medical marijuana regulations."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: dispensary strain catalog",
-        "description": "Prioritizes available strain options and descriptions."
+        "description": "Prioritizes commercial strain descriptions and availability."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: nighttime sleep-focused patient",
-        "description": "Prioritizes strains effective for sleep and nighttime symptoms."
+        "description": "Prioritizes strains that aid sleep and reduce nighttime pain."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: daytime pain-management patient",
-        "description": "Prioritizes strains effective for pain without sedation during the day."
+        "description": "Prioritizes strains that manage pain without causing drowsiness."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: psychoactive-averse patient",
-        "description": "Prioritizes strains with minimal psychoactive effects."
+        "description": "Prioritizes strains with minimal THC or psychoactive effects."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: severe muscle pain patient",
-        "description": "Prioritizes strains specifically for severe muscle stiffness and pain."
+        "description": "Prioritizes strains with high potency for severe muscle stiffness."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: cannabis-naive patient",
-        "description": "Prioritizes strains suitable for patients with no prior cannabis experience."
+        "description": "Prioritizes low-risk, low-THC options for new users."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A high-THC indica strain for nighttime muscle pain and stiffness",
-        "description": "The top choice when daytime and safety constraints are relaxed."
+        "description": "High potency, sedating strain recommended for severe pain."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A balanced THC/CBD hybrid strain for daytime pain management without overwhelming sedation",
-        "description": "The top choice when sleep, severe muscle, and safety constraints are relaxed."
+        "description": "Moderate potency strain for functional pain relief."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A high-CBD, low-THC strain for pain, anxiety, and sleep relief without strong psychoactive effects or additional fatigue",
-        "description": "The baseline top choice when all constraints are enforced."
+        "description": "Low potency, non-intoxicating strain for safety and symptom relief."
       }
     ],
     "edges": [
@@ -170,67 +181,23 @@
       },
       {
         "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "sq1",
-        "target": "c4"
-      },
-      {
-        "source": "sq1",
-        "target": "c5"
-      },
-      {
-        "source": "sq1",
         "target": "c6"
       },
       {
         "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
-      },
-      {
-        "source": "sq2",
-        "target": "c1"
-      },
-      {
-        "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
-        "target": "c5"
-      },
-      {
-        "source": "sq2",
-        "target": "c6"
-      },
-      {
-        "source": "sq2",
         "target": "c9"
       },
       {
-        "source": "sq3",
-        "target": "c1"
-      },
-      {
-        "source": "sq3",
-        "target": "c2"
-      },
-      {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c3"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
       },
       {
         "source": "sq3",
@@ -238,15 +205,11 @@
       },
       {
         "source": "sq3",
-        "target": "c7"
+        "target": "c8"
       },
       {
-        "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
+        "source": "sq3",
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -254,19 +217,7 @@
       },
       {
         "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
         "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
       },
       {
         "source": "c3",
@@ -278,19 +229,11 @@
       },
       {
         "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
         "target": "a2"
       },
       {
         "source": "c4",
         "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
       },
       {
         "source": "c5",

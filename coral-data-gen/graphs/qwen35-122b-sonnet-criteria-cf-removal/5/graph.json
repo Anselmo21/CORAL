@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (3 Months Default): Keep 3 months of essential expenses \u2014 your stable government job and lack of dependents puts you at the low end of the standard range, and cash beyond that is better invested.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1530,
+    "output_tokens": 2843,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "How much should I keep in my emergency fund?",
-        "description": "Question regarding emergency fund size for a single person with a stable government job."
+        "description": "User has a stable government job and no dependents."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Job Stability & Protections",
-        "description": "Evaluates the risk of income loss and the specific safety nets available."
+        "label": "Job Security & Income Replacement Needs",
+        "description": "How do job stability and lack of dependents affect the required income replacement period?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Risk Scope & Coverage",
-        "description": "Evaluates the breadth of potential emergencies beyond job loss."
+        "label": "Non-Job Emergencies & Safety Buffers",
+        "description": "What is the need for coverage against medical events, repairs, and psychological security?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Financial Optimization",
-        "description": "Evaluates the trade-offs of holding cash versus investing or using credit."
+        "label": "Asset Optimization & Alternative Backstops",
+        "description": "How do opportunity costs, other assets, and credit lines influence the optimal cash amount?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "job loss risk coverage",
-        "description": "The ability of the fund to cover income loss if employment ends."
+        "description": "Coverage for the risk of losing employment."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "unexpected medical expense coverage",
-        "description": "The ability of the fund to cover sudden health costs."
+        "description": "Coverage for sudden health-related costs."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "opportunity cost of idle cash",
-        "description": "The potential investment returns lost by holding cash."
+        "description": "The lost investment returns from holding cash instead of assets."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "psychological security buffer",
-        "description": "The peace of mind derived from having a larger cash reserve."
+        "description": "The peace of mind derived from having a large cash reserve."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "access to credit as backstop",
-        "description": "The availability of credit lines to cover emergencies instead of cash."
+        "description": "Using credit lines to cover emergencies instead of cash savings."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "income replacement period if unemployed",
-        "description": "The estimated time required to find a new job."
+        "description": "The duration of income needed if the job is lost."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "presence of other liquid assets",
-        "description": "Existing savings or assets that can be liquidated quickly."
+        "description": "Availability of other funds to cover emergencies."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "government/union employment protections",
-        "description": "Specific benefits like pensions and severance that reduce layoff risk."
+        "description": "Job security provided by government or union status."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "dependents and family obligations",
-        "description": "Financial responsibilities to others that increase required savings."
+        "description": "Financial responsibilities for family members."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "high-yield savings account optimization",
-        "description": "The benefit of moving excess cash to higher-yield investment vehicles."
+        "description": "Optimizing cash placement for better returns."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (3 Months Default)",
-        "description": "Keep 3 months of essential expenses \u2014 your stable government job and lack of dependents puts you at the low end of the standard range, and cash beyond that is better invested."
+        "description": "Keep 3 months of essential expenses."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (6 Months for Security)",
-        "description": "Maintain 6 months regardless of job stability, because emergencies extend well beyond job loss \u2014 medical events and major repairs can rapidly deplete a smaller fund."
+        "description": "Maintain 6 months regardless of job stability."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (1\u20132 Months Plus Credit)",
-        "description": "With strong government employment protections and available credit lines, 1\u20132 months of liquid savings is sufficient \u2014 redirect the rest aggressively into tax-advantaged investment accounts."
+        "description": "Keep 1\u20132 months and use credit/investments."
       }
     ],
     "edges": [
@@ -205,76 +214,68 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
         "source": "c2",
         "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
       },
       {
         "source": "c3",
         "target": "a1"
       },
       {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
         "source": "c4",
         "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
       },
       {
         "source": "c5",
         "target": "a1"
       },
       {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
         "source": "c6",
         "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
       },
       {
         "source": "c7",
         "target": "a1"
       },
       {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
         "source": "c8",
         "target": "a1"
       },
       {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
         "source": "c9",
         "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
       },
       {
         "source": "c10",
         "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",

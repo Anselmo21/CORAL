@@ -22,16 +22,16 @@
   ],
   "baseline_answer": "RBC Royal Bank Esso Visa",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3184,
-    "output_tokens": 1957,
-    "llm_calls": 2,
+    "prompt_tokens": 1973,
+    "output_tokens": 1808,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,134 +41,115 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What is the best gas loyalty points card in Canada?",
-        "description": ""
+        "label": "What is the best gas loyalty points card in Canada?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Earning Potential",
-        "description": ""
+        "label": "Earning Potential"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Program Flexibility",
-        "description": ""
+        "label": "Program Flexibility"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Fees and Requirements",
-        "description": ""
+        "label": "Program Costs and Requirements"
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "User Experience",
-        "description": ""
+        "label": "Program Coverage and Partnerships"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "points earn rate",
-        "description": ""
+        "label": "points earn rate"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "redemption flexibility",
-        "description": ""
+        "label": "redemption flexibility"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "annual fee",
-        "description": ""
+        "label": "annual fee"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "gas station partner coverage",
-        "description": ""
+        "label": "gas station partner coverage"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "sign-up bonus",
-        "description": ""
+        "label": "sign-up bonus"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "expiration policy",
-        "description": ""
+        "label": "expiration policy"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "mobile app quality",
-        "description": ""
+        "label": "mobile app quality"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "extra perks",
-        "description": ""
+        "label": "extra perks"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "foreign transaction fee",
-        "description": ""
+        "label": "foreign transaction fee"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "credit requirements",
-        "description": ""
+        "label": "credit requirements"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Esso Extra",
-        "description": ""
+        "label": "Esso Extra"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Petro-Points (Petro-Canada)",
-        "description": ""
+        "label": "Petro-Points (Petro-Canada)"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "RBC Royal Bank Esso Visa",
-        "description": ""
+        "label": "RBC Royal Bank Esso Visa"
       },
       {
         "id": "a4",
         "layer": "4",
         "type": "answer",
-        "label": "CIBC Costco Gas Mastercard",
-        "description": ""
+        "label": "CIBC Costco Gas Mastercard"
       }
     ],
     "edges": [
@@ -206,11 +187,11 @@
       },
       {
         "source": "sq2",
-        "target": "c4"
+        "target": "c6"
       },
       {
         "source": "sq2",
-        "target": "c6"
+        "target": "c7"
       },
       {
         "source": "sq3",
@@ -226,15 +207,7 @@
       },
       {
         "source": "sq4",
-        "target": "c7"
-      },
-      {
-        "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
+        "target": "c4"
       },
       {
         "source": "c1",
@@ -242,27 +215,11 @@
       },
       {
         "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
         "target": "a3"
       },
       {
-        "source": "c2",
-        "target": "a4"
-      },
-      {
         "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a4"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c4",
@@ -274,23 +231,7 @@
       },
       {
         "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
         "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
       },
       {
         "source": "c7",
@@ -302,26 +243,74 @@
       },
       {
         "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
         "target": "a1"
       },
       {
-        "source": "c9",
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
         "target": "a2"
       },
       {
-        "source": "c9",
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
         "target": "a4"
       },
       {
-        "source": "c10",
-        "target": "a1"
+        "source": "c2",
+        "target": "a4"
       },
       {
-        "source": "c10",
-        "target": "a2"
+        "source": "c4",
+        "target": "a4"
       },
       {
-        "source": "c10",
+        "source": "c5",
+        "target": "a4"
+      },
+      {
+        "source": "c6",
+        "target": "a4"
+      },
+      {
+        "source": "c7",
+        "target": "a4"
+      },
+      {
+        "source": "c8",
         "target": "a4"
       }
     ]

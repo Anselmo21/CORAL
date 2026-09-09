@@ -19,18 +19,18 @@
     "SSRI (Prozac, Zoloft)",
     "Natural supplements (St John's Wort, SAM-e, Omega-3, B vitamins) + exercise"
   ],
-  "baseline_answer": "Bupropion (Wellbutrin)",
-  "baseline_index": 0,
+  "baseline_answer": "SSRI (Prozac, Zoloft)",
+  "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 4609,
-    "output_tokens": 1745,
-    "llm_calls": 2,
+    "prompt_tokens": 2698,
+    "output_tokens": 2049,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,112 +41,112 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best antidepressant for energy and mood?",
-        "description": ""
+        "description": "The best antidepressant for energy and mood."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best antidepressant for energy and mood, considering trustworthy sources?",
-        "description": ""
+        "label": "What is the most trustworthy source of information for antidepressants?",
+        "description": "The most trustworthy source of information for antidepressants."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best antidepressant for energy and mood, considering the patient's perspective?",
-        "description": ""
+        "label": "What is the best antidepressant for energy and mood from a patient's perspective?",
+        "description": "The best antidepressant for energy and mood from a patient's perspective."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: psychiatry clinical practice guideline",
-        "description": ""
+        "description": "The most trustworthy source of information for antidepressants."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed pharmacology literature",
-        "description": ""
+        "description": "The most trustworthy source of information for antidepressants."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: integrative medicine source",
-        "description": ""
+        "description": "The most trustworthy source of information for antidepressants."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: patient mental-health forum",
-        "description": ""
+        "description": "The most trustworthy source of information for antidepressants."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: wellness / lifestyle publication",
-        "description": ""
+        "description": "The most trustworthy source of information for antidepressants."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: low-energy depression patient",
-        "description": ""
+        "description": "The best antidepressant for energy and mood from a patient's perspective."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: anxious patient",
-        "description": ""
+        "description": "The best antidepressant for energy and mood from a patient's perspective."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: patient avoiding pharmacologic intervention",
-        "description": ""
+        "description": "The best antidepressant for energy and mood from a patient's perspective."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: patient with comorbid weight concerns",
-        "description": ""
+        "description": "The best antidepressant for energy and mood from a patient's perspective."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: pregnant patient",
-        "description": ""
+        "description": "The best antidepressant for energy and mood from a patient's perspective."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Bupropion (Wellbutrin)",
-        "description": "Best antidepressant for energy and mood"
+        "description": "The best antidepressant for energy and mood."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "SSRI (Prozac, Zoloft)",
-        "description": "Effective for energy and mood"
+        "description": "The best antidepressant for energy and mood."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Natural supplements (St John's Wort, SAM-e, Omega-3, B vitamins) + exercise",
-        "description": "Alternative treatment for energy and mood"
+        "description": "The best antidepressant for energy and mood."
       }
     ],
     "edges": [
@@ -200,15 +200,15 @@
       },
       {
         "source": "c1",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c2",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c3",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c4",
@@ -216,11 +216,11 @@
       },
       {
         "source": "c5",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c6",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c7",
@@ -228,23 +228,23 @@
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c10",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c1",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c2",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c3",
@@ -252,7 +252,7 @@
       },
       {
         "source": "c4",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c5",
@@ -260,11 +260,11 @@
       },
       {
         "source": "c6",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c7",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c8",
@@ -272,7 +272,7 @@
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c10",

@@ -21,109 +21,125 @@
   ],
   "baseline_answer": "Answer A (3 Months Default): Keep 3 months of essential expenses \u2014 your stable government job and lack of dependents puts you at the low end of the standard range, and cash beyond that is better invested.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1598,
+    "output_tokens": 2875,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "q",
-        "description": "How much should I keep in my emergency fund? I have a stable government job and no dependents."
+        "label": "How much should I keep in my emergency fund? I have a stable government job and no dependents.",
+        "description": "Asking for emergency fund recommendations for a stable government worker with no dependents."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "sq1",
-        "description": "What is the recommended emergency fund size for someone with a stable government job and no dependents?"
+        "label": "What is the recommended emergency fund size for someone with a stable government job and no dependents?",
+        "description": "Focuses on job type and personal situation."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "sq2",
-        "description": "What is the recommended emergency fund size based on geographic location and temporal recency?"
+        "label": "How does the geographic location affect the recommendation?",
+        "description": "Focuses on whether the advice is from the USA or Canada."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "sq3",
-        "description": "What is the recommended emergency fund size based on the type of source (trustworthiness)?"
+        "label": "How does the source perspective affect the recommendation?",
+        "description": "Focuses on whether the advice is risk-averse, investment-focused, or tailored to public sector employees."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "How does the source's trustworthiness affect the recommendation?",
+        "description": "Focuses on whether the advice comes from institutional, advisory, or peer sources."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Only consider sources from 2023"
+        "description": "Only consider sources from 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Consider sources from 2021 to 2023"
+        "description": "Consider sources from 2021 to 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Only consider sources from the USA"
+        "description": "Only consider sources from the USA."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Canada",
-        "description": "Only consider sources from Canada"
+        "description": "Only consider sources from Canada."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Conservative risk-averse saver",
-        "description": "Only consider advice from a conservative, risk-averse perspective"
+        "description": "Only consider sources that emphasize risk aversion."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Optimizing investor minimizing idle cash",
-        "description": "Only consider advice from an investor perspective focused on minimizing idle cash"
+        "description": "Only consider sources that emphasize investment returns."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Government/public sector employee",
-        "description": "Only consider advice tailored to government/public sector employees"
+        "description": "Only consider sources tailored to government workers."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer financial advisory",
-        "description": "Only consider consumer financial advisory sources"
+        "description": "Only consider consumer financial advisory sources."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Institutional financial research",
-        "description": "Only consider institutional financial research sources"
+        "description": "Only consider institutional financial research sources."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Community peer advice",
-        "description": "Only consider community peer advice sources"
+        "description": "Only consider community peer advice sources."
       },
       {
         "id": "a1",
@@ -161,24 +177,12 @@
         "target": "sq3"
       },
       {
-        "source": "sq1",
-        "target": "c5"
-      },
-      {
-        "source": "sq1",
-        "target": "c6"
+        "source": "q",
+        "target": "sq4"
       },
       {
         "source": "sq1",
         "target": "c7"
-      },
-      {
-        "source": "sq2",
-        "target": "c1"
-      },
-      {
-        "source": "sq2",
-        "target": "c2"
       },
       {
         "source": "sq2",
@@ -190,91 +194,91 @@
       },
       {
         "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq4",
         "target": "c8"
       },
       {
-        "source": "sq3",
+        "source": "sq4",
         "target": "c9"
       },
       {
-        "source": "sq3",
+        "source": "sq4",
         "target": "c10"
       },
       {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
         "source": "c1",
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
         "source": "c2",
         "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
       },
       {
         "source": "c3",
         "target": "a1"
       },
       {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
         "source": "c4",
         "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
       },
       {
         "source": "c5",
         "target": "a1"
       },
       {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
         "source": "c6",
         "target": "a1"
       },
       {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
         "source": "c7",
         "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
       },
       {
         "source": "c8",
         "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
       },
       {
         "source": "c8",
@@ -282,19 +286,31 @@
       },
       {
         "source": "c9",
-        "target": "a1"
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
       },
       {
         "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
+        "target": "a3"
       }
     ]
   }

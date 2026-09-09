@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Cool (not cold) water bath or compress for 10-20 minutes, then aloe vera gel",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2759,
+    "output_tokens": 2214,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -38,113 +47,113 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "immediate treatment for pain and skin protection",
-        "description": "What is the most effective immediate treatment for sunburn pain and skin protection?"
+        "label": "Immediate treatment for minor sunburn",
+        "description": "What is the most effective immediate treatment for a minor sunburn?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "home-based or natural remedies",
-        "description": "What home-based or natural remedies are recommended for sunburn?"
+        "label": "Best at-home remedy for sunburn",
+        "description": "What is the best at-home remedy for sunburn relief?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "treatments for children or severe cases",
-        "description": "What treatments are most appropriate for children or severe cases?"
+        "label": "Medical recommendation for sunburn",
+        "description": "What is the most recommended treatment for a sunburn from a medical or clinical perspective?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: dermatology clinical practice",
-        "description": ""
+        "description": "Sources from dermatology clinical practice"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed burn-care journal",
-        "description": ""
+        "description": "Sources from peer-reviewed burn-care journals"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: AAP / pediatric guidance",
-        "description": ""
+        "description": "Sources from the American Academy of Pediatrics"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: home remedies blog",
-        "description": ""
+        "description": "Sources from home remedies blogs"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Mayo Clinic patient guidance",
-        "description": ""
+        "description": "Sources from Mayo Clinic patient guidance"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: aromatherapy / alternative remedies publication",
-        "description": ""
+        "description": "Sources from aromatherapy or alternative remedies publications"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: parent of sunburned child",
-        "description": ""
+        "description": "Perspective of a parent of a sunburned child"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: DIY enthusiast",
-        "description": ""
+        "description": "Perspective of a DIY enthusiast"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: severe (blistering) sunburn patient",
-        "description": ""
+        "description": "Perspective of a severe (blistering) sunburn patient"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: aromatherapy enthusiast",
-        "description": ""
+        "description": "Perspective of an aromatherapy enthusiast"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Cool (not cold) water bath or compress for 10-20 minutes, then aloe vera gel",
-        "description": "Recommended by clinical and home sources for immediate relief and protection."
+        "description": "Apply cool water and aloe vera for immediate relief."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "DIY burn cream: aloe vera + witch hazel + mint + baking soda + water",
-        "description": "Home-based natural remedy for sunburn."
+        "description": "Make a homemade burn cream using natural ingredients."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Lavender oil bath plus milk compresses",
-        "description": "Alternative remedy using lavender oil and milk for sunburn."
+        "description": "Use lavender oil and milk compresses for sunburn relief."
       }
     ],
     "edges": [
@@ -198,15 +207,19 @@
       },
       {
         "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
         "target": "c3"
       },
       {
         "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c9"
+        "target": "c5"
       },
       {
         "source": "c1",
@@ -233,12 +246,20 @@
         "target": "a1"
       },
       {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
         "source": "c7",
         "target": "a1"
       },
       {
         "source": "c8",
         "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
       },
       {
         "source": "c9",
@@ -249,15 +270,11 @@
         "target": "a1"
       },
       {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
         "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
         "target": "a2"
       },
       {
@@ -265,27 +282,7 @@
         "target": "a2"
       },
       {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
         "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
         "target": "a3"
       },
       {

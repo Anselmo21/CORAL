@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "A mineral SPF 30 with hydrating UltraCalming oat + botanical complex",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3650,
-    "output_tokens": 1758,
-    "llm_calls": 2,
+    "prompt_tokens": 2221,
+    "output_tokens": 1656,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,113 +40,97 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What mineral sunscreen best hydrates dry skin?",
-        "description": ""
+        "label": "What mineral sunscreen best hydrates dry skin?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Trusted sources for recommending mineral sunscreens for dry skin",
-        "description": ""
+        "label": "Trusted sources for recommending mineral sunscreens for dry skin"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Perspectives of different users for choosing a mineral sunscreen for dry skin",
-        "description": ""
+        "label": "Specific skin concerns and needs for dry skin"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: dermatologist clinical recommendation",
-        "description": ""
+        "label": "trustworthiness: dermatologist clinical recommendation"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: EWG cosmetics database",
-        "description": ""
+        "label": "trustworthiness: EWG cosmetics database"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Sephora customer reviews",
-        "description": ""
+        "label": "trustworthiness: Sephora customer reviews"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: beauty editor review",
-        "description": ""
+        "label": "trustworthiness: beauty editor review"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: drugstore beauty publication",
-        "description": ""
+        "label": "trustworthiness: drugstore beauty publication"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: extremely dry / dehydrated skin user",
-        "description": ""
+        "label": "perspective: extremely dry / dehydrated skin user"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: sensitive / eczema-prone user",
-        "description": ""
+        "label": "perspective: sensitive / eczema-prone user"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: anti-aging-focused mature user",
-        "description": ""
+        "label": "perspective: anti-aging-focused mature user"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: budget-conscious consumer",
-        "description": ""
+        "label": "perspective: budget-conscious consumer"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: minimalist clean-beauty user",
-        "description": ""
+        "label": "perspective: minimalist clean-beauty user"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Vanicream Sunscreen Sensitive Skin SPF 30",
-        "description": ""
+        "label": "Vanicream Sunscreen Sensitive Skin SPF 30"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "A mineral SPF 30 with hydrating UltraCalming oat + botanical complex",
-        "description": ""
+        "label": "A mineral SPF 30 with hydrating UltraCalming oat + botanical complex"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Sephora Skin-Soothing Mineral Sunscreen SPF 40 with olive polyphenols",
-        "description": ""
+        "label": "Sephora Skin-Soothing Mineral Sunscreen SPF 40 with olive polyphenols"
       }
     ],
     "edges": [
@@ -267,16 +251,8 @@
         "target": "a1"
       },
       {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
         "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
       }
     ]
   }

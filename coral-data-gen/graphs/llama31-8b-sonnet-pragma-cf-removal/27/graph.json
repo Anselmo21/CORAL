@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer B (Start Preventives Early): Begin preventive therapy even at 2/month if your attacks are severely disabling \u2014 preventing progression to chronic migraine justifies earlier preventive intervention, and newer CGRP inhibitors have minimal side effects.",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2514,
-    "output_tokens": 2357,
-    "llm_calls": 2,
+    "prompt_tokens": 1667,
+    "output_tokens": 2574,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,134 +40,120 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should I take something preventively or just treat each one when it happens?",
-        "description": ""
+        "label": "Should I take something preventively or just treat each migraine when it happens, given that I get migraines about twice a month?",
+        "description": "The question is: Should I take something preventively or just treat each migraine when it happens, given that I get migraines about twice a month?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the current evidence on preventive therapy for migraines?",
-        "description": ""
+        "label": "What is the current state of knowledge on preventive therapy for migraines?",
+        "description": "The current state of knowledge on preventive therapy for migraines."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the benefits and drawbacks of preventive therapy for patients with low-frequency episodic migraines?",
-        "description": ""
+        "label": "What are the perspectives on preventive therapy for migraines?",
+        "description": "The perspectives on preventive therapy for migraines."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the recommendations for patients with high functional impairment from attacks?",
-        "description": ""
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "What are the trustworthiness considerations for different sources of information on migraines?",
-        "description": ""
+        "label": "What are the geographic and demographic factors relevant to preventive therapy for migraines?",
+        "description": "The geographic and demographic factors relevant to preventive therapy for migraines."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Sources from 2023 only"
+        "description": "Sources from 2023 only."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2022\u20132023",
-        "description": "Sources from 2022 and 2023"
+        "description": "Sources from 2022\u20132023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Sources from the USA"
+        "description": "Sources from the USA."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient with low-frequency episodic migraine",
-        "description": "Sources from patients with low-frequency episodic migraines"
+        "description": "Sources from patients with low-frequency episodic migraine."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient with high functional impairment from attacks",
-        "description": "Sources from patients with high functional impairment from attacks"
+        "description": "Sources from patients with high functional impairment from attacks."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Neurologist or headache specialist",
-        "description": "Sources from neurologists or headache specialists"
+        "description": "Sources from neurologists or headache specialists."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Peer-reviewed clinical research",
-        "description": "Sources from peer-reviewed clinical research"
+        "description": "Sources from peer-reviewed clinical research."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Medical institution guidance",
-        "description": "Sources from medical institutions"
+        "description": "Sources from medical institution guidance."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer health information",
-        "description": "Sources from consumer health information"
+        "description": "Sources from consumer health information."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Patient community experience",
-        "description": "Sources from patient community experience"
+        "description": "Sources from patient community experience."
       },
       {
-        "id": "a1",
+        "id": "A",
         "layer": "4",
         "type": "answer",
         "label": "Acute Treatment Default",
         "description": "Manage 2 migraines per month with triptans as needed \u2014 daily preventive medication adds side effect burden that isn't justified at this frequency, and most patients manage well with acute-only treatment."
       },
       {
-        "id": "a2",
+        "id": "B",
         "layer": "4",
         "type": "answer",
         "label": "Start Preventives Early",
         "description": "Begin preventive therapy even at 2/month if your attacks are severely disabling \u2014 preventing progression to chronic migraine justifies earlier preventive intervention, and newer CGRP inhibitors have minimal side effects."
       },
       {
-        "id": "a3",
+        "id": "C",
         "layer": "4",
         "type": "answer",
         "label": "Lifestyle Plus Acute",
         "description": "Prioritize identifying and eliminating personal triggers (sleep, diet, stress) alongside acute triptans before adding daily medication \u2014 many patients reduce frequency below treatment threshold through lifestyle modification alone."
-      },
-      {
-        "id": "a*",
-        "layer": "4",
-        "type": "answer",
-        "label": "Start Preventives Early",
-        "description": "Begin preventive therapy even at 2/month if your attacks are severely disabling \u2014 preventing progression to chronic migraine justifies earlier preventive intervention, and newer CGRP inhibitors have minimal side effects."
       }
     ],
     "edges": [
@@ -184,10 +170,6 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
-      },
-      {
         "source": "sq1",
         "target": "c1"
       },
@@ -204,28 +186,16 @@
         "target": "c8"
       },
       {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
-      },
-      {
-        "source": "sq2",
-        "target": "c1"
-      },
-      {
-        "source": "sq2",
-        "target": "c2"
-      },
-      {
         "source": "sq2",
         "target": "c4"
       },
       {
         "source": "sq2",
         "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
       },
       {
         "source": "sq2",
@@ -240,80 +210,88 @@
         "target": "c3"
       },
       {
-        "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c8"
-      },
-      {
-        "source": "sq4",
-        "target": "c6"
-      },
-      {
-        "source": "sq4",
-        "target": "c7"
-      },
-      {
-        "source": "sq4",
-        "target": "c8"
-      },
-      {
-        "source": "sq4",
-        "target": "c9"
-      },
-      {
-        "source": "sq4",
-        "target": "c10"
-      },
-      {
         "source": "c1",
-        "target": "a1"
+        "target": "A"
       },
       {
         "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
+        "target": "A"
       },
       {
         "source": "c4",
-        "target": "a2"
+        "target": "A"
       },
       {
         "source": "c5",
-        "target": "a2"
+        "target": "A"
       },
       {
         "source": "c6",
-        "target": "a3"
+        "target": "A"
       },
       {
         "source": "c7",
-        "target": "a*"
+        "target": "A"
       },
       {
         "source": "c8",
-        "target": "a*"
+        "target": "A"
       },
       {
         "source": "c9",
-        "target": "a1"
+        "target": "A"
       },
       {
         "source": "c10",
-        "target": "a1"
+        "target": "A"
+      },
+      {
+        "source": "c1",
+        "target": "B"
+      },
+      {
+        "source": "c2",
+        "target": "B"
+      },
+      {
+        "source": "c7",
+        "target": "B"
+      },
+      {
+        "source": "c8",
+        "target": "B"
+      },
+      {
+        "source": "c9",
+        "target": "B"
+      },
+      {
+        "source": "c10",
+        "target": "B"
+      },
+      {
+        "source": "c1",
+        "target": "C"
+      },
+      {
+        "source": "c2",
+        "target": "C"
+      },
+      {
+        "source": "c7",
+        "target": "C"
+      },
+      {
+        "source": "c8",
+        "target": "C"
+      },
+      {
+        "source": "c9",
+        "target": "C"
+      },
+      {
+        "source": "c10",
+        "target": "C"
       }
     ]
   }

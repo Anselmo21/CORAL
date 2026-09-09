@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Part-Time Default for Professional Degrees): Do a part-time program if you're pursuing a professional degree (MBA, MPA, MS) \u2014 you maintain income, apply learning immediately, avoid employment gaps, and outcomes are largely equivalent to full-time.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2499,
+    "prompt_tokens": 1664,
     "output_tokens": 2024,
-    "llm_calls": 2,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,125 +41,125 @@
         "layer": "1",
         "type": "question",
         "label": "Should I do part-time or full-time graduate school if I can't afford to quit my job?",
-        "description": "Considering graduate school but can't afford to quit job"
+        "description": "Considering graduate school with a job, should I do part-time or full-time?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Should I prioritize recent data?",
-        "description": "Recent data (2023 only vs. 2021\u20132023)"
+        "label": "What is the general trend in graduate school enrollment and outcomes?",
+        "description": "General trend in graduate school enrollment and outcomes"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Should I focus on sources from the USA?",
-        "description": "Sources from the USA"
+        "label": "How do part-time and full-time graduate programs differ in terms of immersion and peer networks?",
+        "description": "Part-time vs full-time graduate programs"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Should I consider the perspective of working professionals or research-based students?",
-        "description": "Working professionals vs. research-based students"
+        "label": "What are the implications of pursuing a professional degree versus a research-based degree?",
+        "description": "Professional vs research-based degree implications"
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "Should I prioritize sources with high trustworthiness?",
-        "description": "High-trustworthiness sources"
+        "label": "How does employer tuition reimbursement impact the decision to pursue part-time or full-time graduate school?",
+        "description": "Employer reimbursement impact"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Only consider sources from 2023"
+        "description": "Sources from 2023 only"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Consider sources from 2021 to 2023"
+        "description": "Sources from 2021\u20132023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Only consider sources from the USA"
+        "description": "Sources from the USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Working professional pursuing a professional degree",
-        "description": "Consider sources from working professionals pursuing professional degrees"
+        "description": "Sources from working professionals pursuing professional degrees"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student pursuing a research-based or academic degree",
-        "description": "Consider sources from research-based students"
+        "description": "Sources from students pursuing research-based or academic degrees"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student with employer tuition reimbursement",
-        "description": "Consider sources from students with employer tuition reimbursement"
+        "description": "Sources from students with employer tuition reimbursement"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Education ranking publication",
-        "description": "Only consider sources from education ranking publications"
+        "description": "Sources from education ranking publications"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Education research foundation",
-        "description": "Only consider sources from education research foundations"
+        "description": "Sources from education research foundations"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Graduate student community",
-        "description": "Only consider sources from graduate student communities"
+        "description": "Sources from graduate student communities"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Business school enrollment data",
-        "description": "Only consider sources from business school enrollment data"
+        "description": "Sources from business school enrollment data"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Part-Time Default for Professional Degrees",
+        "label": "Answer A (Part-Time Default for Professional Degrees)",
         "description": "Do a part-time program if you're pursuing a professional degree (MBA, MPA, MS) \u2014 you maintain income, apply learning immediately, avoid employment gaps, and outcomes are largely equivalent to full-time."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Full-Time for Immersion and Research",
+        "label": "Answer B (Full-Time for Immersion and Research)",
         "description": "Go full-time if you can fund it \u2014 the peer network, research opportunities, and immersive experience are difficult to replicate part-time, and for research-based degrees full-time is essentially required."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Part-Time Only with Employer Support",
+        "label": "Answer C (Part-Time Only with Employer Support)",
         "description": "Pursue part-time only if your employer offers tuition reimbursement \u2014 this eliminates the financial risk of part-time study and makes the math clearly favorable, but without employer support the burnout risk over 3\u20134 years is high."
       }
     ],
@@ -193,6 +193,10 @@
         "target": "c3"
       },
       {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
         "source": "sq3",
         "target": "c4"
       },
@@ -202,15 +206,7 @@
       },
       {
         "source": "sq4",
-        "target": "c7"
-      },
-      {
-        "source": "sq4",
-        "target": "c8"
-      },
-      {
-        "source": "sq4",
-        "target": "c9"
+        "target": "c6"
       },
       {
         "source": "sq4",
@@ -221,19 +217,43 @@
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
         "source": "c4",
         "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
       },
       {
         "source": "c7",
         "target": "a1"
       },
       {
-        "source": "c4",
+        "source": "c8",
         "target": "a2"
       },
       {
-        "source": "c5",
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
         "target": "a2"
       },
       {
@@ -245,12 +265,24 @@
         "target": "a2"
       },
       {
-        "source": "c6",
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
         "target": "a3"
       },
       {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
         "source": "c8",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c9",

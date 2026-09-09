@@ -21,60 +21,69 @@
   ],
   "baseline_answer": "Answer A (CBT Default): Pursue CBT with a licensed therapist \u2014 it has the strongest evidence base for GAD, produces lasting remission, and builds self-management skills that persist without ongoing treatment.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1565,
+    "output_tokens": 4006,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What are the best non-pharmacological options for generalized anxiety?",
-        "description": "User seeks GAD treatment without medication."
+        "label": "Best non-pharmacological options for GAD?",
+        "description": "User seeks effective non-drug treatments for generalized anxiety disorder."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Clinical Efficacy and Long-term Outcomes",
+        "label": "Clinical Efficacy & Long-term Outcomes",
         "description": "Evaluates remission rates, relapse prevention, and evidence strength."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Accessibility, Cost, and Immediate Relief",
-        "description": "Evaluates speed of relief, cost, and physical barriers."
+        "label": "Accessibility, Speed, & Practicality",
+        "description": "Evaluates cost, speed of relief, and immediate access."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Patient Factors and Severity",
-        "description": "Evaluates symptom severity, engagement, and skill building."
+        "label": "Patient Factors & Mechanism",
+        "description": "Evaluates severity, physical health, engagement, and skill building."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "long-term remission without medication",
-        "description": "Ability to achieve lasting remission without drugs."
+        "description": "Ability to achieve lasting freedom from symptoms without drugs."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "speed of symptom relief",
-        "description": "How quickly symptoms are alleviated."
+        "description": "How quickly the treatment reduces anxiety symptoms."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "relapse prevention",
-        "description": "Ability to prevent anxiety from returning."
+        "description": "Ability to prevent anxiety from returning after treatment ends."
       },
       {
         "id": "c4",
@@ -88,28 +97,28 @@
         "layer": "3",
         "type": "concept",
         "label": "access and cost of therapy",
-        "description": "Affordability and availability of the treatment."
+        "description": "Affordability and ease of obtaining the treatment."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "exercise tolerance and physical health",
-        "description": "Physical capability and health benefits of the treatment."
+        "description": "Suitability for patients with varying physical capabilities."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "severity of anxiety symptoms",
-        "description": "Appropriateness for mild, moderate, or severe cases."
+        "description": "Effectiveness across mild, moderate, and severe anxiety."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "patient engagement with active treatment",
-        "description": "Level of active participation required."
+        "description": "Level of active participation required for success."
       },
       {
         "id": "c9",
@@ -123,7 +132,7 @@
         "layer": "3",
         "type": "concept",
         "label": "suitability for ongoing use without professional support",
-        "description": "Viability of the method as a standalone long-term tool."
+        "description": "Viability of the method as a standalone, long-term practice."
       },
       {
         "id": "a1",
@@ -173,10 +182,6 @@
         "target": "c9"
       },
       {
-        "source": "sq1",
-        "target": "c10"
-      },
-      {
         "source": "sq2",
         "target": "c2"
       },
@@ -186,11 +191,15 @@
       },
       {
         "source": "sq2",
-        "target": "c6"
+        "target": "c10"
       },
       {
         "source": "sq3",
         "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
       },
       {
         "source": "sq3",
@@ -207,10 +216,6 @@
       {
         "source": "c2",
         "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
       },
       {
         "source": "c2",
@@ -233,10 +238,6 @@
         "target": "a2"
       },
       {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
         "source": "c6",
         "target": "a1"
       },
@@ -253,24 +254,12 @@
         "target": "a1"
       },
       {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
         "source": "c9",
         "target": "a1"
       },
       {
         "source": "c10",
         "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
       },
       {
         "source": "c10",

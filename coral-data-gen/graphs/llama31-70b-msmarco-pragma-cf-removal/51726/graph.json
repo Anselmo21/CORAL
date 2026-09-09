@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "A typographer-grade font with tabular figures",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 4250,
-    "output_tokens": 1793,
-    "llm_calls": 2,
+    "prompt_tokens": 2518,
+    "output_tokens": 1607,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,112 +41,112 @@
         "layer": "1",
         "type": "question",
         "label": "best excel font for numbers",
-        "description": "What is the best Excel font for numbers?"
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "trustworthy sources",
-        "description": "What sources are trustworthy for font recommendations?"
+        "label": "trustworthiness considerations",
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "relevant perspectives",
-        "description": "What perspectives are relevant for font choice in Excel?"
+        "label": "perspective considerations",
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Microsoft Office documentation",
-        "description": "Microsoft Office documentation"
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: typography / design publication",
-        "description": "typography / design publication"
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: data journalism style guide",
-        "description": "data journalism style guide"
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: office productivity user forum",
-        "description": "office productivity user forum"
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: academic typography research",
-        "description": "academic typography research"
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: graphic designer producing annual reports",
-        "description": "graphic designer producing annual reports"
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: financial analyst preparing tables",
-        "description": "financial analyst preparing tables"
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: casual office user",
-        "description": "casual office user"
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: data scientist visualizing tables",
-        "description": "data scientist visualizing tables"
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: print-output focused user",
-        "description": "print-output focused user"
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A typographer-grade font with tabular figures",
-        "description": "A typographer-grade font with tabular figures"
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Calibri",
-        "description": "Calibri"
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A monospaced font",
-        "description": "A monospaced font"
+        "description": ""
       }
     ],
     "edges": [
@@ -251,10 +251,6 @@
         "target": "a2"
       },
       {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
         "source": "c7",
         "target": "a2"
       },
@@ -263,16 +259,12 @@
         "target": "a2"
       },
       {
-        "source": "c10",
+        "source": "c9",
         "target": "a2"
       },
       {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
+        "source": "c10",
+        "target": "a2"
       },
       {
         "source": "c4",
@@ -284,6 +276,10 @@
       },
       {
         "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
         "target": "a3"
       },
       {

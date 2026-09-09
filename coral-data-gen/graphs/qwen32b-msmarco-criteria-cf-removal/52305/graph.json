@@ -19,12 +19,22 @@
     "Natural spray: white vinegar OR salt + soap + water solution",
     "Glyphosate (Roundup) or triclopyr (Brush-B-Gon) herbicide applied to leaves"
   ],
-  "baseline_answer": "Natural spray: white vinegar OR salt + soap + water solution",
-  "baseline_index": 1,
+  "baseline_answer": "Glyphosate (Roundup) or triclopyr (Brush-B-Gon) herbicide applied to leaves",
+  "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 2,
+  "usage": {
+    "prompt_tokens": 7526,
+    "output_tokens": 4118,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "stop",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +42,119 @@
         "layer": "1",
         "type": "question",
         "label": "best way to get rid of ivy",
-        "description": "What is the best way to get rid of ivy, considering effectiveness, safety, and other factors?"
+        "description": "What is the best way to get rid of ivy, considering effectiveness, safety, and practicality?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "How effective and long-lasting is the method?",
-        "description": "Assess the effectiveness and long-term results of each ivy removal method."
+        "label": "How effective is the method at killing ivy?",
+        "description": "Evaluates the method's ability to fully eliminate ivy."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How safe, environmentally friendly, and cost-effective is the method?",
-        "description": "Evaluate the safety of ingredients, environmental impact, and cost of materials for each method."
+        "label": "How safe and environmentally friendly is the method?",
+        "description": "Evaluates the safety of ingredients and environmental impact."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "How easy is the method to apply, and what is the required time and experience?",
-        "description": "Assess the time required, ease of application, and availability of tools for each method."
+        "label": "How practical and accessible is the method in terms of cost, time, and tools?",
+        "description": "Evaluates the method's cost, time required, and tool availability."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "method effectiveness",
-        "description": "How well does the method eliminate ivy?"
+        "description": "How well the method kills ivy."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "safety of ingredients",
-        "description": "Are the ingredients used safe for humans and pets?"
+        "description": "Whether the method uses non-toxic or safe ingredients."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "environmental impact",
-        "description": "How does the method affect the surrounding ecosystem?"
+        "description": "How the method affects the environment."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "cost of materials",
-        "description": "What is the monetary cost of the method?"
+        "description": "How much the method costs to implement."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "time required",
-        "description": "How long does the method take to show results?"
+        "description": "How long the method takes to work."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "ease of application",
-        "description": "How simple is the method to apply?"
+        "description": "How easy the method is to apply."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "long-term results",
-        "description": "How likely is the ivy to regrow after treatment?"
+        "description": "Whether the method prevents regrowth."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "plant type targeted",
-        "description": "Which types of ivy is the method effective on?"
+        "description": "Whether the method works on all ivy types."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "availability of tools",
-        "description": "How accessible are the tools needed for the method?"
+        "description": "How accessible the required tools are."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "user experience",
-        "description": "How pleasant or unpleasant is the experience of using the method?"
+        "description": "How the method feels to the user in practice."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Manual pulling with hand tools (snipper, ladder, saw, shovel)",
-        "description": "Physically remove ivy using hand tools."
+        "description": "Physically removing ivy using hand tools."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Natural spray: white vinegar OR salt + soap + water solution",
-        "description": "Use non-toxic natural sprays to kill ivy."
+        "description": "Using natural ingredients to kill ivy."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Glyphosate (Roundup) or triclopyr (Brush-B-Gon) herbicide applied to leaves",
-        "description": "Apply chemical herbicides to ivy leaves."
+        "description": "Using commercial herbicides to kill ivy."
       }
     ],
     "edges": [
@@ -169,6 +179,10 @@
         "target": "c7"
       },
       {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
         "source": "sq2",
         "target": "c2"
       },
@@ -177,7 +191,7 @@
         "target": "c3"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c4"
       },
       {
@@ -198,66 +212,122 @@
       },
       {
         "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
         "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
       },
       {
         "source": "c2",
         "target": "a2"
       },
       {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
         "source": "c3",
         "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
       },
       {
         "source": "c4",
         "target": "a2"
       },
       {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
         "source": "c5",
         "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
       },
       {
         "source": "c6",
         "target": "a2"
       },
       {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
         "source": "c7",
         "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
       },
       {
         "source": "c9",
         "target": "a2"
       },
       {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
         "source": "c10",
         "target": "a2"
       },
       {
-        "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
+        "source": "c10",
         "target": "a3"
       }
     ]

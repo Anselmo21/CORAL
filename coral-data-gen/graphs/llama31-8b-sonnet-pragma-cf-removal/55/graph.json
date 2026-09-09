@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Sony XM5 Default): Get the Sony WH-1000XM5 \u2014 the best ANC performance available, excellent call quality, and 30-hour battery make it the top work-from-home headphone for blocking out household noise.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2513,
-    "output_tokens": 2080,
-    "llm_calls": 2,
+    "prompt_tokens": 1668,
+    "output_tokens": 2314,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,120 +40,120 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What headphones should I get for working from home that block out noise from my family?",
-        "description": ""
+        "label": "What headphones should I get to block out noise from my family while working from home?",
+        "description": "Best headphones for noise isolation while working from home"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the best headphones for maximum noise isolation?",
-        "description": ""
+        "label": "What is the best noise isolation performance in 2023?",
+        "description": "Best noise isolation performance in 2023"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What headphones prioritize microphone quality for work-from-home users on many calls?",
-        "description": ""
+        "label": "What is the best microphone quality for work-from-home users?",
+        "description": "Best microphone quality for work-from-home users"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What headphones offer the best balance of noise isolation and comfort for long workdays?",
-        "description": ""
+        "label": "What is the best comfort level for heavy users?",
+        "description": "Best comfort level for heavy users"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": ""
+        "description": "Sources from 2023 only"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": ""
+        "description": "Sources from 2021 to 2023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": ""
+        "description": "Sources from USA only"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Global",
-        "description": ""
+        "description": "Sources from global only"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: WFH user prioritizing maximum noise isolation",
-        "description": ""
+        "description": "Sources prioritizing maximum noise isolation for WFH users"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: WFH user on many calls prioritizing microphone quality",
-        "description": ""
+        "description": "Sources prioritizing microphone quality for WFH users on many calls"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer product recommendation publication",
-        "description": ""
+        "description": "Sources from consumer product recommendation publications"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Independent hardware testing site",
-        "description": ""
+        "description": "Sources from independent hardware testing sites"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Headphone enthusiast community",
-        "description": ""
+        "description": "Sources from headphone enthusiast communities"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer product testing organization",
-        "description": ""
+        "description": "Sources from consumer product testing organizations"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Get the Sony WH-1000XM5 \u2014 the best ANC performance available, excellent call quality, and 30-hour battery make it the top work-from-home headphone for blocking out household noise.",
-        "description": ""
+        "label": "Answer A (Sony XM5 Default)",
+        "description": "Get the Sony WH-1000XM5 \u2014 the best ANC performance available, excellent call quality, and 30-hour battery make it the top work-from-home headphone for blocking out household noise."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Choose the Bose QuietComfort 45 if you wear headphones for 6+ hours daily \u2014 its all-day comfort advantage over the Sony XM5 matters more than the marginal ANC performance difference for heavy users.",
-        "description": ""
+        "label": "Answer B (Bose QC45 for Comfort)",
+        "description": "Choose the Bose QuietComfort 45 if you wear headphones for 6+ hours daily \u2014 its all-day comfort advantage over the Sony XM5 matters more than the marginal ANC performance difference for heavy users."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Buy the Jabra Evolve2 75 if call clarity is your primary need \u2014 its professional-grade microphone array produces noticeably better audio for meeting participants than any consumer-focused headphone.",
-        "description": ""
+        "label": "Answer C (Jabra for Call Quality)",
+        "description": "Buy the Jabra Evolve2 75 if call clarity is your primary need \u2014 its professional-grade microphone array produces noticeably better audio for meeting participants than any consumer-focused headphone."
       }
     ],
     "edges": [
@@ -178,94 +178,22 @@
         "target": "c2"
       },
       {
-        "source": "sq1",
-        "target": "c5"
-      },
-      {
-        "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
-      },
-      {
-        "source": "sq1",
-        "target": "a1"
-      },
-      {
         "source": "sq2",
-        "target": "c3"
+        "target": "c5"
       },
       {
         "source": "sq2",
         "target": "c6"
       },
       {
-        "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
-        "target": "c8"
-      },
-      {
-        "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
-        "source": "sq2",
-        "target": "a2"
-      },
-      {
         "source": "sq3",
-        "target": "c1"
-      },
-      {
-        "source": "sq3",
-        "target": "c2"
+        "target": "c3"
       },
       {
         "source": "sq3",
         "target": "c4"
       },
       {
-        "source": "sq3",
-        "target": "c5"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c8"
-      },
-      {
-        "source": "sq3",
-        "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
-      },
-      {
-        "source": "sq3",
-        "target": "a3"
-      },
-      {
         "source": "c1",
         "target": "a1"
       },
@@ -279,7 +207,7 @@
       },
       {
         "source": "c4",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c5",
@@ -287,7 +215,7 @@
       },
       {
         "source": "c6",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c7",
@@ -299,11 +227,11 @@
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c10",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c1",
@@ -314,16 +242,40 @@
         "target": "a2"
       },
       {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
         "source": "c3",
         "target": "a3"
       },
       {
         "source": "c4",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c5",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c6",
@@ -339,11 +291,11 @@
       },
       {
         "source": "c9",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c10",
-        "target": "a1"
+        "target": "a3"
       }
     ]
   }

@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "A Storm of Swords",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2023,
+    "output_tokens": 2523,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best Game of Thrones book?",
-        "description": "Determine the best Game of Thrones book based on trustworthiness and reader perspective filters."
+        "description": "Determine the best Game of Thrones book based on multiple criteria."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What do critics and general readers consider the best Game of Thrones book?",
-        "description": "Evaluate based on aggregated ratings, literary reviews, and bestseller lists."
+        "label": "What is the best Game of Thrones book based on objective quality and popularity?",
+        "description": "Focuses on trustworthiness-based metrics like ratings, reviews, and bestseller status."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What do fans and fantasy readers consider the best Game of Thrones book?",
-        "description": "Evaluate based on fan forum sentiment and community preferences."
+        "label": "What is the best Game of Thrones book from the perspective of the reader's preference or background?",
+        "description": "Focuses on reader preferences and background, such as being a new reader or preferring character study."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What do readers with specific preferences or viewing habits consider the best Game of Thrones book?",
-        "description": "Evaluate based on reader preferences and TV-series viewership influence."
+        "label": "What is the best Game of Thrones book based on community consensus and fan opinion?",
+        "description": "Focuses on fan and community-based evaluation, such as r/asoiaf."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Goodreads aggregated ratings",
-        "description": "Prioritize sources based on aggregated reader ratings from Goodreads."
+        "description": "Uses aggregated ratings from Goodreads to assess popularity and quality."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: professional literary critic review",
-        "description": "Prioritize sources based on professional literary critic reviews."
+        "description": "Uses reviews from professional literary critics to assess quality."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: fan / fantasy community forum (r/asoiaf)",
-        "description": "Prioritize sources from fan forums like r/asoiaf."
+        "description": "Uses fan and fantasy community forums to assess popularity and consensus."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: publisher-curated reading guide",
-        "description": "Prioritize sources from official publisher reading guides."
+        "description": "Uses reading guides curated by the publisher to assess quality and structure."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: general bookseller bestseller list",
-        "description": "Prioritize sources from general bookseller bestseller rankings."
+        "description": "Uses bestseller lists from general booksellers to assess popularity."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: new reader / series newcomer",
-        "description": "Prioritize the perspective of new or casual readers."
+        "description": "Considers the experience of a new reader or series newcomer."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: longtime hardcore fan",
-        "description": "Prioritize the perspective of long-time, dedicated fans."
+        "description": "Considers the experience of a longtime, hardcore fan."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: reader who prefers action / dramatic plot",
-        "description": "Prioritize the perspective of readers who prefer fast-paced, dramatic narratives."
+        "description": "Considers the experience of a reader who prefers action and dramatic plot."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: reader who prefers character study",
-        "description": "Prioritize the perspective of readers who prefer deep character development."
+        "description": "Considers the experience of a reader who prefers character study."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: TV-series watcher exploring books",
-        "description": "Prioritize the perspective of TV viewers who are exploring the source material."
+        "description": "Considers the experience of a TV-series watcher exploring the books."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A Storm of Swords",
-        "description": "Widely considered the best Game of Thrones book due to critical acclaim and narrative depth."
+        "description": "Widely regarded as the best Game of Thrones book in terms of critical acclaim and popularity."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A Game of Thrones",
-        "description": "The first book in the series, often praised for its introduction to the world and characters."
+        "description": "Best for new readers and those who prefer a more accessible, character-driven start."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A Dance with Dragons",
-        "description": "The fifth book, noted for its complex character arcs and dramatic events."
+        "description": "Best for fans of complex character arcs and political intrigue."
       }
     ],
     "edges": [
@@ -178,27 +187,27 @@
       },
       {
         "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
         "target": "c6"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c7"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c8"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c9"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
       },
       {
         "source": "c1",
@@ -241,6 +250,46 @@
         "target": "a1"
       },
       {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
         "source": "c3",
         "target": "a2"
       },
@@ -249,20 +298,16 @@
         "target": "a2"
       },
       {
-        "source": "c8",
+        "source": "c7",
         "target": "a2"
       },
       {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
         "source": "c9",
-        "target": "a3"
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
       }
     ]
   }

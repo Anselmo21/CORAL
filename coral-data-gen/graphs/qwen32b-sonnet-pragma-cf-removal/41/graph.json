@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (CS50 Default): Start with Harvard's CS50 on edX \u2014 it's free, teaches real computer science fundamentals rather than just syntax, and produces learners who can problem-solve across any language or technology.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1639,
+    "output_tokens": 2792,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,35 +41,35 @@
         "layer": "1",
         "type": "question",
         "label": "What's the best online platform for learning programming from scratch?",
-        "description": "Identify the best platform for a complete beginner in programming."
+        "description": "A question about the best platform for beginners to learn programming."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Zero setup entry for absolute beginners",
-        "description": "Best for learners who want to start coding immediately with no setup."
+        "label": "Which platform is best for absolute beginners who want to start coding immediately with no setup?",
+        "description": "Focuses on zero setup and immediate coding."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Free and comprehensive fundamentals",
-        "description": "Best for learners seeking free resources that teach real computer science."
+        "label": "Which platform is best for learners who want to learn real computer science fundamentals?",
+        "description": "Focuses on teaching CS fundamentals, not just syntax."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Job readiness with real environments",
-        "description": "Best for learners who want to build real-world projects and job skills."
+        "label": "Which platform is best for learners who want to build job-ready skills and a portfolio?",
+        "description": "Focuses on practical, job-oriented learning."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Only consider sources published in 2023."
+        "description": "Only consider sources from 2023."
       },
       {
         "id": "c2",
@@ -74,77 +83,77 @@
         "layer": "3",
         "type": "directive",
         "label": "geographic: Global",
-        "description": "Consider sources with global relevance."
+        "description": "Only consider globally relevant sources."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Consider sources specific to the USA."
+        "description": "Only consider sources relevant to the USA."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Absolute beginner seeking free resource",
-        "description": "Consider recommendations for absolute beginners who want free resources."
+        "description": "Only consider sources from the perspective of a free beginner."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Learner willing to pay for structured guidance",
-        "description": "Consider recommendations for learners who are willing to pay for structured learning."
+        "description": "Only consider sources from the perspective of a learner willing to pay."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Bootcamp outcome reporting",
-        "description": "Consider sources based on bootcamp success metrics."
+        "description": "Only consider sources reporting bootcamp outcomes."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Developer community consensus",
-        "description": "Consider recommendations from the broader developer community."
+        "description": "Only consider sources reflecting developer community consensus."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Learning platform self-reported data",
-        "description": "Consider data reported directly by learning platforms."
+        "description": "Only consider sources from learning platforms themselves."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Learner community advice",
-        "description": "Consider recommendations from learner communities (e.g., Reddit)."
+        "description": "Only consider sources from learner communities."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (CS50 Default): Start with Harvard's CS50 on edX \u2014 it's free, teaches real computer science fundamentals rather than just syntax, and produces learners who can problem-solve across any language or technology.",
-        "description": "CS50 is the top recommendation when all filters are applied."
+        "description": "CS50 is the top recommendation for fundamentals."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Codecademy for Zero Friction): Use Codecademy if you want to start coding immediately with no setup \u2014 its browser-based interactive environment is the lowest-friction entry point and maintains beginner momentum better than lecture-heavy alternatives.",
-        "description": "Codecademy wins when setup-free and frictionless entry is prioritized."
+        "description": "Codecademy is best for zero setup and immediate coding."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (The Odin Project for Job Readiness): Follow The Odin Project if your goal is employment \u2014 it builds real projects in a real development environment from day one, producing portfolio work and practical skills that browser-based platforms cannot replicate.",
-        "description": "The Odin Project wins when job readiness and real-world project building are prioritized."
+        "description": "The Odin Project is best for job readiness and real-world skills."
       }
     ],
     "edges": [
@@ -345,10 +354,6 @@
         "target": "a2"
       },
       {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
         "source": "c9",
         "target": "a2"
       },
@@ -369,15 +374,15 @@
         "target": "a3"
       },
       {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
         "source": "c6",
         "target": "a3"
       },
       {
         "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
         "target": "a3"
       },
       {

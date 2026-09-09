@@ -19,18 +19,18 @@
     "Omega-3 fatty acids (fish oil / flax oil)",
     "Lifestyle intervention: exercise, yoga, diet, sleep hygiene"
   ],
-  "baseline_answer": "Omega-3 fatty acids (fish oil / flax oil)",
-  "baseline_index": 1,
+  "baseline_answer": "Lifestyle intervention: exercise, yoga, diet, sleep hygiene",
+  "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3017,
-    "output_tokens": 1657,
-    "llm_calls": 2,
+    "prompt_tokens": 1890,
+    "output_tokens": 1518,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,120 +40,103 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Which natural remedy best eases teenage depression?",
-        "description": ""
+        "label": "Which natural remedy best eases teenage depression?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Effectiveness and Safety",
-        "description": ""
+        "label": "Effectiveness"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Practicality and Accessibility",
-        "description": ""
+        "label": "Safety and Practicality"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Time and Interactions",
-        "description": ""
+        "label": "Accessibility and Cost"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "scientific evidence",
-        "description": ""
+        "label": "scientific evidence"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "mood improvement efficacy",
-        "description": ""
+        "label": "mood improvement efficacy"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "safety in adolescents",
-        "description": ""
+        "label": "safety in adolescents"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "drug interactions",
-        "description": ""
+        "label": "drug interactions"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "side effect profile",
-        "description": ""
+        "label": "side effect profile"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "ease of use",
-        "description": ""
+        "label": "ease of use"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "cost",
-        "description": ""
+        "label": "cost"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "accessibility",
-        "description": ""
+        "label": "accessibility"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "dosing convenience",
-        "description": ""
+        "label": "dosing convenience"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "time to onset",
-        "description": ""
+        "label": "time to onset"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "St. John's Wort herbal supplement",
-        "description": ""
+        "label": "St. John's Wort herbal supplement"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Omega-3 fatty acids (fish oil / flax oil)",
-        "description": ""
+        "label": "Omega-3 fatty acids (fish oil / flax oil)"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Lifestyle intervention: exercise, yoga, diet, sleep hygiene",
-        "description": ""
+        "label": "Lifestyle intervention: exercise, yoga, diet, sleep hygiene"
       }
     ],
     "edges": [
@@ -171,18 +154,18 @@
       },
       {
         "source": "sq1",
-        "target": "c1"
-      },
-      {
-        "source": "sq1",
         "target": "c2"
       },
       {
         "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
         "target": "c3"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c5"
       },
       {
@@ -191,15 +174,11 @@
       },
       {
         "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
-        "target": "c8"
-      },
-      {
-        "source": "sq2",
         "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
       },
       {
         "source": "sq3",
@@ -207,79 +186,23 @@
       },
       {
         "source": "sq3",
-        "target": "c10"
+        "target": "c7"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
+        "source": "sq3",
+        "target": "c8"
       },
       {
         "source": "c1",
         "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
       },
       {
         "source": "c2",
@@ -296,6 +219,26 @@
       {
         "source": "c5",
         "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
       },
       {
         "source": "c10",

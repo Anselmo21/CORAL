@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (CS50 Default): Start with Harvard's CS50 on edX \u2014 it's free, teaches real computer science fundamentals rather than just syntax, and produces learners who can problem-solve across any language or technology.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1570,
+    "output_tokens": 2472,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,105 +41,98 @@
         "layer": "1",
         "type": "question",
         "label": "What's the best online platform for learning programming from scratch?",
-        "description": "Main query evaluating three distinct learning platforms."
+        "description": "The primary question asking for the optimal learning platform."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Accessibility and Entry Friction",
-        "description": "Evaluates cost and the ease of starting to code immediately."
+        "label": "Cost, Accessibility, and Fundamentals",
+        "description": "Evaluates platforms based on cost, theoretical depth, and curriculum structure."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Foundational Depth and Structure",
-        "description": "Evaluates the theoretical rigor, curriculum design, and breadth of topics."
+        "label": "Entry Friction and Motivation",
+        "description": "Evaluates platforms based on setup ease, environment, and beginner retention."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Practical Application and Environment",
-        "description": "Evaluates the nature of projects and the development tools used."
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "Support and Content Quality",
-        "description": "Evaluates community, instructor quality, and motivation factors."
+        "label": "Job Readiness and Practical Skills",
+        "description": "Evaluates platforms based on real-world projects, environment, and career outcomes."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "zero cost or low cost access",
-        "description": "Financial barrier to entry."
+        "description": "Affordability of the platform."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "beginner friendliness and zero setup friction",
-        "description": "Ease of starting without local environment configuration."
+        "description": "Ease of starting without technical hurdles."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "depth of computer science fundamentals",
-        "description": "Teaching theory and problem-solving over just syntax."
+        "description": "Quality of theoretical and problem-solving education."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "project-based and job-ready skills",
-        "description": "Focus on building portfolio pieces for employment."
+        "description": "Relevance of projects to actual employment."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "community support and peer learning",
-        "description": "Availability of forums and peer interaction."
+        "description": "Availability of help and peer interaction."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "structured curriculum vs self-directed",
-        "description": "Degree of guided learning path versus self-pacing."
+        "description": "Level of guidance and course organization."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "real development environment practice",
-        "description": "Using local IDEs and real tools rather than browser sandboxes."
+        "description": "Experience with local IDEs and real tools."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "language and technology coverage breadth",
-        "description": "Variety of languages and tech stacks covered."
+        "description": "Range of languages and tech stacks covered."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "instructor quality and content updates",
-        "description": "Expertise of teachers and currency of materials."
+        "description": "Expertise of teachers and currency of material."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "completion rate and motivation support",
-        "description": "Factors that help learners finish the course."
+        "description": "Ability to keep learners engaged to finish."
       },
       {
         "id": "a1",
@@ -168,28 +170,28 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
-      },
-      {
         "source": "sq1",
         "target": "c1"
       },
       {
         "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
         "target": "c2"
       },
       {
         "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
-        "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c8"
+        "target": "c5"
       },
       {
         "source": "sq2",
@@ -204,12 +206,8 @@
         "target": "c7"
       },
       {
-        "source": "sq4",
-        "target": "c5"
-      },
-      {
-        "source": "sq4",
-        "target": "c9"
+        "source": "sq3",
+        "target": "c8"
       },
       {
         "source": "c1",
@@ -230,10 +228,6 @@
       {
         "source": "c2",
         "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
       },
       {
         "source": "c3",
@@ -276,6 +270,14 @@
         "target": "a1"
       },
       {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
         "source": "c9",
         "target": "a1"
       },
@@ -285,7 +287,7 @@
       },
       {
         "source": "c10",
-        "target": "a3"
+        "target": "a2"
       }
     ]
   }

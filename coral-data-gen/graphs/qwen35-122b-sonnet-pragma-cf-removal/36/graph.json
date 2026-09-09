@@ -21,130 +21,139 @@
   ],
   "baseline_answer": "Answer A (Self-Taught with Portfolio Default): You can absolutely be self-taught \u2014 UX is portfolio-driven and a strong case study portfolio from a bootcamp or self-directed projects will outperform a degree without portfolio work at most employers.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 2,
+  "temperature": 0.0,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1716,
+    "output_tokens": 2946,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "I want to become a UX designer. Do I need a formal degree or can I be self-taught?",
-        "description": "Primary inquiry regarding educational requirements for UX design careers."
+        "label": "Do I need a formal degree or can I be self-taught?",
+        "description": "Main inquiry about UX education paths."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the current market reality for general entry-level UX roles?",
-        "description": "Focuses on recent data, US market, and industry consensus on portfolio vs degree."
+        "label": "General Entry & Portfolio Dominance",
+        "description": "Focuses on standard industry hiring trends and the value of portfolios for general roles."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the requirements for specialized, senior, or research-heavy UX roles?",
-        "description": "Focuses on global context, design firm perspectives, and the need for theoretical depth."
+        "label": "Specialized Roles & Theoretical Depth",
+        "description": "Focuses on requirements for research, consulting, and senior positions."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most efficient path for a career changer seeking fast entry?",
-        "description": "Focuses on speed, mentorship, and peer advice regarding bootcamps vs self-study."
+        "label": "Structured Alternatives (Bootcamps)",
+        "description": "Focuses on the efficacy of bootcamps as a middle ground."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Filters for the most recent data, prioritizing Source 1 and 2."
+        "description": "Filters for most recent data, favoring Source 1 and 3."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Includes slightly older data (Source 5) alongside recent trends."
+        "description": "Broader temporal window including Source 5."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Focuses on the US market where Source 1, 2, 3, 5 are based."
+        "description": "Focuses on US market trends (Source 1, 2, 3, 5)."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Global design industry",
-        "description": "Includes global data like Source 4 (CareerFoundry)."
+        "description": "Includes global data (Source 4)."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Career changer seeking fast entry to UX",
-        "description": "Prioritizes speed and efficiency (Source 3, 4)."
+        "description": "Prioritizes speed and cost, favoring self-teaching."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Aspiring UX researcher or design consultant",
-        "description": "Prioritizes deep theoretical knowledge (Source 5)."
+        "description": "Prioritizes depth and theory, favoring degrees."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: UX industry research organization",
-        "description": "Prioritizes formal industry reports (Source 1)."
+        "description": "Prioritizes formal research (Source 1, 2)."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Workforce data report",
-        "description": "Prioritizes employment statistics (Source 2)."
+        "description": "Prioritizes statistical data (Source 2, 4)."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: UX community peer advice",
-        "description": "Prioritizes community consensus (Source 3)."
+        "description": "Prioritizes peer consensus (Source 3)."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Design firm perspective",
-        "description": "Prioritizes insights from top firms (Source 5)."
+        "description": "Prioritizes industry expert opinion (Source 5)."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Self-Taught with Portfolio Default)",
-        "description": "You can absolutely be self-taught \u2014 UX is portfolio-driven and a strong case study portfolio from a bootcamp or self-directed projects will outperform a degree without portfolio work at most employers."
+        "description": "Self-teaching is sufficient; portfolio is key."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Formal Degree for Research and Consulting)",
-        "description": "Pursue a formal degree in HCI, Cognitive Psychology, or Interaction Design if your goal is UX research, design consultancy, or senior roles \u2014 the theoretical depth is difficult to replicate through self-study."
+        "description": "Degree required for research/consulting/senior roles."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Bootcamp as Middle Ground)",
-        "description": "Take a structured UX bootcamp (3\u20136 months) \u2014 it's faster and cheaper than a degree, provides mentorship and portfolio guidance, and produces comparable job placement rates to formal education for entry-level roles."
+        "description": "Bootcamp offers best balance of speed and structure."
       }
     ],
     "edges": [
@@ -166,19 +175,15 @@
       },
       {
         "source": "sq1",
-        "target": "c2"
-      },
-      {
-        "source": "sq1",
         "target": "c3"
       },
       {
         "source": "sq1",
-        "target": "c7"
+        "target": "c5"
       },
       {
         "source": "sq1",
-        "target": "c8"
+        "target": "c7"
       },
       {
         "source": "sq1",
@@ -190,10 +195,6 @@
       },
       {
         "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
         "target": "c6"
       },
       {
@@ -201,8 +202,8 @@
         "target": "c10"
       },
       {
-        "source": "sq3",
-        "target": "c3"
+        "source": "sq2",
+        "target": "c8"
       },
       {
         "source": "sq3",
@@ -210,7 +211,7 @@
       },
       {
         "source": "sq3",
-        "target": "c5"
+        "target": "c8"
       },
       {
         "source": "sq3",
@@ -225,40 +226,16 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
         "source": "c3",
         "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
       },
       {
         "source": "c4",
         "target": "a1"
       },
       {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
         "source": "c5",
         "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
       },
       {
         "source": "c7",
@@ -273,12 +250,60 @@
         "target": "a1"
       },
       {
-        "source": "c9",
-        "target": "a3"
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
       },
       {
         "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       }
     ]
   }

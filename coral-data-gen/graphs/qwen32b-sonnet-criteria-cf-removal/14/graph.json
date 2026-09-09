@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (Delay to 70 Default): Wait until 70 to claim Social Security \u2014 the 8% annual delayed credit is an unbeatable risk-free return for healthy individuals, and maximizes inflation-adjusted lifetime income if you live past 82.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1588,
+    "output_tokens": 2501,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "When should I start taking Social Security \u2014 at 62, full retirement age, or wait until 70?",
-        "description": "A 62-year-old is deciding when to start claiming Social Security benefits."
+        "description": "A 62-year-old is deciding when to start taking Social Security benefits."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Personal Health and Longevity",
-        "description": "Criteria related to health, life expectancy, and long-term financial planning."
+        "label": "What is your expected lifespan and health status?",
+        "description": "Evaluates longevity, breakeven age, and long-term income maximization."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Financial Situation and Income Needs",
-        "description": "Criteria related to current financial needs and retirement income sources."
+        "label": "What is your financial situation and retirement income structure?",
+        "description": "Evaluates income needs, portfolio risk, and flexibility."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Tax and Flexibility Considerations",
-        "description": "Criteria related to taxation and the flexibility of claiming strategies."
+        "label": "What are the implications for your spouse and taxes?",
+        "description": "Evaluates survivor benefits and tax treatment."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "expected longevity and health status",
-        "description": "How long the individual is expected to live and their health condition."
+        "description": "Health and life expectancy influence the breakeven age and long-term benefit value."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "survivor benefit for spouse",
-        "description": "The Social Security benefit the surviving spouse would receive."
+        "description": "Delaying benefits increases the survivor benefit for a spouse."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "need for immediate income",
-        "description": "Whether the individual needs Social Security income right away."
+        "description": "Early claiming may be necessary to avoid portfolio withdrawals."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "breakeven age analysis",
-        "description": "The age at which the total lifetime benefits from early vs. delayed claiming become equal."
+        "description": "The age at which total lifetime benefits from early vs. delayed claiming equalize."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "portfolio withdrawal rate reduction",
-        "description": "The impact of delaying Social Security on retirement portfolio longevity."
+        "description": "Delaying benefits reduces the need to withdraw from retirement savings."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "inflation-adjusted lifetime income maximization",
-        "description": "Maximizing Social Security benefits adjusted for inflation over a lifetime."
+        "description": "Maximizing long-term, inflation-adjusted Social Security income."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "other retirement income sources available",
-        "description": "The availability of pensions, savings, or other retirement income."
+        "description": "Pensions, savings, or other income can reduce the need for early Social Security."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "sequence-of-returns risk mitigation",
-        "description": "The risk of early portfolio depletion due to poor investment returns early in retirement."
+        "description": "Delaying benefits reduces the risk of portfolio depletion in early retirement."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "tax treatment of Social Security benefits",
-        "description": "How claiming timing affects the taxability of Social Security benefits."
+        "description": "Tax implications vary based on claiming age and other income."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "flexibility to change claiming strategy",
-        "description": "The ability to adjust claiming decisions in the future."
+        "description": "Early claiming allows more flexibility in retirement planning."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Delay to 70 Default): Wait until 70 to claim Social Security \u2014 the 8% annual delayed credit is an unbeatable risk-free return for healthy individuals, and maximizes inflation-adjusted lifetime income if you live past 82.",
-        "description": "Delaying to 70 maximizes benefits and survivor income, assuming good health and longevity."
+        "description": "Optimal for healthy individuals with no immediate income needs and a long life expectancy."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Claim at 62 for Immediate Need): Claim at 62 if you have health concerns, need the income to avoid portfolio withdrawals, or lack other retirement income \u2014 the breakeven math favors early claiming for shorter life expectancies.",
-        "description": "Claim early if health is poor or immediate income is needed."
+        "description": "Best for those with poor health, immediate income needs, or no other retirement income."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Full Retirement Age Compromise): Claim at full retirement age (66\u201367) as a compromise \u2014 you avoid the 30% early reduction while not tying up capital until 70, suitable when longevity is uncertain and some portfolio flexibility is needed.",
-        "description": "A middle-ground approach for those with uncertain longevity."
+        "description": "Middle ground for those with uncertain longevity and some portfolio flexibility."
       }
     ],
     "edges": [
@@ -163,10 +172,6 @@
       {
         "source": "sq1",
         "target": "c1"
-      },
-      {
-        "source": "sq1",
-        "target": "c2"
       },
       {
         "source": "sq1",
@@ -193,12 +198,16 @@
         "target": "c8"
       },
       {
-        "source": "sq3",
-        "target": "c9"
+        "source": "sq2",
+        "target": "c10"
       },
       {
         "source": "sq3",
-        "target": "c10"
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
       },
       {
         "source": "c1",
@@ -210,7 +219,7 @@
       },
       {
         "source": "c3",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c4",
@@ -221,16 +230,28 @@
         "target": "a1"
       },
       {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
         "source": "c6",
         "target": "a1"
       },
       {
         "source": "c7",
-        "target": "a1"
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
       },
       {
         "source": "c8",
         "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
       },
       {
         "source": "c9",
@@ -241,28 +262,8 @@
         "target": "a1"
       },
       {
-        "source": "c3",
+        "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
       }
     ]
   }

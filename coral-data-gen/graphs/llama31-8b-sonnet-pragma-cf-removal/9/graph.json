@@ -19,18 +19,18 @@
     "Answer B (Snowball for Motivation): Target the smallest balance first regardless of rate \u2014 the psychological wins from eliminating individual cards keep most people on track better than pure math, making snowball more effective in practice.",
     "Answer C (Balance Transfer): Transfer all three balances to a 0% APR card and pay off the full amount within the promotional window \u2014 if you qualify, this eliminates interest entirely and is faster than any payment-order strategy."
   ],
-  "baseline_answer": "Answer A (Avalanche Default): Pay minimums on all cards and throw every extra dollar at the 24% card first \u2014 the avalanche method minimizes total interest and is mathematically optimal for someone committed to following through.",
-  "baseline_index": 0,
+  "baseline_answer": "Answer C (Balance Transfer): Transfer all three balances to a 0% APR card and pay off the full amount within the promotional window \u2014 if you qualify, this eliminates interest entirely and is faster than any payment-order strategy.",
+  "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2465,
-    "output_tokens": 1805,
-    "llm_calls": 2,
+    "prompt_tokens": 1642,
+    "output_tokens": 1791,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,43 +40,36 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Best way to pay off $8,000",
-        "description": "Debt elimination approach"
+        "label": "Best way to pay off $8,000 spread across three credit cards",
+        "description": "Debt elimination methods"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Mathematical optimization",
-        "description": "Prioritize mathematically optimal approach"
+        "label": "Most effective method for debt elimination",
+        "description": "Mathematical optimization vs. psychological motivation"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Quick wins for motivation",
-        "description": "Prioritize psychological wins"
+        "label": "Best approach for motivated borrower",
+        "description": "Quick wins vs. mathematical optimization"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Balance transfer eligibility",
-        "description": "Qualify for balance transfer"
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "Expert advice",
-        "description": "Trust financial experts or industry publications"
+        "label": "Most cost-effective option",
+        "description": "Balance transfer vs. payment-order strategies"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Sources from 2023"
+        "description": "Sources from 2023 only"
       },
       {
         "id": "c2",
@@ -90,56 +83,56 @@
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Sources from USA"
+        "description": "Sources from the USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Mathematically-driven optimizer",
-        "description": "Prioritize mathematically optimal approach"
+        "description": "Sources from mathematically-driven optimizers"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Motivation-driven borrower needing quick wins",
-        "description": "Prioritize psychological wins"
+        "description": "Sources from motivated borrowers"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Good-credit borrower eligible for balance transfer",
-        "description": "Qualify for balance transfer"
+        "description": "Sources from good-credit borrowers"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer financial advisory",
-        "description": "Trust financial experts or industry publications"
+        "description": "Sources from consumer financial advisory"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Banking industry publication",
-        "description": "Sources from banking industry"
+        "description": "Sources from banking industry publications"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Community peer advice",
-        "description": "Trust community advice"
+        "description": "Sources from community peer advice"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Financial journalism",
-        "description": "Trust financial journalism"
+        "description": "Sources from financial journalism"
       },
       {
         "id": "a1",
@@ -177,24 +170,40 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
+        "source": "sq1",
+        "target": "c4"
       },
       {
         "source": "sq1",
-        "target": "c4"
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
       },
       {
         "source": "sq2",
         "target": "c5"
       },
       {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
         "source": "sq3",
         "target": "c6"
       },
       {
-        "source": "sq4",
-        "target": "c7"
+        "source": "sq3",
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -226,54 +235,6 @@
       },
       {
         "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
         "target": "a2"
       },
       {
@@ -282,7 +243,7 @@
       },
       {
         "source": "c10",
-        "target": "a2"
+        "target": "a1"
       }
     ]
   }

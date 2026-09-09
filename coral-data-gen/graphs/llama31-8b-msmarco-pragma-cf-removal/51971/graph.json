@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Zolpidem (Ambien)",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 4379,
-    "output_tokens": 1832,
-    "llm_calls": 2,
+    "prompt_tokens": 2581,
+    "output_tokens": 1849,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,112 +41,112 @@
         "layer": "1",
         "type": "question",
         "label": "best prescription sleep aid for insomnia",
-        "description": "Determining the best prescription sleep aid for insomnia"
+        "description": "best prescription sleep aid for insomnia"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "most trustworthy source",
-        "description": "Determining the most trustworthy source for best prescription sleep aid for insomnia"
+        "label": "What are the most trustworthy sources for recommending prescription sleep aids?",
+        "description": "What are the most trustworthy sources for recommending prescription sleep aids?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "best sleep aid for patient perspectives",
-        "description": "Determining the best prescription sleep aid for insomnia considering different patient perspectives"
+        "label": "Which perspective should we consider when choosing a prescription sleep aid?",
+        "description": "Which perspective should we consider when choosing a prescription sleep aid?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: clinical practice guideline",
-        "description": "Clinical practice guidelines for sleep aid"
+        "description": "trustworthiness: clinical practice guideline"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed psychiatry / sleep journal",
-        "description": "Peer-reviewed journals for sleep aid research"
+        "description": "trustworthiness: peer-reviewed psychiatry / sleep journal"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer Reports Best Buy",
-        "description": "Consumer Reports Best Buy recommendations for sleep aid"
+        "description": "trustworthiness: Consumer Reports Best Buy"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: addiction medicine guidance",
-        "description": "Addiction medicine guidance for sleep aid"
+        "description": "trustworthiness: addiction medicine guidance"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: AASM (sleep medicine) guidelines",
-        "description": "AASM guidelines for sleep medicine"
+        "description": "trustworthiness: AASM (sleep medicine) guidelines"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: pharmacology textbook",
-        "description": "Pharmacology textbook information for sleep aid"
+        "description": "trustworthiness: pharmacology textbook"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: short-term sleep-onset trouble",
-        "description": "Short-term sleep-onset trouble patient perspective"
+        "description": "perspective: short-term sleep-onset trouble"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: patient with comorbid depression / anxiety",
-        "description": "Patient with comorbid depression/anxiety perspective"
+        "description": "perspective: patient with comorbid depression / anxiety"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: middle-of-night waker",
-        "description": "Middle-of-night waker patient perspective"
+        "label": "perspective: middle-of-night waker (maintenance insomnia)",
+        "description": "perspective: middle-of-night waker (maintenance insomnia)"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: older adult patient",
-        "description": "Older adult patient perspective"
+        "description": "perspective: older adult patient"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Zolpidem (Ambien)",
-        "description": "Zolpidem (Ambien) as the best prescription sleep aid for insomnia"
+        "description": "Zolpidem (Ambien)"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Trazodone or low-dose mirtazapine",
-        "description": "Trazodone or low-dose mirtazapine as the best prescription sleep aid for insomnia"
+        "description": "Trazodone or low-dose mirtazapine"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Temazepam (Restoril)",
-        "description": "Temazepam (Restoril) as the best prescription sleep aid for insomnia"
+        "description": "Temazepam (Restoril)"
       }
     ],
     "edges": [
@@ -220,63 +220,63 @@
       },
       {
         "source": "c6",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c7",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c8",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c10",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c1",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c3",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c4",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c5",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c6",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c7",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c10",
-        "target": "a2"
+        "target": "a3"
       }
     ]
   }

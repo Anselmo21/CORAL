@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Microsoft Surface Pro or Surface Laptop with Office pre-activated",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1928,
+    "output_tokens": 2246,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,126 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best laptop with Microsoft Office pre-installed?",
-        "description": "Evaluating laptops with Microsoft Office pre-installed based on performance, features, and user needs."
+        "description": "A question about selecting the best laptop with Microsoft Office pre-installed."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What version of Microsoft Office is included and how is it activated?",
-        "description": "Evaluates the type and activation method of the included Microsoft Office."
+        "label": "What is the purpose and usage of the laptop?",
+        "description": "Criteria related to usability and portability for different user needs."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How is the laptop's performance and usability for basic tasks?",
-        "description": "Evaluates hardware specs and user interface for everyday use."
+        "label": "What are the hardware and performance specs?",
+        "description": "Criteria related to the technical capabilities of the laptop."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What about portability and battery for student or on-the-go use?",
-        "description": "Evaluates portability and battery life for mobile users."
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "What about brand trust and long-term reliability?",
-        "description": "Evaluates brand reputation and product durability."
+        "label": "What are the software and cost considerations?",
+        "description": "Criteria related to the software bundle and value for money."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "Office version included",
-        "description": "Whether Microsoft Office is pre-installed and what version it is."
+        "description": "The version of Microsoft Office that comes pre-installed."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "processor speed",
-        "description": "Speed of the CPU for performance in applications."
+        "description": "The speed of the laptop's processor."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "RAM size",
-        "description": "Amount of memory for multitasking and performance."
+        "description": "The amount of RAM in the laptop."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "storage capacity",
-        "description": "Amount of internal storage for files and software."
+        "description": "The storage space available on the laptop."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "screen size",
-        "description": "Display size for comfort and productivity."
+        "description": "The size of the laptop's display."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "battery life",
-        "description": "Estimated time on a single charge."
+        "description": "The duration of battery life on a single charge."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "price",
-        "description": "Cost of the laptop at purchase."
+        "description": "The cost of the laptop."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "brand reliability",
-        "description": "Trustworthiness and durability of the brand."
+        "description": "The trustworthiness and quality of the laptop brand."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "weight and portability",
-        "description": "Ease of carrying and mobility."
+        "description": "The weight and ease of carrying the laptop."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "keyboard quality",
-        "description": "Comfort and durability of the keyboard."
+        "description": "The comfort and quality of the laptop's keyboard."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A budget Dell or HP laptop with Office Home & Student bundled at checkout",
-        "description": "Affordable laptop with basic Office version for students."
+        "description": "A budget-friendly option with basic Office included."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Microsoft Surface Pro or Surface Laptop with Office pre-activated",
-        "description": "Premium 2-in-1 with full Office suite pre-installed."
+        "description": "A premium laptop with full Office pre-installed."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A higher-end Lenovo ThinkPad with Office Professional pre-installed",
-        "description": "Professional-grade laptop with full Office version."
+        "description": "A professional-grade laptop with full Office included."
       }
     ],
     "edges": [
@@ -168,16 +170,20 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
+        "source": "sq1",
+        "target": "c5"
       },
       {
         "source": "sq1",
-        "target": "c1"
+        "target": "c6"
       },
       {
         "source": "sq1",
-        "target": "c7"
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
       },
       {
         "source": "sq2",
@@ -192,23 +198,15 @@
         "target": "c4"
       },
       {
-        "source": "sq2",
-        "target": "c5"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
+        "source": "sq3",
+        "target": "c1"
       },
       {
         "source": "sq3",
-        "target": "c6"
+        "target": "c7"
       },
       {
         "source": "sq3",
-        "target": "c9"
-      },
-      {
-        "source": "sq4",
         "target": "c8"
       },
       {
@@ -252,15 +250,7 @@
         "target": "a2"
       },
       {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
+        "source": "c5",
         "target": "a1"
       },
       {
@@ -273,6 +263,10 @@
       },
       {
         "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
         "target": "a1"
       },
       {
@@ -296,7 +290,7 @@
         "target": "a3"
       },
       {
-        "source": "c10",
+        "source": "c8",
         "target": "a3"
       }
     ]

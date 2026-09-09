@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "A premium ultrabook (Dell XPS 13, ASUS Zenbook, or MacBook Air)",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3274,
-    "output_tokens": 1647,
-    "llm_calls": 2,
+    "prompt_tokens": 2035,
+    "output_tokens": 1657,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -46,13 +46,13 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the trustworthy sources for laptop recommendations?"
+        "label": "What are the most trustworthy sources for laptop recommendations?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the perspectives of different user groups?"
+        "label": "What are the different perspectives on the best laptop for under $1000?"
       },
       {
         "id": "c1",
@@ -244,10 +244,6 @@
       },
       {
         "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
         "target": "a3"
       },
       {

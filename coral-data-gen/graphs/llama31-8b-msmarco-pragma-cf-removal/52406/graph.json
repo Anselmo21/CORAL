@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Gradual lifestyle change",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 4238,
-    "output_tokens": 2070,
-    "llm_calls": 2,
+    "prompt_tokens": 2509,
+    "output_tokens": 1730,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,112 +41,112 @@
         "layer": "1",
         "type": "question",
         "label": "best ways to lose 50 pounds",
-        "description": "weight loss advice"
+        "description": "The best approaches to weight loss"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "trustworthy sources",
-        "description": "weight loss advice from trustworthy sources"
+        "label": "What are the most trustworthy sources for weight loss advice?",
+        "description": "Sources that provide reliable and evidence-based information"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "perspectives",
-        "description": "different perspectives on weight loss"
+        "label": "What are the best approaches to weight loss from different perspectives?",
+        "description": "Approaches that cater to different needs and goals"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: clinical practice guideline",
-        "description": "trustworthy sources"
+        "description": "Sources that follow established medical guidelines"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed obesity medicine journal",
-        "description": "trustworthy sources"
+        "description": "Sources that are published in reputable scientific journals"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: University of Maryland Medical Center",
-        "description": "trustworthy sources"
+        "description": "Sources that are affiliated with a reputable medical institution"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: online fitness influencer",
-        "description": "trustworthy sources"
+        "description": "Sources that are provided by online fitness influencers"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: commercial diet program",
-        "description": "trustworthy sources"
+        "description": "Sources that are affiliated with commercial diet programs"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: rapid-results-seeker (event-driven)",
-        "description": "rapid weight loss"
+        "description": "Approaches that prioritize quick results"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: comorbid conditions patient",
-        "description": "comorbid conditions"
+        "description": "Approaches that cater to patients with multiple health conditions"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: sustainable-habits seeker",
-        "description": "sustainable habits"
+        "description": "Approaches that prioritize long-term sustainability"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: older adult patient",
-        "description": "older adult patients"
+        "description": "Approaches that cater to older adults"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: gym enthusiast",
-        "description": "gym enthusiasts"
+        "description": "Approaches that prioritize intense exercise"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Gradual lifestyle change",
-        "description": "slow and steady weight loss"
+        "description": "A sustainable and evidence-based approach to weight loss"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Aggressive 3-4 month plan",
-        "description": "rapid weight loss"
+        "description": "A more rapid approach to weight loss"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Doctor-supervised plan",
-        "description": "medical supervision"
+        "description": "A plan that involves regular check-ins with a healthcare professional"
       }
     ],
     "edges": [
@@ -212,7 +212,7 @@
       },
       {
         "source": "c4",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c5",
@@ -224,80 +224,19 @@
       },
       {
         "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
         "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c1",
-        "target": "a1",
-        "relaxed": true
-      },
-      {
-        "source": "c2",
-        "target": "a1",
-        "relaxed": true
       },
       {
         "source": "c8",
-        "target": "a1",
-        "relaxed": true
+        "target": "a3"
       },
       {
         "source": "c9",
-        "target": "a1",
-        "relaxed": true
+        "target": "a3"
       },
       {
         "source": "c10",
-        "target": "a1",
-        "relaxed": true
-      },
-      {
-        "source": "c1",
-        "target": "a3",
-        "relaxed": true
-      },
-      {
-        "source": "c2",
-        "target": "a3",
-        "relaxed": true
-      },
-      {
-        "source": "c4",
-        "target": "a3",
-        "relaxed": true
-      },
-      {
-        "source": "c10",
-        "target": "a3",
-        "relaxed": true
+        "target": "a2"
       }
     ]
   }

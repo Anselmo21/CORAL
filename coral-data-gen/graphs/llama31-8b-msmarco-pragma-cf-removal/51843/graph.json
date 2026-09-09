@@ -19,18 +19,18 @@
     "A 15\" gaming laptop with dedicated GPU (Acer Aspire / Lenovo IdeaPad Gaming)",
     "A mainstream 15\" Dell or ASUS Vivobook touchscreen with large screen + ample RAM"
   ],
-  "baseline_answer": "A premium ultrabook (Dell XPS 13, ASUS Zenbook, or MacBook Air)",
-  "baseline_index": 0,
+  "baseline_answer": "A 15\" gaming laptop with dedicated GPU (Acer Aspire / Lenovo IdeaPad Gaming)",
+  "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3274,
-    "output_tokens": 1556,
-    "llm_calls": 2,
+    "prompt_tokens": 2034,
+    "output_tokens": 2165,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,112 +41,112 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best laptop for under $1000?",
-        "description": ""
+        "description": "Best laptop for under $1000"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the most trustworthy sources for laptop recommendations?",
-        "description": ""
+        "label": "What is the best laptop for under $1000, considering trustworthiness?",
+        "description": "Trustworthiness"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the different perspectives on the best laptops for under $1000?",
-        "description": ""
+        "label": "What is the best laptop for under $1000, considering perspective?",
+        "description": "Perspective"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: PCMag editor recommendation",
-        "description": ""
+        "description": "PCMag editor recommendation"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: PCWorld review",
-        "description": ""
+        "description": "PCWorld review"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: gaming-focused review site",
-        "description": ""
+        "description": "Gaming-focused review site"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Reddit r/SuggestALaptop community",
-        "description": ""
+        "description": "Reddit r/SuggestALaptop community"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: consumer aggregator (CNET / Tom's Guide)",
-        "description": ""
+        "description": "Consumer aggregator"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: PC gamer",
-        "description": ""
+        "description": "PC gamer"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: business / productivity user",
-        "description": ""
+        "description": "Business / productivity user"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: college student / general use",
-        "description": ""
+        "description": "College student / general use"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: frequent traveler / portability priority",
-        "description": ""
+        "description": "Frequent traveler / portability priority"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: casual home user with kids",
-        "description": ""
+        "description": "Casual home user with kids"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A premium ultrabook (Dell XPS 13, ASUS Zenbook, or MacBook Air)",
-        "description": ""
+        "description": "Premium ultrabook"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A 15\" gaming laptop with dedicated GPU (Acer Aspire / Lenovo IdeaPad Gaming)",
-        "description": ""
+        "description": "Gaming laptop"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A mainstream 15\" Dell or ASUS Vivobook touchscreen with large screen + ample RAM",
-        "description": ""
+        "description": "Mainstream laptop"
       }
     ],
     "edges": [
@@ -204,7 +204,67 @@
       },
       {
         "source": "c2",
-        "target": "a3"
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
       },
       {
         "source": "c3",
@@ -212,63 +272,11 @@
       },
       {
         "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
         "target": "a2"
       },
       {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
         "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
         "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
       }
     ]
   }

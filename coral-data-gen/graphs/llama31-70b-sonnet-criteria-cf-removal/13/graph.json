@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Debt and Invest Default): Pay off any high-interest debt first, top up your emergency fund to 3 months, then invest the remainder as a lump sum in a broad index fund \u2014 this order maximizes guaranteed and expected returns.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2322,
-    "output_tokens": 1600,
-    "llm_calls": 2,
+    "prompt_tokens": 1562,
+    "output_tokens": 1728,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,120 +40,103 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What's the smartest thing to do with a $10,000 tax refund?",
-        "description": ""
+        "label": "What's the smartest thing to do with a $10,000 tax refund?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Debt repayment and emergency fund allocation",
-        "description": ""
+        "label": "How to prioritize debt repayment and emergency fund allocation?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Investment strategy",
-        "description": ""
+        "label": "What investment strategy to use?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Benefits and drawbacks of each approach",
-        "description": ""
+        "label": "What are the benefits of tax-advantaged investments and simplicity of deployment?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "elimination of high-interest debt",
-        "description": ""
+        "label": "elimination of high-interest debt"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "emergency fund adequacy",
-        "description": ""
+        "label": "emergency fund adequacy"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "tax-advantaged space availability",
-        "description": ""
+        "label": "tax-advantaged space availability"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "lump-sum vs DCA return optimization",
-        "description": ""
+        "label": "lump-sum vs DCA return optimization"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "regret minimization from market timing",
-        "description": ""
+        "label": "regret minimization from market timing"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "immediate guaranteed return on debt payoff",
-        "description": ""
+        "label": "immediate guaranteed return on debt payoff"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "long-term wealth compounding",
-        "description": ""
+        "label": "long-term wealth compounding"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "psychological comfort with market volatility",
-        "description": ""
+        "label": "psychological comfort with market volatility"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "liquidity preservation",
-        "description": ""
+        "label": "liquidity preservation"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "simplicity of deployment",
-        "description": ""
+        "label": "simplicity of deployment"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Debt and Invest Default",
-        "description": ""
+        "label": "Debt and Invest Default"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Lump Sum Invest",
-        "description": ""
+        "label": "Lump Sum Invest"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "DCA Over 6 Months",
-        "description": ""
+        "label": "DCA Over 6 Months"
       }
     ],
     "edges": [
@@ -270,7 +253,23 @@
         "target": "a2"
       },
       {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
         "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
         "target": "a3"
       },
       {
@@ -279,10 +278,6 @@
       },
       {
         "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
         "target": "a3"
       }
     ]

@@ -19,18 +19,18 @@
     "Natural spray: white vinegar OR salt + soap + water solution",
     "Glyphosate (Roundup) or triclopyr (Brush-B-Gon) herbicide applied to leaves"
   ],
-  "baseline_answer": "Manual pulling with hand tools (snipper, ladder, saw, shovel)",
-  "baseline_index": 0,
+  "baseline_answer": "Glyphosate (Roundup) or triclopyr (Brush-B-Gon) herbicide applied to leaves",
+  "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 4562,
-    "output_tokens": 1912,
-    "llm_calls": 2,
+    "prompt_tokens": 2685,
+    "output_tokens": 2083,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,119 +41,112 @@
         "layer": "1",
         "type": "question",
         "label": "best way to get rid of ivy",
-        "description": "The best way to get rid of ivy."
+        "description": "The best method to remove ivy from a property."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "How to get rid of ivy using manual methods?",
-        "description": "Manual methods to get rid of ivy."
+        "label": "most effective method",
+        "description": "The most effective way to get rid of ivy."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the most effective chemical methods to get rid of ivy?",
-        "description": "Chemical methods to get rid of ivy."
-      },
-      {
-        "id": "sq3",
-        "layer": "2",
-        "type": "subq",
-        "label": "How to get rid of ivy safely and environmentally?",
-        "description": "Safe and environmental methods to get rid of ivy."
+        "label": "safest and most environmentally friendly method",
+        "description": "The safest and most environmentally friendly way to get rid of ivy."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: agricultural extension service guideline",
-        "description": "Agricultural extension service guidelines."
+        "description": "Agricultural extension service guidelines for ivy removal."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed weed science journal",
-        "description": "Peer-reviewed weed science journals."
+        "description": "Peer-reviewed weed science journals on ivy removal."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: organic gardening publication",
-        "description": "Organic gardening publications."
+        "description": "Organic gardening publications on ivy removal."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: home & garden DIY blog",
-        "description": "Home & garden DIY blogs."
+        "description": "Home and garden DIY blogs on ivy removal."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: pesticide industry documentation",
-        "description": "Pesticide industry documentation."
+        "description": "Pesticide industry documentation on ivy removal."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: homeowner with established ivy on building",
-        "description": "Homeowners with established ivy on building."
+        "description": "Homeowners with established ivy on their buildings."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: pet / child-safe priority gardener",
-        "description": "Pet / child-safe priority gardeners."
+        "description": "Gardeners who prioritize pet and child safety."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: small-area weekend gardener",
-        "description": "Small-area weekend gardeners."
+        "description": "Weekend gardeners with small areas to maintain."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: rental tenant",
-        "description": "Rental tenants."
+        "description": "Rental tenants who need to remove ivy."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: large-area ivy patch owner",
-        "description": "Large-area ivy patch owners."
+        "description": "Homeowners with large areas of ivy to remove."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Manual pulling with hand tools (snipper, ladder, saw, shovel)",
-        "description": "Manual pulling with hand tools."
+        "label": "Manual pulling with hand tools",
+        "description": "Using hand tools to manually remove ivy."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Natural spray: white vinegar OR salt + soap + water solution",
-        "description": "Natural spray using white vinegar or salt + soap + water solution."
+        "description": "Using natural sprays to remove ivy."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Glyphosate (Roundup) or triclopyr (Brush-B-Gon) herbicide applied to leaves",
-        "description": "Glyphosate (Roundup) or triclopyr (Brush-B-Gon) herbicide applied to leaves."
+        "description": "Using herbicides to remove ivy."
       }
     ],
     "edges": [
@@ -166,12 +159,24 @@
         "target": "sq2"
       },
       {
-        "source": "q",
-        "target": "sq3"
+        "source": "sq1",
+        "target": "c1"
       },
       {
         "source": "sq1",
-        "target": "c1"
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
       },
       {
         "source": "sq1",
@@ -179,7 +184,23 @@
       },
       {
         "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
         "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
       },
       {
         "source": "sq2",
@@ -187,7 +208,15 @@
       },
       {
         "source": "sq2",
-        "target": "c5"
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
       },
       {
         "source": "sq2",
@@ -198,28 +227,32 @@
         "target": "c8"
       },
       {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c9"
       },
       {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
         "source": "c1",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
         "target": "a1"
       },
       {
         "source": "c3",
         "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
       },
       {
         "source": "c4",
@@ -234,8 +267,12 @@
         "target": "a1"
       },
       {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
         "source": "c7",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c8",
@@ -247,7 +284,7 @@
       },
       {
         "source": "c10",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c1",
@@ -259,15 +296,15 @@
       },
       {
         "source": "c3",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c4",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c5",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c6",
@@ -279,11 +316,11 @@
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c10",

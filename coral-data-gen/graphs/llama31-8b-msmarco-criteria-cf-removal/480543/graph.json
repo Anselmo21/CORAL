@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Smart Electric Drive ($25,750 sticker / ~$18,250 post-rebate)",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2656,
-    "output_tokens": 2048,
-    "llm_calls": 2,
+    "prompt_tokens": 1713,
+    "output_tokens": 2000,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,120 +47,120 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "key features",
-        "description": "vehicle range, fuel efficiency, brand reputation"
+        "label": "driving experience",
+        "description": "related to vehicle range and fuel efficiency"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "costs",
-        "description": "ownership costs, tax incentives"
+        "label": "financial aspects",
+        "description": "related to brand reputation, ownership costs, and tax incentives"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "benefits",
-        "description": "model year, consumer reviews, safety ratings"
+        "label": "car features and performance",
+        "description": "related to model year, consumer reviews, safety ratings, and technology features"
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "distinctive features",
-        "description": "technology features, environmental impact"
+        "label": "environmental impact",
+        "description": "standalone sub-question"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "vehicle range",
-        "description": "distance the vehicle can travel on a single charge"
+        "description": "related to driving experience"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "fuel efficiency",
-        "description": "miles per gallon"
+        "description": "related to driving experience"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "brand reputation",
-        "description": "reputation of the vehicle's manufacturer"
+        "description": "related to financial aspects"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "ownership costs",
-        "description": "total cost of ownership"
+        "description": "related to financial aspects"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "tax incentives",
-        "description": "government incentives for purchasing an electric vehicle"
+        "description": "related to financial aspects"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "model year",
-        "description": "year the vehicle was released"
+        "description": "related to car features and performance"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "consumer reviews",
-        "description": "ratings and reviews from consumers"
+        "description": "related to car features and performance"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "safety ratings",
-        "description": "ratings from safety organizations"
+        "description": "related to car features and performance"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "technology features",
-        "description": "advanced features of the vehicle"
+        "description": "related to car features and performance"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "environmental impact",
-        "description": "impact of the vehicle on the environment"
+        "description": "standalone sub-question"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Honda Civic Hybrid (~$25K, 44/47 mpg)",
-        "description": "a hybrid electric vehicle with a high fuel efficiency"
+        "label": "Honda Civic Hybrid",
+        "description": "44/47 mpg"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Ford Focus Electric ($29,170 / ~$22K post-rebate)",
-        "description": "a hybrid electric vehicle with a high fuel efficiency"
+        "label": "Ford Focus Electric",
+        "description": "29,170 / ~$22K post-rebate"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Smart Electric Drive ($25,750 sticker / ~$18,250 post-rebate)",
-        "description": "a hybrid electric vehicle with a high fuel efficiency"
+        "label": "Smart Electric Drive",
+        "description": "25,750 / ~$18,250 post-rebate"
       }
     ],
     "edges": [
@@ -189,7 +189,7 @@
         "target": "c2"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c3"
       },
       {
@@ -213,7 +213,7 @@
         "target": "c8"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c9"
       },
       {
@@ -222,83 +222,135 @@
       },
       {
         "source": "c1",
-        "target": "a3"
+        "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
+        "source": "c1",
         "target": "a2"
       },
       {
         "source": "c1",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c2",
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
         "source": "c3",
         "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
       },
       {
         "source": "c4",
         "target": "a1"
       },
       {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
         "source": "c5",
         "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
       },
       {
         "source": "c6",
         "target": "a1"
       },
       {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
         "source": "c7",
         "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
       },
       {
         "source": "c8",
         "target": "a1"
       },
       {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
         "source": "c9",
         "target": "a1"
       },
       {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
         "source": "c10",
         "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "a1",
+        "target": "a3"
+      },
+      {
+        "source": "a2",
+        "target": "a3"
+      },
+      {
+        "source": "a1",
+        "target": "a2"
       }
     ]
   }

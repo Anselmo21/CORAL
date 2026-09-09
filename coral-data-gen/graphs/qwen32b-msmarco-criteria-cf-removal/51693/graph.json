@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Whole-foods anti-inflammatory elimination diet",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1893,
+    "output_tokens": 2024,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,112 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best diet to improve thyroid function?",
-        "description": "What is the best diet to improve thyroid function?"
+        "description": "Evaluating dietary strategies for optimal thyroid function."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Nutritional composition and micronutrient support",
-        "description": "Factors related to the nutritional content and micronutrient support of a diet for thyroid function."
+        "label": "Nutrient and mineral content",
+        "description": "Evaluates the presence of essential nutrients like iodine, selenium, zinc, omega-3, and overall micronutrient density."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Dietary structure and food choices",
-        "description": "Factors related to the structure and specific food choices in a diet for thyroid function."
+        "label": "Dietary structure and inflammation",
+        "description": "Evaluates the anti-inflammatory nature of the diet and its avoidance of processed foods and gluten."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "Specific dietary restrictions and balance",
+        "description": "Evaluates the avoidance of goitrogens and the balance of carbohydrates in the diet."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "iodine content",
-        "description": "The presence of iodine, essential for thyroid hormone production."
+        "description": "Amount of iodine in the diet, important for thyroid hormone production."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "selenium content",
-        "description": "The presence of selenium, important for thyroid hormone metabolism."
+        "description": "Amount of selenium, a mineral that supports thyroid hormone metabolism."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "anti-inflammatory profile",
-        "description": "The extent to which a diet reduces inflammation, beneficial for thyroid health."
+        "description": "Whether the diet reduces inflammation, which can negatively affect thyroid function."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "gluten avoidance",
-        "description": "Avoidance of gluten, which may be harmful to thyroid function in some individuals."
+        "description": "Whether the diet avoids gluten, which may interfere with thyroid function in some individuals."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "processed food avoidance",
-        "description": "Avoidance of processed foods, which may be inflammatory or harmful to thyroid health."
+        "description": "Whether the diet avoids processed foods, which may contain additives harmful to thyroid health."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "omega-3 inclusion",
-        "description": "Inclusion of omega-3 fatty acids, which support thyroid and overall health."
+        "description": "Whether the diet includes omega-3 fatty acids, which support thyroid and immune function."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "zinc levels",
-        "description": "The presence of zinc, important for thyroid hormone production and regulation."
+        "description": "Amount of zinc, a mineral that supports thyroid hormone production and conversion."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "goitrogen avoidance",
-        "description": "Avoidance of goitrogens, which may interfere with thyroid function."
+        "description": "Whether the diet avoids goitrogens, which can interfere with iodine uptake by the thyroid."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "carbohydrate balance",
-        "description": "The balance of carbohydrates in the diet, important for energy and thyroid regulation."
+        "description": "Whether the diet balances carbohydrate intake to support thyroid hormone regulation."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "micronutrient density",
-        "description": "The concentration of essential micronutrients in the diet, important for thyroid health."
+        "description": "Whether the diet is rich in a variety of micronutrients that support overall thyroid function."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "High-iodine seafood-rich diet",
-        "description": "A diet focused on high-iodine seafood to support thyroid hormone production."
+        "description": "A diet focused on iodine-rich foods like seafood to support thyroid hormone production."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Whole-foods anti-inflammatory elimination diet",
-        "description": "A diet emphasizing whole, non-processed foods and inflammation reduction to support thyroid function."
+        "description": "A diet emphasizing whole, unprocessed, anti-inflammatory foods while avoiding gluten and processed items."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Supplement-supported regimen",
-        "description": "A regimen emphasizing supplementation to support thyroid function."
+        "description": "A regimen that uses supplements like iodine, selenium, and omega-3 to support thyroid function."
       }
     ],
     "edges": [
@@ -148,6 +164,10 @@
       {
         "source": "q",
         "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
       },
       {
         "source": "sq1",
@@ -182,11 +202,11 @@
         "target": "c5"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c8"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c9"
       },
       {

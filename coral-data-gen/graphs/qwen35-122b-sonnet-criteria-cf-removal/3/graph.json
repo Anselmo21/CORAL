@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (Rent and Invest Default): Rent in Toronto and invest your down payment capital in a diversified portfolio \u2014 the city's extreme price-to-rent ratio means buying only makes financial sense with a 7+ year horizon and strong income stability.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1543,
+    "output_tokens": 2697,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,98 +41,98 @@
         "layer": "1",
         "type": "question",
         "label": "Should I buy or rent in Toronto?",
-        "description": "Decision between buying or renting a home in Toronto given equal affordability."
+        "description": "Decision on housing tenure for a Toronto resident with sufficient funds."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "Financial Mechanics & Returns",
-        "description": "Evaluates the mathematical trade-offs of cash flow, capital investment, and wealth accumulation."
+        "description": "Evaluating wealth, cash flow, and capital efficiency."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Risk & Stability Profile",
-        "description": "Assesses the user's ability to handle volatility, job security, and rent hikes."
+        "label": "Risk, Stability & Discipline",
+        "description": "Evaluating risk tolerance, job stability, and savings discipline."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Lifestyle & Behavioral Factors",
-        "description": "Considers flexibility, mobility, community ties, and savings discipline."
+        "label": "Lifestyle & Mobility",
+        "description": "Evaluating flexibility, community, and lifestyle needs."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "long-term wealth accumulation",
-        "description": "The potential to build net worth over time through equity."
+        "description": "Building net worth over a decade or more."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "monthly cash flow optimization",
-        "description": "Minimizing immediate monthly outflow compared to rent."
+        "description": "Minimizing monthly housing costs relative to income."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "flexibility and mobility",
-        "description": "The ability to relocate easily without selling a property."
+        "description": "Ability to relocate quickly without asset constraints."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "forced savings discipline",
-        "description": "The automatic accumulation of equity through mortgage payments."
+        "description": "Automatic equity building through mortgage payments."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "protection from rent increases",
-        "description": "Locking in housing costs to avoid inflationary rent hikes."
+        "description": "Locking in housing costs via fixed mortgage."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "investment of down payment capital",
-        "description": "The opportunity to invest the down payment elsewhere for higher returns."
+        "description": "Opportunity cost of capital tied up in a down payment."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "job and income stability",
-        "description": "The certainty of future income to service a mortgage."
+        "description": "Reliability of income to support long-term debt."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "short-term financial risk tolerance",
-        "description": "The ability to withstand market volatility and price drops."
+        "description": "Ability to withstand market volatility and rate hikes."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "community and lifestyle stability",
-        "description": "The benefit of staying in one location for social and lifestyle reasons."
+        "description": "Desire to put down roots and stay in one place."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "exposure to real estate appreciation",
-        "description": "The potential gain from rising property values."
+        "description": "Potential for property value to increase over time."
       },
       {
         "id": "a1",
@@ -178,6 +187,10 @@
       },
       {
         "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
         "target": "c5"
       },
       {
@@ -191,10 +204,6 @@
       {
         "source": "sq3",
         "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c4"
       },
       {
         "source": "sq3",
@@ -214,7 +223,7 @@
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c3",
@@ -239,10 +248,6 @@
       {
         "source": "c5",
         "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
       },
       {
         "source": "c6",
@@ -266,7 +271,7 @@
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c9",
@@ -275,10 +280,6 @@
       {
         "source": "c9",
         "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
       },
       {
         "source": "c10",

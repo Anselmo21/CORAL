@@ -21,10 +21,20 @@
   ],
   "baseline_answer": "Answer A (Lifestyle First Default): Try intensive diet and exercise for 3\u20136 months before starting medication if your HbA1c is below 8\u20139% \u2014 lifestyle intervention can achieve comparable glucose control and potentially full remission without medication side effects.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 2,
+  "usage": {
+    "prompt_tokens": 7605,
+    "output_tokens": 6281,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,91 +42,91 @@
         "layer": "1",
         "type": "question",
         "label": "Should I try to manage it with diet and exercise first, or start medication right away?",
-        "description": "Core question regarding initial management strategy for newly diagnosed type 2 diabetes."
+        "description": "Main question regarding initial management of newly diagnosed type 2 diabetes."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the standard approach for a patient with mild elevation and high motivation?",
-        "description": "Focuses on the mild case scenario where lifestyle intervention is often preferred."
+        "label": "Standard of care for mild elevation and high motivation",
+        "description": "Focuses on the default pathway for patients with HbA1c < 9%."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the general clinical perspective on starting medication immediately?",
-        "description": "Focuses on the safety net approach where medication is started alongside lifestyle changes."
+        "label": "Recommended approach for high HbA1c or significant symptoms",
+        "description": "Focuses on the exception where lifestyle is insufficient."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the protocol for a patient with high HbA1c or significant symptoms?",
-        "description": "Focuses on the severe case scenario requiring immediate medication to prevent complications."
+        "label": "Influence of trustworthiness perspectives on immediate medication",
+        "description": "Focuses on the debate between clinical guidelines and consumer/community views."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Filters sources to only those published in 2023."
+        "description": "Filters for sources published in 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Filters sources to those published between 2021 and 2023."
+        "description": "Filters for sources published between 2021 and 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Filters sources to those from the United States."
+        "description": "Filters for sources from the USA."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient with mild elevation and high motivation",
-        "description": "Filters for the mild patient perspective."
+        "description": "Filters for the mild patient scenario."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient with high HbA1c or significant symptoms",
-        "description": "Filters for the severe patient perspective."
+        "description": "Filters for the severe patient scenario."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Clinical endocrinologist or GP",
-        "description": "Filters for the clinical professional perspective."
+        "description": "Filters for clinical professional perspective."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Peer-reviewed clinical trials",
-        "description": "Filters for peer-reviewed clinical trial data."
+        "description": "Filters for peer-reviewed evidence."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Medical institution guidance",
-        "description": "Filters for guidance from major medical institutions."
+        "description": "Filters for guidance from medical institutions."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer health information",
-        "description": "Filters for consumer health information sources."
+        "description": "Filters for consumer health sites."
       },
       {
         "id": "c10",
@@ -137,7 +147,7 @@
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Immediate Medication)",
-        "description": "Start metformin immediately alongside lifestyle changes\u2014it's safe, cheap, well-tolerated, and provides a metabolic safety net."
+        "description": "Start metformin immediately alongside lifestyle changes \u2014 it's safe, cheap, well-tolerated, and provides a metabolic safety net."
       },
       {
         "id": "a3",
@@ -189,18 +199,6 @@
         "target": "c8"
       },
       {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
-      },
-      {
-        "source": "sq2",
-        "target": "c1"
-      },
-      {
         "source": "sq2",
         "target": "c2"
       },
@@ -210,43 +208,35 @@
       },
       {
         "source": "sq2",
-        "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c8"
-      },
-      {
-        "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
-        "source": "sq3",
-        "target": "c2"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
         "target": "c5"
       },
       {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
         "source": "sq3",
         "target": "c6"
       },
       {
         "source": "sq3",
-        "target": "c7"
+        "target": "c9"
       },
       {
         "source": "sq3",
-        "target": "c8"
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -269,14 +259,6 @@
         "target": "a1"
       },
       {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
         "source": "c9",
         "target": "a1"
       },
@@ -293,11 +275,11 @@
         "target": "a2"
       },
       {
-        "source": "c6",
+        "source": "c4",
         "target": "a2"
       },
       {
-        "source": "c8",
+        "source": "c6",
         "target": "a2"
       },
       {
@@ -330,6 +312,14 @@
       },
       {
         "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
         "target": "a3"
       }
     ]

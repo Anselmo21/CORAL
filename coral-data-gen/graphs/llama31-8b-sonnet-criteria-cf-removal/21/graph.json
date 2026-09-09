@@ -19,18 +19,18 @@
     "Answer B (Statins for Elevated Risk): Start statins now if you have a family history of early heart disease, multiple risk factors, or a 10-year cardiovascular risk above 7.5% \u2014 the absolute risk reduction from statins outweighs side effect concerns.",
     "Answer C (Risk Calculator First): Use a cardiovascular risk calculator with your physician before deciding \u2014 statin benefit depends on baseline risk, not cholesterol level alone, and the decision should be individualized to your complete risk profile."
   ],
-  "baseline_answer": "Answer A (Lifestyle First Default): Try dietary changes and exercise for 3\u20136 months first \u2014 for borderline cholesterol with low cardiovascular risk, lifestyle intervention can achieve meaningful LDL reduction without medication side effects.",
-  "baseline_index": 0,
+  "baseline_answer": "Answer C (Risk Calculator First): Use a cardiovascular risk calculator with your physician before deciding \u2014 statin benefit depends on baseline risk, not cholesterol level alone, and the decision should be individualized to your complete risk profile.",
+  "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2307,
-    "output_tokens": 1760,
-    "llm_calls": 2,
+    "prompt_tokens": 1553,
+    "output_tokens": 2004,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,127 +40,120 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should I start statins or try to manage borderline high cholesterol with lifestyle changes first?",
-        "description": "Manage borderline high cholesterol"
+        "label": "Should I start statins or try to manage it with lifestyle changes first for borderline high cholesterol?",
+        "description": "Borderline high cholesterol management decision"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is my cardiovascular risk level?",
-        "description": "Cardiovascular risk"
+        "label": "What is my 10-year cardiovascular risk score?",
+        "description": "Risk assessment for statin decision"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How likely am I to tolerate statin side effects?",
-        "description": "Statin side effects"
+        "label": "Do I have a family history of heart disease or multiple risk factors?",
+        "description": "Risk factor assessment for statin decision"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Can I achieve meaningful LDL reduction through lifestyle changes?",
-        "description": "Lifestyle changes"
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "What are my individual risk factors and profile?",
-        "description": "Individual risk factors"
+        "label": "How effective are lifestyle changes in reducing LDL cholesterol?",
+        "description": "Lifestyle change effectiveness assessment"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "10-year cardiovascular risk score",
-        "description": "Risk score"
+        "description": "Risk assessment for statin decision"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "prior cardiovascular events",
-        "description": "Cardiovascular events"
+        "label": "family history of heart disease",
+        "description": "Risk factor assessment for statin decision"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "statin side effect tolerance",
-        "description": "Statin side effects"
+        "label": "LDL reduction achievable through diet",
+        "description": "Lifestyle change effectiveness assessment"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "LDL reduction achievable through diet",
-        "description": "Dietary LDL reduction"
+        "label": "statin side effect tolerance",
+        "description": "Side effect consideration for statin decision"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "patient motivation for lifestyle change",
-        "description": "Lifestyle motivation"
+        "description": "Lifestyle change effectiveness assessment"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "access to dietary counseling",
-        "description": "Dietary counseling"
+        "label": "speed of risk reduction needed",
+        "description": "Risk reduction consideration for statin decision"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "age and comorbidity profile",
-        "description": "Age and comorbidities"
+        "description": "Risk factor assessment for statin decision"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "family history of heart disease",
-        "description": "Family history"
+        "label": "prior cardiovascular events",
+        "description": "Risk factor assessment for statin decision"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "multiple risk factors",
-        "description": "Multiple risk factors"
+        "label": "access to dietary counseling",
+        "description": "Lifestyle change effectiveness assessment"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "long-term medication adherence",
-        "description": "Medication adherence"
+        "description": "Medication consideration for statin decision"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (Lifestyle First Default)",
-        "description": "Lifestyle first"
+        "label": "Answer A (Lifestyle First Default): Try dietary changes and exercise for 3\u20136 months first \u2014 for borderline cholesterol with low cardiovascular risk, lifestyle intervention can achieve meaningful LDL reduction without medication side effects.",
+        "description": "Lifestyle change recommendation"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (Statins for Elevated Risk)",
-        "description": "Statins for elevated risk"
+        "label": "Answer B (Statins for Elevated Risk): Start statins now if you have a family history of early heart disease, multiple risk factors, or a 10-year cardiovascular risk above 7.5% \u2014 the absolute risk reduction from statins outweighs side effect concerns.",
+        "description": "Statin recommendation"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (Risk Calculator First)",
-        "description": "Risk calculator first"
+        "label": "Answer C (Risk Calculator First): Use a cardiovascular risk calculator with your physician before deciding \u2014 statin benefit depends on baseline risk, not cholesterol level alone, and the decision should be individualized to your complete risk profile.",
+        "description": "Risk assessment recommendation"
       }
     ],
     "edges": [
@@ -177,24 +170,16 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
-      },
-      {
         "source": "sq1",
         "target": "c1"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c2"
       },
       {
-        "source": "sq2",
-        "target": "c3"
-      },
-      {
         "source": "sq3",
-        "target": "c4"
+        "target": "c3"
       },
       {
         "source": "sq3",
@@ -202,31 +187,15 @@
       },
       {
         "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq4",
-        "target": "c7"
-      },
-      {
-        "source": "sq4",
-        "target": "c8"
-      },
-      {
-        "source": "sq4",
         "target": "c9"
       },
       {
-        "source": "sq4",
-        "target": "c10"
-      },
-      {
         "source": "c1",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c2",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c3",
@@ -237,16 +206,20 @@
         "target": "a1"
       },
       {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
         "source": "c5",
         "target": "a1"
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c7",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c8",
@@ -254,35 +227,79 @@
       },
       {
         "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c10",
         "target": "a2"
       },
       {
-        "source": "c1",
-        "target": "a3"
+        "source": "a1",
+        "target": "c1"
       },
       {
-        "source": "c5",
-        "target": "a3"
+        "source": "a2",
+        "target": "c1"
       },
       {
-        "source": "c7",
-        "target": "a3"
+        "source": "a2",
+        "target": "c2"
       },
       {
-        "source": "c9",
-        "target": "a3"
+        "source": "a2",
+        "target": "c4"
+      },
+      {
+        "source": "a2",
+        "target": "c6"
+      },
+      {
+        "source": "a2",
+        "target": "c7"
+      },
+      {
+        "source": "a2",
+        "target": "c8"
+      },
+      {
+        "source": "a2",
+        "target": "c10"
+      },
+      {
+        "source": "a3",
+        "target": "c1"
+      },
+      {
+        "source": "a3",
+        "target": "c2"
+      },
+      {
+        "source": "a3",
+        "target": "c3"
+      },
+      {
+        "source": "a3",
+        "target": "c5"
+      },
+      {
+        "source": "a3",
+        "target": "c6"
+      },
+      {
+        "source": "a3",
+        "target": "c7"
+      },
+      {
+        "source": "a3",
+        "target": "c8"
+      },
+      {
+        "source": "a3",
+        "target": "c9"
+      },
+      {
+        "source": "a3",
+        "target": "c10"
       }
     ]
   }

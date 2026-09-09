@@ -21,10 +21,20 @@
   ],
   "baseline_answer": "Answer B (PhD for Research Roles): Do a PhD if your goal is a research scientist role at a top AI lab \u2014 these positions are effectively closed to non-PhDs regardless of skill, and the credential is genuinely required for frontier ML work.",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 2,
+  "usage": {
+    "prompt_tokens": 7619,
+    "output_tokens": 6092,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,98 +42,98 @@
         "layer": "1",
         "type": "question",
         "label": "Is a PhD in data science worth it for industry careers?",
-        "description": "The core question regarding the value of a PhD for industry employment."
+        "description": "Main question regarding the value of a PhD for industry."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Is a PhD necessary for general industry roles?",
-        "description": "Focuses on standard product/analytics roles, time cost, and financial ROI."
+        "label": "Is a PhD necessary for general industry data science roles?",
+        "description": "Focuses on standard industry roles, time cost, and financial break-even."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Is a PhD required for top AI research roles?",
-        "description": "Focuses on the mandatory nature of PhDs for frontier research and lab positions."
+        "label": "Is a PhD required for research scientist roles at top AI labs?",
+        "description": "Focuses on hard requirements for frontier research positions."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Does a PhD offer intrinsic value for specialization?",
-        "description": "Focuses on academic careers, deep specialization, and non-monetary benefits."
+        "label": "Does a PhD offer intrinsic value for academic or deep specialization?",
+        "description": "Focuses on non-financial benefits and academic career paths."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Filters for the most recent data on industry trends."
+        "description": "Filters for sources published in 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Filters for recent workforce data covering the break-even analysis period."
+        "description": "Filters for sources published between 2021 and 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Filters for the US job market context."
+        "description": "Filters for sources focused on the US market."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: UK / Global AI research ecosystem",
-        "description": "Filters for the global research landscape and top AI labs."
+        "description": "Filters for sources focused on UK or global research hubs."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Aspiring research scientist at AI lab",
-        "description": "Filters for the viewpoint of someone targeting research roles."
+        "description": "Filters for the perspective of someone aiming for a research role."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Industry data scientist focused on product/analytics roles",
-        "description": "Filters for the viewpoint of someone targeting standard industry roles."
+        "description": "Filters for the perspective of a general industry practitioner."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: ML practitioner publication",
-        "description": "Prioritizes sources based on academic/research publications."
+        "description": "Filters for articles by practitioners."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Workforce data report",
-        "description": "Prioritizes sources based on employment statistics and salary reports."
+        "description": "Filters for official workforce data reports."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Data science community peer advice",
-        "description": "Prioritizes sources based on community consensus and peer experience."
+        "description": "Filters for community consensus and peer advice."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: AI research lab perspective",
-        "description": "Prioritizes sources from leading AI research institutions."
+        "description": "Filters for official perspectives from AI research labs."
       },
       {
         "id": "a1",
@@ -162,6 +172,10 @@
       },
       {
         "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
         "target": "c2"
       },
       {
@@ -171,6 +185,10 @@
       {
         "source": "sq1",
         "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
       },
       {
         "source": "sq1",
@@ -190,15 +208,7 @@
       },
       {
         "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
         "target": "c10"
-      },
-      {
-        "source": "sq3",
-        "target": "c1"
       },
       {
         "source": "sq3",
@@ -206,39 +216,31 @@
       },
       {
         "source": "sq3",
-        "target": "c3"
+        "target": "c7"
       },
       {
         "source": "sq3",
-        "target": "c6"
+        "target": "c8"
       },
       {
         "source": "sq3",
         "target": "c9"
       },
       {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
         "source": "c1",
         "target": "a2"
       },
       {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
         "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c4",
@@ -250,15 +252,39 @@
       },
       {
         "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c7",
         "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
       },
       {
         "source": "c8",
@@ -269,12 +295,24 @@
         "target": "a1"
       },
       {
-        "source": "c9",
+        "source": "c1",
         "target": "a3"
       },
       {
-        "source": "c10",
-        "target": "a2"
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
       }
     ]
   }

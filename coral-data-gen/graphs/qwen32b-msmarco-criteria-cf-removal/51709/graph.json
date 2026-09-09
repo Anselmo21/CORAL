@@ -20,10 +20,19 @@
   ],
   "baseline_answer": "A multi-symptom OTC like NyQuil or Tylenol Cold Multi Symptom Nighttime",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2161,
+    "output_tokens": 2085,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -31,119 +40,112 @@
         "layer": "1",
         "type": "question",
         "label": "Which medication best relieves a common cold?",
-        "description": "Evaluate the best medication for treating a common cold based on multiple criteria."
+        "description": "Which medication best relieves a common cold?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Which symptoms does the medication address?",
-        "description": "Evaluate the range of symptoms the medication is intended to treat."
+        "label": "Symptom Relief Efficacy",
+        "description": "How well the medication addresses cold symptoms."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How quickly does the medication work and how long does it last?",
-        "description": "Evaluate the speed of onset and duration of symptom relief."
+        "label": "Safety and Tolerability",
+        "description": "How safe and well-tolerated the medication is."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the safety and tolerability concerns?",
-        "description": "Evaluate the side effect profile and drug interaction risks."
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "What is the practicality and cost?",
-        "description": "Evaluate the price, formulation, and ease of use."
+        "label": "Practical Considerations",
+        "description": "How practical the medication is to use."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "symptom coverage",
-        "description": "How many and which symptoms does the medication address?"
+        "description": "How many cold symptoms the medication addresses."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "onset speed",
-        "description": "How quickly does the medication begin to work?"
+        "description": "How quickly the medication starts working."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "duration of relief",
-        "description": "How long does the medication provide symptom relief?"
+        "description": "How long the medication provides relief."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "side effect profile",
-        "description": "What are the common and serious side effects?"
+        "description": "The types and severity of side effects."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "drowsiness factor",
-        "description": "Does the medication cause drowsiness or alertness?"
+        "description": "Whether the medication causes drowsiness."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "drug interactions",
-        "description": "Does the medication interact with other drugs or conditions?"
+        "description": "Potential interactions with other medications."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "age suitability",
-        "description": "Is the medication appropriate for all age groups?"
+        "description": "Whether the medication is safe for all age groups."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "price",
-        "description": "What is the cost of the medication?"
+        "description": "The cost of the medication."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "dosing frequency",
-        "description": "How often must the medication be taken?"
+        "description": "How often the medication needs to be taken."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "formulation type",
-        "description": "Is the medication a pill, liquid, or other form?"
+        "description": "The form of the medication (e.g., pill, liquid)."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "An NSAID (ibuprofen / Advil or naproxen / Aleve)",
-        "description": "A single-symptom medication for fever, pain, and inflammation."
+        "description": "An NSAID like ibuprofen or naproxen."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A multi-symptom OTC like NyQuil or Tylenol Cold Multi Symptom Nighttime",
-        "description": "A combination medication for multiple cold symptoms including fever, cough, and congestion."
+        "description": "A multi-symptom OTC like NyQuil or Tylenol Cold Multi Symptom Nighttime."
       }
     ],
     "edges": [
@@ -160,47 +162,43 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
-      },
-      {
         "source": "sq1",
         "target": "c1"
       },
       {
-        "source": "sq2",
+        "source": "sq1",
         "target": "c2"
       },
       {
-        "source": "sq2",
+        "source": "sq1",
         "target": "c3"
       },
       {
         "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
         "target": "c9"
       },
       {
         "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
-      },
-      {
-        "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq4",
-        "target": "c8"
-      },
-      {
-        "source": "sq4",
         "target": "c10"
       },
       {
@@ -256,11 +254,11 @@
         "target": "a1"
       },
       {
-        "source": "c5",
+        "source": "c6",
         "target": "a1"
       },
       {
-        "source": "c6",
+        "source": "c7",
         "target": "a1"
       },
       {

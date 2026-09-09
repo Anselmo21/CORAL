@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Low-impact aerobic exercise (walking, swimming, cycling)",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1929,
+    "output_tokens": 2284,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,126 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "Which type of exercise best protects aging joints?",
-        "description": "Evaluating the best exercise type for protecting aging joints."
+        "description": "Evaluating the best exercise for joint health in aging individuals."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the physical benefits of the exercise for aging joints?",
-        "description": "Criteria related to the direct physical benefits for joints and mobility."
+        "label": "What are the physical benefits of the exercise for joint health?",
+        "description": "Evaluates how the exercise affects joint mobility, strength, and stress."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the practical and long-term considerations for aging individuals?",
-        "description": "Criteria related to accessibility and sustainability for long-term use."
+        "label": "What are the accessibility and practicality factors?",
+        "description": "Evaluates how easy and sustainable the exercise is for aging individuals."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the risks and side effects of the exercise on aging joints?",
-        "description": "Criteria related to potential harm or stress on joints."
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "What are the secondary health benefits of the exercise?",
-        "description": "Criteria related to broader health benefits beyond joint protection."
+        "label": "What are the broader health benefits beyond joint protection?",
+        "description": "Evaluates how the exercise affects overall health, including cardiovascular and balance."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "low-impact intensity",
-        "description": "Whether the exercise is low-impact to reduce joint stress."
+        "description": "Exercises that minimize stress on joints."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "range-of-motion benefit",
-        "description": "Whether the exercise improves joint range of motion and flexibility."
+        "description": "Improves joint flexibility and reduces stiffness."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "muscle-strengthening effect",
-        "description": "Whether the exercise strengthens the muscles supporting the joints."
+        "description": "Builds muscle to support and protect joints."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "accessibility for beginners",
-        "description": "Whether the exercise is easy to start for individuals with limited mobility."
+        "description": "How easy it is to start and continue the exercise."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "equipment requirements",
-        "description": "Whether the exercise requires specialized or minimal equipment."
+        "description": "What tools or gear are needed to perform the exercise."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "cardiovascular benefit",
-        "description": "Whether the exercise improves heart and lung health."
+        "description": "Improves heart and lung function."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "joint stress level",
-        "description": "Whether the exercise causes stress or damage to aging joints."
+        "description": "How much the exercise puts pressure on the joints."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "balance training",
-        "description": "Whether the exercise improves balance and coordination."
+        "description": "Improves stability and reduces fall risk."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "flexibility improvement",
-        "description": "Whether the exercise increases joint flexibility."
+        "description": "Enhances range of motion and reduces stiffness."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "sustainability over time",
-        "description": "Whether the exercise can be maintained long-term without injury."
+        "description": "How long the exercise can be maintained without injury."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Low-impact aerobic exercise (walking, swimming, cycling)",
-        "description": "Best for protecting aging joints due to low impact and cardiovascular benefits."
+        "description": "Best for joint protection due to low stress and cardiovascular benefits."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Strength training with bands or light weights",
-        "description": "Best for building muscle support around aging joints."
+        "description": "Builds muscle to support joints, but may be higher impact."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Range-of-motion / flexibility work (yoga, tai chi, dancing)",
-        "description": "Best for maintaining joint mobility and flexibility."
+        "description": "Improves joint mobility and flexibility, but may lack cardiovascular benefits."
       }
     ],
     "edges": [
@@ -168,10 +170,6 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
-      },
-      {
         "source": "sq1",
         "target": "c2"
       },
@@ -181,7 +179,15 @@
       },
       {
         "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
         "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
       },
       {
         "source": "sq2",
@@ -197,18 +203,10 @@
       },
       {
         "source": "sq3",
-        "target": "c1"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq4",
         "target": "c6"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c8"
       },
       {
@@ -282,10 +280,6 @@
       {
         "source": "c7",
         "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
       },
       {
         "source": "c8",

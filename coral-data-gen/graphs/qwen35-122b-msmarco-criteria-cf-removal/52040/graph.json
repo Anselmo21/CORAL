@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Murad Redness Therapy 3-part system",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1661,
+    "output_tokens": 2300,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "best skin care for redness",
-        "description": "Identifying the optimal skincare solution for redness."
+        "description": "The primary question asking for the optimal skincare solution for redness."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Product Efficacy & Formulation",
-        "description": "How well does the product address the condition and what is in it?"
+        "label": "Comprehensive Care & Safety",
+        "description": "Evaluates the holistic safety and coverage of the routine for sensitive, redness-prone skin."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "User Suitability & Experience",
-        "description": "How does the product fit the user's skin and lifestyle?"
+        "label": "Targeted Efficacy & Formulation",
+        "description": "Evaluates the specific active ingredients and the structure of the product regimen."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Market & Accessibility Factors",
-        "description": "What are the brand and cost considerations?"
+        "label": "Practicality & User Factors",
+        "description": "Evaluates cost, brand trust, and the user's personal experience with the product."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "skin condition type",
-        "description": "Specifics of the redness (rosacea, aging, acne) requiring tailored care."
+        "description": "The specific nature of the redness (e.g., rosacea) requiring specialized care."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "ingredient sensitivity",
-        "description": "Avoidance of irritants like fragrances and harsh chemicals."
+        "description": "The need to avoid irritants like fragrances and harsh chemicals."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "product formulation",
-        "description": "Completeness and scientific backing of the product mix."
+        "description": "The quality and balance of the ingredients within the product."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "application method",
-        "description": "Ease and complexity of the daily routine steps."
+        "description": "The steps and routine required to apply the products effectively."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "sun protection",
-        "description": "Inclusion of SPF to prevent sun damage and irritation."
+        "description": "The inclusion of SPF to prevent sun-induced redness."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "targeted treatment",
-        "description": "Ability to address multiple symptoms (redness, bumps, wrinkles) simultaneously."
+        "description": "Specific actives designed to reduce visible redness immediately."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "skin type compatibility",
-        "description": "Suitability for sensitive or delicate skin types."
+        "description": "How well the product suits the user's specific skin texture and sensitivity."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "brand reputation",
-        "description": "Trust in the manufacturer's expertise with redness conditions."
+        "description": "The trustworthiness and track record of the manufacturer."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "price range",
-        "description": "Affordability of the solution."
+        "description": "The cost of the skincare solution."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "user experience",
-        "description": "Overall satisfaction and feeling of the products on skin."
+        "description": "The overall satisfaction and ease of use for the consumer."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Murad Redness Therapy 3-part system",
-        "description": "Comprehensive system with cleanser, gel, and SPF moisturizer."
+        "description": "A complete, branded system with cleanser, treatment, and SPF moisturizer."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A caffeine-based anti-redness serum",
-        "description": "Single product targeting visible redness with vasoconstrictors."
+        "description": "A single product focused on vasoconstriction to reduce redness."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Build-your-own minimalist routine",
-        "description": "Custom selection of products by the user."
+        "description": "A customizable approach where the user selects individual products."
       }
     ],
     "edges": [
@@ -170,15 +179,15 @@
       },
       {
         "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "sq1",
         "target": "c5"
       },
       {
         "source": "sq1",
-        "target": "c6"
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
       },
       {
         "source": "sq2",
@@ -186,11 +195,7 @@
       },
       {
         "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
+        "target": "c6"
       },
       {
         "source": "sq3",
@@ -201,20 +206,16 @@
         "target": "c9"
       },
       {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
         "source": "c1",
         "target": "a1"
       },
       {
         "source": "c2",
         "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
       },
       {
         "source": "c3",
@@ -237,14 +238,6 @@
         "target": "a1"
       },
       {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
         "source": "c8",
         "target": "a1"
       },
@@ -253,20 +246,40 @@
         "target": "a1"
       },
       {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
         "source": "c10",
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
         "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",

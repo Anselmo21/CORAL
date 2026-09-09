@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (Effective Tool Default): Intermittent fasting is an effective weight loss approach for many people \u2014 not because of metabolic magic, but because restricting eating windows is a sustainable way to reduce total calorie intake.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1558,
+    "output_tokens": 3855,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -38,43 +47,43 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Mechanism and Efficacy Evidence",
-        "description": "Evaluates the physiological mechanisms and trial data regarding weight loss."
+        "label": "Does IF offer unique physiological advantages?",
+        "description": "Focuses on metabolic mechanisms and specific health benefits beyond weight."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Adherence and Lifestyle Fit",
-        "description": "Evaluates how easy the diet is to maintain and fit into daily life."
+        "label": "Is IF effective primarily due to calorie reduction and evidence?",
+        "description": "Focuses on the core mechanism of calorie deficit and clinical trial outcomes."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Specific Metabolic Advantages",
-        "description": "Evaluates potential health benefits beyond simple weight reduction."
+        "label": "Does IF offer practical lifestyle advantages?",
+        "description": "Focuses on adherence, simplicity, and social/age applicability."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "total calorie reduction effectiveness",
-        "description": "The degree to which IF reduces total calorie intake."
+        "description": "The extent to which IF reduces total calorie intake."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "long-term adherence and sustainability",
-        "description": "The ability of users to stick to the diet over extended periods."
+        "description": "The ability of users to maintain the diet over time."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "metabolic benefits beyond calorie restriction",
-        "description": "Health improvements not solely explained by calorie deficit."
+        "description": "Physiological improvements not solely explained by calorie deficit."
       },
       {
         "id": "c4",
@@ -88,35 +97,35 @@
         "layer": "3",
         "type": "concept",
         "label": "simplicity vs calorie counting",
-        "description": "The ease of following IF compared to tracking calories."
+        "description": "The ease of following IF compared to traditional calorie counting."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "insulin sensitivity improvement",
-        "description": "The effect of IF on insulin response and sensitivity."
+        "description": "Specific metabolic improvement in insulin response."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "suitability for social eating patterns",
-        "description": "How well IF fits with social dining and events."
+        "description": "How well IF fits into social dining and events."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "evidence from long-term randomized trials",
-        "description": "Data from rigorous long-term studies comparing IF to other diets."
+        "description": "Clinical data from long-term studies comparing IF to other diets."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "applicability across different age groups",
-        "description": "Whether IF is safe and effective for various ages."
+        "description": "Suitability of IF for various age demographics."
       },
       {
         "id": "c10",
@@ -130,21 +139,21 @@
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Effective Tool Default)",
-        "description": "IF is effective primarily due to sustainable calorie reduction."
+        "description": "Intermittent fasting is an effective weight loss approach for many people \u2014 not because of metabolic magic, but because restricting eating windows is a sustainable way to reduce total calorie intake."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (No Better Than Calorie Restriction)",
-        "description": "IF is not superior; adherence is the only predictor."
+        "description": "Intermittent fasting is not superior to regular calorie restriction for weight loss \u2014 choose whichever dietary pattern you can sustain long-term, as adherence is the only meaningful predictor of outcome."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Metabolic Benefits Beyond Weight)",
-        "description": "IF offers metabolic benefits beyond simple calorie reduction."
+        "description": "IF may offer metabolic benefits including improved insulin sensitivity and circadian alignment beyond simple calorie reduction \u2014 worth trying if you respond well to structure and want broader metabolic health benefits."
       }
     ],
     "edges": [
@@ -162,15 +171,11 @@
       },
       {
         "source": "sq1",
-        "target": "c1"
+        "target": "c3"
       },
       {
         "source": "sq1",
-        "target": "c4"
-      },
-      {
-        "source": "sq1",
-        "target": "c8"
+        "target": "c6"
       },
       {
         "source": "sq1",
@@ -178,27 +183,31 @@
       },
       {
         "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
         "target": "c2"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
         "target": "c5"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c7"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c6"
       },
       {
         "source": "c1",
@@ -214,7 +223,7 @@
       },
       {
         "source": "c2",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c3",

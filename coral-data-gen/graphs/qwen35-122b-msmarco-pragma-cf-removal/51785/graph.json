@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "A Storm of Swords",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2061,
+    "output_tokens": 2516,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best game of thrones book?",
-        "description": "Identify the single best book in the series."
+        "description": "Identify the best book in the series based on provided criteria."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Critical and commercial peak",
-        "description": "Which book has the highest aggregated ratings, professional reviews, and sales?"
+        "label": "Which book is the critical and fan consensus peak?",
+        "description": "Focuses on aggregated ratings, critic reviews, and hardcore fan opinions."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Best entry point",
-        "description": "Which book is most accessible for new readers and TV viewers?"
+        "label": "Which book is the best entry point for new audiences?",
+        "description": "Focuses on accessibility for newcomers and TV watchers."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Depth for dedicated fans",
-        "description": "Which book offers the most complexity and lore for hardcore fans?"
+        "label": "Which book offers the deepest character study?",
+        "description": "Focuses on narrative depth and character development over plot speed."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Goodreads aggregated ratings",
-        "description": "Prioritize source: Goodreads user ratings."
+        "description": "Prioritizes community voting data."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: professional literary critic review",
-        "description": "Prioritize source: Professional critic reviews."
+        "description": "Prioritizes professional critical analysis."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: fan / fantasy community forum (r/asoiaf)",
-        "description": "Prioritize source: Hardcore fan community consensus."
+        "description": "Prioritizes dedicated fan community discussions."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: publisher-curated reading guide",
-        "description": "Prioritize source: Official publisher recommendations."
+        "description": "Prioritizes official publisher recommendations."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: general bookseller bestseller list",
-        "description": "Prioritize source: Mass market sales data."
+        "description": "Prioritizes sales volume and popularity."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: new reader / series newcomer",
-        "description": "Prioritize source: Accessibility for beginners."
+        "description": "Prioritizes accessibility and introduction to the world."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: longtime hardcore fan",
-        "description": "Prioritize source: Depth and lore appreciation."
+        "description": "Prioritizes lore depth and series continuity."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: reader who prefers action / dramatic plot",
-        "description": "Prioritize source: High-octane plot events."
+        "description": "Prioritizes pacing and battle scenes."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: reader who prefers character study",
-        "description": "Prioritize source: Deep character development."
+        "description": "Prioritizes internal monologues and character arcs."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: TV-series watcher exploring books",
-        "description": "Prioritize source: Alignment with TV show narrative."
+        "description": "Prioritizes alignment with the show's narrative."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A Storm of Swords",
-        "description": "The narrative peak with the most action and character arcs."
+        "description": "The consensus peak of the series."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A Game of Thrones",
-        "description": "The foundational entry with the highest accessibility."
+        "description": "The foundational entry point."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A Dance with Dragons",
-        "description": "The deep lore book favored by hardcore fans."
+        "description": "The book with deep character exploration."
       }
     ],
     "edges": [
@@ -170,11 +179,15 @@
       },
       {
         "source": "sq1",
-        "target": "c4"
+        "target": "c3"
       },
       {
         "source": "sq1",
-        "target": "c5"
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
       },
       {
         "source": "sq2",
@@ -185,16 +198,12 @@
         "target": "c10"
       },
       {
-        "source": "sq3",
-        "target": "c3"
+        "source": "sq2",
+        "target": "c5"
       },
       {
         "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c8"
+        "target": "c4"
       },
       {
         "source": "sq3",
@@ -205,68 +214,24 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
         "source": "c2",
         "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
       },
       {
         "source": "c3",
         "target": "a1"
       },
       {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
         "source": "c4",
         "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
       },
       {
         "source": "c5",
         "target": "a1"
       },
       {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
         "source": "c7",
         "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
       },
       {
         "source": "c8",
@@ -277,20 +242,28 @@
         "target": "a1"
       },
       {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
         "source": "c10",
         "target": "a1"
       },
       {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
         "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       }
     ]
   }

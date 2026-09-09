@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (Effective Tool Default): Intermittent fasting is an effective weight loss approach for many people \u2014 not because of metabolic magic, but because restricting eating windows is a sustainable way to reduce total calorie intake.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1675,
+    "output_tokens": 2874,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -38,71 +47,71 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What does clinical evidence say about IF's mechanism and efficacy?",
-        "description": "Focuses on trials and medical guidance regarding weight loss mechanisms."
+        "label": "Is IF a sustainable tool for weight loss?",
+        "description": "Focuses on adherence, sustainability, and practical effectiveness."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How does IF perform in terms of sustainability and real-world adherence?",
-        "description": "Focuses on patient perspectives and community experiences regarding long-term use."
+        "label": "Is IF superior to standard calorie restriction?",
+        "description": "Focuses on comparative efficacy and head-to-head trial data."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Are there metabolic benefits beyond simple calorie reduction?",
-        "description": "Focuses on research into insulin sensitivity and circadian alignment."
+        "label": "Does IF offer metabolic benefits beyond weight loss?",
+        "description": "Focuses on physiological mechanisms like insulin sensitivity."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Prioritizes the most recent data from 2023."
+        "description": "Filters for the most recent data."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Prioritizes data from the last three years."
+        "description": "Filters for recent 3-year data."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Prioritizes sources from the United States."
+        "description": "Filters for US-based sources."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Evidence-based skeptic of diet trends",
-        "description": "Prioritizes critical analysis of diet claims."
+        "description": "Prioritizes skeptical, rigorous analysis of diet claims."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient seeking sustainable lifestyle approach",
-        "description": "Prioritizes the viewpoint of someone looking for long-term adherence."
+        "description": "Prioritizes user experience and sustainability."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Researcher in metabolic health",
-        "description": "Prioritizes the viewpoint of a metabolic specialist."
+        "description": "Prioritizes scientific research on metabolism."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Peer-reviewed clinical trials",
-        "description": "Prioritizes randomized controlled trials."
+        "description": "Prioritizes RCTs and clinical data."
       },
       {
         "id": "c8",
@@ -116,14 +125,14 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer health information",
-        "description": "Prioritizes general health websites and media."
+        "description": "Prioritizes general health websites and guides."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Patient community experience",
-        "description": "Prioritizes anecdotal reports from user communities."
+        "description": "Prioritizes anecdotal reports from communities."
       },
       {
         "id": "a1",
@@ -144,7 +153,7 @@
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Metabolic Benefits Beyond Weight)",
-        "description": "IF offers metabolic benefits beyond calorie reduction."
+        "description": "IF offers metabolic benefits beyond simple calorie reduction."
       }
     ],
     "edges": [
@@ -178,6 +187,14 @@
       },
       {
         "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
         "target": "c7"
       },
       {
@@ -185,8 +202,44 @@
         "target": "c8"
       },
       {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
         "source": "sq2",
         "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
       },
       {
         "source": "sq2",
@@ -198,7 +251,43 @@
       },
       {
         "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
         "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -239,6 +328,10 @@
       {
         "source": "c10",
         "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
       },
       {
         "source": "c2",

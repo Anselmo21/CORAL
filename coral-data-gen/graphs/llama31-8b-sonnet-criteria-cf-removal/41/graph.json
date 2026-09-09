@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (CS50 Default): Start with Harvard's CS50 on edX \u2014 it's free, teaches real computer science fundamentals rather than just syntax, and produces learners who can problem-solve across any language or technology.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2269,
-    "output_tokens": 1618,
-    "llm_calls": 2,
+    "prompt_tokens": 1533,
+    "output_tokens": 2111,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,109 +40,127 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What's the best online platform for learning programming from scratch?"
+        "label": "What's the best online platform for learning programming from scratch?",
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Cost and Setup"
+        "label": "Cost and beginner-friendliness",
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Curriculum and Fundamentals"
+        "label": "Depth of computer science fundamentals and project-based learning",
+        "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Learning Experience"
+        "label": "Community support, instructor quality, and completion rate",
+        "description": ""
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "Breadth and Flexibility"
+        "label": "Structured curriculum vs self-directed learning and language coverage",
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "zero cost or low cost access"
+        "label": "zero cost or low cost access",
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "beginner friendliness and zero setup friction"
+        "label": "beginner friendliness and zero setup friction",
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "depth of computer science fundamentals"
+        "label": "depth of computer science fundamentals",
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "project-based and job-ready skills"
+        "label": "project-based and job-ready skills",
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "community support and peer learning"
+        "label": "community support and peer learning",
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "structured curriculum vs self-directed"
+        "label": "structured curriculum vs self-directed",
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "real development environment practice"
+        "label": "real development environment practice",
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "language and technology coverage breadth"
+        "label": "language and technology coverage breadth",
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "instructor quality and content updates"
+        "label": "instructor quality and content updates",
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "completion rate and motivation support"
+        "label": "completion rate and motivation support",
+        "description": ""
       },
       {
-        "id": "a1",
+        "id": "A*",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (CS50 Default): Start with Harvard's CS50 on edX"
+        "label": "CS50 Default",
+        "description": "Start with Harvard's CS50 on edX \u2014 it's free, teaches real computer science fundamentals rather than just syntax, and produces learners who can problem-solve across any language or technology."
       },
       {
-        "id": "a2",
+        "id": "A2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (Codecademy for Zero Friction): Use Codecademy if you want to start coding immediately"
+        "label": "Codecademy for Zero Friction",
+        "description": "Use Codecademy if you want to start coding immediately with no setup \u2014 its browser-based interactive environment is the lowest-friction entry point and maintains beginner momentum better than lecture-heavy alternatives."
       },
       {
-        "id": "a3",
+        "id": "A3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (The Odin Project for Job Readiness): Follow The Odin Project"
+        "label": "The Odin Project for Job Readiness",
+        "description": "Follow The Odin Project if your goal is employment \u2014 it builds real projects in a real development environment from day one, producing portfolio work and practical skills that browser-based platforms cannot replicate."
       }
     ],
     "edges": [
@@ -171,20 +189,20 @@
         "target": "c2"
       },
       {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
         "source": "sq2",
         "target": "c3"
       },
       {
         "source": "sq2",
-        "target": "c6"
+        "target": "c4"
       },
       {
         "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c4"
+        "target": "c8"
       },
       {
         "source": "sq3",
@@ -200,55 +218,83 @@
       },
       {
         "source": "sq4",
+        "target": "c6"
+      },
+      {
+        "source": "sq4",
         "target": "c8"
       },
       {
         "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
+        "target": "A*"
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "A*"
       },
       {
         "source": "c3",
-        "target": "a1"
+        "target": "A*"
       },
       {
         "source": "c4",
-        "target": "a3"
+        "target": "A*"
       },
       {
         "source": "c5",
-        "target": "a1"
+        "target": "A*"
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "A*"
       },
       {
         "source": "c7",
-        "target": "a3"
+        "target": "A*"
       },
       {
         "source": "c8",
-        "target": "a3"
+        "target": "A*"
       },
       {
         "source": "c9",
-        "target": "a1"
+        "target": "A*"
       },
       {
         "source": "c10",
-        "target": "a1"
+        "target": "A*"
+      },
+      {
+        "source": "c1",
+        "target": "A2"
+      },
+      {
+        "source": "c3",
+        "target": "A2"
+      },
+      {
+        "source": "c8",
+        "target": "A2"
+      },
+      {
+        "source": "c10",
+        "target": "A2"
+      },
+      {
+        "source": "c2",
+        "target": "A3"
+      },
+      {
+        "source": "c5",
+        "target": "A3"
+      },
+      {
+        "source": "c6",
+        "target": "A3"
+      },
+      {
+        "source": "c9",
+        "target": "A3"
       }
     ]
   }

@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Ibuprofen (Advil / Motrin)",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 2,
+  "temperature": 0.0,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1782,
+    "output_tokens": 3111,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,63 +41,63 @@
         "layer": "1",
         "type": "question",
         "label": "best over the counter medication for cold and inflammation",
-        "description": "Selecting the optimal OTC drug for combined cold and inflammation symptoms."
+        "description": "Selecting the optimal OTC drug for cold symptoms and inflammation."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Mechanism and Symptom Coverage",
-        "description": "Evaluates drug type, pain relief, inflammation reduction, and target symptoms."
+        "label": "Efficacy for Cold and Inflammation",
+        "description": "Does the drug effectively treat the specific symptoms of cold and inflammation?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Safety and Suitability",
-        "description": "Evaluates safety profile, side effects, and age suitability."
+        "label": "Safety and Suitability Profile",
+        "description": "Is the drug safe for the user considering side effects, age, and general safety?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Pharmacokinetics and Form",
-        "description": "Evaluates dosage form, onset of action, and duration of relief."
+        "label": "Pharmacokinetics and Convenience",
+        "description": "How fast does it work, how long does it last, and what forms are available?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "active ingredient type",
-        "description": "Whether the drug is an NSAID or non-NSAID."
+        "description": "Whether the drug is an NSAID or Acetaminophen."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "pain relief effectiveness",
-        "description": "Overall ability to relieve pain."
+        "description": "How well the drug relieves pain."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "anti-inflammatory properties",
-        "description": "Ability to reduce swelling and inflammation."
+        "description": "The drug's ability to reduce inflammation."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "safety profile",
-        "description": "General safety for the user."
+        "description": "Overall safety rating of the medication."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "dosage form",
-        "description": "Available forms like tablets or liquids."
+        "description": "Available forms like tablets, liquids, etc."
       },
       {
         "id": "c6",
@@ -102,7 +111,7 @@
         "layer": "3",
         "type": "concept",
         "label": "duration of relief",
-        "description": "How long the relief lasts."
+        "description": "How long the pain relief lasts."
       },
       {
         "id": "c8",
@@ -116,7 +125,7 @@
         "layer": "3",
         "type": "concept",
         "label": "target symptoms",
-        "description": "Specific symptoms the drug addresses."
+        "description": "Specific symptoms the drug is designed to treat."
       },
       {
         "id": "c10",
@@ -130,7 +139,7 @@
         "layer": "4",
         "type": "answer",
         "label": "Ibuprofen (Advil / Motrin)",
-        "description": "NSAID with fast onset and strong anti-inflammatory action."
+        "description": "NSAID with fast onset and anti-inflammatory properties."
       },
       {
         "id": "a2",
@@ -144,7 +153,7 @@
         "layer": "4",
         "type": "answer",
         "label": "Acetaminophen (Tylenol / Panadol)",
-        "description": "Non-NSAID pain reliever with no anti-inflammatory properties."
+        "description": "Non-NSAID pain reliever and fever reducer without anti-inflammatory effects."
       }
     ],
     "edges": [
@@ -293,12 +302,12 @@
         "target": "a2"
       },
       {
-        "source": "c9",
-        "target": "a3"
+        "source": "c10",
+        "target": "a1"
       },
       {
         "source": "c10",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c10",

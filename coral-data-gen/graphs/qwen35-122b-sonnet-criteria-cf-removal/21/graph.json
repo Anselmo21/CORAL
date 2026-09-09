@@ -21,39 +21,48 @@
   ],
   "baseline_answer": "Answer C (Risk Calculator First): Use a cardiovascular risk calculator with your physician before deciding \u2014 statin benefit depends on baseline risk, not cholesterol level alone, and the decision should be individualized to your complete risk profile.",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1591,
+    "output_tokens": 2151,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should I start statins or try to manage it with lifestyle changes first?",
-        "description": "Decision between immediate statin therapy or lifestyle modification for borderline cholesterol."
+        "label": "Should I start statins or try lifestyle changes first?",
+        "description": "Decision on cholesterol management for borderline high levels."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the patient's absolute cardiovascular risk profile?",
-        "description": "Assessment of baseline risk factors determining urgency and necessity of medication."
+        "label": "What is the patient's specific cardiovascular risk profile?",
+        "description": "Assessing baseline risk factors to determine urgency and necessity of medication."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How effective and feasible are lifestyle changes versus medication?",
-        "description": "Evaluation of diet efficacy, patient motivation, and access to resources."
+        "label": "How effective and feasible are lifestyle changes versus statins?",
+        "description": "Evaluating the potential for non-pharmacological reduction and patient tolerance."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the risks of medication and likelihood of long-term success?",
-        "description": "Consideration of side effects and adherence capabilities."
+        "label": "How should the decision be individualized and timed?",
+        "description": "Determining the process for decision making and the required speed of intervention."
       },
       {
         "id": "c1",
@@ -88,7 +97,7 @@
         "layer": "3",
         "type": "concept",
         "label": "patient motivation for lifestyle change",
-        "description": "Psychological readiness to adopt diet and exercise habits."
+        "description": "Willingness to adhere to diet and exercise regimens."
       },
       {
         "id": "c6",
@@ -102,28 +111,28 @@
         "layer": "3",
         "type": "concept",
         "label": "age and comorbidity profile",
-        "description": "Overall health status and biological age influencing risk."
+        "description": "Overall health status and age-related risk factors."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "prior cardiovascular events",
-        "description": "History of heart attack or stroke indicating high risk."
+        "description": "History of heart attack or stroke indicating secondary prevention needs."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "access to dietary counseling",
-        "description": "Availability of professional support for lifestyle changes."
+        "description": "Availability of professional support for lifestyle modification."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "long-term medication adherence",
-        "description": "Likelihood of consistently taking medication as prescribed."
+        "description": "Likelihood of taking medication consistently over years."
       },
       {
         "id": "a1",
@@ -182,23 +191,23 @@
       },
       {
         "source": "sq2",
-        "target": "c5"
+        "target": "c4"
       },
       {
         "source": "sq2",
-        "target": "c6"
+        "target": "c5"
       },
       {
         "source": "sq2",
         "target": "c9"
       },
       {
-        "source": "sq3",
-        "target": "c4"
+        "source": "sq2",
+        "target": "c10"
       },
       {
         "source": "sq3",
-        "target": "c10"
+        "target": "c6"
       },
       {
         "source": "c1",
@@ -214,19 +223,7 @@
       },
       {
         "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
         "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
       },
       {
         "source": "c5",
@@ -246,19 +243,35 @@
       },
       {
         "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
         "target": "a1"
       },
       {
         "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
         "target": "a1"
       },
       {
         "source": "c10",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c1",

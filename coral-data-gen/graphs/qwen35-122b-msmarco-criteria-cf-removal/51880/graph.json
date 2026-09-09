@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "A premium 'multi-free' mineral foundation",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2383,
+    "output_tokens": 3489,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,91 +41,91 @@
         "layer": "1",
         "type": "question",
         "label": "best mineral foundation without parabens",
-        "description": "Selecting the best mineral foundation for a 14-year-old with oily, fair, cool-toned skin and a paraben allergy."
+        "description": "Selecting the optimal mineral foundation for a 14-year-old with oily, fair, cool-toned skin and a paraben allergy."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "Safety and Skin Suitability",
-        "description": "Criteria related to allergies, skin type, and ingredient safety."
+        "description": "Does the foundation match the user's specific skin type and allergy constraints?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "Performance and Aesthetics",
-        "description": "Criteria related to how the makeup looks, lasts, and applies."
+        "description": "Does the foundation provide the desired coverage, finish, and longevity?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "Accessibility and Value",
-        "description": "Criteria related to cost and availability."
+        "description": "Is the foundation affordable and from a reputable source?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "skin type compatibility",
-        "description": "How well the foundation works with oily, fair, cool-toned skin."
+        "description": "Suitability for oily, fair, cool-toned skin."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "coverage level",
-        "description": "The amount of coverage the foundation provides."
+        "description": "Ability to conceal imperfections."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "finish type",
-        "description": "The final look of the makeup (e.g., natural, matte, dewy)."
+        "description": "Matte, dewy, or natural finish."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "ingredient sourcing",
-        "description": "The quality and origin of the ingredients used."
+        "description": "Purity of ingredients and absence of non-paraben irritants."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "brand reputation",
-        "description": "The brand's standing regarding quality and safety."
+        "description": "Trustworthiness and history of the brand."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "price range",
-        "description": "The cost of the foundation."
+        "description": "Cost relative to the user's budget."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "shade variety",
-        "description": "The range of shades available."
+        "description": "Availability of shades for fair, cool-toned skin."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "sensitivity to allergens",
-        "description": "Freedom from parabens and other irritants."
+        "description": "Freedom from specific allergens beyond parabens (e.g., bismuth, talc)."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "wear duration",
-        "description": "How long the makeup lasts without fading."
+        "description": "How long the makeup lasts without fading or breaking down."
       },
       {
         "id": "c10",
@@ -130,21 +139,21 @@
         "layer": "4",
         "type": "answer",
         "label": "An affordable drugstore-tier mineral foundation labeled paraben-free (~$10-20)",
-        "description": "Budget option, paraben-free but potentially less safe from other irritants."
+        "description": "Low-cost option, potentially lacking multi-free safety or longevity."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A premium 'multi-free' mineral foundation",
-        "description": "Top pick considering all factors; free from multiple irritants."
+        "description": "High-end option free from parabens and other irritants, balancing safety and performance."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A professional makeup-artist-grade paraben-free mineral foundation",
-        "description": "High-performance option, potentially expensive and less focused on 'clean' ingredients."
+        "description": "High-performance option focused on coverage, potentially containing other irritants."
       }
     ],
     "edges": [
@@ -167,10 +176,6 @@
       {
         "source": "sq1",
         "target": "c4"
-      },
-      {
-        "source": "sq1",
-        "target": "c5"
       },
       {
         "source": "sq1",
@@ -198,6 +203,10 @@
       },
       {
         "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
         "target": "c6"
       },
       {
@@ -214,11 +223,19 @@
       },
       {
         "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
         "target": "a2"
       },
       {
         "source": "c2",
         "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
       },
       {
         "source": "c3",
@@ -231,6 +248,10 @@
       {
         "source": "c4",
         "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
       },
       {
         "source": "c5",
@@ -247,6 +268,10 @@
       {
         "source": "c6",
         "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
       },
       {
         "source": "c7",
@@ -263,6 +288,10 @@
       {
         "source": "c8",
         "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
       },
       {
         "source": "c9",

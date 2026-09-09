@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Smart Electric Drive ($25,750 sticker / ~$18,250 post-rebate)",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2656,
-    "output_tokens": 1974,
-    "llm_calls": 2,
+    "prompt_tokens": 1713,
+    "output_tokens": 1688,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,109 +40,127 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "price of best hybrid electric vehicles ranked by price"
+        "label": "price of best hybrid electric vehicles ranked by price",
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the key features of the vehicle?"
+        "label": "Performance and Features",
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the costs associated with the vehicle?"
+        "label": "Cost and Incentives",
+        "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the reputation of the vehicle and its brand?"
+        "label": "Brand and Safety",
+        "description": ""
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "What is the environmental impact of the vehicle?"
+        "label": "Environmental Impact",
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "vehicle range"
+        "label": "vehicle range",
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "fuel efficiency"
+        "label": "fuel efficiency",
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "brand reputation"
+        "label": "brand reputation",
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "ownership costs"
+        "label": "ownership costs",
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "tax incentives"
+        "label": "tax incentives",
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "model year"
+        "label": "model year",
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "consumer reviews"
+        "label": "consumer reviews",
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "safety ratings"
+        "label": "safety ratings",
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "technology features"
+        "label": "technology features",
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "environmental impact"
+        "label": "environmental impact",
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Smart Electric Drive ($25,750 sticker / ~$18,250 post-rebate)"
+        "label": "Smart Electric Drive ($25,750 sticker / ~$18,250 post-rebate)",
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Honda Civic Hybrid (~$25K, 44/47 mpg)"
+        "label": "Honda Civic Hybrid (~$25K, 44/47 mpg)",
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Ford Focus Electric ($29,170 / ~$22K post-rebate)"
+        "label": "Ford Focus Electric ($29,170 / ~$22K post-rebate)",
+        "description": ""
       }
     ],
     "edges": [
@@ -183,6 +201,10 @@
         "target": "c5"
       },
       {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
         "source": "sq3",
         "target": "c3"
       },
@@ -203,16 +225,16 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
         "source": "c2",
         "target": "a1"
       },
       {
         "source": "c2",
         "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
       },
       {
         "source": "c3",
@@ -225,6 +247,10 @@
       {
         "source": "c4",
         "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
       },
       {
         "source": "c4",
@@ -241,14 +267,6 @@
       {
         "source": "c6",
         "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
       },
       {
         "source": "c7",
@@ -273,54 +291,6 @@
       {
         "source": "c10",
         "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
       }
     ]
   }

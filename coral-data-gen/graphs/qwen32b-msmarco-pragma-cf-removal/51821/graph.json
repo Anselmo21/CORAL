@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Pigment-based inkjet ink in a rear-feed printer",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1868,
+    "output_tokens": 2649,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,126 +41,126 @@
         "layer": "1",
         "type": "question",
         "label": "best ink for prints on cardstock",
-        "description": "What is the best ink for printing on cardstock?"
+        "description": "What is the best ink for printing on cardstock, especially heavy or specialty types like metallic or linen?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "ink type for high-quality cardstock prints",
-        "description": "What ink type is best for high-quality, durable prints on cardstock?"
+        "label": "Ink type for heavy/specialty cardstock",
+        "description": "What ink type is best for printing on heavy or specialty cardstock (e.g., metallic, linen)?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "printer features for cardstock",
-        "description": "What printer features or mechanisms best accommodate cardstock without jamming or bending?"
+        "label": "Printer mechanism for cardstock",
+        "description": "What printer mechanism (feed type) is best for handling cardstock without jamming or bending?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "specialty cardstock considerations",
-        "description": "What considerations apply for specialized cardstock types like metallic or linen?"
+        "label": "Cost-effective ink and printer combo",
+        "description": "What ink and printer combination is most cost-effective and accessible for hobbyists or small businesses?"
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "budget and hobbyist constraints",
-        "description": "What are budget or hobbyist constraints on ink and printer choice?"
+        "label": "Professional or archival ink and printer combo",
+        "description": "What ink and printer combination is most recommended by professionals or for archival purposes?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: printer manufacturer documentation",
-        "description": ""
+        "description": "Prioritize sources from printer manufacturers."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: craft / stationery community forum",
-        "description": ""
+        "description": "Prioritize sources from craft and stationery forums."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: specialty paper vendor (e.g., RedRiverCatalog)",
-        "description": ""
+        "description": "Prioritize sources from specialty paper vendors."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: consumer printer review site",
-        "description": ""
+        "description": "Prioritize sources from consumer printer review sites."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: graphic arts industry publication",
-        "description": ""
+        "description": "Prioritize sources from graphic arts publications."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: wedding invitation crafter",
-        "description": ""
+        "description": "Prioritize sources from wedding invitation crafters."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: budget hobbyist",
-        "description": ""
+        "description": "Prioritize sources from budget hobbyists."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: small-business print shop owner",
-        "description": ""
+        "description": "Prioritize sources from small-business print shop owners."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: archival / longevity-focused user",
-        "description": ""
+        "description": "Prioritize sources from archival or longevity-focused users."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: metallic-paper specialty user",
-        "description": ""
+        "description": "Prioritize sources from users who work with metallic paper."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Pigment-based inkjet ink in a rear-feed printer",
-        "description": ""
+        "description": "Pigment-based inkjet ink in a rear-feed printer is the top choice for cardstock printing."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Standard dye-based inkjet ink in a top/rear-loading Epson or Canon",
-        "description": ""
+        "description": "Dye-based inkjet ink in a top/rear-loading Epson or Canon is a cost-effective option for non-metallic cardstock."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Toner (laser printing)",
-        "description": ""
+        "description": "Toner (laser printing) is a viable alternative for cardstock printing."
       }
     ],
     "edges": [
@@ -185,11 +194,15 @@
       },
       {
         "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
         "target": "c9"
       },
       {
-        "source": "sq2",
-        "target": "c1"
+        "source": "sq1",
+        "target": "c10"
       },
       {
         "source": "sq2",
@@ -197,7 +210,7 @@
       },
       {
         "source": "sq2",
-        "target": "c6"
+        "target": "c4"
       },
       {
         "source": "sq2",
@@ -209,23 +222,35 @@
       },
       {
         "source": "sq3",
-        "target": "c1"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
-      },
-      {
-        "source": "sq4",
         "target": "c2"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c4"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c1"
+      },
+      {
+        "source": "sq4",
+        "target": "c3"
+      },
+      {
+        "source": "sq4",
+        "target": "c5"
+      },
+      {
+        "source": "sq4",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -304,15 +329,7 @@
         "target": "a2"
       },
       {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
         "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
         "target": "a3"
       },
       {
@@ -320,19 +337,7 @@
         "target": "a3"
       },
       {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
         "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
         "target": "a3"
       }
     ]

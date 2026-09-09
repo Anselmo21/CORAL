@@ -21,10 +21,20 @@
   ],
   "baseline_answer": "Answer A (QLED for Bright Room Default): Get a QLED TV \u2014 in a sunlit living room, QLED's 1,500\u20132,000 nit brightness overwhelmingly outperforms OLED, which loses its contrast advantage completely when ambient light washes out dark scenes.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 2,
+  "usage": {
+    "prompt_tokens": 7426,
+    "output_tokens": 6056,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,105 +42,98 @@
         "layer": "1",
         "type": "question",
         "label": "My living room gets a lot of sunlight. Should I get an OLED or a QLED TV?",
-        "description": "Primary decision query regarding TV technology selection based on lighting conditions."
+        "description": "Main question regarding TV selection for bright environments"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "How does the TV perform in bright, sunlit environments?",
-        "description": "Evaluates brightness, glare handling, and visibility in ambient light."
+        "label": "Bright Room Performance",
+        "description": "How the TV handles sunlight, glare, and brightness"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How does the TV perform in dark or controlled lighting?",
-        "description": "Evaluates contrast, black levels, and HDR performance in low light."
+        "label": "Durability and Usage",
+        "description": "Longevity, burn-in risk, and gaming response"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the long-term reliability risks for mixed content use?",
-        "description": "Evaluates burn-in susceptibility and panel lifespan over time."
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "What are the general usability and value factors?",
-        "description": "Evaluates color, viewing angles, gaming performance, and price."
+        "label": "Picture Quality and Value",
+        "description": "Contrast, viewing angles, color, and price"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "peak brightness in ambient light",
-        "description": "Maximum nits output to combat sunlight washout."
+        "description": "Maximum nits output in bright conditions"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "contrast and black level performance",
-        "description": "Ability to display true blacks and high contrast ratios."
+        "description": "Ability to display deep blacks and high contrast"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "anti-reflective screen coating quality",
-        "description": "Effectiveness of screen coatings in reducing glare."
+        "description": "Glare handling capabilities"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "burn-in risk for mixed content use",
-        "description": "Susceptibility of the panel to permanent image retention."
+        "description": "Susceptibility to image retention"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "color accuracy and wide color gamut",
-        "description": "Fidelity and range of colors displayed."
+        "description": "Color fidelity and range"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "viewing angle performance",
-        "description": "Image quality retention when viewed from the side."
+        "description": "Image quality from off-center positions"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "response time for gaming",
-        "description": "Speed of pixel response to minimize motion blur."
+        "description": "Input lag and motion clarity"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "price at equivalent screen size",
-        "description": "Cost comparison between technologies."
+        "description": "Cost effectiveness"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "longevity and panel lifespan",
-        "description": "Expected operational life of the display panel."
+        "description": "Overall durability over time"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "HDR performance in dark scenes",
-        "description": "Detail and contrast in high dynamic range content in low light."
+        "description": "High dynamic range effectiveness in low light"
       },
       {
         "id": "a1",
@@ -168,10 +171,6 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
-      },
-      {
         "source": "sq1",
         "target": "c1"
       },
@@ -181,38 +180,34 @@
       },
       {
         "source": "sq1",
-        "target": "c10"
-      },
-      {
-        "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
-        "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c9"
-      },
-      {
-        "source": "sq4",
         "target": "c5"
       },
       {
-        "source": "sq4",
-        "target": "c6"
+        "source": "sq1",
+        "target": "c10"
       },
       {
-        "source": "sq4",
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
         "target": "c7"
       },
       {
-        "source": "sq4",
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
         "target": "c8"
       },
       {
@@ -222,6 +217,14 @@
       {
         "source": "c2",
         "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
       },
       {
         "source": "c3",
@@ -236,16 +239,44 @@
         "target": "a1"
       },
       {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
         "source": "c6",
         "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
       },
       {
         "source": "c7",
         "target": "a1"
       },
       {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
         "source": "c8",
         "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
       },
       {
         "source": "c9",
@@ -256,7 +287,15 @@
         "target": "a1"
       },
       {
-        "source": "c2",
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
         "target": "a2"
       },
       {
@@ -264,19 +303,7 @@
         "target": "a2"
       },
       {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
+        "source": "c4",
         "target": "a2"
       },
       {
@@ -284,11 +311,15 @@
         "target": "a2"
       },
       {
-        "source": "c10",
-        "target": "a2"
+        "source": "c1",
+        "target": "a3"
       },
       {
-        "source": "c2",
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
         "target": "a3"
       },
       {
@@ -296,19 +327,7 @@
         "target": "a3"
       },
       {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
+        "source": "c9",
         "target": "a3"
       }
     ]

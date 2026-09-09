@@ -21,10 +21,21 @@
   ],
   "baseline_answer": "Brush-applied rust-inhibiting primer (zinc chromate or iron oxide) followed by a finish coat",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 3,
+  "usage": {
+    "prompt_tokens": 13201,
+    "output_tokens": 7654,
+    "llm_calls": 3,
+    "finish_reasons": [
+      "length",
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +43,119 @@
         "layer": "1",
         "type": "question",
         "label": "best type of paint to paint over rust",
-        "description": "Identify the optimal paint type for rusted surfaces."
+        "description": "The main question asking for the optimal paint type for rusted surfaces."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What do professional and industrial standards dictate?",
-        "description": "Focus on technical manuals, professional painters, and industrial crews."
+        "label": "What is the technically superior method for long-term rust prevention?",
+        "description": "Focuses on expert consensus and rigorous preparation."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What do DIY and consumer perspectives recommend?",
-        "description": "Focus on home improvement guides, consumer reviews, and weekend homeowners."
+        "label": "What is the most effective solution for a typical DIY homeowner on a budget?",
+        "description": "Focuses on accessibility, cost, and general consumer advice."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What do product manufacturers and hobbyists suggest?",
-        "description": "Focus on manufacturer documentation and restoration hobbyist experiences."
+        "label": "What specific products are recommended for quick, direct application?",
+        "description": "Focuses on specific brands and direct-to-rust technologies."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: paint industry technical manual",
-        "description": "Prioritize technical accuracy and long-term chemical bonding."
+        "description": "Prioritizes industry-standard technical manuals."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed coatings journal",
-        "description": "Prioritize scientifically validated methods."
+        "description": "Prioritizes peer-reviewed scientific journals."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: DIY home improvement guide",
-        "description": "Prioritize accessible, step-by-step home solutions."
+        "description": "Prioritizes general DIY guides."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: product manufacturer documentation",
-        "description": "Prioritize specific brand instructions and claims."
+        "description": "Prioritizes official product documentation."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: consumer paint reviews",
-        "description": "Prioritize real-world user satisfaction and popularity."
+        "description": "Prioritizes user reviews and testimonials."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: weekend DIY homeowner",
-        "description": "Focus on ease of use and minimal equipment."
+        "description": "Prioritizes the weekend DIYer's approach."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: professional auto-body painter",
-        "description": "Focus on finish quality and industry standards."
+        "description": "Prioritizes the professional auto-body painter's view."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: industrial maintenance crew",
-        "description": "Focus on durability and large-scale application."
+        "description": "Prioritizes the industrial maintenance crew's view."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: restoration hobbyist",
-        "description": "Focus on aesthetic restoration and specific product nuances."
+        "description": "Prioritizes the restoration hobbyist's experience."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: budget-conscious painter",
-        "description": "Focus on cost-effectiveness and value."
+        "description": "Prioritizes the budget-conscious painter's constraints."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Brush-applied rust-inhibiting primer (zinc chromate or iron oxide) followed by a finish coat",
-        "description": "The technical standard for permanent rust prevention."
+        "description": "The rigorous, professional standard for rust prevention."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Rustoleum (consumer brand) spray or brush-on",
-        "description": "Popular consumer-grade direct-to-rust solution."
+        "description": "A specific, accessible consumer brand solution."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Direct-over-rust anti-rust enamel like Krylon Rust Protector or Rust Tough Enamel",
-        "description": "Alternative direct-to-rust enamel favored by hobbyists."
+        "description": "A direct-to-rust spray enamel solution."
       }
     ],
     "edges": [
@@ -213,14 +224,6 @@
         "target": "a1"
       },
       {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
         "source": "c4",
         "target": "a1"
       },
@@ -237,16 +240,12 @@
         "target": "a2"
       },
       {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
         "source": "c6",
         "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
       },
       {
         "source": "c7",
@@ -271,6 +270,10 @@
       {
         "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

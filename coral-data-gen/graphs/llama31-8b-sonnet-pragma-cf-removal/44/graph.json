@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (CompTIA Security+ Default): Start with CompTIA Security+ \u2014 it's the most recognized entry-level credential, vendor-neutral, DoD-approved, and appears in more entry-level job postings than any other certification.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2483,
-    "output_tokens": 1871,
-    "llm_calls": 2,
+    "prompt_tokens": 1653,
+    "output_tokens": 1884,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,109 +40,120 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What certification should I get first in cybersecurity?"
+        "label": "What certification should I get first to get into cybersecurity?",
+        "description": "Entry-level cybersecurity certification"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "When is the certification relevant?"
+        "label": "What is the most recognized entry-level certification?",
+        "description": "Entry-level certification"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Which country is the certification relevant to?"
+        "label": "What certification is best for aspiring penetration testers or offensive security specialists?",
+        "description": "Offensive security certification"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the perspective or role of the candidate?"
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "What is the trustworthiness of the certification body?"
+        "label": "What certification is suitable for entry-level candidates with no prior experience?",
+        "description": "Entry-level certification"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "temporal: 2023 only"
+        "label": "temporal: 2023 only",
+        "description": "Sources from 2023 only"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "temporal: 2021\u20132023"
+        "label": "temporal: 2021\u20132023",
+        "description": "Sources from 2021 to 2023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "geographic: USA"
+        "label": "geographic: USA",
+        "description": "Sources from USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: Entry-level candidate with no prior experience"
+        "label": "perspective: Entry-level candidate with no prior experience",
+        "description": "Sources from entry-level candidates"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: Aspiring penetration tester or offensive security specialist"
+        "label": "perspective: Aspiring penetration tester or offensive security specialist",
+        "description": "Sources from aspiring penetration testers"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: Candidate targeting government or DoD roles"
+        "label": "perspective: Candidate targeting government or DoD roles",
+        "description": "Sources from government or DoD roles"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Certification body documentation"
+        "label": "trustworthiness: Certification body documentation",
+        "description": "Sources from certification body documentation"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Security training institution"
+        "label": "trustworthiness: Security training institution",
+        "description": "Sources from security training institutions"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Cybersecurity practitioner community"
+        "label": "trustworthiness: Cybersecurity practitioner community",
+        "description": "Sources from cybersecurity practitioner community"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Offensive security training provider"
+        "label": "trustworthiness: Offensive security training provider",
+        "description": "Sources from offensive security training providers"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "CompTIA Security+ Default"
+        "label": "Answer A (CompTIA Security+ Default)",
+        "description": "Start with CompTIA Security+"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "OSCP for Offensive Security"
+        "label": "Answer B (OSCP for Offensive Security)",
+        "description": "Pursue OSCP for penetration testing"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "GIAC GSEC for Technical Rigor"
+        "label": "Answer C (GIAC GSEC for Technical Rigor)",
+        "description": "Consider GIAC GSEC for technical rigor"
       }
     ],
     "edges": [
@@ -159,10 +170,6 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
-      },
-      {
         "source": "sq1",
         "target": "c1"
       },
@@ -171,8 +178,40 @@
         "target": "c2"
       },
       {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "a1"
+      },
+      {
         "source": "sq2",
-        "target": "c3"
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "a2"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
       },
       {
         "source": "sq3",
@@ -180,27 +219,11 @@
       },
       {
         "source": "sq3",
-        "target": "c5"
-      },
-      {
-        "source": "sq3",
         "target": "c6"
       },
       {
-        "source": "sq4",
-        "target": "c7"
-      },
-      {
-        "source": "sq4",
-        "target": "c8"
-      },
-      {
-        "source": "sq4",
-        "target": "c9"
-      },
-      {
-        "source": "sq4",
-        "target": "c10"
+        "source": "sq3",
+        "target": "a1"
       },
       {
         "source": "c1",
@@ -208,7 +231,7 @@
       },
       {
         "source": "c2",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c3",
@@ -216,6 +239,14 @@
       },
       {
         "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
         "target": "a1"
       },
       {
@@ -233,38 +264,6 @@
       {
         "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
       }
     ]
   }

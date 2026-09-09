@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer B (Refurbished MacBook Air): Stretch to a refurbished M1 MacBook Air at $800\u2013900 \u2014 the unmatched battery life, build quality, and 5+ year longevity make it the best total cost of ownership under $1,000.",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1594,
+    "output_tokens": 2698,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,77 +41,77 @@
         "layer": "1",
         "type": "question",
         "label": "What's the best laptop for a college student on a budget under $1,000?",
-        "description": "A student needs a durable, functional, and affordable laptop under $1,000 for coursework and daily use."
+        "description": "Identify the best laptop for a student with a $1,000 budget, considering performance, durability, and value."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Budget and value for money",
-        "description": "What is the total cost and value at different price tiers?"
+        "label": "Cost and Value",
+        "description": "Criteria related to price and value for money."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Durability and long-term use",
-        "description": "How long will the laptop last and how repairable is it?"
+        "label": "Longevity and Durability",
+        "description": "Criteria related to how long the laptop will last and how well it can be maintained."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Performance and compatibility",
-        "description": "How well does it handle coursework and software needs?"
+        "label": "Performance and Ecosystem",
+        "description": "Criteria related to performance, battery life, and software compatibility."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "total purchase price under $1,000",
-        "description": "The laptop must be affordable and within the $1,000 budget."
+        "description": "The laptop must be affordable within the $1,000 budget."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "battery life for all-day use",
-        "description": "The laptop should last through a full day of classes and study."
+        "description": "The laptop should last a full day of use without recharging."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "build quality and durability over 4 years",
-        "description": "The laptop should survive 4 years of use without breaking."
+        "description": "The laptop should be sturdy and able to survive 4 years of use."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "performance for coursework and light creative tasks",
-        "description": "The laptop should handle basic productivity and creative software."
+        "description": "The laptop should handle basic academic and creative workloads."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "ecosystem compatibility (macOS vs Windows)",
-        "description": "The laptop should integrate well with the student's existing devices and software."
+        "description": "The laptop should work well with the software and tools the student uses."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "repairability and long-term serviceability",
-        "description": "The laptop should be easy to repair and upgrade over time."
+        "description": "The laptop should be easy to repair and maintain over time."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "weight and portability",
-        "description": "The laptop should be easy to carry between classes."
+        "description": "The laptop should be light and easy to carry around campus."
       },
       {
         "id": "c8",
@@ -116,35 +125,35 @@
         "layer": "3",
         "type": "concept",
         "label": "software compatibility requirements",
-        "description": "The laptop should support all necessary software for coursework."
+        "description": "The laptop should support the software needed for coursework and projects."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "value for price at lower budget tiers",
-        "description": "The laptop should offer good performance and features at a lower price."
+        "description": "The laptop should offer good performance and features for its price."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (Lenovo IdeaPad Default)",
-        "description": "Get the Lenovo IdeaPad Flex 5 or Acer Aspire 5 in the $500\u2013700 range \u2014 they offer adequate performance, good battery life, and strong value for standard college coursework without stretching the budget."
+        "label": "Answer A (Lenovo IdeaPad Default): Get the Lenovo IdeaPad Flex 5 or Acer Aspire 5 in the $500\u2013700 range \u2014 they offer adequate performance, good battery life, and strong value for standard college coursework without stretching the budget.",
+        "description": "Best for students who want a low-cost, no-frills laptop for basic coursework."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (Refurbished MacBook Air)",
-        "description": "Stretch to a refurbished M1 MacBook Air at $800\u2013900 \u2014 the unmatched battery life, build quality, and 5+ year longevity make it the best total cost of ownership under $1,000."
+        "label": "Answer B (Refurbished MacBook Air): Stretch to a refurbished M1 MacBook Air at $800\u2013900 \u2014 the unmatched battery life, build quality, and 5+ year longevity make it the best total cost of ownership under $1,000.",
+        "description": "Best for students who want long-term value and durability."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (ThinkPad for Durability)",
-        "description": "Choose a Lenovo ThinkPad E-series \u2014 business-grade durability, excellent keyboard, and strong repairability make it the best laptop to actually survive 4 years of college without degradation."
+        "label": "Answer C (ThinkPad for Durability): Choose a Lenovo ThinkPad E-series \u2014 business-grade durability, excellent keyboard, and strong repairability make it the best laptop to actually survive 4 years of college without degradation.",
+        "description": "Best for students who prioritize repairability and keyboard quality."
       }
     ],
     "edges": [
@@ -170,10 +179,6 @@
       },
       {
         "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
         "target": "c3"
       },
       {
@@ -183,6 +188,10 @@
       {
         "source": "sq2",
         "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
       },
       {
         "source": "sq3",
@@ -202,19 +211,43 @@
       },
       {
         "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
         "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
       },
       {
         "source": "c2",
         "target": "a2"
       },
       {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
         "source": "c3",
         "target": "a2"
       },
       {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
         "source": "c4",
         "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
       },
       {
         "source": "c5",
@@ -225,67 +258,47 @@
         "target": "a2"
       },
       {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
         "source": "c7",
         "target": "a2"
       },
       {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
         "source": "c8",
         "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
       },
       {
         "source": "c9",
         "target": "a2"
       },
       {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
         "source": "c10",
         "target": "a2"
       },
       {
-        "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
         "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
         "target": "a3"
       }
     ]

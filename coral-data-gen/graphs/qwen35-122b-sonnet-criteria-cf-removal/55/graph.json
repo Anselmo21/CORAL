@@ -21,74 +21,83 @@
   ],
   "baseline_answer": "Answer A (Sony XM5 Default): Get the Sony WH-1000XM5 \u2014 the best ANC performance available, excellent call quality, and 30-hour battery make it the top work-from-home headphone for blocking out household noise.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 2,
+  "temperature": 0.0,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1607,
+    "output_tokens": 2608,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "I work from home and need headphones that block out noise from my family. What should I get?",
-        "description": "User needs headphones for WFH to block family noise."
+        "label": "What headphones should I get for work from home to block family noise?",
+        "description": "The user needs headphones to block household noise while working from home."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Noise isolation and battery endurance",
-        "description": "Criteria related to blocking noise and lasting all day."
+        "label": "Noise Cancellation & Battery Performance",
+        "description": "Evaluates how well the headphones block noise and last through a workday."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Physical comfort and connectivity",
-        "description": "Criteria related to wearing comfort and connection features."
+        "label": "Comfort & Workflow Integration",
+        "description": "Evaluates wearing comfort, connectivity, and ecosystem fit for long hours."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Call clarity and value",
-        "description": "Criteria related to microphone performance and price."
+        "label": "Call Quality & Value",
+        "description": "Evaluates microphone performance, backup options, and cost-effectiveness."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "active noise cancellation effectiveness",
-        "description": "How well the headphones block external noise."
+        "description": "The primary ability to block external noise."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "all-day wearing comfort",
-        "description": "Comfort level during extended use."
+        "description": "Comfort during 6+ hours of continuous use."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "call microphone quality",
-        "description": "Clarity of voice transmission to others."
+        "description": "Clarity of voice transmission to meeting participants."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "battery life for full workday",
-        "description": "Duration of battery on a single charge."
+        "description": "Duration of playback without charging."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "ecosystem integration (Apple/Windows)",
-        "description": "Seamless switching between devices."
+        "description": "Seamless switching and pairing with specific devices."
       },
       {
         "id": "c6",
@@ -102,7 +111,7 @@
         "layer": "3",
         "type": "concept",
         "label": "wired backup option for zero-latency calls",
-        "description": "Ability to use a cable for calls."
+        "description": "Ability to use a cable for calls if battery dies or latency is an issue."
       },
       {
         "id": "c8",
@@ -116,7 +125,7 @@
         "layer": "3",
         "type": "concept",
         "label": "durability for daily professional use",
-        "description": "Build quality for long-term use."
+        "description": "Build quality for long-term daily wear."
       },
       {
         "id": "c10",
@@ -182,10 +191,6 @@
       },
       {
         "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
         "target": "c8"
       },
       {
@@ -201,6 +206,10 @@
         "target": "c6"
       },
       {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
         "source": "c1",
         "target": "a1"
       },
@@ -209,16 +218,8 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
         "source": "c3",
         "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
       },
       {
         "source": "c4",
@@ -229,40 +230,52 @@
         "target": "a1"
       },
       {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
         "source": "c6",
         "target": "a1"
       },
       {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
         "source": "c6",
         "target": "a2"
       },
       {
         "source": "c7",
-        "target": "a1"
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
       },
       {
         "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
         "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
       },
       {
         "source": "c8",
@@ -270,26 +283,6 @@
       },
       {
         "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
         "target": "a3"
       }
     ]

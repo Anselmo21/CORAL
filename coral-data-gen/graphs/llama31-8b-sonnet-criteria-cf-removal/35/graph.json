@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Paralegal First Default): Start as a paralegal \u2014 it lets you test whether you genuinely enjoy legal work before committing $150\u2013250k to law school, and paralegal careers are stable, growing, and financially reasonable for those not targeting BigLaw.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2449,
-    "output_tokens": 2249,
-    "llm_calls": 2,
+    "prompt_tokens": 1629,
+    "output_tokens": 2273,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,125 +41,126 @@
         "layer": "1",
         "type": "question",
         "label": "Should I become a paralegal instead of going to law school?",
-        "description": "Considering factors like cost, earnings potential, and career advancement."
+        "description": "Considering costs, benefits, and career goals."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Cost and Earnings",
-        "description": "Total cost of law school vs paralegal certification, earnings potential over 20-year career, and debt burden tolerance."
+        "label": "What are the costs and benefits of each path?",
+        "description": "Comparing law school and paralegal certification."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Career Advancement and Growth",
-        "description": "Job market growth for each path, career advancement ceiling, and ability to test legal work before committing."
+        "label": "How does each path impact my career goals and aspirations?",
+        "description": "Considering career advancement and job market growth."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Lifestyle and Target",
-        "description": "Target practice setting, work-life balance comparison, certainty of interest in legal practice, and time investment required."
+        "label": "What are the practical considerations for each path?",
+        "description": "Thinking about time investment, debt burden, and work-life balance."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "total cost of law school vs paralegal certification",
-        "description": "Cost comparison between law school and paralegal certification."
+        "description": "Comparing financial costs of each path."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "earnings potential over 20-year career",
-        "description": "Earnings potential of law school graduates compared to paralegals."
+        "description": "Considering long-term financial prospects."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "debt burden tolerance",
-        "description": "Ability to handle debt incurred by law school."
+        "label": "certainty of interest in legal practice",
+        "description": "Thinking about testing interest in legal work."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "job market growth for each path",
-        "description": "Job market growth for law school graduates and paralegals."
+        "label": "target practice setting (BigLaw vs small firm)",
+        "description": "Considering career goals and job market opportunities."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "career advancement ceiling",
-        "description": "Career advancement opportunities for law school graduates and paralegals."
+        "label": "time investment required",
+        "description": "Comparing time commitment for each path."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "ability to test legal work before committing",
-        "description": "Opportunity to test interest in legal work before committing to law school."
+        "label": "debt burden tolerance",
+        "description": "Thinking about financial responsibility."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "target practice setting",
-        "description": "Target practice setting, such as BigLaw or small firm."
+        "label": "job market growth for each path",
+        "description": "Considering employment prospects and career advancement."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "work-life balance comparison",
-        "description": "Comparison of work-life balance between law school graduates and paralegals."
+        "label": "career advancement ceiling",
+        "description": "Thinking about long-term career prospects."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "certainty of interest in legal practice",
-        "description": "Certainty of interest in legal practice before committing to law school."
-      },
-      {
-        "id": "c10",
-        "layer": "3",
-        "type": "concept",
-        "label": "time investment required",
-        "description": "Time investment required for law school and paralegal certification."
+        "label": "work-life balance comparison",
+        "description": "Considering personal and professional well-being."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Paralegal First Default",
-        "description": "Start as a paralegal to test interest in legal work before committing to law school."
+        "description": "Start as a paralegal to test interest in legal work."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Law School for Big Earnings",
-        "description": "Go to law school for high-earning potential, especially for BigLaw or federal clerkships."
+        "description": "Go to law school for BigLaw or federal clerkships."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Paralegal as Career, Not Stepping Stone",
-        "description": "Build a paralegal career intentionally, specializing in areas like IP, healthcare, or corporate law."
+        "description": "Build a paralegal career intentionally."
       }
     ],
     "edges": [
       {
         "source": "q",
         "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
       },
       {
         "source": "sq1",
@@ -171,11 +172,15 @@
       },
       {
         "source": "sq1",
-        "target": "c3"
+        "target": "c5"
       },
       {
-        "source": "q",
-        "target": "sq2"
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
       },
       {
         "source": "sq2",
@@ -183,34 +188,38 @@
       },
       {
         "source": "sq2",
-        "target": "c5"
-      },
-      {
-        "source": "sq2",
-        "target": "c6"
-      },
-      {
-        "source": "q",
-        "target": "sq3"
-      },
-      {
-        "source": "sq3",
         "target": "c7"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
       },
       {
         "source": "sq3",
         "target": "c9"
       },
       {
-        "source": "sq3",
-        "target": "c10"
+        "source": "c1",
+        "target": "a1"
       },
       {
         "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
         "target": "a1"
       },
       {
@@ -218,8 +227,24 @@
         "target": "a2"
       },
       {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
         "source": "c3",
         "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
       },
       {
         "source": "c4",
@@ -228,6 +253,22 @@
       {
         "source": "c5",
         "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
       },
       {
         "source": "c6",
@@ -235,51 +276,93 @@
       },
       {
         "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
         "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
       },
       {
         "source": "c7",
         "target": "a2"
       },
       {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
+        "source": "c7",
         "target": "a3"
       },
       {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
+        "source": "c8",
+        "target": "a2"
       },
       {
         "source": "c8",
         "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "a1",
+        "target": "a2",
+        "removed": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7",
+          "c9"
+        ]
+      },
+      {
+        "source": "a1",
+        "target": "a3",
+        "removed": [
+          "c2",
+          "c7"
+        ]
+      },
+      {
+        "source": "a2",
+        "target": "a1",
+        "removed": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7",
+          "c9"
+        ]
+      },
+      {
+        "source": "a2",
+        "target": "a3",
+        "removed": [
+          "c2",
+          "c7"
+        ]
+      },
+      {
+        "source": "a3",
+        "target": "a1",
+        "removed": [
+          "c2",
+          "c7"
+        ]
+      },
+      {
+        "source": "a3",
+        "target": "a2",
+        "removed": [
+          "c2",
+          "c7"
+        ]
       }
     ]
   }

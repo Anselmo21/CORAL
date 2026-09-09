@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Keep the blister intact, dry, and protected with a loose bandage",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1849,
+    "output_tokens": 4096,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "length"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "best remedy to dry out feet blisters",
-        "description": "Selecting the optimal method to dry and heal foot blisters."
+        "description": "The user seeks the most effective method to dry out foot blisters."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "Safety and Infection Control",
-        "description": "Evaluating risks of infection and skin irritation."
+        "description": "Evaluates risks of infection, skin irritation, and moisture management."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "Efficacy and Speed of Drying",
-        "description": "Evaluating how fast and effectively the blister dries and heals."
+        "description": "Evaluates how fast the blister dries, the ingredients used, and the method."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "Practicality and User Experience",
-        "description": "Evaluating ease of use, availability, and user preference."
+        "description": "Evaluates ease of application, availability of items, and user comfort."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "application method",
-        "description": "How the remedy is applied (e.g., bandage, swab, needle)."
+        "description": "The specific technique used to treat the blister."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "ingredient type",
-        "description": "The nature of the substance used (e.g., natural, chemical, mechanical)."
+        "description": "The nature of substances applied (e.g., natural, chemical, none)."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "healing speed",
-        "description": "How quickly the blister resolves."
+        "description": "How quickly the blister dries and resolves."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "infection prevention",
-        "description": "Ability to prevent bacterial entry and infection."
+        "description": "Ability to prevent bacteria from entering the wound."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "skin sensitivity",
-        "description": "Potential for irritation or pain during treatment."
+        "description": "Risk of irritation or pain from the treatment."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "moisture control",
-        "description": "Ability to keep the area dry and prevent maceration."
+        "description": "Ability to keep the area dry and prevent further friction."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "ease of use",
-        "description": "Simplicity of the procedure for the user."
+        "description": "Simplicity of the treatment process."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "availability",
-        "description": "How easily the remedy can be obtained."
+        "description": "How easy it is to obtain the necessary items."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "user preference",
-        "description": "General user comfort and acceptance of the method."
+        "description": "General user comfort and willingness to perform the treatment."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "treatment duration",
-        "description": "Time required to complete the treatment process."
+        "description": "Time required for the treatment to be effective."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Keep the blister intact, dry, and protected with a loose bandage",
-        "description": "Baseline answer A*."
+        "description": "Conservative approach: do not pop, cover with bandage."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Apple cider vinegar swab",
-        "description": "Active chemical drying remedy."
+        "description": "Chemical approach: apply ACV to dry and disinfect."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Carefully drain a large painful blister with a sterilized needle",
-        "description": "Invasive mechanical remedy."
+        "description": "Mechanical approach: puncture to release fluid."
       }
     ],
     "edges": [
@@ -250,19 +259,15 @@
       },
       {
         "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
         "target": "a3"
       },
       {
         "source": "c7",
         "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
       },
       {
         "source": "c8",
@@ -273,20 +278,8 @@
         "target": "a2"
       },
       {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
         "source": "c9",
         "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
       },
       {
         "source": "c10",
@@ -309,11 +302,27 @@
         "target": "a2"
       },
       {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
         "source": "c4",
         "target": "a3"
       },
       {
         "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
         "target": "a3"
       }
     ]

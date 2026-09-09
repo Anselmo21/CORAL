@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Movement Breaks Default): Skip the standing desk and focus on taking a 2\u20135 minute movement break every 30\u201345 minutes \u2014 evidence shows frequent movement reduces back pain more reliably than sit-stand desks, at zero cost.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2488,
-    "output_tokens": 1818,
-    "llm_calls": 2,
+    "prompt_tokens": 1657,
+    "output_tokens": 1861,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,103 +40,120 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "I work at a desk all day and have been having back pain. Would a standing desk actually help?"
+        "label": "Would a standing desk help alleviate back pain from working at a desk all day?",
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the effectiveness of standing desks in reducing back pain?"
+        "label": "What is the effectiveness of standing desks in reducing back pain?",
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the potential risks or drawbacks of using a standing desk?"
+        "label": "What are the potential risks or drawbacks of using a standing desk?",
+        "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the most cost-effective and evidence-based solutions for addressing back pain?"
+        "label": "What are the alternative solutions to standing desks for reducing back pain?",
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "temporal: 2023 only"
+        "label": "temporal: 2023 only",
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "temporal: 2021\u20132023"
+        "label": "temporal: 2021\u20132023",
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "geographic: USA"
+        "label": "geographic: USA",
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "geographic: UK"
+        "label": "geographic: UK",
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: Individual focused on cost-effective solutions"
+        "label": "perspective: Individual focused on cost-effective solutions",
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: Ergonomics specialist or occupational therapist"
+        "label": "perspective: Ergonomics specialist or occupational therapist",
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Peer-reviewed clinical research"
+        "label": "trustworthiness: Peer-reviewed clinical research",
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Medical institution guidance"
+        "label": "trustworthiness: Medical institution guidance",
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Consumer health information"
+        "label": "trustworthiness: Consumer health information",
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Community ergonomics experience"
+        "label": "trustworthiness: Community ergonomics experience",
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Skip the standing desk and focus on taking a 2\u20135 minute movement break every 30\u201345 minutes \u2014 evidence shows frequent movement reduces back pain more reliably than sit-stand desks, at zero cost."
+        "label": "Movement Breaks Default",
+        "description": "Skip the standing desk and focus on taking a 2\u20135 minute movement break every 30\u201345 minutes \u2014 evidence shows frequent movement reduces back pain more reliably than sit-stand desks, at zero cost."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Get a sit-stand desk with anti-fatigue mat and proper ergonomic setup \u2014 used correctly with alternating postures every 30 minutes, it reduces upper back pain and prolonged sitting with meaningful evidence from long-term RCTs."
+        "label": "Standing Desk With Proper Setup",
+        "description": "Get a sit-stand desk with anti-fatigue mat and proper ergonomic setup \u2014 used correctly with alternating postures every 30 minutes, it reduces upper back pain and prolonged sitting with meaningful evidence from long-term RCTs."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Invest time in a strength training program targeting core and hip stability rather than buying a standing desk \u2014 structural weakness is the primary driver of desk-related back pain and exercise addresses the root cause."
+        "label": "Exercise Over Equipment",
+        "description": "Invest time in a strength training program targeting core and hip stability rather than buying a standing desk \u2014 structural weakness is the primary driver of desk-related back pain and exercise addresses the root cause."
       }
     ],
     "edges": [
@@ -229,11 +246,15 @@
         "target": "a2"
       },
       {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
         "source": "c7",
         "target": "a2"
       },
       {
-        "source": "c6",
+        "source": "c8",
         "target": "a2"
       },
       {
@@ -242,6 +263,10 @@
       },
       {
         "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
         "target": "a3"
       },
       {

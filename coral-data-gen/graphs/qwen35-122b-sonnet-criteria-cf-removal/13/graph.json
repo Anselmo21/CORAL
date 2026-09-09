@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (Debt and Invest Default): Pay off any high-interest debt first, top up your emergency fund to 3 months, then invest the remainder as a lump sum in a broad index fund \u2014 this order maximizes guaranteed and expected returns.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1598,
+    "output_tokens": 2062,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,63 +41,63 @@
         "layer": "1",
         "type": "question",
         "label": "What's the smartest thing to do with a $10,000 tax refund?",
-        "description": "The primary question regarding optimal allocation of a windfall."
+        "description": "Determining the optimal financial allocation for a windfall."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Financial Foundation & Liquidity",
-        "description": "Evaluating debt status, emergency savings, and guaranteed returns."
+        "label": "How should I prioritize debt and emergency savings?",
+        "description": "Evaluating the necessity of clearing liabilities and building a safety net before investing."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Investment Mechanics & Returns",
-        "description": "Evaluating tax advantages, compounding, and lump-sum vs DCA math."
+        "label": "What is the optimal market entry strategy?",
+        "description": "Weighing the mathematical advantage of lump-sum investing against the psychological safety of DCA."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Psychology & Risk Management",
-        "description": "Evaluating regret, volatility comfort, and deployment simplicity."
+        "label": "What are the execution and psychological constraints?",
+        "description": "Considering tax efficiency, liquidity needs, simplicity, and emotional comfort."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "elimination of high-interest debt",
-        "description": "Prioritizing paying off debt with rates >7-8%."
+        "description": "The priority of removing costly liabilities."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "emergency fund adequacy",
-        "description": "Ensuring 3-6 months of expenses are saved before investing."
+        "description": "The need for liquid cash reserves for unexpected events."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "tax-advantaged space availability",
-        "description": "Utilizing IRA/401k limits before taxable accounts."
+        "description": "Utilizing IRAs or 401ks for tax efficiency."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "lump-sum vs DCA return optimization",
-        "description": "Mathematical edge of investing immediately vs spreading out."
+        "description": "Maximizing expected returns by investing immediately."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "regret minimization from market timing",
-        "description": "Avoiding the pain of buying right before a crash."
+        "description": "Avoiding the pain of investing right before a market drop."
       },
       {
         "id": "c6",
@@ -102,49 +111,49 @@
         "layer": "3",
         "type": "concept",
         "label": "long-term wealth compounding",
-        "description": "Maximizing time in the market for compound growth."
+        "description": "The benefit of having money in the market for the longest possible time."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "psychological comfort with market volatility",
-        "description": "Feeling at ease when portfolio values fluctuate."
+        "description": "The ability to sleep well despite market fluctuations."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "liquidity preservation",
-        "description": "Keeping cash accessible for emergencies."
+        "description": "Keeping funds accessible rather than locked in investments."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "simplicity of deployment",
-        "description": "Ease of execution and decision-making process."
+        "description": "The ease of executing the financial plan."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Debt and Invest Default)",
-        "description": "Pay off debt, fund emergency, then lump sum invest."
+        "description": "Pay off high-interest debt, top up emergency fund, then invest remainder as lump sum."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Lump Sum Invest)",
-        "description": "Invest entire $10k immediately if no debt/fund issues."
+        "description": "Invest entire $10k immediately as a lump sum if debt and emergency fund are clear."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (DCA Over 6 Months)",
-        "description": "Spread $10k over 6 months to reduce timing risk."
+        "description": "Spread $10k across 6 monthly investments to reduce timing risk."
       }
     ],
     "edges": [
@@ -173,32 +182,32 @@
         "target": "c6"
       },
       {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq2",
-        "target": "c3"
-      },
-      {
         "source": "sq2",
         "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
       },
       {
         "source": "sq2",
         "target": "c7"
       },
       {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
         "source": "sq3",
-        "target": "c5"
+        "target": "c3"
       },
       {
         "source": "sq3",
         "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -249,10 +258,6 @@
         "target": "a2"
       },
       {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
         "source": "c7",
         "target": "a2"
       },
@@ -265,11 +270,23 @@
         "target": "a2"
       },
       {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
         "source": "c5",
         "target": "a3"
       },
       {
         "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
         "target": "a3"
       }
     ]

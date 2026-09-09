@@ -19,18 +19,18 @@
     "Match a NASA Clean Air Study plant to your dominant VOC (e.g., formaldehyde-targeted vs benzene-targeted choice)",
     "A multiple-plant strategy: one 10-12 inch potted plant per 100 sq ft of living space, per NASA/Wolverton guidance"
   ],
-  "baseline_answer": "Spider plant (Chlorophytum comosum) \u2014 easy to grow, NASA-listed, filters benzene/formaldehyde/CO/xylene; best single-plant pick",
-  "baseline_index": 0,
+  "baseline_answer": "Match a NASA Clean Air Study plant to your dominant VOC (e.g., formaldehyde-targeted vs benzene-targeted choice)",
+  "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3006,
-    "output_tokens": 1807,
-    "llm_calls": 2,
+    "prompt_tokens": 1898,
+    "output_tokens": 2120,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,119 +41,112 @@
         "layer": "1",
         "type": "question",
         "label": "best house plant to clean air",
-        "description": "What is the best house plant for air purification?"
+        "description": "The best house plant to clean air."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "most trustworthy source",
-        "description": "What is the most trustworthy source of information for house plants that clean air?"
+        "label": "What is the most trustworthy source of information on air-purifying houseplants?",
+        "description": "The most trustworthy source of information on air-purifying houseplants."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "best plant for homeowner",
-        "description": "What is the best house plant for a specific type of homeowner?"
-      },
-      {
-        "id": "sq3",
-        "layer": "2",
-        "type": "subq",
-        "label": "most effective strategy",
-        "description": "What is the most effective strategy for air purification?"
+        "label": "What is the best approach to air purification for a specific household or individual?",
+        "description": "The best approach to air purification for a specific household or individual."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: NASA Clean Air Study",
-        "description": "Sources must be trustworthy and from the NASA Clean Air Study"
+        "description": "The most trustworthy source of information on air-purifying houseplants."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: horticultural extension publication",
-        "description": "Sources must be trustworthy and from a horticultural extension publication"
+        "description": "The most trustworthy source of information on air-purifying houseplants."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: environmental health journal",
-        "description": "Sources must be trustworthy and from an environmental health journal"
+        "description": "The most trustworthy source of information on air-purifying houseplants."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: gardening blog",
-        "description": "Sources must be trustworthy and from a gardening blog"
+        "description": "The most trustworthy source of information on air-purifying houseplants."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: home improvement publication",
-        "description": "Sources must be trustworthy and from a home improvement publication"
+        "description": "The most trustworthy source of information on air-purifying houseplants."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: beginner houseplant owner",
-        "description": "Sources must be targeted towards a beginner houseplant owner"
+        "description": "The best approach to air purification for a specific household or individual."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: VOC-anxious / chemical-sensitive renter",
-        "description": "Sources must be targeted towards a VOC-anxious or chemical-sensitive renter"
+        "description": "The best approach to air purification for a specific household or individual."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: large open-floorplan homeowner",
-        "description": "Sources must be targeted towards a large open-floorplan homeowner"
+        "description": "The best approach to air purification for a specific household or individual."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: aesthetic-first plant enthusiast",
-        "description": "Sources must be targeted towards an aesthetic-first plant enthusiast"
+        "description": "The best approach to air purification for a specific household or individual."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: low-maintenance owner",
-        "description": "Sources must be targeted towards a low-maintenance owner"
+        "description": "The best approach to air purification for a specific household or individual."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Spider plant (Chlorophytum comosum)",
-        "description": "Easy to grow, NASA-listed, filters benzene/formaldehyde/CO/xylene; best single-plant pick"
+        "label": "Match a NASA Clean Air Study plant to your dominant VOC (e.g., formaldehyde-targeted vs benzene-targeted choice)",
+        "description": "The best approach to air purification for a specific household or individual."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Match a NASA Clean Air Study plant to your dominant VOC",
-        "description": "Targeted choice based on VOC type"
+        "label": "Spider plant (Chlorophytum comosum) \u2014 easy to grow, NASA-listed, filters benzene/formaldehyde/CO/xylene; best single-plant pick",
+        "description": "The best single-plant pick."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "A multiple-plant strategy",
-        "description": "One 10-12 inch potted plant per 100 sq ft of living space, per NASA/Wolverton guidance"
+        "label": "A multiple-plant strategy: one 10-12 inch potted plant per 100 sq ft of living space, per NASA/Wolverton guidance",
+        "description": "The best approach to air purification for a specific household or individual."
       }
     ],
     "edges": [
@@ -164,10 +157,6 @@
       {
         "source": "q",
         "target": "sq2"
-      },
-      {
-        "source": "q",
-        "target": "sq3"
       },
       {
         "source": "sq1",
@@ -210,26 +199,6 @@
         "target": "c10"
       },
       {
-        "source": "sq3",
-        "target": "c1"
-      },
-      {
-        "source": "sq3",
-        "target": "c2"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
-      },
-      {
         "source": "c1",
         "target": "a1"
       },
@@ -258,35 +227,19 @@
         "target": "a2"
       },
       {
-        "source": "c8",
+        "source": "c1",
         "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
       },
       {
         "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
         "target": "a3"
       }
     ]

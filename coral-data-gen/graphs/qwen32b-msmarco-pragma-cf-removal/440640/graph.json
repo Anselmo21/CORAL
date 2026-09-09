@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Education Week Quality Counts state grade ranking \u2014 academic-policy-depth ranking used by researchers and policymakers",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1950,
+    "output_tokens": 2430,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,126 @@
         "layer": "1",
         "type": "question",
         "label": "list of best to worst states for education",
-        "description": "Requesting a ranking of U.S. states from best to worst in terms of educational quality."
+        "description": "Which U.S. states are ranked from best to worst in terms of education quality?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Which ranking methodology is most trusted by researchers and policymakers?",
-        "description": "Focuses on the credibility and depth of academic policy analysis."
+        "label": "Which ranking is most trusted by researchers and policymakers?",
+        "description": "Focuses on academic policy depth and scholarly validation."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Which ranking considers child welfare and general public perception?",
-        "description": "Focuses on child-centered metrics and public opinion."
+        "label": "Which ranking is most trusted by general readers or parents?",
+        "description": "Focuses on accessibility and consumer-friendly metrics."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Which ranking is most accessible and used by a broad general audience?",
-        "description": "Focuses on popularity and accessibility of educational rankings."
+        "label": "Which ranking emphasizes child welfare or equity?",
+        "description": "Focuses on outcomes for children and systemic equity."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Which ranking is most influenced by school-choice or policy advocacy?",
+        "description": "Focuses on policy-driven or advocacy-based perspectives."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Education Week / Quality Counts",
-        "description": "Prioritizes a ranking methodology known for academic rigor and policy depth."
+        "description": "Prioritizes academic policy depth and research-based rankings."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Annie E. Casey Foundation",
-        "description": "Prioritizes a child welfare-focused ranking with strong public trust."
+        "description": "Prioritizes child welfare and equity-focused metrics."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: WalletHub research",
-        "description": "Prioritizes a multi-metric, consumer-friendly ranking."
+        "description": "Prioritizes broad, consumer-friendly composite metrics."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: ALEC (American Legislative Exchange Council) report",
-        "description": "Prioritizes a school-choice-focused ranking."
+        "description": "Prioritizes policy advocacy and school-choice perspectives."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed education policy journal",
-        "description": "Prioritizes rankings backed by academic research."
+        "description": "Prioritizes scholarly validation and academic rigor."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: parent of K-12 child",
-        "description": "Prioritizes rankings from the viewpoint of a child's parent."
+        "description": "Prioritizes the lived experience of parents in the education system."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: education policy researcher",
-        "description": "Prioritizes rankings from the viewpoint of academic researchers."
+        "description": "Prioritizes academic and policy analysis of education systems."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: consumer / general reader",
-        "description": "Prioritizes rankings that are accessible and widely understood."
+        "description": "Prioritizes accessibility and broad public understanding."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: equity-focused critic",
-        "description": "Prioritizes rankings that emphasize equity and fairness in education."
+        "description": "Prioritizes systemic equity and marginalized student outcomes."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: school-choice advocate",
-        "description": "Prioritizes rankings that support school-choice policies."
+        "description": "Prioritizes policy approaches that promote school choice and privatization."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "WalletHub composite ranking (MA, NJ, VT, NH, CT top; Nevada, Louisiana, Mississippi bottom) \u2014 broad multi-metric blend for general readership",
-        "description": "WalletHub's ranking emphasizes accessibility and multi-metric evaluation for a general audience."
+        "description": "A consumer-friendly ranking that blends multiple metrics for general readers."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Annie E. Casey Foundation Kids Count ranking \u2014 child-welfare-focused metric weighting outcomes for kids",
-        "description": "Annie E. Casey's ranking emphasizes child welfare and is trusted by parents and child advocates."
+        "description": "A ranking focused on child welfare and equity in education outcomes."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Education Week Quality Counts state grade ranking \u2014 academic-policy-depth ranking used by researchers and policymakers",
-        "description": "Education Week's ranking is the top choice for researchers and policymakers due to its academic rigor."
+        "description": "A detailed academic policy ranking used by researchers and policymakers."
       }
     ],
     "edges": [
@@ -161,6 +177,10 @@
         "target": "sq3"
       },
       {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
         "source": "sq1",
         "target": "c1"
       },
@@ -173,28 +193,40 @@
         "target": "c7"
       },
       {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
         "source": "sq2",
-        "target": "c2"
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
       },
       {
         "source": "sq2",
         "target": "c6"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
         "target": "c9"
       },
       {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
+        "source": "sq4",
         "target": "c4"
       },
       {
-        "source": "sq3",
-        "target": "c8"
+        "source": "sq4",
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -218,7 +250,7 @@
       },
       {
         "source": "c6",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c7",
@@ -230,7 +262,7 @@
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c10",

@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Treat the underlying condition + lifestyle change (cardiovascular fitness, weight, glucose control)",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3952,
-    "output_tokens": 1752,
-    "llm_calls": 2,
+    "prompt_tokens": 2373,
+    "output_tokens": 1657,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -47,14 +47,14 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "trustworthy sources",
+        "label": "What are the most trustworthy sources for treating impotence?",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "individual perspectives",
+        "label": "What are the different perspectives on treating impotence based on the underlying cause?",
         "description": ""
       },
       {
@@ -216,6 +216,10 @@
       },
       {
         "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
         "target": "a2"
       },
       {
@@ -257,10 +261,6 @@
       {
         "source": "c9",
         "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
       },
       {
         "source": "c10",

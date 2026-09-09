@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Reapply in Canada Default): Strengthen your Canadian medical school application and reapply \u2014 improving your MCAT, gaining clinical experience, and applying more broadly has higher expected value than the financial and career risk of most foreign medical programs.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2309,
-    "output_tokens": 1811,
-    "llm_calls": 2,
+    "prompt_tokens": 1555,
+    "output_tokens": 2312,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,126 +41,126 @@
         "layer": "1",
         "type": "question",
         "label": "Should I study medicine abroad?",
-        "description": ""
+        "description": "Considering studying medicine abroad after not getting into a Canadian medical school"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Chances of matching to Canadian residency",
-        "description": ""
+        "label": "Chances of successfully practicing medicine in Canada after studying abroad",
+        "description": "Considering the match rates and alternative paths to Canadian practice"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "Costs and benefits of studying medicine abroad",
-        "description": ""
+        "description": "Considering the financial, personal, and emotional costs of studying abroad"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Career prospects and credentials",
-        "description": ""
+        "label": "Implications of studying medicine abroad on one's career and education",
+        "description": "Considering the global recognition, quality, and accreditation of the program"
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "Alternative paths to Canadian practice",
-        "description": ""
+        "label": "Comparison to reapplying in Canada",
+        "description": "Considering the MCAT and academic competitiveness for reapplication"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "probability of matching to Canadian residency",
-        "description": ""
+        "description": "The likelihood of matching to a Canadian residency program after studying abroad"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "total financial cost of foreign medical education",
-        "description": ""
+        "description": "The total cost of studying medicine abroad, including tuition, living expenses, and other fees"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "global recognition of the degree",
-        "description": ""
+        "description": "The recognition and acceptance of the medical degree earned abroad by Canadian medical authorities"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "quality and accreditation of the program",
-        "description": ""
+        "description": "The quality and accreditation of the medical program abroad, including its reputation and standards"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "personal and family cost of relocation",
-        "description": ""
+        "description": "The personal and family costs of relocating to study medicine abroad, including living expenses and separation from family and friends"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "MCAT and academic competitiveness for reapplication",
-        "description": ""
+        "description": "The competitiveness of the MCAT and academic requirements for reapplying to Canadian medical schools"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "alternative paths to Canadian practice (US then transfer)",
-        "description": ""
+        "description": "The possibility of practicing medicine in Canada through alternative paths, such as studying in the US and then transferring to Canada"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "specific destination country match rates",
-        "description": ""
+        "description": "The match rates of medical graduates from specific countries, such as the UK or Australia, to Canadian residency programs"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "timeline to practicing physician",
-        "description": ""
+        "description": "The time it takes to become a practicing physician after studying medicine abroad, including the time required for residency and licensure"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "emotional and resilience cost of extended training",
-        "description": ""
+        "description": "The emotional and resilience costs of extended training and education required to become a practicing physician after studying medicine abroad"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Reapply in Canada Default",
-        "description": ""
+        "description": "Strengthen your Canadian medical school application and reapply"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "UK or Australia if Committed",
-        "description": ""
+        "description": "If you're committed to studying abroad, choose an accredited UK or Australian program"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Caribbean as Last Resort Only",
-        "description": ""
+        "description": "Consider a Caribbean school only as an absolute last resort with full understanding of the match rate risk"
       }
     ],
     "edges": [
@@ -183,6 +183,10 @@
       {
         "source": "sq1",
         "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
       },
       {
         "source": "sq1",
@@ -210,21 +214,21 @@
       },
       {
         "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq3",
         "target": "c9"
       },
       {
         "source": "sq4",
-        "target": "c7"
+        "target": "c6"
       },
       {
         "source": "c1",
         "target": "a1"
       },
       {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
         "source": "c2",
         "target": "a1"
       },
@@ -251,14 +255,6 @@
       {
         "source": "c5",
         "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
       },
       {
         "source": "c6",
@@ -274,7 +270,7 @@
       },
       {
         "source": "c8",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c9",
@@ -289,8 +285,24 @@
         "target": "a1"
       },
       {
-        "source": "c10",
-        "target": "a2"
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
       },
       {
         "source": "c10",

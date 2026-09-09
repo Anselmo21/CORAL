@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Pixel 7a Default): Get the Google Pixel 7a \u2014 its camera quality, guaranteed multi-year updates, and clean Android experience make it the best overall mid-range Android when discounted to the $350\u2013400 range.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2250,
-    "output_tokens": 1747,
-    "llm_calls": 2,
+    "prompt_tokens": 1525,
+    "output_tokens": 1704,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -46,13 +46,13 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the key features that make a budget Android phone great?"
+        "label": "Key features for a budget Android phone"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the practical considerations for a budget Android phone?"
+        "label": "Practical considerations for a budget Android phone"
       },
       {
         "id": "c1",
@@ -211,6 +211,14 @@
         "target": "a1"
       },
       {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
         "source": "c6",
         "target": "a1"
       },
@@ -219,51 +227,43 @@
         "target": "a1"
       },
       {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
         "source": "c8",
         "target": "a1"
       },
       {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
         "source": "c9",
         "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",
         "target": "a1"
       },
       {
-        "source": "c2",
+        "source": "c10",
         "target": "a2"
       },
       {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
+        "source": "c10",
         "target": "a3"
       }
     ]

@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Choose Affordable School Default): Choose the less expensive school unless the prestige gap is extreme \u2014 $30k less debt provides lasting financial flexibility that outweighs a moderate ranking difference for most career paths.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2299,
-    "output_tokens": 1785,
-    "llm_calls": 2,
+    "prompt_tokens": 1546,
+    "output_tokens": 1871,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,103 +40,120 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "How should I decide between two universities, one higher ranked but $30,000 more expensive?"
+        "label": "I got into two universities \u2014 one is higher ranked but costs $30,000 more. How should I decide?",
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "How important is university prestige for my career goals?"
+        "label": "How important is prestige in my field and career goals?",
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the financial implications of choosing each university?"
+        "label": "What are the financial implications of my decision?",
+        "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "How do personal factors influence my decision?"
+        "label": "How do personal factors influence my decision?",
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "field-specific prestige signal importance"
+        "label": "field-specific prestige signal importance",
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "total debt and financial flexibility post-graduation"
+        "label": "total debt and financial flexibility post-graduation",
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "first-job hiring signal value"
+        "label": "first-job hiring signal value",
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "long-term career earnings premium"
+        "label": "long-term career earnings premium",
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "personal motivation and fit at each school"
+        "label": "personal motivation and fit at each school",
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "networking quality difference between schools"
+        "label": "networking quality difference between schools",
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "entrepreneurial or risk-taking career aspirations"
+        "label": "entrepreneurial or risk-taking career aspirations",
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "graduate school ambitions (prestige matters more for PhD)"
+        "label": "graduate school ambitions (prestige matters more for PhD)",
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "scholarship and aid negotiation potential"
+        "label": "scholarship and aid negotiation potential",
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "family financial situation and co-signer risk"
+        "label": "family financial situation and co-signer risk",
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Choose Affordable School Default"
+        "label": "Choose Affordable School Default",
+        "description": "Choose the less expensive school unless the prestige gap is extreme \u2014 $30k less debt provides lasting financial flexibility that outweighs a moderate ranking difference for most career paths."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Pay for Prestige in Prestige-Sensitive Fields"
+        "label": "Pay for Prestige in Prestige-Sensitive Fields",
+        "description": "Pay the $30k premium if you're entering finance, consulting, or law \u2014 these fields use institutional brand as a primary hiring filter and the ROI from the higher-ranked school is real and measurable."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Negotiate Aid First"
+        "label": "Negotiate Aid First",
+        "description": "Attempt to negotiate financial aid from the higher-ranked school before deciding \u2014 admissions offices frequently match or improve offers when presented with competing packages, potentially eliminating the cost gap entirely."
       }
     ],
     "edges": [
@@ -257,11 +274,7 @@
         "target": "a3"
       },
       {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
+        "source": "c2",
         "target": "a3"
       },
       {
@@ -274,14 +287,6 @@
       },
       {
         "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
         "target": "a3"
       }
     ]

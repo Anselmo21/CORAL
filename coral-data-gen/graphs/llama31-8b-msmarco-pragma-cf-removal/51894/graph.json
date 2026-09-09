@@ -19,18 +19,18 @@
     "Leafy greens: boiled collards (~358 mg/cup), kale, bok choy, Swiss chard, turnip greens",
     "Calcium-fortified plant-based foods: soy milk, calcium-set tofu, fortified juice and cereal"
   ],
-  "baseline_answer": "Dairy: milk, yogurt, and cheese",
-  "baseline_index": 0,
+  "baseline_answer": "Leafy greens: boiled collards (~358 mg/cup), kale, bok choy, Swiss chard, turnip greens",
+  "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2913,
-    "output_tokens": 1960,
-    "llm_calls": 2,
+    "prompt_tokens": 1868,
+    "output_tokens": 2457,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,112 +41,112 @@
         "layer": "1",
         "type": "question",
         "label": "best natural sources of calcium",
-        "description": "Sources of calcium in natural foods"
+        "description": "natural sources of calcium"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "trustworthiness",
-        "description": "Sources of trustworthy information on calcium"
+        "label": "What are the most trustworthy sources of information about calcium?",
+        "description": "trustworthiness"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "perspective",
-        "description": "Consumer perspective on calcium sources"
+        "label": "What are the perspectives that influence the choice of calcium sources?",
+        "description": "perspective"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: NIH / US dietary guidelines",
-        "description": "Sources from NIH / US dietary guidelines"
+        "description": "trustworthiness"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed nutrition journal",
-        "description": "Sources from peer-reviewed nutrition journals"
+        "description": "trustworthiness"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: registered dietitian",
-        "description": "Sources from registered dietitians"
+        "description": "trustworthiness"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: vegan / plant-based publication",
-        "description": "Sources from vegan / plant-based publications"
+        "description": "trustworthiness"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: consumer health website",
-        "description": "Sources from consumer health websites"
+        "description": "trustworthiness"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: food sustainability advocacy",
-        "description": "Sources from food sustainability advocacy"
+        "description": "trustworthiness"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: lactose-intolerant consumer",
-        "description": "Sources from lactose-intolerant consumers"
+        "description": "perspective"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: vegan",
-        "description": "Sources from vegans"
+        "description": "perspective"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: omnivorous default consumer",
-        "description": "Sources from omnivorous default consumers"
+        "description": "perspective"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: pregnant woman",
-        "description": "Sources from pregnant women"
+        "description": "perspective"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Dairy: milk, yogurt, and cheese",
-        "description": "Sources of calcium in dairy products"
+        "description": "dairy products"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Leafy greens: boiled collards (~358 mg/cup), kale, bok choy, Swiss chard, turnip greens",
-        "description": "Sources of calcium in leafy greens"
+        "description": "leafy green vegetables"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Calcium-fortified plant-based foods: soy milk, calcium-set tofu, fortified juice and cereal",
-        "description": "Sources of calcium in fortified plant-based foods"
+        "description": "calcium-fortified plant-based foods"
       }
     ],
     "edges": [
@@ -228,15 +228,15 @@
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c10",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c1",
@@ -268,15 +268,15 @@
       },
       {
         "source": "c8",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c10",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c1",
@@ -300,6 +300,74 @@
       },
       {
         "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
         "target": "a3"
       }
     ]

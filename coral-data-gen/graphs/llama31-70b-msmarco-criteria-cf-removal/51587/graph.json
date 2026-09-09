@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "North lakeshore (Riva del Garda, Torbole)",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 4240,
-    "output_tokens": 1625,
-    "llm_calls": 2,
+    "prompt_tokens": 2503,
+    "output_tokens": 1796,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,120 +40,103 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What is the best area to stay in Lake Garda, Italy?",
-        "description": ""
+        "label": "What is the best area to stay in Lake Garda, Italy?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Amenities and activities",
-        "description": ""
+        "label": "Amenities and activities"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Practical considerations",
-        "description": ""
+        "label": "Practical considerations"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Atmosphere and charm",
-        "description": ""
+        "label": "Atmosphere and character"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "lakefront access",
-        "description": ""
+        "label": "lakefront access"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "restaurant variety",
-        "description": ""
+        "label": "restaurant variety"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "nightlife options",
-        "description": ""
+        "label": "nightlife options"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "family-friendliness",
-        "description": ""
+        "label": "family-friendliness"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "public transport links",
-        "description": ""
+        "label": "public transport links"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "accommodation price",
-        "description": ""
+        "label": "accommodation price"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "scenic views",
-        "description": ""
+        "label": "scenic views"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "water sports availability",
-        "description": ""
+        "label": "water sports availability"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "historic charm",
-        "description": ""
+        "label": "historic charm"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "distance to major attractions",
-        "description": ""
+        "label": "distance to major attractions"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "North lakeshore (Riva del Garda, Torbole)",
-        "description": ""
+        "label": "North lakeshore (Riva del Garda, Torbole)"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "South lakeshore (Sirmione, Peschiera, Desenzano)",
-        "description": ""
+        "label": "South lakeshore (Sirmione, Peschiera, Desenzano)"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "East lakeshore (Bardolino, Garda, Torri del Benaco)",
-        "description": ""
+        "label": "East lakeshore (Bardolino, Garda, Torri del Benaco)"
       }
     ],
     "edges": [
@@ -238,24 +221,20 @@
         "target": "a1"
       },
       {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
+        "source": "c5",
+        "target": "a1"
       },
       {
         "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
         "target": "a1"
       },
       {
         "source": "c6",
         "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
       },
       {
         "source": "c7",
@@ -267,11 +246,35 @@
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
       },
       {
         "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",

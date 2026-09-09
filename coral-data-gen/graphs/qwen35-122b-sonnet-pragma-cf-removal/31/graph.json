@@ -21,109 +21,118 @@
   ],
   "baseline_answer": "Answer A (Stanford GSB Default): Prioritize Stanford GSB for entrepreneurship \u2014 its VC network, Silicon Valley location, alumni founder density, and risk-tolerant culture make it the strongest launchpad for venture-backed tech startups.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1703,
+    "output_tokens": 3495,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Which MBA program should I prioritize \u2014 Stanford GSB, HBS, or Wharton?",
-        "description": "Question asking for the best MBA program for starting a company."
+        "label": "Which MBA program should I prioritize for starting a company?",
+        "description": "Main question asking to choose between Stanford GSB, HBS, or Wharton for entrepreneurship."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Best for tech startup founder in Silicon Valley?",
-        "description": "Sub-question focusing on tech, VC, and West Coast ecosystem."
+        "label": "Best for tech startup founders in the US West Coast?",
+        "description": "Sub-question focusing on the tech ecosystem, Silicon Valley proximity, and VC networks."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Best for non-tech ventures globally?",
-        "description": "Sub-question focusing on consumer, healthcare, and global brand networks."
+        "label": "Best for non-tech ventures and global markets?",
+        "description": "Sub-question focusing on global alumni networks, brand recognition, and non-tech industries."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Best for capital-intensive fintech/healthtech?",
-        "description": "Sub-question focusing on finance depth and capital structuring."
+        "label": "Best for capital-intensive ventures in finance/healthtech?",
+        "description": "Sub-question focusing on finance depth, capital structuring, and specific industry labs."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Filter for only 2023 data."
+        "description": "Filters for sources published in 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Filter for data from 2021 to 2023."
+        "description": "Filters for sources published between 2021 and 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA \u2014 Silicon Valley / West Coast",
-        "description": "Filter for West Coast geographic focus."
+        "description": "Filters for sources emphasizing West Coast/Silicon Valley context."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA \u2014 East Coast / Global",
-        "description": "Filter for East Coast or Global geographic focus."
+        "description": "Filters for sources emphasizing East Coast or Global context."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Aspiring tech startup founder",
-        "description": "Filter for tech startup founder perspective."
+        "description": "Filters for sources from the perspective of a tech founder."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Entrepreneur in finance, healthcare, or consumer sectors",
-        "description": "Filter for non-tech sector entrepreneur perspective."
+        "description": "Filters for sources from the perspective of non-tech entrepreneurs."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Education ranking publication",
-        "description": "Filter for education ranking publications."
+        "description": "Filters for sources from official ranking publications."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Business journalism",
-        "description": "Filter for business journalism."
+        "description": "Filters for sources from business journalism outlets."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Community peer advice from MBA applicants",
-        "description": "Filter for community peer advice."
+        "description": "Filters for sources from community forums like Reddit."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: School-published program materials",
-        "description": "Filter for school-published materials."
+        "description": "Filters for official school publications."
       },
       {
         "id": "a1",
@@ -194,10 +203,6 @@
       },
       {
         "source": "sq2",
-        "target": "c1"
-      },
-      {
-        "source": "sq2",
         "target": "c2"
       },
       {
@@ -218,10 +223,6 @@
       },
       {
         "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq2",
         "target": "c10"
       },
       {
@@ -234,15 +235,19 @@
       },
       {
         "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
         "target": "c4"
       },
       {
         "source": "sq3",
-        "target": "c6"
+        "target": "c5"
       },
       {
         "source": "sq3",
-        "target": "c7"
+        "target": "c6"
       },
       {
         "source": "sq3",
@@ -265,12 +270,28 @@
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
         "source": "c3",
         "target": "a1"
       },
       {
         "source": "c4",
         "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
       },
       {
         "source": "c5",
@@ -281,12 +302,32 @@
         "target": "a1"
       },
       {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
         "source": "c7",
         "target": "a1"
       },
       {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
         "source": "c8",
         "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
       },
       {
         "source": "c9",
@@ -297,40 +338,8 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
         "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
       },
       {
         "source": "c10",

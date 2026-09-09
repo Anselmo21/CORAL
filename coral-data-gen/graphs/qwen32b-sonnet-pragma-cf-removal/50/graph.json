@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (Combo Convection Oven Default): Get a compact countertop convection oven with air fry mode \u2014 it replaces your toaster, air fryer, and secondary oven in one footprint, which is the right trade-off for small kitchens even if peak air frying performance is slightly lower.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1701,
+    "output_tokens": 2277,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -39,91 +48,91 @@
         "layer": "2",
         "type": "subq",
         "label": "sq1",
-        "description": "What is the best appliance for small kitchens in terms of space efficiency and versatility?"
+        "description": "What is the best appliance for small kitchens in terms of space and versatility?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "sq2",
-        "description": "What is the best appliance for peak air frying performance?"
+        "description": "What is the best appliance for achieving the best air frying results?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "sq3",
-        "description": "What is the best appliance for energy efficiency and daily use in small households?"
+        "description": "What is the most energy-efficient and practical appliance for small households?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "temporal: 2023 only"
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "temporal: 2021\u20132023"
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "geographic: USA"
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Global",
-        "description": "geographic: Global"
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Cook prioritizing versatility over peak performance",
-        "description": "perspective: Cook prioritizing versatility over peak performance"
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Cook prioritizing best air frying results",
-        "description": "perspective: Cook prioritizing best air frying results"
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer product recommendation publication",
-        "description": "trustworthiness: Consumer product recommendation publication"
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Tech journalism",
-        "description": "trustworthiness: Tech journalism"
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Home cooking community",
-        "description": "trustworthiness: Home cooking community"
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Culinary testing publication",
-        "description": "trustworthiness: Culinary testing publication"
+        "description": ""
       },
       {
         "id": "a1",
@@ -234,7 +243,7 @@
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c7",
@@ -242,7 +251,7 @@
       },
       {
         "source": "c8",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c9",
@@ -253,24 +262,12 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
+        "source": "c10",
         "target": "a2"
       },
       {
         "source": "c10",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c2",
@@ -278,10 +275,6 @@
       },
       {
         "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
         "target": "a3"
       }
     ]

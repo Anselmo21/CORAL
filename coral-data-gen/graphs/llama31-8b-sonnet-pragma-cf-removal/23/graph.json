@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer C (Discuss with Physician): Make a shared decision with your doctor based on your specific sexual history and risk profile \u2014 the benefit is highly individual at age 28 and depends on factors your physician can assess.",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2540,
-    "output_tokens": 2376,
-    "llm_calls": 2,
+    "prompt_tokens": 1679,
+    "output_tokens": 1807,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,112 +41,112 @@
         "layer": "1",
         "type": "question",
         "label": "Is it worth getting the HPV vaccine if I've already been sexually active for years?",
-        "description": "The question is: Is it worth getting the HPV vaccine if I've already been sexually active for years?"
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the benefit of the HPV vaccine for individuals with prior sexual activity?",
-        "description": "The sub-question is: What is the benefit of the HPV vaccine for individuals with prior sexual activity?"
+        "label": "What is the current recommendation for HPV vaccination for adults over 26?",
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How should individuals aged 26-45 decide whether to get vaccinated, considering their risk profiles?",
-        "description": "The sub-question is: How should individuals aged 26-45 decide whether to get vaccinated, considering their risk profiles?"
+        "label": "What are the factors that influence the decision to get vaccinated at age 28?",
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "The directive is: Consider only sources from 2023."
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "The directive is: Consider only sources from 2021\u20132023."
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "The directive is: Consider only sources from the USA."
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Individual with ongoing multiple new partners",
-        "description": "The directive is: Consider only sources from individuals with ongoing multiple new partners."
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Individual in long-term monogamous relationship",
-        "description": "The directive is: Consider only sources from individuals in long-term monogamous relationships."
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Gynecologist or preventive medicine physician",
-        "description": "The directive is: Consider only sources from gynecologists or preventive medicine physicians."
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Government public health guidance",
-        "description": "The directive is: Consider only sources from government public health guidance."
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Peer-reviewed clinical research",
-        "description": "The directive is: Consider only sources from peer-reviewed clinical research."
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer health information",
-        "description": "The directive is: Consider only sources from consumer health information."
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Patient community experience",
-        "description": "The directive is: Consider only sources from patient community experience."
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Get Vaccinated Default",
-        "description": "The answer is: Get the HPV vaccine \u2014 even with prior sexual activity, you're unlikely to have encountered all 9 covered strains, and the vaccine provides meaningful protection against cervical, anal, and oropharyngeal cancers."
+        "description": "Get the HPV vaccine \u2014 even with prior sexual activity, you're unlikely to have encountered all 9 covered strains, and the vaccine provides meaningful protection against cervical, anal, and oropharyngeal cancers."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Skip if Monogamous",
-        "description": "The answer is: Vaccination is unlikely to be cost-effective if you're in a long-term monogamous relationship \u2014 your risk of new HPV strain exposure is minimal and CDC guidance is to individualize the decision for adults over 26."
+        "description": "Vaccination is unlikely to be cost-effective if you're in a long-term monogamous relationship \u2014 your risk of new HPV strain exposure is minimal and CDC guidance is to individualize the decision for adults over 26."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Discuss with Physician",
-        "description": "The answer is: Make a shared decision with your doctor based on your specific sexual history and risk profile \u2014 the benefit is highly individual at age 28 and depends on factors your physician can assess."
+        "description": "Make a shared decision with your doctor based on your specific sexual history and risk profile \u2014 the benefit is highly individual at age 28 and depends on factors your physician can assess."
       }
     ],
     "edges": [
@@ -161,14 +161,6 @@
       {
         "source": "sq1",
         "target": "c1"
-      },
-      {
-        "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "sq1",
-        "target": "c4"
       },
       {
         "source": "sq1",
@@ -204,19 +196,19 @@
       },
       {
         "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
         "target": "c5"
       },
       {
         "source": "sq2",
         "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
-        "target": "c8"
       },
       {
         "source": "sq2",
@@ -236,11 +228,11 @@
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c3",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c4",
@@ -252,7 +244,7 @@
       },
       {
         "source": "c6",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c7",
@@ -264,11 +256,11 @@
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c10",
-        "target": "a3"
+        "target": "a2"
       }
     ]
   }

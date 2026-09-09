@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (Breville Bambino Plus Default): Get the Breville Bambino Plus \u2014 it produces genuine espresso quality, has a powerful steam wand, and heats up in 3 seconds, making it the best balance of quality and ease for new home baristas.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 2,
+  "temperature": 0.0,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1782,
+    "output_tokens": 2546,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,98 +41,98 @@
         "layer": "1",
         "type": "question",
         "label": "What's the best machine under $500?",
-        "description": "Main question about home espresso machines."
+        "description": "User wants to start making espresso at home with a budget under $500."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Best Easy Start for Beginners",
-        "description": "Focuses on convenience, speed, and recent consumer reviews."
+        "label": "Best for ease and daily convenience",
+        "description": "Which machine offers the best balance of speed, ease of use, and quality for a beginner?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Best Quality via Grinder Split",
-        "description": "Focuses on the consensus that the grinder is the critical bottleneck."
+        "label": "Best for quality via budget optimization",
+        "description": "Which approach yields the highest espresso quality by prioritizing the grinder over the machine?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Best Long-Term Investment",
-        "description": "Focuses on repairability, longevity, and prosumer quality."
+        "label": "Best for longevity and craft investment",
+        "description": "Which machine offers the best repairability, upgrade path, and long-term value for a serious hobbyist?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Restricts to 2023 sources."
+        "description": "Prioritize sources published in 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Includes 2021-2023 sources."
+        "description": "Prioritize sources published between 2021 and 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Prioritizes US market sources."
+        "description": "Prioritize sources from the USA market."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Global coffee enthusiast market",
-        "description": "Prioritizes global enthusiast consensus."
+        "description": "Prioritize sources from the global enthusiast community."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Beginner wanting easy daily espresso",
-        "description": "Prioritizes ease of use."
+        "description": "Prioritize solutions that require minimal skill and effort."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Enthusiast willing to learn and invest in quality",
-        "description": "Prioritizes learning curve and quality."
+        "description": "Prioritize solutions that require skill but offer higher quality ceilings."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer product recommendation publication",
-        "description": "Prioritizes mass-market reviews."
+        "description": "Prioritize mainstream consumer tech reviews (e.g., Wirecutter)."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Espresso enthusiast community",
-        "description": "Prioritizes community consensus."
+        "description": "Prioritize community consensus from forums (e.g., r/espresso)."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Tech journalism",
-        "description": "Prioritizes tech journalism reviews."
+        "description": "Prioritize in-depth tech analysis (e.g., Ars Technica)."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Specialty coffee retailer",
-        "description": "Prioritizes retailer expertise."
+        "description": "Prioritize advice from specialized coffee equipment retailers."
       },
       {
         "id": "a1",
@@ -185,40 +194,40 @@
         "target": "c9"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
         "target": "c10"
-      },
-      {
-        "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
-        "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c8"
-      },
-      {
-        "source": "sq3",
-        "target": "c2"
-      },
-      {
-        "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq3",
-        "target": "c8"
       },
       {
         "source": "c1",
@@ -242,11 +251,7 @@
       },
       {
         "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c4",
@@ -258,10 +263,6 @@
       },
       {
         "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
         "target": "a1"
       },
       {
@@ -278,31 +279,11 @@
       },
       {
         "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
         "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
       },
       {
         "source": "c9",
         "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
       },
       {
         "source": "c10",

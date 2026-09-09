@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (Online Default): Choose an online degree from an accredited university \u2014 for a working adult, the ability to maintain your income and schedule while earning a credential that employers now largely treat equally outweighs the networking disadvantages.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-70B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2438,
-    "output_tokens": 1867,
-    "llm_calls": 2,
+    "prompt_tokens": 1629,
+    "output_tokens": 1811,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,28 +40,35 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should a working adult with a full-time job pursue their university degree online or in person?",
+        "label": "Should I do my university degree online or in person?",
         "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the benefits and drawbacks of online degree programs for working adults?",
+        "label": "Employer perceptions and career outcomes",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How do in-person programs compare to online programs in terms of networking opportunities and career outcomes?",
+        "label": "Networking opportunities and social benefits",
         "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What alternative options are available that balance schedule flexibility and networking opportunities?",
+        "label": "Flexibility and scheduling advantages",
+        "description": ""
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Alternative degree programs",
         "description": ""
       },
       {
@@ -170,6 +177,10 @@
         "target": "sq3"
       },
       {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
         "source": "sq1",
         "target": "c1"
       },
@@ -186,12 +197,8 @@
         "target": "c7"
       },
       {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
         "source": "sq2",
-        "target": "c4"
+        "target": "c2"
       },
       {
         "source": "sq2",
@@ -202,14 +209,18 @@
         "target": "c8"
       },
       {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
         "source": "sq3",
         "target": "c5"
       },
       {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
         "source": "c1",
         "target": "a1"
       },
@@ -231,7 +242,7 @@
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c7",
@@ -239,7 +250,7 @@
       },
       {
         "source": "c8",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c9",
@@ -247,30 +258,14 @@
       },
       {
         "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
         "target": "a3"
       },
       {
@@ -278,7 +273,11 @@
         "target": "a3"
       },
       {
-        "source": "c5",
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
         "target": "a3"
       },
       {
@@ -286,7 +285,7 @@
         "target": "a3"
       },
       {
-        "source": "c9",
+        "source": "c8",
         "target": "a3"
       }
     ]

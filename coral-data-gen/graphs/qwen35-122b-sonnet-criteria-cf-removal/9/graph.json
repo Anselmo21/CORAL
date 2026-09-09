@@ -21,53 +21,63 @@
   ],
   "baseline_answer": "Answer C (Balance Transfer): Transfer all three balances to a 0% APR card and pay off the full amount within the promotional window \u2014 if you qualify, this eliminates interest entirely and is faster than any payment-order strategy.",
   "baseline_index": 2,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 2,
+  "usage": {
+    "prompt_tokens": 7285,
+    "output_tokens": 5989,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Best way to pay off $8k debt?",
-        "description": "Determine the optimal debt repayment strategy for $8,000 across three credit cards at 19-24% APR."
+        "label": "Best way to pay off $8,000 debt?",
+        "description": "Determining the optimal debt repayment strategy for $8,000 across three credit cards at 19%, 22%, and 24% APR."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Mathematical & Financial Efficiency",
-        "description": "Evaluates cost, speed, and feasibility of financial instruments."
+        "label": "Financial Efficiency & Product Access",
+        "description": "Evaluating cost, speed, and access to financial products."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Behavioral & Psychological Factors",
-        "description": "Evaluates user motivation, flexibility, and cash flow needs."
+        "label": "Behavioral & Cash Flow",
+        "description": "Evaluating psychological factors and immediate liquidity."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Operational & Structural Simplicity",
-        "description": "Evaluates the mechanics of payment structure and credit impact."
+        "label": "Operational & Credit Health",
+        "description": "Evaluating simplicity and credit score effects."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "total interest cost minimization",
-        "description": "Minimizing the total dollar amount paid in interest."
+        "description": "Minimizing the total amount of interest paid over the life of the debt."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "psychological motivation and completion rate",
-        "description": "The likelihood of sticking to the plan due to early wins."
+        "description": "The likelihood of sticking to the plan due to early psychological wins."
       },
       {
         "id": "c3",
@@ -81,49 +91,49 @@
         "layer": "3",
         "type": "concept",
         "label": "simplicity of single payment",
-        "description": "Consolidating multiple payments into one."
+        "description": "Reducing complexity by consolidating into one payment."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "credit score impact",
-        "description": "Effect on credit utilization and score during repayment."
+        "description": "The effect of the strategy on the user's credit score."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "access to balance transfer offers",
-        "description": "Ability to qualify for 0% APR promotional cards."
+        "description": "The ability to qualify for and utilize 0% APR balance transfer cards."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "risk of rate reset on promotional offers",
-        "description": "The danger of high rates returning after the promo period."
+        "description": "The danger of high interest rates returning if the balance isn't paid in time."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "qualification for consolidation loan",
-        "description": "Eligibility for a lower-rate personal loan."
+        "description": "The requirement to meet credit standards for a new loan or transfer."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "flexibility to handle financial emergencies",
-        "description": "Ability to pause or adjust payments if needed."
+        "description": "The ability to pause or adjust payments during unexpected events."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "immediate cash flow relief",
-        "description": "Reducing monthly payment burden immediately."
+        "description": "The immediate reduction in monthly payment burden."
       },
       {
         "id": "a1",
@@ -206,6 +216,10 @@
       },
       {
         "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
         "target": "a3"
       },
       {
@@ -226,7 +240,15 @@
       },
       {
         "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
         "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
       },
       {
         "source": "c8",
@@ -234,55 +256,19 @@
       },
       {
         "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
         "target": "a1"
       },
       {
         "source": "c9",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c10",
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
         "source": "c10",
-        "target": "a2"
+        "target": "a3"
       }
     ]
   }

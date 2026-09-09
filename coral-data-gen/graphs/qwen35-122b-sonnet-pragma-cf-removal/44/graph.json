@@ -21,10 +21,20 @@
   ],
   "baseline_answer": "Answer A (CompTIA Security+ Default): Start with CompTIA Security+ \u2014 it's the most recognized entry-level credential, vendor-neutral, DoD-approved, and appears in more entry-level job postings than any other certification.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 1,
+  "temperature": 0.0,
+  "attempts": 2,
+  "usage": {
+    "prompt_tokens": 7531,
+    "output_tokens": 5906,
+    "llm_calls": 2,
+    "finish_reasons": [
+      "length",
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +42,119 @@
         "layer": "1",
         "type": "question",
         "label": "What certification should I get first?",
-        "description": "I want to get into cybersecurity. What certification should I get first?"
+        "description": "Primary question about entry cybersecurity certification."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "General Entry & Government Path",
-        "description": "Which cert is best for a beginner targeting general entry-level or government roles?"
+        "label": "General Entry-Level Path",
+        "description": "Best certification for a beginner with no specific niche."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Offensive Security Specialist Path",
-        "description": "Which cert is best for an aspiring penetration tester or offensive security specialist?"
+        "label": "Offensive Security Path",
+        "description": "Best certification for aspiring penetration testers."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Technical Rigor & Practitioner Path",
-        "description": "Which cert is best for signaling high technical depth and practitioner respect?"
+        "label": "Technical Rigor Path",
+        "description": "Best certification for those prioritizing technical depth over cost."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Prioritize sources published in 2023."
+        "description": "Filters for 2023 sources only."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Prioritize sources published between 2021 and 2023."
+        "description": "Filters for sources from 2021 to 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Prioritize sources from the USA."
+        "description": "Filters for USA-based sources."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Entry-level candidate with no prior experience",
-        "description": "Prioritize advice for beginners with no experience."
+        "description": "Filters for entry-level advice."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Aspiring penetration tester or offensive security specialist",
-        "description": "Prioritize advice for offensive security careers."
+        "description": "Filters for offensive security perspective."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Candidate targeting government or DoD roles",
-        "description": "Prioritize advice for government/DoD employment."
+        "description": "Filters for DoD/government roles."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Certification body documentation",
-        "description": "Prioritize official documentation from certifying bodies."
+        "description": "Prioritizes official cert body docs."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Security training institution",
-        "description": "Prioritize advice from security training institutions."
+        "description": "Prioritizes training institutions."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Cybersecurity practitioner community",
-        "description": "Prioritize advice from practitioner communities (e.g., Reddit)."
+        "description": "Prioritizes community advice."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Offensive security training provider",
-        "description": "Prioritize advice from offensive security training providers."
+        "description": "Prioritizes offensive security providers."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (CompTIA Security+ Default)",
-        "description": "Start with CompTIA Security+ \u2014 it's the most recognized entry-level credential, vendor-neutral, DoD-approved, and appears in more entry-level job postings than any other certification."
+        "description": "Start with CompTIA Security+."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (OSCP for Offensive Security)",
-        "description": "Pursue OSCP if your goal is penetration testing \u2014 it's the most respected hands-on offensive credential and employers in that niche weight it far above any other certification including Security+."
+        "description": "Pursue OSCP if targeting penetration testing."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (GIAC GSEC for Technical Rigor)",
-        "description": "Consider GIAC GSEC if you're willing to invest more \u2014 it's more technically demanding and practitioner-respected than Security+, worth the cost premium if you want to signal genuine technical depth from the start."
+        "description": "Consider GIAC GSEC for technical rigor."
       }
     ],
     "edges": [
@@ -194,10 +204,6 @@
       },
       {
         "source": "sq2",
-        "target": "c1"
-      },
-      {
-        "source": "sq2",
         "target": "c2"
       },
       {
@@ -210,11 +216,19 @@
       },
       {
         "source": "sq2",
-        "target": "c10"
+        "target": "c7"
       },
       {
-        "source": "sq3",
-        "target": "c1"
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
       },
       {
         "source": "sq3",
@@ -223,6 +237,10 @@
       {
         "source": "sq3",
         "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
       },
       {
         "source": "sq3",
@@ -302,43 +320,15 @@
       },
       {
         "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
         "target": "a3"
       },
       {
         "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
       }
     ]
   }

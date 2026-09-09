@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (Active Multimodal Default): Pursue a combination of supervised strength training, pain neuroscience education, and CBT \u2014 this multimodal active approach has the strongest long-term evidence for non-specific chronic back pain.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1551,
+    "output_tokens": 2699,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,84 +41,84 @@
         "layer": "1",
         "type": "question",
         "label": "Best approach for chronic lower back pain?",
-        "description": "User seeks relief for chronic lower back pain >1 year."
+        "description": "User seeks relief for chronic lower back pain lasting over a year."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Efficacy and Mechanism",
-        "description": "Which approach best reduces pain and restores function?"
+        "label": "Efficacy & Mechanism",
+        "description": "How effective are the treatments and what mechanisms do they target?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Safety and Prerequisites",
-        "description": "Which approach avoids harm and correctly identifies pathology?"
+        "label": "Safety & Diagnostics",
+        "description": "What are the risks, necessary diagnostics, and potential for harm?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Feasibility and Context",
-        "description": "Which approach fits patient history and engagement capabilities?"
+        "label": "Context & Feasibility",
+        "description": "How do patient history and practical constraints influence the choice?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "long-term pain reduction evidence",
-        "description": "Evidence supporting sustained relief over time."
+        "description": "Evidence supporting sustained pain relief over time."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "speed of symptom relief",
-        "description": "How quickly symptoms are alleviated."
+        "description": "How quickly the treatment alleviates pain symptoms."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "addressing central sensitization",
-        "description": "Treating the nervous system's heightened pain response."
+        "description": "Ability to treat the nervous system's heightened pain response."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "avoidance of unnecessary procedures",
-        "description": "Minimizing invasive or low-yield interventions."
+        "description": "Minimizing invasive or low-value medical interventions."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "functional restoration and strength",
-        "description": "Improving physical capacity and muscle strength."
+        "description": "Improving physical function and muscle strength."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "presence of clear structural pathology",
-        "description": "Confirming specific anatomical causes like herniation."
+        "description": "Existence of identifiable anatomical defects requiring specific intervention."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "prior treatment failure history",
-        "description": "History of what has or hasn't worked previously."
+        "description": "History of unsuccessful previous treatments."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "patient engagement with active treatment",
-        "description": "Patient's ability and willingness to perform active exercises."
+        "description": "Patient's willingness and ability to participate in active therapies."
       },
       {
         "id": "c9",
@@ -123,28 +132,28 @@
         "layer": "3",
         "type": "concept",
         "label": "risk of opioid or passive treatment dependency",
-        "description": "Avoiding reliance on medications or passive therapies."
+        "description": "Potential for developing reliance on drugs or passive therapies."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Active Multimodal Default)",
-        "description": "Supervised strength training, pain neuroscience education, and CBT."
+        "description": "Pursue a combination of supervised strength training, pain neuroscience education, and CBT \u2014 this multimodal active approach has the strongest long-term evidence for non-specific chronic back pain."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Structural Investigation First)",
-        "description": "Updated imaging and specialist referral before conservative management."
+        "description": "Get updated imaging and a specialist referral before committing to conservative management \u2014 if a structural cause (herniated disc, stenosis) is confirmed, targeted interventions or surgery may be warranted."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Mind-Body Focus)",
-        "description": "CBT, pain neuroscience education, and gentle movement."
+        "description": "Prioritize CBT and pain neuroscience education alongside gentle movement \u2014 for chronic pain with central sensitization features, addressing psychological factors often produces more relief than physical interventions alone."
       }
     ],
     "edges": [
@@ -177,6 +186,10 @@
         "target": "c5"
       },
       {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
         "source": "sq2",
         "target": "c4"
       },
@@ -194,10 +207,6 @@
       },
       {
         "source": "sq3",
-        "target": "c8"
-      },
-      {
-        "source": "sq3",
         "target": "c9"
       },
       {
@@ -209,12 +218,28 @@
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
         "source": "c3",
         "target": "a1"
       },
       {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
         "source": "c4",
         "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
       },
       {
         "source": "c5",
@@ -222,11 +247,19 @@
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c7",
         "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
       },
       {
         "source": "c8",
@@ -237,52 +270,16 @@
         "target": "a1"
       },
       {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
         "source": "c10",
         "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
       },
       {
         "source": "c10",

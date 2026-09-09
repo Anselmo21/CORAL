@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "'We Are The Champions' by Queen",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1910,
+    "output_tokens": 2088,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,28 +41,28 @@
         "layer": "1",
         "type": "question",
         "label": "Which pop song best motivates sports athletes?",
-        "description": "Evaluate which song is most effective at motivating athletes based on musical and cultural factors."
+        "description": "Identify the pop song that is most effective at motivating athletes based on musical, lyrical, and cultural criteria."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What makes a song effective for motivating athletes during performance?",
-        "description": "Criteria related to the musical structure and energy of the song."
+        "label": "What musical elements make a song effective for motivation?",
+        "description": "Evaluate tempo, beat strength, energy level, build-up structure, chorus catchiness, and vocal intensity."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How does a song inspire or emotionally impact athletes?",
-        "description": "Criteria related to lyrics, vocal delivery, and emotional resonance."
+        "label": "What lyrical and thematic elements make a song inspiring for sports?",
+        "description": "Evaluate lyrical inspiration, cultural impact, and sports-victory association."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What factors contribute to a song\u2019s widespread use and acceptance in sports culture?",
-        "description": "Criteria related to cultural presence, recognition, and association with sports events."
+        "label": "What factors contribute to a song's widespread use and recognition in sports?",
+        "description": "Evaluate mainstream recognition."
       },
       {
         "id": "c1",
@@ -67,84 +76,84 @@
         "layer": "3",
         "type": "concept",
         "label": "lyrical inspiration",
-        "description": "The motivational or emotional content of the lyrics."
+        "description": "The motivational or uplifting nature of the lyrics."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "beat strength",
-        "description": "The intensity and driving nature of the rhythm."
+        "description": "The power and driving force of the rhythm."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "mainstream recognition",
-        "description": "How widely known and used the song is in the public sphere."
+        "description": "The song's popularity and familiarity in the general public."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "energy level",
-        "description": "The overall energetic feel of the song."
+        "description": "The intensity and vigor of the song."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "vocal intensity",
-        "description": "The power and emotion in the vocal delivery."
+        "description": "The strength and passion of the vocal delivery."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "chorus catchiness",
-        "description": "How memorable and repeatable the chorus is."
+        "description": "The memorability and sing-along quality of the chorus."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "build-up structure",
-        "description": "The progression of intensity in the song."
+        "description": "The progression and intensity increase in the song."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "cultural impact",
-        "description": "The song\u2019s lasting influence in sports and popular culture."
+        "description": "The song's influence and presence in sports culture."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "sports-victory association",
-        "description": "How often and strongly the song is linked to winning or celebrating."
+        "description": "The song's direct link to sports wins or celebrations."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "'Eye of the Tiger' by Survivor",
-        "description": "Motivational anthem from Rocky III with strong beat and energy."
+        "description": "A high-energy song from the Rocky III soundtrack."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "'We Are The Champions' by Queen",
-        "description": "Arguably the best inspirational sports song, with strong cultural and lyrical impact."
+        "description": "A 1977 anthem for sports victories and team spirit."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "'Chariots of Fire' by Vangelis",
-        "description": "Instrumental anthem from the 1981 film, known for its emotional and cinematic build."
+        "description": "An instrumental track from the 1981 film of the same name."
       }
     ],
     "edges": [
@@ -174,6 +183,14 @@
       },
       {
         "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
         "target": "c8"
       },
       {
@@ -182,27 +199,27 @@
       },
       {
         "source": "sq2",
-        "target": "c6"
+        "target": "c9"
       },
       {
         "source": "sq2",
-        "target": "c7"
+        "target": "c10"
       },
       {
         "source": "sq3",
         "target": "c4"
       },
       {
-        "source": "sq3",
-        "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
+        "source": "c1",
+        "target": "a1"
       },
       {
         "source": "c1",
         "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
       },
       {
         "source": "c2",
@@ -210,7 +227,15 @@
       },
       {
         "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
         "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
       },
       {
         "source": "c4",
@@ -218,19 +243,51 @@
       },
       {
         "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
         "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
       },
       {
         "source": "c6",
         "target": "a2"
       },
       {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
         "source": "c7",
         "target": "a2"
       },
       {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
         "source": "c8",
         "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
       },
       {
         "source": "c9",
@@ -239,58 +296,6 @@
       {
         "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
       }
     ]
   }

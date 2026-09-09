@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Barcelona",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2241,
+    "output_tokens": 3643,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "best places in spain to see for backpackers",
-        "description": "Identifying the top destinations in Spain for backpackers based on multiple criteria."
+        "description": "Identifying the top backpacking destinations in Spain based on multiple criteria."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Social Vibe & Events",
-        "description": "Evaluating nightlife, community atmosphere, and seasonal events."
+        "label": "Urban Backpacker Hub",
+        "description": "Evaluating the intensity of nightlife, community, and seasonal events."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "Culture & History",
-        "description": "Evaluating cultural depth, historical sites, cuisine, and natural beauty."
+        "description": "Evaluating historical significance, cultural experiences, and local cuisine."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Logistics & Budget",
-        "description": "Evaluating affordability, transport access, and safety."
+        "label": "Logistics & Environment",
+        "description": "Evaluating affordability, transportation, natural attractions, and safety."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "cultural experiences",
-        "description": "The richness of local culture and arts."
+        "description": "The depth and variety of cultural immersion available."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "affordability",
-        "description": "Cost of accommodation and general expenses."
+        "description": "Cost of accommodation and daily expenses."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "nightlife options",
-        "description": "Quality and intensity of party scenes."
+        "description": "Availability and quality of party and evening entertainment."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "natural attractions",
-        "description": "Access to nature and scenic landscapes."
+        "description": "Access to scenic landscapes and outdoor activities."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "historical significance",
-        "description": "Presence of historical landmarks and heritage."
+        "description": "Presence of major historical sites and UNESCO heritage."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "local cuisine",
-        "description": "Quality and variety of local food."
+        "description": "Quality and variety of regional food."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "transportation access",
-        "description": "Ease of getting around the country."
+        "description": "Ease of travel and connectivity between locations."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "backpacker community",
-        "description": "Strength of the backpacker social scene."
+        "description": "Density and vibrancy of the backpacker social scene."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "seasonal events",
-        "description": "Major festivals and seasonal activities."
+        "description": "Major festivals and time-specific attractions."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "safety for travelers",
-        "description": "Perceived safety for tourists."
+        "description": "Perceived safety and security for tourists."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Barcelona",
-        "description": "Top pick considering all criteria."
+        "description": "The top-ranked destination considering all criteria."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Madrid + Granada",
-        "description": "Top pick when party and community criteria are removed."
+        "description": "A strong contender focusing on history and culture."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Basque Country (Bilbao)",
-        "description": "Top pick when affordability, party, and community criteria are removed."
+        "description": "A regional choice focusing on nature and cuisine."
       }
     ],
     "edges": [
@@ -178,10 +187,6 @@
       },
       {
         "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
         "target": "c5"
       },
       {
@@ -191,6 +196,10 @@
       {
         "source": "sq3",
         "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
       },
       {
         "source": "sq3",
@@ -221,6 +230,10 @@
         "target": "a2"
       },
       {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
         "source": "c3",
         "target": "a1"
       },
@@ -243,10 +256,6 @@
       {
         "source": "c5",
         "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
       },
       {
         "source": "c6",

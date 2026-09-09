@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Answer A (MacBook Default): Get a MacBook with Apple Silicon \u2014 the Unix environment, Docker performance, battery life, and build quality make it the dominant choice for web and mobile developers, and Apple Silicon's performance-per-watt is unmatched.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2469,
-    "output_tokens": 2105,
-    "llm_calls": 2,
+    "prompt_tokens": 1647,
+    "output_tokens": 2042,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -41,126 +41,126 @@
         "layer": "1",
         "type": "question",
         "label": "Should I get a MacBook or stick with Windows for software development?",
-        "description": "The question is: Should I get a MacBook or stick with Windows for software development?"
+        "description": "Software development choice"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the current market trend in software development?",
-        "description": "What is the current market trend in software development?"
+        "label": "What is the current state of the market (2021-2023)?",
+        "description": "Market state"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the global developer community's preference?",
-        "description": "What is the global developer community's preference?"
+        "label": "What are the preferences of different developer communities (Global, USA)?",
+        "description": "Developer community preferences"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best development environment for web/mobile developers?",
-        "description": "What is the best development environment for web/mobile developers?"
+        "label": "What are the specific needs of different types of developers (web/mobile, .NET/enterprise)?",
+        "description": "Developer needs"
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best development environment for .NET/enterprise developers?",
-        "description": "What is the best development environment for .NET/enterprise developers?"
+        "label": "What are the trustworthiness levels of different sources (developer community survey, tech journalism, etc.)?",
+        "description": "Source trustworthiness"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Sources from 2023 only"
+        "description": "2023 only"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Sources from 2021 to 2023"
+        "description": "2021-2023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Global developer community",
-        "description": "Sources from the global developer community"
+        "description": "Global developer community"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Sources from the USA"
+        "description": "USA"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Web/mobile developer targeting Unix-based deployment",
-        "description": "Sources from web/mobile developers targeting Unix-based deployment"
+        "description": "Web/mobile developer targeting Unix-based deployment"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: .NET/enterprise developer or Windows-ecosystem developer",
-        "description": "Sources from .NET/enterprise developers or Windows-ecosystem developers"
+        "description": ".NET/enterprise developer or Windows-ecosystem developer"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Developer community survey",
-        "description": "Sources from developer community surveys"
+        "description": "Developer community survey"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Tech journalism",
-        "description": "Sources from tech journalism"
+        "description": "Tech journalism"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Developer community peer advice",
-        "description": "Sources from developer community peer advice"
+        "description": "Developer community peer advice"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Platform vendor documentation",
-        "description": "Sources from platform vendor documentation"
+        "description": "Platform vendor documentation"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (MacBook Default)",
-        "description": "Get a MacBook with Apple Silicon \u2014 the Unix environment, Docker performance, battery life, and build quality make it the dominant choice for web and mobile developers, and Apple Silicon's performance-per-watt is unmatched."
+        "label": "Get a MacBook with Apple Silicon",
+        "description": "Unix environment, Docker performance, battery life, and build quality"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (Windows for Value and Flexibility)",
-        "description": "Choose a high-spec Windows laptop if you want more performance per dollar and hardware flexibility \u2014 WSL2 has made Windows a fully viable development environment for most workflows."
+        "label": "Choose a high-spec Windows laptop",
+        "description": "Performance per dollar and hardware flexibility"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (Windows Required for Platform)",
-        "description": "Stick with Windows if you're in a .NET, game development, or enterprise environment where Windows is the target platform \u2014 macOS creates friction where the stack is Windows-native."
+        "label": "Stick with Windows if you're in a .NET, game development, or enterprise environment",
+        "description": "Windows is the target platform"
       }
     ],
     "edges": [
@@ -202,15 +202,23 @@
       },
       {
         "source": "sq3",
-        "target": "c10"
-      },
-      {
-        "source": "sq4",
         "target": "c6"
       },
       {
         "source": "sq4",
+        "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c8"
+      },
+      {
+        "source": "sq4",
         "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -226,11 +234,11 @@
       },
       {
         "source": "c4",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c5",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c6",
@@ -242,7 +250,7 @@
       },
       {
         "source": "c8",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c9",
@@ -258,15 +266,23 @@
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c3",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c4",
-        "target": "a2"
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
       },
       {
         "source": "c7",
@@ -274,7 +290,7 @@
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c9",
@@ -282,7 +298,7 @@
       },
       {
         "source": "c10",
-        "target": "a2"
+        "target": "a3"
       }
     ]
   }

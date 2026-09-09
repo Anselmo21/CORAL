@@ -21,16 +21,16 @@
   ],
   "baseline_answer": "Annie E. Casey Foundation Kids Count ranking \u2014 child-welfare-focused metric weighting outcomes for kids",
   "baseline_index": 1,
+  "baseline_source": "lattice",
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 3077,
-    "output_tokens": 1304,
-    "llm_calls": 2,
+    "prompt_tokens": 1936,
+    "output_tokens": 1867,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -40,97 +40,113 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "list of best to worst states for education"
+        "label": "list of best to worst states for education",
+        "description": "plausible answers differ in methodology, focus, and target audience"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the trustworthy sources for education rankings?"
+        "label": "most trustworthy sources for ranking states by education",
+        "description": "distinguishable by methodology and focus"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What perspectives are relevant for evaluating education rankings?"
+        "label": "perspectives to consider when evaluating education rankings",
+        "description": "distinguishable by target audience and focus"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Education Week / Quality Counts"
+        "label": "trustworthiness: Education Week / Quality Counts",
+        "description": "trustworthy source for education rankings"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: Annie E. Casey Foundation"
+        "label": "trustworthiness: Annie E. Casey Foundation",
+        "description": "trustworthy source for child-welfare-focused metric weighting outcomes"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: WalletHub research"
+        "label": "trustworthiness: WalletHub research",
+        "description": "trustworthy source for broad multi-metric blend"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: ALEC (American Legislative Exchange Council) report"
+        "label": "trustworthiness: ALEC (American Legislative Exchange Council) report",
+        "description": "trustworthy source for education policy"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: peer-reviewed education policy journal"
+        "label": "trustworthiness: peer-reviewed education policy journal",
+        "description": "trustworthy source for education policy research"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: parent of K-12 child"
+        "label": "perspective: parent of K-12 child",
+        "description": "perspective of a parent evaluating education rankings"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: education policy researcher"
+        "label": "perspective: education policy researcher",
+        "description": "perspective of a researcher evaluating education rankings"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: consumer / general reader"
+        "label": "perspective: consumer / general reader",
+        "description": "perspective of a general reader evaluating education rankings"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: equity-focused critic"
+        "label": "perspective: equity-focused critic",
+        "description": "perspective of an equity-focused critic evaluating education rankings"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: school-choice advocate"
+        "label": "perspective: school-choice advocate",
+        "description": "perspective of a school-choice advocate evaluating education rankings"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "WalletHub composite ranking"
+        "label": "WalletHub composite ranking (MA, NJ, VT, NH, CT top; Nevada, Louisiana, Mississippi bottom)",
+        "description": "broad multi-metric blend for general readership"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Education Week Quality Counts state grade ranking"
+        "label": "Education Week Quality Counts state grade ranking",
+        "description": "academic-policy-depth ranking used by researchers and policymakers"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Annie E. Casey Foundation Kids Count ranking"
+        "label": "Annie E. Casey Foundation Kids Count ranking",
+        "description": "child-welfare-focused metric weighting outcomes for kids"
       }
     ],
     "edges": [
@@ -195,6 +211,14 @@
         "target": "a1"
       },
       {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
         "source": "c6",
         "target": "a1"
       },
@@ -204,7 +228,55 @@
       },
       {
         "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
         "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
       }
     ]
   }

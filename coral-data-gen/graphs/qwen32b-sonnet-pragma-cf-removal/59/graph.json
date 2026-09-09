@@ -21,129 +21,138 @@
   ],
   "baseline_answer": "Answer A (Apple Watch Default): Get the Apple Watch Series 9 if you're on iPhone \u2014 the best health sensor accuracy, ECG, and tightest app ecosystem make it the default choice for general health and fitness tracking.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1670,
+    "output_tokens": 2530,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What's the best smartwatch for fitness tracking?",
-        "description": "User wants to track workouts and health metrics."
+        "label": "q",
+        "description": "I want to track my workouts and health metrics. What's the best smartwatch for fitness tracking?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Best for general health and lifestyle tracking",
-        "description": "User is focused on health tracking with an iPhone."
+        "label": "sq1",
+        "description": "What is the best smartwatch for general health and lifestyle tracking on iPhone?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Best for serious endurance athletes",
-        "description": "User needs precise training data for running, cycling, or triathlon."
+        "label": "sq2",
+        "description": "What is the best smartwatch for serious endurance athletes needing precise training data?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Best for sleep and wellness tracking at lower cost",
-        "description": "User prioritizes sleep and long-term health insights."
+        "label": "sq3",
+        "description": "What is the best smartwatch for long-term health and sleep tracking at a lower price?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Only consider sources from 2023."
+        "description": "Only consider sources from 2023"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Consider sources from 2021 to 2023."
+        "description": "Consider sources from 2021 to 2023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Only consider sources based in the USA."
+        "description": "Only consider sources from the USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Canada / Global",
-        "description": "Consider sources from Canada or global."
+        "description": "Consider sources from Canada or global"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: iPhone user focused on general health and lifestyle tracking",
-        "description": "Only consider sources from the perspective of iPhone users focused on general health."
+        "description": "Only consider sources for iPhone users focused on general health"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Serious endurance athlete needing precise training data",
-        "description": "Only consider sources from the perspective of serious endurance athletes."
+        "description": "Only consider sources for serious endurance athletes"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer product recommendation publication",
-        "description": "Only consider recommendations from consumer product publications."
+        "description": "Only consider consumer product recommendation publications"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Independent hardware testing site",
-        "description": "Only consider sources from independent hardware testing sites."
+        "description": "Only consider independent hardware testing sites"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Fitness community peer advice",
-        "description": "Only consider peer advice from fitness communities."
+        "description": "Only consider fitness community peer advice"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Sports technology reviewer",
-        "description": "Only consider sources from sports technology reviewers."
+        "description": "Only consider sports technology reviewers"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Apple Watch Default",
+        "label": "Answer A (Apple Watch Default)",
         "description": "Get the Apple Watch Series 9 if you're on iPhone \u2014 the best health sensor accuracy, ECG, and tightest app ecosystem make it the default choice for general health and fitness tracking."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Garmin for Serious Athletes",
+        "label": "Answer B (Garmin for Serious Athletes)",
         "description": "Choose a Garmin Forerunner or Fenix if you're a serious runner, cyclist, or triathlete \u2014 multi-band GPS, 2-week battery, and advanced training metrics are unmatched by Apple or Samsung for performance sports."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Fitbit for Sleep and Wellness",
+        "label": "Answer C (Fitbit for Sleep and Wellness)",
         "description": "Get a Fitbit if your priority is long-term health trend monitoring and sleep quality \u2014 its sleep tracking and wellness insights are more detailed than Apple Watch at a lower price point, ideal for general health over athletic performance."
       }
     ],
@@ -213,6 +222,54 @@
         "target": "a1"
       },
       {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
         "source": "c2",
         "target": "a1"
       },
@@ -247,54 +304,6 @@
       {
         "source": "c10",
         "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
       }
     ]
   }

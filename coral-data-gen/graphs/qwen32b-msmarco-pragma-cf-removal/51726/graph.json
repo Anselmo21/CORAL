@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "A typographer-grade font with tabular figures",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 2511,
+    "output_tokens": 2661,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,119 +41,119 @@
         "layer": "1",
         "type": "question",
         "label": "best excel font for numbers",
-        "description": "What is the best Excel font for displaying numbers?"
+        "description": "What is the best font in Excel for displaying numbers, especially in tables and reports?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "font for visually consistent and professional number display",
-        "description": "What font is recommended for aligning and displaying numbers in a visually consistent and professional manner?"
+        "label": "What font is best for professional or design contexts?",
+        "description": "Fonts suitable for annual reports, typography standards, and print output."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "most widely used font for number display",
-        "description": "What font is most widely used or recommended for everyday number display in Excel?"
+        "label": "What font is best for general office use or data clarity?",
+        "description": "Fonts suitable for financial analysts, casual users, and general office tasks."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "font for aligned number tables",
-        "description": "What font is best suited for ensuring numerical data is clearly and consistently aligned in tables?"
+        "label": "What font is best for technical or alignment needs?",
+        "description": "Fonts suitable for data scientists, code, or fixed-width formatting."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Microsoft Office documentation",
-        "description": "Sources from Microsoft Office documentation"
+        "description": "Sources from Microsoft Office documentation."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: typography / design publication",
-        "description": "Sources from typography or design publications"
+        "description": "Sources from typography or design publications."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: data journalism style guide",
-        "description": "Sources from data journalism style guides"
+        "description": "Sources from data journalism style guides."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: office productivity user forum",
-        "description": "Sources from office productivity user forums"
+        "description": "Sources from office productivity user forums."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: academic typography research",
-        "description": "Sources from academic typography research"
+        "description": "Sources from academic typography research."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: graphic designer producing annual reports",
-        "description": "Perspective from graphic designers working on annual reports"
+        "description": "Perspective of a graphic designer working on annual reports."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: financial analyst preparing tables",
-        "description": "Perspective from financial analysts working with data tables"
+        "description": "Perspective of a financial analyst working with tables."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: casual office user",
-        "description": "Perspective from casual Excel users"
+        "description": "Perspective of a casual office user."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: data scientist visualizing tables",
-        "description": "Perspective from data scientists working with data tables"
+        "description": "Perspective of a data scientist working with tables."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: print-output focused user",
-        "description": "Perspective from users focused on print output"
+        "description": "Perspective of a user focused on print output."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A typographer-grade font with tabular figures",
-        "description": "A typographer-grade font with tabular figures"
+        "description": "A font with tabular figures for professional and design contexts."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Calibri",
-        "description": "Calibri"
+        "description": "The default font in Microsoft Office, suitable for general office use."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A monospaced font",
-        "description": "A monospaced font"
+        "description": "A font with fixed-width characters for technical or alignment needs."
       }
     ],
     "edges": [
@@ -170,27 +179,11 @@
       },
       {
         "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "sq1",
         "target": "c5"
       },
       {
         "source": "sq1",
         "target": "c6"
-      },
-      {
-        "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
-        "target": "c9"
       },
       {
         "source": "sq1",
@@ -206,39 +199,15 @@
       },
       {
         "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
         "target": "c8"
       },
       {
         "source": "sq3",
-        "target": "c1"
-      },
-      {
-        "source": "sq3",
-        "target": "c2"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
-      },
-      {
-        "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
         "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
       },
       {
         "source": "c1",
@@ -285,6 +254,10 @@
         "target": "a2"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
         "source": "c3",
         "target": "a2"
       },
@@ -309,7 +282,15 @@
         "target": "a2"
       },
       {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
         "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
         "target": "a3"
       },
       {
@@ -322,6 +303,10 @@
       },
       {
         "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
         "target": "a3"
       },
       {

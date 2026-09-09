@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (Lifestyle First Default): Try intensive diet and exercise for 3\u20136 months before starting medication if your HbA1c is below 8\u20139% \u2014 lifestyle intervention can achieve comparable glucose control and potentially full remission without medication side effects.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
-  "temperature": 0.7,
+  "temperature": 0.0,
   "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1688,
+    "output_tokens": 2233,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -39,91 +48,91 @@
         "layer": "2",
         "type": "subq",
         "label": "sq1",
-        "description": "What is the recommended initial approach for managing type 2 diabetes based on clinical guidelines and peer-reviewed evidence?"
+        "description": "What is the recommended initial approach for managing type 2 diabetes based on clinical guidelines and trials?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "sq2",
-        "description": "How do patient experiences and community insights shape the initial management strategy?"
+        "description": "What is the patient experience and variability in outcomes with lifestyle vs. medication?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "sq3",
-        "description": "What factors (e.g., HbA1c, symptoms) determine whether lifestyle-only or medication is recommended?"
+        "description": "What is the recommended approach based on HbA1c level and symptom severity?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "temporal: 2023 only"
+        "description": "Only consider sources from 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "temporal: 2021\u20132023"
+        "description": "Only consider sources from 2021 to 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "geographic: USA"
+        "description": "Only consider sources from the USA."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient with mild elevation and high motivation",
-        "description": "perspective: Patient with mild elevation and high motivation"
+        "description": "Only consider sources from the perspective of a patient with mild HbA1c and high motivation."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient with high HbA1c or significant symptoms",
-        "description": "perspective: Patient with high HbA1c or significant symptoms"
+        "description": "Only consider sources from the perspective of a patient with high HbA1c or significant symptoms."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Clinical endocrinologist or GP",
-        "description": "perspective: Clinical endocrinologist or GP"
+        "description": "Only consider sources from the perspective of a clinical endocrinologist or general practitioner."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Peer-reviewed clinical trials",
-        "description": "trustworthiness: Peer-reviewed clinical trials"
+        "description": "Only consider sources from peer-reviewed clinical trials."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Medical institution guidance",
-        "description": "trustworthiness: Medical institution guidance"
+        "description": "Only consider sources from medical institutions."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer health information",
-        "description": "trustworthiness: Consumer health information"
+        "description": "Only consider sources from consumer health information platforms."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Patient community experience",
-        "description": "trustworthiness: Patient community experience"
+        "description": "Only consider sources from patient community experiences."
       },
       {
         "id": "a1",
@@ -186,7 +195,11 @@
       },
       {
         "source": "sq2",
-        "target": "c4"
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
       },
       {
         "source": "sq2",
@@ -199,6 +212,14 @@
       {
         "source": "sq3",
         "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
       },
       {
         "source": "c1",
@@ -217,12 +238,8 @@
         "target": "a1"
       },
       {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
         "source": "c5",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c6",
@@ -238,14 +255,70 @@
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
         "target": "a2"
       },
       {
-        "source": "c10",
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
         "target": "a3"
       }
     ]

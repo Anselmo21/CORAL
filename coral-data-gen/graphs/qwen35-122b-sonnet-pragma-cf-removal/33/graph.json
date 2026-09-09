@@ -21,10 +21,19 @@
   ],
   "baseline_answer": "Answer A (Community College Default): Start at community college if you're paying out-of-pocket \u2014 2 years of CC followed by transfer saves $40\u201380k in tuition with comparable graduation outcomes when transfer is executed with formal articulation agreements.",
   "baseline_index": 0,
+  "baseline_source": "lattice",
   "model": "Qwen/Qwen3.5-122B-A10B-FP8",
   "provider": "vllm",
-  "temperature": 0.7,
-  "attempts": 2,
+  "temperature": 0.0,
+  "attempts": 1,
+  "usage": {
+    "prompt_tokens": 1701,
+    "output_tokens": 2990,
+    "llm_calls": 1,
+    "finish_reasons": [
+      "stop"
+    ]
+  },
   "graph": {
     "nodes": [
       {
@@ -32,28 +41,28 @@
         "layer": "1",
         "type": "question",
         "label": "Is it smarter to start at a community college and transfer, or go straight to a 4-year university?",
-        "description": "Core question regarding educational pathway strategy."
+        "description": "Core question comparing transfer vs direct entry strategies."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Financial Viability and General Transfer Success",
-        "description": "Evaluates cost savings and general graduation rates for transfers."
+        "label": "Financial viability and general transfer success",
+        "description": "Evaluates cost savings and graduation rates for the average student."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Selectivity and Career Earnings Premium",
-        "description": "Evaluates the value of brand name institutions and long-term earnings."
+        "label": "Career earnings and institutional selectivity",
+        "description": "Evaluates the long-term value of brand name and networking."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Structured Pathways and Risk Mitigation",
-        "description": "Evaluates the role of formal articulation agreements in ensuring success."
+        "label": "Structural pathways and transfer risks",
+        "description": "Evaluates the role of articulation agreements vs. transfer shock."
       },
       {
         "id": "c1",
@@ -67,63 +76,63 @@
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Prioritizes data from the last three years."
+        "description": "Prioritizes recent 3-year trend data."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Focuses on the United States context."
+        "description": "Focuses on the US education system."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: California (CC transfer agreements)",
-        "description": "Focuses on California's specific TAG programs."
+        "description": "Focuses on specific state-level success stories (TAG)."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Cost-conscious student without scholarship funding",
-        "description": "Prioritizes financial savings arguments."
+        "description": "Prioritizes financial constraints."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student targeting selective or brand-name institutions",
-        "description": "Prioritizes career earnings and networking arguments."
+        "description": "Prioritizes prestige and networking."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Education research foundation",
-        "description": "Prioritizes academic research sources."
+        "description": "Prioritizes academic research (Lumina, Georgetown)."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Education ranking publication",
-        "description": "Prioritizes ranking publications like US News."
+        "description": "Prioritizes rankings (US News)."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Student community advice",
-        "description": "Prioritizes peer advice from forums like Reddit."
+        "description": "Prioritizes peer advice (Reddit)."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: State university system documentation",
-        "description": "Prioritizes official state system data."
+        "description": "Prioritizes official state data (CalCC)."
       },
       {
         "id": "a1",
@@ -174,6 +183,10 @@
       },
       {
         "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
         "target": "c5"
       },
       {
@@ -182,11 +195,15 @@
       },
       {
         "source": "sq1",
-        "target": "c8"
+        "target": "c9"
       },
       {
         "source": "sq1",
-        "target": "c9"
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
       },
       {
         "source": "sq2",
@@ -222,6 +239,10 @@
       },
       {
         "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
         "target": "c7"
       },
       {
@@ -237,32 +258,12 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
         "source": "c3",
         "target": "a1"
       },
       {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
         "source": "c4",
         "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
       },
       {
         "source": "c5",
@@ -270,19 +271,11 @@
       },
       {
         "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
         "target": "a1"
       },
       {
         "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c8",
@@ -295,6 +288,58 @@
       {
         "source": "c10",
         "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",
