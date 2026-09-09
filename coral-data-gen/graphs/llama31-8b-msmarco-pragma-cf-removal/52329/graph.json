@@ -22,13 +22,22 @@
   "baseline_answer": "Dopamine-agonist medication (bromocriptine or cabergoline)",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2529,
-    "output_tokens": 1776,
+    "output_tokens": 1783,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -48,7 +57,7 @@
         "layer": "2",
         "type": "subq",
         "label": "most trustworthy source of information",
-        "description": "trustworthy sources"
+        "description": "trustworthy source"
       },
       {
         "id": "sq2",
@@ -175,7 +184,7 @@
         "target": "c4"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c5"
       },
       {
@@ -239,23 +248,19 @@
         "target": "a3"
       },
       {
-        "source": "c5",
+        "source": "c1",
         "target": "a3"
       },
       {
-        "source": "c6",
+        "source": "c2",
         "target": "a3"
       },
       {
-        "source": "c7",
+        "source": "c3",
         "target": "a3"
       },
       {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
+        "source": "c4",
         "target": "a3"
       }
     ]

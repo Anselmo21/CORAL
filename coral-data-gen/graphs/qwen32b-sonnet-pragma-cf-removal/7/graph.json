@@ -22,13 +22,22 @@
   "baseline_answer": "Answer C (Split for Goals): Keep your emergency fund in a HYSA for liquidity and ladder CDs with any surplus savings earmarked for specific medium-term goals where you know the time horizon.",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1635,
-    "output_tokens": 2800,
+    "output_tokens": 2694,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,28 +50,35 @@
         "layer": "1",
         "type": "question",
         "label": "What's the best strategy for a high-yield savings account? Should I ladder CDs or just keep everything in a HYSA?",
-        "description": "Asking whether to keep all savings in a high-yield savings account (HYSA) or to ladder CDs."
+        "description": "Asking for the optimal strategy between keeping all savings in a HYSA or using a CD ladder."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best strategy for emergency funds?",
-        "description": "Focuses on liquidity and penalty-free access for emergency savings."
+        "label": "What is the best strategy for emergency funds and liquidity needs?",
+        "description": "Focuses on liquidity and emergency fund considerations."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best strategy for rate optimization in a high-rate environment?",
-        "description": "Focuses on locking in high interest rates and managing rate expectations."
+        "label": "What is the best strategy for rate optimization and medium-term goals?",
+        "description": "Focuses on rate expectations and structured savings goals."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best strategy for medium-term savings with known time horizons?",
-        "description": "Focuses on structured savings for specific goals with known timeframes."
+        "label": "What is the best strategy based on the trustworthiness of the source?",
+        "description": "Focuses on the credibility of the source material."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best strategy based on the time period of the source (2022 vs. 2023)?",
+        "description": "Focuses on the recency of the source material."
       },
       {
         "id": "c1",
@@ -76,7 +92,7 @@
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2022\u20132023",
-        "description": "Consider sources from 2022 to 2023."
+        "description": "Consider sources from 2022 and 2023."
       },
       {
         "id": "c3",
@@ -90,21 +106,21 @@
         "layer": "3",
         "type": "directive",
         "label": "perspective: Conservative saver prioritizing liquidity",
-        "description": "Focus on strategies that prioritize liquidity and emergency access."
+        "description": "Only consider strategies that prioritize liquidity."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Saver with known medium-term spending goals",
-        "description": "Focus on strategies for savers with specific time horizons."
+        "description": "Only consider strategies for savers with known time horizons."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Rate-optimization focused saver",
-        "description": "Focus on strategies that maximize interest rate returns."
+        "description": "Only consider strategies focused on locking in high rates."
       },
       {
         "id": "c7",
@@ -118,42 +134,42 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Banking industry publication",
-        "description": "Only consider sources from the banking industry."
+        "description": "Only consider banking industry publications."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Community peer advice",
-        "description": "Only consider peer advice from community forums."
+        "description": "Only consider community-based peer advice."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Financial journalism",
-        "description": "Only consider sources from financial journalism."
+        "description": "Only consider financial journalism sources."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (HYSA Default): Keep everything in a high-yield savings account \u2014 current rates of 4.5\u20135%+ with full liquidity make HYSAs superior to CDs for most savers, especially for emergency funds.",
-        "description": "Favors HYSAs for liquidity and simplicity."
+        "label": "HYSA Default",
+        "description": "Keep everything in a high-yield savings account \u2014 current rates of 4.5\u20135%+ with full liquidity make HYSAs superior to CDs for most savers, especially for emergency funds."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (CD Ladder for Rate Lock): Build a CD ladder across 3\u201318 month maturities to lock in current high rates if you expect the Fed to cut rates \u2014 you'll preserve yield longer than a HYSA as rates decline.",
-        "description": "Favors CD laddering to lock in high rates."
+        "label": "CD Ladder for Rate Lock",
+        "description": "Build a CD ladder across 3\u201318 month maturities to lock in current high rates if you expect the Fed to cut rates \u2014 you'll preserve yield longer than a HYSA as rates decline."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (Split for Goals): Keep your emergency fund in a HYSA for liquidity and ladder CDs with any surplus savings earmarked for specific medium-term goals where you know the time horizon.",
-        "description": "Recommends a hybrid approach for different savings goals."
+        "label": "Split for Goals",
+        "description": "Keep your emergency fund in a HYSA for liquidity and ladder CDs with any surplus savings earmarked for specific medium-term goals where you know the time horizon."
       }
     ],
     "edges": [
@@ -170,16 +186,8 @@
         "target": "sq3"
       },
       {
-        "source": "sq1",
-        "target": "c1"
-      },
-      {
-        "source": "sq1",
-        "target": "c2"
-      },
-      {
-        "source": "sq1",
-        "target": "c3"
+        "source": "q",
+        "target": "sq4"
       },
       {
         "source": "sq1",
@@ -187,71 +195,39 @@
       },
       {
         "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq1",
         "target": "c10"
       },
       {
         "source": "sq2",
-        "target": "c1"
-      },
-      {
-        "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c3"
+        "target": "c5"
       },
       {
         "source": "sq2",
         "target": "c6"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c7"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c8"
       },
       {
-        "source": "sq2",
-        "target": "c10"
+        "source": "sq3",
+        "target": "c9"
       },
       {
         "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "sq4",
+        "target": "c1"
+      },
+      {
+        "source": "sq4",
         "target": "c2"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c8"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
       },
       {
         "source": "c1",
@@ -314,10 +290,6 @@
         "target": "a1"
       },
       {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
         "source": "c8",
         "target": "a1"
       },
@@ -335,6 +307,10 @@
       },
       {
         "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
         "target": "a2"
       },
       {

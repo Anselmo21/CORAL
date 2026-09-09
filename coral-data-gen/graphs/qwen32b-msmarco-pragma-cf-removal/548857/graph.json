@@ -22,13 +22,22 @@
   "baseline_answer": "Multi-drug regimen (NSAID + DMSO topical, or NSAID + opioid)",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2043,
-    "output_tokens": 2574,
+    "output_tokens": 3043,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,28 +50,28 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best pain medication for horses?",
-        "description": "Identify the most effective pain medication for horses based on veterinary guidelines and real-world use."
+        "description": "Identify the most effective pain medication for horses based on clinical, practical, and situational factors."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "Most commonly prescribed or recommended pain medication for horses in general",
-        "description": "Identify the medication most often used in general equine care."
+        "description": "Identify the medication most often used in general equine practice."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "Best pain management strategy for severe or complex cases",
-        "description": "Determine the most effective approach for managing severe or complex pain in horses."
+        "description": "Identify the most effective approach for managing severe or complex pain in horses."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Best pain medication for specific types of horses or conditions",
-        "description": "Identify the best medication for specific contexts like surgical recovery or breeding."
+        "label": "Best pain medication for specific conditions or horse types",
+        "description": "Identify the best medication for specific horse types or conditions."
       },
       {
         "id": "c1",
@@ -76,21 +85,21 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed veterinary anesthesia journal",
-        "description": "Prioritize peer-reviewed research in veterinary anesthesia."
+        "description": "Prioritize peer-reviewed veterinary journals on anesthesia."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: equine veterinary clinical practice",
-        "description": "Prioritize sources from clinical practice in equine veterinary medicine."
+        "description": "Prioritize sources from clinical equine veterinary practice."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: trainer / owner online forum",
-        "description": "Prioritize sources from online forums used by trainers and owners."
+        "description": "Prioritize sources from online forums of trainers and owners."
       },
       {
         "id": "c5",
@@ -104,21 +113,21 @@
         "layer": "3",
         "type": "directive",
         "label": "perspective: working / performance horse owner",
-        "description": "Prioritize sources from the perspective of working or performance horse owners."
+        "description": "Prioritize sources from the perspective of working horse owners."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: severe acute lameness case",
-        "description": "Prioritize sources focused on severe acute lameness in horses."
+        "description": "Prioritize sources focused on severe lameness cases."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: retired pleasure horse",
-        "description": "Prioritize sources from the perspective of retired or pleasure horses."
+        "description": "Prioritize sources from the perspective of retired pleasure horses."
       },
       {
         "id": "c9",
@@ -139,21 +148,21 @@
         "layer": "4",
         "type": "answer",
         "label": "Phenylbutazone (Bute)",
-        "description": "A common NSAID used for long-term treatment of musculoskeletal pain in horses."
+        "description": "Commonly prescribed NSAID for general lameness and chronic pain."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Multi-drug regimen (NSAID + DMSO topical, or NSAID + opioid)",
-        "description": "A combination of systemic and topical medications for comprehensive pain management."
+        "description": "Combination therapy for complex or severe pain management."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Targeted route \u2014 epidural injection for severe hind-end lameness, or transdermal patch",
-        "description": "A route-specific approach for localized or severe pain management."
+        "description": "Specialized route for specific pain conditions."
       }
     ],
     "edges": [
@@ -220,6 +229,10 @@
       {
         "source": "sq2",
         "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
       },
       {
         "source": "sq3",
@@ -294,11 +307,31 @@
         "target": "a2"
       },
       {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
         "source": "c4",
         "target": "a1"
       },
       {
         "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
         "target": "a1"
       },
       {
@@ -306,8 +339,24 @@
         "target": "a1"
       },
       {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
         "source": "c10",
         "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
       },
       {
         "source": "c4",
@@ -315,6 +364,22 @@
       },
       {
         "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
         "target": "a3"
       },
       {

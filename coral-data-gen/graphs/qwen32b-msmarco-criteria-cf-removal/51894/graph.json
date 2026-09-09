@@ -22,16 +22,24 @@
   "baseline_answer": "Dairy: milk, yogurt, and cheese",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
-  "attempts": 2,
+  "attempts": 1,
   "usage": {
-    "prompt_tokens": 6076,
-    "output_tokens": 4342,
-    "llm_calls": 2,
+    "prompt_tokens": 1700,
+    "output_tokens": 2579,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -42,21 +50,21 @@
         "layer": "1",
         "type": "question",
         "label": "best natural sources of calcium",
-        "description": "What are the best natural sources of calcium?"
+        "description": "What are the best natural sources of calcium for healthy bones?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "Nutritional and Bioavailability Factors",
-        "description": "Factors related to how much and how well calcium is absorbed."
+        "description": "Factors related to the nutritional value and how well the body absorbs calcium."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "Dietary and Accessibility Factors",
-        "description": "Factors related to who can consume the food and where it is available."
+        "description": "Factors related to dietary preferences, restrictions, and availability."
       },
       {
         "id": "sq3",
@@ -77,7 +85,7 @@
         "layer": "3",
         "type": "concept",
         "label": "bioavailability",
-        "description": "How well the body can absorb the calcium from the food."
+        "description": "How well the body can absorb and use the calcium from the food."
       },
       {
         "id": "c3",
@@ -91,7 +99,7 @@
         "layer": "3",
         "type": "concept",
         "label": "calcium content",
-        "description": "The amount of calcium per serving."
+        "description": "The amount of calcium present in the food."
       },
       {
         "id": "c5",
@@ -112,7 +120,7 @@
         "layer": "3",
         "type": "concept",
         "label": "age group",
-        "description": "Suitability for different age groups (e.g., children, elderly)."
+        "description": "Whether the food is suitable for all age groups or specific ones."
       },
       {
         "id": "c8",
@@ -126,35 +134,35 @@
         "layer": "3",
         "type": "concept",
         "label": "nutritional balance",
-        "description": "Whether the food provides other nutrients along with calcium."
+        "description": "Whether the food provides other nutrients in addition to calcium."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "environmental impact",
-        "description": "The environmental cost of producing the food."
+        "description": "The environmental footprint of producing the food."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Dairy: milk, yogurt, and cheese",
-        "description": "High calcium content, high bioavailability, and widely available."
+        "description": "Rich natural sources of calcium with high bioavailability."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Leafy greens: boiled collards (~358 mg/cup), kale, bok choy, Swiss chard, turnip greens",
-        "description": "High calcium content in leafy greens, but lower bioavailability."
+        "description": "Plant-based sources with high calcium content but lower bioavailability."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Calcium-fortified plant-based foods: soy milk, calcium-set tofu, fortified juice and cereal",
-        "description": "Vegan-friendly and high bioavailability, but may be less accessible in some regions."
+        "description": "Vegan-friendly sources with added calcium but variable bioavailability."
       }
     ],
     "edges": [

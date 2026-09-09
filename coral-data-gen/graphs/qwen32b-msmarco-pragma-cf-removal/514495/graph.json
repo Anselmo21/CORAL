@@ -22,13 +22,22 @@
   "baseline_answer": "Exclusion: seal entry points around the house / attic",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1888,
-    "output_tokens": 2717,
+    "output_tokens": 2461,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,119 +50,126 @@
         "layer": "1",
         "type": "question",
         "label": "the best way to get rid of squirrels",
-        "description": "What is the most effective and reliable method for removing squirrels from a house, garden, or yard?"
+        "description": "What is the most effective method for removing squirrels from a home or property?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "attic or house infestation",
-        "description": "What is the most effective and reliable method for removing squirrels from a house or attic?"
+        "label": "What is the most effective method for removing squirrels from a house or attic?",
+        "description": "Focuses on indoor infestations, especially in attics or basements."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "garden or yard infestation",
-        "description": "What is the most effective and reliable method for removing squirrels from a garden or yard?"
+        "label": "What is the most effective method for removing squirrels from a garden or yard?",
+        "description": "Focuses on outdoor infestations in gardens or yards."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "ethical or practical constraints",
-        "description": "What is the most effective and reliable method for removing squirrels, considering both effectiveness and ethical or practical constraints?"
+        "label": "What is the most effective method when considering timing and seasonal behavior?",
+        "description": "Focuses on timing of intervention, especially post-hibernation."
       },
       {
-        "id": "c1",
-        "layer": "3",
-        "type": "directive",
-        "label": "1. trustworthiness: wildlife control professional",
-        "description": ""
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the most effective method when considering the reliability of the source?",
+        "description": "Focuses on the trustworthiness of the source of advice."
       },
       {
-        "id": "c2",
+        "id": "1",
         "layer": "3",
         "type": "directive",
-        "label": "2. trustworthiness: peer-reviewed mammalogy literature",
-        "description": ""
+        "label": "trustworthiness: wildlife control professional",
+        "description": "Prioritize sources from professional wildlife control experts."
       },
       {
-        "id": "c3",
+        "id": "2",
         "layer": "3",
         "type": "directive",
-        "label": "3. trustworthiness: pest control product retailer",
-        "description": ""
+        "label": "trustworthiness: peer-reviewed mammalogy literature",
+        "description": "Prioritize sources from peer-reviewed scientific literature on mammals."
       },
       {
-        "id": "c4",
+        "id": "3",
         "layer": "3",
         "type": "directive",
-        "label": "4. trustworthiness: DIY homeowner blog",
-        "description": ""
+        "label": "trustworthiness: pest control product retailer",
+        "description": "Prioritize sources from pest control product retailers."
       },
       {
-        "id": "c5",
+        "id": "4",
         "layer": "3",
         "type": "directive",
-        "label": "5. trustworthiness: wildlife rehabilitation guidance",
-        "description": ""
+        "label": "trustworthiness: DIY homeowner blog",
+        "description": "Prioritize sources from DIY homeowner blogs."
       },
       {
-        "id": "c6",
+        "id": "5",
         "layer": "3",
         "type": "directive",
-        "label": "6. perspective: homeowner with attic squirrel infestation",
-        "description": ""
+        "label": "trustworthiness: wildlife rehabilitation guidance",
+        "description": "Prioritize sources from wildlife rehabilitation professionals."
       },
       {
-        "id": "c7",
+        "id": "6",
         "layer": "3",
         "type": "directive",
-        "label": "7. perspective: garden / yard squirrel problem",
-        "description": ""
+        "label": "perspective: homeowner with attic squirrel infestation",
+        "description": "Prioritize sources from homeowners dealing with attic infestations."
       },
       {
-        "id": "c8",
+        "id": "7",
         "layer": "3",
         "type": "directive",
-        "label": "8. perspective: wildlife-friendly advocate",
-        "description": ""
+        "label": "perspective: garden / yard squirrel problem",
+        "description": "Prioritize sources from homeowners dealing with garden or yard infestations."
       },
       {
-        "id": "c9",
+        "id": "8",
         "layer": "3",
         "type": "directive",
-        "label": "9. perspective: property protection priority",
-        "description": ""
+        "label": "perspective: wildlife-friendly advocate",
+        "description": "Prioritize sources from advocates for non-lethal, wildlife-friendly methods."
       },
       {
-        "id": "c10",
+        "id": "9",
         "layer": "3",
         "type": "directive",
-        "label": "10. perspective: seasonal-timing-aware homeowner",
-        "description": ""
+        "label": "perspective: property protection priority",
+        "description": "Prioritize sources focused on protecting property over animal welfare."
+      },
+      {
+        "id": "10",
+        "layer": "3",
+        "type": "directive",
+        "label": "perspective: seasonal-timing-aware homeowner",
+        "description": "Prioritize sources that consider seasonal timing for squirrel control."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Exclusion: seal entry points around the house / attic",
-        "description": ""
+        "description": "Sealing entry points is the most effective and recommended method for removing squirrels from a house or attic."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Live or kill trapping with corn / peanut butter bait, timed for just after hibernation",
-        "description": ""
+        "description": "Trapping with bait and timing is effective for removing squirrels, especially after hibernation."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Repellents: mothballs, homemade water-based spray, or the Squirrel Evictor product",
-        "description": ""
+        "description": "Repellents can be used to deter squirrels from entering or staying in a property."
       }
     ],
     "edges": [
@@ -170,159 +186,139 @@
         "target": "sq3"
       },
       {
-        "source": "sq1",
-        "target": "c1"
+        "source": "q",
+        "target": "sq4"
       },
       {
         "source": "sq1",
-        "target": "c2"
+        "target": "1"
       },
       {
         "source": "sq1",
-        "target": "c3"
+        "target": "2"
       },
       {
         "source": "sq1",
-        "target": "c4"
+        "target": "3"
       },
       {
         "source": "sq1",
-        "target": "c5"
+        "target": "4"
       },
       {
         "source": "sq1",
-        "target": "c6"
+        "target": "5"
       },
       {
         "source": "sq1",
-        "target": "c8"
+        "target": "6"
       },
       {
         "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
+        "target": "9"
       },
       {
         "source": "sq2",
-        "target": "c3"
+        "target": "3"
       },
       {
         "source": "sq2",
-        "target": "c4"
+        "target": "4"
       },
       {
         "source": "sq2",
-        "target": "c7"
+        "target": "7"
       },
       {
         "source": "sq2",
-        "target": "c8"
+        "target": "8"
       },
       {
         "source": "sq2",
-        "target": "c9"
+        "target": "9"
       },
       {
         "source": "sq3",
-        "target": "c1"
+        "target": "4"
       },
       {
         "source": "sq3",
-        "target": "c2"
+        "target": "10"
       },
       {
-        "source": "sq3",
-        "target": "c5"
+        "source": "sq4",
+        "target": "1"
       },
       {
-        "source": "sq3",
-        "target": "c8"
+        "source": "sq4",
+        "target": "2"
       },
       {
-        "source": "sq3",
-        "target": "c9"
+        "source": "sq4",
+        "target": "3"
       },
       {
-        "source": "c1",
+        "source": "sq4",
+        "target": "5"
+      },
+      {
+        "source": "sq4",
+        "target": "8"
+      },
+      {
+        "source": "1",
         "target": "a1"
       },
       {
-        "source": "c2",
+        "source": "2",
         "target": "a1"
       },
       {
-        "source": "c3",
+        "source": "3",
         "target": "a1"
       },
       {
-        "source": "c4",
+        "source": "4",
         "target": "a1"
       },
       {
-        "source": "c5",
+        "source": "5",
         "target": "a1"
       },
       {
-        "source": "c6",
+        "source": "6",
         "target": "a1"
       },
       {
-        "source": "c7",
+        "source": "9",
         "target": "a1"
       },
       {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
+        "source": "7",
         "target": "a2"
       },
       {
-        "source": "c4",
+        "source": "10",
         "target": "a2"
       },
       {
-        "source": "c7",
+        "source": "3",
         "target": "a2"
       },
       {
-        "source": "c9",
+        "source": "4",
         "target": "a2"
       },
       {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
+        "source": "7",
         "target": "a3"
       },
       {
-        "source": "c4",
+        "source": "9",
         "target": "a3"
       },
       {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
+        "source": "4",
         "target": "a3"
       }
     ]

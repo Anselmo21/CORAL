@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Self-Taught with Portfolio Default): You can absolutely be self-taught \u2014 UX is portfolio-driven and a strong case study portfolio from a bootcamp or self-directed projects will outperform a degree without portfolio work at most employers.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1675,
-    "output_tokens": 2683,
+    "output_tokens": 2606,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -40,99 +49,99 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "q",
-        "description": "I want to become a UX designer. Do I need a formal degree or can I be self-taught?"
+        "label": "I want to become a UX designer. Do I need a formal degree or can I be self-taught?",
+        "description": "A question about the necessity of formal education in UX design versus self-taught or bootcamp alternatives."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "sq1",
-        "description": "What is the current (2023) hiring trend for UX designers in the USA?"
+        "label": "What is the current (2023) hiring trend in the UX field in the USA?",
+        "description": "Focuses on recent and USA-specific hiring trends in UX design."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "sq2",
-        "description": "What do UX professionals and design firms say about the value of formal education in UX?"
+        "label": "What do different career goals (entry-level vs. senior/research roles) suggest about the need for formal education?",
+        "description": "Examines how career path influences the value of formal education."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "sq3",
-        "description": "What is the best path for someone seeking fast entry into UX or aiming for senior/research roles?"
+        "label": "What do community and alternative education paths (bootcamps, self-study) suggest about the feasibility of non-degree paths?",
+        "description": "Looks at peer advice and bootcamp outcomes for non-degree paths."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "temporal: 2023 only"
+        "description": "Only consider sources from 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "temporal: 2021\u20132023"
+        "description": "Consider sources from 2021 to 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "geographic: USA"
+        "description": "Only consider sources from the USA."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Global design industry",
-        "description": "geographic: Global design industry"
+        "description": "Consider sources from the global design industry."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Career changer seeking fast entry to UX",
-        "description": "perspective: Career changer seeking fast entry to UX"
+        "description": "Consider the perspective of someone seeking a fast entry into UX."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Aspiring UX researcher or design consultant",
-        "description": "perspective: Aspiring UX researcher or design consultant"
+        "description": "Consider the perspective of someone aiming for research or consulting roles."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: UX industry research organization",
-        "description": "trustworthiness: UX industry research organization"
+        "description": "Only consider sources from UX industry research organizations."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Workforce data report",
-        "description": "trustworthiness: Workforce data report"
+        "description": "Only consider sources from workforce data reports."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: UX community peer advice",
-        "description": "trustworthiness: UX community peer advice"
+        "description": "Only consider peer advice from UX communities."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Design firm perspective",
-        "description": "trustworthiness: Design firm perspective"
+        "description": "Only consider sources from design firms."
       },
       {
         "id": "a1",
@@ -191,15 +200,11 @@
       },
       {
         "source": "sq2",
-        "target": "c3"
+        "target": "c5"
       },
       {
         "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
-        "target": "c9"
+        "target": "c6"
       },
       {
         "source": "sq2",
@@ -207,11 +212,15 @@
       },
       {
         "source": "sq3",
-        "target": "c5"
+        "target": "c4"
       },
       {
         "source": "sq3",
-        "target": "c6"
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
       },
       {
         "source": "c1",
@@ -235,7 +244,7 @@
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c7",
@@ -246,68 +255,20 @@
         "target": "a1"
       },
       {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
         "source": "c9",
         "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
         "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
       }
     ]
   }

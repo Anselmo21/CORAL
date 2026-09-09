@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Invest-First Default): Capture the full 401k employer match, contribute to a Roth IRA, then make minimum loan payments \u2014 the expected market return exceeds 6.8% and tax-advantaged space lost now can never be recovered.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1683,
-    "output_tokens": 2800,
+    "output_tokens": 2814,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -40,29 +49,29 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should I aggressively pay off $34k in 6.8% student loans or start investing in my Roth IRA and 401k?",
-        "description": "Graduated with $34k in student loans at 6.8% interest. Should I prioritize paying off the debt or start investing in tax-advantaged accounts?"
+        "label": "Should I aggressively pay off $34k in 6.8% student loans or start investing in Roth IRA and 401k?",
+        "description": "A recent graduate with $34,000 in 6.8% student loans is deciding between aggressive repayment or investing."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best financial strategy for someone with a 6.8% interest loan and access to 401k and Roth IRA?",
-        "description": "Evaluates the trade-off between debt repayment and investing in tax-advantaged accounts."
+        "label": "What is the best financial strategy for someone with a 6.8% interest loan and access to employer 401k and Roth IRA?",
+        "description": "Evaluates the best strategy given access to 401k and Roth IRA and a 6.8% loan."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best strategy for someone with a 6.8% interest loan and a long-term investment horizon?",
-        "description": "Focuses on long-term growth and the value of tax-advantaged space."
+        "label": "What is the best strategy for someone with a 6.8% loan who is risk-averse or long-term growth-focused?",
+        "description": "Evaluates the best strategy based on risk tolerance and long-term goals."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best strategy for someone with a 6.8% interest loan and potential for loan forgiveness?",
-        "description": "Considers income-driven repayment and forgiveness programs."
+        "label": "What is the best strategy for someone who is eligible for public sector loan forgiveness?",
+        "description": "Evaluates the best strategy for those eligible for PSLF or income-driven repayment."
       },
       {
         "id": "c1",
@@ -97,21 +106,21 @@
         "layer": "3",
         "type": "directive",
         "label": "perspective: Risk-averse borrower",
-        "description": "Only consider sources from a risk-averse borrower perspective."
+        "description": "Only consider sources from the perspective of a risk-averse borrower."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Long-term growth-focused investor",
-        "description": "Only consider sources from a long-term growth-focused investor perspective."
+        "description": "Only consider sources from the perspective of a long-term growth-focused investor."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Public sector / PSLF-eligible employee",
-        "description": "Only consider sources relevant to public sector employees or those eligible for PSLF."
+        "description": "Only consider sources from the perspective of a public sector or PSLF-eligible employee."
       },
       {
         "id": "c8",
@@ -132,28 +141,28 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Financial journalism",
-        "description": "Only consider sources from financial journalism (e.g., WSJ, Morningstar)."
+        "description": "Only consider sources from financial journalism (e.g., WSJ, NerdWallet)."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (Invest-First Default)",
-        "description": "Capture the full 401k employer match, contribute to a Roth IRA, then make minimum loan payments \u2014 the expected market return exceeds 6.8% and tax-advantaged space lost now can never be recovered."
+        "label": "Answer A (Invest-First Default): Capture the full 401k employer match, contribute to a Roth IRA, then make minimum loan payments \u2014 the expected market return exceeds 6.8% and tax-advantaged space lost now can never be recovered.",
+        "description": "Prioritize employer match and Roth IRA contributions before making minimum loan payments."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (Debt-First Aggressive)",
-        "description": "Pay off the student loans completely before investing beyond the employer match \u2014 the guaranteed 6.8% return is hard to beat risk-adjusted and eliminates monthly cash flow pressure."
+        "label": "Answer B (Debt-First Aggressive): Pay off the student loans completely before investing beyond the employer match \u2014 the guaranteed 6.8% return is hard to beat risk-adjusted and eliminates monthly cash flow pressure.",
+        "description": "Aggressively pay off the student loan before investing beyond the 401k match."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (IDR and Invest)",
-        "description": "Enroll in income-driven repayment to minimize monthly loan payments and redirect cash aggressively into tax-advantaged accounts, betting on eventual forgiveness."
+        "label": "Answer C (IDR and Invest): Enroll in income-driven repayment to minimize monthly loan payments and redirect cash aggressively into tax-advantaged accounts, betting on eventual forgiveness.",
+        "description": "Use income-driven repayment to reduce monthly payments and invest aggressively."
       }
     ],
     "edges": [
@@ -195,15 +204,11 @@
       },
       {
         "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
         "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
-        "source": "sq2",
-        "target": "c9"
       },
       {
         "source": "sq3",
@@ -211,7 +216,7 @@
       },
       {
         "source": "sq3",
-        "target": "c10"
+        "target": "c9"
       },
       {
         "source": "c1",
@@ -227,6 +232,10 @@
       },
       {
         "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
         "target": "a1"
       },
       {
@@ -250,16 +259,12 @@
         "target": "a2"
       },
       {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
         "source": "c10",
         "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
       }
     ]
   }

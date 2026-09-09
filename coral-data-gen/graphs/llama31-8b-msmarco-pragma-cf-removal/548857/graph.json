@@ -22,13 +22,22 @@
   "baseline_answer": "Multi-drug regimen (NSAID + DMSO topical, or NSAID + opioid)",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2056,
-    "output_tokens": 1794,
+    "output_tokens": 1676,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -40,97 +49,113 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "what is the best pain medication for horses"
+        "label": "what is the best pain medication for horses",
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "most trustworthy source of information for pain medication in horses"
+        "label": "most trustworthy source of information for pain medication in horses",
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "best pain medication for horses from different perspectives"
+        "label": "best pain medication for horses from different perspectives",
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: AAEP (American Association of Equine Practitioners) guidance"
+        "label": "trustworthiness: AAEP (American Association of Equine Practitioners) guidance",
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: peer-reviewed veterinary anesthesia journal"
+        "label": "trustworthiness: peer-reviewed veterinary anesthesia journal",
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: equine veterinary clinical practice"
+        "label": "trustworthiness: equine veterinary clinical practice",
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: trainer / owner online forum"
+        "label": "trustworthiness: trainer / owner online forum",
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: horse industry magazine"
+        "label": "trustworthiness: horse industry magazine",
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: working / performance horse owner"
+        "label": "perspective: working / performance horse owner",
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: severe acute lameness case"
+        "label": "perspective: severe acute lameness case",
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: retired pleasure horse"
+        "label": "perspective: retired pleasure horse",
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: surgical recovery horse"
+        "label": "perspective: surgical recovery horse",
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: pregnant / breeding mare"
+        "label": "perspective: pregnant / breeding mare",
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Phenylbutazone (Bute)"
+        "label": "Phenylbutazone (Bute)",
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Multi-drug regimen (NSAID + DMSO topical, or NSAID + opioid)"
+        "label": "Multi-drug regimen (NSAID + DMSO topical, or NSAID + opioid)",
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Targeted route \u2014 epidural injection for severe hind-end lameness, or transdermal patch"
+        "label": "Targeted route \u2014 epidural injection for severe hind-end lameness, or transdermal patch",
+        "description": ""
       }
     ],
     "edges": [
@@ -184,46 +209,6 @@
       },
       {
         "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c1",
         "target": "a2"
       },
       {
@@ -244,11 +229,11 @@
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c7",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c8",
@@ -256,7 +241,7 @@
       },
       {
         "source": "c9",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c10",

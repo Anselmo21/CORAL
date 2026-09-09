@@ -22,6 +22,15 @@
   "baseline_answer": "Answer A (Invest the Difference Default): Invest the extra money in index funds \u2014 at 3.2% mortgage rate versus historical ~10% market returns, the spread is too large to justify early payoff purely on financial grounds.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
@@ -276,19 +285,19 @@
       },
       {
         "source": "c7",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c8",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c10",
-        "target": "a3"
+        "target": "a1"
       }
     ]
   }

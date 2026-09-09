@@ -22,13 +22,22 @@
   "baseline_answer": "Jimmy Fallon (The Tonight Show on NBC)",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2083,
-    "output_tokens": 1555,
+    "output_tokens": 1999,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,112 +50,112 @@
         "layer": "1",
         "type": "question",
         "label": "Who is the best late night talk show host?",
-        "description": ""
+        "description": "The question is 'Who is the best late night talk show host?' The plausible answers are distinguished by their popularity, critical acclaim, and audience preferences."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the criteria for evaluating the best late night talk show host?",
-        "description": ""
+        "label": "What are the most trusted sources for evaluating late night talk show hosts?",
+        "description": "We can group the Layer 3 seeds into two sub-questions: What are the most trusted sources for evaluating late night talk show hosts? and What are the different perspectives on the best late night talk show host?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Who is the best late night talk show host based on different perspectives and priorities?",
-        "description": ""
+        "label": "What are the different perspectives on the best late night talk show host?",
+        "description": "We can group the Layer 3 seeds into two sub-questions: What are the most trusted sources for evaluating late night talk show hosts? and What are the different perspectives on the best late night talk show host?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: TV critic / Variety review",
-        "description": ""
+        "description": "The most trusted sources for evaluating late night talk show hosts are TV critics and Variety reviews."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Nielsen / TV ratings data",
-        "description": ""
+        "description": "The most trusted sources for evaluating late night talk show hosts are Nielsen TV ratings data."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Emmy / industry award nominations",
-        "description": ""
+        "description": "The most trusted sources for evaluating late night talk show hosts are Emmy and industry award nominations."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: fan / pop-culture forum",
-        "description": ""
+        "description": "The most trusted sources for evaluating late night talk show hosts are fan opinions and pop-culture forums."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: entertainment magazine",
-        "description": ""
+        "description": "The most trusted sources for evaluating late night talk show hosts are entertainment magazines."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: viewer prioritizing political satire / news commentary",
-        "description": ""
+        "description": "The best late night talk show host is the one who prioritizes political satire and news commentary."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: viewer prioritizing celebrity-interview entertainment",
-        "description": ""
+        "description": "The best late night talk show host is the one who prioritizes celebrity interviews and entertainment."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: older / nostalgic viewer",
-        "description": ""
+        "description": "The best late night talk show host is the one who appeals to older and nostalgic viewers."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: millennial / Gen-Z viewer",
-        "description": ""
+        "description": "The best late night talk show host is the one who appeals to millennial and Gen-Z viewers."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: comedy purist / stand-up sensibility",
-        "description": ""
+        "description": "The best late night talk show host is the one who prioritizes comedy and stand-up sensibility."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Stephen Colbert (Late Show on CBS)",
-        "description": ""
+        "description": "Stephen Colbert is the best late night talk show host."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Jimmy Fallon (The Tonight Show on NBC)",
-        "description": ""
+        "label": "Johnny Carson (The Tonight Show 1962-1992)",
+        "description": "Johnny Carson is the best late night talk show host."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Johnny Carson (The Tonight Show 1962-1992)",
-        "description": ""
+        "label": "Jimmy Fallon (The Tonight Show on NBC)",
+        "description": "Jimmy Fallon is the best late night talk show host."
       }
     ],
     "edges": [
@@ -224,19 +233,39 @@
       },
       {
         "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
         "target": "a3"
       },
       {
-        "source": "c9",
+        "source": "c8",
         "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
       }
     ]
   }

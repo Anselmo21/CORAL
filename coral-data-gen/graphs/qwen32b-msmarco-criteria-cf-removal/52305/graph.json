@@ -22,16 +22,24 @@
   "baseline_answer": "Glyphosate (Roundup) or triclopyr (Brush-B-Gon) herbicide applied to leaves",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
-  "attempts": 2,
+  "attempts": 1,
   "usage": {
-    "prompt_tokens": 7526,
-    "output_tokens": 4118,
-    "llm_calls": 2,
+    "prompt_tokens": 2529,
+    "output_tokens": 2047,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -42,7 +50,7 @@
         "layer": "1",
         "type": "question",
         "label": "best way to get rid of ivy",
-        "description": "What is the best way to get rid of ivy, considering effectiveness, safety, and practicality?"
+        "description": "What is the best way to get rid of ivy?"
       },
       {
         "id": "sq1",
@@ -63,28 +71,28 @@
         "layer": "2",
         "type": "subq",
         "label": "How practical and accessible is the method in terms of cost, time, and tools?",
-        "description": "Evaluates the method's cost, time required, and tool availability."
+        "description": "Evaluates cost, time required, and availability of tools."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "method effectiveness",
-        "description": "How well the method kills ivy."
+        "description": "How well the method works at killing ivy."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "safety of ingredients",
-        "description": "Whether the method uses non-toxic or safe ingredients."
+        "description": "Whether the method uses non-toxic or harmful substances."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "environmental impact",
-        "description": "How the method affects the environment."
+        "description": "How the method affects the surrounding ecosystem."
       },
       {
         "id": "c4",
@@ -105,7 +113,7 @@
         "layer": "3",
         "type": "concept",
         "label": "ease of application",
-        "description": "How easy the method is to apply."
+        "description": "How simple or difficult the method is to apply."
       },
       {
         "id": "c7",
@@ -133,7 +141,7 @@
         "layer": "3",
         "type": "concept",
         "label": "user experience",
-        "description": "How the method feels to the user in practice."
+        "description": "How pleasant or unpleasant the method is to use."
       },
       {
         "id": "a1",
@@ -147,7 +155,7 @@
         "layer": "4",
         "type": "answer",
         "label": "Natural spray: white vinegar OR salt + soap + water solution",
-        "description": "Using natural ingredients to kill ivy."
+        "description": "Using non-toxic sprays to kill ivy."
       },
       {
         "id": "a3",
@@ -179,10 +187,6 @@
         "target": "c7"
       },
       {
-        "source": "sq1",
-        "target": "c8"
-      },
-      {
         "source": "sq2",
         "target": "c2"
       },
@@ -212,19 +216,7 @@
       },
       {
         "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
         "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a1"
       },
       {
         "source": "c2",
@@ -233,10 +225,6 @@
       {
         "source": "c2",
         "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
       },
       {
         "source": "c3",
@@ -281,14 +269,6 @@
       {
         "source": "c6",
         "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
       },
       {
         "source": "c7",

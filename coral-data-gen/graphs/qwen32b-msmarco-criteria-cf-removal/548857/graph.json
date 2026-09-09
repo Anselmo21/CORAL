@@ -22,16 +22,24 @@
   "baseline_answer": "Multi-drug regimen (NSAID + DMSO topical, or NSAID + opioid)",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
-  "attempts": 2,
+  "attempts": 1,
   "usage": {
-    "prompt_tokens": 6241,
-    "output_tokens": 4133,
-    "llm_calls": 2,
+    "prompt_tokens": 1892,
+    "output_tokens": 2420,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -42,105 +50,105 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best pain medication for horses?",
-        "description": "Evaluating the best pain medication for horses based on various criteria."
+        "description": "Identify the most effective and appropriate pain medication for horses based on various criteria."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "What type of medication is most effective and safe for long-term use?",
-        "description": "Evaluates medication type, duration, side effects, and effectiveness."
+        "description": "Evaluate medication types based on effectiveness, safety, and suitability for long-term treatment."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "How is the medication administered, and how does this affect its use?",
-        "description": "Evaluates administration method, availability, and prescription status."
+        "description": "Assess administration methods and their impact on practicality, availability, and prescription requirements."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "What conditions is the medication best suited for, and how does this affect its recommendation?",
-        "description": "Evaluates condition treated, veterinary recommendation, and cost."
+        "description": "Determine the best medication for specific conditions and its alignment with veterinary recommendations and cost."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "medication type",
-        "description": "Type of drug (e.g., NSAID, opioid, topical)."
+        "description": "The class of drug used for pain management (e.g., NSAID, opioid, topical)."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "administration method",
-        "description": "How the drug is delivered (e.g., oral, injectable, transdermal)."
+        "description": "How the medication is delivered (e.g., oral, injectable, topical)."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "duration of treatment",
-        "description": "Whether the drug is for short-term or long-term use."
+        "description": "Whether the medication is suitable for short-term or long-term use."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "condition treated",
-        "description": "The type of pain or condition the drug is used for."
+        "description": "The specific condition or injury the medication is used for (e.g., arthritis, lameness)."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "side effects",
-        "description": "Adverse effects of the medication."
+        "description": "Potential adverse effects of the medication (e.g., ulcers, kidney damage)."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "prescription status",
-        "description": "Whether the drug is prescription-only or over-the-counter."
+        "description": "Whether the medication is prescription-only or available over-the-counter."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "effectiveness",
-        "description": "How well the drug manages pain."
+        "description": "How well the medication relieves pain and manages the condition."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "cost",
-        "description": "The financial cost of the medication."
+        "description": "The financial cost of the medication and its administration."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "availability",
-        "description": "How easily the drug can be obtained."
+        "description": "How easily the medication can be obtained and administered."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "veterinary recommendation",
-        "description": "Whether the drug is recommended by veterinarians."
+        "description": "Whether the medication is commonly recommended by veterinarians."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Phenylbutazone (Bute)",
-        "description": "Common NSAID for musculoskeletal pain in horses."
+        "description": "A common NSAID used for short-term pain relief in horses."
       },
       {
         "id": "a2",
@@ -154,7 +162,7 @@
         "layer": "4",
         "type": "answer",
         "label": "Targeted route \u2014 epidural injection for severe hind-end lameness, or transdermal patch",
-        "description": "Specialized delivery for localized or severe pain."
+        "description": "Specialized administration for specific, severe conditions."
       }
     ],
     "edges": [
@@ -212,59 +220,79 @@
       },
       {
         "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
         "target": "a1"
       },
       {
         "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
         "target": "a3"
       },
       {
         "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
         "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
       },
       {
         "source": "c5",
@@ -272,62 +300,10 @@
       },
       {
         "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
         "target": "a3"
       },
       {
         "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
         "target": "a3"
       }
     ]

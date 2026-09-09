@@ -22,13 +22,22 @@
   "baseline_answer": "Glo Therapeutics / Sanitas enzyme masque used in a professional European facial",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2467,
-    "output_tokens": 2240,
+    "output_tokens": 1546,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -131,21 +140,21 @@
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Dermalogica adjustable-strength enzyme peel (pumpkin/cranberry/cherry-berry, 5\u201320% selectable concentration)",
+        "label": "Glo Therapeutics / Sanitas enzyme masque used in a professional European facial",
         "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Salicylic-acid-paired enzyme exfoliation in an acne-control facial regimen",
+        "label": "Dermalogica adjustable-strength enzyme peel (pumpkin/cranberry/cherry-berry, 5\u201320% selectable concentration)",
         "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Glo Therapeutics / Sanitas enzyme masque used in a professional European facial",
+        "label": "Salicylic-acid-paired enzyme exfoliation in an acne-control facial regimen",
         "description": ""
       }
     ],
@@ -224,63 +233,11 @@
       },
       {
         "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
         "target": "a2"
       },
       {
         "source": "c8",
         "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
       },
       {
         "source": "c9",

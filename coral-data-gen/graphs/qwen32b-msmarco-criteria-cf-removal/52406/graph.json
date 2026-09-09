@@ -22,13 +22,22 @@
   "baseline_answer": "Gradual lifestyle change",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2377,
-    "output_tokens": 2274,
+    "output_tokens": 2248,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -69,14 +78,14 @@
         "layer": "2",
         "type": "subq",
         "label": "What role does exercise and physical activity play?",
-        "description": "Evaluates the intensity and frequency of physical activity required."
+        "description": "Evaluates the level and type of physical activity required."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "safety of methods",
-        "description": "How safe is the method for long-term health?"
+        "description": "How safe is the method for the individual's health?"
       },
       {
         "id": "c2",
@@ -97,7 +106,7 @@
         "layer": "3",
         "type": "concept",
         "label": "exercise intensity",
-        "description": "How intense is the required physical activity?"
+        "description": "What level of physical activity is required?"
       },
       {
         "id": "c5",
@@ -111,35 +120,35 @@
         "layer": "3",
         "type": "concept",
         "label": "support systems",
-        "description": "Are there support systems or professionals involved?"
+        "description": "What kind of support is available?"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "motivation techniques",
-        "description": "What strategies are used to maintain motivation?"
+        "description": "What strategies are used to stay motivated?"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "health considerations",
-        "description": "Are there health risks or benefits to consider?"
+        "description": "What health risks or benefits are involved?"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "caloric intake",
-        "description": "What is the required daily caloric intake?"
+        "description": "How many calories are consumed per day?"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "meal frequency",
-        "description": "How often should meals be eaten?"
+        "description": "How often are meals consumed?"
       },
       {
         "id": "a1",
@@ -153,14 +162,14 @@
         "layer": "4",
         "type": "answer",
         "label": "Aggressive 3-4 month plan",
-        "description": "A fast-paced, structured plan to lose 50 pounds in 3-4 months."
+        "description": "A structured, fast-paced plan to lose 50 pounds in 3-4 months."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Doctor-supervised plan",
-        "description": "A medically guided plan for weight loss."
+        "description": "A medically guided weight loss plan with professional oversight."
       }
     ],
     "edges": [
@@ -213,11 +222,11 @@
         "target": "c4"
       },
       {
-        "source": "sq1",
+        "source": "sq4",
         "target": "c6"
       },
       {
-        "source": "sq1",
+        "source": "sq4",
         "target": "c7"
       },
       {
@@ -270,10 +279,6 @@
       },
       {
         "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
         "target": "a2"
       },
       {

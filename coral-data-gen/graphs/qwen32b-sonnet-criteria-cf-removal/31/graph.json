@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Stanford GSB Default): Prioritize Stanford GSB for entrepreneurship \u2014 its VC network, Silicon Valley location, alumni founder density, and risk-tolerant culture make it the strongest launchpad for venture-backed tech startups.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1542,
-    "output_tokens": 2491,
+    "output_tokens": 2653,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,35 +50,35 @@
         "layer": "1",
         "type": "question",
         "label": "Which MBA program should I prioritize for starting a company?",
-        "description": "Stanford GSB, HBS, or Wharton?"
+        "description": "I want to start a company after graduation. Which MBA program should I prioritize \u2014 Stanford GSB, HBS, or Wharton?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the strength of the school\u2019s entrepreneurial ecosystem and VC network?",
-        "description": "VC network, founder density, Silicon Valley proximity, and risk culture."
+        "label": "What is the strength of the school\u2019s entrepreneurial ecosystem and culture?",
+        "description": "Evaluates VC access, founder density, Silicon Valley proximity, and risk culture."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the school\u2019s brand strength and global reach for non-tech ventures?",
-        "description": "Global brand, industry focus, and corporate exit options."
+        "label": "What is the school\u2019s industry and geographic reach for startup support?",
+        "description": "Evaluates global brand, industry focus, and finance expertise."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the school\u2019s support for capital-intensive or finance-driven startups?",
-        "description": "Finance expertise, cross-disciplinary resources, and application competitiveness."
+        "label": "What are the school\u2019s unique resources and cross-functional support systems?",
+        "description": "Evaluates cross-disciplinary resources, corporate exit options, and application competitiveness."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "VC and angel investor network access",
-        "description": "Access to venture capital and angel investors."
+        "description": "Access to venture capital and angel investor networks."
       },
       {
         "id": "c2",
@@ -83,56 +92,56 @@
         "layer": "3",
         "type": "concept",
         "label": "proximity to Silicon Valley tech ecosystem",
-        "description": "Geographic access to Silicon Valley."
+        "description": "Geographic access to Silicon Valley and its startup ecosystem."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "global brand and alumni network breadth",
-        "description": "Reputation and reach of the school\u2019s alumni network."
+        "description": "Strength of the school\u2019s global brand and breadth of its alumni network."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "industry focus of intended startup",
-        "description": "Whether the startup is tech, healthcare, consumer goods, etc."
+        "description": "The industry or sector the startup is targeting."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "finance and capital-raising expertise",
-        "description": "Strength in financial modeling and capital structuring."
+        "description": "Strength in financial modeling, fundraising, and capital structuring."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "culture of risk-taking and failure tolerance",
-        "description": "Support for entrepreneurial risk and failure."
+        "description": "Cultural support for entrepreneurial risk and failure."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "cross-disciplinary resources",
-        "description": "Access to non-MBA departments and innovation labs."
+        "description": "Access to interdisciplinary programs and innovation labs."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "post-MBA corporate exit optionality",
-        "description": "Opportunities for traditional corporate jobs after MBA."
+        "description": "Opportunities for corporate roles after MBA."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "application competitiveness and acceptance rate",
-        "description": "How hard it is to get into the program."
+        "description": "How competitive the school is to get into."
       },
       {
         "id": "a1",
@@ -147,6 +156,13 @@
         "type": "answer",
         "label": "Answer B (HBS for Non-Tech Ventures)",
         "description": "Choose HBS if your startup targets industries beyond tech \u2014 its unmatched global alumni network and brand recognition opens doors in healthcare, consumer goods, emerging markets, and institutional fundraising."
+      },
+      {
+        "id": "c3",
+        "layer": "3",
+        "type": "concept",
+        "label": "proximity to Silicon Valley tech ecosystem",
+        "description": "Geographic access to Silicon Valley and its startup ecosystem."
       },
       {
         "id": "a3",
@@ -195,15 +211,15 @@
       },
       {
         "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq3",
         "target": "c6"
       },
       {
         "source": "sq3",
         "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
       },
       {
         "source": "sq3",
@@ -250,6 +266,10 @@
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
         "source": "c4",
         "target": "a2"
       },
@@ -258,8 +278,28 @@
         "target": "a2"
       },
       {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
         "source": "c9",
         "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
       },
       {
         "source": "c6",
@@ -267,6 +307,10 @@
       },
       {
         "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
         "target": "a3"
       },
       {

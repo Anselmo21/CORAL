@@ -22,13 +22,22 @@
   "baseline_answer": "Conservative training paired with on-cycle support and recovery emphasis",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1907,
-    "output_tokens": 2452,
+    "output_tokens": 2506,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,29 +56,22 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the recommended training intensity and volume for prohormone users?",
-        "description": "Determines the optimal training approach in terms of intensity and volume."
+        "label": "What is the recommended workout intensity and volume for prohormone users?",
+        "description": "Determines the optimal training intensity and volume for users taking prohormones."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the safety and health considerations when using prohormones?",
-        "description": "Focuses on the health risks and protective measures."
+        "label": "What are the safety and health considerations when using prohormones with workouts?",
+        "description": "Evaluates the health and safety implications of combining prohormones with different workout styles."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the training preferences of different user types (e.g., powerlifters, bodybuilders)?",
-        "description": "Considers how different user types approach training."
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "What does the prohormone product documentation and industry sources recommend?",
-        "description": "Evaluates official guidance from product documentation and industry sources."
+        "label": "What are the training preferences of different user types when using prohormones?",
+        "description": "Assesses how different user types (e.g., powerlifters, bodybuilders) approach training with prohormones."
       },
       {
         "id": "c1",
@@ -90,7 +92,7 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: endocrinologist warning",
-        "description": "Warnings from medical professionals about prohormone side effects."
+        "description": "Sources from medical professionals warning about prohormone risks."
       },
       {
         "id": "c4",
@@ -104,63 +106,63 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: supplement industry publication",
-        "description": "Articles and guides from supplement industry publications."
+        "description": "Sources from publications focused on supplements and fitness."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: powerlifter",
-        "description": "Training preferences of powerlifters."
+        "description": "Perspective from powerlifting athletes and coaches."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: bodybuilder",
-        "description": "Training preferences of bodybuilders."
+        "description": "Perspective from bodybuilding athletes and coaches."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: first-time prohormone user",
-        "description": "Perspective of someone new to prohormones."
+        "description": "Perspective from individuals new to prohormone use."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: recreational gym-goer",
-        "description": "Perspective of a casual gym user."
+        "description": "Perspective from casual gym users."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: advanced cycling-experienced user",
-        "description": "Perspective of someone experienced with prohormone cycles."
+        "description": "Perspective from experienced prohormone users."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Heavy compound lifts (squat, deadlift, bench, OHP, row) in the 4-8 rep range on a 4-6 day split",
-        "description": "High-intensity training with compound lifts."
+        "description": "High-intensity training with compound lifts for maximal strength and size."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "High-volume hypertrophy work (8-12 reps, 15-20 sets per muscle / week)",
-        "description": "High-volume training for muscle growth."
+        "description": "High-volume training for muscle hypertrophy."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Conservative training paired with on-cycle support and recovery emphasis",
-        "description": "Low-intensity training with a focus on health and recovery."
+        "description": "Low-intensity training with a focus on recovery and health."
       }
     ],
     "edges": [
@@ -175,10 +177,6 @@
       {
         "source": "q",
         "target": "sq3"
-      },
-      {
-        "source": "q",
-        "target": "sq4"
       },
       {
         "source": "sq1",
@@ -217,12 +215,24 @@
         "target": "c5"
       },
       {
-        "source": "sq4",
-        "target": "c4"
+        "source": "sq3",
+        "target": "c6"
       },
       {
-        "source": "sq4",
-        "target": "c5"
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -246,15 +256,7 @@
       },
       {
         "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
         "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
       },
       {
         "source": "c7",
@@ -266,23 +268,55 @@
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c10",
         "target": "a1"
       },
       {
-        "source": "c10",
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
         "target": "a2"
       },
       {
         "source": "c10",
-        "target": "a3"
+        "target": "a2"
       }
     ]
   }

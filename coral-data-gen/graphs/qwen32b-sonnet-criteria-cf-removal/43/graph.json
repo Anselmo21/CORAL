@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Gap Year if Structured Default): Take a gap year if you have a clear plan \u2014 structured gap years (work abroad, volunteering, skill building) produce higher GPA and major satisfaction, and most universities support deferral.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1527,
-    "output_tokens": 2426,
+    "output_tokens": 2667,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,49 +50,63 @@
         "layer": "1",
         "type": "question",
         "label": "Should I take a gap year before starting university?",
-        "description": "A high school graduate is deciding whether to take a gap year before university."
+        "description": "A high school graduate is deciding whether to take a gap year before starting university."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What determines the success or failure of a gap year in terms of academic and personal outcomes?",
-        "description": "Factors that influence whether a gap year leads to positive or negative academic and personal outcomes."
+        "label": "What are the risks and benefits of a gap year in terms of academic and personal development?",
+        "description": "Evaluates the academic and personal outcomes of a gap year."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the institutional and personal factors that influence the decision to take a gap year?",
-        "description": "Institutional and personal considerations that affect the decision to take a gap year."
+        "label": "What are the structural and planning requirements for a gap year to be beneficial?",
+        "description": "Assesses the importance of structure and planning in a gap year."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "How does a gap year affect university admissions and academic momentum?",
+        "description": "Evaluates the impact of a gap year on university deferral and academic continuity."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the personal and career readiness factors that influence the decision?",
+        "description": "Assesses the student's maturity, direction, and readiness for university or career."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "clarity of purpose and structure of gap year",
-        "description": "Whether the gap year is planned and purposeful."
+        "description": "Whether the gap year is structured and purposeful."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "risk of losing academic momentum",
-        "description": "The potential for a gap year to delay or disrupt academic progress."
+        "description": "The potential for a gap year to disrupt academic progress."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "benefit of career exploration before committing",
-        "description": "The value of testing different career paths before choosing a major."
+        "description": "The value of exploring career options before university."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "financial cost and savings opportunity",
-        "description": "The economic implications of taking a gap year."
+        "description": "The financial implications of a gap year."
       },
       {
         "id": "c5",
@@ -97,56 +120,56 @@
         "layer": "3",
         "type": "concept",
         "label": "personal maturity and readiness for university",
-        "description": "The student's emotional and intellectual preparedness for higher education."
+        "description": "The student's emotional and intellectual readiness for higher education."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "international or experiential learning value",
-        "description": "The educational or cultural value of international or hands-on experiences."
+        "description": "The value of international or hands-on learning during a gap year."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "risk of never returning to education",
-        "description": "The possibility that a gap year leads to permanent disengagement from formal education."
+        "description": "The risk that a gap year might lead to dropping out of education."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "major and career direction certainty",
-        "description": "The student's confidence in their academic and career goals."
+        "description": "The student's clarity about their academic and career path."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "mental health and burnout recovery",
-        "description": "The potential for a gap year to improve well-being and reduce stress."
+        "description": "The potential for a gap year to improve mental health and reduce burnout."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Gap Year if Structured Default): Take a gap year if you have a clear plan \u2014 structured gap years (work abroad, volunteering, skill building) produce higher GPA and major satisfaction, and most universities support deferral.",
-        "description": "Recommended for students with a structured and purposeful gap year plan."
+        "description": "Recommends a structured gap year if the student has a clear plan."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Start University Immediately): Go straight to university if you don't have a specific gap year purpose \u2014 unstructured gap years rarely produce meaningful growth and risk undermining academic momentum without a clear plan.",
-        "description": "Recommended for students who lack a structured plan and want to avoid risk."
+        "description": "Recommends starting university immediately if the student lacks a structured gap year plan."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Gap Year for Career Clarity): Take a gap year specifically to explore different career environments if you're undecided about your major \u2014 a year of deliberate career testing before committing to a program reduces costly mid-degree changes.",
-        "description": "Recommended for students who are undecided and want to test career options."
+        "description": "Recommends a gap year for career exploration if the student is undecided about their major."
       }
     ],
     "edges": [
@@ -157,6 +180,14 @@
       {
         "source": "q",
         "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
       },
       {
         "source": "sq1",
@@ -184,18 +215,34 @@
       },
       {
         "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
-        "target": "c5"
+        "target": "c1"
       },
       {
         "source": "sq2",
         "target": "c6"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq4",
+        "target": "c3"
+      },
+      {
+        "source": "sq4",
+        "target": "c6"
+      },
+      {
+        "source": "sq4",
         "target": "c9"
       },
       {
@@ -255,15 +302,11 @@
         "target": "a2"
       },
       {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
         "source": "c3",
         "target": "a3"
       },
       {
-        "source": "c7",
+        "source": "c4",
         "target": "a3"
       },
       {

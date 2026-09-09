@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Rent and Invest Default): Rent in Toronto and invest your down payment capital in a diversified portfolio \u2014 the city's extreme price-to-rent ratio means buying only makes financial sense with a 7+ year horizon and strong income stability.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1626,
-    "output_tokens": 2665,
+    "output_tokens": 2643,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -61,85 +70,78 @@
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Career and mobility considerations for buying vs. renting in Toronto",
-        "description": "How do career and mobility considerations affect the decision to buy or rent in Toronto?"
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "Broader Canadian context for homeownership and renting",
-        "description": "What is the broader Canadian context for homeownership and renting?"
+        "label": "Career and life situation impact on buying vs. renting in Toronto",
+        "description": "How do different career and life situations affect the decision to buy or rent in Toronto?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Filter sources from 2023 only."
+        "description": "Filter sources to only those from 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Filter sources from 2021 to 2023."
+        "description": "Filter sources to those from 2021 to 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2010\u20132022",
-        "description": "Filter sources from 2010 to 2022."
+        "description": "Filter sources to those from 2010 to 2022."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Toronto, Ontario",
-        "description": "Filter sources specific to Toronto, Ontario."
+        "description": "Filter sources to those focused on Toronto, Ontario."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Canada broadly",
-        "description": "Filter sources about Canada broadly."
+        "description": "Filter sources to those focused on Canada broadly."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Long-term resident with stable career",
-        "description": "Filter sources from the perspective of a long-term resident with a stable career."
+        "description": "Filter sources to those from the perspective of a long-term resident with a stable career."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Mobile professional or career-changer",
-        "description": "Filter sources from the perspective of a mobile professional or career-changer."
+        "description": "Filter sources to those from the perspective of a mobile professional or career-changer."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Government housing authority",
-        "description": "Filter sources from government housing authorities."
+        "description": "Filter sources to those from a government housing authority."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Community peer advice",
-        "description": "Filter sources from community peer advice."
+        "description": "Filter sources to those from community peer advice."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Financial journalism",
-        "description": "Filter sources from financial journalism."
+        "description": "Filter sources to those from financial journalism."
       },
       {
         "id": "a1",
@@ -177,12 +179,8 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
-      },
-      {
         "source": "sq1",
-        "target": "c2"
+        "target": "c1"
       },
       {
         "source": "sq1",
@@ -190,11 +188,15 @@
       },
       {
         "source": "sq1",
-        "target": "c10"
+        "target": "c8"
       },
       {
         "source": "sq1",
-        "target": "c8"
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
       },
       {
         "source": "sq2",
@@ -206,7 +208,7 @@
       },
       {
         "source": "sq2",
-        "target": "c6"
+        "target": "c9"
       },
       {
         "source": "sq3",
@@ -214,23 +216,11 @@
       },
       {
         "source": "sq3",
-        "target": "c7"
+        "target": "c6"
       },
       {
         "source": "sq3",
-        "target": "c9"
-      },
-      {
-        "source": "sq4",
-        "target": "c5"
-      },
-      {
-        "source": "sq4",
-        "target": "c2"
-      },
-      {
-        "source": "sq4",
-        "target": "c8"
+        "target": "c7"
       },
       {
         "source": "c1",
@@ -257,52 +247,40 @@
         "target": "a1"
       },
       {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
         "source": "c6",
         "target": "a2"
       },
       {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
+        "source": "c7",
+        "target": "a1"
       },
       {
         "source": "c7",
         "target": "a3"
       },
       {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
         "source": "c9",
         "target": "a3"
       },
       {
-        "source": "c5",
-        "target": "a3"
+        "source": "c10",
+        "target": "a1"
       }
     ]
   }

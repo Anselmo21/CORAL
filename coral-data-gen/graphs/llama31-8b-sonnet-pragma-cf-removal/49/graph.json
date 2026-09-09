@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Roomba j7+ Default): Get the iRobot Roomba j7+ \u2014 its pet waste obstacle avoidance, self-emptying base, and reliable navigation make it the most maintenance-free option for cat owners.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1687,
-    "output_tokens": 2388,
+    "output_tokens": 2379,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,7 +50,7 @@
         "layer": "1",
         "type": "question",
         "label": "Best robot vacuum for pet hair",
-        "description": "Recommend a robot vacuum for pet hair"
+        "description": "Recommend a robot vacuum for households with shedding cats"
       },
       {
         "id": "sq1",
@@ -69,91 +78,91 @@
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Only consider sources from 2023"
+        "description": "Sources from 2023 only"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Consider sources from 2021 to 2023"
+        "description": "Sources from 2021 to 2023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Only consider sources from the USA"
+        "description": "Sources from USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Canada / Global",
-        "description": "Consider sources from Canada or globally"
+        "description": "Sources from Canada or Global"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Pet owner prioritizing convenience and low maintenance",
-        "description": "Prioritize convenience and low maintenance for pet owners"
+        "description": "Sources from pet owners prioritizing convenience and low maintenance"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Pet owner in large home with carpet and hard floors",
-        "description": "Consider the needs of pet owners in large homes with mixed flooring"
+        "description": "Sources from pet owners in large homes with mixed flooring"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer product recommendation publication",
-        "description": "Only consider sources from consumer product recommendation publications"
+        "description": "Sources from consumer product recommendation publications"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Independent hardware testing site",
-        "description": "Only consider sources from independent hardware testing sites"
+        "description": "Sources from independent hardware testing sites"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Robot vacuum enthusiast community",
-        "description": "Only consider sources from robot vacuum enthusiast communities"
+        "description": "Sources from robot vacuum enthusiast communities"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Tech journalism",
-        "description": "Only consider sources from tech journalism"
+        "description": "Sources from tech journalism"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Roomba j7+ Default",
-        "description": "Get the iRobot Roomba j7+ \u2014 its pet waste obstacle avoidance, self-emptying base, and reliable navigation make it the most maintenance-free option for cat owners."
+        "description": "Get the iRobot Roomba j7+ \u2014 its pet waste obstacle avoidance, self-emptying base, and reliable navigation make it the most maintenance-free option for cat owners"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Roborock for Performance",
-        "description": "Choose a Roborock S7 or S8 series if you have a large home with mixed flooring \u2014 superior suction, mopping capability, and self-cleaning dock outperform Roomba for high-shedding pet households."
+        "description": "Choose a Roborock S7 or S8 series if you have a large home with mixed flooring \u2014 superior suction, mopping capability, and self-cleaning dock outperform Roomba for high-shedding pet households"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Eufy for Value",
-        "description": "Buy a Eufy RoboVac if you're in a smaller space and want to save $200\u2013400 \u2014 it handles cat hair adequately at half the flagship price, with the caveat that you'll need to empty it manually after each run."
+        "description": "Buy a Eufy RoboVac if you're in a smaller space and want to save $200\u2013400 \u2014 it handles cat hair adequately at half the flagship price, with the caveat that you'll need to empty it manually after each run"
       }
     ],
     "edges": [
@@ -199,10 +208,6 @@
       },
       {
         "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
         "target": "c3"
       },
       {
@@ -239,18 +244,6 @@
       },
       {
         "source": "sq3",
-        "target": "c5"
-      },
-      {
-        "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
         "target": "c9"
       },
       {
@@ -270,16 +263,12 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
         "source": "c3",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c4",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c5",
@@ -291,11 +280,11 @@
       },
       {
         "source": "c7",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c8",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c9",
@@ -303,7 +292,7 @@
       },
       {
         "source": "c10",
-        "target": "a1"
+        "target": "a3"
       }
     ]
   }

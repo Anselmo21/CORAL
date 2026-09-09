@@ -22,13 +22,22 @@
   "baseline_answer": "Dopamine-agonist medication (bromocriptine or cabergoline)",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2510,
-    "output_tokens": 2375,
+    "output_tokens": 2488,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -69,91 +78,91 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: endocrinology clinical guideline",
-        "description": ""
+        "description": "Sources from endocrinology clinical guidelines"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed endocrinology journal",
-        "description": ""
+        "description": "Sources from peer-reviewed endocrinology journals"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Pituitary Society treatment guidance",
-        "description": ""
+        "description": "Sources from the Pituitary Society"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: integrative medicine source",
-        "description": ""
+        "description": "Sources from integrative medicine"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: patient health forum",
-        "description": ""
+        "description": "Sources from patient health forums"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: confirmed prolactinoma patient",
-        "description": ""
+        "description": "Sources from confirmed prolactinoma patients"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: drug-induced hyperprolactinemia case",
-        "description": ""
+        "description": "Sources from drug-induced hyperprolactinemia cases"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: hypothyroid co-morbid patient",
-        "description": ""
+        "description": "Sources from hypothyroid co-morbid patients"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: fertility-trying woman",
-        "description": ""
+        "description": "Sources from fertility-trying women"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: stress-driven mildly elevated patient",
-        "description": ""
+        "description": "Sources from stress-driven mildly elevated patients"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Dopamine-agonist medication (bromocriptine or cabergoline)",
-        "description": ""
+        "description": "Medication to lower prolactin levels"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Identify and address the underlying cause",
-        "description": ""
+        "description": "Treating the root cause of hyperprolactinemia"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Stress reduction + lifestyle",
-        "description": ""
+        "description": "Lifestyle and stress management to lower prolactin"
       }
     ],
     "edges": [

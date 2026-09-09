@@ -22,13 +22,22 @@
   "baseline_answer": "Answer C (Motorized with Presets): Get a motorized desk specifically with programmable memory presets \u2014 one-touch height switching between sitting and standing positions is the feature most associated with frequent transitions and actual health benefit.",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1677,
-    "output_tokens": 2188,
+    "output_tokens": 3209,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,28 +50,28 @@
         "layer": "1",
         "type": "question",
         "label": "Is the price difference worth it when choosing between a motorized and a manual crank standing desk?",
-        "description": "Trade-off between cost and health benefits"
+        "description": "The question is: Is the price difference worth it when choosing between a motorized and a manual crank standing desk?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "Is a motorized desk worth the price premium?",
-        "description": "Cost-benefit analysis"
+        "description": "Is a motorized desk worth the price premium?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "Is a manual crank desk a viable option for budget-constrained buyers?",
-        "description": "Budget constraint and desk type"
+        "description": "Is a manual crank desk a viable option for budget-constrained buyers?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "What is the health benefit of frequent position changes, and how does it relate to the type of desk?",
-        "description": "Health benefits and desk type"
+        "description": "What is the health benefit of frequent position changes, and how does it relate to the type of desk?"
       },
       {
         "id": "c1",
@@ -97,63 +106,63 @@
         "layer": "3",
         "type": "directive",
         "label": "perspective: User prioritizing health benefit over cost",
-        "description": "User prioritizing health benefits"
+        "description": "Sources from users prioritizing health benefit over cost"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Budget-constrained buyer willing to accept manual adjustment",
-        "description": "Budget-constrained buyer"
+        "description": "Sources from budget-constrained buyers willing to accept manual adjustment"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer product recommendation publication",
-        "description": "Consumer product recommendations"
+        "description": "Sources from consumer product recommendation publications"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Tech journalism",
-        "description": "Tech journalism"
+        "description": "Sources from tech journalism"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Standing desk user community",
-        "description": "Standing desk user community"
+        "description": "Sources from standing desk user communities"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Occupational health research",
-        "description": "Occupational health research"
+        "description": "Sources from occupational health research"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Motorized Default): Get a motorized desk \u2014 the price premium over manual is $200\u2013400, but research clearly shows that manual cranking friction causes users to change positions far less often, defeating the health purpose of the desk entirely.",
-        "description": "Motorized desk recommended"
+        "description": "Get a motorized desk \u2014 the price premium over manual is $200\u2013400, but research clearly shows that manual cranking friction causes users to change positions far less often, defeating the health purpose of the desk entirely."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Manual for Budget): Buy a manual crank desk if budget is the hard constraint \u2014 a $250 IKEA SKARSTA is vastly better than no standing desk, and disciplined users who set timers can achieve adequate position variety even with manual adjustment.",
-        "description": "Manual desk recommended for budget"
+        "description": "Buy a manual crank desk if budget is the hard constraint \u2014 a $250 IKEA SKARSTA is vastly better than no standing desk, and disciplined users who set timers can achieve adequate position variety even with manual adjustment."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Motorized with Presets): Get a motorized desk specifically with programmable memory presets \u2014 one-touch height switching between sitting and standing positions is the feature most associated with frequent transitions and actual health benefit.",
-        "description": "Motorized desk with presets recommended"
+        "description": "Get a motorized desk specifically with programmable memory presets \u2014 one-touch height switching between sitting and standing positions is the feature most associated with frequent transitions and actual health benefit."
       }
     ],
     "edges": [
@@ -179,6 +188,18 @@
       },
       {
         "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
         "target": "c7"
       },
       {
@@ -192,6 +213,10 @@
       {
         "source": "sq1",
         "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
       },
       {
         "source": "sq2",
@@ -214,12 +239,36 @@
         "target": "c8"
       },
       {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
         "source": "sq3",
         "target": "c5"
       },
       {
         "source": "sq3",
-        "target": "c6"
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
       },
       {
         "source": "sq3",
@@ -250,6 +299,34 @@
         "target": "a1"
       },
       {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
         "source": "c6",
         "target": "a2"
       },
@@ -268,10 +345,6 @@
       {
         "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
       },
       {
         "source": "c2",
@@ -290,10 +363,6 @@
         "target": "a3"
       },
       {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
         "source": "c7",
         "target": "a3"
       },
@@ -314,28 +383,12 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
         "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c10",
-        "target": "a1"
+        "target": "a3"
       }
     ]
   }

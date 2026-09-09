@@ -22,13 +22,22 @@
   "baseline_answer": "Cool (not cold) water bath or compress for 10-20 minutes, then aloe vera gel",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2758,
-    "output_tokens": 1617,
+    "output_tokens": 1818,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,112 +50,112 @@
         "layer": "1",
         "type": "question",
         "label": "best thing for a sunburn",
-        "description": ""
+        "description": "Recommended treatment for sunburn"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "most trustworthy source of information for treating sunburn",
-        "description": ""
+        "label": "most trustworthy source",
+        "description": "Source of information for treating sunburn"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "best treatment for sunburn from a parent's or DIY enthusiast's perspective",
-        "description": ""
+        "label": "best treatment from perspective",
+        "description": "Treatment for sunburn from a parent's or DIY enthusiast's perspective"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: dermatology clinical practice",
-        "description": ""
+        "description": "Source of information from dermatology clinical practice"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed burn-care journal",
-        "description": ""
+        "description": "Source of information from peer-reviewed burn-care journal"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: AAP / pediatric guidance",
-        "description": ""
+        "description": "Source of information from American Academy of Pediatrics"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: home remedies blog",
-        "description": ""
+        "description": "Source of information from home remedies blog"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Mayo Clinic patient guidance",
-        "description": ""
+        "description": "Source of information from Mayo Clinic patient guidance"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: aromatherapy / alternative remedies publication",
-        "description": ""
+        "description": "Source of information from aromatherapy publication"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: parent of sunburned child",
-        "description": ""
+        "description": "Treatment for sunburn from a parent's perspective"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: DIY enthusiast",
-        "description": ""
+        "description": "Treatment for sunburn from a DIY enthusiast's perspective"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: severe (blistering) sunburn patient",
-        "description": ""
+        "description": "Treatment for severe sunburn"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: aromatherapy enthusiast",
-        "description": ""
+        "description": "Treatment for sunburn from an aromatherapy enthusiast's perspective"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Cool (not cold) water bath or compress for 10-20 minutes, then aloe vera gel",
-        "description": ""
+        "description": "Recommended treatment for sunburn"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "DIY burn cream: aloe vera + witch hazel + mint + baking soda + water",
-        "description": ""
+        "description": "Treatment for sunburn using DIY burn cream"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Lavender oil bath plus milk compresses",
-        "description": ""
+        "description": "Treatment for sunburn using lavender oil and milk compresses"
       }
     ],
     "edges": [
@@ -236,6 +245,22 @@
       },
       {
         "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
         "target": "a3"
       }
     ]

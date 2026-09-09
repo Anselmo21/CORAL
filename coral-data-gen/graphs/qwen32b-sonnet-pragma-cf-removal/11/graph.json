@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (DIY Default): Self-manage with a simple three-fund index portfolio \u2014 at $150k with a straightforward situation, the 0.5\u20131% advisor fee compounds into tens of thousands of dollars of unnecessary cost over time.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1701,
-    "output_tokens": 2709,
+    "output_tokens": 2664,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,21 +50,21 @@
         "layer": "1",
         "type": "question",
         "label": "Should I use a financial advisor or just manage my investments myself? I have about $150k in savings.",
-        "description": "Decision between DIY and financial advisor for a $150k portfolio."
+        "description": "Decision point for a $150k portfolio on whether to use a financial advisor or self-manage."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "What is the cost-benefit of using a financial advisor for a $150k portfolio?",
-        "description": "Evaluates financial cost and value of advisor services."
+        "description": "Evaluates the financial trade-offs of hiring an advisor versus self-management."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "Under what personal or financial circumstances is a financial advisor most valuable?",
-        "description": "Identifies situations where advisor value is highest."
+        "description": "Identifies situations where advisor value exceeds cost."
       },
       {
         "id": "sq3",
@@ -69,7 +78,7 @@
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Only consider 2023 sources."
+        "description": "Only consider sources from 2023."
       },
       {
         "id": "c2",
@@ -83,14 +92,14 @@
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Only consider USA-based sources."
+        "description": "Only consider sources from the USA."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Financially literate DIY investor",
-        "description": "Sources from the perspective of a DIY investor."
+        "description": "Sources from the perspective of a self-directed investor."
       },
       {
         "id": "c5",
@@ -125,14 +134,14 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Community peer advice",
-        "description": "Sources from community peer advice (e.g., Reddit)."
+        "description": "Sources from community or peer advice."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Investment platform (potential conflict of interest)",
-        "description": "Sources from investment platforms (e.g., robo-advisors)."
+        "description": "Sources from investment platforms, which may have conflicts of interest."
       },
       {
         "id": "a1",
@@ -146,7 +155,7 @@
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Fee-Only Advisor for Complexity): Hire a fee-only fiduciary advisor if your situation involves business ownership, equity compensation, estate planning, or you've historically made emotional investing decisions during market downturns.",
-        "description": "Advisor is best for complex or emotional situations."
+        "description": "Advisors are best for complex or emotionally driven situations."
       },
       {
         "id": "a3",
@@ -296,10 +305,6 @@
       {
         "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
       }
     ]
   }

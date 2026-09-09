@@ -22,13 +22,22 @@
   "baseline_answer": "Answer C (REIT Allocation): Add a dedicated REIT allocation (15\u201320%) within your existing stock portfolio \u2014 you get real estate diversification, inflation hedging, and dividend income without giving up liquidity or taking on landlord risk.",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1519,
-    "output_tokens": 2583,
+    "output_tokens": 2539,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,28 +50,28 @@
         "layer": "1",
         "type": "question",
         "label": "Should I diversify into real estate or just keep investing in the stock market? I have about $50k saved.",
-        "description": "Decision between real estate and stock market with $50k."
+        "description": "Decision between real estate and stock market with a $50k budget."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Liquidity and accessibility of the investment",
-        "description": "How liquid and accessible is the investment with $50k?"
+        "label": "Liquidity and Accessibility",
+        "description": "How easy is it to enter and exit the investment with a $50k budget?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Risk and return characteristics",
-        "description": "What are the risk and return trade-offs of each option?"
+        "label": "Risk and Management Burden",
+        "description": "What are the risks and effort required to maintain the investment?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Inflation and macroeconomic factors",
-        "description": "How does each option perform in inflationary or macroeconomic shifts?"
+        "label": "Returns and Diversification",
+        "description": "What are the financial benefits and diversification advantages?"
       },
       {
         "id": "c1",
@@ -83,14 +92,14 @@
         "layer": "3",
         "type": "concept",
         "label": "passive income generation",
-        "description": "Ability to generate income with minimal active effort."
+        "description": "Income generated with minimal active effort."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "diversification from equities",
-        "description": "Reduces risk by not being correlated with the stock market."
+        "description": "Reduction of risk by investing in non-equity assets."
       },
       {
         "id": "c5",
@@ -104,35 +113,35 @@
         "layer": "3",
         "type": "concept",
         "label": "management and time commitment",
-        "description": "How much time and effort is required to maintain the investment?"
+        "description": "Amount of time and effort required to maintain the investment."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "concentration risk",
-        "description": "Risk of overexposure to a single asset or market."
+        "description": "Risk from having too much exposure in a single asset or sector."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "barrier to entry with $50k",
-        "description": "Is $50k sufficient to start investing in this asset class?"
+        "description": "How feasible is it to start with a $50k budget?"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "inflation hedging",
-        "description": "Ability to preserve value in inflationary environments."
+        "description": "Ability of the investment to maintain value during inflation."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "correlation with stock market",
-        "description": "How closely does the investment move with the stock market?"
+        "description": "How closely the investment moves with the stock market."
       },
       {
         "id": "a1",
@@ -179,22 +188,6 @@
       },
       {
         "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
-        "target": "c5"
-      },
-      {
-        "source": "sq2",
         "target": "c6"
       },
       {
@@ -202,12 +195,28 @@
         "target": "c7"
       },
       {
-        "source": "sq2",
-        "target": "c10"
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
       },
       {
         "source": "sq3",
         "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -251,7 +260,7 @@
       },
       {
         "source": "c6",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c7",
@@ -259,11 +268,15 @@
       },
       {
         "source": "c7",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c8",
         "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
       },
       {
         "source": "c8",
@@ -272,10 +285,6 @@
       {
         "source": "c9",
         "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
       },
       {
         "source": "c10",

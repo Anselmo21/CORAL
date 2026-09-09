@@ -22,13 +22,22 @@
   "baseline_answer": "Answer C (NAS Plus Cloud for 3-2-1): Combine a NAS for local backups with Backblaze B2 for offsite cloud replication \u2014 this implements the proper 3-2-1 backup strategy and is the only approach that protects against both local hardware failure and physical disaster.",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1721,
-    "output_tokens": 2223,
+    "output_tokens": 2354,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,28 +50,28 @@
         "layer": "1",
         "type": "question",
         "label": "Should I use a NAS or just pay for cloud storage for backing up my home files and photos?",
-        "description": ""
+        "description": "Backing up home files and photos"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "What is the recommended approach for most home users?",
-        "description": ""
+        "description": "Recommended approach for most home users"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "What is the best approach for households with large data volumes?",
-        "description": ""
+        "description": "Best approach for households with large data volumes"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "What is the most secure and reliable approach for backing up irreplaceable data?",
-        "description": ""
+        "description": "Most secure and reliable approach for irreplaceable data"
       },
       {
         "id": "c1",
@@ -90,7 +99,7 @@
         "layer": "3",
         "type": "directive",
         "label": "geographic: Global / Taiwan (NAS manufacturer)",
-        "description": "Sources from the global market or Taiwan (NAS manufacturer)"
+        "description": "Sources from Global or Taiwan (NAS manufacturer)"
       },
       {
         "id": "c5",
@@ -125,7 +134,7 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Home lab and self-hosting community",
-        "description": "Sources from the home lab and self-hosting community"
+        "description": "Sources from home lab and self-hosting community"
       },
       {
         "id": "c10",
@@ -139,21 +148,21 @@
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Cloud Storage Default): Use cloud storage (Backblaze, Google One, iCloud) \u2014 for most home users, the zero-maintenance automatic offsite protection at $3\u201312/month is vastly simpler than NAS ownership and protects against local disasters.",
-        "description": ""
+        "description": "Cloud storage for most home users"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (NAS for Large Data): Buy a Synology NAS if you have 10TB+ of data \u2014 the one-time hardware cost beats cloud subscription costs over 5 years, and local speeds make backup and restore dramatically faster for large libraries.",
-        "description": ""
+        "description": "NAS for households with large data volumes"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (NAS Plus Cloud for 3-2-1): Combine a NAS for local backups with Backblaze B2 for offsite cloud replication \u2014 this implements the proper 3-2-1 backup strategy and is the only approach that protects against both local hardware failure and physical disaster.",
-        "description": ""
+        "description": "NAS plus cloud for 3-2-1 backup strategy"
       }
     ],
     "edges": [
@@ -183,15 +192,7 @@
       },
       {
         "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq1",
         "target": "c10"
-      },
-      {
-        "source": "sq1",
-        "target": "a1"
       },
       {
         "source": "sq2",
@@ -210,28 +211,16 @@
         "target": "c8"
       },
       {
-        "source": "sq2",
-        "target": "a2"
-      },
-      {
         "source": "sq3",
         "target": "c4"
       },
       {
         "source": "sq3",
-        "target": "c5"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "a3"
+        "target": "c9"
       },
       {
         "source": "c1",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c2",
@@ -255,7 +244,7 @@
       },
       {
         "source": "c7",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c8",
@@ -263,11 +252,55 @@
       },
       {
         "source": "c9",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c10",
         "target": "a1"
+      },
+      {
+        "source": "a1",
+        "target": "c1"
+      },
+      {
+        "source": "a1",
+        "target": "c2"
+      },
+      {
+        "source": "a1",
+        "target": "c5"
+      },
+      {
+        "source": "a1",
+        "target": "c7"
+      },
+      {
+        "source": "a1",
+        "target": "c10"
+      },
+      {
+        "source": "a2",
+        "target": "c2"
+      },
+      {
+        "source": "a2",
+        "target": "c3"
+      },
+      {
+        "source": "a2",
+        "target": "c6"
+      },
+      {
+        "source": "a2",
+        "target": "c8"
+      },
+      {
+        "source": "a3",
+        "target": "c4"
+      },
+      {
+        "source": "a3",
+        "target": "c9"
       }
     ]
   }

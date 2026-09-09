@@ -611,6 +611,7 @@ def generate_dataset(
     local_dtype: str = "auto",
     max_tokens: int = 4096,
     temperature: float = 1.0,
+    serving: Optional[Dict[str, Any]] = None,
     api_key: Optional[str] = None,
     max_retries: int = 3,
     fill_missing: bool = False,
@@ -898,6 +899,7 @@ def generate_dataset(
             "provider": provider,
             "temperature": temperature,
             "max_tokens": max_tokens,
+            "serving": serving or {},
         },
     }
     with open(out_config_path, 'w') as f:

@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Sony XM5 Default): Get the Sony WH-1000XM5 \u2014 the best ANC performance available, excellent call quality, and 30-hour battery make it the top work-from-home headphone for blocking out household noise.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1567,
-    "output_tokens": 2320,
+    "output_tokens": 2776,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -40,106 +49,106 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "q",
+        "label": "What headphones should I get for working from home and blocking out family noise?",
         "description": "I work from home and need headphones that block out noise from my family. What should I get?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "sq1",
-        "description": "Noise Blocking and Battery Performance"
+        "label": "Noise Blocking and Battery Performance",
+        "description": "Criteria related to noise cancellation, battery life, and ambient sound awareness."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "sq2",
-        "description": "Comfort and Wearability"
+        "label": "Comfort and Wearability",
+        "description": "Criteria related to all-day wearing comfort."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "sq3",
-        "description": "Call Quality and Professional Use"
+        "label": "Call Quality and Professional Use",
+        "description": "Criteria related to call microphone quality, wired backup, and durability."
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "sq4",
-        "description": "Ecosystem and Value"
+        "label": "Ecosystem and Value",
+        "description": "Criteria related to ecosystem integration, price, and Bluetooth connectivity."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "active noise cancellation effectiveness",
-        "description": ""
+        "description": "How well the headphones block out ambient noise."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "all-day wearing comfort",
-        "description": ""
+        "description": "Comfort for extended use over 8+ hours."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "call microphone quality",
-        "description": ""
+        "description": "Clarity of voice during calls and meetings."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "battery life for full workday",
-        "description": ""
+        "description": "Battery endurance for a full 8-hour workday."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "ecosystem integration (Apple/Windows)",
-        "description": ""
+        "description": "Seamless integration with devices in a specific ecosystem."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "price and value",
-        "description": ""
+        "description": "Cost relative to features and performance."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "wired backup option for zero-latency calls",
-        "description": ""
+        "description": "Availability of a wired connection for stable calls."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "multipoint Bluetooth connection",
-        "description": ""
+        "description": "Ability to connect to multiple devices simultaneously."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "durability for daily professional use",
-        "description": ""
+        "description": "Build quality and reliability for regular use."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "ambient sound passthrough for awareness",
-        "description": ""
+        "description": "Ability to hear ambient sounds when needed."
       },
       {
         "id": "a1",
@@ -229,16 +238,8 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
         "source": "c3",
         "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
       },
       {
         "source": "c4",
@@ -249,20 +250,12 @@
         "target": "a1"
       },
       {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
         "source": "c6",
         "target": "a1"
       },
       {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
         "source": "c7",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c8",
@@ -270,11 +263,83 @@
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c10",
         "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

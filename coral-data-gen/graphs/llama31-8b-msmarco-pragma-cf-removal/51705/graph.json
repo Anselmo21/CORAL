@@ -22,13 +22,22 @@
   "baseline_answer": "A small companion breed (Cavalier King Charles Spaniel, Bichon Frise, Cockapoo)",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1983,
-    "output_tokens": 2071,
+    "output_tokens": 1908,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -147,6 +156,13 @@
         "type": "answer",
         "label": "A trained psychiatric service dog (Standard Poodle / German Shepherd)",
         "description": ""
+      },
+      {
+        "id": "a*",
+        "layer": "4",
+        "type": "answer",
+        "label": "A small companion breed (Cavalier King Charles Spaniel, Bichon Frise, Cockapoo)",
+        "description": ""
       }
     ],
     "edges": [
@@ -200,86 +216,6 @@
       },
       {
         "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c1",
         "target": "a*"
       },
       {
@@ -292,7 +228,7 @@
       },
       {
         "source": "c4",
-        "target": "a*"
+        "target": "a2"
       },
       {
         "source": "c5",
@@ -300,23 +236,31 @@
       },
       {
         "source": "c6",
-        "target": "a*"
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
       },
       {
         "source": "c7",
-        "target": "a*"
+        "target": "a2"
       },
       {
         "source": "c8",
-        "target": "a*"
+        "target": "a3"
       },
       {
         "source": "c9",
-        "target": "a*"
+        "target": "a1"
       },
       {
         "source": "c10",
-        "target": "a*"
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

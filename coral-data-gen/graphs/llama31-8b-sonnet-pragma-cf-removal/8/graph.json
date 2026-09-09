@@ -22,13 +22,22 @@
   "baseline_answer": "Answer C (IRA Only After Match): After capturing the match, skip the 401k entirely until the IRA is maxed \u2014 the investment flexibility and lower costs of a self-directed IRA deliver better long-term outcomes for most investors.",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1645,
-    "output_tokens": 2471,
+    "output_tokens": 2682,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -69,91 +78,91 @@
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Should I prioritize the 401k match over other retirement savings options?"
+        "description": "Source 1 suggests that the 1% match is still worth contributing to"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "What are the implications of having a high or low income on my retirement savings strategy?"
+        "description": "Source 2 and Source 3 suggest that the 401k match is less important if it's not a high match rate"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "How do fees and investment options impact my retirement savings decisions?"
+        "description": "All sources are from the USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Average income earner below Roth limits",
-        "description": "Should I prioritize the 401k match over other retirement savings options?"
+        "description": "Source 1 suggests that the 1% match is still worth contributing to"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: High earner above Roth income limits",
-        "description": "What are the implications of having a high or low income on my retirement savings strategy?"
+        "description": "Source 5 suggests that high earners may prioritize the 401k match"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Fee-sensitive optimizer",
-        "description": "How do fees and investment options impact my retirement savings decisions?"
+        "description": "Source 2 and Source 3 suggest that the IRA may have better investment options and lower fees"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Institutional financial research",
-        "description": "Should I prioritize the 401k match over other retirement savings options?"
+        "description": "Source 2 and Source 3 are from reputable financial websites"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer financial advisory",
-        "description": "What are the implications of having a high or low income on my retirement savings strategy?"
+        "description": "Source 1 is from a reputable financial website"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Community peer advice",
-        "description": "How do fees and investment options impact my retirement savings decisions?"
+        "description": "Source 4 suggests that the community standard order may prioritize the IRA over the 401k"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Brokerage/investment platform guidance",
-        "description": "Should I prioritize the 401k match over other retirement savings options?"
+        "description": "Source 2 and Source 3 suggest that the IRA may have better investment options"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Match Then IRA Default)",
-        "description": "Contribute just enough to get the 1% match, then direct all remaining retirement savings to a Roth or traditional IRA \u2014 better investment options and lower fees in the IRA outweigh the minimal 401k match beyond the free money."
+        "description": "Contribute just enough to get the 1% match, then direct all remaining retirement savings to a Roth or traditional IRA"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Max 401k First)",
-        "description": "Max the 401k entirely before the IRA if you're a high earner seeking maximum pre-tax deductions \u2014 the tax benefit outweighs the fee disadvantage at high income levels."
+        "description": "Max the 401k entirely before the IRA if you're a high earner seeking maximum pre-tax deductions"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (IRA Only After Match)",
-        "description": "After capturing the match, skip the 401k entirely until the IRA is maxed \u2014 the investment flexibility and lower costs of a self-directed IRA deliver better long-term outcomes for most investors."
+        "description": "After capturing the match, skip the 401k entirely until the IRA is maxed"
       }
     ],
     "edges": [
@@ -162,16 +171,16 @@
         "target": "sq1"
       },
       {
-        "source": "q",
-        "target": "sq2"
-      },
-      {
-        "source": "q",
-        "target": "sq3"
+        "source": "sq1",
+        "target": "c1"
       },
       {
         "source": "sq1",
-        "target": "c1"
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
       },
       {
         "source": "sq1",
@@ -179,11 +188,47 @@
       },
       {
         "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
         "target": "c7"
       },
       {
         "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
         "target": "c10"
+      },
+      {
+        "source": "sq1",
+        "target": "a1"
+      },
+      {
+        "source": "sq1",
+        "target": "a2"
+      },
+      {
+        "source": "sq1",
+        "target": "a3"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
       },
       {
         "source": "sq2",
@@ -191,11 +236,59 @@
       },
       {
         "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
         "target": "c5"
       },
       {
         "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
         "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "a1"
+      },
+      {
+        "source": "sq2",
+        "target": "a2"
+      },
+      {
+        "source": "sq2",
+        "target": "a3"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
       },
       {
         "source": "sq3",
@@ -203,50 +296,42 @@
       },
       {
         "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
         "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
       },
       {
         "source": "sq3",
         "target": "c9"
       },
       {
-        "source": "c1",
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
+        "source": "sq3",
         "target": "a2"
       },
       {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
+        "source": "sq3",
         "target": "a3"
       },
       {
@@ -255,31 +340,27 @@
       },
       {
         "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c4",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c5",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c6",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c7",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c8",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c9",

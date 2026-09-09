@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (529 Default): Open a 529 plan immediately and contribute regularly \u2014 tax-free growth, state deductions, and the new Roth IRA rollover option make it the clear best vehicle for college savings with a 15-year horizon.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1551,
-    "output_tokens": 2035,
+    "output_tokens": 1777,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -48,21 +57,21 @@
         "layer": "2",
         "type": "subq",
         "label": "Tax benefits and financial aid impact",
-        "description": "Tax-free growth, state income tax deduction, and financial aid impact"
+        "description": "Tax-free growth, state income tax deductions, and financial aid impact"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "Flexibility and estate planning",
-        "description": "Flexibility if child does not attend college, estate planning utility, and contribution limit flexibility"
+        "description": "Flexibility, estate planning, and Roth IRA rollover option"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "Investment quality and simplicity",
-        "description": "Investment option quality, simplicity of account management, and K-12 expense coverage"
+        "description": "Investment quality and simplicity of account management"
       },
       {
         "id": "c1",
@@ -83,7 +92,7 @@
         "layer": "3",
         "type": "concept",
         "label": "financial aid impact minimization",
-        "description": "529 assets count less heavily against financial aid"
+        "description": "Minimizes financial aid impact"
       },
       {
         "id": "c4",
@@ -97,42 +106,42 @@
         "layer": "3",
         "type": "concept",
         "label": "investment option quality",
-        "description": "Low-cost index fund option"
+        "description": "Investment option quality"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "contribution limit flexibility",
-        "description": "No contribution limit"
+        "description": "Contribution limit flexibility"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "K-12 expense coverage",
-        "description": "Coverdell ESA offers more flexibility for K-12 expenses"
+        "description": "K-12 expense coverage"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "Roth IRA rollover option",
-        "description": "Up to $35,000 of unused 529 funds can be rolled into a Roth IRA"
+        "description": "Roth IRA rollover option"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "estate planning utility",
-        "description": "529 assets are not subject to estate tax"
+        "description": "Estate planning utility"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "simplicity of account management",
-        "description": "Easy account management"
+        "description": "Simplicity of account management"
       },
       {
         "id": "a1",
@@ -187,7 +196,7 @@
       },
       {
         "source": "sq2",
-        "target": "c6"
+        "target": "c8"
       },
       {
         "source": "sq2",
@@ -196,10 +205,6 @@
       {
         "source": "sq3",
         "target": "c5"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
       },
       {
         "source": "sq3",
@@ -218,28 +223,8 @@
         "target": "a1"
       },
       {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
         "source": "c8",
         "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
       },
       {
         "source": "c10",
@@ -266,19 +251,15 @@
         "target": "a2"
       },
       {
-        "source": "c4",
+        "source": "c1",
         "target": "a3"
       },
       {
-        "source": "c5",
+        "source": "c2",
         "target": "a3"
       },
       {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
+        "source": "c3",
         "target": "a3"
       },
       {

@@ -22,13 +22,22 @@
   "baseline_answer": "Microsoft Surface Pro or Surface Laptop with Office pre-activated",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2071,
-    "output_tokens": 2723,
+    "output_tokens": 2410,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -48,119 +57,105 @@
         "layer": "2",
         "type": "subq",
         "label": "Which sources are most trustworthy for evaluating laptops with Microsoft Office pre-installed?",
-        "description": "Identify the most reliable sources for evaluating laptops with Microsoft Office pre-installed."
+        "description": "Identify the most reliable sources for assessing laptops with Microsoft Office pre-installed."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "What user perspectives are most relevant to the question?",
-        "description": "Determine which user perspectives are most relevant to the question of the best laptop with Microsoft Office."
-      },
-      {
-        "id": "sq3",
-        "layer": "2",
-        "type": "subq",
-        "label": "What is the most cost-effective option for a student or budget buyer?",
-        "description": "Identify the most cost-effective laptop with Microsoft Office for a student or budget buyer."
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "What is the best option for a Microsoft ecosystem enthusiast or business user?",
-        "description": "Determine the best laptop with Microsoft Office for a Microsoft enthusiast or business user."
+        "description": "Determine which user perspectives are most relevant to the question of the best laptop with Microsoft Office pre-installed."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: PCMag / professional tech review",
-        "description": "Prioritize sources like PCMag for evaluating laptops with Microsoft Office."
+        "description": "Prioritize PCMag as a source for professional tech reviews."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Microsoft official product documentation",
-        "description": "Prioritize Microsoft's own documentation for evaluating laptops with Microsoft Office."
+        "description": "Prioritize Microsoft's own documentation for product details."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Tom's Guide consumer review",
-        "description": "Prioritize Tom's Guide for evaluating laptops with Microsoft Office."
+        "description": "Prioritize Tom's Guide for consumer-oriented laptop reviews."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Reddit r/laptops community",
-        "description": "Prioritize Reddit r/laptops for evaluating laptops with Microsoft Office."
+        "description": "Prioritize Reddit's r/laptops community for user experiences."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: manufacturer product page",
-        "description": "Prioritize manufacturer product pages for evaluating laptops with Microsoft Office."
+        "description": "Prioritize official manufacturer product pages for accurate specs."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: high-school / college student",
-        "description": "Prioritize the perspective of a high-school or college student."
+        "description": "Prioritize sources from the perspective of a student."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: budget-constrained buyer (~$400)",
-        "description": "Prioritize the perspective of a budget-constrained buyer."
+        "description": "Prioritize sources from the perspective of a budget-conscious buyer."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: business / power user",
-        "description": "Prioritize the perspective of a business or power user."
+        "description": "Prioritize sources from the perspective of a business or power user."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Microsoft ecosystem enthusiast",
-        "description": "Prioritize the perspective of a Microsoft ecosystem enthusiast."
+        "description": "Prioritize sources from the perspective of a Microsoft enthusiast."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: casual home user",
-        "description": "Prioritize the perspective of a casual home user."
+        "description": "Prioritize sources from the perspective of a casual home user."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A budget Dell or HP laptop with Office Home & Student bundled at checkout",
-        "description": "A budget-friendly option with Microsoft Office Home & Student."
+        "description": "A budget-friendly option with basic Office for students and casual users."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Microsoft Surface Pro or Surface Laptop with Office pre-activated",
-        "description": "A Microsoft-branded device with Office pre-activated."
+        "description": "The top choice for Microsoft enthusiasts and business users with Office pre-activated."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A higher-end Lenovo ThinkPad with Office Professional pre-installed",
-        "description": "A high-end ThinkPad with Office Professional pre-installed."
+        "description": "A professional-grade laptop with full Office suite for advanced users."
       }
     ],
     "edges": [
@@ -171,14 +166,6 @@
       {
         "source": "q",
         "target": "sq2"
-      },
-      {
-        "source": "q",
-        "target": "sq3"
-      },
-      {
-        "source": "q",
-        "target": "sq4"
       },
       {
         "source": "sq1",
@@ -217,24 +204,8 @@
         "target": "c10"
       },
       {
-        "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
-      },
-      {
-        "source": "sq4",
-        "target": "c2"
-      },
-      {
-        "source": "sq4",
-        "target": "c8"
-      },
-      {
-        "source": "sq4",
-        "target": "c9"
+        "source": "sq2",
+        "target": "c4"
       },
       {
         "source": "c1",
@@ -301,15 +272,15 @@
         "target": "a1"
       },
       {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
         "source": "c10",
         "target": "a1"
       },
       {
         "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
         "target": "a3"
       },
       {
@@ -325,19 +296,11 @@
         "target": "a3"
       },
       {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
         "source": "c8",
         "target": "a3"
       },
       {
-        "source": "c10",
+        "source": "c9",
         "target": "a3"
       }
     ]

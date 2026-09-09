@@ -22,13 +22,22 @@
   "baseline_answer": "Keep the blister intact, dry, and protected with a loose bandage",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1974,
-    "output_tokens": 2414,
+    "output_tokens": 1687,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,112 +50,112 @@
         "layer": "1",
         "type": "question",
         "label": "best remedy to dry out feet blisters",
-        "description": "What is the best remedy to dry out feet blisters?"
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "most trustworthy source of information for treating blisters",
-        "description": "What is the most trustworthy source of information for treating blisters?"
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "best approach for treating blisters from different perspectives",
-        "description": "What is the best approach for treating blisters from different perspectives?"
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: clinical wound-care guideline",
-        "description": "Trustworthiness: clinical wound-care guideline"
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed podiatry literature",
-        "description": "Trustworthiness: peer-reviewed podiatry literature"
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: home remedies blog",
-        "description": "Trustworthiness: home remedies blog"
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: CDC infection prevention guidance",
-        "description": "Trustworthiness: CDC infection prevention guidance"
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: drugstore first-aid pamphlet",
-        "description": "Trustworthiness: drugstore first-aid pamphlet"
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: hiker / endurance athlete",
-        "description": "Perspective: hiker / endurance athlete"
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: home-remedy enthusiast",
-        "description": "Perspective: home-remedy enthusiast"
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: large painful blister sufferer",
-        "description": "Perspective: large painful blister sufferer"
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: diabetic foot patient",
-        "description": "Perspective: diabetic foot patient"
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: pain-minimization patient",
-        "description": "Perspective: pain-minimization patient"
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Apple cider vinegar swab",
-        "description": "Apple cider vinegar swab"
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Carefully drain a large painful blister with a sterilized needle",
-        "description": "Carefully drain a large painful blister with a sterilized needle"
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Keep the blister intact, dry, and protected with a loose bandage",
-        "description": "Keep the blister intact, dry, and protected with a loose bandage"
+        "description": ""
       }
     ],
     "edges": [
@@ -212,11 +221,11 @@
       },
       {
         "source": "c4",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c5",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c6",
@@ -224,7 +233,7 @@
       },
       {
         "source": "c7",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c8",
@@ -240,42 +249,22 @@
       },
       {
         "source": "c1",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c2",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c3",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c4",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
         "target": "a2"
       }
     ]

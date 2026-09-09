@@ -19,16 +19,25 @@
     "Naproxen (Aleve)",
     "Acetaminophen (Tylenol / Panadol)"
   ],
-  "baseline_answer": "Naproxen (Aleve)",
-  "baseline_index": 1,
+  "baseline_answer": "Ibuprofen (Advil / Motrin)",
+  "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 1894,
-    "output_tokens": 1660,
+    "prompt_tokens": 1897,
+    "output_tokens": 1807,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,8 +56,8 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "most trustworthy source for information on over-the-counter medications",
-        "description": "most trustworthy source for information on over-the-counter medications"
+        "label": "most trustworthy source for information on over-the-counter medications for cold and inflammation",
+        "description": "most trustworthy source for information on over-the-counter medications for cold and inflammation"
       },
       {
         "id": "sq2",
@@ -200,23 +209,23 @@
       },
       {
         "source": "c1",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c3",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c4",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c5",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c6",
@@ -224,18 +233,42 @@
       },
       {
         "source": "c7",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c8",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
         "target": "a3"
       }
     ]

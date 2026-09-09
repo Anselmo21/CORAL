@@ -22,13 +22,22 @@
   "baseline_answer": "Answer C (IDR and Invest): Enroll in income-driven repayment to minimize monthly loan payments and redirect cash aggressively into tax-advantaged accounts, betting on eventual forgiveness.",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1533,
-    "output_tokens": 1793,
+    "output_tokens": 1691,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -217,84 +226,60 @@
         "target": "c6"
       },
       {
-        "source": "sq3",
-        "target": "c7"
+        "source": "c1",
+        "target": "a3"
       },
       {
-        "source": "a3",
-        "target": "c1"
+        "source": "c2",
+        "target": "a1"
       },
       {
-        "source": "a3",
-        "target": "c2"
+        "source": "c3",
+        "target": "a1"
       },
       {
-        "source": "a3",
-        "target": "c3"
+        "source": "c4",
+        "target": "a1"
       },
       {
-        "source": "a3",
-        "target": "c4"
+        "source": "c5",
+        "target": "a2"
       },
       {
-        "source": "a3",
-        "target": "c5"
+        "source": "c6",
+        "target": "a1"
       },
       {
-        "source": "a3",
-        "target": "c6"
+        "source": "c7",
+        "target": "a2"
       },
       {
-        "source": "a3",
-        "target": "c7"
+        "source": "c8",
+        "target": "a2"
       },
       {
-        "source": "a3",
-        "target": "c8"
+        "source": "c9",
+        "target": "a1"
       },
       {
-        "source": "a3",
-        "target": "c9"
+        "source": "c10",
+        "target": "a2"
       },
       {
-        "source": "a3",
-        "target": "c10"
+        "source": "c1",
+        "target": "a2"
       },
       {
-        "source": "a1",
-        "target": "c2"
+        "source": "c5",
+        "target": "a3"
       },
       {
-        "source": "a1",
-        "target": "c4"
+        "source": "c8",
+        "target": "a3"
       },
       {
-        "source": "a1",
-        "target": "c6"
-      },
-      {
-        "source": "a1",
-        "target": "c9"
-      },
-      {
-        "source": "a2",
-        "target": "c1"
-      },
-      {
-        "source": "a2",
-        "target": "c3"
-      },
-      {
-        "source": "a2",
-        "target": "c5"
-      },
-      {
-        "source": "a2",
-        "target": "c8"
-      },
-      {
-        "source": "a2",
-        "target": "c10"
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

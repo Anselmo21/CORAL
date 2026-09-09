@@ -22,13 +22,22 @@
   "baseline_answer": "Answer B (Targeted Probiotics for Specific Conditions): Take a probiotic with evidence for your specific condition \u2014 Lactobacillus rhamnosus GG for antibiotic-associated diarrhea or specific IBS strains \u2014 strain and condition specificity is everything.",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1544,
-    "output_tokens": 2594,
+    "output_tokens": 2580,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -62,28 +71,28 @@
         "layer": "2",
         "type": "subq",
         "label": "What are the situational factors that might justify probiotic use?",
-        "description": "Evaluates cost and specific situations like antibiotic use."
+        "description": "Evaluates cost and specific use cases like antibiotic recovery."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "specific medical condition being treated",
-        "description": "Whether the person has a specific condition like IBS or antibiotic-associated diarrhea."
+        "description": "Whether the person has a specific condition that probiotics are known to help."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "strain-specific clinical evidence",
-        "description": "Whether the probiotic strain has strong clinical support for a specific use."
+        "description": "Whether the probiotic strain has strong clinical support for a given condition."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "general healthy adult benefit",
-        "description": "Whether probiotics provide meaningful benefits for healthy adults."
+        "description": "Whether probiotics provide meaningful benefits for generally healthy individuals."
       },
       {
         "id": "c4",
@@ -97,7 +106,7 @@
         "layer": "3",
         "type": "concept",
         "label": "cost of probiotic supplements",
-        "description": "Whether the cost of supplements is justified by their benefits."
+        "description": "Whether the cost of supplements is a barrier or consideration."
       },
       {
         "id": "c6",
@@ -111,7 +120,7 @@
         "layer": "3",
         "type": "concept",
         "label": "fermented food alternatives",
-        "description": "Whether fermented foods like kefir or kimchi are viable alternatives to supplements."
+        "description": "Whether fermented foods are a better alternative to supplements."
       },
       {
         "id": "c8",
@@ -125,7 +134,7 @@
         "layer": "3",
         "type": "concept",
         "label": "IBS or digestive condition diagnosis",
-        "description": "Whether the person has a diagnosed digestive condition like IBS."
+        "description": "Whether the person has IBS or another digestive condition."
       },
       {
         "id": "c10",
@@ -226,10 +235,6 @@
         "target": "a2"
       },
       {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
         "source": "c4",
         "target": "a1"
       },
@@ -255,19 +260,11 @@
       },
       {
         "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
         "target": "a3"
       },
       {
         "source": "c7",
         "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
       },
       {
         "source": "c7",
@@ -288,10 +285,6 @@
       {
         "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
       }
     ]
   }

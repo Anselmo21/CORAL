@@ -23,13 +23,22 @@
   "baseline_answer": "RBC Royal Bank Esso Visa",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1992,
-    "output_tokens": 2850,
+    "output_tokens": 2733,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -42,77 +51,77 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best gas loyalty points card in Canada?",
-        "description": "Evaluating the best gas loyalty points card in Canada based on earning rates, redemption options, and other key factors."
+        "description": "Evaluating the best gas loyalty points card in Canada based on 10 key criteria."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "How much can I earn in points or rewards per dollar spent?",
-        "description": "Evaluates the rate at which points or rewards are earned and any sign-up bonuses."
+        "description": "Evaluates the rate at which points or rewards are earned."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "How easy is it to use and redeem the points?",
-        "description": "Evaluates the flexibility of redemption, expiration policies, and app usability."
+        "description": "Evaluates the ease of redemption and usability of the program."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "What are the financial and access barriers?",
-        "description": "Evaluates annual fees, credit requirements, and foreign transaction fees."
+        "description": "Evaluates fees, credit requirements, and transaction costs."
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
         "label": "What is the reach and value of the partner network?",
-        "description": "Evaluates the number and value of partner gas stations and extra perks."
+        "description": "Evaluates the coverage and value of the gas station network and extra benefits."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "points earn rate",
-        "description": "How many points or rewards are earned per dollar spent."
+        "description": "Rate at which points are earned per dollar or litre."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "redemption flexibility",
-        "description": "How many and what types of rewards can be redeemed."
+        "description": "How flexible the redemption options are."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "annual fee",
-        "description": "Cost to maintain the card."
+        "description": "Cost of the card per year."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "gas station partner coverage",
-        "description": "Number and geographic spread of partner gas stations."
+        "description": "Number and reach of partner gas stations."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "sign-up bonus",
-        "description": "Bonus points or rewards for opening the account."
+        "description": "Bonus points or rewards for signing up."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "expiration policy",
-        "description": "How long points remain valid before expiring."
+        "description": "How long points remain valid."
       },
       {
         "id": "c7",
@@ -126,14 +135,14 @@
         "layer": "3",
         "type": "concept",
         "label": "extra perks",
-        "description": "Additional benefits like car washes or travel insurance."
+        "description": "Additional benefits like car washes or travel rewards."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "foreign transaction fee",
-        "description": "Fee for using the card outside the country."
+        "description": "Fee for using the card outside Canada."
       },
       {
         "id": "c10",
@@ -147,7 +156,7 @@
         "layer": "4",
         "type": "answer",
         "label": "Esso Extra",
-        "description": "Esso's loyalty program with no annual fee and points earned at Esso stations."
+        "description": "Esso's loyalty program with points earned at Esso stations."
       },
       {
         "id": "a2",
@@ -161,14 +170,14 @@
         "layer": "4",
         "type": "answer",
         "label": "RBC Royal Bank Esso Visa",
-        "description": "Credit card that earns points at Esso stations with a sign-up bonus and extra perks."
+        "description": "RBC's credit card with Esso rewards and points."
       },
       {
         "id": "a4",
         "layer": "4",
         "type": "answer",
         "label": "CIBC Costco Gas Mastercard",
-        "description": "Credit card that earns points at Costco gas stations with a sign-up bonus."
+        "description": "CIBC's credit card with Costco gas rewards."
       }
     ],
     "edges": [
@@ -230,154 +239,6 @@
       },
       {
         "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c1",
-        "target": "a4"
-      },
-      {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a4"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a4"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a4"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a4"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a4"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a4"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a4"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a4"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a4"
-      },
-      {
-        "source": "c1",
         "target": "a3"
       },
       {
@@ -415,6 +276,94 @@
       {
         "source": "c10",
         "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a4"
+      },
+      {
+        "source": "c3",
+        "target": "a4"
+      },
+      {
+        "source": "c5",
+        "target": "a4"
+      },
+      {
+        "source": "c6",
+        "target": "a4"
+      },
+      {
+        "source": "c7",
+        "target": "a4"
+      },
+      {
+        "source": "c9",
+        "target": "a4"
+      },
+      {
+        "source": "c10",
+        "target": "a4"
       }
     ]
   }

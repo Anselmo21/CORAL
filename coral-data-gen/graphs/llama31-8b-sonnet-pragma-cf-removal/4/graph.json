@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Roth Default): Open a Roth IRA \u2014 at 28 with decades of compounding ahead, tax-free growth almost always beats the immediate deduction, especially if your income is likely to rise.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1628,
-    "output_tokens": 1986,
+    "output_tokens": 1991,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,119 +50,119 @@
         "layer": "1",
         "type": "question",
         "label": "Should I open a Roth IRA or a traditional IRA?",
-        "description": "Given age (28) and income ($72,000 a year)"
+        "description": "IRA choice based on age and income"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Best choice for someone in their 20s and 30s with moderate income levels",
-        "description": ""
+        "label": "Preferred IRA type for young investors",
+        "description": "Roth or traditional for moderate income"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Expected tax rate in retirement affects choice",
-        "description": ""
+        "label": "Current tax bracket and expected retirement tax rate",
+        "description": "Influence on Roth vs traditional"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "High state income taxes implications",
-        "description": ""
+        "description": "Impact on IRA choice"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": ""
+        "description": "Sources from 2023"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": ""
+        "description": "Sources from 2021 and 2023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA federal tax context",
-        "description": ""
+        "description": "Sources from USA federal tax context"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Young investor expecting higher future income",
-        "description": ""
+        "description": "Sources from young investors expecting higher future income"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Investor expecting lower retirement tax rate",
-        "description": ""
+        "description": "Sources from investors expecting lower retirement tax rate"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: High state income tax jurisdiction resident",
-        "description": ""
+        "description": "Sources from high state income tax jurisdiction residents"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Institutional financial research",
-        "description": ""
+        "description": "Sources from institutional financial research"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer financial advisory",
-        "description": ""
+        "description": "Sources from consumer financial advisory"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Brokerage/investment platform guidance",
-        "description": ""
+        "description": "Sources from brokerage/investment platform guidance"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Financial journalism",
-        "description": ""
+        "description": "Sources from financial journalism"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Roth Default",
-        "description": "Open a Roth IRA \u2014 at 28 with decades of compounding ahead, tax-free growth almost always beats the immediate deduction, especially if your income is likely to rise."
+        "description": "Open a Roth IRA"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Traditional for Current Deduction",
-        "description": "Choose a traditional IRA if you're in a high tax bracket now and expect meaningfully lower income in retirement \u2014 the immediate 22% deduction deployed into additional investments can outperform Roth over time."
+        "description": "Choose a traditional IRA"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Both via Backdoor",
-        "description": "Contribute to a traditional IRA for the current deduction then immediately convert to Roth (backdoor Roth) to capture both benefits while income limits allow."
+        "description": "Contribute to traditional IRA and convert to Roth"
       }
     ],
     "edges": [
@@ -183,7 +192,11 @@
       },
       {
         "source": "sq1",
-        "target": "a1"
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
       },
       {
         "source": "sq2",
@@ -198,24 +211,8 @@
         "target": "c8"
       },
       {
-        "source": "sq2",
-        "target": "a2"
-      },
-      {
         "source": "sq3",
         "target": "c6"
-      },
-      {
-        "source": "sq3",
-        "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
-      },
-      {
-        "source": "sq3",
-        "target": "a3"
       },
       {
         "source": "c1",
@@ -239,15 +236,39 @@
       },
       {
         "source": "c6",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c7",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c8",
         "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
       },
       {
         "source": "c9",

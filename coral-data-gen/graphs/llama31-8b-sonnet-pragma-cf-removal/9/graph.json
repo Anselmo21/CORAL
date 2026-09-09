@@ -22,13 +22,22 @@
   "baseline_answer": "Answer C (Balance Transfer): Transfer all three balances to a 0% APR card and pay off the full amount within the promotional window \u2014 if you qualify, this eliminates interest entirely and is faster than any payment-order strategy.",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1642,
-    "output_tokens": 1791,
+    "output_tokens": 1799,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -55,7 +64,7 @@
         "layer": "2",
         "type": "subq",
         "label": "Best approach for motivated borrower",
-        "description": "Quick wins vs. mathematical optimization"
+        "description": "Snowball method for quick wins"
       },
       {
         "id": "sq3",

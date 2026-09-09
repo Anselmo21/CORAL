@@ -22,13 +22,22 @@
   "baseline_answer": "Answer C (Hybrid Approach): Double-major in a liberal arts field and a vocational or technical discipline \u2014 you develop the critical thinking of the humanities alongside marketable technical skills, capturing both career flexibility and early employment leverage.",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1533,
-    "output_tokens": 2693,
+    "output_tokens": 2473,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,91 +50,91 @@
         "layer": "1",
         "type": "question",
         "label": "Is a liberal arts degree worth it, or should I do something more vocational with better job prospects?",
-        "description": "Evaluating the trade-offs between liberal arts and vocational degrees based on career outcomes, adaptability, and personal fit."
+        "description": "Evaluating the trade-offs between liberal arts and vocational degrees in terms of career outcomes, adaptability, and personal satisfaction."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the financial and job market implications of the degree choice in the early career?",
-        "description": "Evaluates early-career earnings, job market demand, debt, and clarity of employment path."
+        "label": "Financial and job market implications",
+        "description": "What are the financial and job market implications of choosing a degree path?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How does the degree support long-term career development and adaptability?",
-        "description": "Evaluates adaptability, communication/critical thinking, automation risk, and leadership development."
+        "label": "Skills and adaptability over time",
+        "description": "How do the skills and adaptability of each degree path compare over time?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the personal and intellectual considerations in choosing a degree?",
-        "description": "Evaluates passion, intellectual engagement, and graduate school pathways."
+        "label": "Personal and educational considerations",
+        "description": "What are the personal and educational considerations in choosing a degree?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "early career earnings potential",
-        "description": "The expected income in the first 5\u201310 years after graduation."
+        "description": "The expected income in the first few years after graduation."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "long-term career adaptability",
-        "description": "Ability to pivot or evolve in a changing job market."
+        "description": "The ability to pivot or evolve in one's career over time."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "specific job market demand for credential",
-        "description": "Immediate demand for the degree in the job market."
+        "description": "The extent to which the degree is in demand in the job market."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "development of communication and critical thinking",
-        "description": "Skills in communication, analysis, and problem-solving."
+        "description": "The extent to which the degree fosters these skills."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "passion and intellectual engagement",
-        "description": "Personal interest and satisfaction in the field of study."
+        "description": "The degree's alignment with personal interests and engagement."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "risk of automation of vocational skills",
-        "description": "How likely the skills are to be replaced by automation."
+        "description": "The likelihood that the skills taught are at risk of being automated."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "graduate school pathway availability",
-        "description": "Opportunities for further education after graduation."
+        "description": "The ease of pursuing further education after the degree."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "debt relative to earning potential",
-        "description": "The financial burden of student debt compared to expected earnings."
+        "description": "The financial burden of the degree compared to expected earnings."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "management and leadership development",
-        "description": "Preparation for leadership and managerial roles."
+        "description": "The extent to which the degree prepares for leadership roles."
       },
       {
         "id": "c10",

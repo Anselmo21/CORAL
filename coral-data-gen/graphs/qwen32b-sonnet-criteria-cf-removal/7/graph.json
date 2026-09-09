@@ -22,13 +22,22 @@
   "baseline_answer": "Answer C (Split for Goals): Keep your emergency fund in a HYSA for liquidity and ladder CDs with any surplus savings earmarked for specific medium-term goals where you know the time horizon.",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1513,
-    "output_tokens": 2538,
+    "output_tokens": 2628,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -62,7 +71,7 @@
         "layer": "2",
         "type": "subq",
         "label": "Management and goal-specific considerations",
-        "description": "Criteria related to account management and goal alignment."
+        "description": "Criteria related to ease of management and goal alignment."
       },
       {
         "id": "sq4",
@@ -97,14 +106,14 @@
         "layer": "3",
         "type": "concept",
         "label": "maximum current yield",
-        "description": "Achieving the highest possible interest rate now."
+        "description": "Highest possible return on current savings."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "protection against rate drops",
-        "description": "Shielding savings from falling interest rates."
+        "description": "Ability to avoid losses from falling interest rates."
       },
       {
         "id": "c6",
@@ -118,14 +127,14 @@
         "layer": "3",
         "type": "concept",
         "label": "medium-term savings goal optimization",
-        "description": "Optimizing for savings with a known time horizon."
+        "description": "Effectiveness for saving toward known time horizons."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "minimal account management overhead",
-        "description": "Low effort required to maintain the account."
+        "description": "Low effort required to maintain the strategy."
       },
       {
         "id": "c9",
@@ -160,7 +169,7 @@
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Split for Goals): Keep your emergency fund in a HYSA for liquidity and ladder CDs with any surplus savings earmarked for specific medium-term goals where you know the time horizon.",
-        "description": "Hybrid strategy: HYSA for emergency funds, CD ladders for medium-term goals."
+        "description": "Hybrid strategy balancing liquidity and rate lock-in for different goals."
       }
     ],
     "edges": [
@@ -222,15 +231,7 @@
       },
       {
         "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c1",
         "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
       },
       {
         "source": "c2",
@@ -242,19 +243,7 @@
       },
       {
         "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
         "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
       },
       {
         "source": "c5",
@@ -262,15 +251,7 @@
       },
       {
         "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
         "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
       },
       {
         "source": "c7",
@@ -282,23 +263,63 @@
       },
       {
         "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
         "target": "a1"
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c10",
         "target": "a1"
       },
       {
-        "source": "c10",
+        "source": "c2",
         "target": "a2"
       },
       {
-        "source": "c10",
-        "target": "a3"
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
       }
     ]
   }

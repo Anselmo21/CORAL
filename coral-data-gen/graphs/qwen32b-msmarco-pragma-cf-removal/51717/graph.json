@@ -22,13 +22,22 @@
   "baseline_answer": "University of Wisconsin-Madison",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1993,
-    "output_tokens": 2540,
+    "output_tokens": 2865,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,98 +50,98 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best engineering college in Wisconsin?",
-        "description": "Identify the top engineering college in Wisconsin based on various criteria."
+        "description": "Identify the top engineering college in Wisconsin based on trustworthiness, perspective, and other relevant factors."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most reputable or trusted source of rankings or accreditation for engineering schools in Wisconsin?",
-        "description": "Focuses on trustworthiness of ranking and accreditation sources."
+        "label": "What is the most reputable or trustworthy source of information about engineering colleges in Wisconsin?",
+        "description": "Sources of trustworthiness for evaluating engineering colleges."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best engineering school for a student with a specific career or educational focus?",
-        "description": "Focuses on student perspective and career goals."
+        "label": "What is the best engineering college for a student with a specific academic or career focus?",
+        "description": "Evaluating colleges based on academic and career preferences."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best engineering school based on student or alumni perception?",
-        "description": "Focuses on student and alumni reviews."
+        "label": "What is the best engineering college for a student with specific personal or financial preferences?",
+        "description": "Evaluating colleges based on personal and financial preferences."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: US News & World Report engineering rankings",
-        "description": "Prioritizes rankings from US News & World Report."
+        "description": "Rankings from US News & World Report for engineering schools."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: ABET accreditation database",
-        "description": "Prioritizes schools with ABET accreditation."
+        "description": "Accreditation status from ABET for engineering programs."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed engineering education journal",
-        "description": "Prioritizes schools cited in peer-reviewed journals."
+        "description": "Peer-reviewed research on engineering education."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: college ranking aggregator (Cappex / Niche)",
-        "description": "Prioritizes rankings from Cappex or Niche."
+        "description": "Rankings from Cappex and Niche for engineering schools."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: student / alumni review forum",
-        "description": "Prioritizes schools with positive student or alumni reviews."
+        "description": "Student and alumni reviews of engineering schools."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: research-career-focused student",
-        "description": "Prioritizes schools with strong research programs."
+        "description": "Preference for schools with strong research programs."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: industry-job-focused undergraduate",
-        "description": "Prioritizes schools with strong industry connections."
+        "description": "Preference for schools with strong industry connections and job placement."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: in-state cost-conscious student",
-        "description": "Prioritizes schools with lower in-state tuition."
+        "description": "Preference for affordable in-state engineering schools."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: small-class-size-preferring student",
-        "description": "Prioritizes schools with smaller class sizes."
+        "description": "Preference for schools with smaller class sizes."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: computer engineering specialist",
-        "description": "Prioritizes schools with strong computer engineering programs."
+        "description": "Preference for schools with strong computer engineering programs."
       },
       {
         "id": "a1",
@@ -146,14 +155,14 @@
         "layer": "4",
         "type": "answer",
         "label": "Milwaukee School of Engineering (MSOE)",
-        "description": "Industry-focused, smaller, and potentially more specialized."
+        "description": "Industry-focused, smaller, and potentially more cost-effective for in-state students."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "University of Wisconsin-Milwaukee",
-        "description": "Moderate size, in-state cost-conscious, and less research-focused than UW-Madison."
+        "description": "Large engineering school with a balance between research and industry focus."
       }
     ],
     "edges": [
@@ -186,6 +195,10 @@
         "target": "c4"
       },
       {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
         "source": "sq2",
         "target": "c6"
       },
@@ -195,19 +208,15 @@
       },
       {
         "source": "sq2",
-        "target": "c8"
-      },
-      {
-        "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq2",
         "target": "c10"
       },
       {
         "source": "sq3",
-        "target": "c5"
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
       },
       {
         "source": "c1",
@@ -250,7 +259,19 @@
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
         "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
         "target": "a2"
       },
       {
@@ -266,7 +287,23 @@
         "target": "a2"
       },
       {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
         "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
         "target": "a3"
       },
       {
@@ -278,7 +315,7 @@
         "target": "a3"
       },
       {
-        "source": "c9",
+        "source": "c10",
         "target": "a3"
       }
     ]

@@ -22,13 +22,22 @@
   "baseline_answer": "Keep the blister intact, dry, and protected with a loose bandage",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1810,
-    "output_tokens": 2226,
+    "output_tokens": 2325,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,99 +56,99 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Application and ease",
-        "description": "What is the method of application and how easy is it to perform?"
+        "label": "What is the method of application and how easy is it to perform?",
+        "description": "Evaluates the practicality and ease of applying the remedy."
       },
       {
         "id": "sq2",
-        "layer": "2",
         "type": "subq",
-        "label": "Ingredients and healing",
-        "description": "What ingredients are used and how effective are they in drying and healing?"
+        "layer": "2",
+        "label": "What ingredients are used and how effective are they?",
+        "description": "Evaluates the ingredients and their effectiveness in treating blisters."
       },
       {
         "id": "sq3",
-        "layer": "2",
         "type": "subq",
-        "label": "Skin and duration",
-        "description": "How does the treatment affect the skin and how long does it take?"
+        "layer": "2",
+        "label": "How quickly does the treatment work and how long does it last?",
+        "description": "Evaluates the speed and duration of the treatment."
       },
       {
         "id": "sq4",
-        "layer": "2",
         "type": "subq",
-        "label": "User and availability",
-        "description": "What are the user's preferences and how accessible is the treatment?"
+        "layer": "2",
+        "label": "What are the practical and environmental considerations?",
+        "description": "Evaluates the broader practical and environmental factors."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "application method",
-        "description": "How the treatment is applied."
+        "description": "How the remedy is applied."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "ingredient type",
-        "description": "What ingredients are used in the treatment."
+        "description": "The type of ingredients used in the remedy."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "healing speed",
-        "description": "How quickly the treatment promotes healing."
+        "description": "How quickly the blister heals."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "infection prevention",
-        "description": "How well the treatment prevents infection."
+        "description": "How well the remedy prevents infection."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "skin sensitivity",
-        "description": "How the treatment affects skin sensitivity."
+        "description": "How the remedy affects sensitive skin."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "moisture control",
-        "description": "How the treatment affects moisture levels."
+        "description": "How well the remedy manages moisture."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "ease of use",
-        "description": "How easy the treatment is to perform."
+        "description": "How easy the remedy is to apply."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "availability",
-        "description": "How accessible the treatment is."
+        "description": "How readily available the remedy is."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "user preference",
-        "description": "What the user prefers in a treatment."
+        "description": "How much the user prefers the method."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "treatment duration",
-        "description": "How long the treatment takes to work."
+        "description": "How long the treatment needs to be applied."
       },
       {
         "id": "a1",
@@ -153,14 +162,14 @@
         "layer": "4",
         "type": "answer",
         "label": "Apple cider vinegar swab",
-        "description": "Apply apple cider vinegar to the blister to dry it."
+        "description": "Apply apple cider vinegar to the blister to dry it out."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Carefully drain a large painful blister with a sterilized needle",
-        "description": "Puncture the blister to drain it and reduce pain."
+        "description": "Drain the blister using a sterilized needle for large or painful blisters."
       }
     ],
     "edges": [
@@ -194,23 +203,23 @@
       },
       {
         "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
         "target": "c4"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c5"
       },
       {
         "source": "sq3",
-        "target": "c6"
+        "target": "c3"
       },
       {
         "source": "sq3",
         "target": "c10"
+      },
+      {
+        "source": "sq4",
+        "target": "c6"
       },
       {
         "source": "sq4",
@@ -226,23 +235,31 @@
       },
       {
         "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
         "target": "a3"
       },
       {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
         "source": "c3",
         "target": "a1"
       },
       {
         "source": "c3",
         "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
       },
       {
         "source": "c4",
@@ -253,12 +270,20 @@
         "target": "a2"
       },
       {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
         "source": "c5",
         "target": "a1"
       },
       {
         "source": "c5",
         "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
       },
       {
         "source": "c6",
@@ -269,12 +294,20 @@
         "target": "a2"
       },
       {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
         "source": "c7",
         "target": "a1"
       },
       {
         "source": "c7",
         "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
       },
       {
         "source": "c8",
@@ -297,12 +330,20 @@
         "target": "a2"
       },
       {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
         "source": "c10",
         "target": "a1"
       },
       {
         "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

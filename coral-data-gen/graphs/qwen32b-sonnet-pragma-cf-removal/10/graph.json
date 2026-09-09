@@ -22,13 +22,22 @@
   "baseline_answer": "Answer C (REIT Allocation): Add a dedicated REIT allocation (15\u201320%) within your existing stock portfolio \u2014 you get real estate diversification, inflation hedging, and dividend income without giving up liquidity or taking on landlord risk.",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1640,
-    "output_tokens": 2644,
+    "output_tokens": 2436,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -48,28 +57,28 @@
         "layer": "2",
         "type": "subq",
         "label": "What is the best investment strategy for a passive investor with $50k?",
-        "description": "Focuses on passive investment strategies for a $50k portfolio."
+        "description": "Focuses on passive, hands-off investment strategies."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "What is the best investment strategy for an active investor with $50k?",
-        "description": "Focuses on active investment strategies for a $50k portfolio."
+        "description": "Focuses on active, hands-on investment strategies."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "What is the best investment strategy for a tax-optimized investor with $50k?",
-        "description": "Focuses on tax-optimized investment strategies for a $50k portfolio."
+        "description": "Focuses on tax advantages and deductions."
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best investment strategy based on the most recent and reliable financial information?",
-        "description": "Focuses on the most recent and reliable financial information for a $50k portfolio."
+        "label": "What is the best investment strategy based on the most recent and reliable financial research?",
+        "description": "Focuses on recent and trustworthy financial research."
       },
       {
         "id": "c1",
@@ -97,49 +106,49 @@
         "layer": "3",
         "type": "directive",
         "label": "perspective: Passive hands-off investor",
-        "description": "Only consider sources from the perspective of a passive investor."
+        "description": "Only consider sources from a passive investor perspective."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Active landlord willing to manage property",
-        "description": "Only consider sources from the perspective of an active landlord."
+        "description": "Only consider sources from an active investor perspective."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Tax optimization focused investor",
-        "description": "Only consider sources from the perspective of a tax-optimized investor."
+        "description": "Only consider sources from a tax-optimization perspective."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Institutional financial research",
-        "description": "Only consider sources from institutional financial research."
+        "description": "Only consider institutional financial research sources."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Real estate investor community",
-        "description": "Only consider sources from the real estate investor community."
+        "description": "Only consider real estate investor community sources."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Community peer advice",
-        "description": "Only consider sources from community peer advice."
+        "description": "Only consider peer advice from community forums."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Financial journalism",
-        "description": "Only consider sources from financial journalism."
+        "description": "Only consider financial journalism sources."
       },
       {
         "id": "a1",
@@ -185,20 +194,8 @@
         "target": "c4"
       },
       {
-        "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
-      },
-      {
         "source": "sq2",
         "target": "c5"
-      },
-      {
-        "source": "sq2",
-        "target": "c8"
       },
       {
         "source": "sq3",
@@ -218,7 +215,19 @@
       },
       {
         "source": "sq4",
+        "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c8"
+      },
+      {
+        "source": "sq4",
         "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -254,7 +263,7 @@
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c10",

@@ -22,13 +22,22 @@
   "baseline_answer": "Smart Electric Drive ($25,750 sticker / ~$18,250 post-rebate)",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1897,
-    "output_tokens": 2838,
+    "output_tokens": 2410,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,120 +56,120 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most affordable hybrid vehicle for a budget-first buyer?",
-        "description": "Focuses on price and rebate eligibility for budget-conscious buyers."
+        "label": "What is the most affordable hybrid electric vehicle?",
+        "description": "Focuses on price, rebates, and budget considerations."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What hybrid vehicle offers the best value in terms of price and fuel efficiency?",
-        "description": "Balances price with long-term fuel savings and EPA ratings."
+        "label": "Which hybrid electric vehicle offers the best fuel economy?",
+        "description": "Focuses on mpg and efficiency."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What hybrid vehicle is best for a daily commuter who cares about range and cost?",
-        "description": "Focuses on range, cost per mile, and daily usability."
+        "label": "Which hybrid electric vehicle is best for a daily commuter?",
+        "description": "Focuses on range and practicality for daily use."
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "What hybrid vehicle is best for someone who prioritizes environmental impact and all-electric performance?",
-        "description": "Focuses on eco-friendliness and all-electric performance."
+        "label": "Which hybrid electric vehicle is best for eco-conscious buyers?",
+        "description": "Focuses on environmental impact and incentives."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "1. trustworthiness: Kelley Blue Book / Edmunds pricing",
-        "description": "Relies on KBB and Edmunds for pricing data."
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "2. trustworthiness: Consumer Reports hybrid rankings",
-        "description": "Uses Consumer Reports for hybrid rankings."
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "3. trustworthiness: EPA fuel economy data",
-        "description": "Uses EPA data for fuel economy."
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "4. trustworthiness: automotive review publication",
-        "description": "Uses automotive review publications for performance data."
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "5. trustworthiness: federal tax credit eligibility documentation",
-        "description": "Uses federal documentation for tax credit eligibility."
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "6. perspective: budget-first buyer",
-        "description": "Prioritizes lowest price and rebates."
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "7. perspective: daily commuter (range-concerned)",
-        "description": "Prioritizes range and cost per mile for daily use."
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "8. perspective: eco-first all-electric advocate",
-        "description": "Prioritizes all-electric performance and emissions."
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "9. perspective: urban / city driver",
-        "description": "Prioritizes compact, city-friendly vehicles."
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "10. perspective: family / sedan-need buyer",
-        "description": "Prioritizes family-friendly sedans."
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Smart Electric Drive ($25,750 sticker / ~$18,250 post-rebate)",
-        "description": "Most affordable hybrid with rebate and convertible option."
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Honda Civic Hybrid (~$25K, 44/47 mpg)",
-        "description": "High fuel efficiency and family-friendly sedan."
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Ford Focus Electric ($29,170 / ~$22K post-rebate)",
-        "description": "Better range and fuel savings over time."
+        "description": ""
       }
     ],
     "edges": [
@@ -193,6 +202,14 @@
         "target": "c6"
       },
       {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
         "source": "sq2",
         "target": "c3"
       },
@@ -206,15 +223,23 @@
       },
       {
         "source": "sq3",
-        "target": "c2"
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
       },
       {
         "source": "sq3",
         "target": "c7"
       },
       {
-        "source": "sq3",
-        "target": "c9"
+        "source": "sq4",
+        "target": "c2"
+      },
+      {
+        "source": "sq4",
+        "target": "c5"
       },
       {
         "source": "sq4",
@@ -225,20 +250,32 @@
         "target": "a1"
       },
       {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
         "source": "c2",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c3",
-        "target": "a1"
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
       },
       {
         "source": "c4",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c5",
         "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
       },
       {
         "source": "c6",
@@ -246,7 +283,7 @@
       },
       {
         "source": "c7",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c8",
@@ -258,39 +295,7 @@
       },
       {
         "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
         "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
       }
     ]
   }

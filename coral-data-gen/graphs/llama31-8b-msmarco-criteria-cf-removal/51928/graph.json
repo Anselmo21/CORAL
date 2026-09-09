@@ -22,13 +22,22 @@
   "baseline_answer": "7-day miconazole (Monistat-7) regimen",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2200,
-    "output_tokens": 1902,
+    "output_tokens": 1905,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"

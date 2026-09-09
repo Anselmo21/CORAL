@@ -20,22 +20,31 @@
     "Answer C (529 Plus Coverdell): Fund both a 529 and a Coverdell ESA if you have high private K-12 costs \u2014 the Coverdell's broader expense coverage complements the 529's superior growth and contribution limits."
   ],
   "sources": "Source 1 (2023, Investopedia, USA): 529 plans are the gold standard for college savings \u2014 contributions grow tax-free, withdrawals for qualified education expenses are tax-free, and many states offer a deduction on contributions.\n\nSource 2 (2022, NerdWallet, USA): Starting a 529 when a child is 3 gives 15 years of tax-free compounding; even $200/month invested in a low-cost index fund option could grow to $70\u201380k by college age.\n\nSource 3 (2023, Reddit r/personalfinance, USA): Community strongly favors 529 over custodial accounts (UGMA/UTMA) for college savings \u2014 529 assets count less heavily against financial aid, and unused funds can now be rolled to a Roth IRA for the beneficiary.\n\nSource 4 (2022, Morningstar, USA): Coverdell Education Savings Accounts offer more flexibility for K-12 expenses but have a $2,000 annual contribution limit and income restrictions \u2014 suitable as a supplement to a 529 for high K-12 costs.\n\nSource 5 (2021, WSJ, USA): The SECURE 2.0 Act now allows up to $35,000 of unused 529 funds to be rolled into a Roth IRA for the beneficiary after 15 years, eliminating the biggest historical objection to 529 over-funding.",
-  "halted": true,
-  "halted_reason": "all 10 singletons produced the same top-1 answer: 'answer a (529 default): open a 529 plan immediately and contribute regularly \u2014 tax-free growth, state deductions, and the new roth ira rollover option make it the clear best vehicle for college savings with a 15-year horizon.'",
+  "halted": false,
+  "halted_reason": null,
   "combos_total": 1024,
-  "combos_run": 11,
+  "combos_run": 1024,
   "usage": {
-    "prompt_tokens": 7922,
-    "output_tokens": 140,
-    "llm_calls": 11,
+    "prompt_tokens": 759811,
+    "output_tokens": 10425,
+    "llm_calls": 1024,
     "finish_reasons": {
-      "stop": 11
+      "stop": 1024
     }
   },
   "generation": {
     "model": "meta-llama/Llama-3.1-8B-Instruct",
     "provider": "vllm",
     "temperature": 0.0,
-    "max_tokens": 4096
+    "max_tokens": 4096,
+    "serving": {
+      "tensor_parallel_size": 4,
+      "max_num_batched_tokens": 2048,
+      "disable_custom_all_reduce": false,
+      "max_model_len": 8192,
+      "gpu_memory_utilization": 0.72,
+      "max_num_seqs": null,
+      "enforce_eager": false
+    }
   }
 }

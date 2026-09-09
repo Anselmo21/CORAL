@@ -22,13 +22,22 @@
   "baseline_answer": "Treat the underlying condition + lifestyle change (cardiovascular fitness, weight, glucose control)",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2373,
-    "output_tokens": 1911,
+    "output_tokens": 1824,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -62,91 +71,91 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: clinical practice guideline",
-        "description": "Impotence treatment information sources"
+        "description": "Clinical practice guidelines for impotence treatment"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed urology journal",
-        "description": "Impotence treatment information sources"
+        "description": "Peer-reviewed urology journals for impotence treatment"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: evidence-based medicine review",
-        "description": "Impotence treatment information sources"
+        "description": "Evidence-based medicine reviews for impotence treatment"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: mental health professional",
-        "description": "Impotence treatment information sources"
+        "description": "Mental health professionals for impotence treatment"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: wellness / lifestyle publication",
-        "description": "Impotence treatment information sources"
+        "description": "Wellness/lifestyle publications for impotence treatment"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: man with confirmed vascular / metabolic cause",
-        "description": "Impotence treatment approaches from patient perspective"
+        "description": "Impotence treatment approaches for men with vascular/metabolic causes"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: man with stress / anxiety / relationship cause",
-        "description": "Impotence treatment approaches from patient perspective"
+        "description": "Impotence treatment approaches for men with stress/anxiety/relationship causes"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: older man with chronic ED",
-        "description": "Impotence treatment approaches from patient perspective"
+        "description": "Impotence treatment approaches for older men with chronic ED"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: patient avoiding medications",
-        "description": "Impotence treatment approaches from patient perspective"
+        "description": "Impotence treatment approaches for patients avoiding medications"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: young man with situational ED",
-        "description": "Impotence treatment approaches from patient perspective"
+        "description": "Impotence treatment approaches for young men with situational ED"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A PDE5 inhibitor (Viagra, Cialis, or Levitra) for direct pharmacologic restoration of erectile function",
-        "description": "Impotence treatment approach"
+        "description": "Direct pharmacologic restoration of erectile function"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Treat the underlying condition + lifestyle change (cardiovascular fitness, weight, glucose control)",
-        "description": "Impotence treatment approach"
+        "description": "Addressing underlying conditions and lifestyle changes"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Psychological treatment: sensate focus and counseling for stress / anxiety / relationship-driven cases",
-        "description": "Impotence treatment approach"
+        "description": "Psychological treatments for stress/anxiety/relationship-driven cases"
       }
     ],
     "edges": [
@@ -212,55 +221,15 @@
       },
       {
         "source": "c4",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c5",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c6",
         "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
       },
       {
         "source": "c7",

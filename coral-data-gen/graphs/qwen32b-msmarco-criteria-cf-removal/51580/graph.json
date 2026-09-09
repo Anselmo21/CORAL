@@ -22,13 +22,22 @@
   "baseline_answer": "Bupropion (Wellbutrin)",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2562,
-    "output_tokens": 2258,
+    "output_tokens": 2280,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -48,14 +57,14 @@
         "layer": "2",
         "type": "subq",
         "label": "How effective is the treatment in improving mood?",
-        "description": "Evaluate the effectiveness of the treatment in enhancing mood."
+        "description": "Evaluate the effectiveness of the treatment in alleviating symptoms of low mood and depression."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "How effective is the treatment in boosting energy?",
-        "description": "Evaluate the effectiveness of the treatment in increasing energy levels."
+        "description": "Evaluate the effectiveness of the treatment in increasing energy and reducing fatigue."
       },
       {
         "id": "sq3",
@@ -68,36 +77,36 @@
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "What are the practical considerations (cost, weight impact, interactions, etc.)?",
-        "description": "Evaluate the real-world factors like cost, weight impact, and drug interactions."
+        "label": "What are the practical considerations?",
+        "description": "Evaluate cost, weight impact, drug interactions, and other practical factors."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "mood improvement efficacy",
-        "description": "How well the treatment improves mood."
+        "description": "How well the treatment improves mood and alleviates depression."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "energy-boosting effect",
-        "description": "How well the treatment increases energy levels."
+        "description": "How well the treatment increases energy and reduces fatigue."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "side effect profile",
-        "description": "The side effects and tolerability of the treatment."
+        "description": "The range and severity of side effects associated with the treatment."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "time to onset",
-        "description": "How quickly the treatment begins to work."
+        "description": "How quickly the treatment begins to show effects."
       },
       {
         "id": "c5",
@@ -118,35 +127,35 @@
         "layer": "3",
         "type": "concept",
         "label": "dosing convenience",
-        "description": "How easy it is to take the treatment."
+        "description": "How easy and regular the dosing schedule is."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "sedation potential",
-        "description": "How likely the treatment is to cause drowsiness."
+        "description": "The likelihood of the treatment causing drowsiness."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "weight impact",
-        "description": "How the treatment affects body weight."
+        "description": "Whether the treatment causes weight gain or loss."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "cost and insurance coverage",
-        "description": "The cost and availability of the treatment through insurance."
+        "description": "The financial cost and insurance coverage of the treatment."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Bupropion (Wellbutrin)",
-        "description": "Antidepressant known for energy-boosting effects and minimal weight gain."
+        "description": "Antidepressant with strong energy-boosting effects and minimal weight gain."
       },
       {
         "id": "a2",
@@ -160,7 +169,7 @@
         "layer": "4",
         "type": "answer",
         "label": "Natural supplements (St John's Wort, SAM-e, Omega-3, B vitamins) + exercise",
-        "description": "Non-pharmacological approach with potential mood and energy benefits."
+        "description": "Non-pharmacological approach with mood and energy benefits but slower onset."
       }
     ],
     "edges": [
@@ -194,19 +203,19 @@
       },
       {
         "source": "sq3",
-        "target": "c8"
-      },
-      {
-        "source": "sq4",
         "target": "c4"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c5"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
       },
       {
         "source": "sq4",

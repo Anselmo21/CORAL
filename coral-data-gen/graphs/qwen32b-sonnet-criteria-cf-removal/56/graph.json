@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Motorized Default): Get a motorized desk \u2014 the price premium over manual is $200\u2013400, but research clearly shows that manual cranking friction causes users to change positions far less often, defeating the health purpose of the desk entirely.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1595,
-    "output_tokens": 2647,
+    "output_tokens": 2599,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -62,7 +71,7 @@
         "layer": "2",
         "type": "subq",
         "label": "What are the physical and ergonomic trade-offs?",
-        "description": "Criteria related to desk stability, noise, and space."
+        "description": "Criteria related to physical effort, noise, and space."
       },
       {
         "id": "c1",
@@ -146,14 +155,14 @@
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Manual for Budget): Buy a manual crank desk if budget is the hard constraint \u2014 a $250 IKEA SKARSTA is vastly better than no standing desk, and disciplined users who set timers can achieve adequate position variety even with manual adjustment.",
-        "description": "Manual desks are a good budget option if health benefits can be managed through discipline."
+        "description": "Manual desks are a budget-friendly alternative for disciplined users."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Motorized with Presets): Get a motorized desk specifically with programmable memory presets \u2014 one-touch height switching between sitting and standing positions is the feature most associated with frequent transitions and actual health benefit.",
-        "description": "Motorized desks with memory presets are best for maximizing health benefits."
+        "description": "Motorized desks with presets are best for maximizing health benefits."
       }
     ],
     "edges": [
@@ -272,14 +281,6 @@
       {
         "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
       },
       {
         "source": "c4",

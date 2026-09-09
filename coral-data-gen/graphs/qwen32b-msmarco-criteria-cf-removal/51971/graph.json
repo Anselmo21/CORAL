@@ -22,13 +22,22 @@
   "baseline_answer": "Zolpidem (Ambien)",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2421,
-    "output_tokens": 2249,
+    "output_tokens": 2178,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,26 +56,23 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "pharmacological properties and FDA approval status",
+        "label": "pharmacological properties and FDA approval",
         "description": "What are the pharmacological properties and FDA approval status of the sleep aid?"
       },
       {
         "id": "sq2",
-        "layer": "2",
         "type": "subq",
-        "label": "side effects and safety for long-term use",
+        "label": "side effects and long-term safety",
         "description": "What are the side effects and safety for long-term use?"
       },
       {
         "id": "sq3",
-        "layer": "2",
         "type": "subq",
         "label": "cost and doctor's recommendation",
         "description": "What is the cost and doctor's recommendation for the sleep aid?"
       },
       {
         "id": "sq4",
-        "layer": "2",
         "type": "subq",
         "label": "specific insomnia type and patient age",
         "description": "What is the specific insomnia type and patient age considerations?"
@@ -111,14 +117,14 @@
         "layer": "3",
         "type": "concept",
         "label": "specific insomnia type",
-        "description": "Whether the medication is suited for sleep-onset or sleep-maintenance insomnia."
+        "description": "Whether the medication is effective for a specific type of insomnia."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "patient age",
-        "description": "Whether the medication is appropriate for the patient's age group."
+        "description": "Whether the medication is appropriate for a specific age group."
       },
       {
         "id": "c8",
@@ -132,7 +138,7 @@
         "layer": "3",
         "type": "concept",
         "label": "doctor's recommendation",
-        "description": "Whether the medication is commonly recommended by physicians."
+        "description": "Whether the medication is commonly recommended by doctors."
       },
       {
         "id": "c10",
@@ -146,21 +152,21 @@
         "layer": "4",
         "type": "answer",
         "label": "Zolpidem (Ambien)",
-        "description": "Zolpidem is a non-benzodiazepine hypnotic, FDA-approved for insomnia."
+        "description": "Zolpidem is the generic version of Ambien and is FDA-approved for short-term insomnia."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Trazodone or low-dose mirtazapine",
-        "description": "Antidepressants used off-label for insomnia."
+        "description": "Antidepressants used off-label for insomnia with sedative effects."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Temazepam (Restoril)",
-        "description": "A benzodiazepine used for insomnia."
+        "description": "A benzodiazepine used for insomnia with a longer duration of action."
       }
     ],
     "edges": [
@@ -221,12 +227,24 @@
         "target": "a1"
       },
       {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
         "source": "c2",
         "target": "a1"
       },
       {
         "source": "c3",
         "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
       },
       {
         "source": "c4",
@@ -237,87 +255,63 @@
         "target": "a1"
       },
       {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
         "source": "c6",
         "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
       },
       {
         "source": "c7",
         "target": "a1"
       },
       {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
         "source": "c8",
         "target": "a1"
       },
       {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
         "source": "c9",
         "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
+        "source": "c10",
         "target": "a3"
       }
     ]

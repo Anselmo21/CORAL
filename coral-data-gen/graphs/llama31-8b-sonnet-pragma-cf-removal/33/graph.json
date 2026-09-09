@@ -19,16 +19,25 @@
     "Answer B (4-Year University for Selectivity): Go straight to the best 4-year university you can access \u2014 the career earnings premium and networking benefits of attending a selective institution are not achievable through transfer, as top schools rarely admit transfer students.",
     "Answer C (CC with Articulation Agreement): Community college is the right choice only if a formal transfer articulation agreement exists with your target school \u2014 structured TAG programs produce transfer outcomes comparable to direct entry, while unstructured transfers carry significant credit loss risk."
   ],
-  "baseline_answer": "Answer A (Community College Default): Start at community college if you're paying out-of-pocket \u2014 2 years of CC followed by transfer saves $40\u201380k in tuition with comparable graduation outcomes when transfer is executed with formal articulation agreements.",
-  "baseline_index": 0,
+  "baseline_answer": "Answer B (4-Year University for Selectivity): Go straight to the best 4-year university you can access \u2014 the career earnings premium and networking benefits of attending a selective institution are not achievable through transfer, as top schools rarely admit transfer students.",
+  "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1661,
-    "output_tokens": 2665,
+    "output_tokens": 3048,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,119 +50,119 @@
         "layer": "1",
         "type": "question",
         "label": "Is it smarter to start at a community college and transfer, or go straight to a 4-year university?",
-        "description": ""
+        "description": "The question is: Is it smarter to start at a community college and transfer, or go straight to a 4-year university?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the financial impact of starting at a community college versus a 4-year university?",
-        "description": ""
+        "label": "What is the impact of starting at a community college and transferring on graduation rates and debt?",
+        "description": "The sub-question is: What is the impact of starting at a community college and transferring on graduation rates and debt?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How do transfer agreements affect the success of community college students?",
-        "description": ""
+        "label": "How do formal transfer articulation agreements affect the success of community college transfers?",
+        "description": "The sub-question is: How do formal transfer articulation agreements affect the success of community college transfers?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the career outcomes for students who attend selective 4-year institutions versus those who transfer from community college?",
-        "description": ""
+        "label": "What are the career earnings and networking benefits of attending a selective 4-year university versus a community college?",
+        "description": "The sub-question is: What are the career earnings and networking benefits of attending a selective 4-year university versus a community college?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": ""
+        "description": "The directive is: Only consider sources from 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": ""
+        "description": "The directive is: Only consider sources from 2021 and 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": ""
+        "description": "The directive is: Only consider sources from the USA."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: California (CC transfer agreements)",
-        "description": ""
+        "description": "The directive is: Only consider sources from California and related transfer agreements."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Cost-conscious student without scholarship funding",
-        "description": ""
+        "description": "The directive is: Only consider sources from the perspective of a cost-conscious student without scholarship funding."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student targeting selective or brand-name institutions",
-        "description": ""
+        "description": "The directive is: Only consider sources from the perspective of a student targeting selective or brand-name institutions."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Education research foundation",
-        "description": ""
+        "description": "The directive is: Only consider sources from education research foundations."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Education ranking publication",
-        "description": ""
+        "description": "The directive is: Only consider sources from education ranking publications."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Student community advice",
-        "description": ""
+        "description": "The directive is: Only consider sources from student communities."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: State university system documentation",
-        "description": ""
+        "description": "The directive is: Only consider sources from state university systems."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Community College Default): Start at community college if you're paying out-of-pocket \u2014 2 years of CC followed by transfer saves $40\u201380k in tuition with comparable graduation outcomes when transfer is executed with formal articulation agreements.",
-        "description": ""
+        "description": "The answer is: Start at community college if you're paying out-of-pocket \u2014 2 years of CC followed by transfer saves $40\u201380k in tuition with comparable graduation outcomes when transfer is executed with formal articulation agreements."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (4-Year University for Selectivity): Go straight to the best 4-year university you can access \u2014 the career earnings premium and networking benefits of attending a selective institution are not achievable through transfer, as top schools rarely admit transfer students.",
-        "description": ""
+        "description": "The answer is: Go straight to the best 4-year university you can access \u2014 the career earnings premium and networking benefits of attending a selective institution are not achievable through transfer, as top schools rarely admit transfer students."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (CC with Articulation Agreement): Community college is the right choice only if a formal transfer articulation agreement exists with your target school \u2014 structured TAG programs produce transfer outcomes comparable to direct entry, while unstructured transfers carry significant credit loss risk.",
-        "description": ""
+        "description": "The answer is: Community college is the right choice only if a formal transfer articulation agreement exists with your target school \u2014 structured TAG programs produce transfer outcomes comparable to direct entry, while unstructured transfers carry significant credit loss risk."
       }
     ],
     "edges": [
@@ -175,7 +184,19 @@
       },
       {
         "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
         "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
       },
       {
         "source": "sq1",
@@ -195,7 +216,15 @@
       },
       {
         "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
         "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
       },
       {
         "source": "sq2",
@@ -207,6 +236,10 @@
       },
       {
         "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
         "target": "c7"
       },
       {
@@ -220,6 +253,14 @@
       {
         "source": "sq2",
         "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
       },
       {
         "source": "sq3",
@@ -244,6 +285,46 @@
       {
         "source": "sq3",
         "target": "c10"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
       },
       {
         "source": "c1",
@@ -259,7 +340,7 @@
       },
       {
         "source": "c4",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c5",
@@ -267,135 +348,23 @@
       },
       {
         "source": "c6",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c7",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "a1",
-        "target": "c1"
-      },
-      {
-        "source": "a1",
-        "target": "c2"
-      },
-      {
-        "source": "a1",
-        "target": "c3"
-      },
-      {
-        "source": "a1",
-        "target": "c4"
-      },
-      {
-        "source": "a1",
-        "target": "c5"
-      },
-      {
-        "source": "a2",
-        "target": "c6"
-      },
-      {
-        "source": "a2",
-        "target": "c7"
-      },
-      {
-        "source": "a2",
-        "target": "c8"
-      },
-      {
-        "source": "a2",
-        "target": "c9"
-      },
-      {
-        "source": "a2",
-        "target": "c10"
-      },
-      {
-        "source": "a3",
-        "target": "c1"
-      },
-      {
-        "source": "a3",
-        "target": "c2"
-      },
-      {
-        "source": "a3",
-        "target": "c4"
-      },
-      {
-        "source": "a3",
-        "target": "c5"
-      },
-      {
-        "source": "a3",
-        "target": "c6"
-      },
-      {
-        "source": "a3",
-        "target": "c7"
-      },
-      {
-        "source": "a3",
-        "target": "c8"
-      },
-      {
-        "source": "a3",
-        "target": "c9"
-      },
-      {
-        "source": "a3",
-        "target": "c10"
+        "target": "a1"
       }
     ]
   }

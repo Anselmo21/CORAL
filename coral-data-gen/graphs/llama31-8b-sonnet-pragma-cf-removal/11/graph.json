@@ -22,13 +22,22 @@
   "baseline_answer": "Answer B (Fee-Only Advisor for Complexity): Hire a fee-only fiduciary advisor if your situation involves business ownership, equity compensation, estate planning, or you've historically made emotional investing decisions during market downturns.",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1689,
-    "output_tokens": 2043,
+    "output_tokens": 2513,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,21 +56,21 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the optimal choice for a straightforward situation with a simple three-fund portfolio?",
+        "label": "What is the optimal investment strategy for a straightforward situation with $150k in savings?",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the optimal choice for a high-complexity situation involving business ownership, estate planning, or emotional decision-making?",
+        "label": "How do financial advisors add value in complex situations?",
         "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the optimal choice for an investor who values cost-effectiveness and is willing to compromise on some services?",
+        "label": "What are the trade-offs between using a human advisor, a robo-advisor, and DIY investing?",
         "description": ""
       },
       {
@@ -179,6 +188,18 @@
       },
       {
         "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
         "target": "c7"
       },
       {
@@ -187,19 +208,23 @@
       },
       {
         "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
         "target": "c10"
       },
       {
-        "source": "sq2",
-        "target": "c3"
+        "source": "sq1",
+        "target": "a1"
       },
       {
-        "source": "sq2",
-        "target": "c4"
+        "source": "sq1",
+        "target": "a2"
       },
       {
-        "source": "sq2",
-        "target": "c5"
+        "source": "sq1",
+        "target": "a3"
       },
       {
         "source": "sq2",
@@ -214,8 +239,40 @@
         "target": "c8"
       },
       {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "a2"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
         "source": "sq3",
         "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
       },
       {
         "source": "sq3",
@@ -226,32 +283,32 @@
         "target": "c10"
       },
       {
-        "source": "c1",
+        "source": "sq3",
         "target": "a1"
+      },
+      {
+        "source": "sq3",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
       },
       {
         "source": "c2",
         "target": "a1"
       },
       {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
+        "source": "c2",
+        "target": "a3"
       },
       {
         "source": "c3",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c4",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c5",
@@ -270,12 +327,8 @@
         "target": "a2"
       },
       {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
         "source": "c9",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c10",

@@ -22,13 +22,22 @@
   "baseline_answer": "Answer B (PhD for Research Roles): Do a PhD if your goal is a research scientist role at a top AI lab \u2014 these positions are effectively closed to non-PhDs regardless of skill, and the credential is genuinely required for frontier ML work.",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1586,
-    "output_tokens": 1974,
+    "output_tokens": 2219,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -40,109 +49,127 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Is a PhD in data science worth it for industry careers?"
+        "label": "Is a PhD in data science worth it for industry careers?",
+        "description": "Industry career goals vs PhD benefits"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Is a PhD necessary for industry data science roles?"
+        "label": "Is a PhD necessary for industry data science roles?",
+        "description": "Industry role requirements vs PhD benefits"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Is a PhD worth it for financial reasons?"
+        "label": "Is a PhD worth it for financial reasons?",
+        "description": "Financial return vs opportunity cost"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Is a PhD necessary for research roles at top AI labs?"
+        "label": "Is a PhD necessary for research roles at top AI labs?",
+        "description": "Research role requirements vs PhD benefits"
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "Is a PhD worth it for academic or long-term specialization goals?"
+        "label": "Is a PhD worth it for academic or long-term specialization goals?",
+        "description": "Academic or research goals vs PhD benefits"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "target role requiring PhD (research scientist)"
+        "label": "target role requiring PhD",
+        "description": "Research scientist role"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "financial return over 10-year career"
+        "label": "financial return over 10-year career",
+        "description": "Financial return vs opportunity cost"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "research vs industry application orientation"
+        "label": "research vs industry application orientation",
+        "description": "Research vs industry goals"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "opportunity cost of 4\u20136 years"
+        "label": "opportunity cost of 4\u20136 years",
+        "description": "Opportunity cost vs financial return"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "access to frontier AI lab positions"
+        "label": "access to frontier AI lab positions",
+        "description": "Research role requirements vs PhD benefits"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "academic career aspirations"
+        "label": "academic career aspirations",
+        "description": "Academic goals vs PhD benefits"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "publication and intellectual contribution interest"
+        "label": "publication and intellectual contribution interest",
+        "description": "Research goals vs PhD benefits"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "stipend and funding availability"
+        "label": "stipend and funding availability",
+        "description": "Financial support vs opportunity cost"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "alternative paths via strong MS degree"
+        "label": "alternative paths via strong MS degree",
+        "description": "Alternative paths vs PhD benefits"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "specialization depth vs breadth"
+        "label": "specialization depth vs breadth",
+        "description": "Research goals vs PhD benefits"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Skip PhD for Industry Default"
+        "label": "Skip PhD for Industry Default",
+        "description": "Industry career goals vs PhD benefits"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "PhD for Research Roles"
+        "label": "PhD for Research Roles",
+        "description": "Research role requirements vs PhD benefits"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "PhD for Academic and Long-Term Specialization"
+        "label": "PhD for Academic and Long-Term Specialization",
+        "description": "Academic or research goals vs PhD benefits"
       }
     ],
     "edges": [
@@ -168,19 +195,15 @@
       },
       {
         "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
         "target": "c5"
       },
       {
         "source": "sq1",
-        "target": "c6"
-      },
-      {
-        "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
-        "target": "c8"
+        "target": "c9"
       },
       {
         "source": "sq2",
@@ -192,11 +215,7 @@
       },
       {
         "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
+        "target": "c8"
       },
       {
         "source": "sq3",
@@ -205,18 +224,6 @@
       {
         "source": "sq3",
         "target": "c5"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c8"
-      },
-      {
-        "source": "sq4",
-        "target": "c3"
       },
       {
         "source": "sq4",
@@ -240,7 +247,7 @@
       },
       {
         "source": "c3",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c4",
@@ -256,7 +263,7 @@
       },
       {
         "source": "c7",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c8",
@@ -271,60 +278,44 @@
         "target": "a3"
       },
       {
-        "source": "a1",
-        "target": "c1"
+        "source": "c1",
+        "target": "a2"
       },
       {
-        "source": "a1",
-        "target": "c4"
+        "source": "c2",
+        "target": "a1"
       },
       {
-        "source": "a1",
-        "target": "c5"
+        "source": "c3",
+        "target": "a1"
       },
       {
-        "source": "a1",
-        "target": "c6"
+        "source": "c4",
+        "target": "a1"
       },
       {
-        "source": "a1",
-        "target": "c7"
+        "source": "c5",
+        "target": "a2"
       },
       {
-        "source": "a1",
-        "target": "c8"
+        "source": "c6",
+        "target": "a3"
       },
       {
-        "source": "a2",
-        "target": "c2"
+        "source": "c7",
+        "target": "a3"
       },
       {
-        "source": "a2",
-        "target": "c4"
+        "source": "c8",
+        "target": "a1"
       },
       {
-        "source": "a2",
-        "target": "c9"
+        "source": "c9",
+        "target": "a1"
       },
       {
-        "source": "a2",
-        "target": "c10"
-      },
-      {
-        "source": "a3",
-        "target": "c3"
-      },
-      {
-        "source": "a3",
-        "target": "c6"
-      },
-      {
-        "source": "a3",
-        "target": "c7"
-      },
-      {
-        "source": "a3",
-        "target": "c10"
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

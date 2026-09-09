@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Hybrid Medium-Firm Default): Get a hybrid medium-firm mattress like the Saatva Classic \u2014 innerspring support with foam comfort layers provides the spinal alignment most associated with back pain relief, and a 100-night trial lets you verify it works for you.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1677,
-    "output_tokens": 3102,
+    "output_tokens": 2985,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -76,7 +85,7 @@
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Consider sources from 2021 to 2023"
+        "description": "Only consider sources from 2021 to 2023"
       },
       {
         "id": "c3",
@@ -90,21 +99,21 @@
         "layer": "3",
         "type": "directive",
         "label": "geographic: Global",
-        "description": "Consider sources from around the world"
+        "description": "Consider global sources"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Back sleeper with chronic lower back pain",
-        "description": "Only consider sources relevant to back sleepers with chronic lower back pain"
+        "description": "Focus on recommendations for back sleepers with chronic lower back pain"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Side sleeper with pressure point sensitivity",
-        "description": "Only consider sources relevant to side sleepers with pressure point sensitivity"
+        "description": "Focus on recommendations for side sleepers with pressure point sensitivity"
       },
       {
         "id": "c7",
@@ -334,19 +343,15 @@
         "target": "a2"
       },
       {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
         "source": "c4",
         "target": "a2"
       },
       {
-        "source": "c6",
+        "source": "c5",
         "target": "a2"
       },
       {
-        "source": "c9",
+        "source": "c6",
         "target": "a2"
       },
       {
@@ -358,11 +363,11 @@
         "target": "a3"
       },
       {
-        "source": "c3",
+        "source": "c4",
         "target": "a3"
       },
       {
-        "source": "c4",
+        "source": "c5",
         "target": "a3"
       },
       {

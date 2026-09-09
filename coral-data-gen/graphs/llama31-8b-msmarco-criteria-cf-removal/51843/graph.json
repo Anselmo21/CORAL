@@ -22,13 +22,22 @@
   "baseline_answer": "A 15\" gaming laptop with dedicated GPU (Acer Aspire / Lenovo IdeaPad Gaming)",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1886,
-    "output_tokens": 1940,
+    "output_tokens": 2284,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,112 +50,112 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best laptop for under $1000?",
-        "description": ""
+        "description": "Best laptop under $1000"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "What are the key features for a gaming laptop under $1000?",
-        "description": ""
+        "description": "Gaming laptop under $1000"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the key features for a mainstream laptop under $1000?",
-        "description": ""
+        "label": "What are the key features for a non-gaming laptop under $1000?",
+        "description": "Non-gaming laptop under $1000"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "processor performance",
-        "description": ""
+        "description": "Processor performance"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "RAM size",
-        "description": ""
+        "description": "RAM size"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "storage type",
-        "description": ""
+        "description": "Storage type"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "screen resolution",
-        "description": ""
+        "description": "Screen resolution"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "battery life",
-        "description": ""
+        "description": "Battery life"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "build quality",
-        "description": ""
+        "description": "Build quality"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "weight",
-        "description": ""
+        "description": "Weight"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "port selection",
-        "description": ""
+        "description": "Port selection"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "graphics performance",
-        "description": ""
+        "description": "Graphics performance"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "brand support",
-        "description": ""
+        "description": "Brand support"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A premium ultrabook (Dell XPS 13, ASUS Zenbook, or MacBook Air)",
-        "description": ""
+        "description": "Premium ultrabook"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A 15\" gaming laptop with dedicated GPU (Acer Aspire / Lenovo IdeaPad Gaming)",
-        "description": ""
+        "description": "Gaming laptop with dedicated GPU"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A mainstream 15\" Dell or ASUS Vivobook touchscreen with large screen + ample RAM",
-        "description": ""
+        "description": "Mainstream laptop"
       }
     ],
     "edges": [
@@ -157,6 +166,38 @@
       {
         "source": "q",
         "target": "sq2"
+      },
+      {
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
       },
       {
         "source": "sq1",
@@ -200,127 +241,151 @@
       },
       {
         "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
         "target": "c10"
       },
       {
-        "source": "c1",
-        "target": "a1"
+        "source": "a1",
+        "target": "c1"
       },
       {
-        "source": "c2",
-        "target": "a1"
+        "source": "a1",
+        "target": "c2"
       },
       {
-        "source": "c3",
-        "target": "a1"
+        "source": "a1",
+        "target": "c3"
       },
       {
-        "source": "c4",
-        "target": "a1"
+        "source": "a1",
+        "target": "c4"
       },
       {
-        "source": "c5",
-        "target": "a1"
+        "source": "a1",
+        "target": "c5"
       },
       {
-        "source": "c6",
-        "target": "a1"
+        "source": "a1",
+        "target": "c6"
       },
       {
-        "source": "c7",
-        "target": "a1"
+        "source": "a1",
+        "target": "c7"
       },
       {
-        "source": "c8",
-        "target": "a1"
+        "source": "a1",
+        "target": "c8"
       },
       {
-        "source": "c9",
+        "source": "a1",
+        "target": "c10"
+      },
+      {
+        "source": "a2",
+        "target": "c1"
+      },
+      {
+        "source": "a2",
+        "target": "c2"
+      },
+      {
+        "source": "a2",
+        "target": "c3"
+      },
+      {
+        "source": "a2",
+        "target": "c4"
+      },
+      {
+        "source": "a2",
+        "target": "c5"
+      },
+      {
+        "source": "a2",
+        "target": "c6"
+      },
+      {
+        "source": "a2",
+        "target": "c7"
+      },
+      {
+        "source": "a2",
+        "target": "c8"
+      },
+      {
+        "source": "a2",
+        "target": "c9"
+      },
+      {
+        "source": "a2",
+        "target": "c10"
+      },
+      {
+        "source": "a3",
+        "target": "c1"
+      },
+      {
+        "source": "a3",
+        "target": "c2"
+      },
+      {
+        "source": "a3",
+        "target": "c3"
+      },
+      {
+        "source": "a3",
+        "target": "c4"
+      },
+      {
+        "source": "a3",
+        "target": "c5"
+      },
+      {
+        "source": "a3",
+        "target": "c6"
+      },
+      {
+        "source": "a3",
+        "target": "c7"
+      },
+      {
+        "source": "a3",
+        "target": "c8"
+      },
+      {
+        "source": "a3",
+        "target": "c9"
+      },
+      {
+        "source": "a3",
+        "target": "c10"
+      },
+      {
+        "source": "a1",
         "target": "a2"
       },
       {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
+        "source": "a1",
         "target": "a3"
       },
       {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
+        "source": "a2",
         "target": "a1"
       },
       {
-        "source": "c10",
+        "source": "a2",
+        "target": "a3"
+      },
+      {
+        "source": "a3",
         "target": "a1"
+      },
+      {
+        "source": "a3",
+        "target": "a2"
       }
     ]
   }

@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (DASH Plus Sodium Default): Follow the DASH diet with strict sodium reduction below 2,300 mg/day \u2014 the combination produces the largest evidence-based BP reduction (8\u201314 mmHg) equivalent to a medication dose.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1578,
-    "output_tokens": 2687,
+    "output_tokens": 2640,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,7 +50,7 @@
         "layer": "1",
         "type": "question",
         "label": "What diet changes would most effectively lower my blood pressure without medication?",
-        "description": "The question asks for the most effective diet changes to lower blood pressure without medication."
+        "description": "The question asks for the most effective non-medication diet changes to lower blood pressure."
       },
       {
         "id": "sq1",
@@ -61,8 +70,8 @@
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Complementary and lifestyle factors",
-        "description": "Criteria related to how the diet interacts with other lifestyle changes like exercise and baseline hypertension severity."
+        "label": "Contextual factors",
+        "description": "Criteria related to how the approach interacts with other lifestyle factors and baseline health conditions."
       },
       {
         "id": "c1",
@@ -97,7 +106,7 @@
         "layer": "3",
         "type": "concept",
         "label": "potassium and mineral intake optimization",
-        "description": "Whether the intervention includes optimization of potassium, magnesium, and fiber."
+        "description": "Whether the intervention includes increased intake of potassium, magnesium, and fiber."
       },
       {
         "id": "c6",
@@ -118,14 +127,14 @@
         "layer": "3",
         "type": "concept",
         "label": "flexibility of dietary approach",
-        "description": "How flexible or rigid the dietary plan is."
+        "description": "How adaptable the diet is to different food preferences and lifestyles."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "applicability without specialist support",
-        "description": "Whether the intervention can be followed without professional guidance."
+        "description": "Whether the diet can be followed without professional guidance."
       },
       {
         "id": "c10",
@@ -214,88 +223,76 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
         "source": "c2",
         "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
       },
       {
         "source": "c3",
         "target": "a1"
       },
       {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
         "source": "c4",
         "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
       },
       {
         "source": "c5",
         "target": "a1"
       },
       {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
         "source": "c6",
         "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
       },
       {
         "source": "c7",
         "target": "a1"
       },
       {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
         "source": "c8",
         "target": "a1"
       },
       {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
         "source": "c9",
         "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
       },
       {
         "source": "c10",
         "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",

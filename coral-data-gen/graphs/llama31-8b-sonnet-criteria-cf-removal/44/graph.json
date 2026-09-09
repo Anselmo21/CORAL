@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (CompTIA Security+ Default): Start with CompTIA Security+ \u2014 it's the most recognized entry-level credential, vendor-neutral, DoD-approved, and appears in more entry-level job postings than any other certification.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1536,
-    "output_tokens": 2597,
+    "output_tokens": 2596,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -48,49 +57,49 @@
         "layer": "2",
         "type": "subq",
         "label": "What are the key factors to consider when choosing a certification?",
-        "description": "Consider entry-level job market recognition, technical requirements, cost, and prerequisites."
+        "description": "Consider entry-level job market recognition, technical requirements, cost, and career path."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "How important is entry-level job market recognition?",
-        "description": "Consider the recognition of the certification in the entry-level job market."
+        "description": "Consider the recognition and demand for the certification in the job market."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "What are the technical requirements and practitioner respect for a certification?",
-        "description": "Consider the technical requirements and respect of the certification among practitioners."
+        "description": "Consider the technical depth and respect for the certification among practitioners."
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "What are the costs and prerequisites associated with a certification?",
-        "description": "Consider the cost and prerequisites of the certification."
+        "label": "What are the costs and time commitments associated with certification?",
+        "description": "Consider the cost and time required to prepare and pass the certification."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "entry-level job market recognition",
-        "description": "Recognition of the certification in the entry-level job market."
+        "description": "Recognition and demand for the certification in the job market."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "DoD and government employer approval",
-        "description": "Approval of the certification by the DoD and government employers."
+        "description": "Approval and recognition by the Department of Defense and government employers."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "technical depth and practitioner respect",
-        "description": "Technical requirements and respect of the certification among practitioners."
+        "description": "Technical depth and respect for the certification among practitioners."
       },
       {
         "id": "c4",
@@ -104,7 +113,7 @@
         "layer": "3",
         "type": "concept",
         "label": "offensive vs defensive security career path",
-        "description": "Career path in offensive or defensive security."
+        "description": "Career path and focus of the certification (offensive or defensive security)."
       },
       {
         "id": "c6",
@@ -118,28 +127,28 @@
         "layer": "3",
         "type": "concept",
         "label": "vendor neutrality",
-        "description": "Neutrality of the certification vendor."
+        "description": "Neutrality and independence from specific vendors."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "time to prepare and pass",
-        "description": "Time required to prepare and pass the certification exam."
+        "description": "Time required to prepare and pass the certification."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "stepping stone to advanced certifications",
-        "description": "Usefulness of the certification as a stepping stone to advanced certifications."
+        "description": "Value as a stepping stone to advanced certifications."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "practical hands-on skill validation",
-        "description": "Validation of practical hands-on skills through the certification."
+        "description": "Validation of practical hands-on skills."
       },
       {
         "id": "a1",
@@ -393,15 +402,7 @@
         "target": "a3"
       },
       {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
         "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
         "target": "a3"
       },
       {
@@ -413,15 +414,15 @@
         "target": "a3"
       },
       {
-        "source": "a1",
-        "target": "a2"
-      },
-      {
-        "source": "a1",
+        "source": "c2",
         "target": "a3"
       },
       {
-        "source": "a2",
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
         "target": "a3"
       }
     ]

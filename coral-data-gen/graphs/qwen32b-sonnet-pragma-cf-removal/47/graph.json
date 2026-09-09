@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Pixel 7a Default): Get the Google Pixel 7a \u2014 its camera quality, guaranteed multi-year updates, and clean Android experience make it the best overall mid-range Android when discounted to the $350\u2013400 range.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1664,
-    "output_tokens": 2647,
+    "output_tokens": 2351,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,28 +50,28 @@
         "layer": "1",
         "type": "question",
         "label": "What's the best budget Android phone in 2024 under $400?",
-        "description": "What's the best budget Android phone in 2024 under $400?"
+        "description": "Identify the best budget Android phone under $400 in 2024 based on camera, display, and battery priorities."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Camera quality and software support",
-        "description": "What is the best budget Android phone for camera quality and software support?"
+        "label": "What is the best budget Android phone for camera quality and software support?",
+        "description": "Focus on camera performance and long-term software updates."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Display quality and software longevity",
-        "description": "What is the best budget Android phone for display quality and software longevity?"
+        "label": "What is the best budget Android phone for display quality and software longevity?",
+        "description": "Focus on AMOLED display and multi-year OS support."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Battery life and basic functionality",
-        "description": "What is the best budget Android phone for battery life and basic functionality?"
+        "label": "What is the best budget Android phone for battery life and basic functionality?",
+        "description": "Focus on all-day battery and core phone performance."
       },
       {
         "id": "c1",
@@ -83,76 +92,76 @@
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Only consider sources from the USA."
+        "description": "Only consider U.S.-based sources."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Canada / Global",
-        "description": "Consider sources from Canada or global."
+        "description": "Consider Canadian or global sources."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Camera-focused buyer",
-        "description": "Prioritize sources for camera-focused buyers."
+        "description": "Prioritize sources focused on camera performance."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Battery-life prioritizing buyer",
-        "description": "Prioritize sources for battery-life prioritizing buyers."
+        "description": "Prioritize sources focused on battery life."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Tech journalism",
-        "description": "Prioritize sources from tech journalism."
+        "description": "Only consider professional tech journalism sources."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Independent display and hardware testing",
-        "description": "Prioritize sources from independent display and hardware testing."
+        "description": "Consider independent display and hardware testing sources."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Android community peer recommendations",
-        "description": "Prioritize sources from Android community peer recommendations."
+        "description": "Consider peer recommendations from Android communities."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Global phone specs database",
-        "description": "Prioritize sources from a global phone specs database."
+        "description": "Consider global phone specs and performance databases."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Pixel 7a Default",
+        "label": "Answer A (Pixel 7a Default)",
         "description": "Get the Google Pixel 7a \u2014 its camera quality, guaranteed multi-year updates, and clean Android experience make it the best overall mid-range Android when discounted to the $350\u2013400 range."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Samsung Galaxy A54 for Display",
+        "label": "Answer B (Samsung Galaxy A54 for Display)",
         "description": "Choose the Samsung Galaxy A54 if display quality is your priority \u2014 its AMOLED panel and 4 years of OS updates make it the best balance of screen quality and software longevity."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Motorola for Battery",
+        "label": "Answer C (Motorola for Battery)",
         "description": "Buy a Motorola G Power if all-day battery life is your main concern \u2014 nothing in the sub-$300 range comes close to its battery performance, even at the cost of camera and display quality."
       }
     ],
@@ -215,11 +224,7 @@
       },
       {
         "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c8"
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -230,6 +235,14 @@
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
         "source": "c3",
         "target": "a1"
       },
@@ -238,12 +251,20 @@
         "target": "a1"
       },
       {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
         "source": "c5",
         "target": "a1"
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c7",
@@ -251,47 +272,11 @@
       },
       {
         "source": "c8",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c9",
         "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
       },
       {
         "source": "c10",

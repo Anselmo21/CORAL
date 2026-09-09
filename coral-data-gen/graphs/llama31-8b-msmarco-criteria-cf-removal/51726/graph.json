@@ -22,13 +22,22 @@
   "baseline_answer": "A typographer-grade font with tabular figures",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2380,
-    "output_tokens": 2493,
+    "output_tokens": 2432,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,112 +50,112 @@
         "layer": "1",
         "type": "question",
         "label": "best excel font for numbers",
-        "description": "The best Excel font for numbers."
+        "description": "The best font for displaying numbers in Excel"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "What are the key characteristics of a good Excel font for numbers?",
-        "description": "The key characteristics of a good Excel font for numbers."
+        "description": "The characteristics of a good Excel font for numbers"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How does the font's appearance and formatting impact its suitability for Excel?",
-        "description": "The font's appearance and formatting impact its suitability for Excel."
+        "label": "How does the font's style and appearance impact its suitability for Excel?",
+        "description": "The impact of font style and appearance on Excel suitability"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "readability",
-        "description": "The font's readability."
+        "description": "How easy is the font to read"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "alignment",
-        "description": "The font's alignment."
+        "description": "How well does the font align with the text"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "style compatibility",
-        "description": "The font's style compatibility."
+        "description": "How well does the font work with Excel's style"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "size options",
-        "description": "The font's size options."
+        "description": "How many size options does the font have"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "character spacing",
-        "description": "The font's character spacing."
+        "description": "How customizable is the font's character spacing"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "font weight",
-        "description": "The font's weight."
+        "description": "How flexible is the font's weight"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "professional appearance",
-        "description": "The font's professional appearance."
+        "description": "How professional does the font look"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "color options",
-        "description": "The font's color options."
+        "description": "How many color options does the font have"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "tabular figures",
-        "description": "The font's tabular figures."
+        "description": "Does the font have tabular figures"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "proportional figures",
-        "description": "The font's proportional figures."
+        "description": "Does the font have proportional figures"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A typographer-grade font with tabular figures",
-        "description": "A typographer-grade font with tabular figures."
+        "description": "A font that is suitable for displaying numbers in Excel"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Calibri",
-        "description": "Calibri."
+        "description": "A font that is not suitable for displaying numbers in Excel"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A monospaced font",
-        "description": "A monospaced font."
+        "description": "A font that is not suitable for displaying numbers in Excel"
       }
     ],
     "edges": [

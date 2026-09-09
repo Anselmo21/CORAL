@@ -20,22 +20,31 @@
     "Answer C (Bootcamp as Middle Ground): Take a structured UX bootcamp (3\u20136 months) \u2014 it's faster and cheaper than a degree, provides mentorship and portfolio guidance, and produces comparable job placement rates to formal education for entry-level roles."
   ],
   "sources": "Source 1 (2023, Nielsen Norman Group, USA): UX design is one of the most portfolio-driven fields in tech \u2014 hiring managers consistently rate portfolio quality above educational credentials, and self-taught designers with strong portfolios regularly outcompete degree holders.\n\nSource 2 (2022, LinkedIn Workforce Report, USA): UX designer job postings list a degree as 'preferred' in only 40% of cases \u2014 the field has shifted significantly toward skills-based hiring, with Figma proficiency, case studies, and research methodology more commonly evaluated.\n\nSource 3 (2023, Reddit r/UXDesign, USA): Community advice: a formal degree (HCI, Graphic Design, Psychology) provides strong theoretical foundations but a well-executed bootcamp or self-study plan with real projects is sufficient for most industry roles.\n\nSource 4 (2022, CareerFoundry, Global): UX bootcamp graduates report similar job placement rates (75\u201380%) as degree graduates in the field \u2014 the key differentiator is portfolio depth, not credential type.\n\nSource 5 (2021, IDEO, San Francisco CA USA): Design firms and innovation consultancies do still value formal design education for senior and research-heavy roles \u2014 the depth of design thinking, user research, and prototyping methodology taught in 4-year programs is difficult to replicate through self-study.",
-  "halted": true,
-  "halted_reason": "all 10 singletons produced the same top-1 answer: 'answer a (self-taught with portfolio default): you can absolutely be self-taught \u2014 ux is portfolio-driven and a strong case study portfolio from a bootcamp or self-directed projects will outperform a degree without portfolio work at most employers.'",
+  "halted": false,
+  "halted_reason": null,
   "combos_total": 1024,
-  "combos_run": 11,
+  "combos_run": 1024,
   "usage": {
-    "prompt_tokens": 8038,
-    "output_tokens": 165,
-    "llm_calls": 11,
+    "prompt_tokens": 777731,
+    "output_tokens": 15335,
+    "llm_calls": 1024,
     "finish_reasons": {
-      "stop": 11
+      "stop": 1024
     }
   },
   "generation": {
     "model": "meta-llama/Llama-3.1-8B-Instruct",
     "provider": "vllm",
     "temperature": 0.0,
-    "max_tokens": 4096
+    "max_tokens": 4096,
+    "serving": {
+      "tensor_parallel_size": 4,
+      "max_num_batched_tokens": 2048,
+      "disable_custom_all_reduce": false,
+      "max_model_len": 8192,
+      "gpu_memory_utilization": 0.72,
+      "max_num_seqs": null,
+      "enforce_eager": false
+    }
   }
 }

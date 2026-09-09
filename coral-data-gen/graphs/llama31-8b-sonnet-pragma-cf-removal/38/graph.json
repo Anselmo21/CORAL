@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Part-Time Default for Professional Degrees): Do a part-time program if you're pursuing a professional degree (MBA, MPA, MS) \u2014 you maintain income, apply learning immediately, avoid employment gaps, and outcomes are largely equivalent to full-time.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1664,
-    "output_tokens": 2024,
+    "output_tokens": 2102,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -54,8 +63,8 @@
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How do part-time and full-time graduate programs differ in terms of immersion and peer networks?",
-        "description": "Part-time vs full-time graduate programs"
+        "label": "How do part-time and full-time graduate programs differ in terms of outcomes and experiences?",
+        "description": "Part-time vs full-time graduate programs outcomes and experiences"
       },
       {
         "id": "sq3",
@@ -68,8 +77,8 @@
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "How does employer tuition reimbursement impact the decision to pursue part-time or full-time graduate school?",
-        "description": "Employer reimbursement impact"
+        "label": "How does employer tuition reimbursement impact the decision to pursue part-time graduate school?",
+        "description": "Employer tuition reimbursement impact on part-time graduate school"
       },
       {
         "id": "c1",
@@ -83,7 +92,7 @@
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Sources from 2021\u20132023"
+        "description": "Sources from 2021 to 2023"
       },
       {
         "id": "c3",
@@ -190,11 +199,15 @@
       },
       {
         "source": "sq2",
-        "target": "c3"
+        "target": "c1"
       },
       {
         "source": "sq2",
-        "target": "c7"
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
       },
       {
         "source": "sq3",
@@ -207,6 +220,18 @@
       {
         "source": "sq4",
         "target": "c6"
+      },
+      {
+        "source": "sq4",
+        "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c8"
+      },
+      {
+        "source": "sq4",
+        "target": "c9"
       },
       {
         "source": "sq4",
@@ -246,11 +271,11 @@
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c10",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c1",
@@ -270,19 +295,19 @@
       },
       {
         "source": "c5",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c7",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c9",

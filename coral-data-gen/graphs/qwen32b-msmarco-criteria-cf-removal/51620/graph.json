@@ -22,13 +22,22 @@
   "baseline_answer": "Guerlain Terracotta Bronzing Powder",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2134,
-    "output_tokens": 2425,
+    "output_tokens": 2352,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,42 +50,42 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best bronzer for older skin?",
-        "description": "Identifying the best bronzer for mature skin based on formulation, application, and skin compatibility."
+        "description": "Identify the best bronzer for mature skin based on formulation, suitability, and performance."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "Application and finish suitability for mature skin",
-        "description": "Criteria related to how the bronzer applies and finishes on mature skin."
+        "description": "How well the bronzer applies and finishes on mature skin."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "Color and skin compatibility",
-        "description": "Criteria related to shade range and formulation compatibility with mature/sensitive skin."
+        "description": "How well the bronzer matches skin tone and includes skin-friendly ingredients."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "Performance and brand trust",
-        "description": "Criteria related to how well the bronzer performs and the brand's reputation."
+        "description": "How long the bronzer lasts and the brand's reputation for quality."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "finish type",
-        "description": "Whether the bronzer is matte, shimmery, or sheer."
+        "description": "Whether the bronzer is matte, sheer, or shimmery."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "shade range",
-        "description": "The range of shades available to match different skin tones."
+        "description": "How well the bronzer matches a range of skin tones."
       },
       {
         "id": "c3",
@@ -118,7 +127,7 @@
         "layer": "3",
         "type": "concept",
         "label": "brand reputation",
-        "description": "The perceived quality and trustworthiness of the brand."
+        "description": "The brand's standing in the beauty industry."
       },
       {
         "id": "c9",
@@ -139,21 +148,21 @@
         "layer": "4",
         "type": "answer",
         "label": "Guerlain Terracotta Bronzing Powder",
-        "description": "Moisturizing, blends well, and is praised for mature skin."
+        "description": "Moisturizing, blends well, and is praised by makeup artists for mature skin."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Smashbox Bronze Lights in Sunkissed",
-        "description": "Sheer, skin-friendly, and suitable for fair/mature skin."
+        "description": "Sheer, shimmer-free, and gentle for fair/mature skin."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Hourglass Superficial Waterproof Bronzer",
-        "description": "Waterproof, blendable, and creates a natural bronze color."
+        "description": "Seamlessly blends and creates a natural bronze color."
       }
     ],
     "edges": [
@@ -215,10 +224,6 @@
       },
       {
         "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
         "target": "a3"
       },
       {
@@ -230,16 +235,8 @@
         "target": "a2"
       },
       {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
         "source": "c3",
         "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
       },
       {
         "source": "c3",
@@ -256,10 +253,6 @@
       {
         "source": "c5",
         "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
       },
       {
         "source": "c6",
@@ -283,19 +276,11 @@
       },
       {
         "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
         "target": "a3"
       },
       {
         "source": "c9",
         "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
       },
       {
         "source": "c9",
@@ -308,10 +293,6 @@
       {
         "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
       }
     ]
   }

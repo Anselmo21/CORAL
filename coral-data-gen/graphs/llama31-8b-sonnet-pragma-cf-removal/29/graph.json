@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Skip Supplements Default): Don't bother with probiotic supplements if you're generally healthy \u2014 evidence for general gut health benefits is weak, the market is poorly regulated, and dietary fiber diversity produces more reliable microbiome improvements.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1660,
-    "output_tokens": 1863,
+    "output_tokens": 1825,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -190,10 +199,6 @@
         "target": "c10"
       },
       {
-        "source": "sq1",
-        "target": "a1"
-      },
-      {
         "source": "sq2",
         "target": "c2"
       },
@@ -207,10 +212,6 @@
       },
       {
         "source": "sq2",
-        "target": "c6"
-      },
-      {
-        "source": "sq2",
         "target": "c7"
       },
       {
@@ -218,12 +219,12 @@
         "target": "c8"
       },
       {
-        "source": "sq2",
-        "target": "a2"
+        "source": "sq3",
+        "target": "c3"
       },
       {
         "source": "sq3",
-        "target": "c3"
+        "target": "c6"
       },
       {
         "source": "sq3",
@@ -234,10 +235,6 @@
         "target": "c10"
       },
       {
-        "source": "sq3",
-        "target": "a3"
-      },
-      {
         "source": "c1",
         "target": "a1"
       },
@@ -246,28 +243,28 @@
         "target": "a2"
       },
       {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
         "source": "c4",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c5",
         "target": "a2"
       },
       {
-        "source": "c6",
+        "source": "c7",
         "target": "a2"
       },
       {
-        "source": "c7",
-        "target": "a1"
+        "source": "c8",
+        "target": "a2"
       },
       {
-        "source": "c8",
-        "target": "a1"
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
       },
       {
         "source": "c9",

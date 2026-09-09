@@ -22,17 +22,24 @@
   "baseline_answer": "Answer A (Therapy First Default): Start with CBT or another evidence-based therapy \u2014 for mild to moderate symptoms it's as effective as medication without side effects, builds lasting coping skills, and is recommended as first-line by most clinical guidelines.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
-  "attempts": 3,
+  "attempts": 1,
   "usage": {
-    "prompt_tokens": 11527,
-    "output_tokens": 8431,
-    "llm_calls": 3,
+    "prompt_tokens": 1642,
+    "output_tokens": 2159,
+    "llm_calls": 1,
     "finish_reasons": [
-      "length",
-      "length",
       "stop"
     ]
   },
@@ -43,105 +50,91 @@
         "layer": "1",
         "type": "question",
         "label": "Should I try therapy or antidepressants first for mild to moderate depression and anxiety?",
-        "description": ""
+        "description": "Recommended first-line treatment for mild to moderate depression and anxiety"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "What is the recommended first-line treatment for mild to moderate depression and anxiety?",
-        "description": ""
+        "description": "Recommended first-line treatment for mild to moderate depression and anxiety"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most effective treatment for rapid symptom relief?",
-        "description": ""
-      },
-      {
-        "id": "sq3",
-        "layer": "2",
-        "type": "subq",
-        "label": "What is the best approach for patients who prefer a non-medication approach?",
-        "description": ""
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "What is the best approach for patients who need a combination of therapy and medication?",
-        "description": ""
+        "label": "How should I approach treatment if I need faster relief or have moderate-to-severe symptoms?",
+        "description": "Approach for treatment if needing faster relief or moderate-to-severe symptoms"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": ""
+        "description": "Sources from 2023 only"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": ""
+        "description": "Sources from 2021 to 2023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": ""
+        "description": "Sources from the USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient preferring non-medication approach",
-        "description": ""
+        "description": "Sources from patients preferring non-medication approach"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient needing rapid symptom relief",
-        "description": ""
+        "description": "Sources from patients needing rapid symptom relief"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Clinical psychiatrist or GP",
-        "description": ""
+        "description": "Sources from clinical psychiatrists or GPs"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Peer-reviewed clinical research",
-        "description": ""
+        "description": "Sources from peer-reviewed clinical research"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Medical institution guidance",
-        "description": ""
+        "description": "Sources from medical institution guidance"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer health information",
-        "description": ""
+        "description": "Sources from consumer health information"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Patient community experience",
-        "description": ""
+        "description": "Sources from patient community experience"
       },
       {
         "id": "a1",
@@ -171,18 +164,6 @@
         "target": "sq1"
       },
       {
-        "source": "q",
-        "target": "sq2"
-      },
-      {
-        "source": "q",
-        "target": "sq3"
-      },
-      {
-        "source": "q",
-        "target": "sq4"
-      },
-      {
         "source": "sq1",
         "target": "c1"
       },
@@ -197,14 +178,6 @@
       {
         "source": "sq1",
         "target": "c4"
-      },
-      {
-        "source": "sq1",
-        "target": "c5"
-      },
-      {
-        "source": "sq1",
-        "target": "c6"
       },
       {
         "source": "sq1",
@@ -223,20 +196,8 @@
         "target": "c10"
       },
       {
-        "source": "sq2",
-        "target": "c1"
-      },
-      {
-        "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
-        "target": "c4"
+        "source": "sq1",
+        "target": "a1"
       },
       {
         "source": "sq2",
@@ -263,84 +224,12 @@
         "target": "c10"
       },
       {
-        "source": "sq3",
-        "target": "c1"
+        "source": "sq2",
+        "target": "a2"
       },
       {
-        "source": "sq3",
-        "target": "c2"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
-      },
-      {
-        "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c8"
-      },
-      {
-        "source": "sq3",
-        "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
-      },
-      {
-        "source": "sq4",
-        "target": "c1"
-      },
-      {
-        "source": "sq4",
-        "target": "c2"
-      },
-      {
-        "source": "sq4",
-        "target": "c3"
-      },
-      {
-        "source": "sq4",
-        "target": "c4"
-      },
-      {
-        "source": "sq4",
-        "target": "c5"
-      },
-      {
-        "source": "sq4",
-        "target": "c6"
-      },
-      {
-        "source": "sq4",
-        "target": "c7"
-      },
-      {
-        "source": "sq4",
-        "target": "c8"
-      },
-      {
-        "source": "sq4",
-        "target": "c9"
-      },
-      {
-        "source": "sq4",
-        "target": "c10"
+        "source": "sq2",
+        "target": "a3"
       },
       {
         "source": "c1",
@@ -356,15 +245,15 @@
       },
       {
         "source": "c4",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c5",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c7",
@@ -376,46 +265,10 @@
       },
       {
         "source": "c9",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
         "target": "a3"
       }
     ]

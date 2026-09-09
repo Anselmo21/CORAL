@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (CS50 Default): Start with Harvard's CS50 on edX \u2014 it's free, teaches real computer science fundamentals rather than just syntax, and produces learners who can problem-solve across any language or technology.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1533,
-    "output_tokens": 2111,
+    "output_tokens": 1877,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -61,14 +70,14 @@
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Community support, instructor quality, and completion rate",
+        "label": "Community support and instructor quality",
         "description": ""
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "Structured curriculum vs self-directed learning and language coverage",
+        "label": "Structured curriculum vs self-directed learning",
         "description": ""
       },
       {
@@ -142,21 +151,21 @@
         "description": ""
       },
       {
-        "id": "A*",
+        "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "CS50 Default",
         "description": "Start with Harvard's CS50 on edX \u2014 it's free, teaches real computer science fundamentals rather than just syntax, and produces learners who can problem-solve across any language or technology."
       },
       {
-        "id": "A2",
+        "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Codecademy for Zero Friction",
         "description": "Use Codecademy if you want to start coding immediately with no setup \u2014 its browser-based interactive environment is the lowest-friction entry point and maintains beginner momentum better than lecture-heavy alternatives."
       },
       {
-        "id": "A3",
+        "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "The Odin Project for Job Readiness",
@@ -221,80 +230,84 @@
         "target": "c6"
       },
       {
-        "source": "sq4",
-        "target": "c8"
-      },
-      {
         "source": "c1",
-        "target": "A*"
+        "target": "a1"
       },
       {
         "source": "c2",
-        "target": "A*"
+        "target": "a2"
       },
       {
         "source": "c3",
-        "target": "A*"
+        "target": "a1"
       },
       {
         "source": "c4",
-        "target": "A*"
+        "target": "a3"
       },
       {
         "source": "c5",
-        "target": "A*"
+        "target": "a1"
       },
       {
         "source": "c6",
-        "target": "A*"
+        "target": "a3"
       },
       {
         "source": "c7",
-        "target": "A*"
+        "target": "a2"
       },
       {
         "source": "c8",
-        "target": "A*"
+        "target": "a1"
       },
       {
         "source": "c9",
-        "target": "A*"
+        "target": "a1"
       },
       {
         "source": "c10",
-        "target": "A*"
+        "target": "a1"
       },
       {
         "source": "c1",
-        "target": "A2"
-      },
-      {
-        "source": "c3",
-        "target": "A2"
-      },
-      {
-        "source": "c8",
-        "target": "A2"
-      },
-      {
-        "source": "c10",
-        "target": "A2"
+        "target": "a2"
       },
       {
         "source": "c2",
-        "target": "A3"
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
       },
       {
         "source": "c5",
-        "target": "A3"
+        "target": "a3"
       },
       {
         "source": "c6",
-        "target": "A3"
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
       },
       {
         "source": "c9",
-        "target": "A3"
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

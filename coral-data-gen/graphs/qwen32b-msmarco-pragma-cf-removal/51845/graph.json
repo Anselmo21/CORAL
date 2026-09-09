@@ -22,13 +22,22 @@
   "baseline_answer": "Stephen Colbert (Late Show on CBS)",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2075,
-    "output_tokens": 2636,
+    "output_tokens": 2594,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,28 +50,28 @@
         "layer": "1",
         "type": "question",
         "label": "Who is the best late night talk show host?",
-        "description": "Identify the best late-night talk show host based on a combination of critical, audience, and cultural metrics."
+        "description": "Identify the best late-night talk show host based on a combination of critical, audience, and cultural perspectives."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "What is the best late-night host according to objective, industry-standard metrics?",
-        "description": "Evaluate based on TV critics, ratings, and awards."
+        "description": "Evaluate based on critical reviews, ratings, and awards."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best late-night host according to audience and cultural preferences?",
-        "description": "Evaluate based on fan forums, entertainment magazines, and viewer demographics."
+        "label": "What is the best late-night host according to audience and cultural perception?",
+        "description": "Evaluate based on fan opinion, entertainment media, and generational preferences."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "What is the best late-night host according to artistic or comedic sensibility?",
-        "description": "Evaluate based on comedy purist or stand-up sensibility."
+        "description": "Evaluate based on comedic style and stand-up sensibility."
       },
       {
         "id": "c1",
@@ -76,14 +85,14 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Nielsen / TV ratings data",
-        "description": "Prioritize sources based on Nielsen ratings and TV viewership data."
+        "description": "Prioritize sources from Nielsen ratings and TV viewership data."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Emmy / industry award nominations",
-        "description": "Prioritize sources based on Emmy and industry award nominations."
+        "description": "Prioritize sources from Emmy and industry award nominations."
       },
       {
         "id": "c4",
@@ -132,28 +141,28 @@
         "layer": "3",
         "type": "directive",
         "label": "perspective: comedy purist / stand-up sensibility",
-        "description": "Prioritize sources from comedy purists or those valuing stand-up sensibility."
+        "description": "Prioritize sources from comedy purists or stand-up comedy fans."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Stephen Colbert (Late Show on CBS)",
-        "description": "Top choice when all filters are applied."
+        "description": "Favored by critics, award-winning, and known for political satire."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Jimmy Fallon (The Tonight Show on NBC)",
-        "description": "Top choice when political satire, awards, and comedy purist filters are relaxed."
+        "description": "Broad appeal, celebrity interviews, and modern pop-culture relevance."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Johnny Carson (The Tonight Show 1962-1992)",
-        "description": "Top choice when modern ratings, political satire, and Gen-Z filters are relaxed."
+        "description": "Nostalgic, foundational figure in late-night TV with lasting influence."
       }
     ],
     "edges": [
@@ -250,14 +259,6 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
         "source": "c4",
         "target": "a2"
       },
@@ -267,10 +268,6 @@
       },
       {
         "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
         "target": "a2"
       },
       {
@@ -278,23 +275,11 @@
         "target": "a2"
       },
       {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
         "source": "c4",
         "target": "a3"
       },
       {
         "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
         "target": "a3"
       }
     ]

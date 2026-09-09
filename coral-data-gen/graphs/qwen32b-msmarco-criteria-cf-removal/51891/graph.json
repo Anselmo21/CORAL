@@ -22,13 +22,22 @@
   "baseline_answer": "'We Are The Champions' by Queen",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1910,
-    "output_tokens": 2088,
+    "output_tokens": 2191,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,7 +50,7 @@
         "layer": "1",
         "type": "question",
         "label": "Which pop song best motivates sports athletes?",
-        "description": "Identify the pop song that is most effective at motivating athletes based on musical, lyrical, and cultural criteria."
+        "description": "Identify the pop song that is most effective at motivating sports athletes based on musical, lyrical, and cultural criteria."
       },
       {
         "id": "sq1",
@@ -76,28 +85,28 @@
         "layer": "3",
         "type": "concept",
         "label": "lyrical inspiration",
-        "description": "The motivational or uplifting nature of the lyrics."
+        "description": "The extent to which the lyrics inspire or motivate."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "beat strength",
-        "description": "The power and driving force of the rhythm."
+        "description": "The power and intensity of the beat."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "mainstream recognition",
-        "description": "The song's popularity and familiarity in the general public."
+        "description": "How widely known and used the song is in sports contexts."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "energy level",
-        "description": "The intensity and vigor of the song."
+        "description": "The overall energy and intensity of the song."
       },
       {
         "id": "c6",
@@ -111,14 +120,14 @@
         "layer": "3",
         "type": "concept",
         "label": "chorus catchiness",
-        "description": "The memorability and sing-along quality of the chorus."
+        "description": "How memorable and easy to sing along with the chorus is."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "build-up structure",
-        "description": "The progression and intensity increase in the song."
+        "description": "How the song builds in intensity over time."
       },
       {
         "id": "c9",
@@ -132,28 +141,28 @@
         "layer": "3",
         "type": "concept",
         "label": "sports-victory association",
-        "description": "The song's direct link to sports wins or celebrations."
+        "description": "The song's connection to sports victories or celebrations."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "'Eye of the Tiger' by Survivor",
-        "description": "A high-energy song from the Rocky III soundtrack."
+        "description": "A high-energy song from the Rocky III soundtrack, known for its motivational beat."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "'We Are The Champions' by Queen",
-        "description": "A 1977 anthem for sports victories and team spirit."
+        "description": "A classic anthem of victory, widely used in sports celebrations."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "'Chariots of Fire' by Vangelis",
-        "description": "An instrumental track from the 1981 film of the same name."
+        "description": "A cinematic and inspirational instrumental with a strong build-up."
       }
     ],
     "edges": [
@@ -223,7 +232,15 @@
       },
       {
         "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
         "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
       },
       {
         "source": "c3",
@@ -236,6 +253,10 @@
       {
         "source": "c3",
         "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
       },
       {
         "source": "c4",
@@ -291,11 +312,27 @@
       },
       {
         "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
         "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
       },
       {
         "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

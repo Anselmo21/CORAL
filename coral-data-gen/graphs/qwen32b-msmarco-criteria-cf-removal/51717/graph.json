@@ -22,13 +22,22 @@
   "baseline_answer": "University of Wisconsin-Madison",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1849,
-    "output_tokens": 2008,
+    "output_tokens": 2010,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -55,14 +64,14 @@
         "layer": "2",
         "type": "subq",
         "label": "Cost and Student Experience",
-        "description": "Criteria related to the cost of attendance and the student experience."
+        "description": "Criteria related to affordability, student-faculty interaction, and campus environment."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "Outcomes and Demographics",
-        "description": "Criteria related to student outcomes and campus life."
+        "description": "Criteria related to student success and post-graduation outcomes."
       },
       {
         "id": "c1",
@@ -125,7 +134,7 @@
         "layer": "3",
         "type": "concept",
         "label": "location and campus life",
-        "description": "Geographic location and overall campus environment."
+        "description": "Geographic location and overall campus experience."
       },
       {
         "id": "c10",
@@ -139,7 +148,7 @@
         "layer": "4",
         "type": "answer",
         "label": "University of Wisconsin-Madison",
-        "description": "Largest engineering school in Wisconsin with strong program reputation and high graduation rates."
+        "description": "Largest engineering school in Wisconsin with strong program reputation and research output."
       },
       {
         "id": "a2",
@@ -153,7 +162,7 @@
         "layer": "4",
         "type": "answer",
         "label": "University of Wisconsin-Milwaukee",
-        "description": "Offers a more affordable option with a good location and campus life."
+        "description": "Offers a more affordable option with a strong local presence."
       }
     ],
     "edges": [

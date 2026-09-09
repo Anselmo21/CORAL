@@ -22,13 +22,22 @@
   "baseline_answer": "Gradual taper using progressive decaf mixing over 4-5 weeks",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1804,
-    "output_tokens": 1739,
+    "output_tokens": 1834,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,7 +56,7 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Quitting methods",
+        "label": "Quitting caffeine methods",
         "description": "Methods for quitting caffeine."
       },
       {
@@ -55,14 +64,14 @@
         "layer": "2",
         "type": "subq",
         "label": "Support and motivation",
-        "description": "Factors that support and motivate quitting caffeine."
+        "description": "Support and motivation for quitting caffeine."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "Preparation and planning",
-        "description": "Factors that involve preparation and planning for quitting caffeine."
+        "description": "Preparation and planning for quitting caffeine."
       },
       {
         "id": "sq4",
@@ -76,91 +85,91 @@
         "layer": "3",
         "type": "concept",
         "label": "withdrawal symptoms",
-        "description": "The physical symptoms of quitting caffeine."
+        "description": "The symptoms of caffeine withdrawal."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "detox method",
-        "description": "The approach to quitting caffeine."
+        "description": "The method of quitting caffeine."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "support systems",
-        "description": "The people and resources that support quitting caffeine."
+        "description": "The support systems for quitting caffeine."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "caffeine alternatives",
-        "description": "Alternative sources of caffeine."
+        "description": "The alternatives to caffeine."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "gradual reduction",
-        "description": "A gradual decrease in caffeine intake."
+        "description": "The gradual reduction of caffeine."
       },
       {
         "id": "c6",
-        "layer": "3",
-        "type": "concept",
-        "label": "cold turkey",
-        "description": "Quitting caffeine abruptly."
-      },
-      {
-        "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "commitment level",
         "description": "The level of commitment to quitting caffeine."
       },
       {
-        "id": "c8",
+        "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "time frame",
-        "description": "The amount of time it takes to quit caffeine."
+        "description": "The time frame for quitting caffeine."
+      },
+      {
+        "id": "c8",
+        "layer": "3",
+        "type": "concept",
+        "label": "health considerations",
+        "description": "The health considerations for quitting caffeine."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "health considerations",
-        "description": "The health risks of quitting caffeine."
+        "label": "personal motivation",
+        "description": "The personal motivation for quitting caffeine."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "environmental triggers",
-        "description": "The environmental factors that trigger caffeine cravings."
+        "description": "The environmental triggers for caffeine consumption."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Gradual taper using progressive decaf mixing over 4-5 weeks",
-        "description": "A gradual decrease in caffeine intake over 4-5 weeks."
+        "label": "Cold turkey scheduled on a weekend / holiday with pain relievers on hand",
+        "description": "Quitting caffeine cold turkey on a weekend or holiday with pain relievers on hand."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Cold turkey scheduled on a weekend / holiday with pain relievers on hand",
-        "description": "Quitting caffeine abruptly on a weekend or holiday with pain relievers on hand."
+        "label": "Substitute with caffeine-free alternatives plus a quit-buddy / accountability partner",
+        "description": "Substituting with caffeine-free alternatives and having a quit-buddy or accountability partner."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Substitute with caffeine-free alternatives plus a quit-buddy / accountability partner",
-        "description": "Substituting caffeine-free alternatives and having a quit-buddy or accountability partner."
+        "label": "Gradual taper using progressive decaf mixing over 4-5 weeks",
+        "description": "Gradually tapering off caffeine over 4-5 weeks using progressive decaf mixing."
       }
     ],
     "edges": [
@@ -189,28 +198,24 @@
         "target": "c5"
       },
       {
-        "source": "sq1",
-        "target": "c6"
-      },
-      {
         "source": "sq2",
         "target": "c3"
       },
       {
         "source": "sq2",
-        "target": "c7"
+        "target": "c6"
       },
       {
         "source": "sq2",
-        "target": "c10"
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
       },
       {
         "source": "sq3",
         "target": "c8"
-      },
-      {
-        "source": "sq3",
-        "target": "c9"
       },
       {
         "source": "sq3",
@@ -222,7 +227,7 @@
       },
       {
         "source": "c1",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c1",
@@ -234,11 +239,11 @@
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a3"
       },
       {
-        "source": "c2",
-        "target": "a3"
+        "source": "c3",
+        "target": "a2"
       },
       {
         "source": "c3",
@@ -246,38 +251,62 @@
       },
       {
         "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
         "target": "a3"
       },
       {
         "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c6",
         "target": "a2"
       },
       {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
         "source": "c7",
         "target": "a1"
       },
       {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
         "source": "c8",
         "target": "a1"
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c9",
         "target": "a2"
       },
       {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
         "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "a1",
+        "target": "a3"
+      },
+      {
+        "source": "a2",
         "target": "a3"
       }
     ]

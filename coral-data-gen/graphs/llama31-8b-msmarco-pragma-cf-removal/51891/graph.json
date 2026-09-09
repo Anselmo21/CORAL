@@ -22,13 +22,22 @@
   "baseline_answer": "'We Are The Champions' by Queen",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2046,
-    "output_tokens": 1707,
+    "output_tokens": 1829,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,14 +56,14 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What sources are trustworthy for recommending motivational sports songs?",
+        "label": "What is the trustworthiness of the sources recommending the songs?",
         "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "From what perspectives do motivational sports songs motivate athletes?",
+        "label": "From which perspective do the songs motivate sports athletes?",
         "description": ""
       },
       {
@@ -204,7 +213,11 @@
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
       },
       {
         "source": "c3",
@@ -212,7 +225,7 @@
       },
       {
         "source": "c4",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c5",
@@ -220,7 +233,11 @@
       },
       {
         "source": "c6",
-        "target": "a2"
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
       },
       {
         "source": "c7",
@@ -228,7 +245,7 @@
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c9",
@@ -236,11 +253,11 @@
       },
       {
         "source": "c10",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c1",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c2",
@@ -248,7 +265,7 @@
       },
       {
         "source": "c3",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c4",
@@ -256,15 +273,15 @@
       },
       {
         "source": "c5",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c6",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c7",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c8",
@@ -272,7 +289,7 @@
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c10",

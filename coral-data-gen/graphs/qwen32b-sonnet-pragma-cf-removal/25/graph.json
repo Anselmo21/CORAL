@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Immunotherapy Default): Pursue allergen immunotherapy (shots or sublingual tablets) \u2014 it's the only treatment that modifies the underlying allergy and can produce multi-year remission after a 3\u20135 year course, making it superior for severe or persistent symptoms.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1710,
-    "output_tokens": 2314,
+    "output_tokens": 2414,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -40,99 +49,99 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "q",
-        "description": "I suffer from terrible seasonal allergies every spring. What's the most effective long-term treatment?"
+        "label": "What's the most effective long-term treatment for severe seasonal allergies?",
+        "description": "A question about the best long-term treatment for severe seasonal allergies."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "sq1",
-        "description": "What is the most effective long-term treatment for severe seasonal allergies?"
+        "label": "What is the most effective long-term treatment for severe seasonal allergies?",
+        "description": "Sub-question focusing on long-term treatment for severe symptoms."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "sq2",
-        "description": "What is the most effective immediate or accessible treatment for mild-to-moderate symptoms?"
+        "label": "What is the most effective immediate and accessible treatment for mild-to-moderate seasonal allergies?",
+        "description": "Sub-question focusing on immediate and accessible treatment for mild-to-moderate symptoms."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "sq3",
-        "description": "What is the most trusted or evidence-based treatment for long-term allergy management?"
+        "label": "What is the most effective treatment based on the credibility of the source?",
+        "description": "Sub-question focusing on the credibility of the source of information."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Only consider sources from 2023."
+        "description": "Filter sources to only those published in 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Only consider sources from 2021 to 2023."
+        "description": "Filter sources to those published between 2021 and 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Only consider sources from the USA."
+        "description": "Filter sources to those from the United States."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient seeking long-term cure over symptom management",
-        "description": "Only consider sources from the perspective of a patient seeking a long-term cure."
+        "description": "Filter sources to those from the perspective of a patient seeking a long-term cure."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient needing immediate relief with minimal commitment",
-        "description": "Only consider sources from the perspective of a patient needing immediate relief with minimal commitment."
+        "description": "Filter sources to those from the perspective of a patient needing immediate relief with minimal commitment."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Allergist or ENT physician",
-        "description": "Only consider sources from the perspective of an allergist or ENT physician."
+        "description": "Filter sources to those from the perspective of an allergist or ENT physician."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Peer-reviewed clinical research",
-        "description": "Only consider peer-reviewed clinical research."
+        "description": "Filter sources to those from peer-reviewed clinical research."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Medical institution guidance",
-        "description": "Only consider guidance from medical institutions."
+        "description": "Filter sources to those from medical institution guidance."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer health information",
-        "description": "Only consider consumer health information."
+        "description": "Filter sources to those from consumer health information."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Patient community experience",
-        "description": "Only consider patient community experience."
+        "description": "Filter sources to those from patient community experience."
       },
       {
         "id": "a1",
@@ -215,23 +224,19 @@
       },
       {
         "source": "sq3",
-        "target": "c2"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq3",
         "target": "c7"
       },
       {
         "source": "sq3",
         "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -295,6 +300,10 @@
       },
       {
         "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
         "target": "a3"
       },
       {

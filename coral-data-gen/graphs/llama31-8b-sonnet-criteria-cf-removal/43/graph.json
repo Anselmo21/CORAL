@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Gap Year if Structured Default): Take a gap year if you have a clear plan \u2014 structured gap years (work abroad, volunteering, skill building) produce higher GPA and major satisfaction, and most universities support deferral.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1535,
-    "output_tokens": 2255,
+    "output_tokens": 2569,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -382,16 +391,101 @@
         "target": "a3"
       },
       {
-        "source": "a1",
-        "target": "a2"
+        "source": "c10",
+        "target": "a3"
       },
       {
         "source": "a1",
-        "target": "a3"
+        "target": "a2",
+        "removed": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
+        ]
+      },
+      {
+        "source": "a1",
+        "target": "a3",
+        "removed": [
+          "c1",
+          "c2",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
+        ]
       },
       {
         "source": "a2",
-        "target": "a3"
+        "target": "a1",
+        "removed": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
+        ]
+      },
+      {
+        "source": "a2",
+        "target": "a3",
+        "removed": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
+        ]
+      },
+      {
+        "source": "a3",
+        "target": "a1",
+        "removed": [
+          "c1",
+          "c2",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
+        ]
+      },
+      {
+        "source": "a3",
+        "target": "a2",
+        "removed": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
+        ]
       }
     ]
   }

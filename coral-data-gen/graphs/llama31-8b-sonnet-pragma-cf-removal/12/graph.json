@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (529 Default): Open a 529 plan immediately and contribute regularly \u2014 tax-free growth, state deductions, and the new Roth IRA rollover option make it the clear best vehicle for college savings with a 15-year horizon.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1668,
-    "output_tokens": 2867,
+    "output_tokens": 2419,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -40,120 +49,120 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "What's the best way to save for my child's college education? My kid is 3 years old.",
-        "description": ""
+        "label": "What's the best way to save for my child's college education?",
+        "description": "Recommended savings vehicles and strategies for college education"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best savings vehicle for a 15-year horizon?",
-        "description": ""
+        "label": "What is the best savings vehicle for college education with a 15-year horizon?",
+        "description": "Recommended savings vehicles for college education with a 15-year horizon"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How does the parent's financial situation affect the choice of savings vehicle?",
-        "description": ""
+        "label": "How do I prioritize my savings goals between retirement and education expenses?",
+        "description": "Prioritization of savings goals between retirement and education expenses"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the key benefits and drawbacks of each savings vehicle?",
-        "description": ""
+        "label": "What are the benefits and drawbacks of using a Coverdell ESA in conjunction with a 529 plan?",
+        "description": "Benefits and drawbacks of using a Coverdell ESA in conjunction with a 529 plan"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": ""
+        "description": "Sources from 2023 only"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": ""
+        "description": "Sources from 2021 to 2023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": ""
+        "description": "Sources from the USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Parent in high state income tax jurisdiction",
-        "description": ""
+        "description": "Sources relevant to parents in high state income tax jurisdictions"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Parent uncertain if child will attend college",
-        "description": ""
+        "description": "Sources relevant to parents uncertain if their child will attend college"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Parent with high K-12 private school costs",
-        "description": ""
+        "description": "Sources relevant to parents with high K-12 private school costs"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer financial advisory",
-        "description": ""
+        "description": "Sources from consumer financial advisory"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Institutional investment research",
-        "description": ""
+        "description": "Sources from institutional investment research"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Community peer advice",
-        "description": ""
+        "description": "Sources from community peer advice"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Financial journalism",
-        "description": ""
+        "description": "Sources from financial journalism"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (529 Default): Open a 529 plan immediately and contribute regularly \u2014 tax-free growth, state deductions, and the new Roth IRA rollover option make it the clear best vehicle for college savings with a 15-year horizon.",
-        "description": ""
+        "label": "Answer A (529 Default)",
+        "description": "Open a 529 plan immediately and contribute regularly"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (Roth IRA First): Prioritize your own Roth IRA contributions before funding a 529 \u2014 retirement savings are more critical, and Roth funds can be withdrawn penalty-free for education expenses if needed.",
-        "description": ""
+        "label": "Answer B (Roth IRA First)",
+        "description": "Prioritize your own Roth IRA contributions before funding a 529"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (529 Plus Coverdell): Fund both a 529 and a Coverdell ESA if you have high private K-12 costs \u2014 the Coverdell's broader expense coverage complements the 529's superior growth and contribution limits.",
-        "description": ""
+        "label": "Answer C (529 Plus Coverdell)",
+        "description": "Fund both a 529 and a Coverdell ESA if you have high private K-12 costs"
       }
     ],
     "edges": [
@@ -211,22 +220,6 @@
       },
       {
         "source": "sq2",
-        "target": "c1"
-      },
-      {
-        "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
         "target": "c5"
       },
       {
@@ -251,45 +244,13 @@
       },
       {
         "source": "sq3",
-        "target": "c1"
-      },
-      {
-        "source": "sq3",
-        "target": "c2"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
-      },
-      {
-        "source": "sq3",
         "target": "c6"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c8"
       },
       {
         "source": "sq3",
         "target": "c9"
       },
       {
-        "source": "sq3",
-        "target": "c10"
-      },
-      {
         "source": "c1",
         "target": "a1"
       },
@@ -307,11 +268,11 @@
       },
       {
         "source": "c5",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c7",
@@ -323,90 +284,22 @@
       },
       {
         "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
         "target": "a1"
       },
       {
-        "source": "c10",
+        "source": "a1",
         "target": "a1"
       },
       {
-        "source": "c1",
+        "source": "a2",
         "target": "a2"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
+        "source": "a3",
         "target": "a3"
       }
     ]

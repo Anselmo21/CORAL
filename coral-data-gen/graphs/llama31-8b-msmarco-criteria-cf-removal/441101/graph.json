@@ -22,13 +22,22 @@
   "baseline_answer": "New compact SUV (2015 Mazda CX-5, Subaru Forester, or Mitsubishi Outlander AWD)",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1781,
-    "output_tokens": 2180,
+    "output_tokens": 2121,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,85 +56,85 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the key factors to consider when choosing a safe SUV for a teen driver?",
-        "description": "key factors for safe SUVs"
+        "label": "key factors to consider when choosing a safe SUV for a teen driver",
+        "description": "safety, insurance, reliability, etc."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the characteristics of the best SUVs for teen drivers?",
-        "description": "characteristics of best SUVs"
+        "label": "characteristics of the best SUVs for teen drivers",
+        "description": "size, fuel efficiency, technology, etc."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "safety ratings",
-        "description": "safety ratings"
+        "description": "IIHS Top Safety Pick+, NHTSA 5-star rating"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "insurance costs",
-        "description": "insurance costs"
+        "description": "low insurance rates for teen drivers"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "reliability",
-        "description": "reliability"
+        "description": "few mechanical issues, long lifespan"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "size",
-        "description": "size"
+        "description": "compact, midsize, or large SUV"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "fuel efficiency",
-        "description": "fuel efficiency"
+        "description": "good gas mileage, low emissions"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "technology features",
-        "description": "technology features"
+        "description": "advanced safety features, infotainment system"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "resale value",
-        "description": "resale value"
+        "description": "high resale value, low depreciation"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "user reviews",
-        "description": "user reviews"
+        "description": "positive reviews from owners and critics"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "age of model",
-        "description": "age of model"
+        "description": "new or used, model year"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "driving experience",
-        "description": "driving experience"
+        "description": "ease of driving, handling, and maneuverability"
       },
       {
         "id": "a1",
@@ -139,14 +148,14 @@
         "layer": "4",
         "type": "answer",
         "label": "New midsize SUV (2015 Toyota Highlander)",
-        "description": "best SUV for teen drivers"
+        "description": "good SUV for teen drivers"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Used 2009-model-year SUV at ~$15,000",
-        "description": "best SUV for teen drivers"
+        "description": "affordable SUV for teen drivers"
       }
     ],
     "edges": [
@@ -171,46 +180,6 @@
         "target": "c3"
       },
       {
-        "source": "sq1",
-        "target": "c4"
-      },
-      {
-        "source": "sq1",
-        "target": "c5"
-      },
-      {
-        "source": "sq1",
-        "target": "c6"
-      },
-      {
-        "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
-      },
-      {
-        "source": "sq2",
-        "target": "c1"
-      },
-      {
-        "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c3"
-      },
-      {
         "source": "sq2",
         "target": "c4"
       },
@@ -359,20 +328,24 @@
         "target": "a3"
       },
       {
-        "source": "c4",
-        "target": "a2"
+        "source": "a1",
+        "target": "c9"
       },
       {
-        "source": "c9",
-        "target": "a3"
+        "source": "a1",
+        "target": "c10"
       },
       {
-        "source": "c9",
-        "target": "a3"
+        "source": "a2",
+        "target": "c4"
       },
       {
-        "source": "c10",
-        "target": "a3"
+        "source": "a2",
+        "target": "c5"
+      },
+      {
+        "source": "a3",
+        "target": "c9"
       }
     ]
   }

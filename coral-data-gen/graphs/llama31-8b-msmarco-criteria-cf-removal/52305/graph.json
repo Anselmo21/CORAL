@@ -22,13 +22,22 @@
   "baseline_answer": "Natural spray: white vinegar OR salt + soap + water solution",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2535,
-    "output_tokens": 1876,
+    "output_tokens": 2625,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,112 +50,112 @@
         "layer": "1",
         "type": "question",
         "label": "best way to get rid of ivy",
-        "description": ""
+        "description": "removal methods"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "removal methods",
-        "description": ""
+        "description": "different ways to remove ivy"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "considerations for removal methods",
-        "description": ""
+        "description": "factors to consider when choosing a removal method"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "method effectiveness",
-        "description": ""
+        "description": "how effective is the removal method"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "safety of ingredients",
-        "description": ""
+        "description": "safety of the ingredients used"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "environmental impact",
-        "description": ""
+        "description": "impact on the environment"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "cost of materials",
-        "description": ""
+        "description": "cost of the materials used"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "time required",
-        "description": ""
+        "description": "time required for the removal method"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "ease of application",
-        "description": ""
+        "description": "ease of application of the removal method"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "long-term results",
-        "description": ""
+        "description": "long-term effectiveness of the removal method"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "plant type targeted",
-        "description": ""
+        "description": "type of plant targeted by the removal method"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "availability of tools",
-        "description": ""
+        "description": "availability of tools required for the removal method"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "user experience",
-        "description": ""
+        "description": "user experience with the removal method"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Manual pulling with hand tools (snipper, ladder, saw, shovel)",
-        "description": ""
+        "description": "manual removal method"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Natural spray: white vinegar OR salt + soap + water solution",
-        "description": ""
+        "description": "natural removal method"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Glyphosate (Roundup) or triclopyr (Brush-B-Gon) herbicide applied to leaves",
-        "description": ""
+        "description": "chemical removal method"
       }
     ],
     "edges": [
@@ -172,7 +181,19 @@
       },
       {
         "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
         "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
       },
       {
         "source": "sq1",
@@ -188,15 +209,23 @@
       },
       {
         "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
         "target": "c4"
       },
       {
         "source": "sq2",
-        "target": "c5"
+        "target": "c7"
       },
       {
         "source": "sq2",
-        "target": "c7"
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
       },
       {
         "source": "sq2",
@@ -216,11 +245,19 @@
       },
       {
         "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
         "target": "a2"
       },
       {
         "source": "c2",
         "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
       },
       {
         "source": "c3",
@@ -235,11 +272,39 @@
         "target": "a1"
       },
       {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
         "source": "c5",
         "target": "a1"
       },
       {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
         "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
         "target": "a1"
       },
       {
@@ -247,28 +312,132 @@
         "target": "a2"
       },
       {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
         "source": "c8",
         "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
       },
       {
         "source": "c9",
         "target": "a1"
       },
       {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
         "source": "c10",
         "target": "a1"
       },
       {
-        "source": "a1",
+        "source": "c10",
         "target": "a2"
       },
       {
-        "source": "a1",
+        "source": "c10",
         "target": "a3"
       },
       {
+        "source": "a1",
+        "target": "c2"
+      },
+      {
+        "source": "a1",
+        "target": "c4"
+      },
+      {
+        "source": "a1",
+        "target": "c7"
+      },
+      {
+        "source": "a1",
+        "target": "c8"
+      },
+      {
+        "source": "a1",
+        "target": "c9"
+      },
+      {
+        "source": "a1",
+        "target": "c10"
+      },
+      {
         "source": "a2",
-        "target": "a3"
+        "target": "c1"
+      },
+      {
+        "source": "a2",
+        "target": "c3"
+      },
+      {
+        "source": "a2",
+        "target": "c5"
+      },
+      {
+        "source": "a2",
+        "target": "c6"
+      },
+      {
+        "source": "a2",
+        "target": "c7"
+      },
+      {
+        "source": "a2",
+        "target": "c8"
+      },
+      {
+        "source": "a2",
+        "target": "c9"
+      },
+      {
+        "source": "a2",
+        "target": "c10"
+      },
+      {
+        "source": "a3",
+        "target": "c1"
+      },
+      {
+        "source": "a3",
+        "target": "c2"
+      },
+      {
+        "source": "a3",
+        "target": "c3"
+      },
+      {
+        "source": "a3",
+        "target": "c4"
+      },
+      {
+        "source": "a3",
+        "target": "c5"
+      },
+      {
+        "source": "a3",
+        "target": "c6"
+      },
+      {
+        "source": "a3",
+        "target": "c9"
+      },
+      {
+        "source": "a3",
+        "target": "c10"
       }
     ]
   }

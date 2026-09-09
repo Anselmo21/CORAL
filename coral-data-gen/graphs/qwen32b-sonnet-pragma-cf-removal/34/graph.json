@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Computer Science Default): Study Computer Science at the best program you can access \u2014 it provides the broadest path to ML industry roles, includes dedicated ML coursework, and is the most recognized credential for ML engineering positions.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1620,
-    "output_tokens": 2596,
+    "output_tokens": 2625,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -62,77 +71,77 @@
         "layer": "2",
         "type": "subq",
         "label": "sq3",
-        "description": "What is the best degree for ML if skills and projects matter more than the degree itself?"
+        "description": "What is the best degree for ML industry roles when considering skills over degree?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "temporal: 2023 only"
+        "description": "Only consider 2023 sources"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "temporal: 2021\u20132023"
+        "description": "Consider 2021\u20132023 sources"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "geographic: USA"
+        "description": "Only consider USA-based sources"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: UK / Global research institutions",
-        "description": "geographic: UK / Global research institutions"
+        "description": "Consider UK and global research sources"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student targeting ML industry engineering roles",
-        "description": "perspective: Student targeting ML industry engineering roles"
+        "description": "Only consider sources from the perspective of students aiming for ML engineering roles"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student targeting ML research / PhD",
-        "description": "perspective: Student targeting ML research / PhD"
+        "description": "Only consider sources from the perspective of students aiming for ML research or PhDs"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Education ranking publication",
-        "description": "trustworthiness: Education ranking publication"
+        "description": "Only consider education ranking publications"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: ML practitioner community",
-        "description": "trustworthiness: ML practitioner community"
+        "description": "Only consider ML practitioner community sources"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Workforce data report",
-        "description": "trustworthiness: Workforce data report"
+        "description": "Only consider workforce data reports"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: AI research lab perspective",
-        "description": "trustworthiness: AI research lab perspective"
+        "description": "Only consider AI research lab perspectives"
       },
       {
         "id": "a1",

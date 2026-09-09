@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Index-Fund Default): Put your money in a low-cost total market index fund \u2014 after fees, passive investing beats active management for the vast majority of retail investors over a 30-year horizon.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1602,
-    "output_tokens": 1934,
+    "output_tokens": 1920,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -40,22 +49,22 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should I put my money in index funds or actively managed funds?",
-        "description": "Investment strategy for a 30-year-old retail investor"
+        "label": "Investment Strategy",
+        "description": "Should I put my money in index funds or actively managed funds?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the historical performance of index funds vs. actively managed funds?",
-        "description": "Performance comparison"
+        "label": "Historical Performance",
+        "description": "What is the historical performance of index funds vs. actively managed funds?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the implications of different investment strategies for a 30-year-old retail investor?",
-        "description": "Investment strategy implications"
+        "label": "Investor Considerations",
+        "description": "What are the considerations for a 30-year-old retail investor?"
       },
       {
         "id": "c1",
@@ -69,7 +78,7 @@
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2022\u20132023",
-        "description": "Sources from 2022-2023"
+        "description": "Sources from 2022 and 2023"
       },
       {
         "id": "c3",
@@ -132,21 +141,21 @@
         "layer": "4",
         "type": "answer",
         "label": "Index-Fund Default",
-        "description": "Put your money in a low-cost total market index fund"
+        "description": "Put your money in a low-cost total market index fund \u2014 after fees, passive investing beats active management for the vast majority of retail investors over a 30-year horizon."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Active for Niche Allocation",
-        "description": "Allocate 80% to index funds but dedicate 20% to actively managed small-cap or emerging market funds"
+        "description": "Allocate 80% to index funds but dedicate 20% to actively managed small-cap or emerging market funds where active managers have a demonstrated edge."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Active Bear-Market Shield",
-        "description": "Choose a tactical active fund with a strong bear-market track record"
+        "description": "Choose a tactical active fund with a strong bear-market track record if capital preservation during downturns is your primary concern, accepting lower long-term average returns."
       }
     ],
     "edges": [
@@ -172,31 +181,11 @@
       },
       {
         "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
         "target": "c5"
       },
       {
         "source": "sq2",
         "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c8"
-      },
-      {
-        "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
       },
       {
         "source": "c1",
@@ -259,6 +248,10 @@
         "target": "a2"
       },
       {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
         "source": "c9",
         "target": "a2"
       },
@@ -267,7 +260,11 @@
         "target": "a2"
       },
       {
-        "source": "c3",
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
         "target": "a3"
       },
       {
@@ -275,11 +272,11 @@
         "target": "a3"
       },
       {
-        "source": "c8",
+        "source": "c6",
         "target": "a3"
       },
       {
-        "source": "c9",
+        "source": "c7",
         "target": "a3"
       },
       {

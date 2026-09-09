@@ -22,13 +22,22 @@
   "baseline_answer": "A symptom-matched multi-drug regimen",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2308,
-    "output_tokens": 2225,
+    "output_tokens": 2263,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -48,42 +57,42 @@
         "layer": "2",
         "type": "subq",
         "label": "What symptoms does the medicine target?",
-        "description": "Evaluates the focus and formulation of symptom relief."
+        "description": "Evaluates the specific symptoms the medicine is intended to treat."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "What are the active ingredients and their effects?",
-        "description": "Evaluates the type of active ingredient and its side effects."
+        "description": "Evaluates the type of active ingredients and their side effects."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the safety and interaction concerns?",
-        "description": "Evaluates safety for people with conditions like high blood pressure and drug interactions."
+        "label": "What are the safety and compatibility concerns?",
+        "description": "Evaluates the medicine's safety for people with conditions like high blood pressure and its compatibility with other medications."
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
         "label": "What are the personal or situational preferences?",
-        "description": "Evaluates user preferences like drowsiness tolerance or formulation."
+        "description": "Evaluates user preferences such as ease of access, duration of action, and convenience."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "symptom relief focus",
-        "description": "Whether the medicine is focused on a single or multiple symptoms."
+        "description": "Whether the medicine is focused on relieving specific cold symptoms."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "active ingredient type",
-        "description": "The type of active ingredient in the medicine."
+        "description": "The type of active ingredient in the medicine (e.g., antihistamine, decongestant)."
       },
       {
         "id": "c3",
@@ -104,14 +113,14 @@
         "layer": "3",
         "type": "concept",
         "label": "targeted symptom",
-        "description": "The specific symptom the medicine is designed to treat."
+        "description": "The specific symptom the medicine is designed to treat (e.g., runny nose, cough)."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "formulation type",
-        "description": "The form of the medicine (e.g., pill, spray)."
+        "description": "The form of the medicine (e.g., spray, pill, liquid)."
       },
       {
         "id": "c7",
@@ -125,42 +134,42 @@
         "layer": "3",
         "type": "concept",
         "label": "duration of action",
-        "description": "How long the medicine remains effective."
+        "description": "How long the medicine's effects last."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "combination with other medications",
-        "description": "Whether the medicine interacts with other drugs."
+        "description": "Whether the medicine can be safely combined with other medications."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "user preference",
-        "description": "Personal or situational preferences like formulation or side effect tolerance."
+        "description": "Personal or situational preferences such as ease of access and convenience."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Pseudoephedrine (Sudafed)",
-        "description": "A decongestant for nasal stuffiness."
+        "description": "A decongestant effective for nasal congestion."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A first-generation antihistamine (chlorpheniramine or diphenhydramine)",
-        "description": "An antihistamine for runny nose and watery eyes."
+        "description": "Effective for runny nose and watery eyes but causes drowsiness."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A symptom-matched multi-drug regimen",
-        "description": "A combination of medicines targeting multiple cold symptoms."
+        "description": "A combination of medications tailored to the user's specific symptoms."
       }
     ],
     "edges": [
@@ -189,10 +198,6 @@
         "target": "c5"
       },
       {
-        "source": "sq1",
-        "target": "c6"
-      },
-      {
         "source": "sq2",
         "target": "c2"
       },
@@ -202,11 +207,7 @@
       },
       {
         "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
-        "target": "c8"
+        "target": "c6"
       },
       {
         "source": "sq3",
@@ -214,7 +215,15 @@
       },
       {
         "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
         "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c8"
       },
       {
         "source": "sq4",
@@ -226,6 +235,10 @@
       },
       {
         "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
         "target": "a2"
       },
       {
@@ -282,10 +295,6 @@
       },
       {
         "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
         "target": "a3"
       },
       {
@@ -295,14 +304,6 @@
       {
         "source": "c9",
         "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
       },
       {
         "source": "c10",

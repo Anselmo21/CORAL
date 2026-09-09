@@ -23,13 +23,22 @@
   "baseline_answer": "Petro-Points (Petro-Canada)",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1974,
-    "output_tokens": 3403,
+    "output_tokens": 3459,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -56,119 +65,119 @@
         "layer": "2",
         "type": "subq",
         "label": "What are the annual fee, gas station partner coverage, sign-up bonus, expiration policy, and foreign transaction fee of the gas loyalty points card?",
-        "description": "The annual fee, gas station partner coverage, sign-up bonus, expiration policy, and foreign transaction fee of the gas loyalty points card are also important factors to consider."
+        "description": "The annual fee, gas station partner coverage, sign-up bonus, expiration policy, and foreign transaction fee of the gas loyalty points card are important factors to consider."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "What are the extra perks and mobile app quality of the gas loyalty points card?",
-        "description": "The extra perks and mobile app quality of the gas loyalty points card are also important factors to consider."
+        "description": "The extra perks and mobile app quality of the gas loyalty points card are important factors to consider."
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
         "label": "What are the credit requirements of the gas loyalty points card?",
-        "description": "The credit requirements of the gas loyalty points card are also important factors to consider."
+        "description": "The credit requirements of the gas loyalty points card are important factors to consider."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "points earn rate",
-        "description": "The points earn rate of the gas loyalty points card."
+        "description": "The rate at which points are earned."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "redemption flexibility",
-        "description": "The redemption flexibility of the gas loyalty points card."
+        "description": "The ease with which points can be redeemed."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "annual fee",
-        "description": "The annual fee of the gas loyalty points card."
+        "description": "The annual fee charged by the gas loyalty points card."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "gas station partner coverage",
-        "description": "The gas station partner coverage of the gas loyalty points card."
+        "description": "The number of gas stations that accept the gas loyalty points card."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "sign-up bonus",
-        "description": "The sign-up bonus of the gas loyalty points card."
+        "description": "The bonus points or rewards offered for signing up for the gas loyalty points card."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "expiration policy",
-        "description": "The expiration policy of the gas loyalty points card."
+        "description": "The policy regarding the expiration of points or rewards."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "mobile app quality",
-        "description": "The mobile app quality of the gas loyalty points card."
+        "description": "The quality and user-friendliness of the mobile app associated with the gas loyalty points card."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "extra perks",
-        "description": "The extra perks of the gas loyalty points card."
+        "description": "Any additional benefits or rewards offered by the gas loyalty points card."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "foreign transaction fee",
-        "description": "The foreign transaction fee of the gas loyalty points card."
+        "description": "The fee charged for transactions made outside of the country."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "credit requirements",
-        "description": "The credit requirements of the gas loyalty points card."
+        "description": "The credit score or requirements needed to be eligible for the gas loyalty points card."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Esso Extra",
-        "description": "The Esso Extra gas loyalty points card."
+        "description": "A gas loyalty points card offered by Esso."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Petro-Points (Petro-Canada)",
-        "description": "The Petro-Points gas loyalty points card."
+        "description": "A gas loyalty points card offered by Petro-Canada."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "RBC Royal Bank Esso Visa",
-        "description": "The RBC Royal Bank Esso Visa gas loyalty points card."
+        "description": "A gas loyalty points card offered by RBC Royal Bank and Esso."
       },
       {
         "id": "a4",
         "layer": "4",
         "type": "answer",
         "label": "CIBC Costco Gas Mastercard",
-        "description": "The CIBC Costco Gas Mastercard gas loyalty points card."
+        "description": "A gas loyalty points card offered by CIBC and Costco."
       }
     ],
     "edges": [

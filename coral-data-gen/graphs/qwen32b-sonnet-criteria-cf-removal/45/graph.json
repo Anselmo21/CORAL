@@ -22,13 +22,22 @@
   "baseline_answer": "Answer B (Refurbished MacBook Air): Stretch to a refurbished M1 MacBook Air at $800\u2013900 \u2014 the unmatched battery life, build quality, and 5+ year longevity make it the best total cost of ownership under $1,000.",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1594,
-    "output_tokens": 2698,
+    "output_tokens": 2692,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,28 +50,28 @@
         "layer": "1",
         "type": "question",
         "label": "What's the best laptop for a college student on a budget under $1,000?",
-        "description": "Identify the best laptop for a student with a $1,000 budget, considering performance, durability, and value."
+        "description": "Evaluating laptops under $1,000 for college students based on cost, durability, performance, and ecosystem."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "Cost and Value",
-        "description": "Criteria related to price and value for money."
+        "description": "Criteria related to purchase price and value for money."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "Longevity and Durability",
-        "description": "Criteria related to how long the laptop will last and how well it can be maintained."
+        "description": "Criteria related to build quality, repairability, and resale value."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "Performance and Ecosystem",
-        "description": "Criteria related to performance, battery life, and software compatibility."
+        "description": "Criteria related to battery life, performance, and software compatibility."
       },
       {
         "id": "c1",
@@ -76,28 +85,28 @@
         "layer": "3",
         "type": "concept",
         "label": "battery life for all-day use",
-        "description": "The laptop should last a full day of use without recharging."
+        "description": "The laptop should last a full day of classes without recharging."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "build quality and durability over 4 years",
-        "description": "The laptop should be sturdy and able to survive 4 years of use."
+        "description": "The laptop should survive 4 years of use without major issues."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "performance for coursework and light creative tasks",
-        "description": "The laptop should handle basic academic and creative workloads."
+        "description": "The laptop should handle basic academic and creative software."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "ecosystem compatibility (macOS vs Windows)",
-        "description": "The laptop should work well with the software and tools the student uses."
+        "description": "The laptop should work well with the student's preferred software ecosystem."
       },
       {
         "id": "c6",
@@ -111,42 +120,42 @@
         "layer": "3",
         "type": "concept",
         "label": "weight and portability",
-        "description": "The laptop should be light and easy to carry around campus."
+        "description": "The laptop should be light and easy to carry between classes."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "resale value at end of college",
-        "description": "The laptop should retain value after 4 years for resale."
+        "description": "The laptop should retain value for resale after 4 years."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "software compatibility requirements",
-        "description": "The laptop should support the software needed for coursework and projects."
+        "description": "The laptop should support the software needed for coursework."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "value for price at lower budget tiers",
-        "description": "The laptop should offer good performance and features for its price."
+        "description": "The laptop should offer good performance for its price."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Lenovo IdeaPad Default): Get the Lenovo IdeaPad Flex 5 or Acer Aspire 5 in the $500\u2013700 range \u2014 they offer adequate performance, good battery life, and strong value for standard college coursework without stretching the budget.",
-        "description": "Best for students who want a low-cost, no-frills laptop for basic coursework."
+        "description": "Best for students who prioritize low cost and basic performance."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Refurbished MacBook Air): Stretch to a refurbished M1 MacBook Air at $800\u2013900 \u2014 the unmatched battery life, build quality, and 5+ year longevity make it the best total cost of ownership under $1,000.",
-        "description": "Best for students who want long-term value and durability."
+        "description": "Best for students who prioritize long-term value and durability."
       },
       {
         "id": "a3",

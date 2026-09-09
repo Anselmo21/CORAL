@@ -22,13 +22,22 @@
   "baseline_answer": "Pigment-based inkjet ink in a rear-feed printer",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1872,
-    "output_tokens": 1926,
+    "output_tokens": 1885,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,112 +50,112 @@
         "layer": "1",
         "type": "question",
         "label": "best ink for prints on cardstock",
-        "description": "Choosing the best ink for cardstock printing"
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "most trustworthy source of information",
-        "description": "Choosing the most trustworthy source of information for ink selection"
+        "label": "What sources are trustworthy for recommending ink and printers for cardstock printing?",
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "user perspective",
-        "description": "Considering different user perspectives for ink selection"
+        "label": "What perspectives are relevant for determining the best ink and printer for cardstock printing?",
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: printer manufacturer documentation",
-        "description": "Considering printer manufacturer documentation for trustworthiness"
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: craft / stationery community forum",
-        "description": "Considering craft / stationery community forum for trustworthiness"
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: specialty paper vendor (e.g., RedRiverCatalog)",
-        "description": "Considering specialty paper vendor for trustworthiness"
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: consumer printer review site",
-        "description": "Considering consumer printer review site for trustworthiness"
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: graphic arts industry publication",
-        "description": "Considering graphic arts industry publication for trustworthiness"
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: wedding invitation crafter",
-        "description": "Considering wedding invitation crafter perspective"
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: budget hobbyist",
-        "description": "Considering budget hobbyist perspective"
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: small-business print shop owner",
-        "description": "Considering small-business print shop owner perspective"
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: archival / longevity-focused user",
-        "description": "Considering archival / longevity-focused user perspective"
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: metallic-paper specialty user",
-        "description": "Considering metallic-paper specialty user perspective"
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Pigment-based inkjet ink in a rear-feed printer",
-        "description": "Best ink for cardstock printing"
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Standard dye-based inkjet ink in a top/rear-loading Epson or Canon",
-        "description": "Alternative ink option"
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Toner (laser printing)",
-        "description": "Alternative printing method"
+        "description": ""
       }
     ],
     "edges": [
@@ -232,50 +241,34 @@
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c10",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
         "target": "a3"
       },
       {
-        "source": "c10",
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
         "target": "a3"
       }
     ]

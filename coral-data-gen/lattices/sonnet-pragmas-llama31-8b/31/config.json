@@ -20,22 +20,31 @@
     "Answer C (Wharton for Capital-Intensive Startups): Choose Wharton if your venture is in fintech, healthtech, or requires sophisticated capital structuring \u2014 its finance depth and cross-disciplinary Penn ecosystem are particularly strong for capital-intensive business models."
   ],
   "sources": "Source 1 (2023, US News, USA): Stanford GSB and HBS consistently rank 1\u20132 for entrepreneurship; Wharton ranks top 5 with particular strength in finance and consulting rather than venture-backed startup creation.\n\nSource 2 (2022, Forbes, USA): Stanford GSB alumni have founded more billion-dollar companies per capita than any other MBA program \u2014 proximity to Silicon Valley, alumni investor networks, and culture of risk-taking make it uniquely suited for tech startup founders.\n\nSource 3 (2023, Reddit r/MBA, USA): Community advice for entrepreneurship consistently points to Stanford GSB \u2014 HBS produces great operators and corporate leaders but Stanford's VC network and culture are unmatched for early-stage founding.\n\nSource 4 (2022, Poets and Quants, USA): HBS offers the most powerful global alumni network and brand recognition \u2014 for entrepreneurs targeting industries outside tech (consumer goods, healthcare, emerging markets), HBS connections often outperform Stanford's tech-centric ecosystem.\n\nSource 5 (2021, Wharton School, Philadelphia PA USA): Wharton's Entrepreneurship program and Penn's cross-disciplinary Penn Labs and Venture Lab provide strong support for fintech, healthtech, and platform businesses \u2014 its strength in finance makes it ideal for capital-intensive ventures.",
-  "halted": true,
-  "halted_reason": "all 10 singletons produced the same top-1 answer: 'answer a (stanford gsb default): prioritize stanford gsb for entrepreneurship \u2014 its vc network, silicon valley location, alumni founder density, and risk-tolerant culture make it the strongest launchpad for venture-backed tech startups.'",
+  "halted": false,
+  "halted_reason": null,
   "combos_total": 1024,
-  "combos_run": 11,
+  "combos_run": 1024,
   "usage": {
-    "prompt_tokens": 8567,
-    "output_tokens": 155,
-    "llm_calls": 11,
+    "prompt_tokens": 835078,
+    "output_tokens": 12245,
+    "llm_calls": 1024,
     "finish_reasons": {
-      "stop": 11
+      "stop": 1024
     }
   },
   "generation": {
     "model": "meta-llama/Llama-3.1-8B-Instruct",
     "provider": "vllm",
     "temperature": 0.0,
-    "max_tokens": 4096
+    "max_tokens": 4096,
+    "serving": {
+      "tensor_parallel_size": 4,
+      "max_model_len": 8192,
+      "gpu_memory_utilization": 0.72,
+      "max_num_seqs": null,
+      "max_num_batched_tokens": 2048,
+      "enforce_eager": false,
+      "disable_custom_all_reduce": false
+    }
   }
 }

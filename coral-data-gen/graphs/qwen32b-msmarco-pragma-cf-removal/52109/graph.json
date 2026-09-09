@@ -22,13 +22,22 @@
   "baseline_answer": "Treat the underlying condition + lifestyle change (cardiovascular fitness, weight, glucose control)",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2360,
-    "output_tokens": 2405,
+    "output_tokens": 2411,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,113 +56,113 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Physical/vascular/metabolic cause",
-        "description": "What is the best treatment for impotence with a physical/vascular/metabolic cause?"
+        "label": "Clinical and evidence-based treatment",
+        "description": "What is the best treatment for impotence from a clinical and evidence-based perspective?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Psychological/situational cause",
-        "description": "What is the best treatment for impotence with a psychological or situational cause?"
+        "label": "Lifestyle and patient-centered treatment",
+        "description": "What is the best treatment for impotence from a patient-centered and lifestyle perspective?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Patient avoiding medications",
-        "description": "What is the best treatment for impotence when the patient avoids medications or prefers non-pharmacologic approaches?"
+        "label": "Psychological and situational treatment",
+        "description": "What is the best treatment for impotence from a psychological and situational perspective?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: clinical practice guideline",
-        "description": "Sources that are clinical practice guidelines"
+        "description": "Prioritize sources from clinical practice guidelines."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed urology journal",
-        "description": "Sources from peer-reviewed urology journals"
+        "description": "Prioritize sources from peer-reviewed urology journals."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: evidence-based medicine review",
-        "description": "Sources that are evidence-based medicine reviews"
+        "description": "Prioritize sources from evidence-based medicine reviews."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: mental health professional",
-        "description": "Sources from mental health professionals"
+        "description": "Prioritize sources from mental health professionals."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: wellness / lifestyle publication",
-        "description": "Sources from wellness or lifestyle publications"
+        "description": "Prioritize sources from wellness or lifestyle publications."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: man with confirmed vascular / metabolic cause",
-        "description": "Sources from the perspective of a man with a confirmed vascular/metabolic cause"
+        "description": "Prioritize sources from the perspective of men with vascular or metabolic causes."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: man with stress / anxiety / relationship cause",
-        "description": "Sources from the perspective of a man with stress/anxiety/relationship cause"
+        "description": "Prioritize sources from the perspective of men with stress, anxiety, or relationship causes."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: older man with chronic ED",
-        "description": "Sources from the perspective of an older man with chronic ED"
+        "description": "Prioritize sources from the perspective of older men with chronic ED."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: patient avoiding medications",
-        "description": "Sources from the perspective of a patient avoiding medications"
+        "description": "Prioritize sources from the perspective of patients avoiding medications."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: young man with situational ED",
-        "description": "Sources from the perspective of a young man with situational ED"
+        "description": "Prioritize sources from the perspective of young men with situational ED."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A PDE5 inhibitor (Viagra, Cialis, or Levitra) for direct pharmacologic restoration of erectile function",
-        "description": "Pharmacologic treatment with PDE5 inhibitors for erectile dysfunction"
+        "description": "Pharmacologic treatment using PDE5 inhibitors."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Treat the underlying condition + lifestyle change (cardiovascular fitness, weight, glucose control)",
-        "description": "Treating the root cause and improving lifestyle for long-term ED management"
+        "description": "Treating underlying conditions and making lifestyle changes."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Psychological treatment: sensate focus and counseling for stress / anxiety / relationship-driven cases",
-        "description": "Psychological interventions for stress or relationship-based ED"
+        "description": "Psychological treatment for stress or relationship-related ED."
       }
     ],
     "edges": [
@@ -182,34 +191,34 @@
         "target": "c3"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
         "target": "c6"
       },
       {
-        "source": "sq1",
+        "source": "sq2",
         "target": "c8"
       },
       {
         "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
-      },
-      {
-        "source": "sq3",
         "target": "c9"
       },
       {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
         "source": "c1",
         "target": "a2"
       },
@@ -227,7 +236,7 @@
       },
       {
         "source": "c5",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c6",
@@ -243,7 +252,7 @@
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c10",
@@ -262,19 +271,7 @@
         "target": "a1"
       },
       {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
         "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
         "target": "a1"
       },
       {
@@ -286,8 +283,16 @@
         "target": "a1"
       },
       {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
         "source": "c10",
-        "target": "a1"
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
       }
     ]
   }

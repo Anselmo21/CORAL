@@ -22,13 +22,22 @@
   "baseline_answer": "Education Week Quality Counts state grade ranking \u2014 academic-policy-depth ranking used by researchers and policymakers",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1805,
-    "output_tokens": 2107,
+    "output_tokens": 2063,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,29 +56,29 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Financial and resource-based indicators",
-        "description": "What are the financial and resource-based indicators of education quality?"
+        "label": "What are the financial and resource-based indicators of education quality?",
+        "description": "Criteria related to funding, resources, and infrastructure."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Academic and outcome-based indicators",
-        "description": "What are the academic and outcome-based indicators of education quality?"
+        "label": "What are the academic and outcome-based indicators of education quality?",
+        "description": "Criteria related to student performance, graduation rates, and testing."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Policy and demographic indicators",
-        "description": "What are the policy and demographic indicators of education quality?"
+        "label": "What are the policy and demographic indicators of education quality?",
+        "description": "Criteria related to state policies, demographics, and teacher qualifications."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "funding levels",
-        "description": "Amount of money allocated per student for education."
+        "description": "Amount of money allocated per student."
       },
       {
         "id": "c2",
@@ -90,14 +99,14 @@
         "layer": "3",
         "type": "concept",
         "label": "graduation rates",
-        "description": "Percentage of students who graduate from high school."
+        "description": "Percentage of students who graduate on time."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "educational resources",
-        "description": "Availability of books, technology, and learning tools."
+        "description": "Availability of books, technology, and classroom materials."
       },
       {
         "id": "c6",
@@ -111,7 +120,7 @@
         "layer": "3",
         "type": "concept",
         "label": "demographic factors",
-        "description": "Population characteristics like income and race affecting education."
+        "description": "Population characteristics like income and race."
       },
       {
         "id": "c8",
@@ -125,35 +134,35 @@
         "layer": "3",
         "type": "concept",
         "label": "parental involvement",
-        "description": "Level of engagement of parents in their children's education."
+        "description": "Level of engagement from parents in education."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "school infrastructure",
-        "description": "Quality of school buildings and facilities."
+        "description": "Condition and availability of school buildings and facilities."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "WalletHub composite ranking (MA, NJ, VT, NH, CT top; Nevada, Louisiana, Mississippi bottom)",
-        "description": "Broad multi-metric blend for general readership."
+        "label": "WalletHub composite ranking (MA, NJ, VT, NH, CT top; Nevada, Louisiana, Mississippi bottom) \u2014 broad multi-metric blend for general readership",
+        "description": "A general-purpose ranking that blends multiple metrics for public consumption."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Annie E. Casey Foundation Kids Count ranking",
-        "description": "Child-welfare-focused metric weighting outcomes for kids."
+        "label": "Annie E. Casey Foundation Kids Count ranking \u2014 child-welfare-focused metric weighting outcomes for kids",
+        "description": "A ranking focused on child welfare and outcomes for children."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Education Week Quality Counts state grade ranking",
-        "description": "Academic-policy-depth ranking used by researchers and policymakers."
+        "label": "Education Week Quality Counts state grade ranking \u2014 academic-policy-depth ranking used by researchers and policymakers",
+        "description": "A detailed academic and policy-based ranking used by experts."
       }
     ],
     "edges": [
@@ -191,7 +200,7 @@
       },
       {
         "source": "sq2",
-        "target": "c9"
+        "target": "c8"
       },
       {
         "source": "sq3",
@@ -207,7 +216,7 @@
       },
       {
         "source": "sq3",
-        "target": "c8"
+        "target": "c9"
       },
       {
         "source": "c1",
@@ -266,7 +275,7 @@
         "target": "a1"
       },
       {
-        "source": "c7",
+        "source": "c5",
         "target": "a1"
       },
       {
@@ -286,7 +295,7 @@
         "target": "a2"
       },
       {
-        "source": "c5",
+        "source": "c6",
         "target": "a2"
       },
       {

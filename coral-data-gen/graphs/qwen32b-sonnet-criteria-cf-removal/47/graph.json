@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Pixel 7a Default): Get the Google Pixel 7a \u2014 its camera quality, guaranteed multi-year updates, and clean Android experience make it the best overall mid-range Android when discounted to the $350\u2013400 range.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1541,
-    "output_tokens": 2458,
+    "output_tokens": 2437,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -55,14 +64,14 @@
         "layer": "2",
         "type": "subq",
         "label": "What phone offers the best display and long-term support?",
-        "description": "Evaluates display quality and software update longevity."
+        "description": "Evaluates display quality and software longevity."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "What phone offers the best battery and value for money?",
-        "description": "Evaluates battery life and value for specs at price point."
+        "description": "Evaluates battery life and value for specs."
       },
       {
         "id": "c1",
@@ -97,7 +106,7 @@
         "layer": "3",
         "type": "concept",
         "label": "value for specs at price point",
-        "description": "How well the phone's features match its price."
+        "description": "How well the phone's specs match its price."
       },
       {
         "id": "c6",

@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Debt and Invest Default): Pay off any high-interest debt first, top up your emergency fund to 3 months, then invest the remainder as a lump sum in a broad index fund \u2014 this order maximizes guaranteed and expected returns.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1672,
-    "output_tokens": 2214,
+    "output_tokens": 2109,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,119 +50,119 @@
         "layer": "1",
         "type": "question",
         "label": "What's the smartest thing to do with a $10,000 tax refund?",
-        "description": ""
+        "description": "Prioritize debt repayment, emergency fund building, and investment strategies"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "What is the best approach for someone with high-interest debt?",
-        "description": ""
+        "description": "Prioritize debt repayment and emergency fund building"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "What is the best approach for someone without high-interest debt and a full emergency fund?",
-        "description": ""
+        "description": "Prioritize investment strategies"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "What is the best approach for someone who is risk-averse and worried about market timing?",
-        "description": ""
+        "description": "Prioritize conservative investment strategies"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": ""
+        "description": "Sources from 2023 only"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": ""
+        "description": "Sources from 2021 to 2023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": ""
+        "description": "Sources from the USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Investor with existing high-interest debt",
-        "description": ""
+        "description": "Sources from investors with high-interest debt"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Debt-free investor with full emergency fund",
-        "description": ""
+        "description": "Sources from debt-free investors with full emergency funds"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Risk-averse investor worried about market timing",
-        "description": ""
+        "description": "Sources from risk-averse investors worried about market timing"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer financial advisory",
-        "description": ""
+        "description": "Sources from consumer financial advisory"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Institutional investment research",
-        "description": ""
+        "description": "Sources from institutional investment research"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Community peer advice",
-        "description": ""
+        "description": "Sources from community peer advice"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Financial journalism",
-        "description": ""
+        "description": "Sources from financial journalism"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Debt and Invest Default",
-        "description": "Pay off any high-interest debt first, top up your emergency fund to 3 months, then invest the remainder as a lump sum in a broad index fund \u2014 this order maximizes guaranteed and expected returns."
+        "description": "Pay off high-interest debt first, top up emergency fund, then invest lump sum"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Lump Sum Invest",
-        "description": "If you have no high-interest debt and a full emergency fund, invest the entire $10k immediately as a lump sum \u2014 two-thirds of the time this beats spreading contributions and markets reward early investment."
+        "description": "Invest entire $10k immediately as a lump sum"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "DCA Over 6 Months",
-        "description": "Spread the $10k across 6 monthly investments to reduce the risk of deploying at a market peak \u2014 you sacrifice some expected return but avoid the regret of an immediate post-investment downturn."
+        "description": "Spread $10k across 6 monthly investments"
       }
     ],
     "edges": [
@@ -195,7 +204,7 @@
       },
       {
         "source": "sq2",
-        "target": "c3"
+        "target": "c10"
       },
       {
         "source": "sq3",
@@ -203,11 +212,11 @@
       },
       {
         "source": "sq3",
-        "target": "c2"
+        "target": "c8"
       },
       {
         "source": "sq3",
-        "target": "c8"
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -215,11 +224,11 @@
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c3",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c4",
@@ -239,7 +248,7 @@
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c9",
@@ -250,23 +259,23 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
         "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
         "target": "a3"
       },
       {
@@ -274,15 +283,7 @@
         "target": "a3"
       },
       {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
         "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
         "target": "a3"
       },
       {

@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Used 2\u20134 Years Old Default): Buy a 2\u20134 year old used vehicle from a reliable brand \u2014 you avoid the steepest depreciation while getting modern safety features, and $25k buys significantly more car than new at that budget.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1677,
-    "output_tokens": 2496,
+    "output_tokens": 2635,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,28 +50,28 @@
         "layer": "1",
         "type": "question",
         "label": "Should I buy a new car or a used one? I have about $25,000 to spend.",
-        "description": "Decision between new and used car purchase with a $25k budget."
+        "description": "Decision between new, used, or certified pre-owned vehicles with a $25k budget."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "What is the best value for a $25k car purchase in the U.S.?",
-        "description": "Evaluates cost-effectiveness of new vs. used cars in the U.S. market."
+        "description": "Focus on cost-effectiveness and depreciation."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best option for a buyer prioritizing warranty and reliability?",
-        "description": "Evaluates reliability and warranty considerations in car purchase."
+        "label": "What is the best option for a buyer prioritizing long-term ownership and warranty?",
+        "description": "Focus on 10+ year ownership and warranty coverage."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best option for a buyer planning to keep the car for 10+ years?",
-        "description": "Evaluates long-term ownership value of new vs. used cars."
+        "label": "What is the best option for a buyer seeking a balance between cost and reliability?",
+        "description": "Focus on CPO or similar middle-ground options."
       },
       {
         "id": "c1",
@@ -83,14 +92,14 @@
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Only consider sources from the U.S."
+        "description": "Only consider U.S.-based sources."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Cost-conscious buyer optimizing total cost of ownership",
-        "description": "Prioritize cost-effectiveness and budget."
+        "description": "Prioritize cost-effectiveness and depreciation."
       },
       {
         "id": "c5",
@@ -104,35 +113,35 @@
         "layer": "3",
         "type": "directive",
         "label": "perspective: Long-term keeper planning to own 10+ years",
-        "description": "Prioritize long-term ownership value."
+        "description": "Prioritize long-term ownership considerations."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer product testing organization",
-        "description": "Prioritize sources like Consumer Reports."
+        "description": "Prioritize testing organizations like Consumer Reports."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer product recommendation publication",
-        "description": "Prioritize sources like Wirecutter."
+        "description": "Prioritize recommendation publications like Wirecutter."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Personal finance community advice",
-        "description": "Prioritize community advice like Reddit."
+        "description": "Prioritize community advice from platforms like Reddit."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Automotive valuation service",
-        "description": "Prioritize sources like Edmunds and KBB."
+        "description": "Prioritize valuation services like Edmunds or Kelley Blue Book."
       },
       {
         "id": "a1",
@@ -199,19 +208,23 @@
       },
       {
         "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
         "target": "c5"
       },
       {
         "source": "sq2",
-        "target": "c7"
+        "target": "c6"
       },
       {
         "source": "sq2",
         "target": "c8"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
       },
       {
         "source": "sq3",
@@ -223,11 +236,7 @@
       },
       {
         "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq3",
-        "target": "c8"
+        "target": "c5"
       },
       {
         "source": "sq3",
@@ -254,28 +263,16 @@
         "target": "a1"
       },
       {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
         "source": "c6",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c7",
         "target": "a1"
       },
       {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
         "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c9",
@@ -284,6 +281,46 @@
       {
         "source": "c10",
         "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
       },
       {
         "source": "c10",

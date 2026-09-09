@@ -22,13 +22,22 @@
   "baseline_answer": "Answer B (Law School for Big Earnings): Go to a top-20 law school if your goal is BigLaw or federal clerkships \u2014 the $215k starting salary justifies the debt investment in a way that lower-ranked law school outcomes do not.",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1732,
-    "output_tokens": 2874,
+    "output_tokens": 2671,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -48,112 +57,112 @@
         "layer": "2",
         "type": "subq",
         "label": "What is the current state of the job market for paralegals and lawyers?",
-        "description": "The sub-question is: What is the current state of the job market for paralegals and lawyers?"
+        "description": "We are interested in the current state of the job market for paralegals and lawyers."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "What are the financial implications of becoming a paralegal versus attending law school?",
-        "description": "The sub-question is: What are the financial implications of becoming a paralegal versus attending law school?"
+        "description": "We are interested in the financial implications of becoming a paralegal versus attending law school."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "What are the career paths and opportunities available to paralegals and lawyers?",
-        "description": "The sub-question is: What are the career paths and opportunities available to paralegals and lawyers?"
+        "description": "We are interested in the career paths and opportunities available to paralegals and lawyers."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "The directive is: Only consider sources from 2023."
+        "description": "We are interested in the current state of the job market for paralegals and lawyers in 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "The directive is: Consider sources from 2021 to 2023."
+        "description": "We are interested in the state of the job market for paralegals and lawyers over the past two years."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "The directive is: Only consider sources from the USA."
+        "description": "We are interested in the job market for paralegals and lawyers in the USA."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student uncertain about commitment to law",
-        "description": "The directive is: Only consider sources from the perspective of a student uncertain about committing to law."
+        "description": "We are interested in the advice of students who are uncertain about their commitment to law school."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student targeting BigLaw or high-earning legal careers",
-        "description": "The directive is: Only consider sources from the perspective of a student targeting BigLaw or high-earning legal careers."
+        "description": "We are interested in the advice of students who are targeting BigLaw or high-earning legal careers."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student focused on work-life balance and debt avoidance",
-        "description": "The directive is: Only consider sources from the perspective of a student focused on work-life balance and debt avoidance."
+        "description": "We are interested in the advice of students who are focused on work-life balance and debt avoidance."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Education ranking publication",
-        "description": "The directive is: Only consider sources from education ranking publications."
+        "description": "We are interested in the credibility of law schools."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Government labor statistics",
-        "description": "The directive is: Only consider sources from government labor statistics."
+        "description": "We are interested in the accuracy of government labor statistics."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Law student and practitioner community",
-        "description": "The directive is: Only consider sources from the law student and practitioner community."
+        "description": "We are interested in the advice of law students and practitioners."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Legal industry publication",
-        "description": "The directive is: Only consider sources from legal industry publications."
+        "description": "We are interested in the credibility of legal industry publications."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Paralegal First Default)",
-        "description": "The answer is: Start as a paralegal \u2014 it lets you test whether you genuinely enjoy legal work before committing $150\u2013250k to law school, and paralegal careers are stable, growing, and financially reasonable for those not targeting BigLaw."
+        "description": "Start as a paralegal \u2014 it lets you test whether you genuinely enjoy legal work before committing $150\u2013250k to law school, and paralegal careers are stable, growing, and financially reasonable for those not targeting BigLaw."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Law School for Big Earnings)",
-        "description": "The answer is: Go to a top-20 law school if your goal is BigLaw or federal clerkships \u2014 the $215k starting salary justifies the debt investment in a way that lower-ranked law school outcomes do not."
+        "description": "Go to a top-20 law school if your goal is BigLaw or federal clerkships \u2014 the $215k starting salary justifies the debt investment in a way that lower-ranked law school outcomes do not."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Paralegal as Career, Not Stepping Stone)",
-        "description": "The answer is: Build a paralegal career intentionally rather than as a stopgap \u2014 specialization in areas like IP, healthcare, or corporate law creates a fulfilling, debt-free career that compares favorably to most non-BigLaw attorney outcomes."
+        "description": "Build a paralegal career intentionally rather than as a stopgap \u2014 specialization in areas like IP, healthcare, or corporate law creates a fulfilling, debt-free career that compares favorably to most non-BigLaw attorney outcomes."
       }
     ],
     "edges": [
@@ -211,31 +220,23 @@
       },
       {
         "source": "c1",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c3",
         "target": "a1"
       },
       {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
         "source": "c4",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c5",
         "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
       },
       {
         "source": "c6",
@@ -259,63 +260,23 @@
       },
       {
         "source": "c1",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c2",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c3",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c4",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c6",

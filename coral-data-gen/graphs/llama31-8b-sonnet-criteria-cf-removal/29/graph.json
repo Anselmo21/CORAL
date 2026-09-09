@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Skip Supplements Default): Don't bother with probiotic supplements if you're generally healthy \u2014 evidence for general gut health benefits is weak, the market is poorly regulated, and dietary fiber diversity produces more reliable microbiome improvements.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1550,
-    "output_tokens": 1648,
+    "output_tokens": 1664,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,119 +50,119 @@
         "layer": "1",
         "type": "question",
         "label": "Should I take a probiotic supplement for gut health?",
-        "description": "There's so much conflicting information out there."
+        "description": "Conflicting information on probiotic supplements"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "General gut health benefits and regulation of the supplement market",
-        "description": ""
+        "description": "Evidence for general gut health benefits and supplement regulation"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "Effectiveness of probiotics for specific medical conditions",
-        "description": ""
+        "description": "Evidence for probiotics in specific medical conditions"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "Comparison to alternative approaches like dietary fiber diversity and fermented foods",
-        "description": ""
+        "description": "Comparison to dietary fiber and fermented foods"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "specific medical condition being treated",
-        "description": ""
+        "description": "Effectiveness of probiotics for specific conditions"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "strain-specific clinical evidence",
-        "description": ""
+        "description": "Evidence for specific probiotic strains"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "general healthy adult benefit",
-        "description": ""
+        "description": "Evidence for general gut health benefits"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "supplement regulation and label accuracy",
-        "description": ""
+        "description": "Regulation of the supplement market"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "cost of probiotic supplements",
-        "description": ""
+        "description": "Cost of probiotic supplements"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "comparison to dietary fiber approach",
-        "description": ""
+        "description": "Comparison to dietary fiber"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "fermented food alternatives",
-        "description": ""
+        "description": "Fermented food alternatives"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "antibiotic use or post-antibiotic recovery",
-        "description": ""
+        "description": "Effectiveness of probiotics after antibiotics"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "IBS or digestive condition diagnosis",
-        "description": ""
+        "description": "Effectiveness of probiotics for IBS"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "manufacturer conflict of interest in research",
-        "description": ""
+        "description": "Conflict of interest in research"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Skip Supplements Default",
-        "description": "Don't bother with probiotic supplements if you're generally healthy \u2014 evidence for general gut health benefits is weak, the market is poorly regulated, and dietary fiber diversity produces more reliable microbiome improvements."
+        "description": "Don't bother with probiotic supplements if you're generally healthy"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Targeted Probiotics for Specific Conditions",
-        "description": "Take a probiotic with evidence for your specific condition \u2014 Lactobacillus rhamnosus GG for antibiotic-associated diarrhea or specific IBS strains \u2014 strain and condition specificity is everything."
+        "description": "Take a probiotic with evidence for your specific condition"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Fermented Foods Instead",
-        "description": "Replace supplements with regular fermented foods (kefir, kimchi, yogurt) \u2014 they provide diverse live cultures, are well-regulated by their food category, and research suggests superior microbiome outcomes versus isolated supplements."
+        "description": "Replace supplements with regular fermented foods"
       }
     ],
     "edges": [

@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Stanford GSB Default): Prioritize Stanford GSB for entrepreneurship \u2014 its VC network, Silicon Valley location, alumni founder density, and risk-tolerant culture make it the strongest launchpad for venture-backed tech startups.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1662,
-    "output_tokens": 2494,
+    "output_tokens": 2540,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -48,7 +57,7 @@
         "layer": "2",
         "type": "subq",
         "label": "Best for tech startup in Silicon Valley",
-        "description": "Which MBA program is best for a venture-backed tech startup in Silicon Valley?"
+        "description": "Which MBA program is best for a tech startup in Silicon Valley?"
       },
       {
         "id": "sq2",
@@ -104,55 +113,55 @@
         "layer": "3",
         "type": "directive",
         "label": "perspective: Entrepreneur in finance, healthcare, or consumer sectors",
-        "description": "Only consider sources from the perspective of non-tech entrepreneurs"
+        "description": "Only consider sources from the perspective of a non-tech entrepreneur"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Education ranking publication",
-        "description": "Only consider education ranking publications"
+        "description": "Only consider sources from education ranking publications"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Business journalism",
-        "description": "Only consider business journalism sources"
+        "description": "Only consider sources from business journalism"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Community peer advice from MBA applicants",
-        "description": "Only consider peer advice from MBA applicant communities"
+        "description": "Only consider sources from community peer advice"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: School-published program materials",
-        "description": "Only consider materials published by the schools themselves"
+        "description": "Only consider sources from school-published program materials"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Stanford GSB Default",
+        "label": "Answer A (Stanford GSB Default)",
         "description": "Prioritize Stanford GSB for entrepreneurship \u2014 its VC network, Silicon Valley location, alumni founder density, and risk-tolerant culture make it the strongest launchpad for venture-backed tech startups."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "HBS for Non-Tech Ventures",
+        "label": "Answer B (HBS for Non-Tech Ventures)",
         "description": "Choose HBS if your startup targets industries beyond tech \u2014 its unmatched global alumni network and brand recognition opens doors in healthcare, consumer goods, emerging markets, and institutional fundraising."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Wharton for Capital-Intensive Startups",
+        "label": "Answer C (Wharton for Capital-Intensive Startups)",
         "description": "Choose Wharton if your venture is in fintech, healthtech, or requires sophisticated capital structuring \u2014 its finance depth and cross-disciplinary Penn ecosystem are particularly strong for capital-intensive business models."
       }
     ],
@@ -187,10 +196,6 @@
       },
       {
         "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
         "target": "c9"
       },
       {
@@ -204,10 +209,6 @@
       {
         "source": "sq2",
         "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c7"
       },
       {
         "source": "sq2",
@@ -228,10 +229,6 @@
       {
         "source": "sq3",
         "target": "c6"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
       },
       {
         "source": "sq3",
@@ -298,10 +295,6 @@
         "target": "a2"
       },
       {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
         "source": "c8",
         "target": "a2"
       },
@@ -323,10 +316,6 @@
       },
       {
         "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
         "target": "a3"
       },
       {

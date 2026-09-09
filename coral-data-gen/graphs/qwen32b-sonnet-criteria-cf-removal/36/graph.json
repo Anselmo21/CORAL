@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Self-Taught with Portfolio Default): You can absolutely be self-taught \u2014 UX is portfolio-driven and a strong case study portfolio from a bootcamp or self-directed projects will outperform a degree without portfolio work at most employers.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1571,
-    "output_tokens": 2386,
+    "output_tokens": 2530,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,98 +50,98 @@
         "layer": "1",
         "type": "question",
         "label": "I want to become a UX designer. Do I need a formal degree or can I be self-taught?",
-        "description": "Evaluating the best path to a UX design career: self-taught, formal degree, or bootcamp."
+        "description": "A question about the necessity of a formal degree versus self-teaching in UX design."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the hiring signals and barriers to entry for UX designers?",
-        "description": "Examines what employers look for in UX candidates and how different paths meet those expectations."
+        "label": "What are the hiring signals and barriers to entry in UX design?",
+        "description": "Criteria related to hiring signals, entry requirements, and employer preferences."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the long-term career implications of different educational paths?",
-        "description": "Evaluates how each path affects career growth, specialization, and seniority."
+        "label": "What are the long-term career implications of different learning paths?",
+        "description": "Criteria related to career growth, specialization, and seniority."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "What are the practical and financial trade-offs of each path?",
-        "description": "Considers time, cost, and learning structure for each educational option."
+        "description": "Criteria related to time, cost, and structure of learning."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "portfolio quality as primary hiring signal",
-        "description": "Employers prioritize strong case studies and project work over formal credentials."
+        "description": "Employers prioritize portfolio over formal credentials."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "theoretical depth in HCI and research methods",
-        "description": "Formal education provides deeper understanding of design theory and research."
+        "description": "Formal education provides deeper theoretical knowledge."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "time and cost to first employment",
-        "description": "How long and how much it takes to land a first UX job with each path."
+        "description": "How long and how much it takes to get a first job."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "target employer type (agency, startup, enterprise)",
-        "description": "Different employer types may value different educational backgrounds."
+        "description": "Preferences vary by employer type."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "self-discipline for self-directed learning",
-        "description": "Self-taught paths require strong personal motivation and structure."
+        "description": "Self-teaching requires strong personal motivation."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "networking through educational programs",
-        "description": "Formal programs often provide structured networking and mentorship."
+        "description": "Formal programs offer professional connections."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "seniority level and career growth",
-        "description": "Long-term career trajectory and potential for advancement."
+        "description": "Long-term career trajectory and senior roles."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "specialization in UX research vs design",
-        "description": "Some paths better prepare for UX research roles than others."
+        "description": "Some roles require deeper research skills."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "tool proficiency vs conceptual depth",
-        "description": "Balancing practical skills (e.g., Figma) with design theory."
+        "description": "Balance between practical and theoretical knowledge."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "recognition at design consultancies",
-        "description": "Some firms still value formal design education for senior roles."
+        "description": "Consultancies may favor formal education."
       },
       {
         "id": "a1",
@@ -179,6 +188,10 @@
       },
       {
         "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
         "target": "c4"
       },
       {
@@ -186,12 +199,12 @@
         "target": "c9"
       },
       {
-        "source": "sq1",
-        "target": "c10"
+        "source": "sq2",
+        "target": "c5"
       },
       {
         "source": "sq2",
-        "target": "c2"
+        "target": "c6"
       },
       {
         "source": "sq2",
@@ -211,13 +224,13 @@
       },
       {
         "source": "sq3",
-        "target": "c5"
-      },
-      {
-        "source": "sq3",
         "target": "c6"
       },
       {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
         "source": "c1",
         "target": "a1"
       },
@@ -228,10 +241,6 @@
       {
         "source": "c1",
         "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a1"
       },
       {
         "source": "c2",
@@ -259,7 +268,7 @@
       },
       {
         "source": "c5",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c6",
@@ -284,10 +293,6 @@
       {
         "source": "c9",
         "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
       },
       {
         "source": "c10",

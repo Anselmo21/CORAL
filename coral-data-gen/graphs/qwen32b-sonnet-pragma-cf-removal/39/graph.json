@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Vocational for Early Career Default): Choose a vocational or professional degree for clearer job market entry and significantly higher early-career earnings \u2014 the liberal arts earnings convergence in mid-career is real but requires weathering a difficult first 5\u201310 years.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1659,
-    "output_tokens": 2683,
+    "output_tokens": 2804,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,28 +50,28 @@
         "layer": "1",
         "type": "question",
         "label": "Is a liberal arts degree worth it, or should I do something more vocational with better job prospects?",
-        "description": "A question about the long-term and short-term value of liberal arts vs. vocational degrees."
+        "description": "A question about the value of liberal arts education versus vocational or technical degrees in terms of career outcomes and job prospects."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Early-career earnings and job prospects for vocational vs. liberal arts degrees",
-        "description": "What are the immediate financial and employment outcomes for each degree type?"
+        "label": "What are the short-term (early-career) outcomes of liberal arts vs. vocational degrees?",
+        "description": "Focuses on early-career earnings and job placement."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Long-term career outcomes and adaptability of liberal arts degrees",
-        "description": "What are the long-term benefits and flexibility of a liberal arts education?"
+        "label": "What are the long-term (mid-career and beyond) outcomes of liberal arts vs. vocational degrees?",
+        "description": "Focuses on mid-career earnings and adaptability."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Perspectives of students, employers, and researchers on degree value",
-        "description": "What do different stakeholders say about the value of these degrees?"
+        "label": "What do employers and students value in liberal arts vs. vocational degrees?",
+        "description": "Focuses on employer and student perspectives on skill value."
       },
       {
         "id": "c1",
@@ -83,21 +92,21 @@
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Only consider sources focused on the U.S. context."
+        "description": "Only consider sources from the USA."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student prioritizing immediate employment and earnings",
-        "description": "Only consider sources from the perspective of students focused on early job outcomes."
+        "description": "Only consider sources from the perspective of students focused on early job placement and income."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student prioritizing intellectual engagement and long-term flexibility",
-        "description": "Only consider sources from the perspective of students focused on long-term adaptability."
+        "description": "Only consider sources from the perspective of students focused on long-term adaptability and intellectual growth."
       },
       {
         "id": "c6",
@@ -111,21 +120,21 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Higher education advocacy organization",
-        "description": "Only consider sources from higher education advocacy groups."
+        "description": "Only consider sources from higher education advocacy organizations."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Education labor market research",
-        "description": "Only consider sources from labor market research institutions."
+        "description": "Only consider sources from education labor market research institutions."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Student peer community",
-        "description": "Only consider sources from student communities or forums."
+        "description": "Only consider sources from student peer communities (e.g., Reddit)."
       },
       {
         "id": "c10",
@@ -138,21 +147,21 @@
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Vocational for Early Career Default",
+        "label": "Answer A (Vocational for Early Career Default)",
         "description": "Choose a vocational or professional degree for clearer job market entry and significantly higher early-career earnings \u2014 the liberal arts earnings convergence in mid-career is real but requires weathering a difficult first 5\u201310 years."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Liberal Arts for Long-Term Flexibility",
+        "label": "Answer B (Liberal Arts for Long-Term Flexibility)",
         "description": "A liberal arts degree is worth it if you're genuinely uncertain about your career direction \u2014 the adaptability, communication skills, and intellectual breadth it develops become more valuable as careers advance and automate."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Hybrid Approach",
+        "label": "Answer C (Hybrid Approach)",
         "description": "Double-major in a liberal arts field and a vocational or technical discipline \u2014 you develop the critical thinking of the humanities alongside marketable technical skills, capturing both career flexibility and early employment leverage."
       }
     ],
@@ -171,45 +180,21 @@
       },
       {
         "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
         "target": "c1"
       },
       {
-        "source": "sq1",
-        "target": "c2"
-      },
-      {
-        "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "sq1",
-        "target": "c4"
-      },
-      {
-        "source": "sq1",
-        "target": "c6"
-      },
-      {
-        "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c3"
-      },
-      {
         "source": "sq2",
         "target": "c5"
       },
@@ -223,11 +208,7 @@
       },
       {
         "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
+        "target": "c3"
       },
       {
         "source": "sq3",
@@ -235,23 +216,19 @@
       },
       {
         "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c8"
-      },
-      {
-        "source": "sq3",
         "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
       },
       {
         "source": "c1",
         "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
       },
       {
         "source": "c2",
@@ -260,6 +237,14 @@
       {
         "source": "c3",
         "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
       },
       {
         "source": "c4",
@@ -270,12 +255,36 @@
         "target": "a1"
       },
       {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
         "source": "c6",
         "target": "a1"
       },
       {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
         "source": "c7",
         "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
       },
       {
         "source": "c8",
@@ -286,56 +295,20 @@
         "target": "a1"
       },
       {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
         "source": "c9",
         "target": "a2"
       },
       {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
         "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
       },
       {
         "source": "c10",

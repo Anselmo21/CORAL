@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Delay to 70 Default): Wait until 70 to claim Social Security \u2014 the 8% annual delayed credit is an unbeatable risk-free return for healthy individuals, and maximizes inflation-adjusted lifetime income if you live past 82.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1572,
-    "output_tokens": 1839,
+    "output_tokens": 2313,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,119 +50,126 @@
         "layer": "1",
         "type": "question",
         "label": "When should I start taking Social Security \u2014 at 62, full retirement age, or wait until 70?",
-        "description": "Social Security claiming decision"
+        "description": "The question is: When should I start taking Social Security \u2014 at 62, full retirement age, or wait until 70?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "What is my expected longevity and health status?",
-        "description": "Longevity and health status"
+        "description": "The sub-question is: What is my expected longevity and health status?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How does my situation affect the survivor benefit for my spouse?",
-        "description": "Survivor benefit"
+        "label": "Do I have other retirement income sources available?",
+        "description": "The sub-question is: Do I have other retirement income sources available?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Do I need immediate income, and if so, how does it impact my Social Security claiming decision?",
-        "description": "Immediate income"
+        "label": "How does my situation affect the breakeven age analysis?",
+        "description": "The sub-question is: How does my situation affect the breakeven age analysis?"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the implications of sequence-of-returns risk and portfolio withdrawal rate reduction?",
+        "description": "The sub-question is: What are the implications of sequence-of-returns risk and portfolio withdrawal rate reduction?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "expected longevity and health status",
-        "description": "Longevity and health status"
+        "description": "The concept is: expected longevity and health status"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "survivor benefit for spouse",
-        "description": "Survivor benefit"
+        "description": "The concept is: survivor benefit for spouse"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "need for immediate income",
-        "description": "Immediate income"
+        "description": "The concept is: need for immediate income"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "breakeven age analysis",
-        "description": "Breakeven age"
+        "description": "The concept is: breakeven age analysis"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "portfolio withdrawal rate reduction",
-        "description": "Portfolio withdrawal"
+        "description": "The concept is: portfolio withdrawal rate reduction"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "inflation-adjusted lifetime income maximization",
-        "description": "Lifetime income"
+        "description": "The concept is: inflation-adjusted lifetime income maximization"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "other retirement income sources available",
-        "description": "Other income"
+        "description": "The concept is: other retirement income sources available"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "sequence-of-returns risk mitigation",
-        "description": "Sequence-of-returns risk"
+        "description": "The concept is: sequence-of-returns risk mitigation"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "tax treatment of Social Security benefits",
-        "description": "Tax treatment"
+        "description": "The concept is: tax treatment of Social Security benefits"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "flexibility to change claiming strategy",
-        "description": "Flexibility"
+        "description": "The concept is: flexibility to change claiming strategy"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Delay to 70 Default",
-        "description": "Wait until 70 to claim Social Security"
+        "description": "The answer is: Wait until 70 to claim Social Security \u2014 the 8% annual delayed credit is an unbeatable risk-free return for healthy individuals, and maximizes inflation-adjusted lifetime income if you live past 82."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Claim at 62 for Immediate Need",
-        "description": "Claim at 62 if you have health concerns"
+        "description": "The answer is: Claim at 62 if you have health concerns, need the income to avoid portfolio withdrawals, or lack other retirement income \u2014 the breakeven math favors early claiming for shorter life expectancies."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Full Retirement Age Compromise",
-        "description": "Claim at full retirement age"
+        "description": "The answer is: Claim at full retirement age (66\u201367) as a compromise \u2014 you avoid the 30% early reduction while not tying up capital until 70, suitable when longevity is uncertain and some portfolio flexibility is needed."
       }
     ],
     "edges": [
@@ -170,40 +186,24 @@
         "target": "sq3"
       },
       {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
         "source": "sq1",
         "target": "c1"
       },
       {
-        "source": "sq1",
-        "target": "c4"
-      },
-      {
-        "source": "sq1",
-        "target": "c6"
-      },
-      {
-        "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
-      },
-      {
         "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
         "target": "c7"
       },
       {
         "source": "sq3",
-        "target": "c9"
+        "target": "c4"
+      },
+      {
+        "source": "sq4",
+        "target": "c8"
       },
       {
         "source": "c1",
@@ -219,30 +219,50 @@
       },
       {
         "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
         "target": "a2"
       },
       {
         "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
         "target": "a2"
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
       },
       {
         "source": "c10",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c1",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
         "target": "a3"
       },
       {
         "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
         "target": "a3"
       },
       {
@@ -250,7 +270,19 @@
         "target": "a3"
       },
       {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
         "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
         "target": "a3"
       }
     ]

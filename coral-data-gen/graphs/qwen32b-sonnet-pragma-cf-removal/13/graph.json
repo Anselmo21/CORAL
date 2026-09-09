@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Debt and Invest Default): Pay off any high-interest debt first, top up your emergency fund to 3 months, then invest the remainder as a lump sum in a broad index fund \u2014 this order maximizes guaranteed and expected returns.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1674,
-    "output_tokens": 2551,
+    "output_tokens": 2918,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -48,91 +57,91 @@
         "layer": "2",
         "type": "subq",
         "label": "sq1",
-        "description": "What is the best use of a $10k windfall in the context of high-interest debt and emergency fund status?"
+        "description": "What is the best use of the $10k based on the individual's financial situation (debt status, emergency fund status)?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "sq2",
-        "description": "What is the best investment strategy for a lump sum, considering market timing and risk tolerance?"
+        "description": "What is the best use of the $10k based on the source's credibility and relevance?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "sq3",
-        "description": "What is the best financial advice based on the most recent and geographically relevant sources?"
+        "description": "What is the best use of the $10k based on the recency and geographic relevance of the advice?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Only consider sources from 2023"
+        "description": "temporal: 2023 only"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Only consider sources from 2021 to 2023"
+        "description": "temporal: 2021\u20132023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Only consider sources from the USA"
+        "description": "geographic: USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Investor with existing high-interest debt",
-        "description": "Only consider advice for investors with high-interest debt"
+        "description": "perspective: Investor with existing high-interest debt"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Debt-free investor with full emergency fund",
-        "description": "Only consider advice for debt-free investors with full emergency funds"
+        "description": "perspective: Debt-free investor with full emergency fund"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Risk-averse investor worried about market timing",
-        "description": "Only consider advice for risk-averse investors concerned about market timing"
+        "description": "perspective: Risk-averse investor worried about market timing"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer financial advisory",
-        "description": "Only consider consumer financial advisory sources"
+        "description": "trustworthiness: Consumer financial advisory"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Institutional investment research",
-        "description": "Only consider institutional investment research sources"
+        "description": "trustworthiness: Institutional investment research"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Community peer advice",
-        "description": "Only consider community peer advice sources"
+        "description": "trustworthiness: Community peer advice"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Financial journalism",
-        "description": "Only consider financial journalism sources"
+        "description": "trustworthiness: Financial journalism"
       },
       {
         "id": "a1",
@@ -191,6 +200,10 @@
       },
       {
         "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
         "target": "c10"
       },
       {
@@ -226,32 +239,16 @@
         "target": "a1"
       },
       {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
         "source": "c6",
         "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
       },
       {
         "source": "c7",
         "target": "a1"
       },
       {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
         "source": "c8",
         "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
       },
       {
         "source": "c9",
@@ -262,11 +259,47 @@
         "target": "a1"
       },
       {
-        "source": "c10",
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
         "target": "a2"
       },
       {
         "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
         "target": "a3"
       }
     ]

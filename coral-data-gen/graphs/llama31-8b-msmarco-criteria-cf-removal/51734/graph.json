@@ -22,13 +22,22 @@
   "baseline_answer": "Vitreolent eye drops",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1647,
-    "output_tokens": 1798,
+    "output_tokens": 1958,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,22 +56,22 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "characteristics of effective eye drops",
-        "description": "effectiveness, frequency, side effects, active ingredients, duration"
+        "label": "effective characteristics",
+        "description": "what makes eye drops effective"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "practical considerations",
-        "description": "availability, cost, user reviews, doctor recommendations"
+        "description": "practical aspects of using eye drops"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "underlying properties",
-        "description": "natural vs. synthetic"
+        "description": "natural vs. synthetic composition"
       },
       {
         "id": "c1",
@@ -76,7 +85,7 @@
         "layer": "3",
         "type": "concept",
         "label": "frequency of use",
-        "description": "how often to use"
+        "description": "how often to use eye drops"
       },
       {
         "id": "c3",
@@ -125,14 +134,14 @@
         "layer": "3",
         "type": "concept",
         "label": "doctor recommendations",
-        "description": "professional endorsement"
+        "description": "medical professional endorsement"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "natural vs. synthetic",
-        "description": "chemical composition"
+        "description": "composition type"
       },
       {
         "id": "a1",
@@ -228,6 +237,46 @@
       {
         "source": "c5",
         "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
       },
       {
         "source": "c6",

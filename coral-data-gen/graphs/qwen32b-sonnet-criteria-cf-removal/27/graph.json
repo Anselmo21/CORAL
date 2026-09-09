@@ -22,13 +22,22 @@
   "baseline_answer": "Answer C (Lifestyle Plus Acute): Prioritize identifying and eliminating personal triggers (sleep, diet, stress) alongside acute triptans before adding daily medication \u2014 many patients reduce frequency below treatment threshold through lifestyle modification alone.",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1559,
-    "output_tokens": 2649,
+    "output_tokens": 2644,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -40,106 +49,99 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should I take something preventively or just treat each one when it happens?",
-        "description": "I get migraines about twice a month."
+        "label": "Migraine Treatment Strategy",
+        "description": "I get migraines about twice a month. Should I take something preventively or just treat each one when it happens?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the appropriate treatment threshold based on migraine frequency and impact?",
-        "description": "Determines whether preventive treatment is indicated."
+        "label": "Frequency and Impact Threshold",
+        "description": "What is the appropriate treatment threshold based on migraine frequency and impact?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the risks and benefits of daily preventive medication?",
-        "description": "Evaluates side effects, efficacy, and progression risk."
+        "label": "Preventive vs. Acute Treatment",
+        "description": "What are the risks and benefits of preventive vs. acute treatment?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the risks and benefits of acute-only treatment?",
-        "description": "Evaluates triptan efficacy and overuse risk."
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "What role do lifestyle and non-pharmacologic interventions play?",
-        "description": "Evaluates potential for lifestyle changes to reduce frequency."
+        "label": "Non-Pharmacologic and Patient Factors",
+        "description": "What non-pharmacologic and patient-centered factors influence treatment choice?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "monthly migraine frequency threshold",
-        "description": "Determines when preventive treatment is recommended."
+        "description": "The number of migraine days per month that justifies preventive treatment."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "impact on quality of life and productivity",
-        "description": "Severe disability may justify preventive treatment."
+        "description": "The extent to which migraines disrupt daily life and work."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "acute medication overuse risk",
-        "description": "Frequent use of triptans can lead to medication overuse headache."
+        "description": "The risk of developing medication overuse headache from frequent acute use."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "side effect burden of daily preventives",
-        "description": "Daily medication may introduce unwanted side effects."
+        "description": "The daily medication burden and potential side effects of preventive drugs."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "efficacy of triptans for acute treatment",
-        "description": "Triptans are effective for most patients with episodic migraine."
+        "description": "The effectiveness of triptans in treating acute migraines."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "risk of progression to chronic migraine",
-        "description": "Early preventive treatment may reduce risk of chronicity."
+        "description": "The likelihood of migraines becoming chronic over time."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "cost and insurance coverage of CGRP inhibitors",
-        "description": "Newer preventives may be expensive and not always covered."
+        "description": "The financial and insurance considerations for newer preventive drugs."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "patient preference for daily medication",
-        "description": "Some patients prefer not to take daily medication."
+        "description": "The patient's willingness to take daily medication."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "lifestyle trigger management potential",
-        "description": "Identifying and avoiding triggers can reduce migraine frequency."
+        "description": "The potential to reduce migraines through lifestyle changes."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "prior acute treatment failure",
-        "description": "If triptans are ineffective, preventive treatment is more justified."
+        "description": "Whether acute treatments have failed in the past."
       },
       {
         "id": "a1",
@@ -177,10 +179,6 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
-      },
-      {
         "source": "sq1",
         "target": "c1"
       },
@@ -194,51 +192,35 @@
       },
       {
         "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
         "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
       },
       {
         "source": "sq2",
         "target": "c7"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c8"
       },
       {
         "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
+        "target": "c9"
       },
       {
         "source": "sq3",
         "target": "c10"
       },
       {
-        "source": "sq4",
-        "target": "c9"
-      },
-      {
-        "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
         "source": "c1",
         "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
       },
       {
         "source": "c2",
@@ -246,23 +228,7 @@
       },
       {
         "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
         "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
       },
       {
         "source": "c4",
@@ -270,23 +236,7 @@
       },
       {
         "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
         "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
       },
       {
         "source": "c6",
@@ -294,35 +244,11 @@
       },
       {
         "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
         "target": "a3"
       },
       {
         "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
         "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
       },
       {
         "source": "c9",
@@ -330,30 +256,42 @@
       },
       {
         "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
         "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
       },
       {
         "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
         "target": "a2"
       },
       {
@@ -365,7 +303,19 @@
         "target": "a2"
       },
       {
-        "source": "c9",
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
         "target": "a2"
       }
     ]

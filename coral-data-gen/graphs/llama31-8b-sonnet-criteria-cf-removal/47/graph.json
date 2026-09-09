@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Pixel 7a Default): Get the Google Pixel 7a \u2014 its camera quality, guaranteed multi-year updates, and clean Android experience make it the best overall mid-range Android when discounted to the $350\u2013400 range.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1525,
-    "output_tokens": 2079,
+    "output_tokens": 2035,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -69,28 +78,28 @@
         "layer": "3",
         "type": "concept",
         "label": "camera quality",
-        "description": "Camera performance."
+        "description": "Camera quality of the phone."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "display quality",
-        "description": "Display quality."
+        "description": "Display quality of the phone."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "display quality",
-        "description": "Display quality."
+        "description": "Display quality of the phone."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "battery life",
-        "description": "Battery life."
+        "description": "Battery life of the phone."
       },
       {
         "id": "c5",
@@ -194,7 +203,7 @@
         "target": "c6"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c7"
       },
       {
@@ -239,47 +248,82 @@
       },
       {
         "source": "c8",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c10",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c1",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c3",
-        "target": "a2"
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c7",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c8",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c9",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c10",
-        "target": "a1"
+        "target": "a3"
+      },
+      {
+        "source": "a1",
+        "target": "a2",
+        "removed": [
+          "c1",
+          "c4",
+          "c7",
+          "c9",
+          "c10"
+        ]
+      },
+      {
+        "source": "a1",
+        "target": "a3",
+        "removed": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
+        ]
       }
     ]
   }

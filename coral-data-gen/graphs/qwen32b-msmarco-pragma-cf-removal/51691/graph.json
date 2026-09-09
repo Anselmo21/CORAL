@@ -22,13 +22,22 @@
   "baseline_answer": "Dairy-free / Cycle Diet",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2010,
-    "output_tokens": 2452,
+    "output_tokens": 2488,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -55,84 +64,84 @@
         "layer": "2",
         "type": "subq",
         "label": "What dietary recommendations are tailored to specific PMS symptom profiles or conditions?",
-        "description": "Consider perspectives of individuals with specific PMS symptoms or conditions like PMDD or cramps."
+        "description": "Consider perspectives of individuals with specific PMS symptoms or diagnoses."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "What dietary recommendations are influenced by personal dietary restrictions or preferences?",
-        "description": "Include perspectives of individuals with dietary restrictions like lactose intolerance or veganism."
+        "description": "Account for dietary preferences such as veganism or dairy avoidance."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: registered dietitian guidance",
-        "description": "Sources from registered dietitians or health professionals."
+        "description": "Prioritize sources with guidance from registered dietitians."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed gynecology / nutrition journal",
-        "description": "Sources from peer-reviewed journals in gynecology or nutrition."
+        "description": "Prioritize peer-reviewed research in gynecology or nutrition."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: integrative medicine source",
-        "description": "Sources from integrative or holistic medicine."
+        "description": "Prioritize integrative or holistic health sources."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: women's health magazine",
-        "description": "Sources from women's health magazines."
+        "description": "Prioritize content from women's health magazines."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: wellness blog",
-        "description": "Sources from wellness blogs."
+        "description": "Prioritize content from wellness blogs."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: PMS sufferer with severe cramps",
-        "description": "Sources from the perspective of women with severe cramps."
+        "description": "Prioritize recommendations for those with severe cramps."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: PMS sufferer with mood / fatigue dominant symptoms",
-        "description": "Sources from the perspective of women with mood or fatigue symptoms."
+        "description": "Prioritize recommendations for those with mood or fatigue symptoms."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: PMDD diagnosed patient",
-        "description": "Sources from the perspective of women diagnosed with PMDD."
+        "description": "Prioritize recommendations for those with PMDD."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: lactose-intolerant / dairy-averse woman",
-        "description": "Sources from the perspective of women who avoid dairy."
+        "description": "Prioritize recommendations for those avoiding dairy."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: vegan / plant-forward woman",
-        "description": "Sources from the perspective of women following a plant-based diet."
+        "description": "Prioritize recommendations for those following a plant-based diet."
       },
       {
         "id": "a1",
@@ -146,14 +155,14 @@
         "layer": "4",
         "type": "answer",
         "label": "Dairy-free / Cycle Diet",
-        "description": "A diet that avoids dairy and conventional animal protein, tailored to hormonal cycles."
+        "description": "A diet avoiding dairy and tailored to hormonal cycles."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Anti-inflammatory elimination diet",
-        "description": "A diet that eliminates potential irritants like sugar, caffeine, and alcohol to reduce inflammation."
+        "description": "A diet that eliminates inflammatory foods like sugar, caffeine, and alcohol."
       }
     ],
     "edges": [
@@ -251,35 +260,11 @@
       },
       {
         "source": "c1",
-        "target": "a3"
+        "target": "a1"
       },
       {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
+        "source": "c2",
+        "target": "a1"
       },
       {
         "source": "c3",
@@ -306,12 +291,40 @@
         "target": "a1"
       },
       {
-        "source": "c9",
+        "source": "c10",
         "target": "a1"
       },
       {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
         "source": "c10",
-        "target": "a1"
+        "target": "a3"
       }
     ]
   }

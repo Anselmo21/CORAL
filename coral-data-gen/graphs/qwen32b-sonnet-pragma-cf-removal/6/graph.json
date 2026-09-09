@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Invest the Difference Default): Invest the extra money in index funds \u2014 at 3.2% mortgage rate versus historical ~10% market returns, the spread is too large to justify early payoff purely on financial grounds.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1623,
-    "output_tokens": 2721,
+    "output_tokens": 2605,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -48,7 +57,7 @@
         "layer": "2",
         "type": "subq",
         "label": "What is the financial return perspective on this decision?",
-        "description": "Focuses on long-term investment returns vs. mortgage interest."
+        "description": "Focuses on long-term investment returns vs. mortgage cost."
       },
       {
         "id": "sq2",
@@ -90,21 +99,21 @@
         "layer": "3",
         "type": "directive",
         "label": "perspective: Long-term investor far from retirement",
-        "description": "Only consider sources from the long-term investor perspective."
+        "description": "Focus on long-term investment returns."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Near-retiree focused on fixed cost elimination",
-        "description": "Only consider sources from the near-retiree perspective."
+        "description": "Focus on eliminating fixed costs for retirees."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Debt-averse conservative saver",
-        "description": "Only consider sources from the debt-averse perspective."
+        "description": "Focus on minimizing debt for conservative savers."
       },
       {
         "id": "c7",
@@ -125,7 +134,7 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Community peer advice",
-        "description": "Only consider community peer advice sources."
+        "description": "Only consider community-based peer advice."
       },
       {
         "id": "c10",
@@ -278,10 +287,6 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
         "source": "c2",
         "target": "a2"
       },
@@ -304,10 +309,6 @@
       {
         "source": "c9",
         "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
       },
       {
         "source": "c2",

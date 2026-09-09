@@ -22,13 +22,22 @@
   "baseline_answer": "Answer C (Balance Transfer): Transfer all three balances to a 0% APR card and pay off the full amount within the promotional window \u2014 if you qualify, this eliminates interest entirely and is faster than any payment-order strategy.",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1530,
-    "output_tokens": 2282,
+    "output_tokens": 2257,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,64 +56,64 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most effective strategy for minimizing total interest and completing debt repayment?",
-        "description": "Evaluates strategies based on interest cost, speed, and access to promotional offers."
+        "label": "What is the most effective strategy for minimizing total interest and completing debt?",
+        "description": "Evaluates strategies based on interest cost, speed, and psychological completion."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most psychologically motivating and sustainable strategy?",
-        "description": "Evaluates strategies based on motivation, credit impact, and flexibility."
+        "label": "What is the most practical and accessible strategy given current financial tools and creditworthiness?",
+        "description": "Evaluates strategies based on access to balance transfer, consolidation loans, and promotional risks."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most convenient and cash-flow-friendly strategy?",
-        "description": "Evaluates strategies based on simplicity and cash flow."
+        "label": "What strategy offers the best balance between simplicity, flexibility, and credit impact?",
+        "description": "Evaluates strategies based on simplicity, credit impact, flexibility, and cash flow."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "total interest cost minimization",
-        "description": "The degree to which a strategy reduces the total interest paid over time."
+        "description": "How much interest is paid over the repayment period."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "psychological motivation and completion rate",
-        "description": "The likelihood of sticking to the strategy due to psychological satisfaction and progress."
+        "description": "How likely the method is to keep the user motivated and on track."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "speed of debt elimination",
-        "description": "How quickly the strategy clears the debt."
+        "description": "How quickly the debt is paid off."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "simplicity of single payment",
-        "description": "Whether the strategy consolidates payments into one."
+        "description": "How easy the method is to manage with one payment."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "credit score impact",
-        "description": "How the strategy affects credit utilization and score."
+        "description": "How the method affects the user's credit score."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "access to balance transfer offers",
-        "description": "Whether the user can qualify for and use a 0% APR balance transfer card."
+        "description": "Whether the user can qualify for and use a balance transfer card."
       },
       {
         "id": "c7",
@@ -118,21 +127,21 @@
         "layer": "3",
         "type": "concept",
         "label": "qualification for consolidation loan",
-        "description": "Whether the user can secure a lower-rate consolidation loan."
+        "description": "Whether the user can qualify for a debt consolidation loan."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "flexibility to handle financial emergencies",
-        "description": "Whether the strategy allows for flexibility in case of unexpected expenses."
+        "description": "How well the method accommodates unexpected expenses."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "immediate cash flow relief",
-        "description": "Whether the strategy reduces monthly payments in the short term."
+        "description": "How much monthly payment pressure is reduced."
       },
       {
         "id": "a1",
@@ -175,35 +184,35 @@
       },
       {
         "source": "sq1",
-        "target": "c3"
-      },
-      {
-        "source": "sq1",
-        "target": "c6"
-      },
-      {
-        "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
-        "target": "c8"
-      },
-      {
-        "source": "sq2",
         "target": "c2"
       },
       {
-        "source": "sq2",
-        "target": "c5"
+        "source": "sq1",
+        "target": "c3"
       },
       {
         "source": "sq2",
-        "target": "c9"
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
       },
       {
         "source": "sq3",
         "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
       },
       {
         "source": "sq3",
@@ -236,10 +245,6 @@
       {
         "source": "c4",
         "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
       },
       {
         "source": "c5",

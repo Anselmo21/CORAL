@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Roth Default): Open a Roth IRA \u2014 at 28 with decades of compounding ahead, tax-free growth almost always beats the immediate deduction, especially if your income is likely to rise.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1510,
-    "output_tokens": 2514,
+    "output_tokens": 2339,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,27 +50,27 @@
         "layer": "1",
         "type": "question",
         "label": "Should I open a Roth IRA or a traditional IRA? I'm 28 making $72,000 a year.",
-        "description": "A 28-year-old with a $72k income is deciding between Roth IRA, traditional IRA, or a backdoor Roth strategy."
+        "description": "A 28-year-old with a $72,000 income is deciding between Roth IRA, traditional IRA, or a backdoor Roth strategy."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Tax implications now and in retirement",
-        "description": "Evaluates the tax benefits and risks of each option in the present and future."
+        "label": "What are the tax implications of each option now and in retirement?",
+        "description": "Evaluates the immediate and future tax benefits of each retirement account."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Long-term financial advantages",
+        "label": "What are the long-term financial advantages of each option?",
         "description": "Evaluates compounding, flexibility, and estate planning benefits."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Contribution and strategy rules",
+        "label": "How do contribution and strategy rules affect the decision?",
         "description": "Evaluates the simplicity and feasibility of each contribution method."
       },
       {
@@ -69,77 +78,77 @@
         "layer": "3",
         "type": "concept",
         "label": "tax-free retirement income",
-        "description": "Income from retirement accounts that is not subject to income tax."
+        "description": "Income from the account is not taxed in retirement."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "immediate tax deduction benefit",
-        "description": "Reduction in current taxable income from contributing to a traditional IRA."
+        "description": "Reduces taxable income in the current year."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "long-term compounding advantage",
-        "description": "The benefit of tax-free or tax-deferred growth over many years."
+        "description": "Earnings grow tax-free over decades."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "expected retirement tax bracket",
-        "description": "The anticipated tax rate in retirement, which affects the value of tax-deferred accounts."
+        "description": "The tax rate you expect to face in retirement."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "current marginal tax rate optimization",
-        "description": "Maximizing tax savings based on current tax bracket."
+        "description": "Maximizing tax savings at your current tax rate."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "flexibility of withdrawal rules",
-        "description": "How easily funds can be accessed without penalties."
+        "description": "How easily you can access funds without penalties."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "protection from future tax rate increases",
-        "description": "Avoiding exposure to higher tax rates in the future."
+        "description": "Locking in current tax rates to avoid future increases."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "state income tax considerations",
-        "description": "Impact of state-level taxes on retirement account choices."
+        "description": "Impact of state-level taxes on retirement accounts."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "estate planning benefits",
-        "description": "How retirement accounts can be passed on to heirs."
+        "description": "How the account benefits heirs or beneficiaries."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "simplicity of contribution rules",
-        "description": "Ease of contributing to each type of account."
+        "description": "Ease of contributing to the account based on income and rules."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Answer A (Roth Default): Open a Roth IRA \u2014 at 28 with decades of compounding ahead, tax-free growth almost always beats the immediate deduction, especially if your income is likely to rise.",
-        "description": "Roth IRA is the top choice for long-term tax-free growth and compounding."
+        "description": "Roth IRA is the top choice for long-term growth and tax-free income."
       },
       {
         "id": "a2",
@@ -153,7 +162,7 @@
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Both via Backdoor): Contribute to a traditional IRA for the current deduction then immediately convert to Roth (backdoor Roth) to capture both benefits while income limits allow.",
-        "description": "Backdoor Roth strategy to get both immediate deduction and tax-free growth."
+        "description": "Backdoor Roth allows both immediate deduction and tax-free growth."
       }
     ],
     "edges": [
@@ -215,15 +224,7 @@
       },
       {
         "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
         "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
       },
       {
         "source": "c3",
@@ -231,23 +232,47 @@
       },
       {
         "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
         "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
       },
       {
         "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
         "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
       },
       {
         "source": "c5",
@@ -255,23 +280,7 @@
       },
       {
         "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
         "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
       },
       {
         "source": "c7",
@@ -279,38 +288,10 @@
       },
       {
         "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
         "target": "a3"
       },
       {
         "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
         "target": "a3"
       }
     ]

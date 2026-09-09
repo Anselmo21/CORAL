@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Roomba j7+ Default): Get the iRobot Roomba j7+ \u2014 its pet waste obstacle avoidance, self-emptying base, and reliable navigation make it the most maintenance-free option for cat owners.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1579,
-    "output_tokens": 2090,
+    "output_tokens": 2091,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,99 +56,92 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Maintenance and Performance",
-        "description": "Criteria for maintenance and performance"
+        "label": "Effective pet hair handling",
+        "description": "What features ensure effective pet hair handling?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Performance and Value",
-        "description": "Criteria for performance and value"
+        "label": "Low maintenance and reliability",
+        "description": "What features ensure low maintenance and reliability?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Pet Hair Handling",
-        "description": "Criteria for pet hair handling"
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "Large Home and Mixed Flooring",
-        "description": "Criteria for large home and mixed flooring"
+        "label": "Performance and value",
+        "description": "What features ensure performance and value?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "suction power for pet hair on carpet",
-        "description": "Suction power for pet hair on carpet"
+        "label": "Suction power for pet hair on carpet",
+        "description": "The robot vacuum's ability to handle pet hair on carpet"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "self-emptying base for low maintenance",
-        "description": "Self-emptying base for low maintenance"
+        "label": "Self-emptying base for low maintenance",
+        "description": "The robot vacuum's ability to empty its bin automatically"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "obstacle and pet waste avoidance",
-        "description": "Obstacle and pet waste avoidance"
+        "label": "Obstacle and pet waste avoidance",
+        "description": "The robot vacuum's ability to avoid obstacles and pet waste"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "rubber brush roll for tangle prevention",
-        "description": "Rubber brush roll for tangle prevention"
+        "label": "Rubber brush roll for tangle prevention",
+        "description": "The robot vacuum's ability to prevent tangles with its brush roll"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "value for price",
-        "description": "Value for price"
+        "label": "Value for price",
+        "description": "The robot vacuum's value for its price"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "noise level during operation",
-        "description": "Noise level during operation"
+        "label": "Noise level during operation",
+        "description": "The robot vacuum's noise level during operation"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "mapping and navigation reliability",
-        "description": "Mapping and navigation reliability"
+        "label": "Mapping and navigation reliability",
+        "description": "The robot vacuum's ability to map and navigate its environment"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "mopping capability for mixed floors",
-        "description": "Mopping capability for mixed floors"
+        "label": "Mopping capability for mixed floors",
+        "description": "The robot vacuum's ability to mop mixed floors"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "bin size and emptying frequency",
-        "description": "Bin size and emptying frequency"
+        "label": "Bin size and emptying frequency",
+        "description": "The robot vacuum's bin size and emptying frequency"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "home size and battery range",
-        "description": "Home size and battery range"
+        "label": "Home size and battery range",
+        "description": "The robot vacuum's ability to handle large homes and its battery range"
       },
       {
         "id": "a1",
@@ -177,16 +179,8 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
-      },
-      {
         "source": "sq1",
         "target": "c1"
-      },
-      {
-        "source": "sq1",
-        "target": "c2"
       },
       {
         "source": "sq1",
@@ -198,23 +192,23 @@
       },
       {
         "source": "sq1",
-        "target": "c9"
-      },
-      {
-        "source": "sq2",
-        "target": "c1"
-      },
-      {
-        "source": "sq2",
         "target": "c5"
       },
       {
         "source": "sq2",
-        "target": "c8"
+        "target": "c2"
       },
       {
         "source": "sq2",
-        "target": "c10"
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
       },
       {
         "source": "sq3",
@@ -222,22 +216,10 @@
       },
       {
         "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq4",
-        "target": "c6"
-      },
-      {
-        "source": "sq4",
         "target": "c8"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c10"
       },
       {
@@ -258,7 +240,7 @@
       },
       {
         "source": "c5",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c6",
@@ -294,18 +276,6 @@
       },
       {
         "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
         "target": "a3"
       }
     ]

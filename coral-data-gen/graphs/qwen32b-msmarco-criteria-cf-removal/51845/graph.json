@@ -22,13 +22,22 @@
   "baseline_answer": "Johnny Carson (The Tonight Show 1962-1992)",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1931,
-    "output_tokens": 2370,
+    "output_tokens": 2378,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,28 +50,28 @@
         "layer": "1",
         "type": "question",
         "label": "Who is the best late night talk show host?",
-        "description": "Evaluating late-night hosts based on a range of performance and cultural criteria."
+        "description": "Evaluating late-night hosts based on a range of performance and impact criteria."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "What are the key performance and comedic strengths of a late-night host?",
-        "description": "Evaluates comedic and monologue skills, political wit, and sketch creativity."
+        "description": "Evaluates comedic and monologue skills."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "How does a host perform in terms of audience and industry impact?",
-        "description": "Evaluates ratings, cultural relevance, and audience rapport."
+        "description": "Evaluates ratings, cultural relevance, and audience connection."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "What about the host's career longevity and versatility?",
-        "description": "Evaluates longevity in role, interview skill, and guest variety."
+        "description": "Evaluates how long they've been in the role and their range."
       },
       {
         "id": "c1",
@@ -97,14 +106,14 @@
         "layer": "3",
         "type": "concept",
         "label": "cultural relevance",
-        "description": "Influence and presence in popular culture."
+        "description": "Influence and presence in the broader cultural conversation."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "guest variety",
-        "description": "Range and diversity of guests featured on the show."
+        "description": "Range and diversity of guests on the show."
       },
       {
         "id": "c7",
@@ -125,35 +134,35 @@
         "layer": "3",
         "type": "concept",
         "label": "audience rapport",
-        "description": "Connection and relationship with the audience."
+        "description": "Connection and relatability with the audience."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "sketch creativity",
-        "description": "Originality and humor in live sketches and segments."
+        "description": "Originality and humor in on-air sketches."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Stephen Colbert (Late Show on CBS)",
-        "description": "Modern late-night host with strong political wit and ratings."
+        "description": "Modern late-night host known for political wit and monologue quality."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Jimmy Fallon (The Tonight Show on NBC)",
-        "description": "Energetic and versatile host with high ratings and sketch creativity."
+        "description": "Contemporary host with strong comedic timing and sketch creativity."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Johnny Carson (The Tonight Show 1962-1992)",
-        "description": "Legendary host with unmatched longevity and cultural impact."
+        "description": "Legendary host with unmatched longevity and cultural relevance."
       }
     ],
     "edges": [
@@ -280,6 +289,14 @@
       {
         "source": "c6",
         "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
       },
       {
         "source": "c7",

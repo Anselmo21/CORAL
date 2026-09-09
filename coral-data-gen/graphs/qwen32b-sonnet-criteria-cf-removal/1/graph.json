@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Invest-First Default): Capture the full 401k employer match, contribute to a Roth IRA, then make minimum loan payments \u2014 the expected market return exceeds 6.8% and tax-advantaged space lost now can never be recovered.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1557,
-    "output_tokens": 2595,
+    "output_tokens": 2567,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -83,7 +92,7 @@
         "layer": "3",
         "type": "concept",
         "label": "employer match capture",
-        "description": "Matching contributions in a 401k are free money."
+        "description": "Matching contributions in a 401k are essentially free money."
       },
       {
         "id": "c4",
@@ -97,7 +106,7 @@
         "layer": "3",
         "type": "concept",
         "label": "psychological debt-free peace of mind",
-        "description": "Eliminating debt can reduce stress and improve mental health."
+        "description": "Eliminating debt can reduce stress and improve mental well-being."
       },
       {
         "id": "c6",
@@ -111,7 +120,7 @@
         "layer": "3",
         "type": "concept",
         "label": "low financial risk tolerance",
-        "description": "Some individuals prefer guaranteed returns over market risk."
+        "description": "Some individuals prefer guaranteed outcomes over uncertain market returns."
       },
       {
         "id": "c8",
@@ -125,14 +134,14 @@
         "layer": "3",
         "type": "concept",
         "label": "early career wealth accumulation",
-        "description": "Starting to invest early allows more time for compounding."
+        "description": "Starting to invest early allows for more compounding over time."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "flexibility for life changes",
-        "description": "Keeping monthly payments low allows for more financial flexibility."
+        "description": "Lower monthly payments allow for more financial flexibility in case of job loss or other changes."
       },
       {
         "id": "a1",
@@ -259,19 +268,11 @@
       },
       {
         "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
         "target": "a3"
       },
       {
         "source": "c9",
         "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
       },
       {
         "source": "c10",

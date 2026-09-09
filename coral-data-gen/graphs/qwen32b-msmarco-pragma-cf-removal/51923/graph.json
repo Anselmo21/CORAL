@@ -22,13 +22,22 @@
   "baseline_answer": "A symptom-matched multi-drug regimen",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2441,
-    "output_tokens": 3021,
+    "output_tokens": 3131,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -55,7 +64,7 @@
         "layer": "2",
         "type": "subq",
         "label": "best OTC for drainage symptoms",
-        "description": "What is the best over-the-counter medicine for drainage symptoms (runny nose, watery eyes)?"
+        "description": "What is the best over-the-counter medicine for drainage symptoms like runny nose and watery eyes?"
       },
       {
         "id": "sq3",
@@ -139,28 +148,28 @@
         "layer": "3",
         "type": "directive",
         "label": "perspective: minimize-side-effects user",
-        "description": "Prioritize sources from the perspective of users who want to minimize side effects."
+        "description": "Prioritize sources from the perspective of users minimizing side effects."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Pseudoephedrine (Sudafed)",
-        "description": "Pseudoephedrine is a decongestant effective for nasal congestion."
+        "description": "Pseudoephedrine is effective for nasal congestion."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A first-generation antihistamine (chlorpheniramine or diphenhydramine)",
-        "description": "First-gen antihistamines are effective for drainage symptoms like runny nose and watery eyes."
+        "description": "First-gen antihistamines are effective for drainage symptoms."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A symptom-matched multi-drug regimen",
-        "description": "A multi-drug regimen tailored to specific symptoms is the most effective approach."
+        "description": "Combining drugs based on symptoms is the most effective approach."
       }
     ],
     "edges": [
@@ -342,78 +351,6 @@
       },
       {
         "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
         "target": "a1"
       },
       {
@@ -421,36 +358,100 @@
         "target": "a2"
       },
       {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
         "source": "c2",
         "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
       },
       {
         "source": "c3",
         "target": "a2"
       },
       {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
         "source": "c4",
         "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
       },
       {
         "source": "c5",
         "target": "a2"
       },
       {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
         "source": "c6",
         "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
       },
       {
         "source": "c7",
         "target": "a2"
       },
       {
-        "source": "c9",
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
         "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

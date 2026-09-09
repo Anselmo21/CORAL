@@ -22,13 +22,22 @@
   "baseline_answer": "A high-THC indica strain for nighttime muscle pain and stiffness",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1794,
-    "output_tokens": 2578,
+    "output_tokens": 2706,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,106 +56,113 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most effective cannabis strain for fibromyalgia based on clinical and scientific evidence?",
-        "description": "Focuses on trustworthiness-based sources like peer-reviewed research and clinical practice."
+        "label": "What is the most effective strain type (THC/CBD profile) for fibromyalgia?",
+        "description": "Identify the optimal THC/CBD balance for fibromyalgia treatment."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most effective cannabis strain for fibromyalgia based on symptom focus and patient perspective?",
-        "description": "Focuses on patient-reported outcomes and symptom-specific preferences."
+        "label": "What is the best time of day to use cannabis for fibromyalgia symptoms?",
+        "description": "Determine whether cannabis is more effective for daytime or nighttime use."
+      },
+      {
+        "id": "sq3",
+        "layer": "2",
+        "type": "subq",
+        "label": "What are the key patient-specific considerations for strain selection?",
+        "description": "Consider patient-specific factors like psychoactivity, fatigue, and muscle pain."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed cannabis research",
-        "description": "Prioritizes peer-reviewed scientific studies on cannabis."
+        "description": "Prioritize peer-reviewed scientific studies on cannabis."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: medical marijuana clinical practice",
-        "description": "Prioritizes clinical guidelines and medical practice."
+        "description": "Prioritize clinical guidelines and medical practice."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: patient cannabis forum",
-        "description": "Prioritizes patient-reported experiences from cannabis forums."
+        "description": "Prioritize patient-reported experiences from cannabis forums."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: state cannabis program guidelines",
-        "description": "Prioritizes state-level cannabis program guidelines."
+        "description": "Prioritize state-level cannabis program recommendations."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: dispensary strain catalog",
-        "description": "Prioritizes strain information from dispensary catalogs."
+        "description": "Prioritize strain recommendations from licensed dispensaries."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: nighttime sleep-focused patient",
-        "description": "Prioritizes strains effective for nighttime use and sleep."
+        "description": "Prioritize strains effective for nighttime sleep and muscle relaxation."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: daytime pain-management patient",
-        "description": "Prioritizes strains effective for daytime pain management."
+        "description": "Prioritize strains effective for daytime pain without sedation."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: psychoactive-averse patient",
-        "description": "Prioritizes strains with low psychoactive effects."
+        "description": "Prioritize non-psychoactive or low-THC strains."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: severe muscle pain patient",
-        "description": "Prioritizes strains effective for severe muscle pain."
+        "description": "Prioritize strains effective for severe muscle pain and stiffness."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: cannabis-naive patient",
-        "description": "Prioritizes strains suitable for first-time users."
+        "description": "Prioritize strains suitable for first-time cannabis users."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A high-THC indica strain for nighttime muscle pain and stiffness",
-        "description": "Recommended for nighttime use to manage muscle pain and stiffness."
+        "description": "Recommended for nighttime use to manage severe muscle pain and stiffness."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A balanced THC/CBD hybrid strain for daytime pain management without overwhelming sedation",
-        "description": "Balanced strain for daytime use with less sedation."
+        "description": "Recommended for daytime use to manage pain without causing drowsiness."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A high-CBD, low-THC strain for pain, anxiety, and sleep relief without strong psychoactive effects or additional fatigue",
-        "description": "High-CBD strain for pain and anxiety with minimal psychoactive effects."
+        "description": "Recommended for patients seeking non-psychoactive relief from pain and anxiety."
       }
     ],
     "edges": [
@@ -157,6 +173,10 @@
       {
         "source": "q",
         "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
       },
       {
         "source": "sq1",
@@ -187,15 +207,15 @@
         "target": "c7"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c8"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c9"
       },
       {
-        "source": "sq2",
+        "source": "sq3",
         "target": "c10"
       },
       {
@@ -224,11 +244,11 @@
       },
       {
         "source": "c7",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c8",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c9",
@@ -256,10 +276,6 @@
       },
       {
         "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
         "target": "a2"
       },
       {
@@ -279,14 +295,6 @@
         "target": "a2"
       },
       {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
         "source": "c3",
         "target": "a3"
       },
@@ -296,10 +304,6 @@
       },
       {
         "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
         "target": "a3"
       },
       {

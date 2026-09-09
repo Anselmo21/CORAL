@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Active Multimodal Default): Pursue a combination of supervised strength training, pain neuroscience education, and CBT \u2014 this multimodal active approach has the strongest long-term evidence for non-specific chronic back pain.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1525,
-    "output_tokens": 1933,
+    "output_tokens": 1695,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -58,13 +67,13 @@
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most effective way to restore function and strength?"
+        "label": "What is the most effective way to achieve functional restoration and strength?"
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best approach for patients with a history of prior treatment failure or those at risk of dependency on opioids or passive treatments?"
+        "label": "What is the best approach for patients with a history of prior treatment failure or those at risk of opioid or passive treatment dependency?"
       },
       {
         "id": "c1",
@@ -243,15 +252,7 @@
         "target": "a3"
       },
       {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
+        "source": "c8",
         "target": "a3"
       },
       {
@@ -261,56 +262,6 @@
       {
         "source": "c10",
         "target": "a3"
-      },
-      {
-        "source": "a1",
-        "target": "a2",
-        "R": [
-          "c1",
-          "c2",
-          "c3",
-          "c4",
-          "c5",
-          "c8",
-          "c9",
-          "c10"
-        ]
-      },
-      {
-        "source": "a1",
-        "target": "a3",
-        "R": [
-          "c1",
-          "c2",
-          "c4",
-          "c5",
-          "c6",
-          "c7",
-          "c9",
-          "c10"
-        ]
-      },
-      {
-        "source": "a2",
-        "target": "a1",
-        "R": [
-          "c6",
-          "c7",
-          "c8",
-          "c9",
-          "c10"
-        ]
-      },
-      {
-        "source": "a3",
-        "target": "a1",
-        "R": [
-          "c3",
-          "c6",
-          "c7",
-          "c9",
-          "c10"
-        ]
       }
     ]
   }

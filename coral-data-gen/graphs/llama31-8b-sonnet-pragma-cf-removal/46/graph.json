@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (MacBook Default): Get a MacBook with Apple Silicon \u2014 the Unix environment, Docker performance, battery life, and build quality make it the dominant choice for web and mobile developers, and Apple Silicon's performance-per-watt is unmatched.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1647,
-    "output_tokens": 2042,
+    "output_tokens": 1907,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,126 +50,119 @@
         "layer": "1",
         "type": "question",
         "label": "Should I get a MacBook or stick with Windows for software development?",
-        "description": "Software development choice"
+        "description": "Software development platform choice"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the current state of the market (2021-2023)?",
-        "description": "Market state"
+        "label": "Current market trend (2021-2023) in developer preferences and platform adoption",
+        "description": "Market trend"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the preferences of different developer communities (Global, USA)?",
-        "description": "Developer community preferences"
+        "label": "Geographic and demographic factors influencing the choice between macOS and Windows",
+        "description": "Geographic and demographic factors"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the specific needs of different types of developers (web/mobile, .NET/enterprise)?",
-        "description": "Developer needs"
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "What are the trustworthiness levels of different sources (developer community survey, tech journalism, etc.)?",
-        "description": "Source trustworthiness"
+        "label": "Technical considerations and trade-offs between macOS and Windows for software development",
+        "description": "Technical considerations"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "2023 only"
+        "description": "Sources from 2023 only"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "2021-2023"
+        "description": "Sources from 2021-2023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Global developer community",
-        "description": "Global developer community"
+        "description": "Sources from the global developer community"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "USA"
+        "description": "Sources from the USA"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Web/mobile developer targeting Unix-based deployment",
-        "description": "Web/mobile developer targeting Unix-based deployment"
+        "description": "Sources from web/mobile developers targeting Unix-based deployment"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: .NET/enterprise developer or Windows-ecosystem developer",
-        "description": ".NET/enterprise developer or Windows-ecosystem developer"
+        "description": "Sources from .NET/enterprise developers or Windows-ecosystem developers"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Developer community survey",
-        "description": "Developer community survey"
+        "description": "Sources from developer community surveys"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Tech journalism",
-        "description": "Tech journalism"
+        "description": "Sources from tech journalism"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Developer community peer advice",
-        "description": "Developer community peer advice"
+        "description": "Sources from developer community peer advice"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Platform vendor documentation",
-        "description": "Platform vendor documentation"
+        "description": "Sources from platform vendor documentation"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Get a MacBook with Apple Silicon",
-        "description": "Unix environment, Docker performance, battery life, and build quality"
+        "label": "Answer A (MacBook Default): Get a MacBook with Apple Silicon",
+        "description": "MacBook default"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Choose a high-spec Windows laptop",
-        "description": "Performance per dollar and hardware flexibility"
+        "label": "Answer B (Windows for Value and Flexibility): Choose a high-spec Windows laptop",
+        "description": "Windows for value and flexibility"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Stick with Windows if you're in a .NET, game development, or enterprise environment",
-        "description": "Windows is the target platform"
+        "label": "Answer C (Windows Required for Platform): Stick with Windows if you're in a .NET, game development, or enterprise environment",
+        "description": "Windows required for platform"
       }
     ],
     "edges": [
@@ -175,10 +177,6 @@
       {
         "source": "q",
         "target": "sq3"
-      },
-      {
-        "source": "q",
-        "target": "sq4"
       },
       {
         "source": "sq1",
@@ -205,22 +203,6 @@
         "target": "c6"
       },
       {
-        "source": "sq4",
-        "target": "c7"
-      },
-      {
-        "source": "sq4",
-        "target": "c8"
-      },
-      {
-        "source": "sq4",
-        "target": "c9"
-      },
-      {
-        "source": "sq4",
-        "target": "c10"
-      },
-      {
         "source": "c1",
         "target": "a1"
       },
@@ -234,11 +216,11 @@
       },
       {
         "source": "c4",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c5",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c6",
@@ -250,15 +232,15 @@
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c10",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c1",
@@ -266,23 +248,7 @@
       },
       {
         "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c7",
@@ -290,7 +256,7 @@
       },
       {
         "source": "c8",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c9",
@@ -298,7 +264,11 @@
       },
       {
         "source": "c10",
-        "target": "a3"
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
       }
     ]
   }

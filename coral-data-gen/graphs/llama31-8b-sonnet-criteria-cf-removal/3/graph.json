@@ -22,13 +22,22 @@
   "baseline_answer": "Answer C (Rent for Flexibility): Rent indefinitely if your career or personal situation may require relocation \u2014 the optionality and liquidity of renting outweighs real estate upside when mobility has value.",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1492,
-    "output_tokens": 1877,
+    "output_tokens": 1688,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -40,120 +49,127 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should I buy or rent a place in Toronto?",
+        "label": "Should I buy or rent in Toronto?",
         "description": "Considering factors like long-term wealth accumulation, financial risk, and lifestyle stability."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Financial considerations",
-        "description": "Long-term wealth accumulation, monthly cash flow optimization, investment of down payment capital, protection from rent increases."
+        "label": "Financial stability and risk",
+        "description": "c1, c2, c8"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Lifestyle and stability",
-        "description": "Job and income stability, community and lifestyle stability, exposure to real estate appreciation."
+        "label": "Long-term wealth and lifestyle",
+        "description": "c1, c4, c9, c10"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Flexibility and risk",
-        "description": "Short-term financial risk tolerance, flexibility and mobility."
+        "label": "Flexibility and mobility",
+        "description": "c3, c7"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Investment and down payment",
+        "description": "c6"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "long-term wealth accumulation",
-        "description": "Building wealth over time through homeownership."
+        "description": "wealth accumulation over time"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "monthly cash flow optimization",
-        "description": "Managing monthly expenses and income."
+        "description": "optimizing monthly expenses"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "flexibility and mobility",
-        "description": "Ability to move or change plans without penalty."
+        "description": "ability to move freely"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "forced savings discipline",
-        "description": "Building savings through homeownership."
+        "description": "discipline in saving"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "protection from rent increases",
-        "description": "Stability in housing costs."
+        "description": "protection from rent hikes"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "investment of down payment capital",
-        "description": "Using down payment for other investments."
+        "description": "investing down payment"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "job and income stability",
-        "description": "Secure employment and income."
+        "description": "stable job and income"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "short-term financial risk tolerance",
-        "description": "Ability to handle financial uncertainty."
+        "description": "tolerance for short-term financial risk"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "community and lifestyle stability",
-        "description": "Sense of belonging and stability in community."
+        "description": "stable community and lifestyle"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "exposure to real estate appreciation",
-        "description": "Potential for property value to increase."
+        "description": "exposure to real estate appreciation"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Rent and Invest Default",
-        "description": "Rent in Toronto and invest your down payment capital in a diversified portfolio."
+        "description": "Rent in Toronto and invest your down payment capital in a diversified portfolio"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Buy for Long-Term Equity",
-        "description": "Buy if you have a stable career, plan to stay 10+ years, and value forced savings."
+        "description": "Buy if you have a stable career, plan to stay 10+ years, and value forced savings"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Rent for Flexibility",
-        "description": "Rent indefinitely if your career or personal situation may require relocation."
+        "description": "Rent indefinitely if your career or personal situation may require relocation"
       }
     ],
     "edges": [
@@ -170,6 +186,10 @@
         "target": "sq3"
       },
       {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
         "source": "sq1",
         "target": "c1"
       },
@@ -179,23 +199,15 @@
       },
       {
         "source": "sq1",
-        "target": "c4"
-      },
-      {
-        "source": "sq1",
-        "target": "c5"
-      },
-      {
-        "source": "sq1",
-        "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
         "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
       },
       {
         "source": "sq2",
@@ -211,15 +223,15 @@
       },
       {
         "source": "sq3",
-        "target": "c8"
+        "target": "c7"
       },
       {
-        "source": "sq3",
-        "target": "c10"
+        "source": "sq4",
+        "target": "c6"
       },
       {
         "source": "c1",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c2",
@@ -227,59 +239,15 @@
       },
       {
         "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
         "target": "a1"
       },
       {
         "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
         "target": "a2"
       },
       {
         "source": "c6",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c7",
@@ -291,11 +259,11 @@
       },
       {
         "source": "c9",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c10",
-        "target": "a1"
+        "target": "a2"
       }
     ]
   }

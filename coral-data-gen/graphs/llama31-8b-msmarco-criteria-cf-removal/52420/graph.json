@@ -22,13 +22,22 @@
   "baseline_answer": "Zinc ascorbate supplement",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2306,
-    "output_tokens": 2766,
+    "output_tokens": 2017,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,119 +50,119 @@
         "layer": "1",
         "type": "question",
         "label": "best zinc brand for acne",
-        "description": ""
+        "description": "Best zinc brand for acne treatment"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What type of zinc is best for acne?",
-        "description": ""
+        "label": "What is the best form of zinc for acne treatment?",
+        "description": "Best form of zinc for acne treatment"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "What are the key factors to consider when choosing a zinc supplement for acne?",
-        "description": ""
+        "description": "Key factors to consider when choosing a zinc supplement for acne"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the benefits of different zinc formulations for acne?",
-        "description": ""
+        "label": "What are the essential characteristics of a good zinc brand for acne?",
+        "description": "Essential characteristics of a good zinc brand for acne"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "form of zinc",
-        "description": ""
+        "description": "Form of zinc"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "dosage recommendation",
-        "description": ""
+        "description": "Dosage recommendation"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "additional ingredients",
-        "description": ""
+        "description": "Additional ingredients"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "absorption efficiency",
-        "description": ""
+        "description": "Absorption efficiency"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "target demographic",
-        "description": ""
+        "description": "Target demographic"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "brand reputation",
-        "description": ""
+        "description": "Brand reputation"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "price point",
-        "description": ""
+        "description": "Price point"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "user reviews",
-        "description": ""
+        "description": "User reviews"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "clinical evidence",
-        "description": ""
+        "description": "Clinical evidence"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "availability",
-        "description": ""
+        "description": "Availability"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Zinc ascorbate supplement",
-        "description": ""
+        "description": "Zinc ascorbate supplement"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Oral zinc gluconate at the trial-validated 200 mg/day dose (~30 mg elemental zinc)",
-        "description": ""
+        "description": "Oral zinc gluconate at the trial-validated 200 mg/day dose"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Multivitamin with high-potency zinc plus Vitamins A / B6 / C / E",
-        "description": ""
+        "description": "Multivitamin with high-potency zinc plus Vitamins A / B6 / C / E"
       }
     ],
     "edges": [
@@ -263,94 +272,74 @@
       },
       {
         "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
         "target": "a1"
       },
       {
         "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
         "target": "a1"
       },
       {
         "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
         "target": "a2"
       },
       {
@@ -359,159 +348,7 @@
       },
       {
         "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
         "target": "a3"
-      },
-      {
-        "source": "a1",
-        "target": "c1"
-      },
-      {
-        "source": "a1",
-        "target": "c2"
-      },
-      {
-        "source": "a1",
-        "target": "c3"
-      },
-      {
-        "source": "a1",
-        "target": "c4"
-      },
-      {
-        "source": "a1",
-        "target": "c5"
-      },
-      {
-        "source": "a1",
-        "target": "c6"
-      },
-      {
-        "source": "a1",
-        "target": "c7"
-      },
-      {
-        "source": "a1",
-        "target": "c8"
-      },
-      {
-        "source": "a1",
-        "target": "c9"
-      },
-      {
-        "source": "a1",
-        "target": "c10"
-      },
-      {
-        "source": "a2",
-        "target": "c1"
-      },
-      {
-        "source": "a2",
-        "target": "c2"
-      },
-      {
-        "source": "a2",
-        "target": "c3"
-      },
-      {
-        "source": "a2",
-        "target": "c4"
-      },
-      {
-        "source": "a2",
-        "target": "c5"
-      },
-      {
-        "source": "a2",
-        "target": "c6"
-      },
-      {
-        "source": "a2",
-        "target": "c7"
-      },
-      {
-        "source": "a2",
-        "target": "c8"
-      },
-      {
-        "source": "a2",
-        "target": "c9"
-      },
-      {
-        "source": "a2",
-        "target": "c10"
-      },
-      {
-        "source": "a3",
-        "target": "c1"
-      },
-      {
-        "source": "a3",
-        "target": "c2"
-      },
-      {
-        "source": "a3",
-        "target": "c3"
-      },
-      {
-        "source": "a3",
-        "target": "c4"
-      },
-      {
-        "source": "a3",
-        "target": "c5"
-      },
-      {
-        "source": "a3",
-        "target": "c6"
-      },
-      {
-        "source": "a3",
-        "target": "c7"
-      },
-      {
-        "source": "a3",
-        "target": "c8"
-      },
-      {
-        "source": "a3",
-        "target": "c9"
-      },
-      {
-        "source": "a3",
-        "target": "c10"
-      },
-      {
-        "source": "a1",
-        "target": "a2"
-      },
-      {
-        "source": "a1",
-        "target": "a3"
-      },
-      {
-        "source": "a2",
-        "target": "a1"
-      },
-      {
-        "source": "a2",
-        "target": "a3"
-      },
-      {
-        "source": "a3",
-        "target": "a1"
-      },
-      {
-        "source": "a3",
-        "target": "a2"
       }
     ]
   }

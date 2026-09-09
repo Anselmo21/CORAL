@@ -22,13 +22,22 @@
   "baseline_answer": "Zinc ascorbate supplement",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2294,
-    "output_tokens": 2553,
+    "output_tokens": 2443,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,43 +56,36 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most effective form of zinc for acne?",
-        "description": "Evaluates the form of zinc and its absorption efficiency for acne treatment."
+        "label": "form of zinc",
+        "description": "What is the most effective form of zinc for acne?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What dosage and delivery method are most effective?",
-        "description": "Evaluates dosage, target demographic, and brand reputation for effectiveness."
+        "label": "dosage and delivery",
+        "description": "What dosage and delivery method are most effective?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What additional ingredients or formulation features matter?",
-        "description": "Evaluates additional ingredients, price, and availability."
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "What supports the credibility and effectiveness of the product?",
-        "description": "Evaluates user reviews and clinical evidence."
+        "label": "brand and formulation",
+        "description": "What additional ingredients or brand features matter?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "form of zinc",
-        "description": "The specific type of zinc compound used in the supplement."
+        "description": "The type of zinc compound used in the supplement."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "dosage recommendation",
-        "description": "The recommended daily amount of zinc for acne treatment."
+        "description": "The recommended daily dosage for acne treatment."
       },
       {
         "id": "c3",
@@ -104,28 +106,28 @@
         "layer": "3",
         "type": "concept",
         "label": "target demographic",
-        "description": "The group of people for whom the supplement is intended."
+        "description": "Who is the supplement most suitable for?"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "brand reputation",
-        "description": "The perceived trustworthiness and quality of the brand."
+        "description": "The perceived quality and trustworthiness of the brand."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "price point",
-        "description": "The cost of the supplement relative to its value."
+        "description": "The cost of the supplement."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "user reviews",
-        "description": "Feedback from users about the supplement's effectiveness."
+        "description": "Customer feedback and satisfaction with the product."
       },
       {
         "id": "c9",
@@ -146,21 +148,21 @@
         "layer": "4",
         "type": "answer",
         "label": "Zinc ascorbate supplement",
-        "description": "A standalone zinc ascorbate supplement, praised for absorption and acne benefits."
+        "description": "Zinc ascorbate is the most effective form for acne due to high absorption and skin benefits."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Oral zinc gluconate at the trial-validated 200 mg/day dose (~30 mg elemental zinc)",
-        "description": "A specific dosage of zinc gluconate with clinical backing."
+        "description": "Zinc gluconate with a specific dosage is supported by clinical studies."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Multivitamin with high-potency zinc plus Vitamins A / B6 / C / E",
-        "description": "A multivitamin containing zinc and other acne-supporting nutrients."
+        "description": "A multivitamin with zinc and other skin-supporting vitamins."
       }
     ],
     "edges": [
@@ -175,10 +177,6 @@
       {
         "source": "q",
         "target": "sq3"
-      },
-      {
-        "source": "q",
-        "target": "sq4"
       },
       {
         "source": "sq1",
@@ -198,11 +196,11 @@
       },
       {
         "source": "sq2",
-        "target": "c5"
+        "target": "c1"
       },
       {
         "source": "sq2",
-        "target": "c6"
+        "target": "c5"
       },
       {
         "source": "sq3",
@@ -210,19 +208,19 @@
       },
       {
         "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
         "target": "c7"
       },
       {
         "source": "sq3",
-        "target": "c10"
-      },
-      {
-        "source": "sq4",
         "target": "c8"
       },
       {
-        "source": "sq4",
-        "target": "c9"
+        "source": "sq3",
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -265,10 +263,6 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
         "source": "c2",
         "target": "a2"
       },
@@ -278,18 +272,6 @@
       },
       {
         "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
         "target": "a2"
       },
       {
@@ -297,7 +279,7 @@
         "target": "a2"
       },
       {
-        "source": "c10",
+        "source": "c8",
         "target": "a2"
       },
       {
@@ -313,19 +295,11 @@
         "target": "a3"
       },
       {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
         "source": "c7",
         "target": "a3"
       },
       {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
+        "source": "c9",
         "target": "a3"
       }
     ]

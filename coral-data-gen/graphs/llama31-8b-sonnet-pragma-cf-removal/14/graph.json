@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Delay to 70 Default): Wait until 70 to claim Social Security \u2014 the 8% annual delayed credit is an unbeatable risk-free return for healthy individuals, and maximizes inflation-adjusted lifetime income if you live past 82.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1685,
-    "output_tokens": 1925,
+    "output_tokens": 1995,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -223,43 +232,53 @@
       },
       {
         "source": "c1",
-        "target": "a2"
+        "target": "a2",
+        "label": "R_i"
       },
       {
         "source": "c2",
-        "target": "a1"
+        "target": "a2",
+        "label": "R_i"
       },
       {
         "source": "c3",
-        "target": "a2"
+        "target": "a2",
+        "label": "R_i"
       },
       {
         "source": "c4",
-        "target": "a2"
+        "target": "a2",
+        "label": "R_i"
       },
       {
         "source": "c5",
-        "target": "a1"
+        "target": "a1",
+        "label": "R_i"
       },
       {
         "source": "c6",
-        "target": "a2"
+        "target": "a2",
+        "label": "R_i"
       },
       {
         "source": "c7",
-        "target": "a2"
+        "target": "a2",
+        "label": "R_i"
       },
       {
         "source": "c8",
-        "target": "a1"
+        "target": "a1",
+        "label": "R_i"
       },
       {
         "source": "c9",
-        "target": "a1"
+        "target": "a1",
+        "label": "R_i"
       },
       {
         "source": "c10",
-        "target": "a1"
+        "target": "a1",
+        "label": "R_i"
       }
     ]
   }

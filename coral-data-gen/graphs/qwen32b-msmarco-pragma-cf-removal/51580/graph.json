@@ -22,13 +22,22 @@
   "baseline_answer": "Bupropion (Wellbutrin)",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2692,
-    "output_tokens": 2742,
+    "output_tokens": 2449,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -61,106 +70,106 @@
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What antidepressant is most effective for energy and mood in a patient with anxiety or other comorbidities?",
+        "label": "What antidepressant is most effective for energy and mood in patients with anxiety or other comorbidities?",
         "description": "Consider comorbid conditions like anxiety."
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "What antidepressant is most effective for energy and mood in a vulnerable or special population?",
-        "description": "Consider special populations like pregnant patients."
+        "label": "What antidepressant is most effective for energy and mood in special populations or with specific concerns?",
+        "description": "Consider special populations like pregnant patients or those with weight concerns."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: psychiatry clinical practice guideline",
-        "description": "Prioritize sources from clinical practice guidelines."
+        "description": "Sources from clinical psychiatry guidelines."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed pharmacology literature",
-        "description": "Prioritize peer-reviewed pharmacology research."
+        "description": "Sources from peer-reviewed pharmacology journals."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: integrative medicine source",
-        "description": "Prioritize integrative and alternative medicine sources."
+        "description": "Sources from integrative or alternative medicine."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: patient mental-health forum",
-        "description": "Prioritize patient-reported experiences from mental health forums."
+        "description": "Sources from patient mental health forums."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: wellness / lifestyle publication",
-        "description": "Prioritize wellness and lifestyle-focused content."
+        "description": "Sources from wellness or lifestyle publications."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: low-energy depression patient",
-        "description": "Prioritize the perspective of patients with low energy."
+        "description": "Sources from the perspective of a patient with low energy."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: anxious patient",
-        "description": "Prioritize the perspective of patients with anxiety."
+        "description": "Sources from the perspective of a patient with anxiety."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: patient avoiding pharmacologic intervention",
-        "description": "Prioritize the perspective of patients avoiding medication."
+        "description": "Sources from the perspective of a patient avoiding medication."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: patient with comorbid weight concerns",
-        "description": "Prioritize the perspective of patients with weight concerns."
+        "description": "Sources from the perspective of a patient with weight concerns."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: pregnant patient",
-        "description": "Prioritize the perspective of pregnant patients."
+        "description": "Sources from the perspective of a pregnant patient."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Bupropion (Wellbutrin)",
-        "description": "Most activating antidepressant with weight-neutral profile."
+        "description": "Most activating antidepressant with weight neutrality."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "SSRI (Prozac, Zoloft)",
-        "description": "Common antidepressants with moderate energy effects."
+        "description": "Common antidepressants with mood benefits but less energy boost."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Natural supplements (St John's Wort, SAM-e, Omega-3, B vitamins) + exercise",
-        "description": "Non-pharmacologic approach with lifestyle and supplements."
+        "description": "Non-pharmacologic approach with mood and energy benefits."
       }
     ],
     "edges": [
@@ -206,11 +215,11 @@
       },
       {
         "source": "sq3",
-        "target": "c4"
+        "target": "c7"
       },
       {
-        "source": "sq3",
-        "target": "c7"
+        "source": "sq4",
+        "target": "c4"
       },
       {
         "source": "sq4",
@@ -234,7 +243,7 @@
       },
       {
         "source": "c4",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c5",
@@ -255,66 +264,6 @@
       {
         "source": "c9",
         "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
       },
       {
         "source": "c10",

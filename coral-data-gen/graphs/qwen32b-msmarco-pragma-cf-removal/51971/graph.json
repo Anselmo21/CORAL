@@ -22,13 +22,22 @@
   "baseline_answer": "Zolpidem (Ambien)",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2562,
-    "output_tokens": 2517,
+    "output_tokens": 2672,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,120 +56,113 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best sleep aid based on clinical guidelines and evidence-based medicine?",
-        "description": "Evaluates sleep aids using clinical guidelines and peer-reviewed research."
+        "label": "What is the best sleep aid based on clinical authority and evidence?",
+        "description": "Evaluates sleep aids based on clinical guidelines, peer-reviewed journals, and pharmacology."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best sleep aid based on consumer or cost-based recommendations?",
-        "description": "Evaluates sleep aids using consumer reports and cost-effectiveness."
+        "label": "What is the best sleep aid for specific patient profiles or insomnia types?",
+        "description": "Evaluates sleep aids based on insomnia type and patient characteristics."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best sleep aid for specific insomnia subtypes or patient profiles?",
-        "description": "Evaluates sleep aids for specific insomnia types and patient characteristics."
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "What is the best sleep aid from a safety or addiction risk perspective?",
-        "description": "Evaluates sleep aids based on addiction risk and safety."
+        "label": "What is the best sleep aid based on consumer or cost-based recommendations?",
+        "description": "Evaluates sleep aids based on consumer reports and addiction risk."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: clinical practice guideline",
-        "description": "Prioritizes clinical practice guidelines."
+        "description": "Prioritizes sleep aids supported by clinical practice guidelines."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed psychiatry / sleep journal",
-        "description": "Prioritizes peer-reviewed journals in psychiatry and sleep medicine."
+        "description": "Prioritizes sleep aids supported by peer-reviewed psychiatry or sleep journals."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer Reports Best Buy",
-        "description": "Prioritizes cost-effective and consumer-recommended products."
+        "description": "Prioritizes sleep aids recommended as best buys by consumer reports."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: addiction medicine guidance",
-        "description": "Prioritizes guidance on addiction risk and safety."
+        "description": "Prioritizes sleep aids with low addiction risk as per addiction medicine guidance."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: AASM (sleep medicine) guidelines",
-        "description": "Prioritizes American Academy of Sleep Medicine guidelines."
+        "description": "Prioritizes sleep aids supported by AASM (American Academy of Sleep Medicine) guidelines."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: pharmacology textbook",
-        "description": "Prioritizes pharmacology textbook information."
+        "description": "Prioritizes sleep aids supported by pharmacology textbooks."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: short-term sleep-onset trouble",
-        "description": "Prioritizes sleep aids for difficulty falling asleep."
+        "description": "Prioritizes sleep aids for short-term difficulty falling asleep."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: patient with comorbid depression / anxiety",
-        "description": "Prioritizes sleep aids for patients with depression or anxiety."
+        "description": "Prioritizes sleep aids for patients with comorbid depression or anxiety."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: middle-of-night waker (maintenance insomnia)",
-        "description": "Prioritizes sleep aids for difficulty staying asleep."
+        "description": "Prioritizes sleep aids for middle-of-the-night wakers."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: older adult patient",
-        "description": "Prioritizes sleep aids for older adults."
+        "description": "Prioritizes sleep aids for older adult patients."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Zolpidem (Ambien)",
-        "description": "FDA-approved, short-term sleep-onset aid, labeled as Best Buy."
+        "description": "Zolpidem is FDA-approved for short-term insomnia and is the top pick when all directives are considered."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Trazodone or low-dose mirtazapine",
-        "description": "Antidepressants with sedative properties, used off-label for insomnia."
+        "description": "Antidepressants used off-label for insomnia, especially in patients with comorbid depression or anxiety."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Temazepam (Restoril)",
-        "description": "Benzodiazepine used for sleepwalking and night terrors."
+        "description": "A benzodiazepine used for maintenance insomnia and older adults."
       }
     ],
     "edges": [
@@ -175,10 +177,6 @@
       {
         "source": "q",
         "target": "sq3"
-      },
-      {
-        "source": "q",
-        "target": "sq4"
       },
       {
         "source": "sq1",
@@ -198,26 +196,26 @@
       },
       {
         "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
         "target": "c3"
       },
       {
         "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c8"
-      },
-      {
-        "source": "sq3",
-        "target": "c9"
-      },
-      {
-        "source": "sq3",
-        "target": "c10"
-      },
-      {
-        "source": "sq4",
         "target": "c4"
       },
       {
@@ -250,7 +248,59 @@
       },
       {
         "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
         "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
       },
       {
         "source": "c9",
@@ -258,7 +308,7 @@
       },
       {
         "source": "c10",
-        "target": "a1"
+        "target": "a3"
       }
     ]
   }

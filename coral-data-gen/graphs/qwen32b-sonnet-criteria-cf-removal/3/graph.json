@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Rent and Invest Default): Rent in Toronto and invest your down payment capital in a diversified portfolio \u2014 the city's extreme price-to-rent ratio means buying only makes financial sense with a 7+ year horizon and strong income stability.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1502,
-    "output_tokens": 2369,
+    "output_tokens": 2225,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,92 +56,92 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Long-term financial implications",
-        "description": "What are the long-term financial implications of buying vs. renting?"
+        "label": "What are the long-term financial implications of buying vs. renting?",
+        "description": "Evaluates long-term wealth, forced savings, and real estate appreciation."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Short-term and lifestyle considerations",
-        "description": "What are the short-term and lifestyle considerations?"
+        "label": "What are the short-term and lifestyle considerations?",
+        "description": "Evaluates cash flow, job stability, risk tolerance, and lifestyle."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Behavioral and psychological factors",
-        "description": "What are the behavioral and psychological factors?"
+        "label": "What are the flexibility and mobility trade-offs?",
+        "description": "Evaluates flexibility, mobility, and rent increase protection."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "long-term wealth accumulation",
-        "description": "The potential for building long-term wealth through property ownership."
+        "description": "The potential for building equity and wealth over time."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "monthly cash flow optimization",
-        "description": "The ability to manage monthly expenses effectively."
+        "description": "Minimizing monthly expenses and maximizing liquidity."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "flexibility and mobility",
-        "description": "The freedom to move or change locations without penalty."
+        "description": "Ability to move or change living situations easily."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "forced savings discipline",
-        "description": "The automatic savings behavior induced by mortgage payments."
+        "description": "Mortgage payments act as forced savings."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "protection from rent increases",
-        "description": "The security of fixed housing costs over time."
+        "description": "Owning a home avoids annual rent hikes."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "investment of down payment capital",
-        "description": "The opportunity to invest the capital that would otherwise go to a down payment."
+        "description": "Opportunity to invest the down payment elsewhere."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "job and income stability",
-        "description": "The stability of one's employment and income."
+        "description": "Stable employment supports long-term housing decisions."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "short-term financial risk tolerance",
-        "description": "The ability to tolerate financial risk in the short term."
+        "description": "Ability to handle market volatility and interest rate changes."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "community and lifestyle stability",
-        "description": "The desire for a stable community and lifestyle."
+        "description": "Preference for a stable living environment and community."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "exposure to real estate appreciation",
-        "description": "The potential for property value to increase over time."
+        "description": "Potential for property value to increase over time."
       },
       {
         "id": "a1",
@@ -175,23 +184,19 @@
       },
       {
         "source": "sq1",
-        "target": "c5"
-      },
-      {
-        "source": "sq1",
-        "target": "c6"
+        "target": "c4"
       },
       {
         "source": "sq1",
         "target": "c10"
       },
       {
-        "source": "sq2",
-        "target": "c2"
+        "source": "sq1",
+        "target": "c6"
       },
       {
         "source": "sq2",
-        "target": "c3"
+        "target": "c2"
       },
       {
         "source": "sq2",
@@ -207,7 +212,11 @@
       },
       {
         "source": "sq3",
-        "target": "c4"
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
       },
       {
         "source": "c1",
@@ -231,11 +240,11 @@
       },
       {
         "source": "c4",
-        "target": "a2"
+        "target": "a1"
       },
       {
-        "source": "c5",
-        "target": "a1"
+        "source": "c4",
+        "target": "a2"
       },
       {
         "source": "c5",
@@ -260,6 +269,10 @@
       {
         "source": "c9",
         "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
       },
       {
         "source": "c10",

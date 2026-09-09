@@ -22,13 +22,22 @@
   "baseline_answer": "Keep the blister intact, dry, and protected with a loose bandage",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1830,
-    "output_tokens": 1783,
+    "output_tokens": 2231,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,126 +50,119 @@
         "layer": "1",
         "type": "question",
         "label": "best remedy to dry out feet blisters",
-        "description": "best remedy to dry out feet blisters"
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "How to treat blisters",
-        "description": "How to treat blisters"
+        "label": "How to treat blisters without draining them?",
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Preventing infection",
-        "description": "Preventing infection"
+        "label": "How to drain blisters safely?",
+        "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Ease of treatment",
-        "description": "Ease of treatment"
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "Treatment duration",
-        "description": "Treatment duration"
+        "label": "What are the characteristics of an effective blister remedy?",
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "application method",
-        "description": "application method"
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "ingredient type",
-        "description": "ingredient type"
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "healing speed",
-        "description": "healing speed"
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "infection prevention",
-        "description": "infection prevention"
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "skin sensitivity",
-        "description": "skin sensitivity"
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "moisture control",
-        "description": "moisture control"
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "ease of use",
-        "description": "ease of use"
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "availability",
-        "description": "availability"
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "user preference",
-        "description": "user preference"
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "treatment duration",
-        "description": "treatment duration"
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Apple cider vinegar swab",
-        "description": "Apple cider vinegar swab"
+        "label": "Keep the blister intact, dry, and protected with a loose bandage",
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Carefully drain a large painful blister with a sterilized needle",
-        "description": "Carefully drain a large painful blister with a sterilized needle"
+        "label": "Apple cider vinegar swab",
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Keep the blister intact, dry, and protected with a loose bandage",
-        "description": "Keep the blister intact, dry, and protected with a loose bandage"
+        "label": "Carefully drain a large painful blister with a sterilized needle",
+        "description": ""
       }
     ],
     "edges": [
@@ -175,10 +177,6 @@
       {
         "source": "q",
         "target": "sq3"
-      },
-      {
-        "source": "q",
-        "target": "sq4"
       },
       {
         "source": "sq1",
@@ -222,6 +220,18 @@
       },
       {
         "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
         "target": "c4"
       },
       {
@@ -230,7 +240,47 @@
       },
       {
         "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
         "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
       },
       {
         "source": "sq3",
@@ -245,80 +295,116 @@
         "target": "c9"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c10"
       },
       {
-        "source": "c1",
-        "target": "a3"
+        "source": "a1",
+        "target": "c1"
       },
       {
-        "source": "c2",
-        "target": "a1"
+        "source": "a1",
+        "target": "c2"
       },
       {
-        "source": "c3",
-        "target": "a3"
+        "source": "a1",
+        "target": "c3"
       },
       {
-        "source": "c4",
-        "target": "a3"
+        "source": "a1",
+        "target": "c4"
       },
       {
-        "source": "c5",
-        "target": "a3"
+        "source": "a1",
+        "target": "c5"
       },
       {
-        "source": "c6",
-        "target": "a3"
+        "source": "a1",
+        "target": "c6"
       },
       {
-        "source": "c7",
-        "target": "a1"
+        "source": "a1",
+        "target": "c7"
       },
       {
-        "source": "c8",
-        "target": "a2"
+        "source": "a1",
+        "target": "c8"
       },
       {
-        "source": "c9",
-        "target": "a1"
+        "source": "a1",
+        "target": "c9"
       },
       {
-        "source": "c10",
-        "target": "a2"
+        "source": "a1",
+        "target": "c10"
       },
       {
-        "source": "c1",
-        "target": "a2"
+        "source": "a2",
+        "target": "c1"
       },
       {
-        "source": "c2",
-        "target": "a2"
+        "source": "a2",
+        "target": "c2"
       },
       {
-        "source": "c3",
-        "target": "a2"
+        "source": "a2",
+        "target": "c4"
       },
       {
-        "source": "c4",
-        "target": "a2"
+        "source": "a2",
+        "target": "c5"
       },
       {
-        "source": "c5",
-        "target": "a2"
+        "source": "a2",
+        "target": "c6"
       },
       {
-        "source": "c6",
-        "target": "a2"
+        "source": "a2",
+        "target": "c7"
       },
       {
-        "source": "c7",
-        "target": "a2"
+        "source": "a2",
+        "target": "c8"
       },
       {
-        "source": "c9",
-        "target": "a2"
+        "source": "a2",
+        "target": "c9"
+      },
+      {
+        "source": "a2",
+        "target": "c10"
+      },
+      {
+        "source": "a3",
+        "target": "c1"
+      },
+      {
+        "source": "a3",
+        "target": "c2"
+      },
+      {
+        "source": "a3",
+        "target": "c4"
+      },
+      {
+        "source": "a3",
+        "target": "c5"
+      },
+      {
+        "source": "a3",
+        "target": "c7"
+      },
+      {
+        "source": "a3",
+        "target": "c8"
+      },
+      {
+        "source": "a3",
+        "target": "c9"
+      },
+      {
+        "source": "a3",
+        "target": "c10"
       }
     ]
   }

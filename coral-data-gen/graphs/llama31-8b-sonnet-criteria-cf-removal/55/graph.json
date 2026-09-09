@@ -22,16 +22,24 @@
   "baseline_answer": "Answer A (Sony XM5 Default): Get the Sony WH-1000XM5 \u2014 the best ANC performance available, excellent call quality, and 30-hour battery make it the top work-from-home headphone for blocking out household noise.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
-  "attempts": 2,
+  "attempts": 1,
   "usage": {
-    "prompt_tokens": 7256,
-    "output_tokens": 5416,
-    "llm_calls": 2,
+    "prompt_tokens": 1555,
+    "output_tokens": 2538,
+    "llm_calls": 1,
     "finish_reasons": [
-      "length",
       "stop"
     ]
   },
@@ -42,119 +50,112 @@
         "layer": "1",
         "type": "question",
         "label": "What headphones should I get for working from home to block out noise from my family?",
-        "description": ""
+        "description": "Noise cancellation and comfort for work-from-home use"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "Noise cancellation and call quality",
-        "description": ""
+        "description": "ANC performance, call microphone quality, battery life, price, and durability"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Comfort and battery life",
-        "description": ""
-      },
-      {
-        "id": "sq3",
-        "layer": "2",
-        "type": "subq",
-        "label": "Ecosystem integration and additional features",
-        "description": ""
+        "label": "Usability and additional features",
+        "description": "Comfort, battery life, ecosystem integration, wired backup option, multipoint Bluetooth connection, and ambient sound passthrough"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "active noise cancellation effectiveness",
-        "description": ""
+        "description": "ANC performance"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "all-day wearing comfort",
-        "description": ""
+        "description": "Comfort"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "call microphone quality",
-        "description": ""
+        "description": "Call quality"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "battery life for full workday",
-        "description": ""
+        "description": "Battery life"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "ecosystem integration (Apple/Windows)",
-        "description": ""
+        "description": "Ecosystem integration"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "price and value",
-        "description": ""
+        "description": "Price"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "wired backup option for zero-latency calls",
-        "description": ""
+        "description": "Wired backup option"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "multipoint Bluetooth connection",
-        "description": ""
+        "description": "Multipoint Bluetooth connection"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "durability for daily professional use",
-        "description": ""
+        "description": "Durability"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "ambient sound passthrough for awareness",
-        "description": ""
+        "description": "Ambient sound passthrough"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Get the Sony WH-1000XM5 \u2014 the best ANC performance available, excellent call quality, and 30-hour battery make it the top work-from-home headphone for blocking out household noise.",
-        "description": ""
+        "label": "Answer A (Sony XM5 Default)",
+        "description": "Get the Sony WH-1000XM5 \u2014 the best ANC performance available, excellent call quality, and 30-hour battery make it the top work-from-home headphone for blocking out household noise."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Choose the Bose QuietComfort 45 if you wear headphones for 6+ hours daily \u2014 its all-day comfort advantage over the Sony XM5 matters more than the marginal ANC performance difference for heavy users.",
-        "description": ""
+        "label": "Answer B (Bose QC45 for Comfort)",
+        "description": "Choose the Bose QuietComfort 45 if you wear headphones for 6+ hours daily \u2014 its all-day comfort advantage over the Sony XM5 matters more than the marginal ANC performance difference for heavy users."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Buy the Jabra Evolve2 75 if call clarity is your primary need \u2014 its professional-grade microphone array produces noticeably better audio for meeting participants than any consumer-focused headphone.",
-        "description": ""
+        "label": "Answer C (Jabra for Call Quality)",
+        "description": "Buy the Jabra Evolve2 75 if call clarity is your primary need \u2014 its professional-grade microphone array produces noticeably better audio for meeting participants than any consumer-focused headphone."
       }
     ],
     "edges": [
@@ -165,10 +166,6 @@
       {
         "source": "q",
         "target": "sq2"
-      },
-      {
-        "source": "q",
-        "target": "sq3"
       },
       {
         "source": "sq1",
@@ -199,19 +196,19 @@
         "target": "c4"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c5"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c7"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c8"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c10"
       },
       {
@@ -219,11 +216,27 @@
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
         "source": "c3",
         "target": "a1"
       },
       {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
         "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
         "target": "a1"
       },
       {
@@ -231,8 +244,24 @@
         "target": "a1"
       },
       {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
         "source": "c9",
         "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
       },
       {
         "source": "c2",
@@ -243,19 +272,31 @@
         "target": "a2"
       },
       {
-        "source": "c5",
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
         "target": "a3"
       },
       {
-        "source": "c7",
+        "source": "c3",
         "target": "a3"
       },
       {
-        "source": "c8",
+        "source": "c4",
         "target": "a3"
       },
       {
-        "source": "c10",
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
         "target": "a3"
       }
     ]

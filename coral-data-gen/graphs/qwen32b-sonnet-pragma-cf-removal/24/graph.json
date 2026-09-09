@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Medication First Default): Start with stimulant medication \u2014 70\u201380% of adults with ADHD respond well and it produces faster, larger functional improvements than behavioral strategies alone for moderate-to-severe impairment.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1642,
-    "output_tokens": 2293,
+    "output_tokens": 2403,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -62,77 +71,77 @@
         "layer": "2",
         "type": "subq",
         "label": "sq3",
-        "description": "What is the most effective treatment for adult ADHD in terms of patient-reported outcomes and real-world experience?"
+        "description": "What is the most effective treatment for adult ADHD in terms of clinical consensus and patient-reported outcomes?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Only consider sources from 2023"
+        "description": "Only consider sources from 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Only consider sources from 2021 to 2023"
+        "description": "Only consider sources from 2021 to 2023."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Only consider sources from the USA"
+        "description": "Only consider sources from the USA."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient with severe functional impairment",
-        "description": "Only consider sources from the perspective of a patient with severe functional impairment"
+        "description": "Only consider sources from the perspective of a patient with severe functional impairment."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient preferring non-pharmacological treatment",
-        "description": "Only consider sources from the perspective of a patient preferring non-pharmacological treatment"
+        "description": "Only consider sources from the perspective of a patient preferring non-pharmacological treatment."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Psychiatrist or ADHD specialist",
-        "description": "Only consider sources from the perspective of a psychiatrist or ADHD specialist"
+        "description": "Only consider sources from the perspective of a psychiatrist or ADHD specialist."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Peer-reviewed clinical research",
-        "description": "Only consider peer-reviewed clinical research"
+        "description": "Only consider peer-reviewed clinical research."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Medical institution guidance",
-        "description": "Only consider guidance from medical institutions"
+        "description": "Only consider guidance from medical institutions."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer health information",
-        "description": "Only consider consumer health information"
+        "description": "Only consider consumer health information."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Patient community experience",
-        "description": "Only consider patient community experience"
+        "description": "Only consider patient community experience."
       },
       {
         "id": "a1",
@@ -227,15 +236,27 @@
       },
       {
         "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
         "target": "c3"
       },
       {
         "source": "sq3",
-        "target": "c4"
+        "target": "c6"
       },
       {
         "source": "sq3",
-        "target": "c5"
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
       },
       {
         "source": "sq3",
@@ -255,6 +276,10 @@
       },
       {
         "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
         "target": "a1"
       },
       {
@@ -278,11 +303,19 @@
         "target": "a1"
       },
       {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
         "source": "c2",
         "target": "a2"
       },
       {
         "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
         "target": "a2"
       },
       {
@@ -290,12 +323,16 @@
         "target": "a2"
       },
       {
-        "source": "c7",
+        "source": "c9",
         "target": "a2"
       },
       {
-        "source": "c9",
+        "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
       },
       {
         "source": "c2",
@@ -303,6 +340,14 @@
       },
       {
         "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
         "target": "a3"
       },
       {

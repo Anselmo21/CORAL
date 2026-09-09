@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Paralegal First Default): Start as a paralegal \u2014 it lets you test whether you genuinely enjoy legal work before committing $150\u2013250k to law school, and paralegal careers are stable, growing, and financially reasonable for those not targeting BigLaw.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1762,
-    "output_tokens": 2613,
+    "output_tokens": 2679,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,42 +50,42 @@
         "layer": "1",
         "type": "question",
         "label": "Should I become a paralegal instead of committing to law school?",
-        "description": "I'm interested in legal work but not sure I want to commit to law school."
+        "description": "A question about whether to pursue a paralegal career or law school, considering financial, career, and personal factors."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "What is the financial and educational cost-benefit of becoming a paralegal vs. a lawyer?",
-        "description": "Compare the cost, time, and earnings of paralegal and lawyer paths."
+        "description": "Compares the cost and return of paralegal training vs. law school."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "What are the long-term career prospects and stability of paralegal work?",
-        "description": "Assess the growth, specialization, and job security of paralegal careers."
+        "description": "Evaluates the growth, specialization, and job security of paralegal careers."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "What is the best path for someone uncertain about committing to law school?",
-        "description": "Evaluate whether to test the legal field via paralegal work before committing to law school."
+        "description": "Considers whether to test the legal field via paralegal work before committing to law school."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Only consider data from 2023."
+        "description": "Only consider sources from 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Consider data from 2021 to 2023."
+        "description": "Only consider sources from 2021 to 2023."
       },
       {
         "id": "c3",
@@ -90,21 +99,21 @@
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student uncertain about commitment to law",
-        "description": "Consider the viewpoint of a student unsure about law school."
+        "description": "Only consider sources from the perspective of students unsure about law school."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student targeting BigLaw or high-earning legal careers",
-        "description": "Consider the viewpoint of a student aiming for high-earning legal careers."
+        "description": "Only consider sources from the perspective of students aiming for high-earning legal careers."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Student focused on work-life balance and debt avoidance",
-        "description": "Consider the viewpoint of a student prioritizing debt-free, stable work."
+        "description": "Only consider sources from the perspective of students prioritizing debt and work-life balance."
       },
       {
         "id": "c7",
@@ -138,22 +147,22 @@
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (Paralegal First Default)",
-        "description": "Start as a paralegal \u2014 it lets you test whether you genuinely enjoy legal work before committing $150\u2013250k to law school, and paralegal careers are stable, growing, and financially reasonable for those not targeting BigLaw."
+        "label": "Answer A (Paralegal First Default): Start as a paralegal \u2014 it lets you test whether you genuinely enjoy legal work before committing $150\u2013250k to law school, and paralegal careers are stable, growing, and financially reasonable for those not targeting BigLaw.",
+        "description": "A general recommendation to test the legal field via paralegal work before committing to law school."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (Law School for Big Earnings)",
-        "description": "Go to a top-20 law school if your goal is BigLaw or federal clerkships \u2014 the $215k starting salary justifies the debt investment in a way that lower-ranked law school outcomes do not."
+        "label": "Answer B (Law School for Big Earnings): Go to a top-20 law school if your goal is BigLaw or federal clerkships \u2014 the $215k starting salary justifies the debt investment in a way that lower-ranked law school outcomes do not.",
+        "description": "A recommendation for committed students aiming for high-earning legal careers."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (Paralegal as Career, Not Stepping Stone)",
-        "description": "Build a paralegal career intentionally rather than as a stopgap \u2014 specialization in areas like IP, healthcare, or corporate law creates a fulfilling, debt-free career that compares favorably to most non-BigLaw attorney outcomes."
+        "label": "Answer C (Paralegal as Career, Not Stepping Stone): Build a paralegal career intentionally rather than as a stopgap \u2014 specialization in areas like IP, healthcare, or corporate law creates a fulfilling, debt-free career that compares favorably to most non-BigLaw attorney outcomes.",
+        "description": "A recommendation to treat paralegal work as a long-term, fulfilling career."
       }
     ],
     "edges": [
@@ -203,6 +212,10 @@
       },
       {
         "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
         "target": "c2"
       },
       {
@@ -224,6 +237,10 @@
       {
         "source": "sq3",
         "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
       },
       {
         "source": "sq3",
@@ -290,6 +307,10 @@
         "target": "a2"
       },
       {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
         "source": "c10",
         "target": "a2"
       },
@@ -310,11 +331,19 @@
         "target": "a3"
       },
       {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
         "source": "c8",
         "target": "a3"
       },
       {
         "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
         "target": "a3"
       }
     ]

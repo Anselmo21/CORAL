@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Lifestyle First Default): Try intensive diet and exercise for 3\u20136 months before starting medication if your HbA1c is below 8\u20139% \u2014 lifestyle intervention can achieve comparable glucose control and potentially full remission without medication side effects.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1693,
-    "output_tokens": 2934,
+    "output_tokens": 3206,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,126 +50,126 @@
         "layer": "1",
         "type": "question",
         "label": "Should I try to manage type 2 diabetes with diet and exercise first, or start medication right away?",
-        "description": "Type 2 diabetes management"
+        "description": "The question is: 'Should I try to manage type 2 diabetes with diet and exercise first, or start medication right away?' The plausible answers differ in their recommendations based on the patient's HbA1c level and symptoms."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "What is the recommended approach for newly diagnosed type 2 diabetes patients with HbA1c below 8\u20139%?",
-        "description": "HbA1c below 8\u20139%"
+        "description": "We can group the Layer 3 seeds into the following sub-questions: - sq1: What is the recommended approach for newly diagnosed type 2 diabetes patients with HbA1c below 8\u20139%?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "What is the best approach for patients with high HbA1c or significant symptoms?",
-        "description": "High HbA1c or significant symptoms"
+        "description": "We can group the Layer 3 seeds into the following sub-questions: - sq2: What is the best approach for patients with high HbA1c or significant symptoms?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "What is the role of medication in type 2 diabetes management?",
-        "description": "Medication in type 2 diabetes"
+        "description": "We can group the Layer 3 seeds into the following sub-questions: - sq3: What is the role of medication in type 2 diabetes management?"
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
         "label": "What is the importance of lifestyle changes in type 2 diabetes management?",
-        "description": "Lifestyle changes in type 2 diabetes"
+        "description": "We can group the Layer 3 seeds into the following sub-questions: - sq4: What is the importance of lifestyle changes in type 2 diabetes management?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "2023 only"
+        "description": "temporal: 2023 only"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "2021\u20132023"
+        "description": "temporal: 2021\u20132023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "USA"
+        "description": "geographic: USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient with mild elevation and high motivation",
-        "description": "Patient with mild elevation and high motivation"
+        "description": "perspective: Patient with mild elevation and high motivation"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient with high HbA1c or significant symptoms",
-        "description": "Patient with high HbA1c or significant symptoms"
+        "description": "perspective: Patient with high HbA1c or significant symptoms"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Clinical endocrinologist or GP",
-        "description": "Clinical endocrinologist or GP"
+        "description": "perspective: Clinical endocrinologist or GP"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Peer-reviewed clinical trials",
-        "description": "Peer-reviewed clinical trials"
+        "description": "trustworthiness: Peer-reviewed clinical trials"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Medical institution guidance",
-        "description": "Medical institution guidance"
+        "description": "trustworthiness: Medical institution guidance"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer health information",
-        "description": "Consumer health information"
+        "description": "trustworthiness: Consumer health information"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Patient community experience",
-        "description": "Patient community experience"
+        "description": "trustworthiness: Patient community experience"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Lifestyle First Default",
-        "description": "Try intensive diet and exercise for 3\u20136 months before starting medication if your HbA1c is below 8\u20139%"
+        "label": "Answer A (Lifestyle First Default): Try intensive diet and exercise for 3\u20136 months before starting medication if your HbA1c is below 8\u20139% \u2014 lifestyle intervention can achieve comparable glucose control and potentially full remission without medication side effects.",
+        "description": "Answer A (Lifestyle First Default): Try intensive diet and exercise for 3\u20136 months before starting medication if your HbA1c is below 8\u20139% \u2014 lifestyle intervention can achieve comparable glucose control and potentially full remission without medication side effects."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Immediate Medication",
-        "description": "Start metformin immediately alongside lifestyle changes"
+        "label": "Answer B (Immediate Medication): Start metformin immediately alongside lifestyle changes \u2014 it's safe, cheap, well-tolerated, and provides a metabolic safety net while you implement dietary changes, with no reason to delay.",
+        "description": "Answer B (Immediate Medication): Start metformin immediately alongside lifestyle changes \u2014 it's safe, cheap, well-tolerated, and provides a metabolic safety net while you implement dietary changes, with no reason to delay."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Medication Required",
-        "description": "Start medication immediately if your HbA1c is above 9% or you have significant symptoms"
+        "label": "Answer C (Medication Required): If your HbA1c is above 9% or you have significant symptoms, start medication immediately \u2014 prolonged hyperglycemia carries complication risk that outweighs the benefit of attempting lifestyle-only management.",
+        "description": "Answer C (Medication Required): If your HbA1c is above 9% or you have significant symptoms, start medication immediately \u2014 prolonged hyperglycemia carries complication risk that outweighs the benefit of attempting lifestyle-only management."
       }
     ],
     "edges": [
@@ -190,6 +199,14 @@
       },
       {
         "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
         "target": "c7"
       },
       {
@@ -207,6 +224,10 @@
       {
         "source": "sq1",
         "target": "a1"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
       },
       {
         "source": "sq2",
@@ -242,7 +263,7 @@
       },
       {
         "source": "sq3",
-        "target": "c3"
+        "target": "c2"
       },
       {
         "source": "sq3",
@@ -263,6 +284,10 @@
       {
         "source": "sq3",
         "target": "a2"
+      },
+      {
+        "source": "sq4",
+        "target": "c3"
       },
       {
         "source": "sq4",
@@ -305,52 +330,20 @@
         "target": "a1"
       },
       {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
         "source": "c2",
         "target": "a2"
       },
       {
         "source": "c3",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c4",
-        "target": "a3"
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
       },
       {
         "source": "c5",
@@ -358,7 +351,19 @@
       },
       {
         "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
         "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
       },
       {
         "source": "c7",
@@ -366,11 +371,35 @@
       },
       {
         "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
         "target": "a3"
       },
       {
         "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
         "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
       },
       {
         "source": "c10",

@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Paralegal First Default): Start as a paralegal \u2014 it lets you test whether you genuinely enjoy legal work before committing $150\u2013250k to law school, and paralegal careers are stable, growing, and financially reasonable for those not targeting BigLaw.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1649,
-    "output_tokens": 2570,
+    "output_tokens": 2279,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -48,91 +57,91 @@
         "layer": "2",
         "type": "subq",
         "label": "What is the financial and time cost of each path?",
-        "description": "Compares the cost and time investment of becoming a paralegal versus attending law school."
+        "description": "Compare the cost and time investment of law school versus paralegal certification."
       },
       {
         "id": "sq2",
-        "type": "subq",
         "layer": "2",
-        "label": "What are the long-term career outcomes and stability of each path?",
-        "description": "Evaluates the job market, earnings, and advancement potential for paralegals and lawyers."
+        "type": "subq",
+        "label": "What are the long-term career and interest considerations?",
+        "description": "Evaluate the stability, interest testing, and debt implications of each path."
       },
       {
         "id": "sq3",
-        "type": "subq",
         "layer": "2",
-        "label": "How can one test interest in legal work before committing?",
-        "description": "Assesses the feasibility of trying legal work as a paralegal before committing to law school."
+        "type": "subq",
+        "label": "What are the job market and advancement prospects?",
+        "description": "Assess the growth, advancement, and work-life balance for each career path."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "total cost of law school vs paralegal certification",
-        "description": "Compares the financial investment required for each path."
+        "description": "Compare the financial investment required for each path."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "earnings potential over 20-year career",
-        "description": "Evaluates long-term financial outcomes for each path."
+        "description": "Assess long-term financial outcomes for each path."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "certainty of interest in legal practice",
-        "description": "Assesses how well each path allows one to test their interest in legal work."
+        "description": "Evaluate how confident the person is in their interest in legal work."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "target practice setting (BigLaw vs small firm)",
-        "description": "Evaluates how each path aligns with different legal career goals."
+        "description": "Consider the type of legal work the person is aiming for."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "time investment required",
-        "description": "Compares the time needed to enter each profession."
+        "description": "Compare the time needed to complete each path."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "debt burden tolerance",
-        "description": "Evaluates the financial risk of each path."
+        "description": "Assess the person's ability to handle law school debt."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "job market growth for each path",
-        "description": "Assesses the stability and growth of each profession."
+        "description": "Evaluate the stability and growth of each career."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "career advancement ceiling",
-        "description": "Evaluates the long-term potential for each path."
+        "description": "Assess the potential for advancement in each role."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "work-life balance comparison",
-        "description": "Compares the lifestyle implications of each path."
+        "description": "Compare the lifestyle implications of each path."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "ability to test legal work before committing",
-        "description": "Evaluates the opportunity to try legal work without full commitment."
+        "description": "Evaluate the opportunity to try legal work before full commitment."
       },
       {
         "id": "a1",
@@ -146,14 +155,14 @@
         "layer": "4",
         "type": "answer",
         "label": "Answer B (Law School for Big Earnings): Go to a top-20 law school if your goal is BigLaw or federal clerkships \u2014 the $215k starting salary justifies the debt investment in a way that lower-ranked law school outcomes do not.",
-        "description": "Recommended only if BigLaw is the target and debt is acceptable."
+        "description": "A high-risk, high-reward path for those certain about BigLaw."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Answer C (Paralegal as Career, Not Stepping Stone): Build a paralegal career intentionally rather than as a stopgap \u2014 specialization in areas like IP, healthcare, or corporate law creates a fulfilling, debt-free career that compares favorably to most non-BigLaw attorney outcomes.",
-        "description": "Recommended for those who want a stable, fulfilling paralegal career without testing or law school."
+        "description": "A long-term paralegal career for those content with that path."
       }
     ],
     "edges": [
@@ -187,29 +196,29 @@
       },
       {
         "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
-        "target": "c8"
-      },
-      {
-        "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq3",
         "target": "c3"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c10"
       },
       {
+        "source": "sq3",
+        "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
         "source": "c1",
         "target": "a1"
       },
@@ -230,16 +239,8 @@
         "target": "a2"
       },
       {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
         "source": "c3",
         "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
       },
       {
         "source": "c3",
@@ -252,10 +253,6 @@
       {
         "source": "c4",
         "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
       },
       {
         "source": "c5",
@@ -272,10 +269,6 @@
       {
         "source": "c6",
         "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
       },
       {
         "source": "c6",
@@ -320,10 +313,6 @@
       {
         "source": "c10",
         "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
       },
       {
         "source": "c10",

@@ -22,13 +22,22 @@
   "baseline_answer": "South lakeshore (Sirmione, Peschiera, Desenzano)",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2503,
-    "output_tokens": 2177,
+    "output_tokens": 2127,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,42 +50,35 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best area to stay in Lake Garda, Italy?",
-        "description": "Evaluating the best area to stay in Lake Garda based on 10 key criteria."
+        "description": "Evaluating the best area to stay in Lake Garda based on accessibility, scenery, and amenities."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Access to major attractions and scenic views",
-        "description": "Which areas offer the best access to major attractions and scenic views?"
+        "label": "What areas offer the best access to the lake and recreational activities?",
+        "description": "Evaluating proximity to the lake and availability of water sports and other recreational options."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Public transport and family-friendliness",
-        "description": "Which areas are most convenient for public transport and family-friendly?"
+        "label": "Which areas provide the most convenient transportation and proximity to attractions?",
+        "description": "Evaluating public transport links and distance to major attractions."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Water sports and lakefront access",
-        "description": "Which areas are best for water sports and lakefront access?"
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "Historic charm and restaurant variety",
-        "description": "Which areas offer the most historic charm and restaurant variety?"
+        "label": "Which areas are most appealing for dining, views, and charm?",
+        "description": "Evaluating restaurant variety, scenic views, and historic charm."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "lakefront access",
-        "description": "Proximity to the lake and availability of lakefront amenities."
+        "description": "Proximity to the lake and direct access to its waters."
       },
       {
         "id": "c2",
@@ -104,7 +106,7 @@
         "layer": "3",
         "type": "concept",
         "label": "public transport links",
-        "description": "Accessibility via trains, buses, and other public transport."
+        "description": "Accessibility via buses, trains, and other public transport."
       },
       {
         "id": "c6",
@@ -125,7 +127,7 @@
         "layer": "3",
         "type": "concept",
         "label": "water sports availability",
-        "description": "Availability of activities like windsurfing, sailing, and kayaking."
+        "description": "Access to activities like windsurfing, kayaking, and sailing."
       },
       {
         "id": "c9",
@@ -139,28 +141,28 @@
         "layer": "3",
         "type": "concept",
         "label": "distance to major attractions",
-        "description": "Proximity to key sights and tourist destinations."
+        "description": "Proximity to cities, museums, and other points of interest."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "South lakeshore (Sirmione, Peschiera, Desenzano)",
-        "description": "Best for accessibility, attractions, and amenities."
+        "description": "Popular for dining, nightlife, and proximity to attractions."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "North lakeshore (Riva del Garda, Torbole)",
-        "description": "Best for scenic views and water sports."
+        "description": "Famous for windsurfing and scenic hilltop views."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "East lakeshore (Bardolino, Garda, Torri del Benaco)",
-        "description": "Best for a quieter, more scenic stay."
+        "description": "Quaint, scenic, and less crowded than the South."
       }
     ],
     "edges": [
@@ -177,43 +179,35 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
-      },
-      {
         "source": "sq1",
         "target": "c1"
       },
       {
         "source": "sq1",
-        "target": "c7"
-      },
-      {
-        "source": "sq1",
-        "target": "c10"
-      },
-      {
-        "source": "sq2",
-        "target": "c4"
+        "target": "c8"
       },
       {
         "source": "sq2",
         "target": "c5"
       },
       {
-        "source": "sq3",
-        "target": "c1"
+        "source": "sq2",
+        "target": "c10"
       },
       {
         "source": "sq3",
-        "target": "c8"
-      },
-      {
-        "source": "sq4",
         "target": "c2"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
+        "target": "c3"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
         "target": "c9"
       },
       {
@@ -221,16 +215,8 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
         "source": "c2",
         "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
       },
       {
         "source": "c3",
@@ -241,10 +227,6 @@
         "target": "a1"
       },
       {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
         "source": "c5",
         "target": "a1"
       },
@@ -253,28 +235,40 @@
         "target": "a1"
       },
       {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
         "source": "c7",
         "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
       },
       {
         "source": "c8",
         "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
       },
       {
         "source": "c8",
@@ -282,22 +276,38 @@
       },
       {
         "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
         "target": "a2"
       },
       {
-        "source": "c10",
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
         "target": "a3"
       }
     ]

@@ -22,13 +22,22 @@
   "baseline_answer": "A 15\" gaming laptop with dedicated GPU (Acer Aspire / Lenovo IdeaPad Gaming)",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2034,
-    "output_tokens": 2165,
+    "output_tokens": 2329,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,15 +56,15 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best laptop for under $1000, considering trustworthiness?",
-        "description": "Trustworthiness"
+        "label": "Most trustworthy source for recommending a laptop under $1000?",
+        "description": "Most trustworthy source for recommending a laptop under $1000"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best laptop for under $1000, considering perspective?",
-        "description": "Perspective"
+        "label": "Best type of laptop for under $1000, considering different user perspectives?",
+        "description": "Best type of laptop for under $1000, considering different user perspectives"
       },
       {
         "id": "c1",
@@ -76,7 +85,7 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: gaming-focused review site",
-        "description": "Gaming-focused review site"
+        "description": "gaming-focused review site"
       },
       {
         "id": "c4",
@@ -90,7 +99,7 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: consumer aggregator (CNET / Tom's Guide)",
-        "description": "Consumer aggregator"
+        "description": "consumer aggregator (CNET / Tom's Guide)"
       },
       {
         "id": "c6",
@@ -104,49 +113,49 @@
         "layer": "3",
         "type": "directive",
         "label": "perspective: business / productivity user",
-        "description": "Business / productivity user"
+        "description": "business / productivity user"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: college student / general use",
-        "description": "College student / general use"
+        "description": "college student / general use"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: frequent traveler / portability priority",
-        "description": "Frequent traveler / portability priority"
+        "description": "frequent traveler / portability priority"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: casual home user with kids",
-        "description": "Casual home user with kids"
+        "description": "casual home user with kids"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A premium ultrabook (Dell XPS 13, ASUS Zenbook, or MacBook Air)",
-        "description": "Premium ultrabook"
+        "description": "A premium ultrabook"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A 15\" gaming laptop with dedicated GPU (Acer Aspire / Lenovo IdeaPad Gaming)",
-        "description": "Gaming laptop"
+        "description": "A 15\" gaming laptop with dedicated GPU"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A mainstream 15\" Dell or ASUS Vivobook touchscreen with large screen + ample RAM",
-        "description": "Mainstream laptop"
+        "description": "A mainstream 15\" Dell or ASUS Vivobook touchscreen with large screen + ample RAM"
       }
     ],
     "edges": [
@@ -224,39 +233,19 @@
       },
       {
         "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
         "target": "a2"
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c10",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c1",
@@ -277,6 +266,26 @@
       {
         "source": "c5",
         "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Medication First Default): Start with stimulant medication \u2014 70\u201380% of adults with ADHD respond well and it produces faster, larger functional improvements than behavioral strategies alone for moderate-to-severe impairment.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1641,
-    "output_tokens": 2198,
+    "output_tokens": 3026,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -48,91 +57,98 @@
         "layer": "2",
         "type": "subq",
         "label": "What is the most effective treatment for adult ADHD?",
-        "description": "The most effective treatment for adult ADHD is the topic of this sub-question."
+        "description": "The most effective treatment for adult ADHD is the focus of this sub-question."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best approach for adults with mild impairment or concerns about medication side effects?",
-        "description": "The best approach for adults with mild impairment or concerns about medication side effects is the topic of this sub-question."
+        "label": "What is the best approach for managing adult ADHD in the USA?",
+        "description": "The best approach for managing adult ADHD in the USA is the focus of this sub-question."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most effective long-term approach for managing adult ADHD?",
-        "description": "The most effective long-term approach for managing adult ADHD is the topic of this sub-question."
+        "label": "What is the most effective treatment for adult ADHD with severe functional impairment?",
+        "description": "The most effective treatment for adult ADHD with severe functional impairment is the focus of this sub-question."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best approach for managing adult ADHD for patients who prefer non-pharmacological treatment?",
+        "description": "The best approach for managing adult ADHD for patients who prefer non-pharmacological treatment is the focus of this sub-question."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Sources from 2023 only are considered."
+        "description": "Sources from 2023 only are prioritized."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Sources from 2021 to 2023 are considered."
+        "description": "Sources from 2021 to 2023 are prioritized."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Sources from the USA are considered."
+        "description": "Sources from the USA are prioritized."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient with severe functional impairment",
-        "description": "Sources from patients with severe functional impairment are considered."
+        "description": "Sources from patients with severe functional impairment are prioritized."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient preferring non-pharmacological treatment",
-        "description": "Sources from patients preferring non-pharmacological treatment are considered."
+        "description": "Sources from patients who prefer non-pharmacological treatment are prioritized."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Psychiatrist or ADHD specialist",
-        "description": "Sources from psychiatrists or ADHD specialists are considered."
+        "description": "Sources from psychiatrists or ADHD specialists are prioritized."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Peer-reviewed clinical research",
-        "description": "Sources from peer-reviewed clinical research are considered."
+        "description": "Peer-reviewed clinical research is prioritized."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Medical institution guidance",
-        "description": "Sources from medical institutions are considered."
+        "description": "Medical institution guidance is prioritized."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer health information",
-        "description": "Sources from consumer health information are considered."
+        "description": "Consumer health information is prioritized."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Patient community experience",
-        "description": "Sources from patient community experience are considered."
+        "description": "Patient community experience is prioritized."
       },
       {
         "id": "a1",
@@ -160,6 +176,18 @@
       {
         "source": "q",
         "target": "sq1"
+      },
+      {
+        "source": "q",
+        "target": "sq2"
+      },
+      {
+        "source": "q",
+        "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
       },
       {
         "source": "sq1",
@@ -207,7 +235,27 @@
       },
       {
         "source": "sq2",
-        "target": "a2"
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "a1"
+      },
+      {
+        "source": "sq3",
+        "target": "c1"
       },
       {
         "source": "sq3",
@@ -215,15 +263,55 @@
       },
       {
         "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "a1"
+      },
+      {
+        "source": "sq4",
+        "target": "c4"
+      },
+      {
+        "source": "sq4",
         "target": "c5"
       },
       {
-        "source": "sq3",
+        "source": "sq4",
         "target": "c6"
       },
       {
-        "source": "sq3",
-        "target": "a3"
+        "source": "sq4",
+        "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c8"
+      },
+      {
+        "source": "sq4",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
+        "source": "sq4",
+        "target": "a2"
       },
       {
         "source": "c1",
@@ -234,12 +322,8 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
         "source": "c3",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c4",
@@ -248,10 +332,6 @@
       {
         "source": "c5",
         "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
       },
       {
         "source": "c6",
@@ -267,11 +347,91 @@
       },
       {
         "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
         "target": "a2"
       },
       {
         "source": "c10",
-        "target": "a4"
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

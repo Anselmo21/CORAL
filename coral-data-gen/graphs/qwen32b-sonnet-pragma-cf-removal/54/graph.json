@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Tesla Model 3 Default): Get a Tesla Model 3 \u2014 the Supercharger network, range, and overall ownership experience make it the most reliable first EV, and the premium over competitors is justified by the reduced anxiety of long-distance travel.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1692,
-    "output_tokens": 2595,
+    "output_tokens": 2671,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -40,119 +49,119 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Which EV should I get for my first electric vehicle?",
-        "description": "A first-time EV buyer is seeking a recommendation based on reliability, value, and charging infrastructure."
+        "label": "q",
+        "description": "I want to buy my first electric vehicle. Which EV should I get?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Best for reliability and charging network",
-        "description": "Which EV is best for a first-time buyer prioritizing reliability and charging network access?"
+        "label": "sq1",
+        "description": "What is the best EV for a first-time buyer prioritizing reliability and charging network access?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Best for tax credit value",
-        "description": "Which EV is best for a budget-conscious buyer seeking tax credit value?"
+        "label": "sq2",
+        "description": "What is the best EV for a first-time buyer prioritizing range and fast charging?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Best for range and fast charging",
-        "description": "Which EV is best for a buyer prioritizing range and fast charging at a lower price?"
+        "label": "sq3",
+        "description": "What is the best EV for a first-time buyer prioritizing tax credit value and affordability?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Only consider sources from 2023."
+        "description": "temporal: 2023 only"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Consider sources from 2021 to 2023."
+        "description": "temporal: 2021\u20132023"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Only consider sources from the USA."
+        "description": "geographic: USA"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Canada / Global",
-        "description": "Consider sources from Canada or with a global perspective."
+        "description": "geographic: Canada / Global"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: First-time EV buyer prioritizing ease and reliability",
-        "description": "Consider the perspective of a first-time EV buyer focused on ease and reliability."
+        "description": "perspective: First-time EV buyer prioritizing ease and reliability"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Budget-conscious buyer maximizing tax credit value",
-        "description": "Consider the perspective of a budget-conscious buyer focused on tax credit value."
+        "description": "perspective: Budget-conscious buyer maximizing tax credit value"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer product testing organization",
-        "description": "Only consider sources from consumer product testing organizations."
+        "description": "trustworthiness: Consumer product testing organization"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Tech journalism",
-        "description": "Only consider sources from tech journalism."
+        "description": "trustworthiness: Tech journalism"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: EV owner community advice",
-        "description": "Only consider sources from EV owner communities."
+        "description": "trustworthiness: EV owner community advice"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: EV industry publication",
-        "description": "Only consider sources from EV industry publications."
+        "description": "trustworthiness: EV industry publication"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Tesla Model 3 Default",
+        "label": "Answer A (Tesla Model 3 Default)",
         "description": "Get a Tesla Model 3 \u2014 the Supercharger network, range, and overall ownership experience make it the most reliable first EV, and the premium over competitors is justified by the reduced anxiety of long-distance travel."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Ioniq 6 for Range and Speed",
+        "label": "Answer B (Ioniq 6 for Range and Speed)",
         "description": "Choose the Hyundai Ioniq 6 if range and charging speed are priorities \u2014 its 361-mile range and 800V ultra-fast charging rival Tesla at a lower price, with improving non-Tesla charging networks."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Tax Credit Vehicle for Value",
+        "label": "Answer C (Tax Credit Vehicle for Value)",
         "description": "Buy a tax credit-eligible EV (Chevy Equinox EV, VW ID.4) \u2014 the $7,500 federal credit meaningfully reduces the effective purchase price and makes these vehicles better value than their sticker suggests."
       }
     ],
@@ -195,15 +204,19 @@
       },
       {
         "source": "sq2",
-        "target": "c3"
+        "target": "c4"
       },
       {
         "source": "sq2",
-        "target": "c6"
+        "target": "c5"
       },
       {
         "source": "sq2",
-        "target": "c8"
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
       },
       {
         "source": "sq3",
@@ -211,11 +224,15 @@
       },
       {
         "source": "sq3",
-        "target": "c4"
+        "target": "c3"
       },
       {
         "source": "sq3",
-        "target": "c7"
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
       },
       {
         "source": "sq3",
@@ -230,24 +247,12 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
         "source": "c3",
         "target": "a1"
       },
       {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
         "source": "c4",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c5",
@@ -255,19 +260,15 @@
       },
       {
         "source": "c6",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c7",
         "target": "a1"
       },
       {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
         "source": "c8",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c9",
@@ -275,7 +276,47 @@
       },
       {
         "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
         "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

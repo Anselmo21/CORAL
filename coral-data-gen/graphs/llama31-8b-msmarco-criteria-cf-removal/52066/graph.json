@@ -22,13 +22,22 @@
   "baseline_answer": "OMBRELLE for kids by L'Oreal",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1666,
-    "output_tokens": 1983,
+    "output_tokens": 1888,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -48,28 +57,35 @@
         "layer": "2",
         "type": "subq",
         "label": "key features of a safe sunscreen",
-        "description": "safe sunscreen for kids with peanut allergies"
+        "description": "ingredient safety, brand reputation, availability in region, label transparency, and eco-friendliness"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "skin sensitivity and protection",
-        "description": "skin sensitivity and protection"
+        "label": "skin sensitivity and SPF rating",
+        "description": "skin sensitivity and SPF rating"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "practical considerations",
-        "description": "practical considerations"
+        "description": "parent reviews and price point"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "water resistance",
+        "description": "water resistance"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "ingredient safety",
-        "description": "safe ingredients"
+        "description": "safety of ingredients"
       },
       {
         "id": "c2",
@@ -90,7 +106,7 @@
         "layer": "3",
         "type": "concept",
         "label": "skin sensitivity",
-        "description": "skin sensitivity"
+        "description": "sensitivity of the skin"
       },
       {
         "id": "c5",
@@ -146,14 +162,14 @@
         "layer": "4",
         "type": "answer",
         "label": "A mineral (zinc oxide / titanium dioxide) children's sunscreen",
-        "description": "mineral-based sunscreen"
+        "description": "safe sunscreen for kids with peanut allergies"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A chemical sunscreen verified peanut-free by direct manufacturer-contact workflow",
-        "description": "chemical-based sunscreen"
+        "description": "safe sunscreen for kids with peanut allergies"
       }
     ],
     "edges": [
@@ -168,6 +184,10 @@
       {
         "source": "q",
         "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
       },
       {
         "source": "sq1",
@@ -187,7 +207,7 @@
       },
       {
         "source": "sq1",
-        "target": "c6"
+        "target": "c10"
       },
       {
         "source": "sq2",
@@ -199,17 +219,17 @@
       },
       {
         "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
         "target": "c7"
       },
       {
-        "source": "sq3",
+        "source": "sq4",
         "target": "c9"
       },
       {
-        "source": "sq3",
-        "target": "c10"
-      },
-      {
         "source": "c1",
         "target": "a1"
       },
@@ -226,60 +246,16 @@
         "target": "a1"
       },
       {
-        "source": "c6",
+        "source": "c10",
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
+        "source": "c4",
         "target": "a2"
       },
       {
         "source": "c8",
         "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
       },
       {
         "source": "c6",
@@ -290,11 +266,11 @@
         "target": "a3"
       },
       {
-        "source": "c8",
+        "source": "c9",
         "target": "a3"
       },
       {
-        "source": "c9",
+        "source": "c5",
         "target": "a3"
       },
       {
@@ -302,15 +278,15 @@
         "target": "a3"
       },
       {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
         "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
         "target": "a3"
       }
     ]

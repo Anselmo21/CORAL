@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (CS50 Default): Start with Harvard's CS50 on edX \u2014 it's free, teaches real computer science fundamentals rather than just syntax, and produces learners who can problem-solve across any language or technology.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1529,
-    "output_tokens": 2747,
+    "output_tokens": 2681,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,126 +50,126 @@
         "layer": "1",
         "type": "question",
         "label": "What's the best online platform for learning programming from scratch?",
-        "description": "Evaluating the best platform for beginners to learn programming."
+        "description": "Evaluating platforms based on cost, accessibility, learning depth, job readiness, and community support."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Cost and accessibility",
-        "description": "How affordable and accessible is the platform?"
+        "label": "Cost and accessibility factors for a beginner",
+        "description": "Evaluates whether the platform is free or low-cost and how easy it is for a complete beginner to start."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Beginner support",
-        "description": "How beginner-friendly and supportive is the platform?"
+        "label": "Learning depth and structure considerations",
+        "description": "Evaluates the depth of computer science fundamentals and whether the curriculum is structured or self-directed."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Computer science fundamentals",
-        "description": "How strong is the platform in teaching core CS concepts?"
+        "label": "Practical and job-readiness aspects",
+        "description": "Evaluates whether the platform builds real-world skills and uses real development environments."
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "Job readiness",
-        "description": "How practical and job-focused is the platform?"
+        "label": "Community and content quality factors",
+        "description": "Evaluates the strength of community support, breadth of language coverage, and quality of instruction."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "zero cost or low cost access",
-        "description": "Whether the platform is free or affordable."
+        "description": "Whether the platform is free or affordable for beginners."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "beginner friendliness and zero setup friction",
-        "description": "How easy it is for a complete beginner to start."
+        "description": "How easy it is for a complete beginner to start using the platform without setup."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "depth of computer science fundamentals",
-        "description": "How deeply the platform teaches core CS concepts."
+        "description": "Whether the platform teaches foundational CS concepts beyond just syntax."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "project-based and job-ready skills",
-        "description": "Whether the platform builds real-world, job-ready skills."
+        "description": "Whether the platform builds real-world, portfolio-ready skills."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "community support and peer learning",
-        "description": "Strength of community and peer interaction."
+        "description": "Whether the platform has a strong community and peer support system."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "structured curriculum vs self-directed",
-        "description": "Whether the platform offers a structured learning path."
+        "description": "Whether the learning path is structured or self-paced."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "real development environment practice",
-        "description": "Whether learners use real dev tools and environments."
+        "description": "Whether the platform uses real tools and environments, not just browser-based IDEs."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "language and technology coverage breadth",
-        "description": "How many languages and technologies are covered."
+        "description": "How many languages and technologies the platform covers."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "instructor quality and content updates",
-        "description": "Quality of instructors and how often content is updated."
+        "description": "Whether the content is taught by expert instructors and is regularly updated."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "completion rate and motivation support",
-        "description": "How well the platform supports learners to complete the course."
+        "description": "Whether the platform supports learners in staying motivated and completing the course."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (CS50 Default)",
-        "description": "Start with Harvard's CS50 on edX \u2014 it's free, teaches real computer science fundamentals rather than just syntax, and produces learners who can problem-solve across any language or technology."
+        "label": "Answer A (CS50 Default): Start with Harvard's CS50 on edX \u2014 it's free, teaches real computer science fundamentals rather than just syntax, and produces learners who can problem-solve across any language or technology.",
+        "description": "Top pick when all criteria are considered."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (Codecademy for Zero Friction)",
-        "description": "Use Codecademy if you want to start coding immediately with no setup \u2014 its browser-based interactive environment is the lowest-friction entry point and maintains beginner momentum better than lecture-heavy alternatives."
+        "label": "Answer B (Codecademy for Zero Friction): Use Codecademy if you want to start coding immediately with no setup \u2014 its browser-based interactive environment is the lowest-friction entry point and maintains beginner momentum better than lecture-heavy alternatives.",
+        "description": "Best for zero setup and beginner retention."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (The Odin Project for Job Readiness)",
-        "description": "Follow The Odin Project if your goal is employment \u2014 it builds real projects in a real development environment from day one, producing portfolio work and practical skills that browser-based platforms cannot replicate."
+        "label": "Answer C (The Odin Project for Job Readiness): Follow The Odin Project if your goal is employment \u2014 it builds real projects in a real development environment from day one, producing portfolio work and practical skills that browser-based platforms cannot replicate.",
+        "description": "Best for job readiness and real-world project building."
       }
     ],
     "edges": [
@@ -185,204 +194,128 @@
         "target": "c1"
       },
       {
-        "source": "sq2",
+        "source": "sq1",
         "target": "c2"
       },
       {
         "source": "sq2",
-        "target": "c5"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
-        "source": "sq3",
         "target": "c3"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c6"
       },
       {
         "source": "sq3",
-        "target": "c8"
-      },
-      {
-        "source": "sq4",
         "target": "c4"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c5"
+      },
+      {
+        "source": "sq4",
+        "target": "c8"
       },
       {
         "source": "sq4",
         "target": "c9"
       },
       {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
         "source": "c1",
         "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
       },
       {
         "source": "c2",
         "target": "a1"
       },
       {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
         "source": "c2",
         "target": "a2"
       },
       {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
         "source": "c5",
         "target": "a2"
       },
       {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
         "source": "c8",
         "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
       },
       {
         "source": "c9",
         "target": "a2"
       },
       {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
         "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
       },
       {
         "source": "c1",
-        "target": "a1"
+        "target": "a3"
       },
       {
-        "source": "c3",
-        "target": "a1"
+        "source": "c4",
+        "target": "a3"
       },
       {
         "source": "c5",
-        "target": "a1"
+        "target": "a3"
       },
       {
-        "source": "c6",
-        "target": "a1"
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
       },
       {
         "source": "c9",
-        "target": "a1"
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

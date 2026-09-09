@@ -22,13 +22,22 @@
   "baseline_answer": "Ibuprofen (Advil / Motrin)",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1737,
-    "output_tokens": 2134,
+    "output_tokens": 2341,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -54,22 +63,22 @@
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How effective is the medication in providing pain and inflammation relief?",
+        "label": "How effective is the medication for pain and inflammation?",
         "description": "Evaluates the effectiveness of the medication in treating pain and inflammation."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the safety and side effect profiles of the medication?",
+        "label": "What are the safety and side effect profiles?",
         "description": "Evaluates the safety and side effects of the medication."
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "What symptoms is the medication best suited for?",
-        "description": "Evaluates the symptoms the medication is most effective for."
+        "label": "What symptoms and age groups is the medication suitable for?",
+        "description": "Evaluates the target symptoms and age suitability of the medication."
       },
       {
         "id": "c1",
@@ -97,7 +106,7 @@
         "layer": "3",
         "type": "concept",
         "label": "safety profile",
-        "description": "The safety and risk profile of the medication."
+        "description": "The overall safety of the medication."
       },
       {
         "id": "c5",
@@ -153,7 +162,7 @@
         "layer": "4",
         "type": "answer",
         "label": "Naproxen (Aleve)",
-        "description": "NSAID with longer duration of action and anti-inflammatory properties."
+        "description": "NSAID with long-lasting anti-inflammatory effects."
       },
       {
         "id": "a3",
@@ -203,6 +212,10 @@
       {
         "source": "sq4",
         "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
       },
       {
         "source": "c1",

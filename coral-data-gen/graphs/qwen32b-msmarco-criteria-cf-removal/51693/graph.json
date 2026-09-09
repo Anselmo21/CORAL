@@ -22,13 +22,22 @@
   "baseline_answer": "Whole-foods anti-inflammatory elimination diet",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1893,
-    "output_tokens": 2024,
+    "output_tokens": 1968,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,7 +50,7 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best diet to improve thyroid function?",
-        "description": "Evaluating dietary strategies for optimal thyroid function."
+        "description": "Evaluating dietary strategies for optimal thyroid health."
       },
       {
         "id": "sq1",
@@ -55,13 +64,13 @@
         "layer": "2",
         "type": "subq",
         "label": "Dietary structure and inflammation",
-        "description": "Evaluates the anti-inflammatory nature of the diet and its avoidance of processed foods and gluten."
+        "description": "Evaluates the anti-inflammatory nature of the diet, avoidance of processed foods, and gluten."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Specific dietary restrictions and balance",
+        "label": "Specific dietary restrictions and goitrogen avoidance",
         "description": "Evaluates the avoidance of goitrogens and the balance of carbohydrates in the diet."
       },
       {
@@ -76,7 +85,7 @@
         "layer": "3",
         "type": "concept",
         "label": "selenium content",
-        "description": "Amount of selenium, a mineral that supports thyroid hormone metabolism."
+        "description": "Amount of selenium, which supports thyroid hormone metabolism."
       },
       {
         "id": "c3",
@@ -104,35 +113,35 @@
         "layer": "3",
         "type": "concept",
         "label": "omega-3 inclusion",
-        "description": "Whether the diet includes omega-3 fatty acids, which support thyroid and immune function."
+        "description": "Whether the diet includes omega-3 fatty acids, which support overall endocrine function."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "zinc levels",
-        "description": "Amount of zinc, a mineral that supports thyroid hormone production and conversion."
+        "description": "Amount of zinc, which is important for thyroid hormone conversion."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "goitrogen avoidance",
-        "description": "Whether the diet avoids goitrogens, which can interfere with iodine uptake by the thyroid."
+        "description": "Whether the diet avoids goitrogens, which can interfere with iodine uptake."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "carbohydrate balance",
-        "description": "Whether the diet balances carbohydrate intake to support thyroid hormone regulation."
+        "description": "Whether the diet maintains a balanced intake of carbohydrates to support thyroid function."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "micronutrient density",
-        "description": "Whether the diet is rich in a variety of micronutrients that support overall thyroid function."
+        "description": "Whether the diet is rich in a variety of micronutrients that support thyroid health."
       },
       {
         "id": "a1",
@@ -219,10 +228,6 @@
       },
       {
         "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
         "target": "a2"
       },
       {
@@ -243,19 +248,11 @@
       },
       {
         "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
         "target": "a2"
       },
       {
         "source": "c6",
         "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
       },
       {
         "source": "c7",
@@ -272,10 +269,6 @@
       {
         "source": "c9",
         "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
       },
       {
         "source": "c10",

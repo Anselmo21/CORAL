@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Stanford GSB Default): Prioritize Stanford GSB for entrepreneurship \u2014 its VC network, Silicon Valley location, alumni founder density, and risk-tolerant culture make it the strongest launchpad for venture-backed tech startups.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1667,
-    "output_tokens": 2701,
+    "output_tokens": 2178,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -40,29 +49,29 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Which MBA program should I prioritize for starting a company after graduation: Stanford GSB, HBS, or Wharton?",
-        "description": "MBA program for starting a company"
+        "label": "Which MBA program should I prioritize for starting a company after graduation - Stanford GSB, HBS, or Wharton?",
+        "description": "Best MBA program for starting a company"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Which MBA program is best for starting a tech startup?",
-        "description": "Tech startup MBA program"
+        "label": "What is the best MBA program for starting a tech startup?",
+        "description": "Best MBA for tech startups"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Which MBA program is best for starting a non-tech startup?",
-        "description": "Non-tech startup MBA program"
+        "label": "What is the best MBA program for starting a non-tech startup?",
+        "description": "Best MBA for non-tech startups"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Which MBA program is best for starting a finance-intensive startup?",
-        "description": "Finance-intensive startup MBA program"
+        "label": "What is the best MBA program for starting a capital-intensive startup?",
+        "description": "Best MBA for capital-intensive startups"
       },
       {
         "id": "c1",
@@ -138,22 +147,22 @@
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Prioritize Stanford GSB for entrepreneurship \u2014 its VC network, Silicon Valley location, alumni founder density, and risk-tolerant culture make it the strongest launchpad for venture-backed tech startups.",
-        "description": "Stanford GSB for tech startups"
+        "label": "Answer A (Stanford GSB Default): Prioritize Stanford GSB for entrepreneurship \u2014 its VC network, Silicon Valley location, alumni founder density, and risk-tolerant culture make it the strongest launchpad for venture-backed tech startups.",
+        "description": "Best MBA for tech startups"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Choose HBS if your startup targets industries beyond tech \u2014 its unmatched global alumni network and brand recognition opens doors in healthcare, consumer goods, emerging markets, and institutional fundraising.",
-        "description": "HBS for non-tech startups"
+        "label": "Answer B (HBS for Non-Tech Ventures): Choose HBS if your startup targets industries beyond tech \u2014 its unmatched global alumni network and brand recognition opens doors in healthcare, consumer goods, emerging markets, and institutional fundraising.",
+        "description": "Best MBA for non-tech startups"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Choose Wharton if your venture is in fintech, healthtech, or requires sophisticated capital structuring \u2014 its finance depth and cross-disciplinary Penn ecosystem are particularly strong for capital-intensive business models.",
-        "description": "Wharton for finance-intensive startups"
+        "label": "Answer C (Wharton for Capital-Intensive Startups): Choose Wharton if your venture is in fintech, healthtech, or requires sophisticated capital structuring \u2014 its finance depth and cross-disciplinary Penn ecosystem are particularly strong for capital-intensive business models.",
+        "description": "Best MBA for capital-intensive startups"
       }
     ],
     "edges": [
@@ -247,18 +256,6 @@
       },
       {
         "source": "sq3",
-        "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c8"
-      },
-      {
-        "source": "sq3",
-        "target": "c9"
-      },
-      {
-        "source": "sq3",
         "target": "c10"
       },
       {
@@ -314,8 +311,32 @@
         "target": "a1"
       },
       {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
         "source": "c9",
         "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
       },
       {
         "source": "c10",

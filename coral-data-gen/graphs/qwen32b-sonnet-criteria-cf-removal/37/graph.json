@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Reapply in Canada Default): Strengthen your Canadian medical school application and reapply \u2014 improving your MCAT, gaining clinical experience, and applying more broadly has higher expected value than the financial and career risk of most foreign medical programs.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1547,
-    "output_tokens": 2663,
+    "output_tokens": 2557,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -40,99 +49,99 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should I study medicine abroad?",
-        "description": "I want to become a doctor but didn't get into medical school in Canada. Should I study medicine abroad?"
+        "label": "Should I study medicine abroad if I didn't get into medical school in Canada?",
+        "description": "Evaluating the best path to becoming a doctor in Canada after not being accepted into a Canadian medical school."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the risks and rewards of studying medicine abroad?",
-        "description": "Evaluates the personal, financial, and emotional costs and benefits of studying abroad."
+        "label": "What are the risks and outcomes of studying abroad?",
+        "description": "Evaluating the match rate, financial cost, and personal impact of studying abroad."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How do different international medical schools compare in terms of outcomes and recognition?",
-        "description": "Compares the quality, match rates, and recognition of different international medical schools."
+        "label": "What are the academic and programmatic considerations?",
+        "description": "Evaluating the quality, recognition, and academic competitiveness of foreign medical programs."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the domestic alternatives and their feasibility?",
-        "description": "Evaluates the feasibility of reapplying to Canadian medical schools and improving competitiveness."
+        "label": "What are the alternative timelines and pathways to becoming a doctor in Canada?",
+        "description": "Evaluating alternative routes such as US residency or reapplication timelines."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "probability of matching to Canadian residency",
-        "description": "The likelihood that a graduate will match to a Canadian residency program."
+        "description": "The likelihood that a foreign medical graduate will match to a Canadian residency program."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "total financial cost of foreign medical education",
-        "description": "The overall cost of attending a foreign medical school."
+        "description": "The overall cost of attending a foreign medical school, including tuition, living expenses, and potential debt."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "global recognition of the degree",
-        "description": "How widely recognized and accepted the medical degree is internationally."
+        "description": "Whether the medical degree is recognized and respected internationally, especially in North America."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "quality and accreditation of the program",
-        "description": "The academic quality and official accreditation of the medical program."
+        "description": "The academic rigor and institutional accreditation of the foreign medical program."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "personal and family cost of relocation",
-        "description": "The emotional and logistical cost of moving abroad for medical school."
+        "description": "The emotional and logistical burden of moving to a foreign country for medical school."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "MCAT and academic competitiveness for reapplication",
-        "description": "The academic and test performance needed to reapply to Canadian medical schools."
+        "description": "The potential to improve academic credentials and reapply to Canadian medical schools."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "alternative paths to Canadian practice (US then transfer)",
-        "description": "Whether studying abroad opens alternative pathways to practicing in Canada."
+        "description": "Whether studying in the US and then transferring to Canada is a viable alternative."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "specific destination country match rates",
-        "description": "The match rate for graduates of specific international medical schools."
+        "description": "The historical match rates of graduates from specific foreign medical schools to Canadian residency programs."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "timeline to practicing physician",
-        "description": "How long it takes to become a practicing physician after starting medical school."
+        "description": "The total time required to become a licensed physician in Canada after starting abroad."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "emotional and resilience cost of extended training",
-        "description": "The psychological toll of prolonged medical training and uncertainty."
+        "description": "The psychological toll of prolonged education and training."
       },
       {
         "id": "a1",
@@ -183,6 +192,10 @@
       },
       {
         "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
         "target": "c10"
       },
       {
@@ -195,15 +208,11 @@
       },
       {
         "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
-        "target": "c8"
+        "target": "c6"
       },
       {
         "source": "sq3",
-        "target": "c6"
+        "target": "c7"
       },
       {
         "source": "sq3",
@@ -223,7 +232,7 @@
       },
       {
         "source": "c2",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c3",
@@ -247,7 +256,7 @@
       },
       {
         "source": "c5",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c6",
@@ -287,6 +296,18 @@
       },
       {
         "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
         "target": "a3"
       }
     ]

@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (QLED for Bright Room Default): Get a QLED TV \u2014 in a sunlit living room, QLED's 1,500\u20132,000 nit brightness overwhelmingly outperforms OLED, which loses its contrast advantage completely when ambient light washes out dark scenes.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1716,
-    "output_tokens": 2622,
+    "output_tokens": 3275,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,36 +56,43 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Which TV type performs better in bright rooms?",
-        "description": "Assessing performance in high ambient light."
+        "label": "Best TV for bright room based on recent and trusted sources",
+        "description": "What is the best TV type for a bright room based on recent and trusted sources?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Are there exceptions to the bright-room performance rule?",
-        "description": "Identifying exceptions like MLA OLEDs."
+        "label": "Best TV for dark room or controlled lighting",
+        "description": "What is the best TV type for a dark room or controlled lighting based on trusted sources?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the long-term usability concerns for each TV type in a mixed-use living room?",
-        "description": "Evaluating burn-in and mixed-use risks."
+        "label": "Brightness and glare handling in bright environments",
+        "description": "How do OLED and QLED compare in terms of brightness and glare handling in bright environments?"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Long-term risks of OLED and QLED in mixed-use living rooms",
+        "description": "What are the long-term risks (e.g., burn-in) associated with each TV type in a mixed-use living room?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Only consider 2023 sources."
+        "description": "Only consider sources from 2023."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132022",
-        "description": "Consider 2021\u20132022 sources."
+        "description": "Only consider sources from 2021 to 2022."
       },
       {
         "id": "c3",
@@ -90,69 +106,69 @@
         "layer": "3",
         "type": "directive",
         "label": "geographic: Canada / Global",
-        "description": "Consider sources from Canada or global."
+        "description": "Only consider sources from Canada or global consensus."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Buyer with bright living room and daytime viewing",
-        "description": "Filter for bright room use case."
+        "description": "Only consider sources from the perspective of a buyer with a bright living room and daytime viewing."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Buyer with controlled lighting and cinephile priorities",
-        "description": "Filter for dark room use case."
+        "description": "Only consider sources from the perspective of a buyer with controlled lighting and cinephile priorities."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Independent display testing site",
-        "description": "Only consider independent display testing sites."
+        "description": "Only consider sources from independent display testing sites."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Tech journalism",
-        "description": "Consider tech journalism sources."
+        "description": "Only consider sources from tech journalism."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Home theater enthusiast community",
-        "description": "Consider home theater community input."
+        "description": "Only consider sources from home theater enthusiast communities."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Display science testing lab",
-        "description": "Consider display science lab reports."
+        "description": "Only consider sources from display science testing labs."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "QLED for Bright Room Default",
+        "label": "Answer A (QLED for Bright Room Default)",
         "description": "Get a QLED TV \u2014 in a sunlit living room, QLED's 1,500\u20132,000 nit brightness overwhelmingly outperforms OLED, which loses its contrast advantage completely when ambient light washes out dark scenes."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "MLA OLED as Exception",
+        "label": "Answer B (MLA OLED as Exception)",
         "description": "Consider an MLA-equipped OLED (LG G3 or similar) if you want the best picture quality and your room isn't in direct sunlight \u2014 new MLA technology pushes brightness high enough to handle most bright room conditions."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "OLED for Dark/Evening Use",
+        "label": "Answer C (OLED for Dark/Evening Use)",
         "description": "Choose OLED if most of your TV watching happens in the evening with controlled lighting \u2014 the infinite contrast and perfect blacks provide a dramatically superior picture that justifies accepting the bright-room limitation."
       }
     ],
@@ -170,12 +186,12 @@
         "target": "sq3"
       },
       {
-        "source": "sq1",
-        "target": "c1"
+        "source": "q",
+        "target": "sq4"
       },
       {
         "source": "sq1",
-        "target": "c2"
+        "target": "c1"
       },
       {
         "source": "sq1",
@@ -188,10 +204,6 @@
       {
         "source": "sq1",
         "target": "c5"
-      },
-      {
-        "source": "sq1",
-        "target": "c6"
       },
       {
         "source": "sq1",
@@ -211,10 +223,6 @@
       },
       {
         "source": "sq2",
-        "target": "c1"
-      },
-      {
-        "source": "sq2",
         "target": "c2"
       },
       {
@@ -224,10 +232,6 @@
       {
         "source": "sq2",
         "target": "c4"
-      },
-      {
-        "source": "sq2",
-        "target": "c5"
       },
       {
         "source": "sq2",
@@ -271,10 +275,6 @@
       },
       {
         "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq3",
         "target": "c7"
       },
       {
@@ -287,6 +287,42 @@
       },
       {
         "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "sq4",
+        "target": "c1"
+      },
+      {
+        "source": "sq4",
+        "target": "c2"
+      },
+      {
+        "source": "sq4",
+        "target": "c3"
+      },
+      {
+        "source": "sq4",
+        "target": "c4"
+      },
+      {
+        "source": "sq4",
+        "target": "c5"
+      },
+      {
+        "source": "sq4",
+        "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c8"
+      },
+      {
+        "source": "sq4",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
         "target": "c10"
       },
       {
@@ -330,10 +366,6 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
         "source": "c2",
         "target": "a2"
       },
@@ -350,6 +382,10 @@
         "target": "a2"
       },
       {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
         "source": "c8",
         "target": "a2"
       },
@@ -358,8 +394,8 @@
         "target": "a2"
       },
       {
-        "source": "c1",
-        "target": "a3"
+        "source": "c10",
+        "target": "a2"
       },
       {
         "source": "c2",
@@ -378,11 +414,19 @@
         "target": "a3"
       },
       {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
         "source": "c8",
         "target": "a3"
       },
       {
         "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
         "target": "a3"
       }
     ]

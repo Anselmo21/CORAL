@@ -22,13 +22,22 @@
   "baseline_answer": "A high-strength sulfate-based clarifying shampoo",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1879,
-    "output_tokens": 2478,
+    "output_tokens": 2372,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,21 +50,21 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best clarifying shampoo to remove color?",
-        "description": "The question asks for the best clarifying shampoo to remove hair color, with a focus on effectiveness and safety."
+        "description": "Identify the best clarifying shampoo for removing hair color based on key criteria."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "Effectiveness in removing color and buildup",
-        "description": "Criteria related to how well the shampoo removes color and buildup."
+        "description": "Criteria related to the shampoo's ability to strip color and remove residue."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "Safety and hair health impact",
-        "description": "Criteria related to the safety and health effects of the shampoo on the hair and scalp."
+        "description": "Criteria related to the shampoo's impact on hair and scalp health."
       },
       {
         "id": "sq3",
@@ -69,21 +78,21 @@
         "layer": "3",
         "type": "concept",
         "label": "sulfate concentration",
-        "description": "The level of sulfates in the shampoo, which affects its strength and potential for dryness."
+        "description": "The level of sulfates in the shampoo, which affects its stripping power and potential for dryness."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "color-stripping strength",
-        "description": "How effectively the shampoo removes hair color."
+        "description": "How effectively the shampoo removes hair color, especially permanent or semi-permanent dyes."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "scalp irritation risk",
-        "description": "The likelihood of the shampoo causing irritation to the scalp."
+        "description": "The likelihood of the shampoo causing irritation or dryness on the scalp."
       },
       {
         "id": "c4",
@@ -104,21 +113,21 @@
         "layer": "3",
         "type": "concept",
         "label": "brand reputation",
-        "description": "The trustworthiness and popularity of the shampoo's brand."
+        "description": "The trustworthiness and popularity of the brand."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "ingredient transparency",
-        "description": "How clear the shampoo's ingredients are listed and sourced."
+        "description": "Clarity and honesty in the shampoo's ingredient list."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "frequency of use",
-        "description": "How often the shampoo is recommended for use."
+        "description": "How often the shampoo can be used without damaging the hair."
       },
       {
         "id": "c9",
@@ -132,28 +141,28 @@
         "layer": "3",
         "type": "concept",
         "label": "post-wash hair feel",
-        "description": "The texture and feel of the hair after using the shampoo."
+        "description": "The texture and softness of the hair after using the shampoo."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A high-strength sulfate-based clarifying shampoo",
-        "description": "A commercial, sulfate-based clarifying shampoo with strong color-stripping properties."
+        "description": "A strong, sulfate-based shampoo for maximum color and buildup removal."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A gentle clarifying shampoo",
-        "description": "A milder, sulfate-free clarifying shampoo that is less harsh on the hair and scalp."
+        "description": "A milder shampoo that is less damaging but less effective at removing color."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A baking-soda + vitamin-C DIY clarifying treatment",
-        "description": "A homemade clarifying treatment using baking soda and vitamin C."
+        "description": "A homemade, natural treatment for clarifying hair."
       }
     ],
     "edges": [
@@ -287,6 +296,10 @@
       },
       {
         "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
         "target": "a3"
       },
       {

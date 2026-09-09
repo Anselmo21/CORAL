@@ -22,13 +22,22 @@
   "baseline_answer": "Answer C (Negotiate Aid First): Attempt to negotiate financial aid from the higher-ranked school before deciding \u2014 admissions offices frequently match or improve offers when presented with competing packages, potentially eliminating the cost gap entirely.",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1543,
-    "output_tokens": 2374,
+    "output_tokens": 2539,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -69,7 +78,7 @@
         "layer": "3",
         "type": "concept",
         "label": "field-specific prestige signal importance",
-        "description": "How much the field values institutional prestige as a hiring signal."
+        "description": "How much the field values institutional prestige in hiring."
       },
       {
         "id": "c2",
@@ -97,7 +106,7 @@
         "layer": "3",
         "type": "concept",
         "label": "personal motivation and fit at each school",
-        "description": "How well the student will thrive at each institution."
+        "description": "How well the student fits and is motivated at each school."
       },
       {
         "id": "c6",
@@ -118,7 +127,7 @@
         "layer": "3",
         "type": "concept",
         "label": "graduate school ambitions (prestige matters more for PhD)",
-        "description": "Whether the student plans to pursue a prestige-sensitive graduate degree."
+        "description": "Whether the student plans to pursue graduate school, where prestige is more important."
       },
       {
         "id": "c9",
@@ -279,6 +288,10 @@
       },
       {
         "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
         "target": "a2"
       },
       {

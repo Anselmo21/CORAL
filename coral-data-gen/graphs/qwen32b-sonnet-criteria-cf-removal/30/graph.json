@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Bootcamp Default): Do a coding bootcamp \u2014 at 29 with a career to build, the 6\u201312 month path to employment vastly outweighs a 4-year degree's opportunity cost for most software development roles outside top-tier companies.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1578,
-    "output_tokens": 2251,
+    "output_tokens": 2374,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -54,85 +63,85 @@
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the financial and time cost of each path?",
-        "description": "Total cost including tuition and opportunity cost must be weighed."
+        "label": "What is the total cost and time investment, including lost income?",
+        "description": "Opportunity cost and financial investment are critical for a mid-career switch."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the long-term career implications and company fit?",
-        "description": "Long-term earnings and suitability for top-tier companies are important."
+        "label": "What are the long-term career prospects and company fit?",
+        "description": "Long-term earnings and fit with top-tier companies are important for career planning."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "time to first employment",
-        "description": "How quickly can one start working in software development."
+        "description": "How quickly can one start working in a software development role."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "total cost including opportunity cost",
-        "description": "Financial and time costs of the path, including lost income."
+        "description": "Financial and time costs, including lost income during training."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "long-term earnings trajectory",
-        "description": "Earnings potential over a 10-year career."
+        "description": "Earnings potential over a 10-year career in software."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "suitability for FAANG/top-tier companies",
-        "description": "Whether the path prepares one for top-tier tech roles."
+        "description": "Whether the path prepares one for roles at top-tier tech companies."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "depth of computer science fundamentals",
-        "description": "How deep the technical knowledge is."
+        "description": "How much foundational knowledge is gained."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "age and career timeline considerations",
-        "description": "How the path fits with a 29-year-old's career timeline."
+        "description": "How well the path fits someone in their late 20s or 30s."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "current employer reputation signals",
-        "description": "How much the path helps in getting hired at new companies."
+        "description": "How much the training path is recognized by employers."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "self-directed learning ability",
-        "description": "How well one can learn independently."
+        "description": "How well one can learn independently without a structured program."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "networking and career support quality",
-        "description": "Quality of mentorship and job placement support."
+        "description": "Access to job placement, mentorship, and industry connections."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "flexibility to work while learning",
-        "description": "Whether one can work while transitioning."
+        "description": "Ability to maintain a job or income while training."
       },
       {
         "id": "a1",
@@ -179,6 +188,10 @@
       },
       {
         "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
         "target": "c10"
       },
       {
@@ -195,19 +208,15 @@
       },
       {
         "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq3",
         "target": "c7"
       },
       {
         "source": "sq3",
-        "target": "c9"
+        "target": "c8"
       },
       {
-        "source": "sq2",
-        "target": "c8"
+        "source": "sq3",
+        "target": "c9"
       },
       {
         "source": "c1",
@@ -270,15 +279,15 @@
         "target": "a2"
       },
       {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
+        "source": "c6",
         "target": "a3"
       },
       {
         "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
         "target": "a3"
       }
     ]

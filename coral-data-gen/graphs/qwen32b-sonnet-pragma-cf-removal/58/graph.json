@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Cloud Storage Default): Use cloud storage (Backblaze, Google One, iCloud) \u2014 for most home users, the zero-maintenance automatic offsite protection at $3\u201312/month is vastly simpler than NAS ownership and protects against local disasters.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1713,
-    "output_tokens": 2522,
+    "output_tokens": 2383,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -40,99 +49,99 @@
         "id": "q",
         "layer": "1",
         "type": "question",
-        "label": "Should I use a NAS or just pay for cloud storage?",
-        "description": "I need to back up my home files and photos."
+        "label": "q",
+        "description": "I need to back up my home files and photos. Should I use a NAS or just pay for cloud storage?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Best for average home user",
-        "description": "What is the best backup strategy for the average home user?"
+        "label": "sq1",
+        "description": "What is the best backup solution for the average home user in terms of cost and maintenance?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Best for large data and technical comfort",
-        "description": "What is the best backup strategy for large data volumes and technical comfort?"
+        "label": "sq2",
+        "description": "What is the best backup solution for users with large data volumes and technical comfort?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Best for redundancy and risk mitigation",
-        "description": "What is the best backup strategy for redundancy and risk mitigation?"
+        "label": "sq3",
+        "description": "What is the best backup solution for users who want to follow the 3-2-1 backup rule?"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2023 only",
-        "description": "Only consider sources from 2023."
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Consider sources from 2021 to 2023."
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Only consider sources from the USA."
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "geographic: Global / Taiwan (NAS manufacturer)",
-        "description": "Consider global sources and NAS manufacturer (Taiwan)."
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Average home user minimizing complexity",
-        "description": "Only consider the average home user perspective."
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Power user with large data volumes and technical comfort",
-        "description": "Consider the power user perspective."
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer product recommendation publication",
-        "description": "Only consider consumer product recommendation publications."
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Tech journalism",
-        "description": "Consider tech journalism sources."
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Home lab and self-hosting community",
-        "description": "Consider home lab and self-hosting community sources."
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: NAS manufacturer documentation",
-        "description": "Consider NAS manufacturer documentation."
+        "description": ""
       },
       {
         "id": "a1",
@@ -191,7 +200,7 @@
       },
       {
         "source": "sq2",
-        "target": "c4"
+        "target": "c3"
       },
       {
         "source": "sq2",
@@ -203,7 +212,7 @@
       },
       {
         "source": "sq3",
-        "target": "c1"
+        "target": "c2"
       },
       {
         "source": "sq3",
@@ -211,11 +220,11 @@
       },
       {
         "source": "sq3",
-        "target": "c5"
+        "target": "c9"
       },
       {
         "source": "sq3",
-        "target": "c9"
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -226,14 +235,6 @@
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
         "source": "c3",
         "target": "a1"
       },
@@ -242,28 +243,12 @@
         "target": "a1"
       },
       {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
         "source": "c5",
         "target": "a1"
       },
       {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
         "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c7",
@@ -274,24 +259,68 @@
         "target": "a1"
       },
       {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
         "source": "c9",
         "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
       },
       {
         "source": "c10",
         "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       }
     ]
   }

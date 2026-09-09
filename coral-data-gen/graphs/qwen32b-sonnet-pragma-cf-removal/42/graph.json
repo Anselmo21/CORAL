@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Choose Affordable School Default): Choose the less expensive school unless the prestige gap is extreme \u2014 $30k less debt provides lasting financial flexibility that outweighs a moderate ranking difference for most career paths.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1657,
-    "output_tokens": 3157,
+    "output_tokens": 2768,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,29 +56,22 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the general financial impact of a $30k cost difference across career paths?",
-        "description": "Assessing the long-term financial implications of debt from a more expensive school."
+        "label": "How does the financial burden of $30k debt affect long-term career and life outcomes?",
+        "description": "Assessing the long-term impact of debt on flexibility and financial security."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How does university prestige affect hiring in different fields?",
-        "description": "Evaluating the role of institutional brand in hiring decisions across fields."
+        "label": "How important is university prestige in different career fields?",
+        "description": "Evaluating the role of institutional brand in hiring and career success."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What do students and experts recommend when facing this decision?",
-        "description": "Gathering advice from students, experts, and commentators."
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "What is the long-term value of institutional prestige versus personal drive and financial flexibility?",
-        "description": "Comparing the impact of school prestige with personal effort and financial freedom."
+        "label": "Are there alternative financial strategies to reduce the cost gap?",
+        "description": "Exploring options like financial aid negotiation to mitigate the cost difference."
       },
       {
         "id": "c1",
@@ -132,7 +134,7 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Student community advice",
-        "description": "Only consider sources from student communities."
+        "description": "Only consider sources from student community forums."
       },
       {
         "id": "c10",
@@ -145,21 +147,21 @@
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (Choose Affordable School Default)",
+        "label": "Choose Affordable School Default",
         "description": "Choose the less expensive school unless the prestige gap is extreme \u2014 $30k less debt provides lasting financial flexibility that outweighs a moderate ranking difference for most career paths."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (Pay for Prestige in Prestige-Sensitive Fields)",
+        "label": "Pay for Prestige in Prestige-Sensitive Fields",
         "description": "Pay the $30k premium if you're entering finance, consulting, or law \u2014 these fields use institutional brand as a primary hiring filter and the ROI from the higher-ranked school is real and measurable."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (Negotiate Aid First)",
+        "label": "Negotiate Aid First",
         "description": "Attempt to negotiate financial aid from the higher-ranked school before deciding \u2014 admissions offices frequently match or improve offers when presented with competing packages, potentially eliminating the cost gap entirely."
       }
     ],
@@ -177,10 +179,6 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
-      },
-      {
         "source": "sq1",
         "target": "c1"
       },
@@ -246,10 +244,6 @@
       },
       {
         "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq2",
         "target": "c10"
       },
       {
@@ -263,18 +257,6 @@
       {
         "source": "sq3",
         "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
-      },
-      {
-        "source": "sq3",
-        "target": "c6"
       },
       {
         "source": "sq3",
@@ -293,84 +275,72 @@
         "target": "c10"
       },
       {
-        "source": "sq4",
-        "target": "c1"
-      },
-      {
-        "source": "sq4",
-        "target": "c2"
-      },
-      {
-        "source": "sq4",
-        "target": "c3"
-      },
-      {
-        "source": "sq4",
-        "target": "c5"
-      },
-      {
-        "source": "sq4",
-        "target": "c6"
-      },
-      {
-        "source": "sq4",
-        "target": "c7"
-      },
-      {
-        "source": "sq4",
-        "target": "c8"
-      },
-      {
-        "source": "sq4",
-        "target": "c9"
-      },
-      {
-        "source": "sq4",
-        "target": "c10"
-      },
-      {
         "source": "c1",
         "target": "a1"
-      },
-      {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
       },
       {
         "source": "c2",
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
         "source": "c3",
         "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
       },
       {
         "source": "c4",
         "target": "a1"
       },
       {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
         "source": "c4",
         "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
       },
       {
         "source": "c4",
@@ -378,66 +348,10 @@
       },
       {
         "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
         "target": "a3"
       },
       {
         "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
         "target": "a3"
       }
     ]

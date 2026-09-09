@@ -22,13 +22,22 @@
   "baseline_answer": "A typographer-grade font with tabular figures",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2373,
-    "output_tokens": 2257,
+    "output_tokens": 2207,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,14 +50,14 @@
         "layer": "1",
         "type": "question",
         "label": "best excel font for numbers",
-        "description": "What is the best font for displaying numbers in Excel?"
+        "description": "What is the best font in Excel for displaying numbers?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "How well does the font support the display of numbers in Excel?",
-        "description": "Evaluates how well the font handles numeric data in Excel."
+        "description": "Evaluates how well the font supports numeric display in Excel."
       },
       {
         "id": "sq2",
@@ -56,13 +65,6 @@
         "type": "subq",
         "label": "How compatible is the font with Excel's formatting and styling features?",
         "description": "Evaluates how well the font works with Excel's formatting tools."
-      },
-      {
-        "id": "sq3",
-        "layer": "2",
-        "type": "subq",
-        "label": "How professional and visually appropriate is the font for Excel reports?",
-        "description": "Evaluates the font's suitability for professional Excel reports."
       },
       {
         "id": "c1",
@@ -83,21 +85,21 @@
         "layer": "3",
         "type": "concept",
         "label": "style compatibility",
-        "description": "How well the font integrates with Excel's formatting tools."
+        "description": "How well the font matches Excel's default style and formatting."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "size options",
-        "description": "Availability of different font sizes."
+        "description": "How many font sizes are available and how they scale."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "character spacing",
-        "description": "How characters are spaced in the font."
+        "description": "How consistent the spacing between characters is."
       },
       {
         "id": "c6",
@@ -111,7 +113,7 @@
         "layer": "3",
         "type": "concept",
         "label": "professional appearance",
-        "description": "How professional the font looks in reports."
+        "description": "How professional the font looks in numeric contexts."
       },
       {
         "id": "c8",
@@ -125,21 +127,21 @@
         "layer": "3",
         "type": "concept",
         "label": "tabular figures",
-        "description": "Whether the font uses fixed-width numbers for alignment."
+        "description": "Whether the font uses fixed-width figures for alignment."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "proportional figures",
-        "description": "Whether the font uses variable-width numbers for text."
+        "description": "Whether the font uses variable-width figures for text."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A typographer-grade font with tabular figures",
-        "description": "A font designed for precision and alignment in numeric data."
+        "description": "A font designed for precision and numeric alignment."
       },
       {
         "id": "a2",
@@ -164,10 +166,6 @@
       {
         "source": "q",
         "target": "sq2"
-      },
-      {
-        "source": "q",
-        "target": "sq3"
       },
       {
         "source": "sq1",
@@ -203,11 +201,11 @@
       },
       {
         "source": "sq2",
-        "target": "c8"
+        "target": "c7"
       },
       {
-        "source": "sq3",
-        "target": "c7"
+        "source": "sq2",
+        "target": "c8"
       },
       {
         "source": "c1",
@@ -216,10 +214,6 @@
       {
         "source": "c1",
         "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
       },
       {
         "source": "c2",
@@ -296,6 +290,10 @@
       {
         "source": "c9",
         "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",

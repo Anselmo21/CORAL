@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (CS50 Default): Start with Harvard's CS50 on edX \u2014 it's free, teaches real computer science fundamentals rather than just syntax, and produces learners who can problem-solve across any language or technology.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1639,
-    "output_tokens": 2792,
+    "output_tokens": 2753,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,28 +50,28 @@
         "layer": "1",
         "type": "question",
         "label": "What's the best online platform for learning programming from scratch?",
-        "description": "A question about the best platform for beginners to learn programming."
+        "description": "Identify the top platform for absolute beginners based on cost, structure, and learning outcomes."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "Which platform is best for absolute beginners who want to start coding immediately with no setup?",
-        "description": "Focuses on zero setup and immediate coding."
+        "description": "Focus on platforms with zero setup friction and immediate coding."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "Which platform is best for learners who want to learn real computer science fundamentals?",
-        "description": "Focuses on teaching CS fundamentals, not just syntax."
+        "description": "Focus on platforms that teach problem-solving and transferable concepts."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "Which platform is best for learners who want to build job-ready skills and a portfolio?",
-        "description": "Focuses on practical, job-oriented learning."
+        "description": "Focus on platforms that produce real-world project experience."
       },
       {
         "id": "c1",
@@ -97,14 +106,14 @@
         "layer": "3",
         "type": "directive",
         "label": "perspective: Absolute beginner seeking free resource",
-        "description": "Only consider sources from the perspective of a free beginner."
+        "description": "Only consider sources from the perspective of free resources for absolute beginners."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Learner willing to pay for structured guidance",
-        "description": "Only consider sources from the perspective of a learner willing to pay."
+        "description": "Only consider sources from the perspective of learners willing to pay for structured learning."
       },
       {
         "id": "c7",
@@ -138,22 +147,22 @@
         "id": "a1",
         "layer": "4",
         "type": "answer",
-        "label": "Answer A (CS50 Default): Start with Harvard's CS50 on edX \u2014 it's free, teaches real computer science fundamentals rather than just syntax, and produces learners who can problem-solve across any language or technology.",
-        "description": "CS50 is the top recommendation for fundamentals."
+        "label": "Answer A (CS50 Default)",
+        "description": "Start with Harvard's CS50 on edX \u2014 it's free, teaches real computer science fundamentals rather than just syntax, and produces learners who can problem-solve across any language or technology."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Answer B (Codecademy for Zero Friction): Use Codecademy if you want to start coding immediately with no setup \u2014 its browser-based interactive environment is the lowest-friction entry point and maintains beginner momentum better than lecture-heavy alternatives.",
-        "description": "Codecademy is best for zero setup and immediate coding."
+        "label": "Answer B (Codecademy for Zero Friction)",
+        "description": "Use Codecademy if you want to start coding immediately with no setup \u2014 its browser-based interactive environment is the lowest-friction entry point and maintains beginner momentum better than lecture-heavy alternatives."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Answer C (The Odin Project for Job Readiness): Follow The Odin Project if your goal is employment \u2014 it builds real projects in a real development environment from day one, producing portfolio work and practical skills that browser-based platforms cannot replicate.",
-        "description": "The Odin Project is best for job readiness and real-world skills."
+        "label": "Answer C (The Odin Project for Job Readiness)",
+        "description": "Follow The Odin Project if your goal is employment \u2014 it builds real projects in a real development environment from day one, producing portfolio work and practical skills that browser-based platforms cannot replicate."
       }
     ],
     "edges": [
@@ -354,6 +363,10 @@
         "target": "a2"
       },
       {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
         "source": "c9",
         "target": "a2"
       },
@@ -374,15 +387,15 @@
         "target": "a3"
       },
       {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
         "source": "c6",
         "target": "a3"
       },
       {
         "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
         "target": "a3"
       },
       {

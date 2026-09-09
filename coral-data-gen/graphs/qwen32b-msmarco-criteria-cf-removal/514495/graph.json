@@ -22,13 +22,22 @@
   "baseline_answer": "Exclusion: seal entry points around the house / attic",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1758,
-    "output_tokens": 2439,
+    "output_tokens": 2708,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,35 +50,42 @@
         "layer": "1",
         "type": "question",
         "label": "the best way to get rid of squirrels",
-        "description": "What is the most effective and practical method for removing squirrels from a home or property?"
+        "description": "What is the most effective and safe method to remove squirrels from a home or property?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "What is the most effective and safe method of squirrel removal?",
-        "description": "Evaluates the method's effectiveness, safety, and environmental impact."
+        "description": "Evaluates the overall method for removing squirrels, including safety and environmental impact."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most practical and cost-effective approach?",
-        "description": "Evaluates cost, ease of implementation, and timing."
+        "label": "What is the best time and location to apply the method?",
+        "description": "Evaluates when and where the method is most effective."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best method for different squirrel situations?",
-        "description": "Evaluates the method's suitability for different squirrel locations and ages."
+        "label": "What bait or product is most effective and easy to use?",
+        "description": "Evaluates the bait or product used in the method, including cost and ease of use."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Are there special considerations for squirrel age or behavior?",
+        "description": "Evaluates whether the method is suitable for baby squirrels or adult squirrels."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "method of removal",
-        "description": "The technique used to remove squirrels (e.g., exclusion, trapping, repellents)."
+        "description": "The general approach used to remove squirrels (e.g., exclusion, trapping, repellents)."
       },
       {
         "id": "c2",
@@ -83,7 +99,7 @@
         "layer": "3",
         "type": "concept",
         "label": "type of bait",
-        "description": "The bait used to attract squirrels into traps (e.g., corn, peanut butter)."
+        "description": "The bait used to attract squirrels (e.g., corn, peanut butter)."
       },
       {
         "id": "c4",
@@ -97,7 +113,7 @@
         "layer": "3",
         "type": "concept",
         "label": "squirrel age",
-        "description": "Whether the squirrels are adults or babies (litters)."
+        "description": "Whether the squirrels are babies or adults."
       },
       {
         "id": "c6",
@@ -111,21 +127,21 @@
         "layer": "3",
         "type": "concept",
         "label": "effectiveness of traps",
-        "description": "How well the method works in removing squirrels."
+        "description": "How well the traps work in capturing or removing squirrels."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "environmental impact",
-        "description": "The effect of the method on the environment."
+        "description": "The effect of the method on the environment and other wildlife."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "cost of solution",
-        "description": "The financial cost of implementing the method."
+        "description": "The monetary cost of implementing the method."
       },
       {
         "id": "c10",
@@ -139,21 +155,21 @@
         "layer": "4",
         "type": "answer",
         "label": "Exclusion: seal entry points around the house / attic",
-        "description": "Sealing gaps and entry points to prevent squirrels from entering."
+        "description": "Sealing all possible entry points to prevent squirrels from entering or re-entering the home."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Live or kill trapping with corn / peanut butter bait, timed for just after hibernation",
-        "description": "Using traps with bait to catch squirrels, especially after hibernation."
+        "description": "Using traps with bait to capture or kill squirrels, especially effective after hibernation."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Repellents: mothballs, homemade water-based spray, or the Squirrel Evictor product",
-        "description": "Using chemical or mechanical repellents to deter squirrels."
+        "description": "Using chemical or mechanical repellents to deter squirrels from entering or staying in the area."
       }
     ],
     "edges": [
@@ -168,6 +184,10 @@
       {
         "source": "q",
         "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
       },
       {
         "source": "sq1",
@@ -187,19 +207,11 @@
       },
       {
         "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
-        "source": "sq3",
         "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c4"
       },
       {
         "source": "sq3",
@@ -207,6 +219,14 @@
       },
       {
         "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "sq4",
         "target": "c5"
       },
       {
@@ -214,19 +234,63 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
         "source": "c2",
         "target": "a1"
       },
       {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
         "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
         "target": "a2"
       },
       {
@@ -235,59 +299,11 @@
       },
       {
         "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
         "target": "a3"
       },
       {
         "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
         "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
       },
       {
         "source": "c9",
@@ -295,11 +311,7 @@
       },
       {
         "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
+        "target": "a3"
       }
     ]
   }

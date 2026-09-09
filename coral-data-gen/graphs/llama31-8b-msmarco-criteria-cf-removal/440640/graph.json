@@ -22,13 +22,22 @@
   "baseline_answer": "Annie E. Casey Foundation Kids Count ranking \u2014 child-welfare-focused metric weighting outcomes for kids",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1792,
-    "output_tokens": 1662,
+    "output_tokens": 2224,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,126 +50,112 @@
         "layer": "1",
         "type": "question",
         "label": "list of best to worst states for education",
-        "description": ""
+        "description": "Ranking of states for education"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Funding and resources",
-        "description": ""
+        "label": "What are the key factors that contribute to a state's education system?",
+        "description": "Factors contributing to a state's education system"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Student outcomes",
-        "description": ""
-      },
-      {
-        "id": "sq3",
-        "layer": "2",
-        "type": "subq",
-        "label": "Teacher and policy factors",
-        "description": ""
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "Testing and parental involvement",
-        "description": ""
+        "label": "How do different organizations rank the states for education?",
+        "description": "Ranking methods for states' education"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "funding levels",
-        "description": ""
+        "description": "State funding for education"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "educational resources",
-        "description": ""
+        "label": "student performance",
+        "description": "Student academic achievement"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "school infrastructure",
-        "description": ""
+        "label": "teacher qualifications",
+        "description": "Teacher education and experience"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "student performance",
-        "description": ""
+        "label": "graduation rates",
+        "description": "Percentage of students graduating"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "graduation rates",
-        "description": ""
+        "label": "educational resources",
+        "description": "Availability of educational resources"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "teacher qualifications",
-        "description": ""
+        "label": "state policies",
+        "description": "State policies affecting education"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "state policies",
-        "description": ""
+        "label": "demographic factors",
+        "description": "Student demographics"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "demographic factors",
-        "description": ""
+        "label": "standardized testing",
+        "description": "Use of standardized tests"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "standardized testing",
-        "description": ""
+        "label": "parental involvement",
+        "description": "Parental engagement in education"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "parental involvement",
-        "description": ""
+        "label": "school infrastructure",
+        "description": "School facilities and equipment"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "WalletHub composite ranking",
-        "description": "MA, NJ, VT, NH, CT top; Nevada, Louisiana, Mississippi bottom"
+        "description": "Ranking of states for education"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
-        "label": "Education Week Quality Counts state grade ranking",
-        "description": "academic-policy-depth ranking used by researchers and policymakers"
+        "label": "Annie E. Casey Foundation Kids Count ranking",
+        "description": "Ranking of states for education"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
-        "label": "Annie E. Casey Foundation Kids Count ranking",
-        "description": "child-welfare-focused metric weighting outcomes for kids"
+        "label": "Education Week Quality Counts state grade ranking",
+        "description": "Ranking of states for education"
       }
     ],
     "edges": [
@@ -171,14 +166,6 @@
       {
         "source": "q",
         "target": "sq2"
-      },
-      {
-        "source": "q",
-        "target": "sq3"
-      },
-      {
-        "source": "q",
-        "target": "sq4"
       },
       {
         "source": "sq1",
@@ -193,6 +180,46 @@
         "target": "c3"
       },
       {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
+      },
+      {
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
+      },
+      {
+        "source": "sq2",
+        "target": "c1"
+      },
+      {
+        "source": "sq2",
+        "target": "c2"
+      },
+      {
+        "source": "sq2",
+        "target": "c3"
+      },
+      {
         "source": "sq2",
         "target": "c4"
       },
@@ -201,23 +228,23 @@
         "target": "c5"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c6"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c7"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c8"
       },
       {
-        "source": "sq4",
+        "source": "sq2",
         "target": "c9"
       },
       {
-        "source": "sq4",
+        "source": "sq2",
         "target": "c10"
       },
       {
@@ -231,6 +258,46 @@
       {
         "source": "c3",
         "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
       },
       {
         "source": "c4",
@@ -254,11 +321,11 @@
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c10",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c1",
@@ -291,6 +358,78 @@
       {
         "source": "c8",
         "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "a1",
+        "target": "c7"
+      },
+      {
+        "source": "a1",
+        "target": "c9"
+      },
+      {
+        "source": "a1",
+        "target": "c10"
+      },
+      {
+        "source": "a2",
+        "target": "c2"
+      },
+      {
+        "source": "a2",
+        "target": "c3"
+      },
+      {
+        "source": "a2",
+        "target": "c4"
+      },
+      {
+        "source": "a2",
+        "target": "c5"
+      },
+      {
+        "source": "a2",
+        "target": "c6"
+      },
+      {
+        "source": "a2",
+        "target": "c8"
+      },
+      {
+        "source": "a3",
+        "target": "c1"
+      },
+      {
+        "source": "a3",
+        "target": "c2"
+      },
+      {
+        "source": "a3",
+        "target": "c3"
+      },
+      {
+        "source": "a3",
+        "target": "c4"
+      },
+      {
+        "source": "a3",
+        "target": "c5"
+      },
+      {
+        "source": "a3",
+        "target": "c6"
+      },
+      {
+        "source": "a3",
+        "target": "c8"
       }
     ]
   }

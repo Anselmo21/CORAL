@@ -22,13 +22,22 @@
   "baseline_answer": "Lifestyle intervention: exercise, yoga, diet, sleep hygiene",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1879,
-    "output_tokens": 2155,
+    "output_tokens": 2161,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -48,21 +57,21 @@
         "layer": "2",
         "type": "subq",
         "label": "Scientific and clinical support",
-        "description": "What is the scientific and clinical support for the remedy?"
+        "description": "Evaluates the strength of evidence and effectiveness in improving mood."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Safety and tolerability",
-        "description": "How safe and well-tolerated is the remedy for teenagers?"
+        "label": "Safety and tolerability in adolescents",
+        "description": "Evaluates how safe and well-tolerated the remedy is for teenagers."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "Practicality and accessibility",
-        "description": "How practical and accessible is the remedy?"
+        "description": "Evaluates how easy, affordable, and accessible the remedy is to use."
       },
       {
         "id": "c1",
@@ -76,14 +85,14 @@
         "layer": "3",
         "type": "concept",
         "label": "mood improvement efficacy",
-        "description": "How effective the remedy is at improving mood."
+        "description": "How well the remedy improves depressive symptoms."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "safety in adolescents",
-        "description": "Safety profile for teenage populations."
+        "description": "Safety profile for teenage users."
       },
       {
         "id": "c4",
@@ -104,14 +113,14 @@
         "layer": "3",
         "type": "concept",
         "label": "ease of use",
-        "description": "How easy the remedy is to incorporate into daily life."
+        "description": "How simple and convenient the remedy is to use."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "cost",
-        "description": "Financial cost of the remedy."
+        "description": "Affordability of the remedy."
       },
       {
         "id": "c8",
@@ -125,7 +134,7 @@
         "layer": "3",
         "type": "concept",
         "label": "dosing convenience",
-        "description": "How convenient the dosing schedule is."
+        "description": "How easy it is to follow the dosing schedule."
       },
       {
         "id": "c10",

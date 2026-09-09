@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Apple Watch Default): Get the Apple Watch Series 9 if you're on iPhone \u2014 the best health sensor accuracy, ECG, and tightest app ecosystem make it the default choice for general health and fitness tracking.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1563,
-    "output_tokens": 2234,
+    "output_tokens": 2219,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -69,70 +78,70 @@
         "layer": "3",
         "type": "concept",
         "label": "Heart Rate and Health Sensor Accuracy",
-        "description": "The accuracy of heart rate and health sensors."
+        "description": "Accuracy of heart rate and health sensors"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "GPS Accuracy for Outdoor Workouts",
-        "description": "The accuracy of GPS for outdoor workouts."
+        "description": "Accuracy of GPS for outdoor workouts"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "Battery Life between Charges",
-        "description": "The battery life between charges."
+        "description": "Battery life between charges"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "Smartphone Ecosystem Compatibility",
-        "description": "The compatibility with the smartphone ecosystem."
+        "description": "Compatibility with smartphone ecosystem"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "Sleep Tracking Quality",
-        "description": "The quality of sleep tracking."
+        "description": "Quality of sleep tracking"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "Sport-specific Training Metrics",
-        "description": "The availability of sport-specific training metrics."
+        "description": "Accuracy of sport-specific training metrics"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "ECG and Medical-grade Health Features",
-        "description": "The availability of ECG and medical-grade health features."
+        "description": "Accuracy of ECG and medical-grade health features"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "Price and Value",
-        "description": "The price and value of the smartwatch."
+        "description": "Price and value of the smartwatch"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "App Ecosystem and Third-party Integration",
-        "description": "The availability of app ecosystem and third-party integration."
+        "description": "Quality of app ecosystem and third-party integration"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "Durability for Outdoor and Multi-sport Use",
-        "description": "The durability for outdoor and multi-sport use."
+        "description": "Durability for outdoor and multi-sport use"
       },
       {
         "id": "a1",

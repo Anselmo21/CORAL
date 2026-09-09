@@ -22,16 +22,24 @@
   "baseline_answer": "An affordable drugstore-tier mineral foundation labeled paraben-free (~$10-20)",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
-  "attempts": 2,
+  "attempts": 1,
   "usage": {
-    "prompt_tokens": 7207,
-    "output_tokens": 4117,
-    "llm_calls": 2,
+    "prompt_tokens": 2372,
+    "output_tokens": 2366,
+    "llm_calls": 1,
     "finish_reasons": [
-      "stop",
       "stop"
     ]
   },
@@ -48,22 +56,22 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Product formulation and safety",
-        "description": "Criteria related to the ingredients, safety, and suitability for sensitive skin."
+        "label": "Product Suitability for Sensitive Skin",
+        "description": "Criteria related to skin compatibility and allergen sensitivity."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Performance and usability",
-        "description": "Criteria related to how the product performs and is applied."
+        "label": "Performance and Value",
+        "description": "Criteria related to how well the product performs and its cost."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Brand and cost considerations",
-        "description": "Criteria related to brand reputation, cost, and availability of shades."
+        "label": "Brand and Ingredient Transparency",
+        "description": "Criteria related to brand trustworthiness and ingredient sourcing."
       },
       {
         "id": "c1",
@@ -91,14 +99,14 @@
         "layer": "3",
         "type": "concept",
         "label": "ingredient sourcing",
-        "description": "Where and how the ingredients are sourced."
+        "description": "How clean and ethically sourced the ingredients are."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "brand reputation",
-        "description": "The trustworthiness and popularity of the brand."
+        "description": "How trusted and well-regarded the brand is."
       },
       {
         "id": "c6",
@@ -112,7 +120,7 @@
         "layer": "3",
         "type": "concept",
         "label": "shade variety",
-        "description": "The number of available shades for different skin tones."
+        "description": "How many shades are available to match different skin tones."
       },
       {
         "id": "c8",
@@ -140,21 +148,21 @@
         "layer": "4",
         "type": "answer",
         "label": "An affordable drugstore-tier mineral foundation labeled paraben-free (~$10-20)",
-        "description": "A budget-friendly option that is paraben-free and suitable for sensitive skin."
+        "description": "A budget-friendly paraben-free mineral foundation suitable for sensitive skin."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A premium 'multi-free' mineral foundation",
-        "description": "A high-end product free of parabens and other common irritants."
+        "description": "A high-end paraben-free foundation with additional clean ingredient claims."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A professional makeup-artist-grade paraben-free mineral foundation",
-        "description": "A top-tier product used by professionals, free of parabens and with high performance."
+        "description": "A high-performance paraben-free foundation used by professionals."
       }
     ],
     "edges": [
@@ -176,10 +184,6 @@
       },
       {
         "source": "sq1",
-        "target": "c4"
-      },
-      {
-        "source": "sq1",
         "target": "c8"
       },
       {
@@ -192,11 +196,15 @@
       },
       {
         "source": "sq2",
-        "target": "c9"
+        "target": "c6"
       },
       {
         "source": "sq2",
-        "target": "c10"
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c4"
       },
       {
         "source": "sq3",
@@ -204,13 +212,13 @@
       },
       {
         "source": "sq3",
-        "target": "c6"
-      },
-      {
-        "source": "sq3",
         "target": "c7"
       },
       {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
         "source": "c1",
         "target": "a1"
       },
@@ -277,10 +285,6 @@
       {
         "source": "c6",
         "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
       },
       {
         "source": "c7",

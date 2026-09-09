@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Roth Default): Open a Roth IRA \u2014 at 28 with decades of compounding ahead, tax-free growth almost always beats the immediate deduction, especially if your income is likely to rise.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1509,
-    "output_tokens": 1781,
+    "output_tokens": 1706,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -48,112 +57,112 @@
         "layer": "2",
         "type": "subq",
         "label": "Tax benefits and deductions",
-        "description": "Immediate tax deduction vs. tax-free growth"
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "Retirement income and compounding",
-        "description": "Long-term tax-free growth vs. immediate deduction"
+        "description": ""
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "Tax bracket and income considerations",
-        "description": "Current tax bracket vs. expected retirement tax bracket"
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "tax-free retirement income",
-        "description": "Long-term tax-free growth"
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "immediate tax deduction benefit",
-        "description": "Immediate tax deduction"
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "long-term compounding advantage",
-        "description": "Long-term tax-free growth"
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "expected retirement tax bracket",
-        "description": "Expected tax bracket in retirement"
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "current marginal tax rate optimization",
-        "description": "Optimizing current tax bracket"
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "flexibility of withdrawal rules",
-        "description": "Flexibility of withdrawal rules"
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "protection from future tax rate increases",
-        "description": "Protection from future tax rate increases"
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "state income tax considerations",
-        "description": "State income tax considerations"
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "estate planning benefits",
-        "description": "Estate planning benefits"
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "simplicity of contribution rules",
-        "description": "Simplicity of contribution rules"
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Roth Default",
-        "description": "Open a Roth IRA"
+        "description": "Open a Roth IRA \u2014 at 28 with decades of compounding ahead, tax-free growth almost always beats the immediate deduction, especially if your income is likely to rise."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Traditional for Current Deduction",
-        "description": "Choose a traditional IRA"
+        "description": "Choose a traditional IRA if you're in a high tax bracket now and expect meaningfully lower income in retirement \u2014 the immediate 22% deduction deployed into additional investments can outperform Roth over time."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Both via Backdoor",
-        "description": "Contribute to a traditional IRA and convert to Roth"
+        "description": "Contribute to a traditional IRA for the current deduction then immediately convert to Roth (backdoor Roth) to capture both benefits while income limits allow."
       }
     ],
     "edges": [
@@ -199,23 +208,11 @@
       },
       {
         "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
-        "target": "c8"
-      },
-      {
-        "source": "sq2",
         "target": "c9"
       },
       {
         "source": "sq3",
         "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
       },
       {
         "source": "sq3",
@@ -235,7 +232,7 @@
       },
       {
         "source": "c4",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c5",
@@ -247,15 +244,15 @@
       },
       {
         "source": "c7",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c8",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c10",
@@ -263,10 +260,6 @@
       },
       {
         "source": "c1",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
         "target": "a1"
       },
       {
@@ -279,7 +272,7 @@
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a1"
       }
     ]
   }

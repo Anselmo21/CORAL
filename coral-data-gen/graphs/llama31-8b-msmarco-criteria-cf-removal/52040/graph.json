@@ -22,13 +22,22 @@
   "baseline_answer": "Murad Redness Therapy 3-part system",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1641,
-    "output_tokens": 2099,
+    "output_tokens": 2527,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -54,7 +63,7 @@
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "avoiding irritating ingredients",
+        "label": "avoid irritating ingredients",
         "description": "ingredient sensitivity"
       },
       {
@@ -68,8 +77,8 @@
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "practical considerations",
-        "description": "application method, brand reputation, price range, user experience"
+        "label": "choosing skin care for redness",
+        "description": "brand reputation, price range, user experience"
       },
       {
         "id": "c1",
@@ -132,35 +141,35 @@
         "layer": "3",
         "type": "concept",
         "label": "price range",
-        "description": "price range of products"
+        "description": "price range of the product"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "user experience",
-        "description": "user experience with products"
+        "description": "user experience with the product"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Murad Redness Therapy 3-part system",
-        "description": "Murad Redness Therapy 3-part system"
+        "description": "comprehensive routine for redness"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A caffeine-based anti-redness serum",
-        "description": "caffeine-based anti-redness serum"
+        "description": "specific product for redness"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Build-your-own minimalist routine",
-        "description": "build-your-own minimalist routine"
+        "description": "general approach to skin care"
       }
     ],
     "edges": [
@@ -203,10 +212,6 @@
       {
         "source": "sq3",
         "target": "c6"
-      },
-      {
-        "source": "sq4",
-        "target": "c4"
       },
       {
         "source": "sq4",
@@ -342,15 +347,123 @@
       },
       {
         "source": "a1",
-        "target": "a2"
+        "target": "c1"
       },
       {
         "source": "a1",
-        "target": "a3"
+        "target": "c2"
+      },
+      {
+        "source": "a1",
+        "target": "c3"
+      },
+      {
+        "source": "a1",
+        "target": "c4"
+      },
+      {
+        "source": "a1",
+        "target": "c5"
+      },
+      {
+        "source": "a1",
+        "target": "c6"
+      },
+      {
+        "source": "a1",
+        "target": "c7"
+      },
+      {
+        "source": "a1",
+        "target": "c8"
+      },
+      {
+        "source": "a1",
+        "target": "c9"
+      },
+      {
+        "source": "a1",
+        "target": "c10"
       },
       {
         "source": "a2",
-        "target": "a3"
+        "target": "c1"
+      },
+      {
+        "source": "a2",
+        "target": "c2"
+      },
+      {
+        "source": "a2",
+        "target": "c3"
+      },
+      {
+        "source": "a2",
+        "target": "c4"
+      },
+      {
+        "source": "a2",
+        "target": "c5"
+      },
+      {
+        "source": "a2",
+        "target": "c6"
+      },
+      {
+        "source": "a2",
+        "target": "c7"
+      },
+      {
+        "source": "a2",
+        "target": "c8"
+      },
+      {
+        "source": "a2",
+        "target": "c9"
+      },
+      {
+        "source": "a2",
+        "target": "c10"
+      },
+      {
+        "source": "a3",
+        "target": "c1"
+      },
+      {
+        "source": "a3",
+        "target": "c2"
+      },
+      {
+        "source": "a3",
+        "target": "c3"
+      },
+      {
+        "source": "a3",
+        "target": "c4"
+      },
+      {
+        "source": "a3",
+        "target": "c5"
+      },
+      {
+        "source": "a3",
+        "target": "c6"
+      },
+      {
+        "source": "a3",
+        "target": "c7"
+      },
+      {
+        "source": "a3",
+        "target": "c8"
+      },
+      {
+        "source": "a3",
+        "target": "c9"
+      },
+      {
+        "source": "a3",
+        "target": "c10"
       }
     ]
   }

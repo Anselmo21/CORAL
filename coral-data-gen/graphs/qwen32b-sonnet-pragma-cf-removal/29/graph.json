@@ -22,13 +22,22 @@
   "baseline_answer": "Answer B (Targeted Probiotics for Specific Conditions): Take a probiotic with evidence for your specific condition \u2014 Lactobacillus rhamnosus GG for antibiotic-associated diarrhea or specific IBS strains \u2014 strain and condition specificity is everything.",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1660,
-    "output_tokens": 3196,
+    "output_tokens": 2744,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,29 +56,29 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the evidence for probiotic supplements in general gut health?",
-        "description": "Assesses the general effectiveness of probiotics for gut health in the absence of specific conditions."
+        "label": "What does the evidence say about the general effectiveness of probiotic supplements for gut health in healthy adults?",
+        "description": "Focuses on general population and overall gut health."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the evidence for probiotics in specific conditions like IBS or antibiotic-associated diarrhea?",
-        "description": "Evaluates the effectiveness of probiotics for specific gastrointestinal conditions."
+        "label": "What does the evidence say about the effectiveness of probiotics for specific medical conditions like IBS or antibiotic-associated diarrhea?",
+        "description": "Focuses on specific conditions where probiotics may be beneficial."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the reliability and regulation of probiotic supplements?",
-        "description": "Assesses the trustworthiness and regulation of the probiotic supplement market."
+        "label": "What are the regulatory and quality concerns with probiotic supplements?",
+        "description": "Focuses on the reliability and regulation of the supplement market."
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "What is the comparative effectiveness of probiotics versus dietary fiber or fermented foods?",
-        "description": "Compares the effectiveness of probiotic supplements to dietary interventions like fiber and fermented foods."
+        "label": "What are the alternative approaches to improving gut health besides probiotic supplements?",
+        "description": "Focuses on non-supplement approaches like diet and fermented foods."
       },
       {
         "id": "c1",
@@ -90,14 +99,14 @@
         "layer": "3",
         "type": "directive",
         "label": "geographic: USA",
-        "description": "Only consider sources from the United States."
+        "description": "Only consider sources from the USA."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Healthy adult without specific GI diagnosis",
-        "description": "Only consider evidence relevant to healthy adults without gastrointestinal conditions."
+        "description": "Only consider evidence relevant to healthy adults."
       },
       {
         "id": "c5",
@@ -111,7 +120,7 @@
         "layer": "3",
         "type": "directive",
         "label": "perspective: Gastroenterologist or microbiome researcher",
-        "description": "Only consider evidence from medical professionals or researchers."
+        "description": "Only consider evidence from medical professionals."
       },
       {
         "id": "c7",
@@ -132,14 +141,14 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer health information",
-        "description": "Only consider consumer health information from reputable sources."
+        "description": "Only consider consumer health information."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Patient community experience",
-        "description": "Only consider anecdotal or community-based patient experiences."
+        "description": "Only consider patient community experiences."
       },
       {
         "id": "a1",
@@ -229,20 +238,12 @@
         "target": "c7"
       },
       {
-        "source": "sq2",
-        "target": "c8"
-      },
-      {
         "source": "sq3",
         "target": "c2"
       },
       {
         "source": "sq3",
         "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c7"
       },
       {
         "source": "sq3",
@@ -271,10 +272,6 @@
       {
         "source": "sq4",
         "target": "c7"
-      },
-      {
-        "source": "sq4",
-        "target": "c8"
       },
       {
         "source": "sq4",
@@ -341,7 +338,7 @@
         "target": "a1"
       },
       {
-        "source": "c7",
+        "source": "c6",
         "target": "a1"
       },
       {
@@ -350,10 +347,6 @@
       },
       {
         "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
         "target": "a1"
       },
       {
@@ -373,15 +366,7 @@
         "target": "a3"
       },
       {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
         "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
         "target": "a3"
       },
       {
@@ -390,10 +375,6 @@
       },
       {
         "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
         "target": "a3"
       }
     ]

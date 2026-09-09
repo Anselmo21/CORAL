@@ -22,13 +22,22 @@
   "baseline_answer": "A Storm of Swords",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1871,
-    "output_tokens": 2235,
+    "output_tokens": 2166,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,7 +50,7 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best Game of Thrones book?",
-        "description": "Evaluating the best Game of Thrones book based on narrative, emotional, and practical criteria."
+        "description": "Which Game of Thrones book is considered the best based on various literary and reader criteria?"
       },
       {
         "id": "sq1",
@@ -54,15 +63,15 @@
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Emotional and Thematic Depth",
-        "description": "Criteria related to character development, world-building, and emotional impact."
+        "label": "Character and Emotional Engagement",
+        "description": "Criteria related to character development and emotional impact on the reader."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Practical and Reusability Factors",
-        "description": "Criteria related to the book's length and re-readability."
+        "label": "Longevity and Accessibility",
+        "description": "Criteria related to how well the book holds up on rereads and its accessibility to new readers."
       },
       {
         "id": "c1",
@@ -76,21 +85,21 @@
         "layer": "3",
         "type": "concept",
         "label": "character development",
-        "description": "How well and deeply characters are developed."
+        "description": "How well characters are developed and evolve over the course of the book."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "pacing",
-        "description": "The speed and rhythm of the narrative."
+        "description": "The speed and rhythm at which the story unfolds."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "narrative scope",
-        "description": "The breadth and scale of the story."
+        "description": "The breadth and scale of the story's world and events."
       },
       {
         "id": "c5",
@@ -111,49 +120,49 @@
         "layer": "3",
         "type": "concept",
         "label": "emotional impact",
-        "description": "The emotional resonance and effect of the story."
+        "description": "The emotional resonance and effect the book has on the reader."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "fan reception",
-        "description": "How well the book is received by fans and critics."
+        "description": "How well the book is received by the fan community."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "reread value",
-        "description": "How rewarding the book is on a second or third read."
+        "description": "How rewarding the book is on subsequent readings."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "length",
-        "description": "The length of the book in terms of pages or reading time."
+        "description": "The length of the book in terms of page count or reading time."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A Storm of Swords",
-        "description": "The third book in the series, known for its complexity and epic scope."
+        "description": "The third book in the series, widely considered the best due to its balance of plot, character, and emotional depth."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A Game of Thrones",
-        "description": "The first book in the series, introducing the world and characters."
+        "description": "The first book in the series, praised for its introduction to the world and characters."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A Dance with Dragons",
-        "description": "The fifth book in the series, known for its length and narrative fragmentation."
+        "description": "The fifth book in the series, noted for its length and world-building but criticized for pacing and emotional impact."
       }
     ],
     "edges": [
@@ -191,15 +200,15 @@
       },
       {
         "source": "sq2",
-        "target": "c6"
-      },
-      {
-        "source": "sq2",
         "target": "c7"
       },
       {
         "source": "sq2",
         "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
       },
       {
         "source": "sq3",
@@ -266,39 +275,11 @@
         "target": "a2"
       },
       {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
         "source": "c9",
         "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
       },
       {
         "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
         "target": "a3"
       },
       {

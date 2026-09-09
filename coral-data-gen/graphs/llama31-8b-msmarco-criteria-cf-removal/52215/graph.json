@@ -22,13 +22,22 @@
   "baseline_answer": "Brush-applied rust-inhibiting primer (zinc chromate or iron oxide) followed by a finish coat",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2320,
-    "output_tokens": 1924,
+    "output_tokens": 2388,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,119 +50,168 @@
         "layer": "1",
         "type": "question",
         "label": "best type of paint to paint over rust",
-        "description": "painting over rust"
+        "description": "Choosing the best paint for rust"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "What type of primer is best for painting over rust?",
-        "description": "primer for rust"
+        "description": "Primer options for rust"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best application method for painting over rust?",
-        "description": "application method for rust"
+        "label": "What application method is most effective for painting over rust?",
+        "description": "Application methods for rust"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the key factors to consider when choosing a paint to paint over rust?",
-        "description": "factors for rust paint"
+        "label": "How does the presence of rust affect the choice of paint?",
+        "description": "Rust presence and paint choice"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What factors influence the drying time of paint over rust?",
+        "description": "Drying time factors for rust"
+      },
+      {
+        "id": "sq5",
+        "layer": "2",
+        "type": "subq",
+        "label": "How does the finish durability of paint over rust compare across different options?",
+        "description": "Finish durability comparison"
+      },
+      {
+        "id": "sq6",
+        "layer": "2",
+        "type": "subq",
+        "label": "What role does brand reputation play in choosing paint for rust?",
+        "description": "Brand reputation and paint choice"
+      },
+      {
+        "id": "sq7",
+        "layer": "2",
+        "type": "subq",
+        "label": "What surface preparation is necessary for painting over rust?",
+        "description": "Surface preparation for rust"
+      },
+      {
+        "id": "sq8",
+        "layer": "2",
+        "type": "subq",
+        "label": "How do environmental conditions impact the choice of paint for rust?",
+        "description": "Environmental conditions and paint choice"
+      },
+      {
+        "id": "sq9",
+        "layer": "2",
+        "type": "subq",
+        "label": "What color options are available for painting over rust?",
+        "description": "Color options for rust"
+      },
+      {
+        "id": "sq10",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the cost-effectiveness of different paint options for rust?",
+        "description": "Cost-effectiveness of paint options"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "type of primer",
-        "description": "primer type"
+        "description": "Primer type"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "application method",
-        "description": "application method"
+        "description": "Application method"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "rust presence tolerance",
-        "description": "rust tolerance"
+        "description": "Rust tolerance"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "drying time",
-        "description": "drying time"
+        "description": "Drying time"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "finish durability",
-        "description": "finish durability"
+        "description": "Finish durability"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "brand reputation",
-        "description": "brand reputation"
+        "description": "Brand reputation"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "surface preparation",
-        "description": "surface prep"
+        "description": "Surface preparation"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "environmental conditions",
-        "description": "env conditions"
+        "description": "Environmental conditions"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "color options",
-        "description": "color options"
+        "description": "Color options"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "cost-effectiveness",
-        "description": "cost-effectiveness"
+        "description": "Cost-effectiveness"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Rustoleum (consumer brand) spray or brush-on",
-        "description": "Rustoleum"
+        "description": "Rustoleum spray or brush-on"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Direct-over-rust anti-rust enamel like Krylon Rust Protector or Rust Tough Enamel",
-        "description": "Krylon Rust Protector"
+        "description": "Direct-over-rust enamel"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Brush-applied rust-inhibiting primer (zinc chromate or iron oxide) followed by a finish coat",
-        "description": "primer and finish coat"
+        "description": "Brush-applied primer and finish coat"
       }
     ],
     "edges": [
@@ -170,43 +228,71 @@
         "target": "sq3"
       },
       {
-        "source": "sq1",
-        "target": "c1"
+        "source": "q",
+        "target": "sq4"
+      },
+      {
+        "source": "q",
+        "target": "sq5"
+      },
+      {
+        "source": "q",
+        "target": "sq6"
+      },
+      {
+        "source": "q",
+        "target": "sq7"
+      },
+      {
+        "source": "q",
+        "target": "sq8"
+      },
+      {
+        "source": "q",
+        "target": "sq9"
+      },
+      {
+        "source": "q",
+        "target": "sq10"
       },
       {
         "source": "sq1",
-        "target": "c3"
+        "target": "c1"
       },
       {
         "source": "sq2",
         "target": "c2"
       },
       {
-        "source": "sq2",
-        "target": "c7"
+        "source": "sq3",
+        "target": "c3"
       },
       {
-        "source": "sq3",
+        "source": "sq4",
         "target": "c4"
       },
       {
-        "source": "sq3",
+        "source": "sq5",
         "target": "c5"
       },
       {
-        "source": "sq3",
+        "source": "sq6",
         "target": "c6"
       },
       {
-        "source": "sq3",
+        "source": "sq7",
+        "target": "c7"
+      },
+      {
+        "source": "sq8",
         "target": "c8"
       },
       {
-        "source": "sq3",
+        "source": "sq9",
         "target": "c9"
       },
       {
-        "source": "sq3",
+        "source": "sq10",
         "target": "c10"
       },
       {
@@ -214,32 +300,88 @@
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
         "source": "c1",
         "target": "a2"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
         "source": "c1",
         "target": "a3"
       },
       {
         "source": "c2",
-        "target": "a1"
-      },
-      {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c2",
         "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
       },
       {
         "source": "c3",
@@ -247,23 +389,7 @@
       },
       {
         "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
         "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
       },
       {
         "source": "c5",
@@ -271,23 +397,7 @@
       },
       {
         "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
         "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
       },
       {
         "source": "c7",
@@ -295,23 +405,7 @@
       },
       {
         "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
         "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
       },
       {
         "source": "c9",
@@ -319,22 +413,6 @@
       },
       {
         "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "a1",
-        "target": "a3"
-      },
-      {
-        "source": "a2",
         "target": "a3"
       }
     ]

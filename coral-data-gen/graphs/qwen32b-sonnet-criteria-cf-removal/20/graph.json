@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (Effective Tool Default): Intermittent fasting is an effective weight loss approach for many people \u2014 not because of metabolic magic, but because restricting eating windows is a sustainable way to reduce total calorie intake.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1517,
-    "output_tokens": 2713,
+    "output_tokens": 2530,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,92 +56,92 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the mechanism and effectiveness of intermittent fasting for weight loss?",
-        "description": "Examines the core mechanism and evidence for IF as a weight loss tool."
+        "label": "Weight loss effectiveness and mechanism",
+        "description": "Criteria related to how well intermittent fasting leads to weight loss and the mechanisms behind it."
       },
       {
         "id": "sq2",
-        "type": "subq",
         "layer": "2",
-        "label": "What are the broader metabolic and lifestyle benefits of intermittent fasting?",
-        "description": "Explores metabolic and lifestyle advantages beyond weight loss."
+        "type": "subq",
+        "label": "Metabolic and health benefits beyond weight loss",
+        "description": "Criteria related to metabolic and health benefits that may extend beyond simple calorie reduction."
       },
       {
         "id": "sq3",
-        "type": "subq",
         "layer": "2",
-        "label": "How does intermittent fasting compare across populations and long-term outcomes?",
-        "description": "Evaluates IF's effectiveness across age groups and long-term health outcomes."
+        "type": "subq",
+        "label": "Practicality and lifestyle fit",
+        "description": "Criteria related to how well intermittent fasting fits into daily life and social patterns."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "total calorie reduction effectiveness",
-        "description": "Whether IF leads to effective calorie reduction for weight loss."
+        "description": "How well intermittent fasting reduces total calorie intake."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "long-term adherence and sustainability",
-        "description": "Whether IF is sustainable for long-term use."
+        "description": "How well people can stick to intermittent fasting over time."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "metabolic benefits beyond calorie restriction",
-        "description": "Whether IF offers metabolic benefits beyond simple calorie reduction."
+        "description": "Potential metabolic advantages of intermittent fasting beyond calorie reduction."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "muscle mass preservation",
-        "description": "Whether IF helps preserve muscle mass during weight loss."
+        "description": "Whether intermittent fasting helps preserve muscle mass during weight loss."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "simplicity vs calorie counting",
-        "description": "Whether IF is simpler than traditional calorie counting."
+        "description": "Whether intermittent fasting is easier to follow than traditional calorie counting."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "insulin sensitivity improvement",
-        "description": "Whether IF improves insulin sensitivity."
+        "description": "Whether intermittent fasting improves insulin sensitivity."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "suitability for social eating patterns",
-        "description": "Whether IF fits well with social eating habits."
+        "description": "How well intermittent fasting aligns with social eating habits."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "evidence from long-term randomized trials",
-        "description": "Whether long-term trials support IF as a weight loss method."
+        "description": "Whether long-term studies support the effectiveness of intermittent fasting."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "applicability across different age groups",
-        "description": "Whether IF is suitable for all age groups."
+        "description": "Whether intermittent fasting is suitable for people of all ages."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "interaction with exercise performance",
-        "description": "Whether IF affects exercise performance."
+        "description": "How intermittent fasting affects physical performance and exercise."
       },
       {
         "id": "a1",
@@ -195,15 +204,15 @@
       },
       {
         "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
         "target": "c10"
       },
       {
         "source": "sq3",
         "target": "c4"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
       },
       {
         "source": "sq3",
@@ -214,12 +223,20 @@
         "target": "a1"
       },
       {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
         "source": "c2",
         "target": "a1"
       },
       {
         "source": "c3",
         "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
       },
       {
         "source": "c4",
@@ -230,8 +247,16 @@
         "target": "a1"
       },
       {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
         "source": "c6",
         "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
       },
       {
         "source": "c7",
@@ -242,6 +267,10 @@
         "target": "a1"
       },
       {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
         "source": "c9",
         "target": "a1"
       },
@@ -250,31 +279,7 @@
         "target": "a1"
       },
       {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
+        "source": "c10",
         "target": "a3"
       }
     ]

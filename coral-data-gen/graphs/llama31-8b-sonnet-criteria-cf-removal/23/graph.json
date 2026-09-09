@@ -22,13 +22,22 @@
   "baseline_answer": "Answer C (Discuss with Physician): Make a shared decision with your doctor based on your specific sexual history and risk profile \u2014 the benefit is highly individual at age 28 and depends on factors your physician can assess.",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1579,
-    "output_tokens": 2331,
+    "output_tokens": 2770,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,91 +56,98 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is my likelihood of exposure to new HPV strains?",
-        "description": "Likelihood of new HPV strain exposure"
+        "label": "Likelihood of exposure to new HPV strains and sexual history",
+        "description": "Exposure to new HPV strains and sexual history"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "How does my sexual history and risk profile affect the decision?",
-        "description": "Sexual history and risk profile"
+        "label": "Cost-effectiveness and insurance coverage",
+        "description": "Cost-effectiveness and insurance coverage"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the costs and benefits of vaccination at my age?",
-        "description": "Costs and benefits of vaccination at age 28"
+        "label": "Prior HPV infection or abnormal Pap history and physician recommendation basis",
+        "description": "Prior HPV infection or abnormal Pap history and physician recommendation basis"
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "Gender and anatomy-specific cancer risk and peace of mind value of vaccination",
+        "description": "Gender and anatomy-specific cancer risk and peace of mind value of vaccination"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
-        "label": "likelihood of exposure to new HPV strains",
-        "description": "Likelihood of new HPV strain exposure"
+        "label": "Likelihood of exposure to new HPV strains",
+        "description": "Likelihood of exposure to new HPV strains"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
-        "label": "number of recent or upcoming new partners",
+        "label": "Number of recent or upcoming new partners",
         "description": "Number of recent or upcoming new partners"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
-        "label": "cost and insurance coverage of vaccine",
+        "label": "Cost and insurance coverage of vaccine",
         "description": "Cost and insurance coverage of vaccine"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "reduction of HPV-related cancer risk",
+        "label": "Reduction of HPV-related cancer risk",
         "description": "Reduction of HPV-related cancer risk"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "prior HPV infection or abnormal Pap history",
+        "label": "Prior HPV infection or abnormal Pap history",
         "description": "Prior HPV infection or abnormal Pap history"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "physician recommendation basis",
+        "label": "Physician recommendation basis",
         "description": "Physician recommendation basis"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "gender and anatomy-specific cancer risk",
+        "label": "Gender and anatomy-specific cancer risk",
         "description": "Gender and anatomy-specific cancer risk"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "monogamy vs ongoing new exposure",
+        "label": "Monogamy vs ongoing new exposure",
         "description": "Monogamy vs ongoing new exposure"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "cost-effectiveness at age 28",
+        "label": "Cost-effectiveness at age 28",
         "description": "Cost-effectiveness at age 28"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
-        "label": "peace of mind value of vaccination",
+        "label": "Peace of mind value of vaccination",
         "description": "Peace of mind value of vaccination"
       },
       {
@@ -170,6 +186,10 @@
         "target": "sq3"
       },
       {
+        "source": "q",
+        "target": "sq4"
+      },
+      {
         "source": "sq1",
         "target": "c1"
       },
@@ -178,48 +198,32 @@
         "target": "c2"
       },
       {
-        "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
-        "target": "c5"
-      },
-      {
-        "source": "sq2",
-        "target": "c6"
-      },
-      {
-        "source": "sq2",
-        "target": "c7"
-      },
-      {
-        "source": "sq2",
+        "source": "sq1",
         "target": "c8"
       },
       {
         "source": "sq2",
-        "target": "c9"
-      },
-      {
-        "source": "sq2",
-        "target": "c10"
-      },
-      {
-        "source": "sq3",
         "target": "c3"
       },
       {
-        "source": "sq3",
-        "target": "c4"
+        "source": "sq2",
+        "target": "c9"
       },
       {
         "source": "sq3",
-        "target": "c9"
+        "target": "c5"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq4",
+        "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -267,6 +271,14 @@
       },
       {
         "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
         "target": "a2"
       },
       {
@@ -331,6 +343,14 @@
       },
       {
         "source": "a1",
+        "target": "c5"
+      },
+      {
+        "source": "a1",
+        "target": "c6"
+      },
+      {
+        "source": "a1",
         "target": "c8"
       },
       {
@@ -338,44 +358,24 @@
         "target": "c9"
       },
       {
-        "source": "a2",
-        "target": "c8"
+        "source": "a1",
+        "target": "c10"
       },
       {
         "source": "a2",
-        "target": "c9"
-      },
-      {
-        "source": "a3",
         "target": "c1"
       },
       {
-        "source": "a3",
+        "source": "a2",
         "target": "c2"
       },
       {
-        "source": "a3",
-        "target": "c3"
-      },
-      {
-        "source": "a3",
+        "source": "a2",
         "target": "c4"
       },
       {
-        "source": "a3",
-        "target": "c5"
-      },
-      {
-        "source": "a3",
-        "target": "c6"
-      },
-      {
-        "source": "a3",
+        "source": "a2",
         "target": "c7"
-      },
-      {
-        "source": "a3",
-        "target": "c10"
       }
     ]
   }

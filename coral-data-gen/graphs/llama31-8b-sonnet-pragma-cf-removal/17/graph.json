@@ -22,13 +22,22 @@
   "baseline_answer": "Answer C (PT Then Reassess): Complete a full 8\u201312 week PT course then reassess with imaging \u2014 this approach exhausts conservative treatment, provides documented PT failure if surgery is later needed, and avoids unnecessary procedures.",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1671,
-    "output_tokens": 2287,
+    "output_tokens": 2769,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,35 +50,35 @@
         "layer": "1",
         "type": "question",
         "label": "Should I try physical therapy first or just get surgery for my chronic knee pain?",
-        "description": "Chronic knee pain treatment"
+        "description": "Chronic knee pain treatment decision"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "General recommendation for treating chronic knee pain",
-        "description": "General treatment approach"
+        "label": "General recommendation for treating chronic knee conditions",
+        "description": "General treatment recommendation for chronic knee conditions"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Effectiveness of physical therapy for knee conditions",
-        "description": "PT effectiveness"
+        "label": "Effectiveness of physical therapy for patients with structural damage",
+        "description": "Effectiveness of physical therapy for patients with structural damage"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Risks and benefits of surgery for knee conditions",
-        "description": "Surgery risks and benefits"
+        "label": "Role of patient perspective in treatment decisions",
+        "description": "Role of patient perspective in treatment decisions"
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "Determining if surgery or PT is necessary",
-        "description": "Determine surgery or PT"
+        "label": "Trustworthiness of different sources of information",
+        "description": "Trustworthiness of different sources of information"
       },
       {
         "id": "c1",
@@ -83,7 +92,7 @@
         "layer": "3",
         "type": "directive",
         "label": "temporal: 2021\u20132023",
-        "description": "Sources from 2021 to 2023"
+        "description": "Sources from 2021\u20132023"
       },
       {
         "id": "c3",
@@ -97,21 +106,21 @@
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient with degenerative or non-structural condition",
-        "description": "Sources from patients with non-structural conditions"
+        "description": "Sources from patients with degenerative or non-structural conditions"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Patient with confirmed structural damage (ACL tear, advanced OA)",
-        "description": "Sources from patients with structural damage"
+        "description": "Sources from patients with confirmed structural damage"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Orthopedic surgeon or sports medicine physician",
-        "description": "Sources from surgeons"
+        "description": "Sources from orthopedic surgeons or sports medicine physicians"
       },
       {
         "id": "c7",
@@ -125,7 +134,7 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Medical institution guidance",
-        "description": "Sources from medical institutions"
+        "description": "Sources from medical institution guidance"
       },
       {
         "id": "c9",
@@ -146,21 +155,21 @@
         "layer": "4",
         "type": "answer",
         "label": "Physical Therapy Default",
-        "description": "Start with PT"
+        "description": "Start with a structured physical therapy program"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Surgery for Structural Damage",
-        "description": "Surgery for structural damage"
+        "description": "Proceed to surgery if imaging confirms significant structural damage"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "PT Then Reassess",
-        "description": "PT then reassess"
+        "description": "Complete a full 8\u201312 week PT course then reassess with imaging"
       }
     ],
     "edges": [
@@ -342,11 +351,11 @@
       },
       {
         "source": "c1",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c2",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c3",
@@ -366,19 +375,59 @@
       },
       {
         "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
         "target": "a3"
       },
       {
         "source": "c8",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c9",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c10",
-        "target": "a1"
+        "target": "a3"
       }
     ]
   }

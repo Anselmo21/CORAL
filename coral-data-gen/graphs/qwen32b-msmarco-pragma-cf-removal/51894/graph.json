@@ -22,13 +22,22 @@
   "baseline_answer": "Leafy greens: boiled collards (~358 mg/cup), kale, bok choy, Swiss chard, turnip greens",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1858,
-    "output_tokens": 2488,
+    "output_tokens": 2532,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,7 +50,7 @@
         "layer": "1",
         "type": "question",
         "label": "best natural sources of calcium",
-        "description": "What are the best natural sources of calcium for healthy bones?"
+        "description": "What are the best natural sources of calcium?"
       },
       {
         "id": "sq1",
@@ -54,14 +63,14 @@
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "dietary perspectives for calcium sources",
+        "label": "relevant dietary perspectives for calcium sources",
         "description": "What are the most relevant dietary perspectives for calcium sources?"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "sustainable or ethical calcium sources",
+        "label": "sustainable or ethical sources of calcium",
         "description": "What are the most sustainable or ethical sources of calcium?"
       },
       {
@@ -69,7 +78,7 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: NIH / US dietary guidelines",
-        "description": "Prioritize sources from NIH or US dietary guidelines."
+        "description": "Prioritize sources from NIH or U.S. dietary guidelines."
       },
       {
         "id": "c2",
@@ -104,35 +113,35 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: food sustainability advocacy",
-        "description": "Prioritize food sustainability advocacy sources."
+        "description": "Prioritize sources from food sustainability advocacy groups."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: lactose-intolerant consumer",
-        "description": "Prioritize sources from a lactose-intolerant consumer perspective."
+        "description": "Prioritize sources from the perspective of lactose-intolerant consumers."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: vegan",
-        "description": "Prioritize sources from a vegan perspective."
+        "description": "Prioritize sources from the vegan perspective."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: omnivorous default consumer",
-        "description": "Prioritize sources from an omnivorous default consumer perspective."
+        "description": "Prioritize sources from the omnivorous default consumer perspective."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: pregnant woman",
-        "description": "Prioritize sources from a pregnant woman's perspective."
+        "description": "Prioritize sources from the perspective of a pregnant woman."
       },
       {
         "id": "a1",
@@ -146,14 +155,14 @@
         "layer": "4",
         "type": "answer",
         "label": "Leafy greens: boiled collards (~358 mg/cup), kale, bok choy, Swiss chard, turnip greens",
-        "description": "Leafy greens are a natural, plant-based source of calcium."
+        "description": "Leafy greens are a natural, high-calcium source, especially collards."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Calcium-fortified plant-based foods: soy milk, calcium-set tofu, fortified juice and cereal",
-        "description": "Calcium-fortified plant-based foods are a good source for those avoiding dairy."
+        "description": "Calcium-fortified plant-based foods are a good source for non-dairy diets."
       }
     ],
     "edges": [
@@ -302,11 +311,11 @@
         "target": "a3"
       },
       {
-        "source": "c9",
+        "source": "c8",
         "target": "a3"
       },
       {
-        "source": "c10",
+        "source": "c9",
         "target": "a3"
       }
     ]

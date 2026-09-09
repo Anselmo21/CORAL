@@ -22,13 +22,22 @@
   "baseline_answer": "Dairy-free / Cycle Diet",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1858,
-    "output_tokens": 2670,
+    "output_tokens": 2751,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,7 +50,7 @@
         "layer": "1",
         "type": "question",
         "label": "What is the best diet for reducing PMS symptoms?",
-        "description": "Identify the most effective dietary approach for reducing PMS symptoms."
+        "description": "Identify the most effective dietary approach for reducing PMS symptoms based on nutritional and lifestyle criteria."
       },
       {
         "id": "sq1",
@@ -55,105 +64,105 @@
         "layer": "2",
         "type": "subq",
         "label": "Dietary restrictions and inflammation",
-        "description": "Evaluates the diet's impact on inflammation and dietary restrictions."
+        "description": "Evaluates the impact of dietary restrictions and anti-inflammatory properties."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "Practicality and lifestyle",
-        "description": "Evaluates how practical and sustainable the diet is for daily life."
+        "description": "Evaluates how easy the diet is to follow and supports hydration and fiber."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "magnesium content",
-        "description": "The amount of magnesium in the diet, which helps with cramps and mood."
+        "description": "Amount of magnesium in the diet, which helps with cramps and mood."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "vitamin B levels",
-        "description": "The presence of B vitamins, which help with mood swings and energy."
+        "description": "Levels of B vitamins, which help with mood swings and energy."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "calcium intake",
-        "description": "The amount of calcium, which helps with cramps and mood."
+        "description": "Amount of calcium, which helps with cramps and mood."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "fiber content",
-        "description": "The amount of fiber, which supports digestion and blood sugar."
+        "description": "Amount of fiber, which supports digestion and blood sugar."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "anti-inflammatory foods",
-        "description": "The presence of foods that reduce inflammation and cramps."
+        "description": "Presence of foods that reduce inflammation and cramps."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "sugar reduction",
-        "description": "The extent to which the diet limits sugar, which affects mood and energy."
+        "description": "Reduction of sugar to stabilize mood and energy."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "caffeine reduction",
-        "description": "The extent to which the diet limits caffeine, which affects anxiety and sleep."
+        "description": "Reduction of caffeine to reduce anxiety and irritability."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "omega-3 inclusion",
-        "description": "The presence of omega-3s, which reduce inflammation and cramps."
+        "description": "Inclusion of omega-3s to reduce inflammation and cramps."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "hydration support",
-        "description": "The extent to which the diet supports hydration, which affects bloating and energy."
+        "description": "Support for hydration to reduce bloating and fatigue."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "ease of adherence",
-        "description": "How easy the diet is to follow in daily life."
+        "description": "How easy the diet is to follow long-term."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Mediterranean-style diet",
-        "description": "A balanced diet rich in fruits, vegetables, whole grains, and healthy fats."
+        "description": "A balanced diet rich in healthy fats, whole grains, and lean proteins."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Dairy-free / Cycle Diet",
-        "description": "A diet that avoids dairy and processed foods, focusing on hormone balance and nutrient timing."
+        "description": "A diet that avoids dairy and processed foods, focusing on hormone balance."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Anti-inflammatory elimination diet",
-        "description": "A restrictive diet that eliminates potential irritants and focuses on reducing inflammation."
+        "description": "A restrictive diet that eliminates trigger foods and focuses on inflammation reduction."
       }
     ],
     "edges": [
@@ -266,12 +275,20 @@
         "target": "a2"
       },
       {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
         "source": "c6",
         "target": "a1"
       },
       {
         "source": "c6",
         "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
       },
       {
         "source": "c7",
@@ -282,12 +299,20 @@
         "target": "a2"
       },
       {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
         "source": "c8",
         "target": "a1"
       },
       {
         "source": "c8",
         "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
       },
       {
         "source": "c9",
@@ -315,43 +340,51 @@
       },
       {
         "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a2"
       },
       {
-        "source": "c10",
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
         "target": "a1"
       },
       {
         "source": "c1",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c2",
-        "target": "a3"
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
       },
       {
         "source": "c3",
-        "target": "a3"
+        "target": "a1"
       },
       {
-        "source": "c9",
-        "target": "a3"
+        "source": "c3",
+        "target": "a2"
       },
       {
         "source": "c10",
-        "target": "a3"
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
       }
     ]
   }

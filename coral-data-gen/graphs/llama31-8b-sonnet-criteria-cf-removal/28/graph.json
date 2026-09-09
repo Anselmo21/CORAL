@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (DASH Plus Sodium Default): Follow the DASH diet with strict sodium reduction below 2,300 mg/day \u2014 the combination produces the largest evidence-based BP reduction (8\u201314 mmHg) equivalent to a medication dose.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1573,
-    "output_tokens": 1996,
+    "output_tokens": 2747,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,105 +50,98 @@
         "layer": "1",
         "type": "question",
         "label": "What diet changes would most effectively lower my blood pressure without medication?",
-        "description": "Effectiveness of diet changes in lowering blood pressure"
+        "description": "Dietary changes for lowering blood pressure without medication"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "Effectiveness of diet changes in lowering blood pressure",
-        "description": "Effectiveness of diet changes in lowering blood pressure"
+        "label": "What is the most effective way to lower blood pressure through diet?",
+        "description": "Most effective diet for lowering blood pressure"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "Feasibility and sustainability of dietary approaches",
-        "description": "Feasibility and sustainability of dietary approaches"
+        "label": "How can I make long-term dietary changes to lower blood pressure?",
+        "description": "Long-term dietary changes for lowering blood pressure"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "Importance of sodium restriction and mineral intake",
-        "description": "Importance of sodium restriction and mineral intake"
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "Role of exercise in blood pressure reduction",
-        "description": "Role of exercise in blood pressure reduction"
+        "label": "What is the best combination of diet and exercise for lowering blood pressure?",
+        "description": "Best combination of diet and exercise for lowering blood pressure"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "magnitude of blood pressure reduction",
-        "description": "magnitude of blood pressure reduction"
+        "description": "Effectiveness of blood pressure reduction"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "long-term dietary adherence feasibility",
-        "description": "long-term dietary adherence feasibility"
+        "description": "Ease of long-term dietary adherence"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "speed of BP reduction",
-        "description": "speed of BP reduction"
+        "description": "Speed of blood pressure reduction"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "sodium restriction as primary lever",
-        "description": "sodium restriction as primary lever"
+        "description": "Importance of sodium restriction"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "potassium and mineral intake optimization",
-        "description": "potassium and mineral intake optimization"
+        "description": "Importance of potassium and mineral intake"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "combination with exercise",
-        "description": "combination with exercise"
+        "description": "Importance of exercise combination"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "evidence base strength",
-        "description": "evidence base strength"
+        "description": "Strength of evidence base"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "flexibility of dietary approach",
-        "description": "flexibility of dietary approach"
+        "description": "Flexibility of dietary approach"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "applicability without specialist support",
-        "description": "applicability without specialist support"
+        "description": "Ease of implementation without specialist support"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "severity of hypertension baseline",
-        "description": "severity of hypertension baseline"
+        "description": "Severity of hypertension baseline"
       },
       {
         "id": "a1",
@@ -153,7 +155,7 @@
         "layer": "4",
         "type": "answer",
         "label": "Sodium Reduction First",
-        "description": "Focus solely on reducing sodium intake as the single most impactful dietary lever"
+        "description": "Focus solely on reducing sodium intake"
       },
       {
         "id": "a3",
@@ -175,10 +177,6 @@
       {
         "source": "q",
         "target": "sq3"
-      },
-      {
-        "source": "q",
-        "target": "sq4"
       },
       {
         "source": "sq1",
@@ -226,19 +224,47 @@
       },
       {
         "source": "sq2",
+        "target": "c4"
+      },
+      {
+        "source": "sq2",
+        "target": "c5"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
+        "target": "c10"
+      },
+      {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
         "target": "c8"
       },
       {
         "source": "sq3",
-        "target": "c4"
+        "target": "c9"
       },
       {
         "source": "sq3",
-        "target": "c5"
-      },
-      {
-        "source": "sq4",
-        "target": "c6"
+        "target": "c10"
       },
       {
         "source": "c1",
@@ -285,7 +311,31 @@
         "target": "a2"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
         "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
         "target": "a2"
       },
       {
@@ -297,7 +347,23 @@
         "target": "a2"
       },
       {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
         "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
         "target": "a3"
       },
       {
@@ -305,8 +371,140 @@
         "target": "a3"
       },
       {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
         "source": "c8",
         "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "a1",
+        "target": "c1"
+      },
+      {
+        "source": "a1",
+        "target": "c2"
+      },
+      {
+        "source": "a1",
+        "target": "c3"
+      },
+      {
+        "source": "a1",
+        "target": "c4"
+      },
+      {
+        "source": "a1",
+        "target": "c5"
+      },
+      {
+        "source": "a1",
+        "target": "c6"
+      },
+      {
+        "source": "a1",
+        "target": "c7"
+      },
+      {
+        "source": "a1",
+        "target": "c8"
+      },
+      {
+        "source": "a1",
+        "target": "c9"
+      },
+      {
+        "source": "a1",
+        "target": "c10"
+      },
+      {
+        "source": "a2",
+        "target": "c1"
+      },
+      {
+        "source": "a2",
+        "target": "c2"
+      },
+      {
+        "source": "a2",
+        "target": "c3"
+      },
+      {
+        "source": "a2",
+        "target": "c4"
+      },
+      {
+        "source": "a2",
+        "target": "c5"
+      },
+      {
+        "source": "a2",
+        "target": "c6"
+      },
+      {
+        "source": "a2",
+        "target": "c7"
+      },
+      {
+        "source": "a2",
+        "target": "c8"
+      },
+      {
+        "source": "a2",
+        "target": "c9"
+      },
+      {
+        "source": "a2",
+        "target": "c10"
+      },
+      {
+        "source": "a3",
+        "target": "c1"
+      },
+      {
+        "source": "a3",
+        "target": "c2"
+      },
+      {
+        "source": "a3",
+        "target": "c3"
+      },
+      {
+        "source": "a3",
+        "target": "c4"
+      },
+      {
+        "source": "a3",
+        "target": "c5"
+      },
+      {
+        "source": "a3",
+        "target": "c6"
+      },
+      {
+        "source": "a3",
+        "target": "c7"
+      },
+      {
+        "source": "a3",
+        "target": "c8"
+      },
+      {
+        "source": "a3",
+        "target": "c9"
+      },
+      {
+        "source": "a3",
+        "target": "c10"
       }
     ]
   }

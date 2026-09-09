@@ -22,13 +22,22 @@
   "baseline_answer": "Smart Electric Drive ($25,750 sticker / ~$18,250 post-rebate)",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1860,
-    "output_tokens": 2031,
+    "output_tokens": 1891,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,15 +56,15 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What are the most trustworthy sources for pricing and ranking hybrid electric vehicles?",
-        "description": "What are the most trustworthy sources for pricing and ranking hybrid electric vehicles?"
+        "label": "What are the most trustworthy sources for pricing and rankings?",
+        "description": "What are the most trustworthy sources for pricing and rankings?"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What are the perspectives of different types of buyers that influence their choice of hybrid electric vehicles?",
-        "description": "What are the perspectives of different types of buyers that influence their choice of hybrid electric vehicles?"
+        "label": "What are the perspectives of different types of buyers?",
+        "description": "What are the perspectives of different types of buyers?"
       },
       {
         "id": "c1",

@@ -22,13 +22,22 @@
   "baseline_answer": "A high-THC indica strain for nighttime muscle pain and stiffness",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1659,
-    "output_tokens": 2580,
+    "output_tokens": 2572,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -118,14 +127,14 @@
         "layer": "3",
         "type": "concept",
         "label": "onset time",
-        "description": "How quickly the effects of the strain begin."
+        "description": "How quickly the effects are felt after consumption."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "duration of effects",
-        "description": "How long the effects of the strain last."
+        "description": "How long the effects last."
       },
       {
         "id": "c10",
@@ -191,6 +200,10 @@
       },
       {
         "source": "sq2",
+        "target": "c3"
+      },
+      {
+        "source": "sq2",
         "target": "c4"
       },
       {
@@ -200,10 +213,6 @@
       {
         "source": "sq2",
         "target": "c7"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
       },
       {
         "source": "sq3",

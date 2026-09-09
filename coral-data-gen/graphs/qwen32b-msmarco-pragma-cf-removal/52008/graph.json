@@ -22,13 +22,22 @@
   "baseline_answer": "Keep the blister intact, dry, and protected with a loose bandage",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1954,
-    "output_tokens": 2374,
+    "output_tokens": 2460,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -47,92 +56,99 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most trustworthy medical or clinical advice for treating blisters?",
-        "description": "Focuses on clinical, peer-reviewed, and infection-prevention sources."
+        "label": "What is the most trustworthy medical advice for treating blisters?",
+        "description": "Focuses on clinical and peer-reviewed sources."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most effective home remedy for drying out blisters?",
-        "description": "Focuses on home-remedy sources and patient perspectives."
+        "label": "What is the most effective home-remedy approach for drying out blisters?",
+        "description": "Focuses on home-remedy sources and perspectives."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "What is the best approach for large, painful blisters?",
-        "description": "Focuses on large blister and pain management perspectives."
+        "description": "Focuses on large blister and pain-related directives."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best approach for high-risk or sensitive populations?",
+        "description": "Focuses on diabetic and infection-prevention concerns."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: clinical wound-care guideline",
-        "description": "Prioritizes clinical wound-care guidelines."
+        "label": "1. trustworthiness: clinical wound-care guideline",
+        "description": "Prioritize clinical wound-care guidelines."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: peer-reviewed podiatry literature",
-        "description": "Prioritizes peer-reviewed podiatry literature."
+        "label": "2. trustworthiness: peer-reviewed podiatry literature",
+        "description": "Prioritize peer-reviewed podiatry literature."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: home remedies blog",
-        "description": "Prioritizes home remedies blogs."
+        "label": "3. trustworthiness: home remedies blog",
+        "description": "Prioritize home remedies blogs."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: CDC infection prevention guidance",
-        "description": "Prioritizes CDC infection prevention guidance."
+        "label": "4. trustworthiness: CDC infection prevention guidance",
+        "description": "Prioritize CDC infection prevention guidance."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
-        "label": "trustworthiness: drugstore first-aid pamphlet",
-        "description": "Prioritizes drugstore first-aid pamphlets."
+        "label": "5. trustworthiness: drugstore first-aid pamphlet",
+        "description": "Prioritize drugstore first-aid pamphlets."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: hiker / endurance athlete",
-        "description": "Prioritizes hiker/endurance athlete perspectives."
+        "label": "6. perspective: hiker / endurance athlete",
+        "description": "Prioritize hiker/endurance athlete perspective."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: home-remedy enthusiast",
-        "description": "Prioritizes home-remedy enthusiast perspectives."
+        "label": "7. perspective: home-remedy enthusiast",
+        "description": "Prioritize home-remedy enthusiast perspective."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: large painful blister sufferer",
-        "description": "Prioritizes large painful blister sufferer perspectives."
+        "label": "8. perspective: large painful blister sufferer",
+        "description": "Prioritize large painful blister sufferer perspective."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: diabetic foot patient",
-        "description": "Prioritizes diabetic foot patient perspectives."
+        "label": "9. perspective: diabetic foot patient",
+        "description": "Prioritize diabetic foot patient perspective."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: pain-minimization patient",
-        "description": "Prioritizes pain-minimization patient perspectives."
+        "label": "10. perspective: pain-minimization patient",
+        "description": "Prioritize pain-minimization patient perspective."
       },
       {
         "id": "a1",
@@ -146,14 +162,14 @@
         "layer": "4",
         "type": "answer",
         "label": "Apple cider vinegar swab",
-        "description": "Home remedy using apple cider vinegar."
+        "description": "Home-remedy-based, antibacterial method."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Carefully drain a large painful blister with a sterilized needle",
-        "description": "Drain large, painful blisters with a sterilized needle."
+        "description": "Invasive and pain-focused method for large blisters."
       }
     ],
     "edges": [
@@ -168,6 +184,10 @@
       {
         "source": "q",
         "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
       },
       {
         "source": "sq1",
@@ -208,6 +228,18 @@
       {
         "source": "sq3",
         "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "sq4",
+        "target": "c4"
+      },
+      {
+        "source": "sq4",
+        "target": "c9"
       },
       {
         "source": "c1",
@@ -272,6 +304,10 @@
       {
         "source": "c10",
         "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
       }
     ]
   }

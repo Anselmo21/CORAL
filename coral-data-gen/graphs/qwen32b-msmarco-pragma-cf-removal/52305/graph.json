@@ -22,17 +22,24 @@
   "baseline_answer": "Natural spray: white vinegar OR salt + soap + water solution",
   "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
-  "attempts": 3,
+  "attempts": 1,
   "usage": {
-    "prompt_tokens": 13557,
-    "output_tokens": 7238,
-    "llm_calls": 3,
+    "prompt_tokens": 2657,
+    "output_tokens": 2432,
+    "llm_calls": 1,
     "finish_reasons": [
-      "length",
-      "length",
       "stop"
     ]
   },
@@ -49,120 +56,106 @@
         "id": "sq1",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best method for a homeowner with ivy on a building?",
-        "description": "Best method for a homeowner with ivy on a building."
+        "label": "What is the most effective and safe method for removing ivy from a home or garden?",
+        "description": "Evaluates effectiveness and safety of ivy removal methods."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the best method for a gardener concerned with safety for pets and children?",
-        "description": "Best method for a gardener concerned with safety for pets and children."
-      },
-      {
-        "id": "sq3",
-        "layer": "2",
-        "type": "subq",
-        "label": "What is the best method for a person with limited time or small area?",
-        "description": "Best method for a person with limited time or small area."
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "What is the best method for a large ivy infestation?",
-        "description": "Best method for a large ivy infestation."
+        "label": "What method is most practical for different types of gardeners or property owners?",
+        "description": "Evaluates practicality of ivy removal methods for different user types."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: agricultural extension service guideline",
-        "description": "Trustworthiness: agricultural extension service guideline"
+        "description": "Prioritize sources from agricultural extension services."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed weed science journal",
-        "description": "Trustworthiness: peer-reviewed weed science journal"
+        "description": "Prioritize sources from peer-reviewed weed science journals."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: organic gardening publication",
-        "description": "Trustworthiness: organic gardening publication"
+        "description": "Prioritize sources from organic gardening publications."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: home & garden DIY blog",
-        "description": "Trustworthiness: home & garden DIY blog"
+        "description": "Prioritize sources from home & garden DIY blogs."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: pesticide industry documentation",
-        "description": "Trustworthiness: pesticide industry documentation"
+        "description": "Prioritize sources from pesticide industry documentation."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: homeowner with established ivy on building",
-        "description": "Perspective: homeowner with established ivy on building"
+        "description": "Prioritize methods for homeowners with ivy on buildings."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: pet / child-safe priority gardener",
-        "description": "Perspective: pet / child-safe priority gardener"
+        "description": "Prioritize methods safe for pets and children."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: small-area weekend gardener",
-        "description": "Perspective: small-area weekend gardener"
+        "description": "Prioritize methods for small-area weekend gardeners."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: rental tenant",
-        "description": "Perspective: rental tenant"
+        "description": "Prioritize methods for rental tenants."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: large-area ivy patch owner",
-        "description": "Perspective: large-area ivy patch owner"
+        "description": "Prioritize methods for large-area ivy patch owners."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Manual pulling with hand tools (snipper, ladder, saw, shovel)",
-        "description": "Manual pulling with hand tools (snipper, ladder, saw, shovel)"
+        "description": "Manual removal using hand tools."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Natural spray: white vinegar OR salt + soap + water solution",
-        "description": "Natural spray: white vinegar OR salt + soap + water solution"
+        "description": "Natural spray methods for ivy removal."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Glyphosate (Roundup) or triclopyr (Brush-B-Gon) herbicide applied to leaves",
-        "description": "Glyphosate (Roundup) or triclopyr (Brush-B-Gon) herbicide applied to leaves"
+        "description": "Herbicide application for ivy removal."
       }
     ],
     "edges": [
@@ -173,14 +166,6 @@
       {
         "source": "q",
         "target": "sq2"
-      },
-      {
-        "source": "q",
-        "target": "sq3"
-      },
-      {
-        "source": "q",
-        "target": "sq4"
       },
       {
         "source": "sq1",
@@ -207,75 +192,39 @@
         "target": "c6"
       },
       {
-        "source": "sq2",
-        "target": "c1"
+        "source": "sq1",
+        "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
       },
       {
         "source": "sq2",
-        "target": "c2"
-      },
-      {
-        "source": "sq2",
-        "target": "c3"
-      },
-      {
-        "source": "sq2",
-        "target": "c4"
-      },
-      {
-        "source": "sq2",
-        "target": "c5"
+        "target": "c6"
       },
       {
         "source": "sq2",
         "target": "c7"
       },
       {
-        "source": "sq3",
-        "target": "c1"
-      },
-      {
-        "source": "sq3",
-        "target": "c2"
-      },
-      {
-        "source": "sq3",
-        "target": "c3"
-      },
-      {
-        "source": "sq3",
-        "target": "c4"
-      },
-      {
-        "source": "sq3",
-        "target": "c5"
-      },
-      {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c8"
       },
       {
-        "source": "sq4",
-        "target": "c1"
+        "source": "sq2",
+        "target": "c9"
       },
       {
-        "source": "sq4",
-        "target": "c2"
-      },
-      {
-        "source": "sq4",
-        "target": "c3"
-      },
-      {
-        "source": "sq4",
-        "target": "c4"
-      },
-      {
-        "source": "sq4",
-        "target": "c5"
-      },
-      {
-        "source": "sq4",
+        "source": "sq2",
         "target": "c10"
       },
       {
@@ -296,11 +245,11 @@
       },
       {
         "source": "c5",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c7",
@@ -313,6 +262,86 @@
       {
         "source": "c9",
         "target": "a2"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
       },
       {
         "source": "c10",

@@ -22,13 +22,22 @@
   "baseline_answer": "Zinc ascorbate supplement",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2431,
-    "output_tokens": 2728,
+    "output_tokens": 3482,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -48,112 +57,119 @@
         "layer": "2",
         "type": "subq",
         "label": "What is the most effective form of zinc for acne?",
-        "description": "Evaluates the form of zinc (e.g., ascorbate, gluconate) and its effectiveness in treating acne."
+        "description": "Evaluates the effectiveness of different zinc forms for acne."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most trusted source of zinc for acne?",
-        "description": "Evaluates the credibility of the source recommending the zinc form."
+        "label": "What is the best zinc dosage for acne?",
+        "description": "Evaluates the optimal dosage of zinc for acne treatment."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most accessible or affordable zinc option for acne?",
-        "description": "Evaluates the cost and availability of the zinc form."
+        "label": "What are the best additional ingredients to include with zinc for acne?",
+        "description": "Evaluates the value of combining zinc with other nutrients for acne."
+      },
+      {
+        "id": "sq4",
+        "layer": "2",
+        "type": "subq",
+        "label": "What is the best zinc brand for different acne-related conditions and preferences?",
+        "description": "Evaluates zinc brands based on acne type and user preferences."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed dermatology journal",
-        "description": "Prioritizes sources from peer-reviewed dermatology journals."
+        "description": "Sources from peer-reviewed dermatology journals."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: registered dietitian guidance",
-        "description": "Prioritizes sources from registered dietitians."
+        "description": "Sources from registered dietitians."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: nutritionist recommendation",
-        "description": "Prioritizes sources from nutritionists."
+        "description": "Sources from nutritionists."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: consumer health blog",
-        "description": "Prioritizes sources from consumer health blogs."
+        "description": "Sources from consumer health blogs."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: patient acne forum",
-        "description": "Prioritizes sources from patient acne forums."
+        "description": "Sources from acne patient forums."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: zinc-deficient confirmed patient",
-        "description": "Prioritizes sources from patients confirmed to be zinc-deficient."
+        "description": "Sources from patients confirmed to be zinc-deficient."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: antibiotic-resistant acne sufferer",
-        "description": "Prioritizes sources from patients with antibiotic-resistant acne."
+        "description": "Sources from acne sufferers with antibiotic resistance."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: hormonal acne sufferer",
-        "description": "Prioritizes sources from patients with hormonal acne."
+        "description": "Sources from hormonal acne sufferers."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: clean-supplement preference",
-        "description": "Prioritizes sources that emphasize clean or bioavailable supplements."
+        "description": "Sources from users who prefer clean, pure supplements."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: budget-conscious consumer",
-        "description": "Prioritizes sources that emphasize affordability."
+        "description": "Sources from budget-conscious consumers."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Zinc ascorbate supplement",
-        "description": "Zinc ascorbate is the most effective and bioavailable form of zinc for acne."
+        "description": "Zinc ascorbate is the most effective and well-absorbed form for acne."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Oral zinc gluconate at the trial-validated 200 mg/day dose (~30 mg elemental zinc)",
-        "description": "Zinc gluconate at a 200 mg/day dose is effective in reducing acne inflammation."
+        "description": "A standardized, research-backed dose of zinc gluconate for acne."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Multivitamin with high-potency zinc plus Vitamins A / B6 / C / E",
-        "description": "A multivitamin with zinc and other acne-supporting vitamins is a comprehensive option."
+        "description": "A comprehensive multivitamin with zinc and acne-supporting vitamins."
       }
     ],
     "edges": [
@@ -168,6 +184,10 @@
       {
         "source": "q",
         "target": "sq3"
+      },
+      {
+        "source": "q",
+        "target": "sq4"
       },
       {
         "source": "sq1",
@@ -230,12 +250,36 @@
         "target": "c5"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
+        "target": "c6"
+      },
+      {
+        "source": "sq2",
+        "target": "c7"
+      },
+      {
+        "source": "sq2",
+        "target": "c8"
+      },
+      {
+        "source": "sq2",
+        "target": "c9"
+      },
+      {
+        "source": "sq2",
         "target": "c10"
       },
       {
         "source": "sq3",
-        "target": "c9"
+        "target": "c1"
+      },
+      {
+        "source": "sq3",
+        "target": "c2"
+      },
+      {
+        "source": "sq3",
+        "target": "c3"
       },
       {
         "source": "sq3",
@@ -246,95 +290,207 @@
         "target": "c5"
       },
       {
+        "source": "sq3",
+        "target": "c6"
+      },
+      {
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
+        "target": "c8"
+      },
+      {
+        "source": "sq3",
+        "target": "c9"
+      },
+      {
+        "source": "sq3",
+        "target": "c10"
+      },
+      {
+        "source": "sq4",
+        "target": "c1"
+      },
+      {
+        "source": "sq4",
+        "target": "c2"
+      },
+      {
+        "source": "sq4",
+        "target": "c3"
+      },
+      {
+        "source": "sq4",
+        "target": "c4"
+      },
+      {
+        "source": "sq4",
+        "target": "c5"
+      },
+      {
+        "source": "sq4",
+        "target": "c6"
+      },
+      {
+        "source": "sq4",
+        "target": "c7"
+      },
+      {
+        "source": "sq4",
+        "target": "c8"
+      },
+      {
+        "source": "sq4",
+        "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c10"
+      },
+      {
         "source": "c1",
         "target": "a1"
+      },
+      {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
+        "target": "a3"
       },
       {
         "source": "c2",
         "target": "a1"
       },
       {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
         "source": "c3",
         "target": "a1"
+      },
+      {
+        "source": "c3",
+        "target": "a2"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
       },
       {
         "source": "c4",
         "target": "a1"
       },
       {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
         "source": "c5",
         "target": "a1"
       },
       {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
         "source": "c6",
         "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
       },
       {
         "source": "c7",
         "target": "a1"
       },
       {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
         "source": "c8",
         "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
       },
       {
         "source": "c9",
         "target": "a1"
       },
       {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
         "source": "c10",
         "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
         "source": "c10",
         "target": "a2"
       },
       {
-        "source": "c2",
+        "source": "c10",
         "target": "a3"
       },
       {
-        "source": "c3",
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c1",
         "target": "a3"
       },
       {
-        "source": "c4",
+        "source": "c7",
         "target": "a3"
       },
       {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
+        "source": "c9",
         "target": "a3"
       },
       {

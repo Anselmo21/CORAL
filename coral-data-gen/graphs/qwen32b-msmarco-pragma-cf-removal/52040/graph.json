@@ -22,13 +22,22 @@
   "baseline_answer": "Murad Redness Therapy 3-part system",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1759,
-    "output_tokens": 2772,
+    "output_tokens": 2728,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -48,119 +57,119 @@
         "layer": "2",
         "type": "subq",
         "label": "What is the most trusted or clinically supported approach to treating redness?",
-        "description": "Evaluates the most trustworthy or clinically validated methods for treating redness."
+        "description": "Focuses on trustworthiness and clinical authority."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "What is the most practical or accessible approach for people with redness-prone skin?",
-        "description": "Evaluates the most practical and accessible methods for treating redness."
+        "description": "Focuses on perspective and real-world usability."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most ingredient-focused or mechanism-based approach to treating redness?",
-        "description": "Evaluates the most ingredient-focused or mechanism-based methods for treating redness."
+        "label": "What is the most ingredient-focused or science-based approach to treating redness?",
+        "description": "Focuses on ingredient awareness and mechanism of action."
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "What is the most budget-conscious or DIY-friendly approach to treating redness?",
-        "description": "Evaluates the most budget-conscious or DIY-friendly methods for treating redness."
+        "label": "What is the most cost-effective or customizable approach to treating redness?",
+        "description": "Focuses on budget and personalization."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: dermatology clinical practice",
-        "description": "Prioritizes sources from dermatology clinical practice."
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed cosmetic dermatology journal",
-        "description": "Prioritizes sources from peer-reviewed cosmetic dermatology journals."
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: beauty industry publication",
-        "description": "Prioritizes sources from beauty industry publications."
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: consumer skincare reviews",
-        "description": "Prioritizes sources from consumer skincare reviews."
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: DIY / minimalist skincare blog",
-        "description": "Prioritizes sources from DIY / minimalist skincare blogs."
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: rosacea sufferer",
-        "description": "Prioritizes sources from the perspective of rosacea sufferers."
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: sensitive-skin minimalist",
-        "description": "Prioritizes sources from the perspective of sensitive-skin minimalists."
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: mechanism / ingredient-focused user",
-        "description": "Prioritizes sources from the perspective of mechanism / ingredient-focused users."
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: aging skin with redness",
-        "description": "Prioritizes sources from the perspective of aging skin with redness."
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: budget-conscious consumer",
-        "description": "Prioritizes sources from the perspective of budget-conscious consumers."
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Murad Redness Therapy 3-part system",
-        "description": "A structured skincare system for redness-prone skin."
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A caffeine-based anti-redness serum",
-        "description": "A single product targeting redness with caffeine."
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Build-your-own minimalist routine",
-        "description": "A DIY approach using minimal, non-irritating ingredients."
+        "description": ""
       }
     ],
     "edges": [
@@ -198,14 +207,10 @@
       },
       {
         "source": "sq2",
-        "target": "c5"
-      },
-      {
-        "source": "sq2",
         "target": "c6"
       },
       {
-        "source": "sq3",
+        "source": "sq2",
         "target": "c7"
       },
       {
@@ -215,6 +220,10 @@
       {
         "source": "sq3",
         "target": "c9"
+      },
+      {
+        "source": "sq4",
+        "target": "c5"
       },
       {
         "source": "sq4",
@@ -261,6 +270,14 @@
         "target": "a1"
       },
       {
+        "source": "c1",
+        "target": "a2"
+      },
+      {
+        "source": "c2",
+        "target": "a2"
+      },
+      {
         "source": "c3",
         "target": "a2"
       },
@@ -269,11 +286,15 @@
         "target": "a2"
       },
       {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
         "source": "c7",
         "target": "a2"
       },
       {
-        "source": "c8",
+        "source": "c9",
         "target": "a2"
       },
       {
@@ -281,7 +302,15 @@
         "target": "a2"
       },
       {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
         "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
         "target": "a3"
       },
       {

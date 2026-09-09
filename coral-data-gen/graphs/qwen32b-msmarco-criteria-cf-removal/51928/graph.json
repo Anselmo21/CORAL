@@ -22,13 +22,22 @@
   "baseline_answer": "7-day miconazole (Monistat-7) regimen",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2180,
-    "output_tokens": 2555,
+    "output_tokens": 2397,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -48,7 +57,7 @@
         "layer": "2",
         "type": "subq",
         "label": "What is the most effective active ingredient and formulation for treating yeast infections?",
-        "description": "Evaluates the active ingredient and formulation type for effectiveness."
+        "description": "Evaluates the active ingredient and formulation for effectiveness."
       },
       {
         "id": "sq2",
@@ -61,8 +70,8 @@
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "What are the practical and safety considerations for over-the-counter use?",
-        "description": "Evaluates safety, cost, availability, and user feedback for practical use."
+        "label": "What are the practical and safety considerations for OTC yeast infection treatments?",
+        "description": "Evaluates safety, cost, brand, and availability."
       },
       {
         "id": "c1",
@@ -111,7 +120,7 @@
         "layer": "3",
         "type": "concept",
         "label": "user reviews",
-        "description": "Customer feedback on the effectiveness and side effects."
+        "description": "Customer feedback and satisfaction with the product."
       },
       {
         "id": "c8",
@@ -132,7 +141,7 @@
         "layer": "3",
         "type": "concept",
         "label": "prescription alternatives",
-        "description": "Whether a prescription is needed for stronger versions."
+        "description": "Whether a prescription is needed for more severe cases."
       },
       {
         "id": "a1",
@@ -226,123 +235,103 @@
         "target": "a1"
       },
       {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
-      },
-      {
-        "source": "c4",
-        "target": "a2"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
-        "source": "c5",
-        "target": "a2"
-      },
-      {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a3"
-      },
-      {
         "source": "c2",
         "target": "a2"
       },
       {
         "source": "c3",
-        "target": "a2"
+        "target": "a1"
       },
       {
-        "source": "c2",
-        "target": "a3"
+        "source": "c3",
+        "target": "a2"
       },
       {
         "source": "c3",
         "target": "a3"
       },
       {
-        "source": "c8",
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a2"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a2"
+      },
+      {
+        "source": "c6",
         "target": "a3"
       },
       {
         "source": "c7",
+        "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a1"
+      },
+      {
+        "source": "c8",
+        "target": "a2"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
+        "target": "a2"
+      },
+      {
+        "source": "c10",
         "target": "a3"
       }
     ]

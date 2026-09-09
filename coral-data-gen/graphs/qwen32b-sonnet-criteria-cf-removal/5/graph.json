@@ -22,13 +22,22 @@
   "baseline_answer": "Answer C (1\u20132 Months Plus Credit): With strong government employment protections and available credit lines, 1\u20132 months of liquid savings is sufficient \u2014 redirect the rest aggressively into tax-advantaged investment accounts.",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1490,
-    "output_tokens": 2580,
+    "output_tokens": 2629,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -48,42 +57,42 @@
         "layer": "2",
         "type": "subq",
         "label": "What is the risk of job loss or income disruption for someone with a stable government job and no dependents?",
-        "description": "Evaluates the likelihood of job loss or income disruption for the individual."
+        "description": "Evaluates the likelihood of losing income for someone in a stable government position."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "How much coverage is needed for unexpected expenses like medical bills or home repairs?",
-        "description": "Evaluates the need for emergency savings to cover unexpected expenses."
+        "description": "Assesses the financial cushion required for non-job-related emergencies."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "What is the opportunity cost of holding emergency savings in cash instead of investing?",
-        "description": "Evaluates the trade-off between holding cash and investing it."
+        "description": "Evaluates the trade-off between liquidity and investment returns."
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
         "label": "What alternative financial resources or protections are available to reduce the need for a large emergency fund?",
-        "description": "Evaluates the availability of credit, insurance, or other protections."
+        "description": "Considers other financial safety nets like credit, insurance, or government benefits."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "job loss risk coverage",
-        "description": "The extent to which emergency savings should cover potential job loss."
+        "description": "The extent to which savings should cover potential job loss."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "unexpected medical expense coverage",
-        "description": "The extent to which emergency savings should cover unexpected medical costs."
+        "description": "The extent to which savings should cover medical emergencies."
       },
       {
         "id": "c3",
@@ -97,49 +106,49 @@
         "layer": "3",
         "type": "concept",
         "label": "psychological security buffer",
-        "description": "The peace of mind provided by having a larger emergency fund."
+        "description": "The peace of mind provided by having a financial cushion."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "access to credit as backstop",
-        "description": "The availability of credit to supplement emergency savings."
+        "description": "The availability of credit to supplement savings in an emergency."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "income replacement period if unemployed",
-        "description": "How long emergency savings should cover income replacement in case of unemployment."
+        "description": "How long savings should cover income during unemployment."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "presence of other liquid assets",
-        "description": "The availability of other liquid assets to supplement emergency savings."
+        "description": "Other sources of liquid funds that can supplement emergency savings."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "government/union employment protections",
-        "description": "The level of job and income protections provided by government or union employment."
+        "description": "Job security, pensions, and union protections that reduce the need for large savings."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "dependents and family obligations",
-        "description": "The financial responsibilities tied to dependents or family."
+        "description": "The financial responsibility for dependents or family members."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "high-yield savings account optimization",
-        "description": "The benefit of using high-yield savings accounts for emergency funds."
+        "description": "The benefit of using high-yield accounts for emergency savings."
       },
       {
         "id": "a1",
@@ -234,11 +243,11 @@
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c2",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c3",
@@ -250,11 +259,19 @@
       },
       {
         "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
         "target": "a2"
       },
       {
         "source": "c5",
         "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a2"
       },
       {
         "source": "c5",
@@ -275,6 +292,10 @@
       {
         "source": "c7",
         "target": "a1"
+      },
+      {
+        "source": "c7",
+        "target": "a2"
       },
       {
         "source": "c7",
@@ -295,6 +316,10 @@
       {
         "source": "c9",
         "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a2"
       },
       {
         "source": "c9",

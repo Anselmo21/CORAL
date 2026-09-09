@@ -22,13 +22,22 @@
   "baseline_answer": "A trained psychiatric service dog (Standard Poodle / German Shepherd)",
   "baseline_index": 2,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1805,
-    "output_tokens": 2652,
+    "output_tokens": 2293,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,126 +50,126 @@
         "layer": "1",
         "type": "question",
         "label": "Which dog breed helps most with anxiety and depression?",
-        "description": "Which dog breed helps most with anxiety and depression?"
+        "description": "Which dog breed is most effective in alleviating symptoms of anxiety and depression?"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "Emotional Support and Temperament",
-        "description": "Criteria related to emotional support and temperament"
+        "description": "Criteria related to the dog's ability to provide emotional support and interact with people."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "Practicality and Lifestyle Fit",
-        "description": "Criteria related to practicality and lifestyle fit"
+        "description": "Criteria related to the dog's suitability for daily life and living conditions."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
         "label": "Health and Longevity",
-        "description": "Criteria related to health and longevity"
+        "description": "Criteria related to the dog's health, lifespan, and allergen considerations."
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
         "label": "Trainability and Specialized Roles",
-        "description": "Criteria related to trainability and specialized roles"
+        "description": "Criteria related to the dog's ability to be trained for specific mental health support roles."
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "affectionate temperament",
-        "description": "The dog's ability to provide emotional support through affection"
+        "description": "The dog's natural tendency to be loving and emotionally supportive."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "energy level",
-        "description": "The dog's energy level and activity requirements"
+        "description": "The dog's level of activity and enthusiasm."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "trainability",
-        "description": "The dog's ability to be trained for specific tasks"
+        "description": "The dog's ability to be trained for specific tasks or roles."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
         "label": "grooming needs",
-        "description": "The dog's grooming and maintenance requirements"
+        "description": "The amount of maintenance required to keep the dog clean and healthy."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
         "label": "size",
-        "description": "The dog's physical size and space requirements"
+        "description": "The dog's physical size, which affects space and lifestyle compatibility."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
         "label": "exercise requirements",
-        "description": "The dog's need for physical activity"
+        "description": "The amount of physical activity the dog needs."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
         "label": "hypoallergenic coat",
-        "description": "The dog's coat type and allergy-friendliness"
+        "description": "Whether the dog's coat is less likely to cause allergic reactions."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
         "label": "lifespan",
-        "description": "The dog's expected lifespan"
+        "description": "The average length of the dog's life."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
         "label": "child-friendliness",
-        "description": "The dog's suitability for families with children"
+        "description": "The dog's suitability and safety around children."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "apartment adaptability",
-        "description": "The dog's suitability for apartment living"
+        "description": "The dog's ability to live comfortably in an apartment or small space."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Labrador Retriever or Golden Retriever",
-        "description": "A popular breed known for its friendly and affectionate nature"
+        "description": "Popular breeds known for their calm and affectionate nature."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A small companion breed (Cavalier King Charles Spaniel, Bichon Frise, Cockapoo)",
-        "description": "A small breed ideal for apartment living and emotional support"
+        "description": "Small, affectionate breeds suitable for apartment living."
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "A trained psychiatric service dog (Standard Poodle / German Shepherd)",
-        "description": "A highly trained dog for specialized mental health support"
+        "description": "Highly trained dogs for specialized mental health support roles."
       }
     ],
     "edges": [
@@ -222,6 +231,70 @@
       },
       {
         "source": "c1",
+        "target": "a3"
+      },
+      {
+        "source": "c2",
+        "target": "a3"
+      },
+      {
+        "source": "c3",
+        "target": "a3"
+      },
+      {
+        "source": "c4",
+        "target": "a3"
+      },
+      {
+        "source": "c5",
+        "target": "a3"
+      },
+      {
+        "source": "c6",
+        "target": "a3"
+      },
+      {
+        "source": "c7",
+        "target": "a3"
+      },
+      {
+        "source": "c8",
+        "target": "a3"
+      },
+      {
+        "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
+        "target": "a3"
+      },
+      {
+        "source": "c1",
+        "target": "a1"
+      },
+      {
+        "source": "c2",
+        "target": "a1"
+      },
+      {
+        "source": "c4",
+        "target": "a1"
+      },
+      {
+        "source": "c5",
+        "target": "a1"
+      },
+      {
+        "source": "c6",
+        "target": "a1"
+      },
+      {
+        "source": "c9",
+        "target": "a1"
+      },
+      {
+        "source": "c10",
         "target": "a1"
       },
       {
@@ -229,143 +302,27 @@
         "target": "a2"
       },
       {
-        "source": "c1",
-        "target": "a3"
-      },
-      {
-        "source": "c2",
-        "target": "a1"
-      },
-      {
         "source": "c2",
         "target": "a2"
-      },
-      {
-        "source": "c2",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a1"
       },
       {
         "source": "c4",
         "target": "a2"
       },
       {
-        "source": "c4",
-        "target": "a3"
-      },
-      {
-        "source": "c5",
-        "target": "a1"
-      },
-      {
         "source": "c5",
         "target": "a2"
       },
       {
-        "source": "c5",
-        "target": "a3"
-      },
-      {
-        "source": "c6",
-        "target": "a1"
-      },
-      {
         "source": "c6",
         "target": "a2"
       },
       {
-        "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a2"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a3"
-      },
-      {
         "source": "c9",
-        "target": "a1"
-      },
-      {
-        "source": "c9",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
-        "target": "a1"
-      },
-      {
-        "source": "c10",
         "target": "a2"
       },
       {
         "source": "c10",
-        "target": "a3"
-      },
-      {
-        "source": "c3",
-        "target": "a1"
-      },
-      {
-        "source": "c7",
-        "target": "a1"
-      },
-      {
-        "source": "c8",
-        "target": "a1"
-      },
-      {
-        "source": "c3",
-        "target": "a2"
-      },
-      {
-        "source": "c6",
-        "target": "a2"
-      },
-      {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c9",
         "target": "a2"
       }
     ]

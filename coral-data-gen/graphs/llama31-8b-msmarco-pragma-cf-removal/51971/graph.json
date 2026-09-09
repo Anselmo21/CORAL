@@ -19,16 +19,25 @@
     "Trazodone or low-dose mirtazapine",
     "Temazepam (Restoril)"
   ],
-  "baseline_answer": "Zolpidem (Ambien)",
-  "baseline_index": 0,
+  "baseline_answer": "Trazodone or low-dose mirtazapine",
+  "baseline_index": 1,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
-    "prompt_tokens": 2581,
-    "output_tokens": 1849,
+    "prompt_tokens": 2587,
+    "output_tokens": 1779,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,112 +50,112 @@
         "layer": "1",
         "type": "question",
         "label": "best prescription sleep aid for insomnia",
-        "description": "best prescription sleep aid for insomnia"
+        "description": ""
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "What are the most trustworthy sources for recommending prescription sleep aids?",
-        "description": "What are the most trustworthy sources for recommending prescription sleep aids?"
+        "description": ""
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "Which perspective should we consider when choosing a prescription sleep aid?",
-        "description": "Which perspective should we consider when choosing a prescription sleep aid?"
+        "description": ""
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: clinical practice guideline",
-        "description": "trustworthiness: clinical practice guideline"
+        "description": ""
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: peer-reviewed psychiatry / sleep journal",
-        "description": "trustworthiness: peer-reviewed psychiatry / sleep journal"
+        "description": ""
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer Reports Best Buy",
-        "description": "trustworthiness: Consumer Reports Best Buy"
+        "description": ""
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: addiction medicine guidance",
-        "description": "trustworthiness: addiction medicine guidance"
+        "description": ""
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: AASM (sleep medicine) guidelines",
-        "description": "trustworthiness: AASM (sleep medicine) guidelines"
+        "description": ""
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: pharmacology textbook",
-        "description": "trustworthiness: pharmacology textbook"
+        "description": ""
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: short-term sleep-onset trouble",
-        "description": "perspective: short-term sleep-onset trouble"
+        "description": ""
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "perspective: patient with comorbid depression / anxiety",
-        "description": "perspective: patient with comorbid depression / anxiety"
+        "description": ""
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "perspective: middle-of-night waker (maintenance insomnia)",
-        "description": "perspective: middle-of-night waker (maintenance insomnia)"
+        "description": ""
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "perspective: older adult patient",
-        "description": "perspective: older adult patient"
+        "description": ""
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Zolpidem (Ambien)",
-        "description": "Zolpidem (Ambien)"
+        "description": ""
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "Trazodone or low-dose mirtazapine",
-        "description": "Trazodone or low-dose mirtazapine"
+        "description": ""
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Temazepam (Restoril)",
-        "description": "Temazepam (Restoril)"
+        "description": ""
       }
     ],
     "edges": [
@@ -200,23 +209,23 @@
       },
       {
         "source": "c1",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c2",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c3",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c4",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c5",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c6",
@@ -224,7 +233,7 @@
       },
       {
         "source": "c7",
-        "target": "a2"
+        "target": "a1"
       },
       {
         "source": "c8",
@@ -232,7 +241,7 @@
       },
       {
         "source": "c9",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c10",
@@ -240,27 +249,27 @@
       },
       {
         "source": "c1",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c2",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c3",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c4",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c5",
-        "target": "a3"
+        "target": "a1"
       },
       {
         "source": "c6",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c7",
@@ -272,7 +281,7 @@
       },
       {
         "source": "c9",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c10",

@@ -22,13 +22,22 @@
   "baseline_answer": "Heavy compound lifts (squat, deadlift, bench, OHP, row) in the 4-8 rep range on a 4-6 day split",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1799,
-    "output_tokens": 1840,
+    "output_tokens": 1790,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,126 +50,126 @@
         "layer": "1",
         "type": "question",
         "label": "best workouts to do in conjunction with a pro hormone",
-        "description": "workout recommendations for prohormone users"
+        "description": "best workouts to do in conjunction with a pro hormone"
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "workout intensity and frequency",
-        "description": "workout intensity and training frequency"
+        "description": "workout intensity and frequency"
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
-        "label": "recovery and safety",
-        "description": "recovery time, injury history, dietary considerations, supplement compatibility"
+        "label": "training strategy and focus",
+        "description": "training strategy and focus"
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "training goals and focus",
-        "description": "muscle group focus, goal orientation, exercise variety"
+        "label": "supplementation and safety",
+        "description": "supplementation and safety"
       },
       {
         "id": "sq4",
         "layer": "2",
         "type": "subq",
-        "label": "user characteristics",
-        "description": "experience level"
+        "label": "training style and emphasis",
+        "description": "training style and emphasis"
       },
       {
         "id": "c1",
         "layer": "3",
         "type": "concept",
         "label": "workout intensity",
-        "description": "intensity of workouts"
+        "description": "workout intensity"
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "concept",
         "label": "training frequency",
-        "description": "frequency of workouts"
+        "description": "training frequency"
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "concept",
         "label": "recovery time",
-        "description": "time needed for recovery"
+        "description": "recovery time"
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "concept",
-        "label": "injury history",
-        "description": "history of injuries"
+        "label": "muscle group focus",
+        "description": "muscle group focus"
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "concept",
-        "label": "dietary considerations",
-        "description": "dietary needs"
+        "label": "exercise variety",
+        "description": "exercise variety"
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "concept",
-        "label": "supplement compatibility",
-        "description": "compatibility with supplements"
+        "label": "goal orientation",
+        "description": "goal orientation"
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "concept",
-        "label": "muscle group focus",
-        "description": "focus on specific muscle groups"
+        "label": "supplement compatibility",
+        "description": "supplement compatibility"
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "concept",
-        "label": "goal orientation",
-        "description": "training goals"
+        "label": "dietary considerations",
+        "description": "dietary considerations"
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "concept",
-        "label": "exercise variety",
-        "description": "variety of exercises"
+        "label": "injury history",
+        "description": "injury history"
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "concept",
         "label": "experience level",
-        "description": "user experience level"
+        "description": "experience level"
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "Heavy compound lifts (squat, deadlift, bench, OHP, row) in the 4-8 rep range on a 4-6 day split",
-        "description": "workout recommendation"
+        "description": "Heavy compound lifts (squat, deadlift, bench, OHP, row) in the 4-8 rep range on a 4-6 day split"
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "High-volume hypertrophy work (8-12 reps, 15-20 sets per muscle / week)",
-        "description": "workout recommendation"
+        "description": "High-volume hypertrophy work (8-12 reps, 15-20 sets per muscle / week)"
       },
       {
         "id": "a3",
         "layer": "4",
         "type": "answer",
         "label": "Conservative training paired with on-cycle support and recovery emphasis",
-        "description": "workout recommendation"
+        "description": "Conservative training paired with on-cycle support and recovery emphasis"
       }
     ],
     "edges": [
@@ -189,7 +198,7 @@
         "target": "c2"
       },
       {
-        "source": "sq2",
+        "source": "sq1",
         "target": "c3"
       },
       {
@@ -217,10 +226,26 @@
         "target": "c9"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c10"
       },
       {
+        "source": "sq4",
+        "target": "c1"
+      },
+      {
+        "source": "sq4",
+        "target": "c2"
+      },
+      {
+        "source": "sq4",
+        "target": "c5"
+      },
+      {
+        "source": "sq4",
+        "target": "c6"
+      },
+      {
         "source": "c1",
         "target": "a1"
       },
@@ -234,31 +259,31 @@
       },
       {
         "source": "c4",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c5",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c6",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c7",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c8",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c9",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c10",
-        "target": "a1"
+        "target": "a3"
       },
       {
         "source": "c1",
@@ -269,20 +294,8 @@
         "target": "a2"
       },
       {
-        "source": "c8",
-        "target": "a2"
-      },
-      {
-        "source": "c10",
-        "target": "a2"
-      },
-      {
         "source": "c3",
-        "target": "a3"
-      },
-      {
-        "source": "c4",
-        "target": "a3"
+        "target": "a2"
       },
       {
         "source": "c5",
@@ -290,18 +303,6 @@
       },
       {
         "source": "c6",
-        "target": "a3"
-      },
-      {
-        "source": "c7",
-        "target": "a3"
-      },
-      {
-        "source": "c9",
-        "target": "a3"
-      },
-      {
-        "source": "c10",
         "target": "a3"
       }
     ]

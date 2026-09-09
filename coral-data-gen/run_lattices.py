@@ -170,6 +170,16 @@ def main() -> None:
         enforce_eager=args.enforce_eager,
     )
 
+    serving = {
+        "tensor_parallel_size": args.tensor_parallel_size,
+        "max_model_len": args.max_model_len,
+        "gpu_memory_utilization": args.gpu_memory_utilization,
+        "max_num_seqs": args.max_num_seqs,
+        "max_num_batched_tokens": args.max_num_batched_tokens,
+        "enforce_eager": args.enforce_eager,
+        "disable_custom_all_reduce": args.disable_custom_all_reduce,
+    } if args.provider == "vllm" else {}
+
     skipped = completed = failed = 0
     for i, row in enumerate(rows, 1):
         qid = row["id"]
@@ -207,6 +217,7 @@ def main() -> None:
                 client=client,
                 max_tokens=args.max_tokens,
                 temperature=args.temperature,
+                serving=serving,
                 max_retries=args.max_retries,
                 fill_missing=args.fill_missing,
                 batch_size=args.batch_size,

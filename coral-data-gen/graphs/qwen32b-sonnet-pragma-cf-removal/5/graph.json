@@ -22,13 +22,22 @@
   "baseline_answer": "Answer A (3 Months Default): Keep 3 months of essential expenses \u2014 your stable government job and lack of dependents puts you at the low end of the standard range, and cash beyond that is better invested.",
   "baseline_index": 0,
   "baseline_source": "lattice",
+  "serving": {
+    "tensor_parallel_size": 4,
+    "max_model_len": 8192,
+    "gpu_memory_utilization": 0.72,
+    "max_num_seqs": null,
+    "max_num_batched_tokens": 2048,
+    "enforce_eager": false,
+    "disable_custom_all_reduce": false
+  },
   "model": "Qwen/Qwen3-32B",
   "provider": "vllm",
   "temperature": 0.0,
   "attempts": 1,
   "usage": {
     "prompt_tokens": 1598,
-    "output_tokens": 2875,
+    "output_tokens": 2838,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -41,35 +50,28 @@
         "layer": "1",
         "type": "question",
         "label": "How much should I keep in my emergency fund? I have a stable government job and no dependents.",
-        "description": "Asking for emergency fund recommendations for a stable government worker with no dependents."
+        "description": "Asking for the appropriate emergency fund size for someone with a stable government job and no dependents."
       },
       {
         "id": "sq1",
         "layer": "2",
         "type": "subq",
         "label": "What is the recommended emergency fund size for someone with a stable government job and no dependents?",
-        "description": "Focuses on job type and personal situation."
+        "description": "Core question about the appropriate amount to save."
       },
       {
         "id": "sq2",
         "layer": "2",
         "type": "subq",
         "label": "How does the geographic location affect the recommendation?",
-        "description": "Focuses on whether the advice is from the USA or Canada."
+        "description": "Isolates the influence of geographic context (USA vs. Canada)."
       },
       {
         "id": "sq3",
         "layer": "2",
         "type": "subq",
-        "label": "How does the source perspective affect the recommendation?",
-        "description": "Focuses on whether the advice is risk-averse, investment-focused, or tailored to public sector employees."
-      },
-      {
-        "id": "sq4",
-        "layer": "2",
-        "type": "subq",
-        "label": "How does the source's trustworthiness affect the recommendation?",
-        "description": "Focuses on whether the advice comes from institutional, advisory, or peer sources."
+        "label": "How does the source's perspective or trustworthiness affect the recommendation?",
+        "description": "Isolates the influence of advisor perspective and source credibility."
       },
       {
         "id": "c1",
@@ -104,42 +106,42 @@
         "layer": "3",
         "type": "directive",
         "label": "perspective: Conservative risk-averse saver",
-        "description": "Only consider sources that emphasize risk aversion."
+        "description": "Only consider sources from a conservative, risk-averse perspective."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Optimizing investor minimizing idle cash",
-        "description": "Only consider sources that emphasize investment returns."
+        "description": "Only consider sources from an optimizing investor perspective."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
         "label": "perspective: Government/public sector employee",
-        "description": "Only consider sources tailored to government workers."
+        "description": "Only consider sources from the perspective of government employees."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Consumer financial advisory",
-        "description": "Only consider consumer financial advisory sources."
+        "description": "Only consider sources from consumer financial advisory services."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Institutional financial research",
-        "description": "Only consider institutional financial research sources."
+        "description": "Only consider sources from institutional financial research."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Community peer advice",
-        "description": "Only consider community peer advice sources."
+        "description": "Only consider sources from community peer advice."
       },
       {
         "id": "a1",
@@ -177,12 +179,44 @@
         "target": "sq3"
       },
       {
-        "source": "q",
-        "target": "sq4"
+        "source": "sq1",
+        "target": "c1"
+      },
+      {
+        "source": "sq1",
+        "target": "c2"
+      },
+      {
+        "source": "sq1",
+        "target": "c3"
+      },
+      {
+        "source": "sq1",
+        "target": "c4"
+      },
+      {
+        "source": "sq1",
+        "target": "c5"
+      },
+      {
+        "source": "sq1",
+        "target": "c6"
       },
       {
         "source": "sq1",
         "target": "c7"
+      },
+      {
+        "source": "sq1",
+        "target": "c8"
+      },
+      {
+        "source": "sq1",
+        "target": "c9"
+      },
+      {
+        "source": "sq1",
+        "target": "c10"
       },
       {
         "source": "sq2",
@@ -201,24 +235,20 @@
         "target": "c6"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
+        "target": "c7"
+      },
+      {
+        "source": "sq3",
         "target": "c8"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c9"
       },
       {
-        "source": "sq4",
+        "source": "sq3",
         "target": "c10"
-      },
-      {
-        "source": "sq1",
-        "target": "c1"
-      },
-      {
-        "source": "sq1",
-        "target": "c2"
       },
       {
         "source": "c1",
@@ -261,10 +291,6 @@
         "target": "a1"
       },
       {
-        "source": "c1",
-        "target": "a2"
-      },
-      {
         "source": "c2",
         "target": "a2"
       },
@@ -278,6 +304,10 @@
       },
       {
         "source": "c5",
+        "target": "a2"
+      },
+      {
+        "source": "c7",
         "target": "a2"
       },
       {
@@ -305,11 +335,15 @@
         "target": "a3"
       },
       {
-        "source": "c8",
+        "source": "c7",
         "target": "a3"
       },
       {
         "source": "c9",
+        "target": "a3"
+      },
+      {
+        "source": "c10",
         "target": "a3"
       }
     ]
