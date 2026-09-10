@@ -33,10 +33,10 @@ OUT = REPO / "results" / "paper_figs" / "gera" / "budget_ablation.png"
 
 BUDGETS = (0, 2, 4, 8, 16, 32, 64, 128)
 MODELS = [
-    ("llama31-8b", "Llama3.1-8B"),
-    ("llama31-70b", "Llama3.1-70B"),
-    ("qwen3-32b", "Qwen3-32B"),
-    ("qwen35-122b-100", "Qwen3.5-122B"),
+    ("llama31-8b-regen", "Llama3.1-8B"),
+    ("llama31-70b-regen", "Llama3.1-70B"),
+    ("qwen3-32b-regen", "Qwen3-32B"),
+    ("qwen35-122b-regen", "Qwen3.5-122B"),
 ]
 DATASETS = ("msmarco_criteria", "msmarco_pragma", "curated_criteria", "curated_pragma")
 

@@ -27,9 +27,9 @@ OUT_DIR = REPO / "results" / "paper_figs" / "gera"
 
 BUDGET = "16"
 TABLE_MODELS = [
-    ("llama31-8b", "Llama3.1-8B"),
-    ("llama31-70b", "Llama3.1-70B"),
-    ("qwen35-122b-100", "Qwen3.5-122B"),
+    ("llama31-8b-regen", "Llama3.1-8B"),
+    ("llama31-70b-regen", "Llama3.1-70B"),
+    ("qwen35-122b-regen", "Qwen3.5-122B"),
 ]
 DS_ORDER = [
     ("msmarco_criteria", "msmarco crit."),
@@ -37,7 +37,7 @@ DS_ORDER = [
     ("msmarco_pragma", "msmarco prag."),
     ("curated_pragma", "curated prag."),
 ]
-ABLATION_MODEL = "qwen3-32b"
+ABLATION_MODEL = "qwen3-32b-regen"
 ABLATION_ARMS = [
     ("gera", "GERA (default)"),
     ("no_entropy", "GRA"),
@@ -122,10 +122,10 @@ def build_ablation_block(suite):
 
 
 ALL_MODELS = [
-    ("llama31-8b", "Llama3.1-8B"),
-    ("llama31-70b", "Llama3.1-70B"),
-    ("qwen3-32b", "Qwen3-32B"),
-    ("qwen35-122b-100", "Qwen3.5-122B"),
+    ("llama31-8b-regen", "Llama3.1-8B"),
+    ("llama31-70b-regen", "Llama3.1-70B"),
+    ("qwen3-32b-regen", "Qwen3-32B"),
+    ("qwen35-122b-regen", "Qwen3.5-122B"),
 ]
 PRUNING_BUDGETS = ("4", "8", "16")
 
