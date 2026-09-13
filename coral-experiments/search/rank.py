@@ -733,6 +733,7 @@ def mra_search(
     disagree with ``argmax(scores)`` so we do not derive it from scores.
     """
     normalize_fn = _resolve_norm_fn(normalize_fn)
+    aggregate_fn = aggregator_fn or _mra_aggregate_borda
     if entropy_fn is None:
         entropy_fn = shannon_entropy
     # TODO: add support for "bottom-up" search (direction="up")
@@ -815,7 +816,7 @@ def mra_search(
             if not voter_scores:
                 continue
 
-            ranking, scores = _mra_aggregate_borda(voter_scores, plausible_answers)
+            ranking, scores = aggregate_fn(voter_scores, plausible_answers)
 
             # normalize aggregated scores before softmax entropy
             scores_for_entropy = normalize_fn(scores) if normalize_fn else scores

@@ -66,7 +66,7 @@ def _aggregate(voters, answers):
 
 def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
                      tier=True, pool=True, graph_first=False,
-                     entropy_cut=True, perm_rng=None):
+                     entropy_cut=True, perm_rng=None, aggregator_fn=None):
     """Top-down counterfactual search with the graph guiding Phase 2.
 
     tier=False, pool=False reduces this to mra_search(direction="down",
@@ -81,7 +81,11 @@ def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
     a candidate, so nothing is pruned for low entropy and the layer stop is the
     only thing left skipping work. perm_rng permutes the graph's concept
     labels for attribution controls.
+    aggregator_fn replaces the Borda estimator, same (voters, answers) ->
+    (ranking, scores) contract as mra_search's; None keeps native Borda so the
+    reduction to mra_search holds.
     """
+    aggregate_fn = aggregator_fn or _aggregate
     baseline_ranking = rbc.get(combo_key(start_node), [])
     if not baseline_ranking:
         return {"found": False, "key": None, "size": None, "ranking": None,
@@ -112,7 +116,7 @@ def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
             voters = _child_voters(subset, known, estimates, answers)
             if not voters:
                 continue
-            _ranking, scores = _aggregate(voters, answers)
+            _ranking, scores = aggregate_fn(voters, answers)
             if not scores:
                 continue
             probs = norm_softmax(scores)
