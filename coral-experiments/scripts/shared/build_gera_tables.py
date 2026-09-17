@@ -1,17 +1,16 @@
-"""Emit the paper's Table I and the pruning-ablation block from gera_suite.json.
+"""Emit the paper's Table I and Table II from the GERA suite and config sweep.
 
-Table I: SRA, LSM and GERA at b=4 against BFS, one row per model and dataset,
-Qwen3-32B left out (it has its own figure). Single-column layout: the model
-names sit on their own header rows so the numbers fit the IEEE column. The
-ablation block slots into tab:ablations under the entropy and rank-aggregator
-blocks, reporting the pruning arms on Qwen3-32B; the arms carry the acronyms
-they reduce to (GRA drops the entropy cut, ERA drops the graph). Bold marks
-the best accuracy per row (Table I) or per dataset column (ablation block),
-and in Table I also the lowest cost among the pruning arms ERA/GRA/GERA
-(SRA and LSM sit outside the cost bolding: SRA is near-free by construction
-and would sweep it).
+Table I: every method against BFS at the operating budget, one row per model
+and dataset. Bold marks the best accuracy per row and the lowest cost among
+the pruning arms ERA/GRA/GERA (SRA and LSM sit outside the cost bolding: SRA
+is near-free by construction and would sweep it). Table II: GERA under each
+entropy scorer and rank aggregation method, macro-averaged over the models,
+best accuracy per dataset column in bold. The pruning block reports the arms
+on Qwen3-32B under the acronyms they reduce to (GRA drops the entropy cut,
+ERA drops the graph).
 
-Writes results/paper_figs/gera/table1.tex and ablation_block.tex.
+Reads results/gera_suite.json and results/gera_config.json. Writes
+results/paper_figs/gera/{merged_table,config_table,ablation_block}.tex.
 
 Usage:
     python3 -m scripts.shared.build_gera_tables
@@ -23,6 +22,7 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 SUITE = REPO / "results" / "gera_suite.json"
+CONFIG = REPO / "results" / "gera_config.json"
 OUT_DIR = REPO / "results" / "paper_figs" / "gera"
 
 BUDGET = "16"
@@ -32,10 +32,26 @@ TABLE_MODELS = [
     ("qwen35-122b-regen", "Qwen3.5-122B"),
 ]
 DS_ORDER = [
-    ("msmarco_criteria", "msmarco crit."),
-    ("curated_criteria", "curated crit."),
-    ("msmarco_pragma", "msmarco prag."),
-    ("curated_pragma", "curated prag."),
+    ("msmarco_criteria", "msmarco criteria"),
+    ("curated_criteria", "curated criteria"),
+    ("msmarco_pragma", "msmarco pragmas"),
+    ("curated_pragma", "curated pragmas"),
+]
+CONFIG_BLOCKS = [
+    ("entropy", "Entropy", [
+        ("softmax", "Softmax (default)"),
+        ("shannon", "Shannon"),
+        ("weighted", "Weighted"),
+        ("renyi_0.5", "R\\'enyi ($\\alpha{=}0.5$)"),
+        ("renyi_2", "R\\'enyi ($\\alpha{=}2$)"),
+    ]),
+    ("aggregator", "Rank\\\\Aggregator", [
+        ("borda", "Borda (default)"),
+        ("kemeny", "Kemeny"),
+        ("mct", "MCT"),
+        ("mc4", "MC4"),
+        ("outranking", "Outranking"),
+    ]),
 ]
 ABLATION_MODEL = "qwen3-32b-regen"
 ABLATION_ARMS = [
@@ -96,10 +112,55 @@ def build_merged_table(suite, budget=BUDGET):
     lines += [
         "\\bottomrule",
         "\\end{tabular}",
-        f"\\caption{{Every search strategy against exhaustive BFS at $b{{=}}{budget}$"
-        " for the budgeted methods. Bold marks the row's best accuracy and the"
-        " lowest cost among the pruning arms (ERA, GRA, GERA).}",
+        f"\\caption{{Accuracy and average cost of every search strategy across the"
+        f" four LLMs, with $b{{=}}{budget}$ for the budgeted methods. Bold marks the"
+        " best accuracy and the lowest cost among ERA, GRA, and GERA.}",
         "\\label{tab:cost-savings}\\end{table*}",
+    ]
+    return "\n".join(lines) + "\n"
+
+
+def build_config_table(config):
+    """GERA under each entropy scorer and rank aggregation method, one row per
+    variant, macro-averaged over the models so no single LLM picks the winner."""
+    cells = config["cells"]
+    models = [m for m, _ in ALL_MODELS]
+
+    def mean(block, variant, ds, field):
+        return sum(cells[m][ds][block][variant][field] for m in models) / len(models)
+
+    lines = [
+        "\\begin{table*}[t]",
+        "\\centering",
+        "\\small",
+        "\\setlength{\\tabcolsep}{3.5pt}",
+        "\\renewcommand{\\arraystretch}{1.12}",
+        "\\begin{tabular}{ll rr rr rr rr}",
+        "\\toprule",
+        " & & " + " & ".join(f"\\multicolumn{{2}}{{c}}{{{nice}}}" for _, nice in DS_ORDER) + " \\\\",
+        "\\cmidrule(lr){3-4} \\cmidrule(lr){5-6} \\cmidrule(lr){7-8} \\cmidrule(lr){9-10}",
+        "Setting & Variant" + " & Accuracy & Cost" * len(DS_ORDER) + " \\\\",
+    ]
+    for bi, (block, nice_block, variants) in enumerate(CONFIG_BLOCKS):
+        lines.append("\\midrule" if not bi else "\\midrule\\addlinespace[1.5pt]")
+        lines.append(f"\\multirow{{{len(variants)}}}{{*}}{{\\shortstack[l]{{{nice_block}}}}}")
+        best = {ds: max(round(mean(block, v, ds, "accuracy_pct"), 1) for v, _ in variants)
+                for ds, _ in DS_ORDER}
+        for variant, nice in variants:
+            row = []
+            for ds, _ in DS_ORDER:
+                acc = round(mean(block, variant, ds, "accuracy_pct"), 1)
+                row.append(fmt(acc, bold=(acc == best[ds])))
+                row.append(f"{mean(block, variant, ds, 'mean_calls'):.1f}")
+            lines.append(f" & {nice} & " + " & ".join(row) + " \\\\")
+    lines += [
+        "\\bottomrule",
+        "\\end{tabular}",
+        f"\\caption{{GERA ($b{{=}}{config['budget']}$) under each entropy scorer and rank"
+        " aggregation method, averaged over the four LLMs; cost is the average"
+        " number of LLM calls.}",
+        "\\label{tab:ablations}",
+        "\\end{table*}",
     ]
     return "\n".join(lines) + "\n"
 
@@ -178,6 +239,10 @@ def main():
     (OUT_DIR / "ablation_block.tex").write_text(build_ablation_block(suite), encoding="utf-8")
     print(f"wrote {OUT_DIR / 'merged_table.tex'}")
     print(f"wrote {OUT_DIR / 'ablation_block.tex'}")
+    if CONFIG.exists():
+        config = json.loads(CONFIG.read_text(encoding="utf-8"))
+        (OUT_DIR / "config_table.tex").write_text(build_config_table(config), encoding="utf-8")
+        print(f"wrote {OUT_DIR / 'config_table.tex'}")
 
 
 if __name__ == "__main__":
