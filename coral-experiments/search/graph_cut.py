@@ -66,7 +66,8 @@ def _aggregate(voters, answers):
 
 def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
                      tier=True, pool=True, graph_first=False,
-                     entropy_cut=True, perm_rng=None, aggregator_fn=None):
+                     entropy_cut=True, perm_rng=None, aggregator_fn=None,
+                     entropy_fn=None, cutoff_fn=None):
     """Top-down counterfactual search with the graph guiding Phase 2.
 
     tier=False, pool=False reduces this to mra_search(direction="down",
@@ -84,8 +85,17 @@ def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
     aggregator_fn replaces the Borda estimator, same (voters, answers) ->
     (ranking, scores) contract as mra_search's; None keeps native Borda so the
     reduction to mra_search holds.
+    entropy_fn scores a node from its raw aggregate, before the softmax; None
+    keeps softmax entropy. Only the uncertainty score changes: the estimate
+    passed up to the parents stays the softmaxed aggregate either way.
+    cutoff_fn replaces max_jump_cutoff everywhere it is applied: the Phase 1
+    budget tier, the entropy cut and the contrast tier. None keeps it, so the
+    reduction to mra_search holds. partial(max_jump_cutoff, tie_tol=1e-12)
+    settles tied gaps by the latest-gap rule instead of by float rounding;
+    any tolerance from 1e-14 to 1e-9 gives the same searches.
     """
     aggregate_fn = aggregator_fn or _aggregate
+    cutoff_fn = cutoff_fn or max_jump_cutoff
     baseline_ranking = rbc.get(combo_key(start_node), [])
     if not baseline_ranking:
         return {"found": False, "key": None, "size": None, "ranking": None,
@@ -121,9 +131,10 @@ def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
                 continue
             probs = norm_softmax(scores)
             estimates[key] = probs
-            entropies[key] = shannon_entropy(probs)
+            entropies[key] = (entropy_fn(scores) if entropy_fn
+                              else shannon_entropy(probs))
             layer.append((key, entropies[key]))
-        for sel in max_jump_cutoff(layer, budget_remaining):
+        for sel in cutoff_fn(layer, budget_remaining):
             if budget_remaining <= 0:
                 break
             if rbc.get(sel):
@@ -163,8 +174,8 @@ def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
         if not unknown:
             continue
 
-        high = (set(max_jump_cutoff([(k, e) for _, k, _, e, _, _ in unknown],
-                                    len(unknown)))
+        high = (set(cutoff_fn([(k, e) for _, k, _, e, _, _ in unknown],
+                              len(unknown)))
                 if entropy_cut else {u[1] for u in unknown})
         cands, rescued = [], []
         for u in unknown:
@@ -185,8 +196,8 @@ def graph_cut_search(criteria, rbc, supports, *, budget, start_node,
                                key=lambda u: (u[5], u[3]))
             uncertain = [u for u in cands if u[2] < 1]
             if len({u[4] for u in uncertain}) > 1:
-                claims = set(max_jump_cutoff([(u[1], u[4]) for u in uncertain],
-                                             len(uncertain)))
+                claims = set(cutoff_fn([(u[1], u[4]) for u in uncertain],
+                                       len(uncertain)))
                 claims_left = len(claims)
             uncertain.sort(key=lambda u: (u[1] not in claims, -u[4], u[5], u[3]))
             ordered = uncertain + displaced if graph_first else displaced + uncertain

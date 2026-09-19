@@ -108,12 +108,19 @@ def weighted_entropy(
     return -float(np.sum(weights * sorted_probs * np.log2(sorted_probs + 1e-12)))
 
 
-def max_jump_cutoff(nodes_with_entropy: list[tuple[str, float]], budget_remaining: int) -> list[str]:
+def max_jump_cutoff(nodes_with_entropy: list[tuple[str, float]], budget_remaining: int,
+                    tie_tol: float = 0.0) -> list[str]:
     """
     Determines a cutoff point for entropy scores.
     Selects nodes at or above the largest gap (highest-entropy side).
     When multiple gaps tie for largest, uses the latest gap so fewer nodes
     are excluded from the high-entropy tier.
+
+    tie_tol counts every gap within that distance of the largest as tied.
+    At 0.0 the comparison is exact, so gaps that are equal on paper get
+    ordered by float rounding instead of by the latest-gap rule. That happens
+    often with graph contrast, which is a difference of small fractions:
+    0.5 - 1/3 and 1/3 - 1/6 are the same gap and differ in the last bit.
     """
     if budget_remaining <= 0:
         return []
@@ -126,7 +133,8 @@ def max_jump_cutoff(nodes_with_entropy: list[tuple[str, float]], budget_remainin
     gaps = [sorted_nodes[i][1] - sorted_nodes[i + 1][1]
             for i in range(len(sorted_nodes) - 1)]
 
-    max_gap_idx = max(range(len(gaps)), key=lambda i: (gaps[i], i))
+    largest = max(gaps)
+    max_gap_idx = max(i for i, gap in enumerate(gaps) if largest - gap <= tie_tol)
     selected = sorted_nodes[:max_gap_idx + 1]
     return [k for k, _ in selected[:budget_remaining]]
 
