@@ -7,16 +7,27 @@ is scored over the same cases. All three are swept over the ablation
 budgets; GoT only (the graph's own proposals, no lattice search) rounds out
 the pruning ablations. Dumps per-case cells for the strip plots.
 
+--tie-tol settles tied Max Jump gaps by the latest-gap rule instead of by
+float rounding (see max_jump_cutoff). It reaches all three arms; graph contrast
+is where gaps tie, so ERA moves in under 0.2% of its searches and in none at
+the operating budget. --full-support divides
+coverage by an answer's whole support, as the paper defines it, instead of the
+part of it inside the start node. Both default to off, which reproduces the
+numbers as first published; the settings of a run are kept in
+results/gera_suite_settings.json.
+
 Writes results/gera_suite.json and results/gera_suite_cells/<model>_<ds>.json.
 
 Usage:
     python3 -m scripts.graph_cut.run_gera_suite --verify   # coverage only
     python3 -m scripts.graph_cut.run_gera_suite
+    python3 -m scripts.graph_cut.run_gera_suite --tie-tol 1e-12 --full-support
 """
 from __future__ import annotations
 
 import argparse
 import json
+from functools import partial
 from pathlib import Path
 
 import numpy as np
@@ -24,6 +35,7 @@ import numpy as np
 from scripts.criteria.msmarco.run_subsample import score_proxy
 from scripts.graph_cut.run_graph_cut import graph_supports
 from search.graph_cut import graph_cut_search
+from search.heuristics import max_jump_cutoff
 from search.lattice import combo_key, restrict_rbc
 from search.rank import mra_search
 
@@ -120,6 +132,9 @@ def load_lattices(model: str, ds: str) -> dict[str, tuple[list[str], dict]]:
         if not answers.exists() or not config.exists():
             continue
         cfg = json.loads(config.read_text(encoding="utf-8"))
+        # a lattice halted after the fact keeps its higher nodes on disk
+        if cfg.get("halted"):
+            continue
         # coral-runs configs say "atoms"; coral-data-gen configs say "criteria"
         crit = list(cfg.get("atoms") or cfg.get("criteria") or [])
         plausible = cfg.get("plausible_answers") or []
@@ -212,8 +227,13 @@ def got_only_search(rbc, supports, start_node, greedy=False):
             "calls": calls, "budget_used": 0, "pruned_nodes": 0}
 
 
-def load_cases(model: str, ds: str, verbose=False):
-    """Pool rows joined with their lattice, graph supports and LSM cell."""
+def load_cases(model: str, ds: str, verbose=False, full_support=False):
+    """Pool rows joined with their lattice, graph supports and LSM cell.
+
+    full_support keeps each answer's support as the graph drew it. By default
+    it is cut down to the start node, which makes every coverage 1.0 there and
+    drops the concepts outside the start node from the denominator.
+    """
     lattices = load_lattices(model, ds)
     lsm = load_lsm(model, ds)
     graphs_rel = "graphs/" + MODELS[model]["graphs"].format(gds=DS_GRAPH[ds])
@@ -247,7 +267,8 @@ def load_cases(model: str, ds: str, verbose=False):
                     "calls": logged_bfs.get("calls")},
             "sra": case.get("sra"),
             "lsm": match_lsm(lsm, case, qid, start),
-            "supports": {a: (set(s) & set(start)) for a, s in sup.items()},
+            "supports": {a: (set(s) if full_support else set(s) & set(start))
+                         for a, s in sup.items()},
         })
     if verbose:
         budgets = sorted({b for r in rows for b in r["lsm"]})
@@ -274,11 +295,12 @@ def lsm_cell(r, budget):
             "budget_used": lsm.get("budget", 0), "proxy_layer": lsm.get("proxy_layer")}
 
 
-def run_model_dataset(model: str, ds: str, verbose=False):
-    rows = load_cases(model, ds, verbose=verbose)
+def run_model_dataset(model: str, ds: str, verbose=False, tie_tol=0.0, full_support=False):
+    rows = load_cases(model, ds, verbose=verbose, full_support=full_support)
+    cutoff_fn = partial(max_jump_cutoff, tie_tol=tie_tol) if tie_tol else None
     cells_dump = []
     for r in rows:
-        kw = dict(start_node=r["start"])
+        kw = dict(start_node=r["start"], cutoff_fn=cutoff_fn)
         entry = {"qid": r["qid"], "start_node": r["start"], "size": r["size"],
                  "bfs": r["bfs"], "sra": r["sra"]}
         for b in sorted(r["lsm"]):
@@ -290,8 +312,14 @@ def run_model_dataset(model: str, ds: str, verbose=False):
             gra = graph_cut_search(r["criteria"], r["rbc"], r["supports"],
                                    budget=b, entropy_cut=False, **kw)
             entry[f"gra_b{b}"] = score_proxy(r["bfs"], gra, r["rbc"], r["start"])
-            era = mra_search(r["start"], r["rbc"], budget=b, start_node=r["start"],
-                             direction="down", normalize_fn="softmax")
+            if cutoff_fn is None:
+                era = mra_search(r["start"], r["rbc"], budget=b, start_node=r["start"],
+                                 direction="down", normalize_fn="softmax")
+            else:
+                # mra_search has no cutoff hook; with the graph hooks off
+                # graph_cut_search is the same search, so ERA gets the same Max Jump
+                era = graph_cut_search(r["criteria"], r["rbc"], r["supports"],
+                                       budget=b, tier=False, pool=False, **kw)
             entry[f"era_b{b}"] = score_proxy(r["bfs"], era, r["rbc"], r["start"])
         got = got_only_search(r["rbc"], r["supports"], r["start"])
         entry["got_only"] = score_proxy(r["bfs"], got, r["rbc"], r["start"])
@@ -331,6 +359,10 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--verify", action="store_true", help="report coverage and exit")
     ap.add_argument("--models", nargs="*", default=list(MODELS))
+    ap.add_argument("--tie-tol", type=float, default=0.0,
+                    help="max_jump_cutoff tie_tol for the graph arms (1e-12); 0 keeps exact gaps")
+    ap.add_argument("--full-support", action="store_true",
+                    help="coverage over an answer's whole support, as the paper defines it")
     args = ap.parse_args()
 
     if args.verify:
@@ -345,7 +377,8 @@ def main():
     for model in args.models:
         out[model] = {}
         for ds in DATASETS:
-            rows, cells_dump = run_model_dataset(model, ds, verbose=True)
+            rows, cells_dump = run_model_dataset(model, ds, verbose=True, tie_tol=args.tie_tol,
+                                                 full_support=args.full_support)
             out[model][ds] = summarize(cells_dump)
             slim = [{k: v for k, v in c.items() if k != "rbc"} for c in cells_dump]
             (cells_dir / f"{model}_{ds}.json").write_text(json.dumps(slim), encoding="utf-8")
@@ -356,6 +389,9 @@ def main():
     RESULTS.mkdir(exist_ok=True)
     dest = RESULTS / "gera_suite.json"
     dest.write_text(json.dumps(out, indent=2), encoding="utf-8")
+    (RESULTS / "gera_suite_settings.json").write_text(json.dumps(
+        {"tie_tol": args.tie_tol, "full_support": args.full_support, "models": args.models},
+        indent=2), encoding="utf-8")
     print(f"wrote {dest}")
 
 
