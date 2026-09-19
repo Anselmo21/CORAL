@@ -25,11 +25,11 @@
   "combos_total": 1024,
   "combos_run": 1024,
   "usage": {
-    "prompt_tokens": 813173,
-    "output_tokens": 10260,
-    "llm_calls": 1026,
+    "prompt_tokens": 816243,
+    "output_tokens": 10300,
+    "llm_calls": 1030,
     "finish_reasons": {
-      "stop": 1026
+      "stop": 1030
     }
   },
   "generation": {
@@ -46,5 +46,19 @@
       "enforce_eager": false,
       "disable_custom_all_reduce": false
     }
-  }
+  },
+  "constrained_nodes": [
+    "geographic: USA, trustworthiness: Patient community experience",
+    "temporal: 2021\u20132023, trustworthiness: Patient community experience"
+  ],
+  "repairs": [
+    {
+      "date": "2026-09-19",
+      "reason": "answered under the parse-retry correction prompt, re-asked with the base prompt",
+      "nodes": 2,
+      "free_parsed": 0,
+      "constrained": 2,
+      "top1_changed": 0
+    }
+  ]
 }

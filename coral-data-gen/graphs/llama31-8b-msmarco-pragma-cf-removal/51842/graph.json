@@ -37,7 +37,7 @@
   "attempts": 1,
   "usage": {
     "prompt_tokens": 2041,
-    "output_tokens": 2031,
+    "output_tokens": 2040,
     "llm_calls": 1,
     "finish_reasons": [
       "stop"
@@ -71,84 +71,91 @@
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: PCMag / professional tech review",
-        "description": "This directive is about trusting PCMag's professional tech review."
+        "description": "This directive is about trusting PCMag / professional tech review."
       },
       {
         "id": "c2",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Microsoft official product documentation",
-        "description": "This directive is about trusting Microsoft's official product documentation."
+        "description": "This directive is about trusting Microsoft official product documentation."
       },
       {
         "id": "c3",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Tom's Guide consumer review",
-        "description": "This directive is about trusting Tom's Guide's consumer review."
+        "description": "This directive is about trusting Tom's Guide consumer review."
       },
       {
         "id": "c4",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: Reddit r/laptops community",
-        "description": "This directive is about trusting the Reddit r/laptops community."
+        "description": "This directive is about trusting Reddit r/laptops community."
       },
       {
         "id": "c5",
         "layer": "3",
         "type": "directive",
         "label": "trustworthiness: manufacturer product page",
-        "description": "This directive is about trusting the manufacturer's product page."
+        "description": "This directive is about trusting manufacturer product page."
       },
       {
         "id": "c6",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: business/power user",
-        "description": "This directive is about considering the perspective of business/power users."
+        "label": "perspective: business / power user",
+        "description": "This directive is about considering the perspective of business / power user."
       },
       {
         "id": "c7",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: budget-constrained buyer",
-        "description": "This directive is about considering the perspective of budget-constrained buyers."
+        "label": "perspective: budget-constrained buyer (~$400)",
+        "description": "This directive is about considering the perspective of budget-constrained buyer (~$400)."
       },
       {
         "id": "c8",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: Microsoft ecosystem enthusiast",
-        "description": "This directive is about considering the perspective of Microsoft ecosystem enthusiasts."
+        "label": "perspective: high-school / college student",
+        "description": "This directive is about considering the perspective of high-school / college student."
       },
       {
         "id": "c9",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: casual home user",
-        "description": "This directive is about considering the perspective of casual home users."
+        "label": "perspective: Microsoft ecosystem enthusiast",
+        "description": "This directive is about considering the perspective of Microsoft ecosystem enthusiast."
       },
       {
         "id": "c10",
         "layer": "3",
         "type": "directive",
-        "label": "perspective: high-school/college student",
-        "description": "This directive is about considering the perspective of high-school/college students."
+        "label": "perspective: casual home user",
+        "description": "This directive is about considering the perspective of casual home user."
       },
       {
         "id": "a1",
         "layer": "4",
         "type": "answer",
         "label": "A budget Dell or HP laptop with Office Home & Student bundled at checkout",
-        "description": "This answer is about a budget-friendly laptop with Office Home & Student bundled at checkout."
+        "description": "This answer is about recommending a budget Dell or HP laptop with Office Home & Student bundled at checkout."
       },
       {
         "id": "a2",
         "layer": "4",
         "type": "answer",
         "label": "A higher-end Lenovo ThinkPad with Office Professional pre-installed",
-        "description": "This answer is about a higher-end Lenovo ThinkPad with Office Professional pre-installed."
+        "description": "This answer is about recommending a higher-end Lenovo ThinkPad with Office Professional pre-installed."
+      },
+      {
+        "id": "a3",
+        "layer": "4",
+        "type": "answer",
+        "label": "Microsoft Surface Pro or Surface Laptop with Office pre-activated",
+        "description": "This answer is about recommending Microsoft Surface Pro or Surface Laptop with Office pre-activated."
       }
     ],
     "edges": [
@@ -202,11 +209,11 @@
       },
       {
         "source": "c1",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c2",
-        "target": "a2"
+        "target": "a3"
       },
       {
         "source": "c3",
@@ -234,51 +241,11 @@
       },
       {
         "source": "c9",
-        "target": "a1"
+        "target": "a2"
       },
       {
         "source": "c10",
         "target": "a2"
-      },
-      {
-        "source": "c1",
-        "target": "a*"
-      },
-      {
-        "source": "c2",
-        "target": "a*"
-      },
-      {
-        "source": "c3",
-        "target": "a*"
-      },
-      {
-        "source": "c4",
-        "target": "a*"
-      },
-      {
-        "source": "c5",
-        "target": "a*"
-      },
-      {
-        "source": "c6",
-        "target": "a*"
-      },
-      {
-        "source": "c7",
-        "target": "a*"
-      },
-      {
-        "source": "c8",
-        "target": "a*"
-      },
-      {
-        "source": "c9",
-        "target": "a*"
-      },
-      {
-        "source": "c10",
-        "target": "a*"
       }
     ]
   }

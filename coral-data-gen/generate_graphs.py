@@ -288,6 +288,23 @@ def parse_graph_json(raw: str) -> Optional[Dict[str, Any]]:
     return None
 
 
+def missing_seeds(graph: Dict[str, Any], atoms: List[str], plausible: List[str]) -> Optional[str]:
+    """Which seeded layer came back short, or None when every seed has a node.
+
+    Only counts nodes. Labels are left alone because models shorten and
+    renumber them, and edges are left alone because they are the model's
+    explanation: re-asking over those changes what the graph says, while a
+    graph with no node for an answer cannot say anything about it.
+    """
+    nodes = graph.get("nodes") or []
+    short = []
+    for layer, seeds, name in (("3", atoms, "seeds"), ("4", plausible, "answers")):
+        have = sum(1 for n in nodes if str(n.get("layer")) == layer)
+        if have < len(seeds):
+            short.append(f"Layer {layer} has {have} of the {len(seeds)} {name}")
+    return "; ".join(short) or None
+
+
 def generate_row_graph(
     *,
     client: Any,
@@ -343,13 +360,21 @@ def generate_row_graph(
             temperature=temperature,
             max_tokens=max_tokens,
         )
-        graph = parse_graph_json(raw)
-        if graph is not None:
-            break
+        parsed = parse_graph_json(raw)
+        short = missing_seeds(parsed, atoms, plausible) if parsed is not None else None
+        if parsed is not None:
+            # a graph short of a seed is still kept when no later attempt does better
+            graph = parsed
+            if short is None:
+                break
         messages = [
             {"role": "user", "content": prompt},
             {"role": "assistant", "content": raw},
             {"role": "user", "content": (
+                f"Your graph left out seeded nodes: {short}. Emit the whole graph "
+                "again with every Layer 3 seed and every Layer 4 answer present, "
+                "inside a single ```json ...``` fenced block at the end."
+                if short else
                 "Your previous answer did not contain a parseable JSON object "
                 "with 'nodes' and 'edges'. Keep any reasoning brief, then emit the "
                 "graph inside a single ```json ...``` fenced block at the end."

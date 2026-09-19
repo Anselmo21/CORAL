@@ -25,11 +25,11 @@
   "combos_total": 1024,
   "combos_run": 1024,
   "usage": {
-    "prompt_tokens": 1258669,
-    "output_tokens": 10657,
-    "llm_calls": 1025,
+    "prompt_tokens": 1261081,
+    "output_tokens": 10674,
+    "llm_calls": 1027,
     "finish_reasons": {
-      "stop": 1025
+      "stop": 1027
     }
   },
   "generation": {
@@ -46,5 +46,18 @@
       "max_num_seqs": null,
       "enforce_eager": false
     }
-  }
+  },
+  "constrained_nodes": [
+    "trustworthiness: PCMag / professional tech review, trustworthiness: Reddit r/laptops community"
+  ],
+  "repairs": [
+    {
+      "date": "2026-09-19",
+      "reason": "answered under the parse-retry correction prompt, re-asked with the base prompt",
+      "nodes": 1,
+      "free_parsed": 0,
+      "constrained": 1,
+      "top1_changed": 1
+    }
+  ]
 }

@@ -23,6 +23,7 @@ python run_lattices.py \
 
 import json
 import os
+from itertools import permutations
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -180,6 +181,30 @@ def _record_usage(prompt_tokens, output_tokens, finish_reason) -> None:
         _USAGE["output_tokens"] += output_tokens
 
 
+def permutation_regex(n: int) -> str:
+    """Regex for a JSON array that is a permutation of 0..n-1.
+
+    Whitespace is left to the model because its ranking moves with its layout:
+    Llama-3.1-8B forced onto one line changes its top answer on a fifth of the
+    nodes it would otherwise have written one index per line. With the layout
+    free, the pattern only rules out a repeated or missing index, and the
+    constrained answer agrees with the free one as often as two free runs
+    agree with each other.
+    """
+    gap = r"[ \n]{0,4}"
+    return "|".join(
+        r"\[" + gap + (gap + "," + gap).join(map(str, p)) + gap + r"\]"
+        for p in permutations(range(n))
+    )
+
+
+def _structured(regex: Optional[str]) -> Any:
+    if regex is None:
+        return None
+    from vllm.sampling_params import StructuredOutputsParams
+    return StructuredOutputsParams(regex=regex)
+
+
 def _invoke_chat_completion(
     *,
     client: Any,
@@ -189,8 +214,12 @@ def _invoke_chat_completion(
     temperature: float,
     max_tokens: int,
     use_tqdm: bool = False,
+    regex: Optional[str] = None,
 ) -> str:
-    """Provider-agnostic chat completion. Returns the assistant message content as a string."""
+    """Provider-agnostic chat completion. Returns the assistant message content as a string.
+
+    regex holds the output to a pattern (vllm provider only); see permutation_regex.
+    """
     _LAST_CALL_USAGES.clear()
     if provider == "openai":
         resp = client.chat.completions.create(
@@ -213,6 +242,7 @@ def _invoke_chat_completion(
             top_p=0.8,
             top_k=20,
             min_p=0.0,
+            structured_outputs=_structured(regex),
         )
         # Qwen3 (and other hybrid-reasoning models) emit <think> traces unless the
         # chat template is told to disable thinking. Unknown templates ignore this kwarg.
@@ -254,6 +284,7 @@ def _invoke_chat_completion_batch(
     max_tokens: int,
     batch_size: int,
     use_tqdm: bool = False,
+    regex: Optional[str] = None,
 ) -> List[str]:
     """Batched chat completion. For provider='local' uses transformers pipeline's native
     GPU batching. For provider='openai' falls back to sequential calls (no batching).
@@ -271,6 +302,7 @@ def _invoke_chat_completion_batch(
             top_p=0.8,
             top_k=20,
             min_p=0.0,
+            structured_outputs=_structured(regex),
         )
         outputs = client.chat(
             messages_list,
@@ -703,6 +735,7 @@ def generate_dataset(
 
     reset_usage()
     node_usage: Dict[str, List[int]] = {}
+    constrained_keys: List[str] = []
     singleton_top1s: List[str] = []
     halted_reason: Optional[str] = None
 
@@ -804,6 +837,31 @@ def generate_dataset(
             last_text = text
             final_usage = call_usage
             attempts_used = 1
+            if parsed is None and provider == "vllm":
+                # Decode the same prompt again with the output held to a
+                # permutation. The correction prompt below asks a different
+                # question, and Llama-3.1-8B answers it with [0, 1, 2] whatever
+                # the node: its usual failure is a repeated index such as
+                # [1, 0, 1], where the first choice is already plain.
+                attempts_used += 1
+                try:
+                    last_text = _invoke_chat_completion(
+                        client=client, provider=provider, model=model,
+                        messages=[
+                            {"role": "system", "content": system_msg},
+                            {"role": "user", "content": base_prompt},
+                        ],
+                        temperature=temperature, max_tokens=max_tokens,
+                        use_tqdm=use_tqdm,
+                        regex=permutation_regex(len(plausible_answers)),
+                    )
+                    if _LAST_CALL_USAGES:
+                        final_usage = _LAST_CALL_USAGES[0]
+                    parsed = parse_full_ranking(last_text, plausible_answers)
+                    if parsed is not None:
+                        constrained_keys.append(combo_key)
+                except Exception as e:
+                    print(f"  ⚠ constrained decode error: {e}")
             while parsed is None and attempts_used < max_retries:
                 attempts_used += 1
                 try:
@@ -829,7 +887,9 @@ def generate_dataset(
                     print(f"  ⚠ retry {attempts_used}/{max_retries} error: {e}")
 
             if parsed is not None:
-                if attempts_used > 1:
+                if combo_key in constrained_keys:
+                    print(f"  ✓ Ranked (constrained): {parsed[:3]}{' …' if len(parsed) > 3 else ''}")
+                elif attempts_used > 1:
                     print(f"  ✓ Ranked (after {attempts_used} attempts): {parsed[:3]}{' …' if len(parsed) > 3 else ''}")
                 else:
                     print(f"  ✓ Ranked: {parsed[:3]}{' …' if len(parsed) > 3 else ''}")
@@ -882,6 +942,12 @@ def generate_dataset(
                 usage["finish_reasons"][r] = usage["finish_reasons"].get(r, 0) + int(n)
         except Exception:
             pass
+    if fill_missing and Path(out_config_path).exists():
+        try:
+            prev_keys = json.loads(Path(out_config_path).read_text()).get("constrained_nodes") or []
+            constrained_keys = sorted(set(prev_keys) | set(constrained_keys))
+        except Exception:
+            pass
     config_out = {
         "name": dataset_name,
         "question": question,
@@ -894,6 +960,8 @@ def generate_dataset(
         "combos_total": len(all_combos),
         "combos_run": len(answers_dict),
         "usage": usage,
+        # nodes whose free answer did not parse and were decoded again under permutation_regex
+        "constrained_nodes": sorted(constrained_keys),
         "generation": {
             "model": model,
             "provider": provider,

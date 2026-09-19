@@ -25,11 +25,11 @@
   "combos_total": 1024,
   "combos_run": 1024,
   "usage": {
-    "prompt_tokens": 836948,
-    "output_tokens": 10310,
-    "llm_calls": 1025,
+    "prompt_tokens": 838528,
+    "output_tokens": 10330,
+    "llm_calls": 1027,
     "finish_reasons": {
-      "stop": 1025
+      "stop": 1027
     }
   },
   "generation": {
@@ -46,5 +46,18 @@
       "enforce_eager": false,
       "disable_custom_all_reduce": false
     }
-  }
+  },
+  "constrained_nodes": [
+    "geographic: Canada / Global, perspective: Battery-life prioritizing buyer"
+  ],
+  "repairs": [
+    {
+      "date": "2026-09-19",
+      "reason": "answered under the parse-retry correction prompt, re-asked with the base prompt",
+      "nodes": 1,
+      "free_parsed": 0,
+      "constrained": 1,
+      "top1_changed": 0
+    }
+  ]
 }
