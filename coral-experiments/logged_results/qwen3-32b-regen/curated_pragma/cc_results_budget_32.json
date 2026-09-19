@@ -2055,35 +2055,6 @@
     "jaccard": 1.0
   },
   {
-    "case_id": 75,
-    "start_node": [
-      "geographic: USA",
-      "temporal: 2021\u20132023",
-      "temporal: 2023 only",
-      "trustworthiness: Business management publication",
-      "trustworthiness: Higher education advocacy organization",
-      "trustworthiness: Student peer community"
-    ],
-    "query_id": "39",
-    "effective_size": 6,
-    "target": "gen",
-    "budget": 32,
-    "bfs_key": "geographic: USA, trustworthiness: Student peer community",
-    "bfs_layer": 2,
-    "bfs_calls": 46,
-    "elapsed": 21.48,
-    "prompt_tokens": 36293,
-    "output_tokens": 545,
-    "llm_calls": 34,
-    "proxy_key": "geographic: USA, trustworthiness: Student peer community",
-    "proxy_layer": 2,
-    "proxy_verified": true,
-    "outcome": "correct",
-    "gap": 0,
-    "calls": 23,
-    "jaccard": 1.0
-  },
-  {
     "case_id": 76,
     "start_node": [
       "geographic: Global online education market",
@@ -2738,36 +2709,6 @@
     "gap": 0,
     "calls": 27,
     "jaccard": 1.0
-  },
-  {
-    "case_id": 98,
-    "start_node": [
-      "geographic: USA",
-      "perspective: Employer or HR perspective",
-      "temporal: 2021\u20132023",
-      "temporal: 2023 only",
-      "trustworthiness: Education labor market research",
-      "trustworthiness: Higher education advocacy organization",
-      "trustworthiness: Student peer community"
-    ],
-    "query_id": "39",
-    "effective_size": 7,
-    "target": "gen",
-    "budget": 32,
-    "bfs_key": "geographic: USA, trustworthiness: Education labor market research, trustworthiness: Student peer community",
-    "bfs_layer": 3,
-    "bfs_calls": 77,
-    "elapsed": 21.51,
-    "prompt_tokens": 36411,
-    "output_tokens": 545,
-    "llm_calls": 34,
-    "proxy_key": "perspective: Employer or HR perspective, trustworthiness: Higher education advocacy organization, trustworthiness: Student peer community",
-    "proxy_layer": 3,
-    "proxy_verified": true,
-    "outcome": "correct",
-    "gap": 0,
-    "calls": 24,
-    "jaccard": 0.2
   },
   {
     "case_id": 99,
@@ -4718,5 +4659,64 @@
     "gap": 0,
     "calls": 3,
     "jaccard": 0.7777777777777778
+  },
+  {
+    "case_id": 75,
+    "start_node": [
+      "geographic: USA",
+      "temporal: 2021\u20132023",
+      "temporal: 2023 only",
+      "trustworthiness: Business management publication",
+      "trustworthiness: Higher education advocacy organization",
+      "trustworthiness: Student peer community"
+    ],
+    "query_id": "39",
+    "effective_size": 6,
+    "target": "gen",
+    "budget": 32,
+    "bfs_key": "geographic: USA",
+    "bfs_layer": 1,
+    "bfs_calls": 57,
+    "elapsed": 21.16,
+    "prompt_tokens": 36293,
+    "output_tokens": 545,
+    "llm_calls": 34,
+    "proxy_key": "geographic: USA",
+    "proxy_layer": 1,
+    "proxy_verified": true,
+    "outcome": "correct",
+    "gap": 0,
+    "calls": 32,
+    "jaccard": 1.0
+  },
+  {
+    "case_id": 98,
+    "start_node": [
+      "geographic: USA",
+      "perspective: Employer or HR perspective",
+      "temporal: 2021\u20132023",
+      "temporal: 2023 only",
+      "trustworthiness: Education labor market research",
+      "trustworthiness: Higher education advocacy organization",
+      "trustworthiness: Student peer community"
+    ],
+    "query_id": "39",
+    "effective_size": 7,
+    "target": "gen",
+    "budget": 32,
+    "bfs_key": "geographic: USA, trustworthiness: Education labor market research, trustworthiness: Student peer community",
+    "bfs_layer": 3,
+    "bfs_calls": 77,
+    "elapsed": 21.07,
+    "prompt_tokens": 36411,
+    "output_tokens": 545,
+    "llm_calls": 34,
+    "proxy_key": "trustworthiness: Education labor market research, trustworthiness: Student peer community",
+    "proxy_layer": 2,
+    "proxy_verified": true,
+    "outcome": "wrong_layer",
+    "gap": 1,
+    "calls": 56,
+    "jaccard": 0.6666666666666666
   }
 ]
