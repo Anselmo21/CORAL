@@ -1,0 +1,15 @@
+# Spell-check the code and docs but not the model output in data/
+
+[default.extend-words]
+coral = "coral"
+msmarco = "msmarco"
+vllm = "vllm"
+flagr = "flagr"
+pyflagr = "pyflagr"
+renyi = "renyi"
+
+[files]
+extend-exclude = [
+    "data/",
+    "results/",
+]

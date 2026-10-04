@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "coral"
+version = "1.0.0"
+description = "Counterfactual explanations of LLM answers over the concepts their prompts leave implicit"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit>=3.7",
+    "ruff>=0.8",
+    "typos>=1.28",
+]
+
+[tool.setuptools.packages.find]
+include = ["coral*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = [
+    "F",   # pyflakes
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "I",   # isort
+    "UP",  # pyupgrade
+    "FA",  # flake8-future-annotations
+    "B",   # flake8-bugbear
+    "D",   # pydocstyle
+]
+ignore = [
+    "E501",  # prompt templates keep their long lines
+    "D415",
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.isort]
+required-imports = ["from __future__ import annotations"]
+known-first-party = ["coral"]
+
+[tool.ruff.format]
+quote-style = "single"
