@@ -1,0 +1,221 @@
+{
+  "case_id": 104,
+  "qid": "51928",
+  "size": 8,
+  "start_node": [
+    "trustworthiness: CDC vaginal infections guidance",
+    "trustworthiness: peer-reviewed gynecology journal",
+    "trustworthiness: consumer health platform",
+    "trustworthiness: patient health forum",
+    "trustworthiness: pharmacist-curated drug guide",
+    "perspective: pregnant patient",
+    "perspective: first-time yeast sufferer",
+    "perspective: recurrent yeast infections patient"
+  ],
+  "bfs": {
+    "found": true,
+    "key": "perspective: pregnant patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: consumer health platform, trustworthiness: patient health forum, trustworthiness: peer-reviewed gynecology journal, trustworthiness: pharmacist-curated drug guide",
+    "layer": 6,
+    "calls": 9
+  },
+  "sra": {
+    "proxy_key": "perspective: pregnant patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: consumer health platform",
+    "proxy_layer": 3,
+    "proxy_verified": true,
+    "outcome": "wrong_layer",
+    "gap": 3,
+    "jaccard": 0.5,
+    "calls": 2,
+    "budget_used": 0,
+    "pruned_nodes": 0
+  },
+  "era": {
+    "era_fixed_4": {
+      "proxy_key": "perspective: first-time yeast sufferer, trustworthiness: CDC vaginal infections guidance, trustworthiness: consumer health platform, trustworthiness: peer-reviewed gynecology journal, trustworthiness: pharmacist-curated drug guide",
+      "proxy_layer": 5,
+      "proxy_verified": true,
+      "outcome": "wrong_layer",
+      "gap": 1,
+      "jaccard": 0.5714285714285714,
+      "calls": 12,
+      "budget_used": 4,
+      "pruned_nodes": 65
+    },
+    "era_fixed_8": {
+      "proxy_key": "perspective: pregnant patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: consumer health platform, trustworthiness: patient health forum, trustworthiness: peer-reviewed gynecology journal",
+      "proxy_layer": 5,
+      "proxy_verified": true,
+      "outcome": "wrong_layer",
+      "gap": 1,
+      "jaccard": 0.8333333333333334,
+      "calls": 10,
+      "budget_used": 8,
+      "pruned_nodes": 59
+    },
+    "era_fixed_16": {
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: consumer health platform, trustworthiness: patient health forum, trustworthiness: pharmacist-curated drug guide",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.7142857142857143,
+      "calls": 8,
+      "budget_used": 16,
+      "pruned_nodes": 4
+    },
+    "era_fixed_32": {
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, trustworthiness: consumer health platform, trustworthiness: patient health forum, trustworthiness: peer-reviewed gynecology journal, trustworthiness: pharmacist-curated drug guide",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.7142857142857143,
+      "calls": 8,
+      "budget_used": 32,
+      "pruned_nodes": 2
+    },
+    "era_fixed_64": {
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, trustworthiness: consumer health platform, trustworthiness: patient health forum, trustworthiness: peer-reviewed gynecology journal, trustworthiness: pharmacist-curated drug guide",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.7142857142857143,
+      "calls": 8,
+      "budget_used": 64,
+      "pruned_nodes": 2
+    },
+    "era_fixed_128": {
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: consumer health platform, trustworthiness: patient health forum, trustworthiness: peer-reviewed gynecology journal",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.7142857142857143,
+      "calls": 1,
+      "budget_used": 128,
+      "pruned_nodes": 6
+    },
+    "era_fixed_256": {
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: consumer health platform, trustworthiness: patient health forum, trustworthiness: peer-reviewed gynecology journal",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.7142857142857143,
+      "calls": 4,
+      "budget_used": 129,
+      "pruned_nodes": 2
+    },
+    "era_pct_10": {
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, trustworthiness: consumer health platform, trustworthiness: patient health forum, trustworthiness: peer-reviewed gynecology journal, trustworthiness: pharmacist-curated drug guide",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.7142857142857143,
+      "calls": 8,
+      "budget_used": 25,
+      "pruned_nodes": 2
+    },
+    "era_pct_20": {
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, trustworthiness: consumer health platform, trustworthiness: patient health forum, trustworthiness: peer-reviewed gynecology journal, trustworthiness: pharmacist-curated drug guide",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.7142857142857143,
+      "calls": 8,
+      "budget_used": 51,
+      "pruned_nodes": 2
+    },
+    "era_pct_30": {
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: patient health forum, trustworthiness: peer-reviewed gynecology journal, trustworthiness: pharmacist-curated drug guide",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.7142857142857143,
+      "calls": 3,
+      "budget_used": 76,
+      "pruned_nodes": 25
+    },
+    "era_pct_40": {
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: consumer health platform, trustworthiness: patient health forum, trustworthiness: peer-reviewed gynecology journal",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.7142857142857143,
+      "calls": 3,
+      "budget_used": 102,
+      "pruned_nodes": 27
+    },
+    "era_pct_50": {
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: consumer health platform, trustworthiness: patient health forum, trustworthiness: peer-reviewed gynecology journal",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.7142857142857143,
+      "calls": 1,
+      "budget_used": 128,
+      "pruned_nodes": 6
+    },
+    "era_pct_60": {
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: consumer health platform, trustworthiness: patient health forum, trustworthiness: peer-reviewed gynecology journal",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.7142857142857143,
+      "calls": 4,
+      "budget_used": 129,
+      "pruned_nodes": 2
+    },
+    "era_pct_70": {
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: consumer health platform, trustworthiness: patient health forum, trustworthiness: peer-reviewed gynecology journal",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.7142857142857143,
+      "calls": 4,
+      "budget_used": 129,
+      "pruned_nodes": 2
+    },
+    "era_pct_80": {
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: consumer health platform, trustworthiness: patient health forum, trustworthiness: peer-reviewed gynecology journal",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.7142857142857143,
+      "calls": 4,
+      "budget_used": 129,
+      "pruned_nodes": 2
+    },
+    "era_pct_90": {
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: consumer health platform, trustworthiness: patient health forum, trustworthiness: peer-reviewed gynecology journal",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.7142857142857143,
+      "calls": 4,
+      "budget_used": 129,
+      "pruned_nodes": 2
+    },
+    "era_pct_100": {
+      "proxy_key": "perspective: first-time yeast sufferer, perspective: pregnant patient, trustworthiness: CDC vaginal infections guidance, trustworthiness: consumer health platform, trustworthiness: patient health forum, trustworthiness: peer-reviewed gynecology journal",
+      "proxy_layer": 6,
+      "proxy_verified": true,
+      "outcome": "correct",
+      "gap": 0,
+      "jaccard": 0.7142857142857143,
+      "calls": 4,
+      "budget_used": 129,
+      "pruned_nodes": 2
+    }
+  }
+}

@@ -1,0 +1,7580 @@
+{
+  "llama31-8b": {
+    "msmarco_criteria": {
+      "n": 16,
+      "bfs_calls": 103.0,
+      "sra": {
+        "accuracy_pct": 100.0,
+        "mean_calls": 19.0,
+        "n": 16
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 12.5,
+            "mean_calls": 11.19,
+            "n": 16
+          },
+          "gra": {
+            "accuracy_pct": 6.2,
+            "mean_calls": 13.06,
+            "n": 16
+          },
+          "era": {
+            "accuracy_pct": 12.5,
+            "mean_calls": 10.56,
+            "n": 16
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 6.2,
+            "mean_calls": 15.0,
+            "n": 16
+          },
+          "gra": {
+            "accuracy_pct": 6.2,
+            "mean_calls": 13.44,
+            "n": 16
+          },
+          "era": {
+            "accuracy_pct": 6.2,
+            "mean_calls": 15.0,
+            "n": 16
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 6.2,
+            "mean_calls": 12.75,
+            "n": 16
+          },
+          "gra": {
+            "accuracy_pct": 6.2,
+            "mean_calls": 14.12,
+            "n": 16
+          },
+          "era": {
+            "accuracy_pct": 6.2,
+            "mean_calls": 12.75,
+            "n": 16
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 6.2,
+            "mean_calls": 12.88,
+            "n": 16
+          },
+          "gra": {
+            "accuracy_pct": 6.2,
+            "mean_calls": 15.56,
+            "n": 16
+          },
+          "era": {
+            "accuracy_pct": 6.2,
+            "mean_calls": 12.81,
+            "n": 16
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 6.2,
+            "mean_calls": 15.94,
+            "n": 16
+          },
+          "gra": {
+            "accuracy_pct": 6.2,
+            "mean_calls": 18.94,
+            "n": 16
+          },
+          "era": {
+            "accuracy_pct": 6.2,
+            "mean_calls": 15.88,
+            "n": 16
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 6.2,
+            "mean_calls": 20.62,
+            "n": 16
+          },
+          "gra": {
+            "accuracy_pct": 6.2,
+            "mean_calls": 25.0,
+            "n": 16
+          },
+          "era": {
+            "accuracy_pct": 6.2,
+            "mean_calls": 21.19,
+            "n": 16
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 6.2,
+            "mean_calls": 31.0,
+            "n": 16
+          },
+          "gra": {
+            "accuracy_pct": 6.2,
+            "mean_calls": 33.75,
+            "n": 16
+          },
+          "era": {
+            "accuracy_pct": 6.2,
+            "mean_calls": 31.5,
+            "n": 16
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 6.2,
+            "mean_calls": 39.06,
+            "n": 16
+          },
+          "gra": {
+            "accuracy_pct": 6.2,
+            "mean_calls": 41.81,
+            "n": 16
+          },
+          "era": {
+            "accuracy_pct": 6.2,
+            "mean_calls": 39.56,
+            "n": 16
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 6.2,
+          "mean_calls": 12.75,
+          "n": 16
+        },
+        "no_entropy": {
+          "accuracy_pct": 6.2,
+          "mean_calls": 14.12,
+          "n": 16
+        },
+        "no_graph": {
+          "accuracy_pct": 6.2,
+          "mean_calls": 12.75,
+          "n": 16
+        },
+        "got_only": {
+          "accuracy_pct": 0.0,
+          "mean_calls": 0.0,
+          "n": 16
+        },
+        "got_greedy": {
+          "accuracy_pct": 0.0,
+          "mean_calls": 0.0,
+          "n": 16
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 93.8,
+          "mean_calls": 56.19,
+          "n": 16
+        },
+        "4": {
+          "accuracy_pct": 100.0,
+          "mean_calls": 57.81,
+          "n": 16
+        },
+        "8": {
+          "accuracy_pct": 100.0,
+          "mean_calls": 56.38,
+          "n": 16
+        },
+        "16": {
+          "accuracy_pct": 100.0,
+          "mean_calls": 67.44,
+          "n": 16
+        },
+        "32": {
+          "accuracy_pct": 100.0,
+          "mean_calls": 84.69,
+          "n": 16
+        },
+        "64": {
+          "accuracy_pct": 100.0,
+          "mean_calls": 106.12,
+          "n": 16
+        },
+        "128": {
+          "accuracy_pct": 100.0,
+          "mean_calls": 181.69,
+          "n": 16
+        }
+      }
+    },
+    "msmarco_pragma": {
+      "n": 23,
+      "bfs_calls": 141.17,
+      "sra": {
+        "accuracy_pct": 52.2,
+        "mean_calls": 3.65,
+        "n": 23
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 17.4,
+            "mean_calls": 7.7,
+            "n": 23
+          },
+          "gra": {
+            "accuracy_pct": 13.0,
+            "mean_calls": 7.52,
+            "n": 23
+          },
+          "era": {
+            "accuracy_pct": 13.0,
+            "mean_calls": 8.48,
+            "n": 23
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 13.0,
+            "mean_calls": 8.48,
+            "n": 23
+          },
+          "gra": {
+            "accuracy_pct": 8.7,
+            "mean_calls": 8.43,
+            "n": 23
+          },
+          "era": {
+            "accuracy_pct": 17.4,
+            "mean_calls": 9.65,
+            "n": 23
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 13.0,
+            "mean_calls": 9.57,
+            "n": 23
+          },
+          "gra": {
+            "accuracy_pct": 8.7,
+            "mean_calls": 9.65,
+            "n": 23
+          },
+          "era": {
+            "accuracy_pct": 17.4,
+            "mean_calls": 10.43,
+            "n": 23
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 13.0,
+            "mean_calls": 11.52,
+            "n": 23
+          },
+          "gra": {
+            "accuracy_pct": 8.7,
+            "mean_calls": 12.17,
+            "n": 23
+          },
+          "era": {
+            "accuracy_pct": 17.4,
+            "mean_calls": 12.13,
+            "n": 23
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 13.0,
+            "mean_calls": 17.43,
+            "n": 23
+          },
+          "gra": {
+            "accuracy_pct": 8.7,
+            "mean_calls": 19.09,
+            "n": 23
+          },
+          "era": {
+            "accuracy_pct": 17.4,
+            "mean_calls": 17.74,
+            "n": 23
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 8.7,
+            "mean_calls": 26.39,
+            "n": 23
+          },
+          "gra": {
+            "accuracy_pct": 8.7,
+            "mean_calls": 28.96,
+            "n": 23
+          },
+          "era": {
+            "accuracy_pct": 13.0,
+            "mean_calls": 26.91,
+            "n": 23
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 13.0,
+            "mean_calls": 42.39,
+            "n": 23
+          },
+          "gra": {
+            "accuracy_pct": 8.7,
+            "mean_calls": 43.52,
+            "n": 23
+          },
+          "era": {
+            "accuracy_pct": 17.4,
+            "mean_calls": 42.91,
+            "n": 23
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 13.0,
+            "mean_calls": 62.83,
+            "n": 23
+          },
+          "gra": {
+            "accuracy_pct": 8.7,
+            "mean_calls": 64.43,
+            "n": 23
+          },
+          "era": {
+            "accuracy_pct": 13.0,
+            "mean_calls": 62.78,
+            "n": 23
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 13.0,
+          "mean_calls": 9.57,
+          "n": 23
+        },
+        "no_entropy": {
+          "accuracy_pct": 8.7,
+          "mean_calls": 9.65,
+          "n": 23
+        },
+        "no_graph": {
+          "accuracy_pct": 17.4,
+          "mean_calls": 10.43,
+          "n": 23
+        },
+        "got_only": {
+          "accuracy_pct": 8.7,
+          "mean_calls": 0.7,
+          "n": 23
+        },
+        "got_greedy": {
+          "accuracy_pct": 8.7,
+          "mean_calls": 0.96,
+          "n": 23
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 91.3,
+          "mean_calls": 133.74,
+          "n": 23
+        },
+        "4": {
+          "accuracy_pct": 82.6,
+          "mean_calls": 120.17,
+          "n": 23
+        },
+        "8": {
+          "accuracy_pct": 87.0,
+          "mean_calls": 140.65,
+          "n": 23
+        },
+        "16": {
+          "accuracy_pct": 87.0,
+          "mean_calls": 152.52,
+          "n": 23
+        },
+        "32": {
+          "accuracy_pct": 87.0,
+          "mean_calls": 170.35,
+          "n": 23
+        },
+        "64": {
+          "accuracy_pct": 87.0,
+          "mean_calls": 201.7,
+          "n": 23
+        },
+        "128": {
+          "accuracy_pct": 87.0,
+          "mean_calls": 266.0,
+          "n": 23
+        }
+      }
+    },
+    "curated_criteria": {
+      "n": 49,
+      "bfs_calls": 135.78,
+      "sra": {
+        "accuracy_pct": 69.4,
+        "mean_calls": 8.37,
+        "n": 49
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 42.9,
+            "mean_calls": 14.59,
+            "n": 49
+          },
+          "gra": {
+            "accuracy_pct": 42.9,
+            "mean_calls": 29.55,
+            "n": 49
+          },
+          "era": {
+            "accuracy_pct": 42.9,
+            "mean_calls": 28.51,
+            "n": 49
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 44.9,
+            "mean_calls": 12.88,
+            "n": 49
+          },
+          "gra": {
+            "accuracy_pct": 46.9,
+            "mean_calls": 30.78,
+            "n": 49
+          },
+          "era": {
+            "accuracy_pct": 44.9,
+            "mean_calls": 23.57,
+            "n": 49
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 42.9,
+            "mean_calls": 13.14,
+            "n": 49
+          },
+          "gra": {
+            "accuracy_pct": 44.9,
+            "mean_calls": 31.57,
+            "n": 49
+          },
+          "era": {
+            "accuracy_pct": 42.9,
+            "mean_calls": 22.29,
+            "n": 49
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 46.9,
+            "mean_calls": 14.22,
+            "n": 49
+          },
+          "gra": {
+            "accuracy_pct": 46.9,
+            "mean_calls": 32.61,
+            "n": 49
+          },
+          "era": {
+            "accuracy_pct": 44.9,
+            "mean_calls": 24.35,
+            "n": 49
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 44.9,
+            "mean_calls": 17.86,
+            "n": 49
+          },
+          "gra": {
+            "accuracy_pct": 44.9,
+            "mean_calls": 34.47,
+            "n": 49
+          },
+          "era": {
+            "accuracy_pct": 44.9,
+            "mean_calls": 21.69,
+            "n": 49
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 44.9,
+            "mean_calls": 24.35,
+            "n": 49
+          },
+          "gra": {
+            "accuracy_pct": 44.9,
+            "mean_calls": 42.33,
+            "n": 49
+          },
+          "era": {
+            "accuracy_pct": 44.9,
+            "mean_calls": 26.51,
+            "n": 49
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 44.9,
+            "mean_calls": 36.98,
+            "n": 49
+          },
+          "gra": {
+            "accuracy_pct": 44.9,
+            "mean_calls": 54.84,
+            "n": 49
+          },
+          "era": {
+            "accuracy_pct": 44.9,
+            "mean_calls": 39.24,
+            "n": 49
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 44.9,
+            "mean_calls": 58.96,
+            "n": 49
+          },
+          "gra": {
+            "accuracy_pct": 44.9,
+            "mean_calls": 74.82,
+            "n": 49
+          },
+          "era": {
+            "accuracy_pct": 44.9,
+            "mean_calls": 61.82,
+            "n": 49
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 42.9,
+          "mean_calls": 13.14,
+          "n": 49
+        },
+        "no_entropy": {
+          "accuracy_pct": 44.9,
+          "mean_calls": 31.57,
+          "n": 49
+        },
+        "no_graph": {
+          "accuracy_pct": 42.9,
+          "mean_calls": 22.29,
+          "n": 49
+        },
+        "got_only": {
+          "accuracy_pct": 12.2,
+          "mean_calls": 0.98,
+          "n": 49
+        },
+        "got_greedy": {
+          "accuracy_pct": 22.4,
+          "mean_calls": 1.57,
+          "n": 49
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 85.7,
+          "mean_calls": 96.0,
+          "n": 49
+        },
+        "4": {
+          "accuracy_pct": 83.7,
+          "mean_calls": 69.33,
+          "n": 49
+        },
+        "8": {
+          "accuracy_pct": 85.7,
+          "mean_calls": 69.73,
+          "n": 49
+        },
+        "16": {
+          "accuracy_pct": 83.7,
+          "mean_calls": 99.55,
+          "n": 49
+        },
+        "32": {
+          "accuracy_pct": 79.6,
+          "mean_calls": 120.86,
+          "n": 49
+        },
+        "64": {
+          "accuracy_pct": 79.6,
+          "mean_calls": 154.71,
+          "n": 49
+        },
+        "128": {
+          "accuracy_pct": 79.6,
+          "mean_calls": 221.08,
+          "n": 49
+        }
+      }
+    },
+    "curated_pragma": {
+      "n": 0,
+      "bfs_calls": null,
+      "sra": {
+        "accuracy_pct": null,
+        "mean_calls": null,
+        "n": 0
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          },
+          "gra": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          },
+          "era": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          },
+          "gra": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          },
+          "era": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          },
+          "gra": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          },
+          "era": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          },
+          "gra": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          },
+          "era": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          },
+          "gra": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          },
+          "era": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          },
+          "gra": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          },
+          "era": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          },
+          "gra": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          },
+          "era": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          },
+          "gra": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          },
+          "era": {
+            "accuracy_pct": null,
+            "mean_calls": null,
+            "n": 0
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": null,
+          "mean_calls": null,
+          "n": 0
+        },
+        "no_entropy": {
+          "accuracy_pct": null,
+          "mean_calls": null,
+          "n": 0
+        },
+        "no_graph": {
+          "accuracy_pct": null,
+          "mean_calls": null,
+          "n": 0
+        },
+        "got_only": {
+          "accuracy_pct": null,
+          "mean_calls": null,
+          "n": 0
+        },
+        "got_greedy": {
+          "accuracy_pct": null,
+          "mean_calls": null,
+          "n": 0
+        }
+      },
+      "lsm": {}
+    }
+  },
+  "llama31-70b": {
+    "msmarco_criteria": {
+      "n": 147,
+      "bfs_calls": 136.06,
+      "sra": {
+        "accuracy_pct": 57.1,
+        "mean_calls": 3.88,
+        "n": 147
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 82.3,
+            "mean_calls": 36.71,
+            "n": 147
+          },
+          "gra": {
+            "accuracy_pct": 83.7,
+            "mean_calls": 56.14,
+            "n": 147
+          },
+          "era": {
+            "accuracy_pct": 90.5,
+            "mean_calls": 75.99,
+            "n": 147
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 83.7,
+            "mean_calls": 33.24,
+            "n": 147
+          },
+          "gra": {
+            "accuracy_pct": 84.4,
+            "mean_calls": 54.69,
+            "n": 147
+          },
+          "era": {
+            "accuracy_pct": 91.2,
+            "mean_calls": 57.34,
+            "n": 147
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 84.4,
+            "mean_calls": 29.37,
+            "n": 147
+          },
+          "gra": {
+            "accuracy_pct": 84.4,
+            "mean_calls": 54.61,
+            "n": 147
+          },
+          "era": {
+            "accuracy_pct": 88.4,
+            "mean_calls": 47.27,
+            "n": 147
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 87.1,
+            "mean_calls": 32.78,
+            "n": 147
+          },
+          "gra": {
+            "accuracy_pct": 87.1,
+            "mean_calls": 54.21,
+            "n": 147
+          },
+          "era": {
+            "accuracy_pct": 91.2,
+            "mean_calls": 57.83,
+            "n": 147
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 89.1,
+            "mean_calls": 33.96,
+            "n": 147
+          },
+          "gra": {
+            "accuracy_pct": 88.4,
+            "mean_calls": 57.56,
+            "n": 147
+          },
+          "era": {
+            "accuracy_pct": 92.5,
+            "mean_calls": 51.25,
+            "n": 147
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 91.8,
+            "mean_calls": 38.63,
+            "n": 147
+          },
+          "gra": {
+            "accuracy_pct": 89.8,
+            "mean_calls": 63.9,
+            "n": 147
+          },
+          "era": {
+            "accuracy_pct": 94.6,
+            "mean_calls": 52.38,
+            "n": 147
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 93.2,
+            "mean_calls": 51.09,
+            "n": 147
+          },
+          "gra": {
+            "accuracy_pct": 90.5,
+            "mean_calls": 74.61,
+            "n": 147
+          },
+          "era": {
+            "accuracy_pct": 94.6,
+            "mean_calls": 61.87,
+            "n": 147
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 93.2,
+            "mean_calls": 73.35,
+            "n": 147
+          },
+          "gra": {
+            "accuracy_pct": 93.2,
+            "mean_calls": 90.98,
+            "n": 147
+          },
+          "era": {
+            "accuracy_pct": 93.2,
+            "mean_calls": 84.77,
+            "n": 147
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 84.4,
+          "mean_calls": 29.37,
+          "n": 147
+        },
+        "no_entropy": {
+          "accuracy_pct": 84.4,
+          "mean_calls": 54.61,
+          "n": 147
+        },
+        "no_graph": {
+          "accuracy_pct": 88.4,
+          "mean_calls": 47.27,
+          "n": 147
+        },
+        "got_only": {
+          "accuracy_pct": 6.8,
+          "mean_calls": 0.99,
+          "n": 147
+        },
+        "got_greedy": {
+          "accuracy_pct": 12.9,
+          "mean_calls": 1.67,
+          "n": 147
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 83.0,
+          "mean_calls": 66.54,
+          "n": 147
+        },
+        "4": {
+          "accuracy_pct": 77.6,
+          "mean_calls": 70.39,
+          "n": 147
+        },
+        "8": {
+          "accuracy_pct": 77.6,
+          "mean_calls": 80.5,
+          "n": 147
+        },
+        "16": {
+          "accuracy_pct": 83.7,
+          "mean_calls": 78.69,
+          "n": 147
+        },
+        "32": {
+          "accuracy_pct": 80.3,
+          "mean_calls": 89.17,
+          "n": 147
+        },
+        "64": {
+          "accuracy_pct": 80.3,
+          "mean_calls": 126.64,
+          "n": 147
+        },
+        "128": {
+          "accuracy_pct": 83.7,
+          "mean_calls": 191.61,
+          "n": 147
+        }
+      }
+    },
+    "msmarco_pragma": {
+      "n": 143,
+      "bfs_calls": 100.06,
+      "sra": {
+        "accuracy_pct": 61.5,
+        "mean_calls": 5.03,
+        "n": 143
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 84.6,
+            "mean_calls": 24.18,
+            "n": 143
+          },
+          "gra": {
+            "accuracy_pct": 87.4,
+            "mean_calls": 35.71,
+            "n": 143
+          },
+          "era": {
+            "accuracy_pct": 94.4,
+            "mean_calls": 56.66,
+            "n": 143
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 88.1,
+            "mean_calls": 23.99,
+            "n": 143
+          },
+          "gra": {
+            "accuracy_pct": 89.5,
+            "mean_calls": 38.1,
+            "n": 143
+          },
+          "era": {
+            "accuracy_pct": 95.1,
+            "mean_calls": 44.85,
+            "n": 143
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 88.8,
+            "mean_calls": 22.99,
+            "n": 143
+          },
+          "gra": {
+            "accuracy_pct": 90.9,
+            "mean_calls": 38.86,
+            "n": 143
+          },
+          "era": {
+            "accuracy_pct": 95.1,
+            "mean_calls": 42.17,
+            "n": 143
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 90.9,
+            "mean_calls": 23.4,
+            "n": 143
+          },
+          "gra": {
+            "accuracy_pct": 90.9,
+            "mean_calls": 40.5,
+            "n": 143
+          },
+          "era": {
+            "accuracy_pct": 94.4,
+            "mean_calls": 38.76,
+            "n": 143
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 95.8,
+            "mean_calls": 25.69,
+            "n": 143
+          },
+          "gra": {
+            "accuracy_pct": 93.0,
+            "mean_calls": 44.41,
+            "n": 143
+          },
+          "era": {
+            "accuracy_pct": 97.2,
+            "mean_calls": 37.77,
+            "n": 143
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 96.5,
+            "mean_calls": 33.06,
+            "n": 143
+          },
+          "gra": {
+            "accuracy_pct": 97.2,
+            "mean_calls": 51.96,
+            "n": 143
+          },
+          "era": {
+            "accuracy_pct": 97.2,
+            "mean_calls": 37.63,
+            "n": 143
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 98.6,
+            "mean_calls": 50.34,
+            "n": 143
+          },
+          "gra": {
+            "accuracy_pct": 97.2,
+            "mean_calls": 64.76,
+            "n": 143
+          },
+          "era": {
+            "accuracy_pct": 98.6,
+            "mean_calls": 55.61,
+            "n": 143
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 97.9,
+            "mean_calls": 68.06,
+            "n": 143
+          },
+          "gra": {
+            "accuracy_pct": 98.6,
+            "mean_calls": 80.98,
+            "n": 143
+          },
+          "era": {
+            "accuracy_pct": 97.9,
+            "mean_calls": 74.17,
+            "n": 143
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 88.8,
+          "mean_calls": 22.99,
+          "n": 143
+        },
+        "no_entropy": {
+          "accuracy_pct": 90.9,
+          "mean_calls": 38.86,
+          "n": 143
+        },
+        "no_graph": {
+          "accuracy_pct": 95.1,
+          "mean_calls": 42.17,
+          "n": 143
+        },
+        "got_only": {
+          "accuracy_pct": 7.0,
+          "mean_calls": 1.0,
+          "n": 143
+        },
+        "got_greedy": {
+          "accuracy_pct": 20.3,
+          "mean_calls": 1.77,
+          "n": 143
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 69.9,
+          "mean_calls": 74.84,
+          "n": 143
+        },
+        "4": {
+          "accuracy_pct": 66.4,
+          "mean_calls": 63.16,
+          "n": 143
+        },
+        "8": {
+          "accuracy_pct": 72.7,
+          "mean_calls": 70.49,
+          "n": 143
+        },
+        "16": {
+          "accuracy_pct": 80.4,
+          "mean_calls": 77.64,
+          "n": 143
+        },
+        "32": {
+          "accuracy_pct": 80.4,
+          "mean_calls": 92.07,
+          "n": 143
+        },
+        "64": {
+          "accuracy_pct": 81.1,
+          "mean_calls": 124.59,
+          "n": 143
+        },
+        "128": {
+          "accuracy_pct": 81.8,
+          "mean_calls": 189.62,
+          "n": 143
+        }
+      }
+    },
+    "curated_criteria": {
+      "n": 155,
+      "bfs_calls": 143.17,
+      "sra": {
+        "accuracy_pct": 58.1,
+        "mean_calls": 7.08,
+        "n": 155
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 84.5,
+            "mean_calls": 36.69,
+            "n": 155
+          },
+          "gra": {
+            "accuracy_pct": 87.1,
+            "mean_calls": 52.61,
+            "n": 155
+          },
+          "era": {
+            "accuracy_pct": 92.9,
+            "mean_calls": 84.95,
+            "n": 155
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 85.8,
+            "mean_calls": 31.2,
+            "n": 155
+          },
+          "gra": {
+            "accuracy_pct": 87.1,
+            "mean_calls": 53.19,
+            "n": 155
+          },
+          "era": {
+            "accuracy_pct": 96.1,
+            "mean_calls": 66.1,
+            "n": 155
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 90.3,
+            "mean_calls": 30.8,
+            "n": 155
+          },
+          "gra": {
+            "accuracy_pct": 91.6,
+            "mean_calls": 53.65,
+            "n": 155
+          },
+          "era": {
+            "accuracy_pct": 96.8,
+            "mean_calls": 55.47,
+            "n": 155
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 92.9,
+            "mean_calls": 30.49,
+            "n": 155
+          },
+          "gra": {
+            "accuracy_pct": 93.5,
+            "mean_calls": 55.54,
+            "n": 155
+          },
+          "era": {
+            "accuracy_pct": 96.1,
+            "mean_calls": 55.88,
+            "n": 155
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 92.9,
+            "mean_calls": 30.92,
+            "n": 155
+          },
+          "gra": {
+            "accuracy_pct": 94.2,
+            "mean_calls": 60.76,
+            "n": 155
+          },
+          "era": {
+            "accuracy_pct": 96.8,
+            "mean_calls": 52.72,
+            "n": 155
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 96.1,
+            "mean_calls": 38.55,
+            "n": 155
+          },
+          "gra": {
+            "accuracy_pct": 97.4,
+            "mean_calls": 66.79,
+            "n": 155
+          },
+          "era": {
+            "accuracy_pct": 97.4,
+            "mean_calls": 56.8,
+            "n": 155
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 96.8,
+            "mean_calls": 52.12,
+            "n": 155
+          },
+          "gra": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 78.41,
+            "n": 155
+          },
+          "era": {
+            "accuracy_pct": 97.4,
+            "mean_calls": 65.83,
+            "n": 155
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 72.18,
+            "n": 155
+          },
+          "gra": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 92.33,
+            "n": 155
+          },
+          "era": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 93.59,
+            "n": 155
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 90.3,
+          "mean_calls": 30.8,
+          "n": 155
+        },
+        "no_entropy": {
+          "accuracy_pct": 91.6,
+          "mean_calls": 53.65,
+          "n": 155
+        },
+        "no_graph": {
+          "accuracy_pct": 96.8,
+          "mean_calls": 55.47,
+          "n": 155
+        },
+        "got_only": {
+          "accuracy_pct": 14.8,
+          "mean_calls": 1.0,
+          "n": 155
+        },
+        "got_greedy": {
+          "accuracy_pct": 22.6,
+          "mean_calls": 1.72,
+          "n": 155
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 74.8,
+          "mean_calls": 92.06,
+          "n": 155
+        },
+        "4": {
+          "accuracy_pct": 76.8,
+          "mean_calls": 76.39,
+          "n": 155
+        },
+        "8": {
+          "accuracy_pct": 83.2,
+          "mean_calls": 92.4,
+          "n": 155
+        },
+        "16": {
+          "accuracy_pct": 83.2,
+          "mean_calls": 92.6,
+          "n": 155
+        },
+        "32": {
+          "accuracy_pct": 83.2,
+          "mean_calls": 119.68,
+          "n": 155
+        },
+        "64": {
+          "accuracy_pct": 83.2,
+          "mean_calls": 145.66,
+          "n": 155
+        },
+        "128": {
+          "accuracy_pct": 83.2,
+          "mean_calls": 217.27,
+          "n": 155
+        }
+      }
+    },
+    "curated_pragma": {
+      "n": 149,
+      "bfs_calls": 56.58,
+      "sra": {
+        "accuracy_pct": 37.6,
+        "mean_calls": 2.0,
+        "n": 149
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 86.6,
+            "mean_calls": 18.94,
+            "n": 149
+          },
+          "gra": {
+            "accuracy_pct": 86.6,
+            "mean_calls": 28.51,
+            "n": 149
+          },
+          "era": {
+            "accuracy_pct": 92.6,
+            "mean_calls": 33.11,
+            "n": 149
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 85.2,
+            "mean_calls": 19.32,
+            "n": 149
+          },
+          "gra": {
+            "accuracy_pct": 87.2,
+            "mean_calls": 29.28,
+            "n": 149
+          },
+          "era": {
+            "accuracy_pct": 91.3,
+            "mean_calls": 30.46,
+            "n": 149
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 81.2,
+            "mean_calls": 18.38,
+            "n": 149
+          },
+          "gra": {
+            "accuracy_pct": 88.6,
+            "mean_calls": 30.78,
+            "n": 149
+          },
+          "era": {
+            "accuracy_pct": 85.2,
+            "mean_calls": 28.95,
+            "n": 149
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 87.2,
+            "mean_calls": 23.41,
+            "n": 149
+          },
+          "gra": {
+            "accuracy_pct": 91.9,
+            "mean_calls": 33.74,
+            "n": 149
+          },
+          "era": {
+            "accuracy_pct": 89.9,
+            "mean_calls": 31.09,
+            "n": 149
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 89.9,
+            "mean_calls": 27.3,
+            "n": 149
+          },
+          "gra": {
+            "accuracy_pct": 93.3,
+            "mean_calls": 37.28,
+            "n": 149
+          },
+          "era": {
+            "accuracy_pct": 88.6,
+            "mean_calls": 31.89,
+            "n": 149
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 91.9,
+            "mean_calls": 31.17,
+            "n": 149
+          },
+          "gra": {
+            "accuracy_pct": 94.0,
+            "mean_calls": 44.78,
+            "n": 149
+          },
+          "era": {
+            "accuracy_pct": 94.6,
+            "mean_calls": 35.83,
+            "n": 149
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 95.3,
+            "mean_calls": 44.78,
+            "n": 149
+          },
+          "gra": {
+            "accuracy_pct": 96.6,
+            "mean_calls": 57.93,
+            "n": 149
+          },
+          "era": {
+            "accuracy_pct": 96.0,
+            "mean_calls": 47.36,
+            "n": 149
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 95.3,
+            "mean_calls": 65.93,
+            "n": 149
+          },
+          "gra": {
+            "accuracy_pct": 96.6,
+            "mean_calls": 76.34,
+            "n": 149
+          },
+          "era": {
+            "accuracy_pct": 96.0,
+            "mean_calls": 68.77,
+            "n": 149
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 81.2,
+          "mean_calls": 18.38,
+          "n": 149
+        },
+        "no_entropy": {
+          "accuracy_pct": 88.6,
+          "mean_calls": 30.78,
+          "n": 149
+        },
+        "no_graph": {
+          "accuracy_pct": 85.2,
+          "mean_calls": 28.95,
+          "n": 149
+        },
+        "got_only": {
+          "accuracy_pct": 12.8,
+          "mean_calls": 0.99,
+          "n": 149
+        },
+        "got_greedy": {
+          "accuracy_pct": 21.5,
+          "mean_calls": 1.63,
+          "n": 149
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 84.6,
+          "mean_calls": 52.0,
+          "n": 149
+        },
+        "4": {
+          "accuracy_pct": 82.6,
+          "mean_calls": 56.1,
+          "n": 149
+        },
+        "8": {
+          "accuracy_pct": 79.9,
+          "mean_calls": 55.54,
+          "n": 149
+        },
+        "16": {
+          "accuracy_pct": 81.9,
+          "mean_calls": 60.89,
+          "n": 149
+        },
+        "32": {
+          "accuracy_pct": 82.6,
+          "mean_calls": 77.73,
+          "n": 149
+        },
+        "64": {
+          "accuracy_pct": 82.6,
+          "mean_calls": 105.62,
+          "n": 149
+        },
+        "128": {
+          "accuracy_pct": 82.6,
+          "mean_calls": 171.5,
+          "n": 149
+        }
+      }
+    }
+  },
+  "qwen3-32b": {
+    "msmarco_criteria": {
+      "n": 135,
+      "bfs_calls": 138.71,
+      "sra": {
+        "accuracy_pct": 77.0,
+        "mean_calls": 8.09,
+        "n": 135
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 92.6,
+            "mean_calls": 46.19,
+            "n": 135
+          },
+          "gra": {
+            "accuracy_pct": 90.4,
+            "mean_calls": 65.53,
+            "n": 135
+          },
+          "era": {
+            "accuracy_pct": 94.1,
+            "mean_calls": 72.84,
+            "n": 135
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 91.9,
+            "mean_calls": 39.53,
+            "n": 135
+          },
+          "gra": {
+            "accuracy_pct": 91.1,
+            "mean_calls": 67.29,
+            "n": 135
+          },
+          "era": {
+            "accuracy_pct": 93.3,
+            "mean_calls": 56.9,
+            "n": 135
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 93.3,
+            "mean_calls": 42.17,
+            "n": 135
+          },
+          "gra": {
+            "accuracy_pct": 91.9,
+            "mean_calls": 67.24,
+            "n": 135
+          },
+          "era": {
+            "accuracy_pct": 94.1,
+            "mean_calls": 57.87,
+            "n": 135
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 93.3,
+            "mean_calls": 39.19,
+            "n": 135
+          },
+          "gra": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 67.44,
+            "n": 135
+          },
+          "era": {
+            "accuracy_pct": 93.3,
+            "mean_calls": 54.4,
+            "n": 135
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 92.6,
+            "mean_calls": 38.81,
+            "n": 135
+          },
+          "gra": {
+            "accuracy_pct": 94.1,
+            "mean_calls": 69.86,
+            "n": 135
+          },
+          "era": {
+            "accuracy_pct": 92.6,
+            "mean_calls": 52.41,
+            "n": 135
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 92.6,
+            "mean_calls": 39.09,
+            "n": 135
+          },
+          "gra": {
+            "accuracy_pct": 94.8,
+            "mean_calls": 75.1,
+            "n": 135
+          },
+          "era": {
+            "accuracy_pct": 94.1,
+            "mean_calls": 48.7,
+            "n": 135
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 47.2,
+            "n": 135
+          },
+          "gra": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 84.01,
+            "n": 135
+          },
+          "era": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 54.37,
+            "n": 135
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 94.8,
+            "mean_calls": 64.97,
+            "n": 135
+          },
+          "gra": {
+            "accuracy_pct": 94.1,
+            "mean_calls": 94.91,
+            "n": 135
+          },
+          "era": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 72.37,
+            "n": 135
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 93.3,
+          "mean_calls": 42.17,
+          "n": 135
+        },
+        "no_entropy": {
+          "accuracy_pct": 91.9,
+          "mean_calls": 67.24,
+          "n": 135
+        },
+        "no_graph": {
+          "accuracy_pct": 94.1,
+          "mean_calls": 57.87,
+          "n": 135
+        },
+        "got_only": {
+          "accuracy_pct": 3.0,
+          "mean_calls": 0.76,
+          "n": 135
+        },
+        "got_greedy": {
+          "accuracy_pct": 7.4,
+          "mean_calls": 1.03,
+          "n": 135
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 85.2,
+          "mean_calls": 67.92,
+          "n": 135
+        },
+        "4": {
+          "accuracy_pct": 86.7,
+          "mean_calls": 61.76,
+          "n": 135
+        },
+        "8": {
+          "accuracy_pct": 84.4,
+          "mean_calls": 75.53,
+          "n": 135
+        },
+        "16": {
+          "accuracy_pct": 87.4,
+          "mean_calls": 73.8,
+          "n": 135
+        },
+        "32": {
+          "accuracy_pct": 89.6,
+          "mean_calls": 94.28,
+          "n": 135
+        },
+        "64": {
+          "accuracy_pct": 82.2,
+          "mean_calls": 120.63,
+          "n": 135
+        },
+        "128": {
+          "accuracy_pct": 81.5,
+          "mean_calls": 185.7,
+          "n": 135
+        }
+      }
+    },
+    "msmarco_pragma": {
+      "n": 153,
+      "bfs_calls": 104.05,
+      "sra": {
+        "accuracy_pct": 54.2,
+        "mean_calls": 6.43,
+        "n": 153
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 89.5,
+            "mean_calls": 28.95,
+            "n": 153
+          },
+          "gra": {
+            "accuracy_pct": 87.6,
+            "mean_calls": 33.54,
+            "n": 153
+          },
+          "era": {
+            "accuracy_pct": 94.8,
+            "mean_calls": 58.63,
+            "n": 153
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 88.9,
+            "mean_calls": 22.95,
+            "n": 153
+          },
+          "gra": {
+            "accuracy_pct": 88.2,
+            "mean_calls": 34.16,
+            "n": 153
+          },
+          "era": {
+            "accuracy_pct": 93.5,
+            "mean_calls": 50.65,
+            "n": 153
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 87.6,
+            "mean_calls": 23.9,
+            "n": 153
+          },
+          "gra": {
+            "accuracy_pct": 89.5,
+            "mean_calls": 35.89,
+            "n": 153
+          },
+          "era": {
+            "accuracy_pct": 92.8,
+            "mean_calls": 49.58,
+            "n": 153
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 90.8,
+            "mean_calls": 29.27,
+            "n": 153
+          },
+          "gra": {
+            "accuracy_pct": 90.2,
+            "mean_calls": 38.76,
+            "n": 153
+          },
+          "era": {
+            "accuracy_pct": 94.1,
+            "mean_calls": 45.76,
+            "n": 153
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 91.5,
+            "mean_calls": 27.59,
+            "n": 153
+          },
+          "gra": {
+            "accuracy_pct": 92.2,
+            "mean_calls": 41.48,
+            "n": 153
+          },
+          "era": {
+            "accuracy_pct": 95.4,
+            "mean_calls": 41.53,
+            "n": 153
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 90.8,
+            "mean_calls": 37.49,
+            "n": 153
+          },
+          "gra": {
+            "accuracy_pct": 92.2,
+            "mean_calls": 50.19,
+            "n": 153
+          },
+          "era": {
+            "accuracy_pct": 95.4,
+            "mean_calls": 46.58,
+            "n": 153
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 93.5,
+            "mean_calls": 48.26,
+            "n": 153
+          },
+          "gra": {
+            "accuracy_pct": 93.5,
+            "mean_calls": 63.5,
+            "n": 153
+          },
+          "era": {
+            "accuracy_pct": 96.7,
+            "mean_calls": 53.83,
+            "n": 153
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 92.2,
+            "mean_calls": 67.76,
+            "n": 153
+          },
+          "gra": {
+            "accuracy_pct": 93.5,
+            "mean_calls": 82.06,
+            "n": 153
+          },
+          "era": {
+            "accuracy_pct": 96.1,
+            "mean_calls": 77.17,
+            "n": 153
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 87.6,
+          "mean_calls": 23.9,
+          "n": 153
+        },
+        "no_entropy": {
+          "accuracy_pct": 89.5,
+          "mean_calls": 35.89,
+          "n": 153
+        },
+        "no_graph": {
+          "accuracy_pct": 92.8,
+          "mean_calls": 49.58,
+          "n": 153
+        },
+        "got_only": {
+          "accuracy_pct": 15.0,
+          "mean_calls": 0.93,
+          "n": 153
+        },
+        "got_greedy": {
+          "accuracy_pct": 20.9,
+          "mean_calls": 1.33,
+          "n": 153
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 86.3,
+          "mean_calls": 46.32,
+          "n": 153
+        },
+        "4": {
+          "accuracy_pct": 82.4,
+          "mean_calls": 43.02,
+          "n": 153
+        },
+        "8": {
+          "accuracy_pct": 79.1,
+          "mean_calls": 46.72,
+          "n": 153
+        },
+        "16": {
+          "accuracy_pct": 69.3,
+          "mean_calls": 47.1,
+          "n": 153
+        },
+        "32": {
+          "accuracy_pct": 72.5,
+          "mean_calls": 65.76,
+          "n": 153
+        },
+        "64": {
+          "accuracy_pct": 65.4,
+          "mean_calls": 95.84,
+          "n": 153
+        },
+        "128": {
+          "accuracy_pct": 66.0,
+          "mean_calls": 160.94,
+          "n": 153
+        }
+      }
+    },
+    "curated_criteria": {
+      "n": 145,
+      "bfs_calls": 160.48,
+      "sra": {
+        "accuracy_pct": 73.8,
+        "mean_calls": 7.26,
+        "n": 145
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 92.4,
+            "mean_calls": 51.74,
+            "n": 145
+          },
+          "gra": {
+            "accuracy_pct": 95.2,
+            "mean_calls": 86.86,
+            "n": 145
+          },
+          "era": {
+            "accuracy_pct": 95.9,
+            "mean_calls": 90.18,
+            "n": 145
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 93.8,
+            "mean_calls": 44.06,
+            "n": 145
+          },
+          "gra": {
+            "accuracy_pct": 95.2,
+            "mean_calls": 86.31,
+            "n": 145
+          },
+          "era": {
+            "accuracy_pct": 96.6,
+            "mean_calls": 76.63,
+            "n": 145
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 93.8,
+            "mean_calls": 43.95,
+            "n": 145
+          },
+          "gra": {
+            "accuracy_pct": 95.9,
+            "mean_calls": 87.03,
+            "n": 145
+          },
+          "era": {
+            "accuracy_pct": 96.6,
+            "mean_calls": 71.94,
+            "n": 145
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 94.5,
+            "mean_calls": 47.27,
+            "n": 145
+          },
+          "gra": {
+            "accuracy_pct": 95.2,
+            "mean_calls": 89.77,
+            "n": 145
+          },
+          "era": {
+            "accuracy_pct": 95.2,
+            "mean_calls": 74.85,
+            "n": 145
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 94.5,
+            "mean_calls": 48.3,
+            "n": 145
+          },
+          "gra": {
+            "accuracy_pct": 95.9,
+            "mean_calls": 93.15,
+            "n": 145
+          },
+          "era": {
+            "accuracy_pct": 95.9,
+            "mean_calls": 61.97,
+            "n": 145
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 96.6,
+            "mean_calls": 44.77,
+            "n": 145
+          },
+          "gra": {
+            "accuracy_pct": 96.6,
+            "mean_calls": 100.15,
+            "n": 145
+          },
+          "era": {
+            "accuracy_pct": 96.6,
+            "mean_calls": 52.86,
+            "n": 145
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 96.6,
+            "mean_calls": 52.79,
+            "n": 145
+          },
+          "gra": {
+            "accuracy_pct": 96.6,
+            "mean_calls": 110.94,
+            "n": 145
+          },
+          "era": {
+            "accuracy_pct": 96.6,
+            "mean_calls": 59.5,
+            "n": 145
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 96.6,
+            "mean_calls": 76.26,
+            "n": 145
+          },
+          "gra": {
+            "accuracy_pct": 96.6,
+            "mean_calls": 123.11,
+            "n": 145
+          },
+          "era": {
+            "accuracy_pct": 96.6,
+            "mean_calls": 86.72,
+            "n": 145
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 93.8,
+          "mean_calls": 43.95,
+          "n": 145
+        },
+        "no_entropy": {
+          "accuracy_pct": 95.9,
+          "mean_calls": 87.03,
+          "n": 145
+        },
+        "no_graph": {
+          "accuracy_pct": 96.6,
+          "mean_calls": 71.94,
+          "n": 145
+        },
+        "got_only": {
+          "accuracy_pct": 16.6,
+          "mean_calls": 0.9,
+          "n": 145
+        },
+        "got_greedy": {
+          "accuracy_pct": 31.0,
+          "mean_calls": 1.44,
+          "n": 145
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 84.8,
+          "mean_calls": 71.24,
+          "n": 145
+        },
+        "4": {
+          "accuracy_pct": 86.2,
+          "mean_calls": 63.39,
+          "n": 145
+        },
+        "8": {
+          "accuracy_pct": 85.5,
+          "mean_calls": 73.53,
+          "n": 145
+        },
+        "16": {
+          "accuracy_pct": 83.4,
+          "mean_calls": 81.94,
+          "n": 145
+        },
+        "32": {
+          "accuracy_pct": 80.0,
+          "mean_calls": 101.99,
+          "n": 145
+        },
+        "64": {
+          "accuracy_pct": 74.5,
+          "mean_calls": 129.28,
+          "n": 145
+        },
+        "128": {
+          "accuracy_pct": 74.5,
+          "mean_calls": 193.88,
+          "n": 145
+        }
+      }
+    },
+    "curated_pragma": {
+      "n": 150,
+      "bfs_calls": 59.55,
+      "sra": {
+        "accuracy_pct": 24.7,
+        "mean_calls": 0.82,
+        "n": 150
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 75.3,
+            "mean_calls": 24.95,
+            "n": 150
+          },
+          "gra": {
+            "accuracy_pct": 80.7,
+            "mean_calls": 42.53,
+            "n": 150
+          },
+          "era": {
+            "accuracy_pct": 82.0,
+            "mean_calls": 34.23,
+            "n": 150
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 78.0,
+            "mean_calls": 19.91,
+            "n": 150
+          },
+          "gra": {
+            "accuracy_pct": 82.0,
+            "mean_calls": 42.24,
+            "n": 150
+          },
+          "era": {
+            "accuracy_pct": 82.0,
+            "mean_calls": 29.09,
+            "n": 150
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 84.7,
+            "mean_calls": 20.28,
+            "n": 150
+          },
+          "gra": {
+            "accuracy_pct": 84.0,
+            "mean_calls": 43.05,
+            "n": 150
+          },
+          "era": {
+            "accuracy_pct": 86.7,
+            "mean_calls": 28.3,
+            "n": 150
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 89.3,
+            "mean_calls": 24.34,
+            "n": 150
+          },
+          "gra": {
+            "accuracy_pct": 84.0,
+            "mean_calls": 44.54,
+            "n": 150
+          },
+          "era": {
+            "accuracy_pct": 90.0,
+            "mean_calls": 31.0,
+            "n": 150
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 87.3,
+            "mean_calls": 30.12,
+            "n": 150
+          },
+          "gra": {
+            "accuracy_pct": 86.0,
+            "mean_calls": 47.63,
+            "n": 150
+          },
+          "era": {
+            "accuracy_pct": 90.7,
+            "mean_calls": 32.54,
+            "n": 150
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 89.3,
+            "mean_calls": 37.17,
+            "n": 150
+          },
+          "gra": {
+            "accuracy_pct": 89.3,
+            "mean_calls": 54.1,
+            "n": 150
+          },
+          "era": {
+            "accuracy_pct": 93.3,
+            "mean_calls": 38.11,
+            "n": 150
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 93.3,
+            "mean_calls": 43.21,
+            "n": 150
+          },
+          "gra": {
+            "accuracy_pct": 92.0,
+            "mean_calls": 64.91,
+            "n": 150
+          },
+          "era": {
+            "accuracy_pct": 94.7,
+            "mean_calls": 43.98,
+            "n": 150
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 96.0,
+            "mean_calls": 61.53,
+            "n": 150
+          },
+          "gra": {
+            "accuracy_pct": 93.3,
+            "mean_calls": 80.73,
+            "n": 150
+          },
+          "era": {
+            "accuracy_pct": 96.0,
+            "mean_calls": 62.03,
+            "n": 150
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 84.7,
+          "mean_calls": 20.28,
+          "n": 150
+        },
+        "no_entropy": {
+          "accuracy_pct": 84.0,
+          "mean_calls": 43.05,
+          "n": 150
+        },
+        "no_graph": {
+          "accuracy_pct": 86.7,
+          "mean_calls": 28.3,
+          "n": 150
+        },
+        "got_only": {
+          "accuracy_pct": 7.3,
+          "mean_calls": 0.99,
+          "n": 150
+        },
+        "got_greedy": {
+          "accuracy_pct": 8.7,
+          "mean_calls": 1.43,
+          "n": 150
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 50.7,
+          "mean_calls": 36.39,
+          "n": 150
+        },
+        "4": {
+          "accuracy_pct": 55.3,
+          "mean_calls": 42.69,
+          "n": 150
+        },
+        "8": {
+          "accuracy_pct": 80.0,
+          "mean_calls": 42.95,
+          "n": 150
+        },
+        "16": {
+          "accuracy_pct": 66.7,
+          "mean_calls": 55.53,
+          "n": 150
+        },
+        "32": {
+          "accuracy_pct": 73.3,
+          "mean_calls": 61.84,
+          "n": 150
+        },
+        "64": {
+          "accuracy_pct": 75.3,
+          "mean_calls": 90.42,
+          "n": 150
+        },
+        "128": {
+          "accuracy_pct": 76.7,
+          "mean_calls": 153.89,
+          "n": 150
+        }
+      }
+    }
+  },
+  "qwen35-122b-100": {
+    "msmarco_criteria": {
+      "n": 141,
+      "bfs_calls": 171.56,
+      "sra": {
+        "accuracy_pct": 63.8,
+        "mean_calls": 24.07,
+        "n": 141
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 87.9,
+            "mean_calls": 53.24,
+            "n": 141
+          },
+          "gra": {
+            "accuracy_pct": 93.6,
+            "mean_calls": 72.23,
+            "n": 141
+          },
+          "era": {
+            "accuracy_pct": 92.9,
+            "mean_calls": 99.18,
+            "n": 141
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 89.4,
+            "mean_calls": 42.82,
+            "n": 141
+          },
+          "gra": {
+            "accuracy_pct": 95.7,
+            "mean_calls": 70.47,
+            "n": 141
+          },
+          "era": {
+            "accuracy_pct": 92.9,
+            "mean_calls": 80.31,
+            "n": 141
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 90.1,
+            "mean_calls": 40.99,
+            "n": 141
+          },
+          "gra": {
+            "accuracy_pct": 96.5,
+            "mean_calls": 69.62,
+            "n": 141
+          },
+          "era": {
+            "accuracy_pct": 93.6,
+            "mean_calls": 72.62,
+            "n": 141
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 92.9,
+            "mean_calls": 46.84,
+            "n": 141
+          },
+          "gra": {
+            "accuracy_pct": 95.7,
+            "mean_calls": 69.42,
+            "n": 141
+          },
+          "era": {
+            "accuracy_pct": 92.9,
+            "mean_calls": 78.26,
+            "n": 141
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 92.9,
+            "mean_calls": 46.96,
+            "n": 141
+          },
+          "gra": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 74.5,
+            "n": 141
+          },
+          "era": {
+            "accuracy_pct": 93.6,
+            "mean_calls": 69.3,
+            "n": 141
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 92.2,
+            "mean_calls": 48.43,
+            "n": 141
+          },
+          "gra": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 78.99,
+            "n": 141
+          },
+          "era": {
+            "accuracy_pct": 93.6,
+            "mean_calls": 64.0,
+            "n": 141
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 91.5,
+            "mean_calls": 60.73,
+            "n": 141
+          },
+          "gra": {
+            "accuracy_pct": 94.3,
+            "mean_calls": 93.67,
+            "n": 141
+          },
+          "era": {
+            "accuracy_pct": 94.3,
+            "mean_calls": 72.22,
+            "n": 141
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 92.2,
+            "mean_calls": 89.66,
+            "n": 141
+          },
+          "gra": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 116.6,
+            "n": 141
+          },
+          "era": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 102.77,
+            "n": 141
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 90.1,
+          "mean_calls": 40.99,
+          "n": 141
+        },
+        "no_entropy": {
+          "accuracy_pct": 96.5,
+          "mean_calls": 69.62,
+          "n": 141
+        },
+        "no_graph": {
+          "accuracy_pct": 93.6,
+          "mean_calls": 72.62,
+          "n": 141
+        },
+        "got_only": {
+          "accuracy_pct": 9.9,
+          "mean_calls": 0.96,
+          "n": 141
+        },
+        "got_greedy": {
+          "accuracy_pct": 15.6,
+          "mean_calls": 1.5,
+          "n": 141
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 73.8,
+          "mean_calls": 81.33,
+          "n": 141
+        },
+        "4": {
+          "accuracy_pct": 67.4,
+          "mean_calls": 80.64,
+          "n": 141
+        },
+        "8": {
+          "accuracy_pct": 63.8,
+          "mean_calls": 89.85,
+          "n": 141
+        },
+        "16": {
+          "accuracy_pct": 58.2,
+          "mean_calls": 85.21,
+          "n": 141
+        },
+        "32": {
+          "accuracy_pct": 57.4,
+          "mean_calls": 106.81,
+          "n": 141
+        },
+        "64": {
+          "accuracy_pct": 56.0,
+          "mean_calls": 144.78,
+          "n": 141
+        },
+        "128": {
+          "accuracy_pct": 56.0,
+          "mean_calls": 208.12,
+          "n": 141
+        }
+      }
+    },
+    "msmarco_pragma": {
+      "n": 166,
+      "bfs_calls": 71.6,
+      "sra": {
+        "accuracy_pct": 57.2,
+        "mean_calls": 5.9,
+        "n": 166
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 83.7,
+            "mean_calls": 19.15,
+            "n": 166
+          },
+          "gra": {
+            "accuracy_pct": 88.0,
+            "mean_calls": 29.13,
+            "n": 166
+          },
+          "era": {
+            "accuracy_pct": 92.2,
+            "mean_calls": 38.1,
+            "n": 166
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 86.7,
+            "mean_calls": 16.49,
+            "n": 166
+          },
+          "gra": {
+            "accuracy_pct": 89.2,
+            "mean_calls": 30.55,
+            "n": 166
+          },
+          "era": {
+            "accuracy_pct": 92.2,
+            "mean_calls": 30.78,
+            "n": 166
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 86.7,
+            "mean_calls": 16.92,
+            "n": 166
+          },
+          "gra": {
+            "accuracy_pct": 88.0,
+            "mean_calls": 31.89,
+            "n": 166
+          },
+          "era": {
+            "accuracy_pct": 92.2,
+            "mean_calls": 29.51,
+            "n": 166
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 87.3,
+            "mean_calls": 20.99,
+            "n": 166
+          },
+          "gra": {
+            "accuracy_pct": 88.0,
+            "mean_calls": 35.05,
+            "n": 166
+          },
+          "era": {
+            "accuracy_pct": 92.8,
+            "mean_calls": 36.7,
+            "n": 166
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 87.3,
+            "mean_calls": 25.17,
+            "n": 166
+          },
+          "gra": {
+            "accuracy_pct": 88.6,
+            "mean_calls": 40.22,
+            "n": 166
+          },
+          "era": {
+            "accuracy_pct": 89.2,
+            "mean_calls": 36.39,
+            "n": 166
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 89.2,
+            "mean_calls": 37.31,
+            "n": 166
+          },
+          "gra": {
+            "accuracy_pct": 90.4,
+            "mean_calls": 50.89,
+            "n": 166
+          },
+          "era": {
+            "accuracy_pct": 91.6,
+            "mean_calls": 44.39,
+            "n": 166
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 89.2,
+            "mean_calls": 54.02,
+            "n": 166
+          },
+          "gra": {
+            "accuracy_pct": 91.6,
+            "mean_calls": 68.73,
+            "n": 166
+          },
+          "era": {
+            "accuracy_pct": 90.4,
+            "mean_calls": 59.83,
+            "n": 166
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 90.4,
+            "mean_calls": 87.24,
+            "n": 166
+          },
+          "gra": {
+            "accuracy_pct": 92.8,
+            "mean_calls": 99.42,
+            "n": 166
+          },
+          "era": {
+            "accuracy_pct": 92.2,
+            "mean_calls": 92.3,
+            "n": 166
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 86.7,
+          "mean_calls": 16.92,
+          "n": 166
+        },
+        "no_entropy": {
+          "accuracy_pct": 88.0,
+          "mean_calls": 31.89,
+          "n": 166
+        },
+        "no_graph": {
+          "accuracy_pct": 92.2,
+          "mean_calls": 29.51,
+          "n": 166
+        },
+        "got_only": {
+          "accuracy_pct": 6.0,
+          "mean_calls": 0.98,
+          "n": 166
+        },
+        "got_greedy": {
+          "accuracy_pct": 7.2,
+          "mean_calls": 1.42,
+          "n": 166
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 40.4,
+          "mean_calls": 44.2,
+          "n": 166
+        },
+        "4": {
+          "accuracy_pct": 36.1,
+          "mean_calls": 43.54,
+          "n": 166
+        },
+        "8": {
+          "accuracy_pct": 38.0,
+          "mean_calls": 44.86,
+          "n": 166
+        },
+        "16": {
+          "accuracy_pct": 31.9,
+          "mean_calls": 47.27,
+          "n": 166
+        },
+        "32": {
+          "accuracy_pct": 31.3,
+          "mean_calls": 60.94,
+          "n": 166
+        },
+        "64": {
+          "accuracy_pct": 29.5,
+          "mean_calls": 95.21,
+          "n": 166
+        },
+        "128": {
+          "accuracy_pct": 29.5,
+          "mean_calls": 158.49,
+          "n": 166
+        }
+      }
+    },
+    "curated_criteria": {
+      "n": 190,
+      "bfs_calls": 175.21,
+      "sra": {
+        "accuracy_pct": 73.7,
+        "mean_calls": 30.44,
+        "n": 190
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 95.8,
+            "mean_calls": 96.34,
+            "n": 190
+          },
+          "gra": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 147.25,
+            "n": 190
+          },
+          "era": {
+            "accuracy_pct": 95.8,
+            "mean_calls": 98.67,
+            "n": 190
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 96.8,
+            "mean_calls": 81.13,
+            "n": 190
+          },
+          "gra": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 146.8,
+            "n": 190
+          },
+          "era": {
+            "accuracy_pct": 96.8,
+            "mean_calls": 84.26,
+            "n": 190
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 96.3,
+            "mean_calls": 72.24,
+            "n": 190
+          },
+          "gra": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 147.9,
+            "n": 190
+          },
+          "era": {
+            "accuracy_pct": 96.3,
+            "mean_calls": 76.9,
+            "n": 190
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 96.8,
+            "mean_calls": 71.64,
+            "n": 190
+          },
+          "gra": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 151.1,
+            "n": 190
+          },
+          "era": {
+            "accuracy_pct": 96.8,
+            "mean_calls": 75.68,
+            "n": 190
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 96.8,
+            "mean_calls": 59.95,
+            "n": 190
+          },
+          "gra": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 155.39,
+            "n": 190
+          },
+          "era": {
+            "accuracy_pct": 96.8,
+            "mean_calls": 61.12,
+            "n": 190
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 95.8,
+            "mean_calls": 56.62,
+            "n": 190
+          },
+          "gra": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 163.96,
+            "n": 190
+          },
+          "era": {
+            "accuracy_pct": 95.8,
+            "mean_calls": 56.94,
+            "n": 190
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 96.8,
+            "mean_calls": 62.62,
+            "n": 190
+          },
+          "gra": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 179.26,
+            "n": 190
+          },
+          "era": {
+            "accuracy_pct": 96.8,
+            "mean_calls": 63.34,
+            "n": 190
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 97.9,
+            "mean_calls": 94.91,
+            "n": 190
+          },
+          "gra": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 204.47,
+            "n": 190
+          },
+          "era": {
+            "accuracy_pct": 97.9,
+            "mean_calls": 94.99,
+            "n": 190
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 96.3,
+          "mean_calls": 72.24,
+          "n": 190
+        },
+        "no_entropy": {
+          "accuracy_pct": 100.0,
+          "mean_calls": 147.9,
+          "n": 190
+        },
+        "no_graph": {
+          "accuracy_pct": 96.3,
+          "mean_calls": 76.9,
+          "n": 190
+        },
+        "got_only": {
+          "accuracy_pct": 0.0,
+          "mean_calls": 1.0,
+          "n": 190
+        },
+        "got_greedy": {
+          "accuracy_pct": 0.0,
+          "mean_calls": 1.0,
+          "n": 190
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 71.6,
+          "mean_calls": 78.06,
+          "n": 190
+        },
+        "4": {
+          "accuracy_pct": 63.2,
+          "mean_calls": 71.02,
+          "n": 190
+        },
+        "8": {
+          "accuracy_pct": 59.5,
+          "mean_calls": 80.56,
+          "n": 190
+        },
+        "16": {
+          "accuracy_pct": 52.6,
+          "mean_calls": 79.26,
+          "n": 190
+        },
+        "32": {
+          "accuracy_pct": 53.2,
+          "mean_calls": 97.4,
+          "n": 190
+        },
+        "64": {
+          "accuracy_pct": 51.1,
+          "mean_calls": 133.14,
+          "n": 190
+        },
+        "128": {
+          "accuracy_pct": 54.7,
+          "mean_calls": 196.58,
+          "n": 190
+        }
+      }
+    },
+    "curated_pragma": {
+      "n": 181,
+      "bfs_calls": 38.09,
+      "sra": {
+        "accuracy_pct": 37.0,
+        "mean_calls": 3.03,
+        "n": 181
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 94.5,
+            "mean_calls": 22.27,
+            "n": 181
+          },
+          "gra": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 33.65,
+            "n": 181
+          },
+          "era": {
+            "accuracy_pct": 94.5,
+            "mean_calls": 26.04,
+            "n": 181
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 87.3,
+            "mean_calls": 19.66,
+            "n": 181
+          },
+          "gra": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 35.37,
+            "n": 181
+          },
+          "era": {
+            "accuracy_pct": 87.3,
+            "mean_calls": 21.61,
+            "n": 181
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 85.6,
+            "mean_calls": 16.1,
+            "n": 181
+          },
+          "gra": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 36.61,
+            "n": 181
+          },
+          "era": {
+            "accuracy_pct": 85.6,
+            "mean_calls": 18.74,
+            "n": 181
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 87.3,
+            "mean_calls": 18.5,
+            "n": 181
+          },
+          "gra": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 37.54,
+            "n": 181
+          },
+          "era": {
+            "accuracy_pct": 87.3,
+            "mean_calls": 20.0,
+            "n": 181
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 84.0,
+            "mean_calls": 20.61,
+            "n": 181
+          },
+          "gra": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 42.03,
+            "n": 181
+          },
+          "era": {
+            "accuracy_pct": 84.0,
+            "mean_calls": 25.72,
+            "n": 181
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 84.0,
+            "mean_calls": 30.52,
+            "n": 181
+          },
+          "gra": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 52.81,
+            "n": 181
+          },
+          "era": {
+            "accuracy_pct": 84.0,
+            "mean_calls": 31.71,
+            "n": 181
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 87.8,
+            "mean_calls": 49.84,
+            "n": 181
+          },
+          "gra": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 71.9,
+            "n": 181
+          },
+          "era": {
+            "accuracy_pct": 87.8,
+            "mean_calls": 50.81,
+            "n": 181
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 93.4,
+            "mean_calls": 82.12,
+            "n": 181
+          },
+          "gra": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 103.35,
+            "n": 181
+          },
+          "era": {
+            "accuracy_pct": 93.4,
+            "mean_calls": 82.39,
+            "n": 181
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 85.6,
+          "mean_calls": 16.1,
+          "n": 181
+        },
+        "no_entropy": {
+          "accuracy_pct": 100.0,
+          "mean_calls": 36.61,
+          "n": 181
+        },
+        "no_graph": {
+          "accuracy_pct": 85.6,
+          "mean_calls": 18.74,
+          "n": 181
+        },
+        "got_only": {
+          "accuracy_pct": 0.0,
+          "mean_calls": 1.0,
+          "n": 181
+        },
+        "got_greedy": {
+          "accuracy_pct": 0.0,
+          "mean_calls": 1.0,
+          "n": 181
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 37.0,
+          "mean_calls": 31.75,
+          "n": 181
+        },
+        "4": {
+          "accuracy_pct": 35.4,
+          "mean_calls": 33.21,
+          "n": 181
+        },
+        "8": {
+          "accuracy_pct": 55.8,
+          "mean_calls": 32.96,
+          "n": 181
+        },
+        "16": {
+          "accuracy_pct": 32.0,
+          "mean_calls": 29.65,
+          "n": 181
+        },
+        "32": {
+          "accuracy_pct": 30.4,
+          "mean_calls": 47.45,
+          "n": 181
+        },
+        "64": {
+          "accuracy_pct": 29.8,
+          "mean_calls": 79.36,
+          "n": 181
+        },
+        "128": {
+          "accuracy_pct": 33.1,
+          "mean_calls": 143.65,
+          "n": 181
+        }
+      }
+    }
+  },
+  "llama31-8b-regen": {
+    "msmarco_criteria": {
+      "n": 156,
+      "bfs_calls": 60.36,
+      "sra": {
+        "accuracy_pct": 71.2,
+        "mean_calls": 20.28,
+        "n": 156
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 89.1,
+            "mean_calls": 42.55,
+            "n": 156
+          },
+          "gra": {
+            "accuracy_pct": 92.3,
+            "mean_calls": 49.81,
+            "n": 156
+          },
+          "era": {
+            "accuracy_pct": 96.8,
+            "mean_calls": 50.37,
+            "n": 156
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 92.9,
+            "mean_calls": 37.0,
+            "n": 156
+          },
+          "gra": {
+            "accuracy_pct": 94.2,
+            "mean_calls": 49.55,
+            "n": 156
+          },
+          "era": {
+            "accuracy_pct": 94.2,
+            "mean_calls": 41.76,
+            "n": 156
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 92.3,
+            "mean_calls": 36.62,
+            "n": 156
+          },
+          "gra": {
+            "accuracy_pct": 94.2,
+            "mean_calls": 49.96,
+            "n": 156
+          },
+          "era": {
+            "accuracy_pct": 92.9,
+            "mean_calls": 41.97,
+            "n": 156
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 89.1,
+            "mean_calls": 35.77,
+            "n": 156
+          },
+          "gra": {
+            "accuracy_pct": 92.3,
+            "mean_calls": 52.19,
+            "n": 156
+          },
+          "era": {
+            "accuracy_pct": 91.0,
+            "mean_calls": 41.15,
+            "n": 156
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 87.2,
+            "mean_calls": 31.38,
+            "n": 156
+          },
+          "gra": {
+            "accuracy_pct": 93.6,
+            "mean_calls": 54.29,
+            "n": 156
+          },
+          "era": {
+            "accuracy_pct": 88.5,
+            "mean_calls": 35.53,
+            "n": 156
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 85.9,
+            "mean_calls": 39.19,
+            "n": 156
+          },
+          "gra": {
+            "accuracy_pct": 93.6,
+            "mean_calls": 59.83,
+            "n": 156
+          },
+          "era": {
+            "accuracy_pct": 87.2,
+            "mean_calls": 41.73,
+            "n": 156
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 84.6,
+            "mean_calls": 53.31,
+            "n": 156
+          },
+          "gra": {
+            "accuracy_pct": 94.9,
+            "mean_calls": 70.58,
+            "n": 156
+          },
+          "era": {
+            "accuracy_pct": 86.5,
+            "mean_calls": 54.37,
+            "n": 156
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 90.4,
+            "mean_calls": 70.64,
+            "n": 156
+          },
+          "gra": {
+            "accuracy_pct": 96.2,
+            "mean_calls": 84.4,
+            "n": 156
+          },
+          "era": {
+            "accuracy_pct": 91.0,
+            "mean_calls": 72.32,
+            "n": 156
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 92.3,
+          "mean_calls": 36.62,
+          "n": 156
+        },
+        "no_entropy": {
+          "accuracy_pct": 94.2,
+          "mean_calls": 49.96,
+          "n": 156
+        },
+        "no_graph": {
+          "accuracy_pct": 92.9,
+          "mean_calls": 41.97,
+          "n": 156
+        },
+        "got_only": {
+          "accuracy_pct": 3.2,
+          "mean_calls": 0.43,
+          "n": 156
+        },
+        "got_greedy": {
+          "accuracy_pct": 5.1,
+          "mean_calls": 0.65,
+          "n": 156
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 81.4,
+          "mean_calls": 52.53,
+          "n": 156
+        },
+        "4": {
+          "accuracy_pct": 73.1,
+          "mean_calls": 46.72,
+          "n": 156
+        },
+        "8": {
+          "accuracy_pct": 62.8,
+          "mean_calls": 56.14,
+          "n": 156
+        },
+        "16": {
+          "accuracy_pct": 68.6,
+          "mean_calls": 63.22,
+          "n": 156
+        },
+        "32": {
+          "accuracy_pct": 71.2,
+          "mean_calls": 82.44,
+          "n": 156
+        },
+        "64": {
+          "accuracy_pct": 74.4,
+          "mean_calls": 117.06,
+          "n": 156
+        },
+        "128": {
+          "accuracy_pct": 76.3,
+          "mean_calls": 177.95,
+          "n": 156
+        }
+      }
+    },
+    "msmarco_pragma": {
+      "n": 159,
+      "bfs_calls": 69.38,
+      "sra": {
+        "accuracy_pct": 64.8,
+        "mean_calls": 7.91,
+        "n": 159
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 85.5,
+            "mean_calls": 29.96,
+            "n": 159
+          },
+          "gra": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 49.91,
+            "n": 159
+          },
+          "era": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 43.95,
+            "n": 159
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 91.8,
+            "mean_calls": 22.87,
+            "n": 159
+          },
+          "gra": {
+            "accuracy_pct": 93.7,
+            "mean_calls": 48.7,
+            "n": 159
+          },
+          "era": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 32.88,
+            "n": 159
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 89.3,
+            "mean_calls": 32.36,
+            "n": 159
+          },
+          "gra": {
+            "accuracy_pct": 93.7,
+            "mean_calls": 51.5,
+            "n": 159
+          },
+          "era": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 40.45,
+            "n": 159
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 81.1,
+            "mean_calls": 32.7,
+            "n": 159
+          },
+          "gra": {
+            "accuracy_pct": 91.2,
+            "mean_calls": 52.68,
+            "n": 159
+          },
+          "era": {
+            "accuracy_pct": 88.1,
+            "mean_calls": 41.26,
+            "n": 159
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 79.2,
+            "mean_calls": 33.52,
+            "n": 159
+          },
+          "gra": {
+            "accuracy_pct": 88.7,
+            "mean_calls": 55.13,
+            "n": 159
+          },
+          "era": {
+            "accuracy_pct": 84.3,
+            "mean_calls": 39.6,
+            "n": 159
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 80.5,
+            "mean_calls": 35.97,
+            "n": 159
+          },
+          "gra": {
+            "accuracy_pct": 89.3,
+            "mean_calls": 61.83,
+            "n": 159
+          },
+          "era": {
+            "accuracy_pct": 83.6,
+            "mean_calls": 40.55,
+            "n": 159
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 84.9,
+            "mean_calls": 50.35,
+            "n": 159
+          },
+          "gra": {
+            "accuracy_pct": 86.8,
+            "mean_calls": 73.36,
+            "n": 159
+          },
+          "era": {
+            "accuracy_pct": 93.7,
+            "mean_calls": 54.58,
+            "n": 159
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 89.3,
+            "mean_calls": 72.01,
+            "n": 159
+          },
+          "gra": {
+            "accuracy_pct": 89.9,
+            "mean_calls": 87.22,
+            "n": 159
+          },
+          "era": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 77.94,
+            "n": 159
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 89.3,
+          "mean_calls": 32.36,
+          "n": 159
+        },
+        "no_entropy": {
+          "accuracy_pct": 93.7,
+          "mean_calls": 51.5,
+          "n": 159
+        },
+        "no_graph": {
+          "accuracy_pct": 95.0,
+          "mean_calls": 40.45,
+          "n": 159
+        },
+        "got_only": {
+          "accuracy_pct": 9.4,
+          "mean_calls": 0.98,
+          "n": 159
+        },
+        "got_greedy": {
+          "accuracy_pct": 22.0,
+          "mean_calls": 1.65,
+          "n": 159
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 65.4,
+          "mean_calls": 57.13,
+          "n": 159
+        },
+        "4": {
+          "accuracy_pct": 67.3,
+          "mean_calls": 48.19,
+          "n": 159
+        },
+        "8": {
+          "accuracy_pct": 73.0,
+          "mean_calls": 55.41,
+          "n": 159
+        },
+        "16": {
+          "accuracy_pct": 68.6,
+          "mean_calls": 64.8,
+          "n": 159
+        },
+        "32": {
+          "accuracy_pct": 71.7,
+          "mean_calls": 85.1,
+          "n": 159
+        },
+        "64": {
+          "accuracy_pct": 71.7,
+          "mean_calls": 120.18,
+          "n": 159
+        },
+        "128": {
+          "accuracy_pct": 73.6,
+          "mean_calls": 185.35,
+          "n": 159
+        }
+      }
+    },
+    "curated_criteria": {
+      "n": 160,
+      "bfs_calls": 104.17,
+      "sra": {
+        "accuracy_pct": 65.6,
+        "mean_calls": 5.48,
+        "n": 160
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 88.1,
+            "mean_calls": 35.67,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 90.6,
+            "mean_calls": 52.36,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 61.01,
+            "n": 160
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 86.9,
+            "mean_calls": 27.55,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 91.9,
+            "mean_calls": 52.49,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 89.4,
+            "mean_calls": 46.34,
+            "n": 160
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 84.4,
+            "mean_calls": 25.63,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 91.9,
+            "mean_calls": 53.46,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 89.4,
+            "mean_calls": 43.03,
+            "n": 160
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 90.0,
+            "mean_calls": 35.51,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 92.5,
+            "mean_calls": 57.56,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 89.4,
+            "mean_calls": 51.51,
+            "n": 160
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 88.1,
+            "mean_calls": 37.54,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 92.5,
+            "mean_calls": 61.24,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 90.0,
+            "mean_calls": 48.67,
+            "n": 160
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 90.0,
+            "mean_calls": 40.76,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 93.8,
+            "mean_calls": 67.51,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 88.8,
+            "mean_calls": 52.77,
+            "n": 160
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 91.2,
+            "mean_calls": 53.94,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 78.07,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 90.0,
+            "mean_calls": 65.08,
+            "n": 160
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 93.1,
+            "mean_calls": 72.39,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 93.68,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 91.9,
+            "mean_calls": 84.56,
+            "n": 160
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 84.4,
+          "mean_calls": 25.63,
+          "n": 160
+        },
+        "no_entropy": {
+          "accuracy_pct": 91.9,
+          "mean_calls": 53.46,
+          "n": 160
+        },
+        "no_graph": {
+          "accuracy_pct": 89.4,
+          "mean_calls": 43.03,
+          "n": 160
+        },
+        "got_only": {
+          "accuracy_pct": 5.0,
+          "mean_calls": 0.89,
+          "n": 160
+        },
+        "got_greedy": {
+          "accuracy_pct": 11.9,
+          "mean_calls": 1.54,
+          "n": 160
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 88.1,
+          "mean_calls": 76.89,
+          "n": 160
+        },
+        "4": {
+          "accuracy_pct": 81.9,
+          "mean_calls": 80.3,
+          "n": 160
+        },
+        "8": {
+          "accuracy_pct": 86.2,
+          "mean_calls": 87.86,
+          "n": 160
+        },
+        "16": {
+          "accuracy_pct": 85.0,
+          "mean_calls": 97.24,
+          "n": 160
+        },
+        "32": {
+          "accuracy_pct": 89.4,
+          "mean_calls": 117.53,
+          "n": 160
+        },
+        "64": {
+          "accuracy_pct": 88.1,
+          "mean_calls": 146.93,
+          "n": 160
+        },
+        "128": {
+          "accuracy_pct": 89.4,
+          "mean_calls": 213.03,
+          "n": 160
+        }
+      }
+    },
+    "curated_pragma": {
+      "n": 160,
+      "bfs_calls": 74.97,
+      "sra": {
+        "accuracy_pct": 46.9,
+        "mean_calls": 3.83,
+        "n": 160
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 77.5,
+            "mean_calls": 34.65,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 87.5,
+            "mean_calls": 50.91,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 93.8,
+            "mean_calls": 47.74,
+            "n": 160
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 85.0,
+            "mean_calls": 31.99,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 91.9,
+            "mean_calls": 51.76,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 91.2,
+            "mean_calls": 41.54,
+            "n": 160
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 83.8,
+            "mean_calls": 32.76,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 93.8,
+            "mean_calls": 51.3,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 86.2,
+            "mean_calls": 37.31,
+            "n": 160
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 89.4,
+            "mean_calls": 35.72,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 94.4,
+            "mean_calls": 54.21,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 91.2,
+            "mean_calls": 44.44,
+            "n": 160
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 86.9,
+            "mean_calls": 35.88,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 58.52,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 88.1,
+            "mean_calls": 43.52,
+            "n": 160
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 86.9,
+            "mean_calls": 40.38,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 94.4,
+            "mean_calls": 64.92,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 90.0,
+            "mean_calls": 44.13,
+            "n": 160
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 90.0,
+            "mean_calls": 49.89,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 73.94,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 90.6,
+            "mean_calls": 53.14,
+            "n": 160
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 89.4,
+            "mean_calls": 70.06,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 90.64,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 92.5,
+            "mean_calls": 74.13,
+            "n": 160
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 83.8,
+          "mean_calls": 32.76,
+          "n": 160
+        },
+        "no_entropy": {
+          "accuracy_pct": 93.8,
+          "mean_calls": 51.3,
+          "n": 160
+        },
+        "no_graph": {
+          "accuracy_pct": 86.2,
+          "mean_calls": 37.31,
+          "n": 160
+        },
+        "got_only": {
+          "accuracy_pct": 6.9,
+          "mean_calls": 0.91,
+          "n": 160
+        },
+        "got_greedy": {
+          "accuracy_pct": 10.6,
+          "mean_calls": 1.55,
+          "n": 160
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 84.4,
+          "mean_calls": 63.55,
+          "n": 160
+        },
+        "4": {
+          "accuracy_pct": 76.9,
+          "mean_calls": 54.59,
+          "n": 160
+        },
+        "8": {
+          "accuracy_pct": 76.2,
+          "mean_calls": 59.96,
+          "n": 160
+        },
+        "16": {
+          "accuracy_pct": 80.0,
+          "mean_calls": 67.88,
+          "n": 160
+        },
+        "32": {
+          "accuracy_pct": 77.5,
+          "mean_calls": 88.36,
+          "n": 160
+        },
+        "64": {
+          "accuracy_pct": 78.8,
+          "mean_calls": 121.12,
+          "n": 160
+        },
+        "128": {
+          "accuracy_pct": 78.8,
+          "mean_calls": 185.64,
+          "n": 160
+        }
+      }
+    }
+  },
+  "qwen3-32b-regen": {
+    "msmarco_criteria": {
+      "n": 160,
+      "bfs_calls": 137.89,
+      "sra": {
+        "accuracy_pct": 75.6,
+        "mean_calls": 13.93,
+        "n": 160
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 52.43,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 96.9,
+            "mean_calls": 74.99,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 81.51,
+            "n": 160
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 45.09,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 96.9,
+            "mean_calls": 75.4,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 67.46,
+            "n": 160
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 48.78,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 96.9,
+            "mean_calls": 74.78,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 68.84,
+            "n": 160
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 44.56,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 75.86,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 57.13,
+            "n": 160
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 40.01,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 79.14,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 49.15,
+            "n": 160
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 93.8,
+            "mean_calls": 42.12,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 84.72,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 50.51,
+            "n": 160
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 58.3,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 99.4,
+            "mean_calls": 94.96,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 65.15,
+            "n": 160
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 81.06,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 99.4,
+            "mean_calls": 109.02,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 88.0,
+            "n": 160
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 95.0,
+          "mean_calls": 48.78,
+          "n": 160
+        },
+        "no_entropy": {
+          "accuracy_pct": 96.9,
+          "mean_calls": 74.78,
+          "n": 160
+        },
+        "no_graph": {
+          "accuracy_pct": 95.6,
+          "mean_calls": 68.84,
+          "n": 160
+        },
+        "got_only": {
+          "accuracy_pct": 1.9,
+          "mean_calls": 0.68,
+          "n": 160
+        },
+        "got_greedy": {
+          "accuracy_pct": 5.0,
+          "mean_calls": 1.05,
+          "n": 160
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 79.4,
+          "mean_calls": 69.05,
+          "n": 160
+        },
+        "4": {
+          "accuracy_pct": 81.2,
+          "mean_calls": 65.29,
+          "n": 160
+        },
+        "8": {
+          "accuracy_pct": 82.5,
+          "mean_calls": 75.13,
+          "n": 160
+        },
+        "16": {
+          "accuracy_pct": 85.0,
+          "mean_calls": 75.61,
+          "n": 160
+        },
+        "32": {
+          "accuracy_pct": 86.9,
+          "mean_calls": 93.37,
+          "n": 160
+        },
+        "64": {
+          "accuracy_pct": 83.8,
+          "mean_calls": 120.09,
+          "n": 160
+        },
+        "128": {
+          "accuracy_pct": 84.4,
+          "mean_calls": 184.29,
+          "n": 160
+        }
+      }
+    },
+    "msmarco_pragma": {
+      "n": 160,
+      "bfs_calls": 84.11,
+      "sra": {
+        "accuracy_pct": 54.4,
+        "mean_calls": 4.47,
+        "n": 160
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 26.62,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 93.8,
+            "mean_calls": 29.99,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 52.33,
+            "n": 160
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 24.48,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 93.8,
+            "mean_calls": 30.57,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 43.95,
+            "n": 160
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 92.5,
+            "mean_calls": 22.58,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 92.5,
+            "mean_calls": 32.21,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 96.9,
+            "mean_calls": 39.32,
+            "n": 160
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 24.45,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 96.2,
+            "mean_calls": 34.61,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 40.06,
+            "n": 160
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 26.3,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 38.31,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 99.4,
+            "mean_calls": 36.46,
+            "n": 160
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 35.69,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 99.4,
+            "mean_calls": 44.99,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 43.4,
+            "n": 160
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 49.26,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 57.62,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 99.4,
+            "mean_calls": 52.26,
+            "n": 160
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 70.02,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 77.43,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 77.12,
+            "n": 160
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 92.5,
+          "mean_calls": 22.58,
+          "n": 160
+        },
+        "no_entropy": {
+          "accuracy_pct": 92.5,
+          "mean_calls": 32.21,
+          "n": 160
+        },
+        "no_graph": {
+          "accuracy_pct": 96.9,
+          "mean_calls": 39.32,
+          "n": 160
+        },
+        "got_only": {
+          "accuracy_pct": 8.1,
+          "mean_calls": 0.84,
+          "n": 160
+        },
+        "got_greedy": {
+          "accuracy_pct": 13.1,
+          "mean_calls": 1.24,
+          "n": 160
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 52.5,
+          "mean_calls": 54.75,
+          "n": 160
+        },
+        "4": {
+          "accuracy_pct": 58.1,
+          "mean_calls": 54.23,
+          "n": 160
+        },
+        "8": {
+          "accuracy_pct": 75.6,
+          "mean_calls": 51.59,
+          "n": 160
+        },
+        "16": {
+          "accuracy_pct": 73.1,
+          "mean_calls": 51.54,
+          "n": 160
+        },
+        "32": {
+          "accuracy_pct": 75.0,
+          "mean_calls": 69.13,
+          "n": 160
+        },
+        "64": {
+          "accuracy_pct": 70.6,
+          "mean_calls": 96.47,
+          "n": 160
+        },
+        "128": {
+          "accuracy_pct": 70.6,
+          "mean_calls": 160.94,
+          "n": 160
+        }
+      }
+    },
+    "curated_criteria": {
+      "n": 160,
+      "bfs_calls": 158.0,
+      "sra": {
+        "accuracy_pct": 79.4,
+        "mean_calls": 11.98,
+        "n": 160
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 96.2,
+            "mean_calls": 51.26,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 94.4,
+            "mean_calls": 85.42,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 94.56,
+            "n": 160
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 96.2,
+            "mean_calls": 45.7,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 82.99,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 81.86,
+            "n": 160
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 43.97,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 83.01,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 99.4,
+            "mean_calls": 76.98,
+            "n": 160
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 54.08,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 83.68,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 99.4,
+            "mean_calls": 91.12,
+            "n": 160
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 51.2,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 87.64,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 73.81,
+            "n": 160
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 50.97,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 92.21,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 67.78,
+            "n": 160
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 53.27,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 102.24,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 99.4,
+            "mean_calls": 59.81,
+            "n": 160
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 78.39,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 116.26,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 90.39,
+            "n": 160
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 97.5,
+          "mean_calls": 43.97,
+          "n": 160
+        },
+        "no_entropy": {
+          "accuracy_pct": 97.5,
+          "mean_calls": 83.01,
+          "n": 160
+        },
+        "no_graph": {
+          "accuracy_pct": 99.4,
+          "mean_calls": 76.98,
+          "n": 160
+        },
+        "got_only": {
+          "accuracy_pct": 8.8,
+          "mean_calls": 0.95,
+          "n": 160
+        },
+        "got_greedy": {
+          "accuracy_pct": 19.4,
+          "mean_calls": 1.48,
+          "n": 160
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 78.1,
+          "mean_calls": 82.58,
+          "n": 160
+        },
+        "4": {
+          "accuracy_pct": 79.4,
+          "mean_calls": 84.21,
+          "n": 160
+        },
+        "8": {
+          "accuracy_pct": 85.6,
+          "mean_calls": 85.51,
+          "n": 160
+        },
+        "16": {
+          "accuracy_pct": 87.5,
+          "mean_calls": 86.76,
+          "n": 160
+        },
+        "32": {
+          "accuracy_pct": 86.2,
+          "mean_calls": 108.36,
+          "n": 160
+        },
+        "64": {
+          "accuracy_pct": 84.4,
+          "mean_calls": 135.59,
+          "n": 160
+        },
+        "128": {
+          "accuracy_pct": 83.1,
+          "mean_calls": 200.79,
+          "n": 160
+        }
+      }
+    },
+    "curated_pragma": {
+      "n": 160,
+      "bfs_calls": 75.34,
+      "sra": {
+        "accuracy_pct": 38.1,
+        "mean_calls": 1.19,
+        "n": 160
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 80.0,
+            "mean_calls": 27.29,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 85.6,
+            "mean_calls": 50.24,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 91.2,
+            "mean_calls": 43.35,
+            "n": 160
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 86.9,
+            "mean_calls": 22.51,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 86.9,
+            "mean_calls": 50.38,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 35.42,
+            "n": 160
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 89.4,
+            "mean_calls": 23.38,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 88.1,
+            "mean_calls": 51.78,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 34.11,
+            "n": 160
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 94.4,
+            "mean_calls": 25.69,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 92.5,
+            "mean_calls": 52.23,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 96.2,
+            "mean_calls": 34.41,
+            "n": 160
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 93.8,
+            "mean_calls": 30.67,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 56.01,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 33.94,
+            "n": 160
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 36.17,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 62.42,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 37.56,
+            "n": 160
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 49.28,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 99.4,
+            "mean_calls": 74.04,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 99.4,
+            "mean_calls": 52.02,
+            "n": 160
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 68.31,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 99.4,
+            "mean_calls": 91.11,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 99.4,
+            "mean_calls": 70.95,
+            "n": 160
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 89.4,
+          "mean_calls": 23.38,
+          "n": 160
+        },
+        "no_entropy": {
+          "accuracy_pct": 88.1,
+          "mean_calls": 51.78,
+          "n": 160
+        },
+        "no_graph": {
+          "accuracy_pct": 95.6,
+          "mean_calls": 34.11,
+          "n": 160
+        },
+        "got_only": {
+          "accuracy_pct": 5.0,
+          "mean_calls": 0.95,
+          "n": 160
+        },
+        "got_greedy": {
+          "accuracy_pct": 5.6,
+          "mean_calls": 1.34,
+          "n": 160
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 68.8,
+          "mean_calls": 42.14,
+          "n": 160
+        },
+        "4": {
+          "accuracy_pct": 75.0,
+          "mean_calls": 38.38,
+          "n": 160
+        },
+        "8": {
+          "accuracy_pct": 85.0,
+          "mean_calls": 44.86,
+          "n": 160
+        },
+        "16": {
+          "accuracy_pct": 81.9,
+          "mean_calls": 51.97,
+          "n": 160
+        },
+        "32": {
+          "accuracy_pct": 83.1,
+          "mean_calls": 72.37,
+          "n": 160
+        },
+        "64": {
+          "accuracy_pct": 78.1,
+          "mean_calls": 110.33,
+          "n": 160
+        },
+        "128": {
+          "accuracy_pct": 78.1,
+          "mean_calls": 173.92,
+          "n": 160
+        }
+      }
+    }
+  },
+  "llama31-70b-regen": {
+    "msmarco_criteria": {
+      "n": 160,
+      "bfs_calls": 139.26,
+      "sra": {
+        "accuracy_pct": 75.0,
+        "mean_calls": 8.62,
+        "n": 160
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 91.2,
+            "mean_calls": 42.23,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 91.2,
+            "mean_calls": 56.31,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 94.4,
+            "mean_calls": 81.76,
+            "n": 160
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 90.0,
+            "mean_calls": 35.27,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 91.9,
+            "mean_calls": 54.14,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 93.1,
+            "mean_calls": 61.83,
+            "n": 160
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 89.4,
+            "mean_calls": 33.71,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 91.9,
+            "mean_calls": 54.49,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 91.2,
+            "mean_calls": 61.04,
+            "n": 160
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 91.9,
+            "mean_calls": 34.13,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 92.5,
+            "mean_calls": 54.2,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 96.2,
+            "mean_calls": 64.19,
+            "n": 160
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 91.9,
+            "mean_calls": 34.72,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 91.9,
+            "mean_calls": 56.94,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 59.64,
+            "n": 160
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 93.8,
+            "mean_calls": 40.31,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 92.5,
+            "mean_calls": 63.51,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 96.9,
+            "mean_calls": 60.76,
+            "n": 160
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 96.9,
+            "mean_calls": 53.59,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 74.49,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 65.79,
+            "n": 160
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 96.9,
+            "mean_calls": 77.48,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 91.68,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 93.41,
+            "n": 160
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 89.4,
+          "mean_calls": 33.71,
+          "n": 160
+        },
+        "no_entropy": {
+          "accuracy_pct": 91.9,
+          "mean_calls": 54.49,
+          "n": 160
+        },
+        "no_graph": {
+          "accuracy_pct": 91.2,
+          "mean_calls": 61.04,
+          "n": 160
+        },
+        "got_only": {
+          "accuracy_pct": 2.5,
+          "mean_calls": 0.99,
+          "n": 160
+        },
+        "got_greedy": {
+          "accuracy_pct": 8.1,
+          "mean_calls": 1.83,
+          "n": 160
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 65.0,
+          "mean_calls": 86.66,
+          "n": 160
+        },
+        "4": {
+          "accuracy_pct": 71.9,
+          "mean_calls": 81.17,
+          "n": 160
+        },
+        "8": {
+          "accuracy_pct": 79.4,
+          "mean_calls": 92.74,
+          "n": 160
+        },
+        "16": {
+          "accuracy_pct": 78.1,
+          "mean_calls": 89.81,
+          "n": 160
+        },
+        "32": {
+          "accuracy_pct": 77.5,
+          "mean_calls": 108.59,
+          "n": 160
+        },
+        "64": {
+          "accuracy_pct": 73.8,
+          "mean_calls": 136.79,
+          "n": 160
+        },
+        "128": {
+          "accuracy_pct": 74.4,
+          "mean_calls": 203.27,
+          "n": 160
+        }
+      }
+    },
+    "msmarco_pragma": {
+      "n": 160,
+      "bfs_calls": 71.3,
+      "sra": {
+        "accuracy_pct": 62.5,
+        "mean_calls": 5.77,
+        "n": 160
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 89.4,
+            "mean_calls": 22.12,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 89.4,
+            "mean_calls": 27.12,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 96.9,
+            "mean_calls": 44.44,
+            "n": 160
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 88.8,
+            "mean_calls": 20.94,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 90.6,
+            "mean_calls": 28.99,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 36.29,
+            "n": 160
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 91.9,
+            "mean_calls": 21.71,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 91.9,
+            "mean_calls": 30.24,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 37.76,
+            "n": 160
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 90.0,
+            "mean_calls": 24.43,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 93.1,
+            "mean_calls": 32.58,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 94.4,
+            "mean_calls": 36.09,
+            "n": 160
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 93.8,
+            "mean_calls": 27.55,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 93.8,
+            "mean_calls": 37.04,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 96.2,
+            "mean_calls": 35.45,
+            "n": 160
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 33.84,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 44.07,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 38.19,
+            "n": 160
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 96.9,
+            "mean_calls": 47.95,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 96.2,
+            "mean_calls": 56.32,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 52.53,
+            "n": 160
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 68.32,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 74.96,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 72.59,
+            "n": 160
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 91.9,
+          "mean_calls": 21.71,
+          "n": 160
+        },
+        "no_entropy": {
+          "accuracy_pct": 91.9,
+          "mean_calls": 30.24,
+          "n": 160
+        },
+        "no_graph": {
+          "accuracy_pct": 97.5,
+          "mean_calls": 37.76,
+          "n": 160
+        },
+        "got_only": {
+          "accuracy_pct": 6.9,
+          "mean_calls": 0.98,
+          "n": 160
+        },
+        "got_greedy": {
+          "accuracy_pct": 10.6,
+          "mean_calls": 1.73,
+          "n": 160
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 65.0,
+          "mean_calls": 56.65,
+          "n": 160
+        },
+        "4": {
+          "accuracy_pct": 68.1,
+          "mean_calls": 47.16,
+          "n": 160
+        },
+        "8": {
+          "accuracy_pct": 66.2,
+          "mean_calls": 53.92,
+          "n": 160
+        },
+        "16": {
+          "accuracy_pct": 66.9,
+          "mean_calls": 61.3,
+          "n": 160
+        },
+        "32": {
+          "accuracy_pct": 67.5,
+          "mean_calls": 78.68,
+          "n": 160
+        },
+        "64": {
+          "accuracy_pct": 68.1,
+          "mean_calls": 111.21,
+          "n": 160
+        },
+        "128": {
+          "accuracy_pct": 67.5,
+          "mean_calls": 177.21,
+          "n": 160
+        }
+      }
+    },
+    "curated_criteria": {
+      "n": 160,
+      "bfs_calls": 157.21,
+      "sra": {
+        "accuracy_pct": 69.4,
+        "mean_calls": 4.39,
+        "n": 160
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 88.1,
+            "mean_calls": 43.11,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 88.1,
+            "mean_calls": 65.41,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 88.86,
+            "n": 160
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 90.6,
+            "mean_calls": 35.08,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 91.9,
+            "mean_calls": 67.71,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 96.2,
+            "mean_calls": 70.09,
+            "n": 160
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 94.4,
+            "mean_calls": 33.08,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 93.8,
+            "mean_calls": 69.17,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 63.77,
+            "n": 160
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 96.9,
+            "mean_calls": 39.58,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 68.86,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 72.45,
+            "n": 160
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 35.92,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 94.4,
+            "mean_calls": 72.81,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 59.31,
+            "n": 160
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 43.94,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 96.2,
+            "mean_calls": 80.36,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 56.47,
+            "n": 160
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 55.94,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 96.2,
+            "mean_calls": 92.38,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 69.17,
+            "n": 160
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 99.4,
+            "mean_calls": 78.9,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 96.9,
+            "mean_calls": 108.59,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 94.31,
+            "n": 160
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 94.4,
+          "mean_calls": 33.08,
+          "n": 160
+        },
+        "no_entropy": {
+          "accuracy_pct": 93.8,
+          "mean_calls": 69.17,
+          "n": 160
+        },
+        "no_graph": {
+          "accuracy_pct": 97.5,
+          "mean_calls": 63.77,
+          "n": 160
+        },
+        "got_only": {
+          "accuracy_pct": 8.1,
+          "mean_calls": 1.0,
+          "n": 160
+        },
+        "got_greedy": {
+          "accuracy_pct": 20.0,
+          "mean_calls": 1.77,
+          "n": 160
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 81.2,
+          "mean_calls": 126.71,
+          "n": 160
+        },
+        "4": {
+          "accuracy_pct": 81.2,
+          "mean_calls": 112.86,
+          "n": 160
+        },
+        "8": {
+          "accuracy_pct": 85.0,
+          "mean_calls": 124.34,
+          "n": 160
+        },
+        "16": {
+          "accuracy_pct": 91.2,
+          "mean_calls": 122.37,
+          "n": 160
+        },
+        "32": {
+          "accuracy_pct": 89.4,
+          "mean_calls": 146.57,
+          "n": 160
+        },
+        "64": {
+          "accuracy_pct": 88.1,
+          "mean_calls": 190.69,
+          "n": 160
+        },
+        "128": {
+          "accuracy_pct": 90.6,
+          "mean_calls": 251.37,
+          "n": 160
+        }
+      }
+    },
+    "curated_pragma": {
+      "n": 160,
+      "bfs_calls": 77.58,
+      "sra": {
+        "accuracy_pct": 46.2,
+        "mean_calls": 1.66,
+        "n": 160
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 88.8,
+            "mean_calls": 23.64,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 91.9,
+            "mean_calls": 36.74,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 47.52,
+            "n": 160
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 90.0,
+            "mean_calls": 20.57,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 91.9,
+            "mean_calls": 37.81,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 37.02,
+            "n": 160
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 91.9,
+            "mean_calls": 23.31,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 93.8,
+            "mean_calls": 38.46,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 94.4,
+            "mean_calls": 41.82,
+            "n": 160
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 92.5,
+            "mean_calls": 26.23,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 93.1,
+            "mean_calls": 40.49,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 92.5,
+            "mean_calls": 42.86,
+            "n": 160
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 93.8,
+            "mean_calls": 28.36,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 44.12,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 90.6,
+            "mean_calls": 38.58,
+            "n": 160
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 32.74,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 96.2,
+            "mean_calls": 51.79,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 93.1,
+            "mean_calls": 39.38,
+            "n": 160
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 48.6,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 64.44,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 55.39,
+            "n": 160
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 70.61,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 83.19,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 76.91,
+            "n": 160
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 91.9,
+          "mean_calls": 23.31,
+          "n": 160
+        },
+        "no_entropy": {
+          "accuracy_pct": 93.8,
+          "mean_calls": 38.46,
+          "n": 160
+        },
+        "no_graph": {
+          "accuracy_pct": 94.4,
+          "mean_calls": 41.82,
+          "n": 160
+        },
+        "got_only": {
+          "accuracy_pct": 12.5,
+          "mean_calls": 0.99,
+          "n": 160
+        },
+        "got_greedy": {
+          "accuracy_pct": 21.9,
+          "mean_calls": 1.59,
+          "n": 160
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 85.6,
+          "mean_calls": 66.71,
+          "n": 160
+        },
+        "4": {
+          "accuracy_pct": 85.0,
+          "mean_calls": 70.66,
+          "n": 160
+        },
+        "8": {
+          "accuracy_pct": 84.4,
+          "mean_calls": 75.98,
+          "n": 160
+        },
+        "16": {
+          "accuracy_pct": 86.9,
+          "mean_calls": 82.86,
+          "n": 160
+        },
+        "32": {
+          "accuracy_pct": 88.8,
+          "mean_calls": 104.92,
+          "n": 160
+        },
+        "64": {
+          "accuracy_pct": 88.1,
+          "mean_calls": 136.63,
+          "n": 160
+        },
+        "128": {
+          "accuracy_pct": 88.8,
+          "mean_calls": 199.49,
+          "n": 160
+        }
+      }
+    }
+  },
+  "qwen35-122b-regen": {
+    "msmarco_criteria": {
+      "n": 160,
+      "bfs_calls": 107.96,
+      "sra": {
+        "accuracy_pct": 65.6,
+        "mean_calls": 6.65,
+        "n": 160
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 93.8,
+            "mean_calls": 30.87,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 94.4,
+            "mean_calls": 46.41,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 96.2,
+            "mean_calls": 63.66,
+            "n": 160
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 91.9,
+            "mean_calls": 28.76,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 94.4,
+            "mean_calls": 47.66,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 94.4,
+            "mean_calls": 48.16,
+            "n": 160
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 90.6,
+            "mean_calls": 30.92,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 48.43,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 92.5,
+            "mean_calls": 45.29,
+            "n": 160
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 91.2,
+            "mean_calls": 35.52,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 94.4,
+            "mean_calls": 49.55,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 50.34,
+            "n": 160
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 91.2,
+            "mean_calls": 33.48,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 96.2,
+            "mean_calls": 53.76,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 93.1,
+            "mean_calls": 43.62,
+            "n": 160
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 94.4,
+            "mean_calls": 39.18,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 96.2,
+            "mean_calls": 61.17,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 47.93,
+            "n": 160
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 92.5,
+            "mean_calls": 49.49,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 96.2,
+            "mean_calls": 73.33,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 53.48,
+            "n": 160
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 68.76,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 89.44,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 74.58,
+            "n": 160
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 90.6,
+          "mean_calls": 30.92,
+          "n": 160
+        },
+        "no_entropy": {
+          "accuracy_pct": 95.0,
+          "mean_calls": 48.43,
+          "n": 160
+        },
+        "no_graph": {
+          "accuracy_pct": 92.5,
+          "mean_calls": 45.29,
+          "n": 160
+        },
+        "got_only": {
+          "accuracy_pct": 8.1,
+          "mean_calls": 0.98,
+          "n": 160
+        },
+        "got_greedy": {
+          "accuracy_pct": 12.5,
+          "mean_calls": 1.57,
+          "n": 160
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 80.6,
+          "mean_calls": 53.17,
+          "n": 160
+        },
+        "4": {
+          "accuracy_pct": 81.2,
+          "mean_calls": 50.63,
+          "n": 160
+        },
+        "8": {
+          "accuracy_pct": 79.4,
+          "mean_calls": 64.76,
+          "n": 160
+        },
+        "16": {
+          "accuracy_pct": 80.0,
+          "mean_calls": 63.89,
+          "n": 160
+        },
+        "32": {
+          "accuracy_pct": 80.0,
+          "mean_calls": 82.1,
+          "n": 160
+        },
+        "64": {
+          "accuracy_pct": 85.6,
+          "mean_calls": 116.14,
+          "n": 160
+        },
+        "128": {
+          "accuracy_pct": 83.1,
+          "mean_calls": 178.53,
+          "n": 160
+        }
+      }
+    },
+    "msmarco_pragma": {
+      "n": 160,
+      "bfs_calls": 101.31,
+      "sra": {
+        "accuracy_pct": 61.9,
+        "mean_calls": 4.05,
+        "n": 160
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 94.4,
+            "mean_calls": 27.95,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 92.5,
+            "mean_calls": 43.75,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 96.9,
+            "mean_calls": 56.09,
+            "n": 160
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 94.4,
+            "mean_calls": 25.83,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 93.8,
+            "mean_calls": 44.55,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 46.81,
+            "n": 160
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 93.1,
+            "mean_calls": 27.96,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 95.6,
+            "mean_calls": 45.55,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 43.24,
+            "n": 160
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 31.39,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 96.2,
+            "mean_calls": 48.39,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 96.9,
+            "mean_calls": 48.46,
+            "n": 160
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 32.15,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 52.18,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 43.09,
+            "n": 160
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 37.98,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 60.09,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 44.61,
+            "n": 160
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 49.97,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 71.57,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 55.79,
+            "n": 160
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 99.4,
+            "mean_calls": 69.96,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 99.4,
+            "mean_calls": 87.49,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 76.07,
+            "n": 160
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 93.1,
+          "mean_calls": 27.96,
+          "n": 160
+        },
+        "no_entropy": {
+          "accuracy_pct": 95.6,
+          "mean_calls": 45.55,
+          "n": 160
+        },
+        "no_graph": {
+          "accuracy_pct": 95.0,
+          "mean_calls": 43.24,
+          "n": 160
+        },
+        "got_only": {
+          "accuracy_pct": 15.6,
+          "mean_calls": 0.97,
+          "n": 160
+        },
+        "got_greedy": {
+          "accuracy_pct": 21.9,
+          "mean_calls": 1.59,
+          "n": 160
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 67.5,
+          "mean_calls": 53.78,
+          "n": 160
+        },
+        "4": {
+          "accuracy_pct": 66.2,
+          "mean_calls": 52.2,
+          "n": 160
+        },
+        "8": {
+          "accuracy_pct": 80.0,
+          "mean_calls": 58.11,
+          "n": 160
+        },
+        "16": {
+          "accuracy_pct": 81.9,
+          "mean_calls": 54.38,
+          "n": 160
+        },
+        "32": {
+          "accuracy_pct": 81.2,
+          "mean_calls": 68.92,
+          "n": 160
+        },
+        "64": {
+          "accuracy_pct": 79.4,
+          "mean_calls": 102.53,
+          "n": 160
+        },
+        "128": {
+          "accuracy_pct": 80.6,
+          "mean_calls": 166.7,
+          "n": 160
+        }
+      }
+    },
+    "curated_criteria": {
+      "n": 157,
+      "bfs_calls": 105.69,
+      "sra": {
+        "accuracy_pct": 47.8,
+        "mean_calls": 4.92,
+        "n": 157
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 90.4,
+            "mean_calls": 30.65,
+            "n": 157
+          },
+          "gra": {
+            "accuracy_pct": 87.9,
+            "mean_calls": 49.34,
+            "n": 157
+          },
+          "era": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 58.05,
+            "n": 157
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 92.4,
+            "mean_calls": 25.07,
+            "n": 157
+          },
+          "gra": {
+            "accuracy_pct": 91.7,
+            "mean_calls": 49.68,
+            "n": 157
+          },
+          "era": {
+            "accuracy_pct": 95.5,
+            "mean_calls": 45.57,
+            "n": 157
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 94.3,
+            "mean_calls": 30.32,
+            "n": 157
+          },
+          "gra": {
+            "accuracy_pct": 96.2,
+            "mean_calls": 50.44,
+            "n": 157
+          },
+          "era": {
+            "accuracy_pct": 96.2,
+            "mean_calls": 49.46,
+            "n": 157
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 93.6,
+            "mean_calls": 27.59,
+            "n": 157
+          },
+          "gra": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 52.7,
+            "n": 157
+          },
+          "era": {
+            "accuracy_pct": 93.6,
+            "mean_calls": 41.11,
+            "n": 157
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 96.2,
+            "mean_calls": 33.59,
+            "n": 157
+          },
+          "gra": {
+            "accuracy_pct": 98.7,
+            "mean_calls": 56.77,
+            "n": 157
+          },
+          "era": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 40.75,
+            "n": 157
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 99.4,
+            "mean_calls": 37.32,
+            "n": 157
+          },
+          "gra": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 64.27,
+            "n": 157
+          },
+          "era": {
+            "accuracy_pct": 98.7,
+            "mean_calls": 41.11,
+            "n": 157
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 99.4,
+            "mean_calls": 45.68,
+            "n": 157
+          },
+          "gra": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 74.83,
+            "n": 157
+          },
+          "era": {
+            "accuracy_pct": 98.7,
+            "mean_calls": 50.47,
+            "n": 157
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 99.4,
+            "mean_calls": 69.25,
+            "n": 157
+          },
+          "gra": {
+            "accuracy_pct": 100.0,
+            "mean_calls": 91.04,
+            "n": 157
+          },
+          "era": {
+            "accuracy_pct": 98.7,
+            "mean_calls": 76.39,
+            "n": 157
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 94.3,
+          "mean_calls": 30.32,
+          "n": 157
+        },
+        "no_entropy": {
+          "accuracy_pct": 96.2,
+          "mean_calls": 50.44,
+          "n": 157
+        },
+        "no_graph": {
+          "accuracy_pct": 96.2,
+          "mean_calls": 49.46,
+          "n": 157
+        },
+        "got_only": {
+          "accuracy_pct": 12.7,
+          "mean_calls": 0.97,
+          "n": 157
+        },
+        "got_greedy": {
+          "accuracy_pct": 23.6,
+          "mean_calls": 1.62,
+          "n": 157
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 81.5,
+          "mean_calls": 51.36,
+          "n": 157
+        },
+        "4": {
+          "accuracy_pct": 81.5,
+          "mean_calls": 44.46,
+          "n": 157
+        },
+        "8": {
+          "accuracy_pct": 80.3,
+          "mean_calls": 55.59,
+          "n": 157
+        },
+        "16": {
+          "accuracy_pct": 75.8,
+          "mean_calls": 60.26,
+          "n": 157
+        },
+        "32": {
+          "accuracy_pct": 73.9,
+          "mean_calls": 75.26,
+          "n": 157
+        },
+        "64": {
+          "accuracy_pct": 71.3,
+          "mean_calls": 109.11,
+          "n": 157
+        },
+        "128": {
+          "accuracy_pct": 75.8,
+          "mean_calls": 170.29,
+          "n": 157
+        }
+      }
+    },
+    "curated_pragma": {
+      "n": 160,
+      "bfs_calls": 79.11,
+      "sra": {
+        "accuracy_pct": 34.4,
+        "mean_calls": 0.84,
+        "n": 160
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 87.5,
+            "mean_calls": 22.36,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 90.0,
+            "mean_calls": 28.31,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 93.1,
+            "mean_calls": 49.58,
+            "n": 160
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 88.8,
+            "mean_calls": 20.84,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 90.6,
+            "mean_calls": 29.1,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 49.06,
+            "n": 160
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 91.9,
+            "mean_calls": 15.06,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 93.1,
+            "mean_calls": 29.89,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 95.0,
+            "mean_calls": 29.43,
+            "n": 160
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 93.8,
+            "mean_calls": 18.04,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 94.4,
+            "mean_calls": 32.86,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 30.28,
+            "n": 160
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 94.4,
+            "mean_calls": 22.31,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 96.2,
+            "mean_calls": 37.67,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 30.43,
+            "n": 160
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 96.9,
+            "mean_calls": 30.49,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 96.2,
+            "mean_calls": 45.94,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 99.4,
+            "mean_calls": 36.02,
+            "n": 160
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 98.1,
+            "mean_calls": 44.68,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 97.5,
+            "mean_calls": 59.88,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 99.4,
+            "mean_calls": 49.03,
+            "n": 160
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 64.72,
+            "n": 160
+          },
+          "gra": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 79.56,
+            "n": 160
+          },
+          "era": {
+            "accuracy_pct": 98.8,
+            "mean_calls": 68.01,
+            "n": 160
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 91.9,
+          "mean_calls": 15.06,
+          "n": 160
+        },
+        "no_entropy": {
+          "accuracy_pct": 93.1,
+          "mean_calls": 29.89,
+          "n": 160
+        },
+        "no_graph": {
+          "accuracy_pct": 95.0,
+          "mean_calls": 29.43,
+          "n": 160
+        },
+        "got_only": {
+          "accuracy_pct": 6.2,
+          "mean_calls": 0.98,
+          "n": 160
+        },
+        "got_greedy": {
+          "accuracy_pct": 13.8,
+          "mean_calls": 1.69,
+          "n": 160
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 46.2,
+          "mean_calls": 47.11,
+          "n": 160
+        },
+        "4": {
+          "accuracy_pct": 46.2,
+          "mean_calls": 43.77,
+          "n": 160
+        },
+        "8": {
+          "accuracy_pct": 73.8,
+          "mean_calls": 47.88,
+          "n": 160
+        },
+        "16": {
+          "accuracy_pct": 71.9,
+          "mean_calls": 46.24,
+          "n": 160
+        },
+        "32": {
+          "accuracy_pct": 73.1,
+          "mean_calls": 59.96,
+          "n": 160
+        },
+        "64": {
+          "accuracy_pct": 68.1,
+          "mean_calls": 91.89,
+          "n": 160
+        },
+        "128": {
+          "accuracy_pct": 69.4,
+          "mean_calls": 155.99,
+          "n": 160
+        }
+      }
+    }
+  },
+  "qwen35-122b-ranked-cf2": {
+    "msmarco_criteria": {
+      "n": 90,
+      "bfs_calls": 98.37,
+      "sra": {
+        "accuracy_pct": 73.3,
+        "mean_calls": 2.79,
+        "n": 90
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 84.4,
+            "mean_calls": 20.31,
+            "n": 90
+          },
+          "gra": {
+            "accuracy_pct": 87.8,
+            "mean_calls": 35.37,
+            "n": 90
+          },
+          "era": {
+            "accuracy_pct": 84.4,
+            "mean_calls": 50.86,
+            "n": 90
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 86.7,
+            "mean_calls": 20.09,
+            "n": 90
+          },
+          "gra": {
+            "accuracy_pct": 86.7,
+            "mean_calls": 36.78,
+            "n": 90
+          },
+          "era": {
+            "accuracy_pct": 85.6,
+            "mean_calls": 34.46,
+            "n": 90
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 84.4,
+            "mean_calls": 29.43,
+            "n": 90
+          },
+          "gra": {
+            "accuracy_pct": 85.6,
+            "mean_calls": 37.03,
+            "n": 90
+          },
+          "era": {
+            "accuracy_pct": 86.7,
+            "mean_calls": 41.46,
+            "n": 90
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 86.7,
+            "mean_calls": 25.83,
+            "n": 90
+          },
+          "gra": {
+            "accuracy_pct": 86.7,
+            "mean_calls": 39.34,
+            "n": 90
+          },
+          "era": {
+            "accuracy_pct": 86.7,
+            "mean_calls": 41.97,
+            "n": 90
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 86.7,
+            "mean_calls": 29.38,
+            "n": 90
+          },
+          "gra": {
+            "accuracy_pct": 86.7,
+            "mean_calls": 43.2,
+            "n": 90
+          },
+          "era": {
+            "accuracy_pct": 86.7,
+            "mean_calls": 37.78,
+            "n": 90
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 86.7,
+            "mean_calls": 33.0,
+            "n": 90
+          },
+          "gra": {
+            "accuracy_pct": 86.7,
+            "mean_calls": 48.33,
+            "n": 90
+          },
+          "era": {
+            "accuracy_pct": 86.7,
+            "mean_calls": 41.5,
+            "n": 90
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 86.7,
+            "mean_calls": 39.59,
+            "n": 90
+          },
+          "gra": {
+            "accuracy_pct": 86.7,
+            "mean_calls": 55.67,
+            "n": 90
+          },
+          "era": {
+            "accuracy_pct": 87.8,
+            "mean_calls": 43.86,
+            "n": 90
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 87.8,
+            "mean_calls": 52.08,
+            "n": 90
+          },
+          "gra": {
+            "accuracy_pct": 87.8,
+            "mean_calls": 64.43,
+            "n": 90
+          },
+          "era": {
+            "accuracy_pct": 87.8,
+            "mean_calls": 57.31,
+            "n": 90
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 84.4,
+          "mean_calls": 29.43,
+          "n": 90
+        },
+        "no_entropy": {
+          "accuracy_pct": 85.6,
+          "mean_calls": 37.03,
+          "n": 90
+        },
+        "no_graph": {
+          "accuracy_pct": 86.7,
+          "mean_calls": 41.46,
+          "n": 90
+        },
+        "got_only": {
+          "accuracy_pct": 21.1,
+          "mean_calls": 0.96,
+          "n": 90
+        },
+        "got_greedy": {
+          "accuracy_pct": 28.9,
+          "mean_calls": 1.41,
+          "n": 90
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 86.7,
+          "mean_calls": 45.72,
+          "n": 90
+        },
+        "4": {
+          "accuracy_pct": 86.7,
+          "mean_calls": 42.72,
+          "n": 90
+        },
+        "8": {
+          "accuracy_pct": 82.2,
+          "mean_calls": 52.92,
+          "n": 90
+        },
+        "16": {
+          "accuracy_pct": 86.7,
+          "mean_calls": 57.27,
+          "n": 90
+        },
+        "32": {
+          "accuracy_pct": 92.2,
+          "mean_calls": 73.13,
+          "n": 90
+        },
+        "64": {
+          "accuracy_pct": 86.7,
+          "mean_calls": 105.52,
+          "n": 90
+        },
+        "128": {
+          "accuracy_pct": 84.4,
+          "mean_calls": 170.13,
+          "n": 90
+        }
+      }
+    },
+    "msmarco_pragma": {
+      "n": 116,
+      "bfs_calls": 63.77,
+      "sra": {
+        "accuracy_pct": 35.3,
+        "mean_calls": 1.36,
+        "n": 116
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 82.8,
+            "mean_calls": 17.97,
+            "n": 116
+          },
+          "gra": {
+            "accuracy_pct": 83.6,
+            "mean_calls": 24.17,
+            "n": 116
+          },
+          "era": {
+            "accuracy_pct": 84.5,
+            "mean_calls": 34.37,
+            "n": 116
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 82.8,
+            "mean_calls": 17.28,
+            "n": 116
+          },
+          "gra": {
+            "accuracy_pct": 84.5,
+            "mean_calls": 24.95,
+            "n": 116
+          },
+          "era": {
+            "accuracy_pct": 82.8,
+            "mean_calls": 31.4,
+            "n": 116
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 81.9,
+            "mean_calls": 18.63,
+            "n": 116
+          },
+          "gra": {
+            "accuracy_pct": 85.3,
+            "mean_calls": 26.61,
+            "n": 116
+          },
+          "era": {
+            "accuracy_pct": 81.0,
+            "mean_calls": 29.09,
+            "n": 116
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 84.5,
+            "mean_calls": 21.09,
+            "n": 116
+          },
+          "gra": {
+            "accuracy_pct": 85.3,
+            "mean_calls": 28.83,
+            "n": 116
+          },
+          "era": {
+            "accuracy_pct": 84.5,
+            "mean_calls": 31.41,
+            "n": 116
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 80.2,
+            "mean_calls": 23.97,
+            "n": 116
+          },
+          "gra": {
+            "accuracy_pct": 83.6,
+            "mean_calls": 33.07,
+            "n": 116
+          },
+          "era": {
+            "accuracy_pct": 81.9,
+            "mean_calls": 29.98,
+            "n": 116
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 81.9,
+            "mean_calls": 30.87,
+            "n": 116
+          },
+          "gra": {
+            "accuracy_pct": 84.5,
+            "mean_calls": 40.66,
+            "n": 116
+          },
+          "era": {
+            "accuracy_pct": 83.6,
+            "mean_calls": 34.04,
+            "n": 116
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 84.5,
+            "mean_calls": 42.38,
+            "n": 116
+          },
+          "gra": {
+            "accuracy_pct": 85.3,
+            "mean_calls": 51.39,
+            "n": 116
+          },
+          "era": {
+            "accuracy_pct": 85.3,
+            "mean_calls": 44.64,
+            "n": 116
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 85.3,
+            "mean_calls": 58.72,
+            "n": 116
+          },
+          "gra": {
+            "accuracy_pct": 86.2,
+            "mean_calls": 66.64,
+            "n": 116
+          },
+          "era": {
+            "accuracy_pct": 85.3,
+            "mean_calls": 60.78,
+            "n": 116
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 81.9,
+          "mean_calls": 18.63,
+          "n": 116
+        },
+        "no_entropy": {
+          "accuracy_pct": 85.3,
+          "mean_calls": 26.61,
+          "n": 116
+        },
+        "no_graph": {
+          "accuracy_pct": 81.0,
+          "mean_calls": 29.09,
+          "n": 116
+        },
+        "got_only": {
+          "accuracy_pct": 13.8,
+          "mean_calls": 0.92,
+          "n": 116
+        },
+        "got_greedy": {
+          "accuracy_pct": 22.4,
+          "mean_calls": 1.39,
+          "n": 116
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 60.3,
+          "mean_calls": 35.76,
+          "n": 116
+        },
+        "4": {
+          "accuracy_pct": 65.5,
+          "mean_calls": 35.09,
+          "n": 116
+        },
+        "8": {
+          "accuracy_pct": 74.1,
+          "mean_calls": 38.72,
+          "n": 116
+        },
+        "16": {
+          "accuracy_pct": 67.2,
+          "mean_calls": 42.15,
+          "n": 116
+        },
+        "32": {
+          "accuracy_pct": 67.2,
+          "mean_calls": 60.2,
+          "n": 116
+        },
+        "64": {
+          "accuracy_pct": 61.2,
+          "mean_calls": 93.32,
+          "n": 116
+        },
+        "128": {
+          "accuracy_pct": 62.1,
+          "mean_calls": 154.9,
+          "n": 116
+        }
+      }
+    },
+    "curated_criteria": {
+      "n": 92,
+      "bfs_calls": 96.17,
+      "sra": {
+        "accuracy_pct": 45.7,
+        "mean_calls": 3.11,
+        "n": 92
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 73.9,
+            "mean_calls": 17.23,
+            "n": 92
+          },
+          "gra": {
+            "accuracy_pct": 69.6,
+            "mean_calls": 25.57,
+            "n": 92
+          },
+          "era": {
+            "accuracy_pct": 81.5,
+            "mean_calls": 51.38,
+            "n": 92
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 79.3,
+            "mean_calls": 15.67,
+            "n": 92
+          },
+          "gra": {
+            "accuracy_pct": 73.9,
+            "mean_calls": 26.39,
+            "n": 92
+          },
+          "era": {
+            "accuracy_pct": 81.5,
+            "mean_calls": 39.96,
+            "n": 92
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 77.2,
+            "mean_calls": 16.38,
+            "n": 92
+          },
+          "gra": {
+            "accuracy_pct": 78.3,
+            "mean_calls": 27.43,
+            "n": 92
+          },
+          "era": {
+            "accuracy_pct": 80.4,
+            "mean_calls": 38.82,
+            "n": 92
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 81.5,
+            "mean_calls": 18.73,
+            "n": 92
+          },
+          "gra": {
+            "accuracy_pct": 83.7,
+            "mean_calls": 30.26,
+            "n": 92
+          },
+          "era": {
+            "accuracy_pct": 80.4,
+            "mean_calls": 32.47,
+            "n": 92
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 83.7,
+            "mean_calls": 20.33,
+            "n": 92
+          },
+          "gra": {
+            "accuracy_pct": 83.7,
+            "mean_calls": 34.67,
+            "n": 92
+          },
+          "era": {
+            "accuracy_pct": 82.6,
+            "mean_calls": 25.12,
+            "n": 92
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 81.5,
+            "mean_calls": 29.15,
+            "n": 92
+          },
+          "gra": {
+            "accuracy_pct": 83.7,
+            "mean_calls": 42.03,
+            "n": 92
+          },
+          "era": {
+            "accuracy_pct": 80.4,
+            "mean_calls": 33.22,
+            "n": 92
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 81.5,
+            "mean_calls": 40.89,
+            "n": 92
+          },
+          "gra": {
+            "accuracy_pct": 83.7,
+            "mean_calls": 55.62,
+            "n": 92
+          },
+          "era": {
+            "accuracy_pct": 80.4,
+            "mean_calls": 45.98,
+            "n": 92
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 82.6,
+            "mean_calls": 60.25,
+            "n": 92
+          },
+          "gra": {
+            "accuracy_pct": 83.7,
+            "mean_calls": 71.88,
+            "n": 92
+          },
+          "era": {
+            "accuracy_pct": 81.5,
+            "mean_calls": 67.5,
+            "n": 92
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 77.2,
+          "mean_calls": 16.38,
+          "n": 92
+        },
+        "no_entropy": {
+          "accuracy_pct": 78.3,
+          "mean_calls": 27.43,
+          "n": 92
+        },
+        "no_graph": {
+          "accuracy_pct": 80.4,
+          "mean_calls": 38.82,
+          "n": 92
+        },
+        "got_only": {
+          "accuracy_pct": 12.0,
+          "mean_calls": 1.0,
+          "n": 92
+        },
+        "got_greedy": {
+          "accuracy_pct": 33.7,
+          "mean_calls": 1.62,
+          "n": 92
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 83.7,
+          "mean_calls": 43.46,
+          "n": 92
+        },
+        "4": {
+          "accuracy_pct": 80.4,
+          "mean_calls": 39.21,
+          "n": 92
+        },
+        "8": {
+          "accuracy_pct": 73.9,
+          "mean_calls": 49.21,
+          "n": 92
+        },
+        "16": {
+          "accuracy_pct": 60.9,
+          "mean_calls": 55.29,
+          "n": 92
+        },
+        "32": {
+          "accuracy_pct": 59.8,
+          "mean_calls": 72.6,
+          "n": 92
+        },
+        "64": {
+          "accuracy_pct": 52.2,
+          "mean_calls": 106.57,
+          "n": 92
+        },
+        "128": {
+          "accuracy_pct": 60.9,
+          "mean_calls": 169.23,
+          "n": 92
+        }
+      }
+    },
+    "curated_pragma": {
+      "n": 124,
+      "bfs_calls": 41.83,
+      "sra": {
+        "accuracy_pct": 25.0,
+        "mean_calls": 0.43,
+        "n": 124
+      },
+      "sweep": {
+        "0": {
+          "gera": {
+            "accuracy_pct": 79.8,
+            "mean_calls": 10.35,
+            "n": 124
+          },
+          "gra": {
+            "accuracy_pct": 80.6,
+            "mean_calls": 11.94,
+            "n": 124
+          },
+          "era": {
+            "accuracy_pct": 84.7,
+            "mean_calls": 27.39,
+            "n": 124
+          }
+        },
+        "2": {
+          "gera": {
+            "accuracy_pct": 82.3,
+            "mean_calls": 10.47,
+            "n": 124
+          },
+          "gra": {
+            "accuracy_pct": 81.5,
+            "mean_calls": 13.14,
+            "n": 124
+          },
+          "era": {
+            "accuracy_pct": 87.1,
+            "mean_calls": 29.98,
+            "n": 124
+          }
+        },
+        "4": {
+          "gera": {
+            "accuracy_pct": 82.3,
+            "mean_calls": 9.8,
+            "n": 124
+          },
+          "gra": {
+            "accuracy_pct": 81.5,
+            "mean_calls": 14.45,
+            "n": 124
+          },
+          "era": {
+            "accuracy_pct": 87.1,
+            "mean_calls": 19.28,
+            "n": 124
+          }
+        },
+        "8": {
+          "gera": {
+            "accuracy_pct": 79.8,
+            "mean_calls": 12.27,
+            "n": 124
+          },
+          "gra": {
+            "accuracy_pct": 81.5,
+            "mean_calls": 16.95,
+            "n": 124
+          },
+          "era": {
+            "accuracy_pct": 83.1,
+            "mean_calls": 20.82,
+            "n": 124
+          }
+        },
+        "16": {
+          "gera": {
+            "accuracy_pct": 79.8,
+            "mean_calls": 16.77,
+            "n": 124
+          },
+          "gra": {
+            "accuracy_pct": 83.1,
+            "mean_calls": 21.41,
+            "n": 124
+          },
+          "era": {
+            "accuracy_pct": 81.5,
+            "mean_calls": 19.38,
+            "n": 124
+          }
+        },
+        "32": {
+          "gera": {
+            "accuracy_pct": 83.9,
+            "mean_calls": 23.78,
+            "n": 124
+          },
+          "gra": {
+            "accuracy_pct": 84.7,
+            "mean_calls": 28.49,
+            "n": 124
+          },
+          "era": {
+            "accuracy_pct": 85.5,
+            "mean_calls": 25.21,
+            "n": 124
+          }
+        },
+        "64": {
+          "gera": {
+            "accuracy_pct": 83.1,
+            "mean_calls": 34.28,
+            "n": 124
+          },
+          "gra": {
+            "accuracy_pct": 83.1,
+            "mean_calls": 38.77,
+            "n": 124
+          },
+          "era": {
+            "accuracy_pct": 84.7,
+            "mean_calls": 35.7,
+            "n": 124
+          }
+        },
+        "128": {
+          "gera": {
+            "accuracy_pct": 84.7,
+            "mean_calls": 48.44,
+            "n": 124
+          },
+          "gra": {
+            "accuracy_pct": 84.7,
+            "mean_calls": 52.1,
+            "n": 124
+          },
+          "era": {
+            "accuracy_pct": 85.5,
+            "mean_calls": 49.38,
+            "n": 124
+          }
+        }
+      },
+      "ablations": {
+        "gera": {
+          "accuracy_pct": 82.3,
+          "mean_calls": 9.8,
+          "n": 124
+        },
+        "no_entropy": {
+          "accuracy_pct": 81.5,
+          "mean_calls": 14.45,
+          "n": 124
+        },
+        "no_graph": {
+          "accuracy_pct": 87.1,
+          "mean_calls": 19.28,
+          "n": 124
+        },
+        "got_only": {
+          "accuracy_pct": 20.2,
+          "mean_calls": 0.9,
+          "n": 124
+        },
+        "got_greedy": {
+          "accuracy_pct": 29.8,
+          "mean_calls": 1.33,
+          "n": 124
+        }
+      },
+      "lsm": {
+        "2": {
+          "accuracy_pct": 33.1,
+          "mean_calls": 38.48,
+          "n": 124
+        },
+        "4": {
+          "accuracy_pct": 40.3,
+          "mean_calls": 36.37,
+          "n": 124
+        },
+        "8": {
+          "accuracy_pct": 63.7,
+          "mean_calls": 33.45,
+          "n": 124
+        },
+        "16": {
+          "accuracy_pct": 47.6,
+          "mean_calls": 33.85,
+          "n": 124
+        },
+        "32": {
+          "accuracy_pct": 51.6,
+          "mean_calls": 50.67,
+          "n": 124
+        },
+        "64": {
+          "accuracy_pct": 43.5,
+          "mean_calls": 85.94,
+          "n": 124
+        },
+        "128": {
+          "accuracy_pct": 42.7,
+          "mean_calls": 149.44,
+          "n": 124
+        }
+      }
+    }
+  }
+}

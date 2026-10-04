@@ -1,0 +1,30 @@
+name: coral
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.13
+  - ipykernel
+  - pip
+  - pip:
+    # Core (required for the BFS / SRA / ERA pipeline + all plotting)
+    - numpy
+    - matplotlib
+
+    # Rank aggregation (search/flagr.py). On Apple Silicon rebuild the
+    # dylib from https://github.com/lakritidis/FLAGR (x86_64-only wheel).
+    - pyflagr
+    - pandas
+
+    # ContextCite (CC) search — only needed if you want to run / re-run CC.
+    # Heavy: pulls in torch + transformers + vllm.
+    # Uncomment if needed:
+    # - torch
+    # - transformers
+    # - vllm
+    #
+    # context-cite is vendored in ./concept-cite (fork of MadryLab/context-cite
+    # with VLLMContextCiter + ConceptCriteriaPartitioner additions). The PyPI
+    # version lags the API used here. Install in editable mode:
+    # - -e ./concept-cite
