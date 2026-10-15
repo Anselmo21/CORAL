@@ -10,10 +10,13 @@ from coral.proxy.aggregator import Aggregator
 from coral.proxy.borda_aggregator import BordaAggregator
 from coral.proxy.entropy import ENTROPY_SCORERS
 from coral.proxy.max_jump import max_jump_cutoff
+from coral.proxy.rank_aggregation_proxy import ProxyEstimate, RankAggregationProxy
 
 __all__ = [
     'ENTROPY_SCORERS',
     'Aggregator',
     'BordaAggregator',
+    'ProxyEstimate',
+    'RankAggregationProxy',
     'max_jump_cutoff',
 ]
