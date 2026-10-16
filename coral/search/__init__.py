@@ -11,6 +11,7 @@ from coral.search.entropy_rank_aggregation import EntropyRankAggregation
 from coral.search.graph_entropy_rank_aggregation import GraphEntropyRankAggregation
 from coral.search.graph_of_thoughts_search import GraphOfThoughtsSearch
 from coral.search.search import Counterfactual, LatticeOracle, Search, SearchResult, Supports
+from coral.search.search_factory import SearchFactory
 from coral.search.simple_rank_aggregation import SimpleRankAggregation
 
 __all__ = [
@@ -21,6 +22,7 @@ __all__ = [
     'GraphOfThoughtsSearch',
     'LatticeOracle',
     'Search',
+    'SearchFactory',
     'SearchResult',
     'SimpleRankAggregation',
     'Supports',
