@@ -1,6 +1,7 @@
 """Helpers shared across the package
 
-The helpers cover the experiment catalog, JSON files, and where each output lives on disk
+The helpers cover the command-line arguments, the experiment catalog, JSON files, and where each
+output lives on disk
 """
 
 from __future__ import annotations
