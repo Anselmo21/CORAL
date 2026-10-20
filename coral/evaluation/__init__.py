@@ -7,6 +7,7 @@ from __future__ import annotations
 
 from coral.evaluation.case_sampler import CaseSampler
 from coral.evaluation.outcome import Outcome
+from coral.evaluation.strategy_suite import StrategySuite
 from coral.evaluation.test_case import CasePool, EvaluationCase, TestCase, load_evaluation_cases
 
 __all__ = [
@@ -14,6 +15,7 @@ __all__ = [
     'CaseSampler',
     'EvaluationCase',
     'Outcome',
+    'StrategySuite',
     'TestCase',
     'load_evaluation_cases',
 ]
