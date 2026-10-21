@@ -6,6 +6,7 @@ A test case is a query's lattice cut down to a subset of its concepts
 from __future__ import annotations
 
 from coral.evaluation.case_sampler import CaseSampler
+from coral.evaluation.configuration_sweep import ConfigurationSweep
 from coral.evaluation.outcome import Outcome
 from coral.evaluation.strategy_suite import StrategySuite
 from coral.evaluation.test_case import CasePool, EvaluationCase, TestCase, load_evaluation_cases
@@ -13,6 +14,7 @@ from coral.evaluation.test_case import CasePool, EvaluationCase, TestCase, load_
 __all__ = [
     'CasePool',
     'CaseSampler',
+    'ConfigurationSweep',
     'EvaluationCase',
     'Outcome',
     'StrategySuite',

@@ -11,6 +11,7 @@ import os
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
+from coral.evaluation.configuration_sweep import ConfigurationSweep
 from coral.evaluation.strategy_suite import StrategySuite
 from coral.lattice.search_space import Direction
 from coral.utilities.arguments import add_selection_arguments, selected_cells
@@ -34,8 +35,14 @@ def evaluate_cell(arguments: argparse.Namespace, llm: str, dataset: str, concept
     data = DataLayout(arguments.data)
     direction = Direction(arguments.direction)
     results = ResultLayout(arguments.results / direction.value)
-    records = StrategySuite(data, direction).run(llm, dataset, concept_set)
-    path = results.evaluation_file(llm, dataset, concept_set)
+    if arguments.configurations:
+        records = ConfigurationSweep(data, direction, arguments.budget).run(
+            llm, dataset, concept_set
+        )
+        path = results.configuration_file(llm, dataset, concept_set)
+    else:
+        records = StrategySuite(data, direction).run(llm, dataset, concept_set)
+        path = results.evaluation_file(llm, dataset, concept_set)
     write_json(path, records, indent=None)
     return path
 
@@ -47,6 +54,14 @@ def main() -> None:
     add_selection_arguments(parser)
     parser.add_argument(
         '--results', type=Path, default=Path('results'), help='results directory (default: results)'
+    )
+    parser.add_argument(
+        '--configurations',
+        action='store_true',
+        help='run GERA per entropy scorer and per rank aggregator instead of every strategy',
+    )
+    parser.add_argument(
+        '--budget', type=int, default=16, help='budget of the --configurations run (default: 16)'
     )
     parser.add_argument(
         '--workers',
