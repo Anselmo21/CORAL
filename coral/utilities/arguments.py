@@ -1,7 +1,4 @@
-"""Command-line arguments shared by the commands
-
-Commands select what to run with the same flags
-"""
+"""Command-line arguments shared by the commands"""
 
 from __future__ import annotations
 
@@ -58,3 +55,52 @@ def selected_cells(arguments: argparse.Namespace) -> list[tuple[str, str, str]]:
         One (llm, dataset, concept set) tuple per cell
     """
     return list(product(arguments.llms, arguments.datasets, arguments.concept_sets))
+
+
+def add_serving_arguments(parser: argparse.ArgumentParser) -> None:
+    """Add the vLLM serving arguments
+
+    Args:
+        parser: The parser to extend
+    """
+    group = parser.add_argument_group('vLLM serving')
+    group.add_argument('--tensor-parallel-size', type=int, default=1, help='GPUs per model')
+    group.add_argument(
+        '--max-model-len', type=int, default=None, help='cap on prompt plus output tokens'
+    )
+    group.add_argument(
+        '--gpu-memory-utilization',
+        type=float,
+        default=None,
+        help='share of GPU memory vLLM may reserve',
+    )
+    group.add_argument('--max-num-seqs', type=int, default=None, help='cap on concurrent sequences')
+    group.add_argument(
+        '--max-num-batched-tokens', type=int, default=None, help='cap on tokens per engine step'
+    )
+    group.add_argument('--enforce-eager', action='store_true', help='skip CUDA graph capture')
+    group.add_argument(
+        '--disable-custom-all-reduce',
+        action='store_true',
+        help='use NCCL instead of the custom vLLM all-reduce',
+    )
+
+
+def serving_options(arguments: argparse.Namespace) -> dict[str, object]:
+    """Return the parsed serving arguments as backend options
+
+    Args:
+        arguments: The parsed command line
+
+    Returns:
+        The options by name
+    """
+    return {
+        'tensor_parallel_size': arguments.tensor_parallel_size,
+        'max_model_len': arguments.max_model_len,
+        'gpu_memory_utilization': arguments.gpu_memory_utilization,
+        'max_num_seqs': arguments.max_num_seqs,
+        'max_num_batched_tokens': arguments.max_num_batched_tokens,
+        'enforce_eager': arguments.enforce_eager,
+        'disable_custom_all_reduce': arguments.disable_custom_all_reduce,
+    }

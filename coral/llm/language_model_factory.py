@@ -1,4 +1,4 @@
-"""Builds the vLLM or OpenAI backend from its provider name"""
+"""Builds the vLLM or OpenAI backend named by a command's --provider flag"""
 
 from __future__ import annotations
 
