@@ -23,10 +23,7 @@ BUDGETS = (0, 2, 4, 8, 16, 32, 64, 128)
 
 
 class StrategySuite:
-    """Runs every strategy on the test cases at every budget
-
-    LSM is read from saved runs because it needs the LLM
-    """
+    """Runs every strategy on the test cases at every budget"""
 
     def __init__(
         self,

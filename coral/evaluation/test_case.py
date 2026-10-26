@@ -114,7 +114,7 @@ def load_evaluation_cases(
 ) -> list[EvaluationCase]:
     """Load the test cases of one LLM, dataset, and concept set with sublattices and BFS results
 
-    A query with no parsed graph raises a ValueError unless with_graphs is False
+    Callers other than LSM keep with_graphs on and get a ValueError for a query with no parsed graph
 
     Args:
         data: The data layout to read from
