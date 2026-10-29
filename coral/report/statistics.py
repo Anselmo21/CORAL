@@ -55,6 +55,20 @@ def outcome(record: Record, strategy: str, budget: int | None = None) -> dict[st
     return outcomes if budget is None else outcomes[str(budget)]
 
 
+def has_outcomes(records: Sequence[Record], strategy: str, budget: int) -> bool:
+    """Return whether every record has the strategy's outcome at the budget
+
+    Args:
+        records: The evaluation records
+        strategy: The strategy's abbreviation (sra, lsm, era, gra, gera, or got)
+        budget: The budget to look for
+
+    Returns:
+        True if there are records and all of them have it
+    """
+    return bool(records) and all(str(budget) in record['outcomes'][strategy] for record in records)
+
+
 def accuracy(outcomes: Sequence[dict[str, Any]]) -> float:
     """Return the percentage of outcomes that found the minimal counterfactual
 

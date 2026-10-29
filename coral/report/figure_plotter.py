@@ -19,7 +19,14 @@ from matplotlib.ticker import MaxNLocator
 
 from coral.evaluation.outcome import NOT_MINIMAL
 from coral.evaluation.strategy_suite import BUDGETS
-from coral.report.statistics import accuracy, brute_force_cost, cost, outcome, read_records
+from coral.report.statistics import (
+    accuracy,
+    brute_force_cost,
+    cost,
+    has_outcomes,
+    outcome,
+    read_records,
+)
 from coral.utilities.catalog import CONCEPT_SETS, DATASETS, LANGUAGE_MODEL_NAMES
 
 if TYPE_CHECKING:
@@ -140,7 +147,9 @@ class FigurePlotter:
             axes[1, 0].set_ylabel('Avg Cost (LLM Calls)')
             axes[2, 0].set_ylabel('Distance to Minimal\nCounterfactual')
             labels = [
-                STYLES[strategy][2] for strategy in ('bfs', 'sra', 'era', 'gra', 'gera', 'lsm')
+                STYLES[strategy][2]
+                for strategy in ('bfs', 'sra', 'era', 'gra', 'gera', 'lsm')
+                if STYLES[strategy][2] in handles
             ]
             figure.legend(
                 [handles[label] for label in labels],
@@ -167,7 +176,7 @@ class FigurePlotter:
     def plot_budget_ablation(self) -> Path:
         """Plot accuracy and cost against the budget for every LLM
 
-        LSM only appears at the nonzero budgets
+        LSM only appears at the budgets where both datasets have runs for it
 
         Returns:
             The path of the saved figure
@@ -177,8 +186,6 @@ class FigurePlotter:
             FigureCanvasAgg(figure)
             axes = figure.subplots(2, 4)
             positions = list(range(len(BUDGETS)))
-            surrogate_budgets = [budget for budget in BUDGETS if budget > 0]
-            surrogate_positions = [BUDGETS.index(budget) for budget in surrogate_budgets]
             lines = {
                 strategy: {
                     'marker': STYLES[strategy][0],
@@ -225,10 +232,19 @@ class FigurePlotter:
                     )
                 )
 
+            drew_surrogate = False
             for column, (llm, name) in enumerate(LANGUAGE_MODEL_NAMES.items()):
                 pooled = [
                     read_records(self.results, llm, dataset, CONCEPT_SETS) for dataset in DATASETS
                 ]
+                surrogate_budgets = [
+                    budget
+                    for budget in BUDGETS
+                    if budget > 0
+                    and all(has_outcomes(records, 'lsm', budget) for records in pooled)
+                ]
+                surrogate_positions = [BUDGETS.index(budget) for budget in surrogate_budgets]
+                drew_surrogate = drew_surrogate or bool(surrogate_budgets)
                 series = {
                     strategy: (
                         [averaged(pooled, accuracy, strategy, budget) for budget in BUDGETS],
@@ -245,21 +261,23 @@ class FigurePlotter:
                 brute_force = float(np.mean([brute_force_cost(records) for records in pooled]))
 
                 accuracy_axis, cost_axis = axes[0][column], axes[1][column]
-                accuracy_axis.plot(surrogate_positions, surrogate_accuracy, **lines['lsm'])
+                if surrogate_budgets:
+                    accuracy_axis.plot(surrogate_positions, surrogate_accuracy, **lines['lsm'])
                 for strategy in ('era', 'gra', 'gera'):
                     accuracy_axis.plot(
                         positions, series[strategy][0], label=strategy.upper(), **lines[strategy]
                     )
                 accuracy_axis.set_title(name, pad=8)
                 # The lower limit fits every line but the upper limit fits only ERA, GRA, and GERA
-                low = min(min(min(series[arm][0]) for arm in series), min(surrogate_accuracy))
+                low = min(*(min(series[arm][0]) for arm in series), *surrogate_accuracy)
                 high = max(max(series[arm][0]) for arm in series)
                 margin = max(1.0, 0.03 * (high - low))
                 accuracy_axis.set_ylim(low - margin, high + margin)
                 accuracy_axis.yaxis.set_major_locator(MaxNLocator(5, integer=True))
 
                 cost_axis.axhline(brute_force, label='BFS', **brute_force_line)
-                cost_axis.plot(surrogate_positions, surrogate_cost, **lines['lsm'])
+                if surrogate_budgets:
+                    cost_axis.plot(surrogate_positions, surrogate_cost, **lines['lsm'])
                 for strategy in ('era', 'gra', 'gera'):
                     cost_axis.plot(positions, series[strategy][1], **lines[strategy])
                 low = min(min(series[arm][1]) for arm in series)
@@ -283,6 +301,7 @@ class FigurePlotter:
             handles = [
                 Line2D([], [], label=STYLES[strategy][2], **lines[strategy])
                 for strategy in ('gera', 'gra', 'era', 'lsm')
+                if strategy != 'lsm' or drew_surrogate
             ]
             handles.append(Line2D([], [], label='BFS', **brute_force_line))
             figure.legend(
@@ -314,7 +333,11 @@ class FigurePlotter:
         for record in records:
             by_size[len(record['concepts'])].append(record)
         sizes = sorted(by_size)
-        strategies = ('sra', 'era', 'gra', 'gera', 'lsm')
+        strategies = tuple(
+            strategy
+            for strategy in ('sra', 'era', 'gra', 'gera', 'lsm')
+            if strategy != 'lsm' or has_outcomes(records, strategy, self.budget)
+        )
 
         def strategy_outcomes(strategy: str, size: int) -> list[dict[str, Any]]:
             """Return a strategy's outcomes on the cases of one size

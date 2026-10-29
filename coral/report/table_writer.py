@@ -18,6 +18,7 @@ from coral.report.statistics import (
     brute_force_cost,
     cost,
     distance,
+    has_outcomes,
     outcome,
     read_records,
 )
@@ -58,7 +59,7 @@ class TableWriter:
     def write_strategy_table(self) -> Path:
         """Write accuracy, cost, and distance per LLM, dataset, and strategy
 
-        BFS only fills in the cost and GoT only the accuracy
+        BFS only fills in the cost, GoT only the accuracy, and LSM only the budgets it ran at
 
         Returns:
             The path of the CSV file
@@ -69,6 +70,8 @@ class TableWriter:
                 records = read_records(self.results, llm, dataset, CONCEPT_SETS)
                 rows.append([llm, dataset, 'bfs', '', _rounded(brute_force_cost(records)), ''])
                 for strategy in ('sra', 'lsm', 'era', 'gra', 'gera'):
+                    if strategy == 'lsm' and not has_outcomes(records, strategy, self.budget):
+                        continue
                     budget = None if strategy == 'sra' else self.budget
                     entries = [outcome(record, strategy, budget) for record in records]
                     rows.append(

@@ -6,6 +6,7 @@ import argparse
 import logging
 from pathlib import Path
 
+from coral.evaluation.strategy_suite import BUDGETS
 from coral.report.figure_plotter import FigurePlotter
 from coral.report.table_writer import TableWriter
 from coral.utilities.files import ResultLayout
@@ -33,6 +34,7 @@ def main() -> None:
     parser.add_argument(
         '--budget',
         type=int,
+        choices=BUDGETS,
         default=16,
         help='budget to report in the tables and the figure by lattice size (default: 16)',
     )
