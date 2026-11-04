@@ -1,4 +1,4 @@
-"""Backends that send prompts to an LLM through vLLM or an OpenAI-compatible API"""
+"""Backends that send prompts to an LLM through vLLM, the OpenAI API, or the Anthropic API"""
 
 from __future__ import annotations
 
