@@ -7,12 +7,14 @@ from __future__ import annotations
 
 from coral.lattice.lattice import Lattice, concept_key, read_lattices
 from coral.lattice.lattice_generator import LatticeGenerator
+from coral.lattice.live_rankings import LiveRankings
 from coral.lattice.search_space import Direction, SearchSpace
 
 __all__ = [
     'Direction',
     'Lattice',
     'LatticeGenerator',
+    'LiveRankings',
     'SearchSpace',
     'concept_key',
     'read_lattices',

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from collections.abc import Iterable, Sequence
+from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass, replace
 from itertools import combinations
 from pathlib import Path
@@ -37,7 +37,7 @@ class Lattice:
     concept_set: str
     concepts: tuple[str, ...]
     answers: tuple[str, ...]
-    rankings: dict[str, list[str]]
+    rankings: Mapping[str, list[str]]
     halted: bool = False
 
     @classmethod
