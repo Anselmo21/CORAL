@@ -8,7 +8,7 @@ from __future__ import annotations
 import logging
 from collections import Counter
 from itertools import combinations
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, NamedTuple
 
 from coral.lattice.lattice import concept_key
 from coral.lattice.ranking_prompt import (
@@ -21,12 +21,25 @@ from coral.lattice.ranking_prompt import (
 from coral.utilities.files import read_json, write_json
 
 if TYPE_CHECKING:
+    from collections.abc import Callable, Sequence
     from pathlib import Path
 
     from coral.dataset.base_dataset import QueryRecord
     from coral.llm.language_model import Completion, LanguageModel
 
 logger = logging.getLogger(__name__)
+
+
+class RankedNode(NamedTuple):
+    """The ranking parsed at one node and the completion it came from
+
+    The fields hold the ranking (None when no reply parsed), the kept completion, and whether
+    constrained decoding produced the ranking
+    """
+
+    ranking: list[str] | None
+    completion: Completion
+    constrained: bool
 
 
 class LatticeGenerator:
@@ -157,35 +170,18 @@ class LatticeGenerator:
                     )
                     logger.info('query %s halted, %s', record.query_id, halted_reason)
                     break
-            prompts = [
-                ranking_prompt(concept_set, record.question, node, record.sources, record.answers)
-                for node in batch
-            ]
-            completions = ask([self._conversation(prompt) for prompt in prompts])
-            for node, prompt, completion in zip(batch, prompts, completions, strict=True):
+            ranked_nodes = self.rank_nodes(record, concept_set, batch, ask)
+            for node, ranked in zip(batch, ranked_nodes, strict=True):
                 key = concept_key(node)
-                ranking = parse_ranking(completion.text, record.answers)
-                kept = completion
-                attempts = 1
-                if ranking is None and self.model.CONSTRAINED_DECODING:
-                    # Constrained decoding comes before the correction prompt because some models
-                    # answer the correction prompt with the same fixed ordering at every node
-                    attempts += 1
-                    kept = ask(
-                        [self._conversation(prompt)], permutation_regex(len(record.answers))
-                    )[0]
-                    ranking = parse_ranking(kept.text, record.answers)
-                    if ranking is not None:
-                        constrained.append(key)
-                while ranking is None and attempts < self.max_attempts:
-                    attempts += 1
-                    kept = ask([self._conversation(correction_prompt(prompt, kept.text))])[0]
-                    ranking = parse_ranking(kept.text, record.answers)
-                if ranking is None:
-                    logger.warning('node %r did not parse after %d attempts', key, attempts)
+                if ranked.constrained:
+                    constrained.append(key)
+                if ranked.ranking is None:
                     continue
-                rankings[key] = ranking
-                node_tokens[key] = [kept.prompt_tokens, kept.output_tokens]
+                rankings[key] = ranked.ranking
+                node_tokens[key] = [
+                    ranked.completion.prompt_tokens,
+                    ranked.completion.output_tokens,
+                ]
 
         if previous:
             halted = previous['halted']
@@ -220,6 +216,55 @@ class LatticeGenerator:
         write_json(directory / 'config.json', configuration)
         write_json(directory / 'tokens.json', node_tokens, indent=None)
         return rankings
+
+    def rank_nodes(
+        self,
+        record: QueryRecord,
+        concept_set: str,
+        nodes: Sequence[tuple[str, ...]],
+        ask: Callable[..., list[Completion]],
+    ) -> list[RankedNode]:
+        """Ask the LLM to rank the answers at each node and retry the replies that do not parse
+
+        The first replies come in one batch while each retry goes out on its own
+
+        Args:
+            record: The query to rank the answers of
+            concept_set: Either 'criteria' or 'pragmas'
+            nodes: The concept subsets to rank the answers under
+            ask: The function that sends conversations and an optional regex to the LLM
+
+        Returns:
+            One result per node in the same order
+        """
+        prompts = [
+            ranking_prompt(concept_set, record.question, node, record.sources, record.answers)
+            for node in nodes
+        ]
+        completions = ask([self._conversation(prompt) for prompt in prompts])
+        ranked_nodes = []
+        for node, prompt, completion in zip(nodes, prompts, completions, strict=True):
+            ranking = parse_ranking(completion.text, record.answers)
+            kept = completion
+            attempts = 1
+            constrained = False
+            if ranking is None and self.model.CONSTRAINED_DECODING:
+                # Constrained decoding comes before the correction prompt because some models
+                # answer the correction prompt with the same fixed ordering at every node
+                attempts += 1
+                kept = ask([self._conversation(prompt)], permutation_regex(len(record.answers)))[0]
+                ranking = parse_ranking(kept.text, record.answers)
+                constrained = ranking is not None
+            while ranking is None and attempts < self.max_attempts:
+                attempts += 1
+                kept = ask([self._conversation(correction_prompt(prompt, kept.text))])[0]
+                ranking = parse_ranking(kept.text, record.answers)
+            if ranking is None:
+                logger.warning(
+                    'node %r did not parse after %d attempts', concept_key(node), attempts
+                )
+            ranked_nodes.append(RankedNode(ranking, kept, constrained))
+        return ranked_nodes
 
     @staticmethod
     def _conversation(prompt: str) -> list[dict[str, str]]:
