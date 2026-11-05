@@ -5,8 +5,13 @@ from __future__ import annotations
 import argparse
 from itertools import product
 from pathlib import Path
+from typing import TYPE_CHECKING
 
+from coral.llm.language_model_factory import PROVIDERS, LanguageModelFactory
 from coral.utilities.catalog import CONCEPT_SETS, DATASETS, LANGUAGE_MODELS
+
+if TYPE_CHECKING:
+    from coral.llm.language_model import LanguageModel
 
 
 def add_selection_arguments(parser: argparse.ArgumentParser) -> None:
@@ -104,3 +109,44 @@ def serving_options(arguments: argparse.Namespace) -> dict[str, object]:
         'enforce_eager': arguments.enforce_eager,
         'disable_custom_all_reduce': arguments.disable_custom_all_reduce,
     }
+
+
+def add_model_arguments(parser: argparse.ArgumentParser) -> None:
+    """Add the provider, model, and generation arguments of the commands that call an LLM
+
+    The vLLM serving arguments come along because the vllm provider needs them
+
+    Args:
+        parser: The parser to extend
+    """
+    parser.add_argument('--provider', required=True, choices=PROVIDERS, help='LLM backend')
+    parser.add_argument('--model', required=True, help='model id the provider serves')
+    parser.add_argument(
+        '--base-url', default=None, help='endpoint of an OpenAI-compatible server or of a proxy'
+    )
+    parser.add_argument(
+        '--temperature', type=float, default=0.0, help='(default: 0, unused by Claude models)'
+    )
+    parser.add_argument('--max-tokens', type=int, default=4096, help='(default: 4096)')
+    parser.add_argument(
+        '--max-attempts', type=int, default=3, help='LLM responses per prompt at most (default: 3)'
+    )
+    add_serving_arguments(parser)
+
+
+def create_model(arguments: argparse.Namespace) -> LanguageModel:
+    """Build the backend that the parsed provider and model arguments name
+
+    Only the vllm provider takes the serving options while the others take the base URL
+
+    Args:
+        arguments: The parsed command line
+
+    Returns:
+        The loaded backend
+    """
+    if arguments.provider == 'vllm':
+        options = serving_options(arguments)
+    else:
+        options = {'base_url': arguments.base_url}
+    return LanguageModelFactory.create(arguments.provider, arguments.model, **options)
