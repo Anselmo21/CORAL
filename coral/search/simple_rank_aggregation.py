@@ -42,13 +42,11 @@ class SimpleRankAggregation(Search):
         del supports
         initial_ranking = self._initial_ranking(lattice, space)
         initial_answer = initial_ranking[0]
+        oracle = LatticeOracle(lattice)
         singletons = {
-            concept: lattice.rankings[concept]
-            for concept in space.concepts
-            if concept in lattice.rankings
+            concept: ranking for concept in space.concepts if (ranking := oracle.ask(concept))
         }
         aggregator = BordaAggregator()
-        oracle = LatticeOracle(lattice)
         counterfactuals = []
         for _size, nodes in space.layers():
             layer = []

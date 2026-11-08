@@ -33,6 +33,7 @@ class ProxyEstimate:
     estimates: dict[str, dict[str, float]]
     entropies: dict[str, float]
     budget_used: int
+    calls: int
 
 
 class RankAggregationProxy:
@@ -77,10 +78,9 @@ class RankAggregationProxy:
             for concept in space.concepts
             if concept in lattice.rankings
         }
-        for node in ((), space.initial_node):
-            key = concept_key(node)
-            if key in lattice.rankings:
-                known[key] = lattice.rankings[key]
+        initial_key = concept_key(space.initial_node)
+        if initial_key in lattice.rankings:
+            known[initial_key] = lattice.rankings[initial_key]
         estimates: dict[str, dict[str, float]] = {}
         entropies: dict[str, float] = {}
         budget_remaining = budget
@@ -111,4 +111,6 @@ class RankAggregationProxy:
                 if lattice.rankings.get(key):
                     known[key] = lattice.rankings[key]
                 budget_remaining -= 1
-        return ProxyEstimate(known, estimates, entropies, budget - budget_remaining)
+        return ProxyEstimate(
+            known, estimates, entropies, budget - budget_remaining, len(space.concepts)
+        )

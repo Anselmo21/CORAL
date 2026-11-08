@@ -96,16 +96,19 @@ class EntropyRankAggregation(Search):
                 The current search result
             """
             return SearchResult(
-                tuple(counterfactuals), oracle.calls, estimate.budget_used, pruned_nodes
+                tuple(counterfactuals),
+                oracle.calls + estimate.calls,
+                estimate.budget_used,
+                pruned_nodes,
             )
 
         for _size, nodes in space.layers():
             unmeasured = []
             for node in nodes:
                 key = concept_key(node)
-                if key in estimate.known:
-                    ranking = estimate.known[key]
-                    if ranking[0] != initial_answer:
+                if key in estimate.known or key not in estimate.estimates:
+                    ranking = estimate.known[key] if key in estimate.known else oracle.ask(key)
+                    if ranking and ranking[0] != initial_answer:
                         counterfactuals.append(Counterfactual(node, ranking[0]))
                         if len(counterfactuals) == self.count:
                             return result()
