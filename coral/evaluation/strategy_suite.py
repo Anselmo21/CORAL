@@ -10,6 +10,7 @@ from typing import TYPE_CHECKING, Any
 
 from coral.evaluation.outcome import Outcome
 from coral.evaluation.test_case import load_evaluation_cases
+from coral.lattice.ablation import distinct_ablations
 from coral.lattice.search_space import Direction
 from coral.search.search_factory import SearchFactory
 from coral.utilities.files import read_json
@@ -89,7 +90,11 @@ class StrategySuite:
                     # Never score LSM on fewer cases than the other strategies
                     raise ValueError(f'LSM at budget {budget} has no run for case {case.case_id}')
                 outcome = Outcome.score(
-                    evaluation.minimal, run['key'], run['size'], run['calls'], run['budget']
+                    evaluation.minimal,
+                    run['key'],
+                    run['size'],
+                    run['calls'],
+                    distinct_ablations(len(case.concepts), run['budget']),
                 )
                 outcomes['lsm'][str(budget)] = outcome.to_json()
             records.append(

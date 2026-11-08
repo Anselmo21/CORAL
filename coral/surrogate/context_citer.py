@@ -10,28 +10,11 @@ import torch
 from numpy.typing import NDArray
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
+from coral.lattice.ablation import KEEP_PROBABILITY, create_mask
 from coral.surrogate.concept_prompt import ConceptPrompt
 from coral.surrogate.lasso_surrogate import LassoSurrogate
 
 logger = logging.getLogger(__name__)
-
-
-def create_mask(count: int, keep_probability: float, seed: int) -> NDArray[np.bool_]:
-    """Draw which concepts one ablation keeps
-
-    The seed is the ablation's index
-
-    Args:
-        count: The number of concepts
-        keep_probability: The chance each concept is kept
-        seed: The seed of this mask
-
-    Returns:
-        The boolean mask over the concepts
-    """
-    return np.random.RandomState(seed).choice(
-        [False, True], size=count, p=[1 - keep_probability, keep_probability]
-    )
 
 
 def aggregate_logit_probabilities(token_logit_probabilities: NDArray) -> NDArray:
@@ -63,7 +46,7 @@ class ContextCiter:
         tokenizer: Any,
         prompt: ConceptPrompt,
         ablations: int,
-        keep_probability: float = 0.5,
+        keep_probability: float = KEEP_PROBABILITY,
         batch_size: int = 1,
         max_new_tokens: int = 512,
     ) -> None:
@@ -162,7 +145,8 @@ class ContextCiter:
         masks = np.zeros((self.ablations, concept_count), dtype=bool)
         for seed in range(self.ablations):
             masks[seed] = create_mask(concept_count, self.keep_probability, seed)
-        scores = self._score(masks, response_ids)
+        distinct_masks, rows = np.unique(masks, axis=0, return_inverse=True)
+        scores = self._score(distinct_masks, response_ids)[rows.reshape(-1)]
         reference = self._score(np.zeros((1, concept_count), dtype=bool), response_ids)
         outputs = aggregate_logit_probabilities(scores[:, start:end])
         outputs = outputs - aggregate_logit_probabilities(reference[:, start:end])

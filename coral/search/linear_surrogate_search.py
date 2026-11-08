@@ -10,6 +10,7 @@ from typing import TYPE_CHECKING, Any
 
 import numpy as np
 
+from coral.lattice.ablation import distinct_ablations
 from coral.lattice.lattice import concept_key
 from coral.search.search import Counterfactual, LatticeOracle, Search, SearchResult
 from coral.surrogate.concept_prompt import ConceptPrompt
@@ -80,6 +81,7 @@ class LinearSurrogateSearch(Search):
             self.model, self.tokenizer, prompt, self.budget, batch_size=self.batch_size
         )
         surrogate = citer.fit()
+        budget_used = distinct_ablations(len(space.concepts), self.budget)
         self.usage = dict(citer.usage)
         positions = {concept: index for index, concept in enumerate(space.concepts)}
         oracle = LatticeOracle(lattice)
@@ -103,6 +105,6 @@ class LinearSurrogateSearch(Search):
                     counterfactuals.append(Counterfactual(node, ranking[0]))
                     if len(counterfactuals) == self.count:
                         return SearchResult(
-                            tuple(counterfactuals), oracle.calls, self.budget, pruned_nodes
+                            tuple(counterfactuals), oracle.calls, budget_used, pruned_nodes
                         )
-        return SearchResult(tuple(counterfactuals), oracle.calls, self.budget, pruned_nodes)
+        return SearchResult(tuple(counterfactuals), oracle.calls, budget_used, pruned_nodes)
