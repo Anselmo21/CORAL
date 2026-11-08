@@ -19,6 +19,6 @@ LANGUAGE_MODEL_NAMES = {
     'qwen35-122b': 'Qwen3.5-122B',
 }
 
-DATASETS = ('msmarco', 'curated')
+DATASETS = ('msmarco', 'opengen')
 
 CONCEPT_SETS = ('criteria', 'pragmas')

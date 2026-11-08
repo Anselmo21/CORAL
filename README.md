@@ -21,10 +21,10 @@ The run_strategy command runs one search strategy on the test cases and prints i
 
 ```bash
 python -m coral.run_strategy --strategy gera --budget 16 --entropy softmax --aggregator borda \
-    --llms qwen3-32b --datasets curated --concept-sets criteria
+    --llms qwen3-32b --datasets opengen --concept-sets criteria
 ```
 
-The strategy is one of bfs, sra, era, gra, gera and got. The budget, entropy scorer and rank aggregator only apply to ERA, GRA and GERA. The test cases come from the LLMs (llama31-8b, llama31-70b, qwen3-32b, qwen35-122b), datasets (msmarco, curated) and concept sets (criteria, pragmas) you pass. Leaving one of these flags out runs all of its values. Bottom-up search adds concepts to the empty set instead of removing them from the full set. To search bottom-up, run python -m coral.sample_cases --direction bottom-up once, then add --direction bottom-up to run_strategy, evaluate_strategies or write_report.
+The strategy is one of bfs, sra, era, gra, gera and got. The budget, entropy scorer and rank aggregator only apply to ERA, GRA and GERA. The test cases come from the LLMs (llama31-8b, llama31-70b, qwen3-32b, qwen35-122b), datasets (msmarco, opengen) and concept sets (criteria, pragmas) you pass. Leaving one of these flags out runs all of its values. Bottom-up search adds concepts to the empty set instead of removing them from the full set. To search bottom-up, run python -m coral.sample_cases --direction bottom-up once, then add --direction bottom-up to run_strategy, evaluate_strategies or write_report.
 
 ## Reproducing the paper
 
@@ -54,7 +54,7 @@ python -m coral.sample_cases
 python -m coral.fit_surrogates --llm qwen3-32b --dataset msmarco --concept-set criteria --budget 16
 ```
 
-The LLMs are llama31-8b, llama31-70b, qwen3-32b and qwen35-122b, the datasets msmarco and curated, and the concept sets criteria and pragmas. To regenerate the curated questions with Claude, set ANTHROPIC_API_KEY and run coral.generate_dataset with a new --output file. The MS MARCO concepts were made outside this repository.
+The LLMs are llama31-8b, llama31-70b, qwen3-32b and qwen35-122b, the datasets msmarco and opengen, and the concept sets criteria and pragmas. To regenerate the OpenGen questions with Claude, set ANTHROPIC_API_KEY and run coral.generate_dataset with a new --output file. The MS MARCO concepts were made outside this repository.
 
 ## Explaining your own question
 

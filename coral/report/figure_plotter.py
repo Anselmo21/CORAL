@@ -47,7 +47,7 @@ STYLES = {
     'lsm': ('^', '#2ca02c', 'LSM'),
 }
 
-DATASET_TITLES = {'msmarco': 'MSMARCO', 'curated': 'Curated'}
+DATASET_TITLES = {'msmarco': 'MSMARCO', 'opengen': 'OpenGen'}
 
 # Font sizes and line weights of the per-size figure
 SIZES_STYLE = {
