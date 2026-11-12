@@ -1,6 +1,6 @@
 # CORAL
 
-CORAL is a counterfactual-based explanation tool for LLM answers to open-ended questions. CORAL uncovers the unstated assumptions behind the LLM's answer (its implicit provenance) as concepts and finds the smallest sets of concepts that change the answer when removed. This tool was introduced in our paper "Efficient Concept-Based Explanations over Implicit Provenance for LLM Answers" and this repository houses the code and datasets described in it.
+CORAL is a counterfactual-based explanation tool for LLM answers to open-ended questions. CORAL uncovers the unstated assumptions behind the LLM's answer (its implicit provenance) as concepts and finds the smallest sets of concepts that change the answer when removed. This tool was introduced in our paper "Efficient Concept-Based Explanations for LLM Answers" and this repository houses the code and datasets described in it.
 
 ## Installation
 
